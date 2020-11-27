@@ -1,0 +1,3102 @@
+﻿@page "/element/table"
+<Pager DataSource="@(new List<string>(new[]{
+                         "示例","定义","合并行","结构化处理","高亮状态","被选中","禁用","书签","强制单行","固定单元格宽度",
+                         "固定单行","可选择的行","可选择的单元格","条纹","对齐方式","简单表格","折叠单元格","折叠表格",
+                         "单元格颜色","表格颜色","紧凑空间","增强填充空间","尺寸","Table 参数","Tr 参数","Td/Th 参数"
+                     }))">
+    <Body>
+<Header1>
+    表格
+    <SubHeader>
+        表格是按行分组的数据集合的显示
+    </SubHeader>
+</Header1>
+
+<Segment>
+    为了更加贴近我们熟悉过的 HTML 元素标记，我们并不打算定义复杂的组件名称，而是将第一个字母进行了大写。<br />
+    使用 <code>&lt;Table></code> 表示表格，<code>&lt;Tr></code> 表示行，<code>&lt;Td></code> 表示单元格，<code>&lt;Th></code> 表示列。
+    <br />
+    表的标题放在 <code>&lt;Header></code> 部分，同等于 <code>thead</code> ；
+    数据行放在 <code>&lt;Body></code> 部分，同等于 <code>tbody</code> ；
+    而底部放在 <code>&lt;Footer></code> 部分，同等于 <code>tfoot</code> 。
+</Segment>
+
+<PresentationPart Title="示例">
+    <Description>
+        <Message State="State.Positive">
+            对于移动设备，表格将自动堆叠它们的布局。
+        </Message>
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>
+                        名称
+                    </Th>
+                    <Th>
+                        年龄
+                    </Th>
+                    <Th>
+                        职业
+                    </Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>
+                        张三
+                    </Td>
+                    <Td>
+                        25
+                    </Td>
+                    <Td>
+                        工程师
+                    </Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        李四
+                    </Td>
+                    <Td>
+                        40
+                    </Td>
+                    <Td>
+                        总监
+                    </Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        王五
+                    </Td>
+                    <Td>
+                        32
+                    </Td>
+                    <Td>
+                        设计师
+                    </Td>
+                </Tr>
+            </Body>
+            <Footer>
+                <Tr>
+                    <Td ColSpan="3" HorizontalAlignment="HorizontalAlignment.Right">共计 3 条数据</Td>
+                </Tr>
+            </Footer>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>
+                名称
+            </Th>
+            <Th>
+                年龄
+            </Th>
+            <Th>
+                职业
+            </Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>
+                张三
+            </Td>
+            <Td>
+                25
+            </Td>
+            <Td>
+                工程师
+            </Td>
+        </Tr>
+        <Tr>
+            <Td>
+                李四
+            </Td>
+            <Td>
+                40
+            </Td>
+            <Td>
+                总监
+            </Td>
+        </Tr>
+        <Tr>
+            <Td>
+                王五
+            </Td>
+            <Td>
+                32
+            </Td>
+            <Td>
+                设计师
+            </Td>
+        </Tr>
+    </Body>
+    <Footer>
+        <Tr>
+            <Td ColSpan=""3"" HorizontalAlignment=""HorizontalAlignment.Right"">共计 3 条数据</Td>
+        </Tr>
+    </Footer>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+    
+<PresentationPart Title="定义">
+    <SubTitle>
+        可以对表进行格式化，以强调定义行内容的第一列
+    </SubTitle>
+    <Description>
+        设置 <code>Definition="true"</code> 可让第一列有一种强调的风格。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true" Definition="true">
+            <Header>
+                <Tr>
+                    <Th></Th>
+                    <Th>参数</Th>
+                    <Th>描述</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>重置</Td>
+                    <Td>None</Td>
+                    <Td>重置成默认值</Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        设置
+                    </Td>
+                    <Td>
+                        Int32
+                    </Td>
+                    <Td>
+                        设置一个指定的数字
+                    </Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"" Definition=""true"">
+    <Header>
+        <Tr>
+            <Th></Th>
+            <Th>参数</Th>
+            <Th>描述</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>重置</Td>
+            <Td>None</Td>
+            <Td>重置成默认值</Td>
+        </Tr>
+        <Tr>
+            <Td>
+                设置
+            </Td>
+            <Td>
+                Int32
+            </Td>
+            <Td>
+                设置一个指定的数字
+            </Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="合并行">
+    <Description>
+        如果你设置了 <code>RowSpan</code> 参数跨行合并，为了更好的 UI 体验，需要将被跨行的 <code>Td</code> 设置参数 <code>RowSpanned="true"</code>。
+    </Description>
+    <RunTemplate>
+        <Table Definition="true">
+            <Tr>
+                <Td RowSpan="4">
+                    四大银行
+                </Td>
+                <Td>
+                    中国银行
+                </Td>
+            </Tr>
+            <Tr>
+                <Td RowSpanned="true">
+                </Td>
+                <Td>
+                    工商银行
+                </Td>
+            </Tr>
+            <Tr>
+                <Td RowSpanned="true">
+                </Td>
+                <Td>
+                    建设银行
+                </Td>
+            </Tr>
+            <Tr>
+                <Td RowSpanned="true">
+                </Td>
+                <Td>
+                    招商银行
+                </Td>
+            </Tr>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Definition=""true"">
+    <Tr>
+        <Td RowSpan=""4"">
+            四大银行
+        </Td>
+        <Td>
+            中国银行
+        </Td>
+    </Tr>
+    <Tr>
+        <Td RowSpanned=""true"">
+        </Td>
+        <Td>
+            工商银行
+        </Td>
+    </Tr>
+    <Tr>
+        <Td RowSpanned=""true"">
+        </Td>
+        <Td>
+            建设银行
+        </Td>
+    </Tr>
+    <Tr>
+        <Td RowSpanned=""true"">
+        </Td>
+        <Td>
+            招商银行
+        </Td>
+    </Tr>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="结构化处理">
+    <SubTitle>
+        可以格式化表以显示复杂的结构化数据
+    </SubTitle>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th RowSpan="2">
+                        名字
+                    </Th>
+                    <Th RowSpan="2">
+                        所属项目
+                    </Th>
+                    <Th RowSpan="2">
+                        文件数
+                    </Th>
+                    <Th ColSpan="3">编程语言</Th>
+                </Tr>
+                <Tr>
+                    <Th>
+                        C#
+                    </Th>
+                    <Th>
+                        Javascript
+                    </Th>
+                    <Th>
+                        Python
+                    </Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>
+                        张三
+                    </Td>
+                    <Td>
+                        项目 1
+                    </Td>
+                    <Td>
+                        13
+                    </Td>
+                    <Td HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td></Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td RowSpan="3">
+                        李四
+                    </Td>
+                    <Td>
+                        项目 1
+                    </Td>
+                    <Td>
+                        48
+                    </Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td></Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        项目 2
+                    </Td>
+                    <Td>
+                        14
+                    </Td>
+                    <Td></Td>
+                    <Td HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        项目 3
+                    </Td>
+                    <Td>
+                        6
+                    </Td>
+                    <Td></Td>
+                    <Td HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th RowSpan=""2"">
+                名字
+            </Th>
+            <Th RowSpan=""2"">
+                所属项目
+            </Th>
+            <Th RowSpan=""2"">
+                文件数
+            </Th>
+            <Th ColSpan=""3"">编程语言</Th>
+        </Tr>
+        <Tr>
+            <Th>
+                C#
+            </Th>
+            <Th>
+                Javascript
+            </Th>
+            <Th>
+                Python
+            </Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>
+                张三
+            </Td>
+            <Td>
+                项目 1
+            </Td>
+            <Td>
+                13
+            </Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td></Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td RowSpan=""3"">
+                李四
+            </Td>
+            <Td>
+                项目 1
+            </Td>
+            <Td>
+                48
+            </Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td></Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+        </Tr>
+        <Tr>
+            <Td>
+                项目 2
+            </Td>
+            <Td>
+                14
+            </Td>
+            <Td></Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>
+                项目 3
+            </Td>
+            <Td>
+                6
+            </Td>
+            <Td></Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+<Message State="State.Warning">
+    有时候对于使用 <code>RowSpan</code> 或 <code>ColSpan</code> 的复杂布局以及不同列数的行，这可能会导致一些单元格边框丢失。<br />
+    这时需要设置参数 <code>Structured="true"</code> 以保证正确地显示所有合法的单元格。
+</Message>
+<PresentationPart>
+    <Description>
+
+    </Description>
+    <RunTemplate>
+        <Table Structured="true" Celled="true">
+            <Header>
+                <Tr>
+                    <Th RowSpan="2">
+                        名字
+                    </Th>
+                    <Th RowSpan="2">
+                        所属项目
+                    </Th>
+                    <Th RowSpan="2">
+                        文件数
+                    </Th>
+                    <Th ColSpan="3">编程语言</Th>
+                </Tr>
+                <Tr>
+                    <Th>
+                        C#
+                    </Th>
+                    <Th>
+                        Javascript
+                    </Th>
+                    <Th>
+                        Python
+                    </Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>
+                        张三
+                    </Td>
+                    <Td>
+                        项目 1
+                    </Td>
+                    <Td>
+                        13
+                    </Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td></Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td RowSpan="3">
+                        李四
+                    </Td>
+                    <Td>
+                        项目 1
+                    </Td>
+                    <Td>
+                        48
+                    </Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td></Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        项目 2
+                    </Td>
+                    <Td>
+                        14
+                    </Td>
+                    <Td></Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td>
+                        项目 3
+                    </Td>
+                    <Td>
+                        6
+                    </Td>
+                    <Td></Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        <Icon IconClass="checkmark" Color="Color.Green" Size="Size.Large" />
+                    </Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Structured=""true"" Celled=""true"">
+    <Header>
+        <Tr>
+            <Th RowSpan=""2"">
+                名字
+            </Th>
+            <Th RowSpan=""2"">
+                所属项目
+            </Th>
+            <Th RowSpan=""2"">
+                文件数
+            </Th>
+            <Th ColSpan=""3"">编程语言</Th>
+        </Tr>
+        <Tr>
+            <Th>
+                C#
+            </Th>
+            <Th>
+                Javascript
+            </Th>
+            <Th>
+                Python
+            </Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>
+                张三
+            </Td>
+            <Td>
+                项目 1
+            </Td>
+            <Td>
+                13
+            </Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td></Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td RowSpan=""3"">
+                李四
+            </Td>
+            <Td>
+                项目 1
+            </Td>
+            <Td>
+                48
+            </Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td></Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+        </Tr>
+        <Tr>
+            <Td>
+                项目 2
+            </Td>
+            <Td>
+                14
+            </Td>
+            <Td></Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>
+                项目 3
+            </Td>
+            <Td>
+                6
+            </Td>
+            <Td></Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                <Icon IconClass=""checkmark"" Color=""Color.Green"" Size=""Size.Large"" />
+            </Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="高亮状态">
+    <Description>
+        设置 <code>State</code> 参数配置整行或某一个单元格的高亮醒目的颜色。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>结果</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>未知</Td>
+                    <Td State="State.Negative">错误</Td>
+                </Tr>
+                <Tr State="State.Positive">
+                    <Td>李四</Td>
+                    <Td>通过</Td>
+                    <Td><Icon IconClass="checkmark" /></Td>
+                </Tr>
+                <Tr State="State.Warning">
+                    <Td>王五</Td>
+                    <Td><Icon IconClass="attention" /> 需补充信息</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr State="State.Negative">
+                    <Td>赵六</Td>
+                    <Td>驳回</Td>
+                    <Td><Icon IconClass="close" /> 查看详情</Td>
+                </Tr>
+                <Tr>
+                    <Td>孙七</Td>
+                    <Td>未知</Td>
+                    <Td State="State.Warning"><Icon IconClass="attention" /> 缺少签名</Td>
+                </Tr>
+                <Tr State="State.Error">
+                    <Td>李八</Td>
+                    <Td>错误</Td>
+                    <Td><Icon IconClass="close" /> 数据错误</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>结果</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>未知</Td>
+            <Td State=""State.Negative"">错误</Td>
+        </Tr>
+        <Tr State=""State.Positive"">
+            <Td>李四</Td>
+            <Td>通过</Td>
+            <Td><Icon IconClass=""checkmark"" /></Td>
+        </Tr>
+        <Tr State=""State.Warning"">
+            <Td>王五</Td>
+            <Td><Icon IconClass=""attention"" /> 需补充信息</Td>
+            <Td></Td>
+        </Tr>
+        <Tr State=""State.Negative"">
+            <Td>赵六</Td>
+            <Td>驳回</Td>
+            <Td><Icon IconClass=""close"" /> 查看详情</Td>
+        </Tr>
+        <Tr>
+            <Td>孙七</Td>
+            <Td>未知</Td>
+            <Td State=""State.Warning""><Icon IconClass=""attention"" /> 缺少签名</Td>
+        </Tr>
+        <Tr State=""State.Error"">
+            <Td>李八</Td>
+            <Td>错误</Td>
+            <Td><Icon IconClass=""close"" /> 数据错误</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="被选中">
+    <Description>
+        设置 <code>Actived="true"</code> 可以让整行或某个单元格处于被选中的状态。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>结果</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr Actived="true">
+                    <Td>李四</Td>
+                    <Td>选中</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td Actived="true">赵六</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>结果</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr Actived=""true"">
+            <Td>李四</Td>
+            <Td>选中</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td Actived=""true"">赵六</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="禁用">
+    <Description>
+        设置 <code>Disabled="true"</code> 可以让整行或某个单元格处于禁用状态。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>结果</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr Disabled="true">
+                    <Td>李四</Td>
+                    <Td>取消</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td Disabled="true">赵六</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>结果</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr Disabled=""true"">
+            <Td>李四</Td>
+            <Td>取消</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td Disabled=""true"">赵六</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="书签">
+    <Description>
+        为整行或某一个单元格设置 <code>Marked</code> 参数可以应用为书签的边框，但需要设置 <code>Color</code> 参数设置书签的颜色。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>结果</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td Marked="HorizontalPosition.Left" Color="Color.Teal">张三</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr Marked="HorizontalPosition.Right" Color="Color.Blue">
+                    <Td>李四</Td>
+                    <Td Marked="HorizontalPosition.Left" Color="Color.Orange">进行中</Td>
+                    <Td>任务 2313</Td>
+                </Tr>
+                <Tr>
+                    <Td Marked="HorizontalPosition.Right" Color="Color.Red">王五</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr Marked="HorizontalPosition.Right" Color="Color.Green">
+                    <Td>赵六</Td>
+                    <Td>审批完成</Td>
+                    <Td Marked="HorizontalPosition.Left" Color="Color.Purple">值得注意</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>结果</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td Marked=""HorizontalPosition.Left"" Color=""Color.Teal"">张三</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr Marked=""HorizontalPosition.Right"" Color=""Color.Blue"">
+            <Td>李四</Td>
+            <Td Marked=""HorizontalPosition.Left"" Color=""Color.Orange"" >进行中</Td>
+            <Td>任务 2313</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>赵六</Td>
+            <Td>审批完成</Td>
+            <Td Marked=""HorizontalPosition.Left"" Color=""Color.Purple"">值得注意</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="强制单行">
+    <SubTitle>
+        表格可以指定其单元格内容保持在一行上，而不换行。
+    </SubTitle>
+    <Description>
+        设置 <code>SingliLine="true"</code> 可以使单元格强制不换行。
+    </Description>
+    <RunTemplate>
+        <Table AdditionalStyle="width:300px" SingleLine="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table AdditionalStyle=""width:300px"" SingleLine=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="固定单元格宽度">
+    <Description>
+        设置 <code>Fixed="true"</code> 可以固定每一个单元格的宽度，超出的内容会自动换行。
+    </Description>
+    <RunTemplate>
+        <Table Fixed="true" Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>年龄</Th>
+                    <Th>职位</Th>
+                    <Th>经历</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>35 岁</Td>
+                    <Td>高级程序员</Td>
+                    <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+                </Tr>
+                <Tr>
+                    <Td>李四</Td>
+                    <Td>48 岁</Td>
+                    <Td>项目经理</Td>
+                    <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>27 岁</Td>
+                    <Td>UI 设计师</Td>
+                    <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Fixed=""true"" Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>年龄</Th>
+            <Th>职位</Th>
+            <Th>经历</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>35 岁</Td>
+            <Td>高级程序员</Td>
+            <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+        </Tr>
+        <Tr>
+            <Td>李四</Td>
+            <Td>48 岁</Td>
+            <Td>项目经理</Td>
+            <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>27 岁</Td>
+            <Td>UI 设计师</Td>
+            <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="固定单行">
+    <Description>
+        同时设置 <code>Fixed</code> 和 <code>SingleLine</code> 则会让超出单元格宽度的内容自动追加 <code>...</code> 以保持内容始终单行显示。
+    </Description>
+    <RunTemplate>
+        <Table Fixed="true" Celled="true" SingleLine="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>年龄</Th>
+                    <Th>职位</Th>
+                    <Th>经历</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>35 岁</Td>
+                    <Td>高级程序员</Td>
+                    <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+                </Tr>
+                <Tr>
+                    <Td>李四</Td>
+                    <Td>48 岁</Td>
+                    <Td>项目经理</Td>
+                    <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>27 岁</Td>
+                    <Td>UI 设计师</Td>
+                    <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Fixed=""true"" Celled=""true"" SingleLine=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>年龄</Th>
+            <Th>职位</Th>
+            <Th>经历</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>35 岁</Td>
+            <Td>高级程序员</Td>
+            <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+        </Tr>
+        <Tr>
+            <Td>李四</Td>
+            <Td>48 岁</Td>
+            <Td>项目经理</Td>
+            <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>27 岁</Td>
+            <Td>UI 设计师</Td>
+            <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="可选择的行">
+    <Description>
+        设置 <code>Selectable="true"</code> 可以有悬浮行高亮背景的效果。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true" Selectable="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>结果</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr Color="Color.Blue">
+                    <Td>李四</Td>
+                    <Td>进行中</Td>
+                    <Td>任务 2313</Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td>赵六</Td>
+                    <Td>审批完成</Td>
+                    <Td Color="Color.Pink"><Icon IconClass="tree" /> 去休假了</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"" Selectable=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>结果</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr Color=""Color.Blue"">
+            <Td>李四</Td>
+            <Td>进行中</Td>
+            <Td>任务 2313</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>赵六</Td>
+            <Td>审批完成</Td>
+            <Td Color=""Color.Pink""><Icon IconClass=""tree"" /> 去休假了</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="可选择的单元格">
+    <Description>
+        悬浮高亮的可选择效果也可以对设置了 <code>Selectable="true"</code> 的单元格有效。
+        <Message State="State.Warning">
+            <Icon IconClass="attention" /> 如果单元格中拥有 <code>a</code> 或 <code>Anchor</code> 的超链接组件，那么会自动将链接效果撑满整个单元格。
+        </Message>
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>编辑</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td Selectable="true">审批完成</Td>
+                    <Td><Anchor Link="#">编辑</Anchor></Td>
+                </Tr>
+                <Tr Color="Color.Blue">
+                    <Td>李四</Td>
+                    <Td>进行中</Td>
+                    <Td Selectable="true"><Anchor Link="#">编辑</Anchor></Td>
+                </Tr>
+                <Tr>
+                    <Td Selectable="true">王五</Td>
+                    <Td>审批完成</Td>
+                    <Td><Anchor Link="#">编辑</Anchor></Td>
+                </Tr>
+                <Tr>
+                    <Td>赵六</Td>
+                    <Td>审批完成</Td>
+                    <Td State="State.Error" Selectable="true"><Anchor Link="#">编辑</Anchor></Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>编辑</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td Seletable=""true"">审批完成</Td>
+            <Td><Anchor Link=""#"">编辑</Anchor></Td>
+        </Tr>
+        <Tr Color=""Color.Blue"">
+            <Td>李四</Td>
+            <Td>进行中</Td>
+            <Td Seletable=""true""><Anchor Link=""#"">编辑</Anchor></Td>
+        </Tr>
+        <Tr>
+            <Td Seletable=""true"">王五</Td>
+            <Td>审批完成</Td>
+            <Td><Anchor Link=""#"">编辑</Anchor></Td>
+        </Tr>
+        <Tr>
+            <Td>赵六</Td>
+            <Td>审批完成</Td>
+            <Td State=""State.Error"" Seletable=""true""><Anchor Link=""#"">编辑</Anchor></Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="条纹">
+    <Description>
+        设置 <code>Striped="true"</code> 让表格的行呈现斑马条纹的效果。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true" Striped="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Steve Nash</Td>
+                    <Td>1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>James Harden</Td>
+                    <Td>1979年10月26日</Td>
+                    <Td>hardenhappynewyear@@gmail.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"" Striped=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Steve Nash</Td>
+            <Td>1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>James Harden</Td>
+            <Td>1979年10月26日</Td>
+            <Td>hardenhappynewyear@@gmail.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="对齐方式">
+    <Description>
+        设置 <code>HorizontalAlignment</code> 水平对齐。设置 <code>VerticalAlignment</code> 垂直对齐。
+        默认文本垂直居中并且左对齐。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr VerticalAlignment="VerticalAlignment.Top">
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td VerticalAlignment="VerticalAlignment.Bottom">Lebron_James007@@gmail.com</Td>
+                    <Td>
+                        No<br />
+                        <br />
+                        <br />
+                        <br />
+                    </Td>
+                </Tr>
+                <Tr>
+                    <Td HorizontalAlignment="HorizontalAlignment.Right">Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td  VerticalAlignment="VerticalAlignment.Bottom">thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td  VerticalAlignment="VerticalAlignment.Bottom">Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td VerticalAlignment="VerticalAlignment.Top">1968年2月28日</Td>
+                    <Td  VerticalAlignment="VerticalAlignment.Bottom">jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td  HorizontalAlignment="HorizontalAlignment.Center">
+                        No<br />
+                        <br />
+                        <br />
+                        <br />
+                    </Td>
+                </Tr>
+                <Tr>
+                    <Td HorizontalAlignment="HorizontalAlignment.Right">Steve Nash</Td>
+                    <Td  VerticalAlignment="VerticalAlignment.Bottom" Right="true">1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td  VerticalAlignment="VerticalAlignment.Bottom">Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr VerticalAlignment=""VerticalAlignment.Top"">
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td VerticalAlignment=""VerticalAlignment.Bottom"">Lebron_James007@@gmail.com</Td>
+            <Td>
+                No<br />
+                <br />
+                <br />
+                <br />
+            </Td>
+        </Tr>
+        <Tr>
+            <Td HorizontalAlignment=""HorizontalAlignment.Right"">Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td VerticalAlignment=""VerticalAlignment.Bottom"">thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td VerticalAlignment=""VerticalAlignment.Bottom"">Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td Aligned=""true"" Top=""true"">1968年2月28日</Td>
+            <Td VerticalAlignment=""VerticalAlignment.Bottom"">jordan_mic_happy_ending@@facebook.com</Td>
+            <Td HorizontalAlignment=""HorizontalAlignment.Center"">
+                No<br />
+                <br />
+                <br />
+                <br />
+            </Td>
+        </Tr>
+        <Tr>
+            <Td HorizontalAlignment=""HorizontalAlignment.Right"">Steve Nash</Td>
+            <Td VerticalAlignment=""VerticalAlignment.Bottom"">1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td VerticalAlignment=""VerticalAlignment.Bottom"">Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="简单表格">
+    <Description>
+        设置 <code>Basic="true"</code> 可以降低其复杂性以提高可读性。
+    </Description>
+    <RunTemplate>
+        <Table Basic="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Steve Nash</Td>
+                    <Td>1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>James Harden</Td>
+                    <Td>1979年10月26日</Td>
+                    <Td>hardenhappynewyear@@gmail.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Basic=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Steve Nash</Td>
+            <Td>1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>James Harden</Td>
+            <Td>1979年10月26日</Td>
+            <Td>hardenhappynewyear@@gmail.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart>
+    <Description>
+        再设置 <code>Very="true"</code> 可以去掉简单表格四周的边框。
+    </Description>
+    <RunTemplate>
+        <Table Basic="true" Very="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Steve Nash</Td>
+                    <Td>1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>James Harden</Td>
+                    <Td>1979年10月26日</Td>
+                    <Td>hardenhappynewyear@@gmail.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Basic=""true"" Very=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Steve Nash</Td>
+            <Td>1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>James Harden</Td>
+            <Td>1979年10月26日</Td>
+            <Td>hardenhappynewyear@@gmail.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="折叠单元格">
+    <Description>
+        在指定的单元格设置 <code>Collasping="true"</code> 只使用所需的空间。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td Collapsing="true">Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td Collapsing="true">jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Steve Nash</Td>
+                    <Td Collapsing="true">1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>James Harden</Td>
+                    <Td>1979年10月26日</Td>
+                    <Td>hardenhappynewyear@@gmail.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td Collasping=""true"">Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td Collasping=""true"">jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Steve Nash</Td>
+            <Td Collasping=""true"">1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>James Harden</Td>
+            <Td>1979年10月26日</Td>
+            <Td>hardenhappynewyear@@gmail.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="折叠表格">
+    <Description>
+        在 <code>Table</code> 设置 <code>Collasping="true"</code> 可以将所有单元格压缩空间显示。
+    </Description>
+    <RunTemplate>
+        <Table Collapsing="true" Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Steve Nash</Td>
+                    <Td>1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>James Harden</Td>
+                    <Td>1979年10月26日</Td>
+                    <Td>hardenhappynewyear@@gmail.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Collapsing=""true"" Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Steve Nash</Td>
+            <Td>1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>James Harden</Td>
+            <Td>1979年10月26日</Td>
+            <Td>hardenhappynewyear@@gmail.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+    
+<PresentationPart Title="单元格颜色">
+    <Description>
+        设置 <code>Color</code> 参数为整行或某一个单元格配置颜色。
+    </Description>
+    <RunTemplate>
+        <Table Celled="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>状态</Th>
+                    <Th>结果</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr Color="Color.Blue">
+                    <Td>李四</Td>
+                    <Td>进行中</Td>
+                    <Td>任务 2313</Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>审批完成</Td>
+                    <Td></Td>
+                </Tr>
+                <Tr>
+                    <Td>赵六</Td>
+                    <Td>审批完成</Td>
+                    <Td Color="Color.Pink"><Icon IconClass="tree" /> 去休假了</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Celled=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>状态</Th>
+            <Th>结果</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr Color=""Color.Blue"">
+            <Td>李四</Td>
+            <Td>进行中</Td>
+            <Td>任务 2313</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>审批完成</Td>
+            <Td></Td>
+        </Tr>
+        <Tr>
+            <Td>赵六</Td>
+            <Td>审批完成</Td>
+            <Td Color=""Color.Pink""><Icon IconClass=""tree""/> 去休假了</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="表格颜色">
+    <Description>
+        设置表格的 <code>Color</code> 可以使表格上方的边框具备颜色。
+    </Description>
+    <RunTemplate>
+        <Table  Color="Color.Red">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+        <Table  Color="Color.Blue">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+        <Table  Color="Color.Green">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+        <Table  Color="Color.Pink">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Color=""Color.Red"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Color=""Color.Blue"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Color=""Color.Green"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Color=""Color.Purple"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart>
+    <Description>
+        再设置 <code>Inverted="true"</code> 可以将整个表格填充上颜色。
+    </Description>
+    <RunTemplate>
+        <Table Color="Color.Red" Inverted="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+        <Table Color="Color.Blue" Inverted="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+        <Table Color="Color.Green" Inverted="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+        <Table Color="Color.Pink" Inverted="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Color=""Color.Red"" Inverted=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Color=""Color.Blue"" Inverted=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Color=""Color.Green"" Inverted=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Color=""Color.Purple"" Inverted=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="紧凑空间">
+    <Description>
+        在 <code>Table</code> 设置 <code>Compact="true"</code> 可以将所有单元格压缩空间，但不会改变总宽度。
+    </Description>
+    <RunTemplate>
+        <Table Compact="true">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Steve Nash</Td>
+                    <Td>1972年3月12日</Td>
+                    <Td>nash-canada-steve1972@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>James Harden</Td>
+                    <Td>1979年10月26日</Td>
+                    <Td>hardenhappynewyear@@gmail.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Compact=""true"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Steve Nash</Td>
+            <Td>1972年3月12日</Td>
+            <Td>nash-canada-steve1972@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>James Harden</Td>
+            <Td>1979年10月26日</Td>
+            <Td>hardenhappynewyear@@gmail.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="增强填充空间">
+    <Description>
+        设置 <code>Padded="true"</code> 可以增强填充空间以增强可读性。
+    </Description>
+    <RunTemplate>
+        <Table Padded="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>经历</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+                </Tr>
+                <Tr>
+                    <Td>李四</Td>
+                    <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Padded=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>经历</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+        </Tr>
+        <Tr>
+            <Td>李四</Td>
+            <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart>
+    <Description>
+        设置 <code>Very="true"</code> 可以让设置过 <code>Padded</code> 参数的空间加大。
+    </Description>
+    <RunTemplate>
+        <Table Padded="true" Very="true">
+            <Header>
+                <Tr>
+                    <Th>名称</Th>
+                    <Th>经历</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>张三</Td>
+                    <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+                </Tr>
+                <Tr>
+                    <Td>李四</Td>
+                    <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+                </Tr>
+                <Tr>
+                    <Td>王五</Td>
+                    <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Padded=""true"" Very=""true"">
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>经历</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>张三</Td>
+            <Td>有10年工作经验，多次攻克了技术难题，并开发了一套能解决卡死程序的性能的小软件，同时也是一名音乐爱好者。</Td>
+        </Tr>
+        <Tr>
+            <Td>李四</Td>
+            <Td>曾就职于阿里巴巴集团，多次担任了高端项目的总负责人，有丰富的经验和阅历，对项目的把控能力能精确到每天。为人还非常的谦逊、和蔼可亲的性格，深受同事的爱戴。</Td>
+        </Tr>
+        <Tr>
+            <Td>王五</Td>
+            <Td>现担任腾讯旗下品牌xx高级 UI 设计师，大名鼎鼎并且独树一帜的设计风格，在圈内的人气非常高。平时喜欢画插画，对于美术方面有非常高的艺术造诣，曾经获得国际插画比赛的冠军。</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="尺寸">
+    <Description>
+        设置 <code>Size="true"</code> 可以定义整体表格文本的大小。
+    </Description>
+    <RunTemplate>
+        <Table Size="Size.Tiny">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+            </Body>
+        </Table>
+
+        <Table Size="Size.Large">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+            </Body>
+        </Table>
+
+        <Table Size="Size.Massive">
+            <Header>
+                <Tr>
+                    <Th>名字</Th>
+                    <Th>注册时间</Th>
+                    <Th>邮箱</Th>
+                    <Th>计划外出</Th>
+                </Tr>
+            </Header>
+            <Body>
+                <Tr>
+                    <Td>Lebron James</Td>
+                    <Td>1981年1月23日</Td>
+                    <Td>Lebron_James007@@gmail.com</Td>
+                    <Td>No</Td>
+                </Tr>
+                <Tr>
+                    <Td>Kobe Bryant</Td>
+                    <Td>1976年5月1日</Td>
+                    <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+                    <Td>Yes</Td>
+                </Tr>
+                <Tr>
+                    <Td>Michael Jordan</Td>
+                    <Td>1968年2月28日</Td>
+                    <Td>jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td>No</Td>
+                </Tr>
+            </Body>
+        </Table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Table Size=""Size.Tiny"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Size=""Size.Large"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+    </Body>
+</Table>
+<Table Size=""Size.Massive"">
+    <Header>
+        <Tr>
+            <Th>名字</Th>
+            <Th>注册时间</Th>
+            <Th>邮箱</Th>
+            <Th>计划外出</Th>
+        </Tr>
+    </Header>
+    <Body>
+        <Tr>
+            <Td>Lebron James</Td>
+            <Td>1981年1月23日</Td>
+            <Td>Lebron_James007@@gmail.com</Td>
+            <Td>No</Td>
+        </Tr>
+        <Tr>
+            <Td>Kobe Bryant</Td>
+            <Td>1976年5月1日</Td>
+            <Td>thegreatestplayerkobebryant@@outlook.com</Td>
+            <Td>Yes</Td>
+        </Tr>
+        <Tr>
+            <Td>Michael Jordan</Td>
+            <Td>1968年2月28日</Td>
+            <Td>jordan_mic_happy_ending@@facebook.com</Td>
+            <Td>No</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
+    </CodeTemplate>
+</PresentationPart>                
+        <ParameterTable>
+            <Content>
+                <tr>
+                    <td>Header</td>
+                    <td>表格的 thead 部分</td>
+                    <td>RenderFragment</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Body</td>
+                    <td>表格的 tbody 部分</td>
+                    <td>RenderFragment</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Footer</td>
+                    <td>表格的 tfoot 部分</td>
+                    <td>RenderFragment</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Celled</td>
+                    <td>每个单元格都具有边框</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Striped</td>
+                    <td>行具备条纹效果</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Definition</td>
+                    <td>第一列呈现具有格式强调风格</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Structured</td>
+                    <td>对单元格进行结构化处理</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>SingleLine</td>
+                    <td>单元格的内容不进行换行并保持单行显示</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Selectable</td>
+                    <td>行鼠标悬浮行高亮和 <code>cursor:pointer</code> 的效果</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Collapsing</td>
+                    <td>压缩表格的空间，使宽度刚刚与文本长度相同</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>表格的上边框颜色。若设置了 <code>Inverted</code> 可变为背景颜色。</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Inverted</td>
+                    <td>反转颜色，配合 <code>Color</code> 成为背景颜色</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Compact</td>
+                    <td>所有单元格对内边距的空间进行一定的压缩</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Padded</td>
+                    <td>所有单元格增强内边距的空间</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Size</td>
+                    <td>表格的尺寸</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Basic</td>
+                    <td>呈现简单的样式</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Very</td>
+                    <td>进一步增强 <code>Padded</code> 的效果</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fixed</td>
+                    <td>固定单元格的宽度且不能被重新定义尺寸</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+            </Content>
+        </ParameterTable>
+                        <ParameterTable Title="Tr 参数">
+                    <Content>
+                        <tr>
+                            <td>Marked</td>
+                            <td>行作为书签的方式呈现</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>State</td>
+                            <td>使行的单元格具有醒目状态的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Actived</td>
+                            <td>是否处于激活状态</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Disabled</td>
+                            <td>是否处于禁用状态</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>                       
+                    </Content>
+        </ParameterTable>
+                        <ParameterTable Title="Td/Th 参数">
+                    <Content>
+                        <tr>
+                            <td>ColSpan</td>
+                            <td>单元格跨列的数量</td>
+                            <td>int</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>RowSpan</td>
+                            <td>单元格跨行的数量</td>
+                            <td>int</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>RowSpanned</td>
+                            <td>当被跨行时对 UI 的突出显示</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Marked</td>
+                            <td>呈现书签的样式</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Selectable</td>
+                            <td>单元格拥有可选择的效果</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Collapsing</td>
+                            <td>压缩单元格的空间使其刚好与文本长度一致</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>State</td>
+                            <td>具有醒目状态的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Actived</td>
+                            <td>是否处于激活状态</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Disabled</td>
+                            <td>是否处于禁用状态</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>WidthCount</td>
+                            <td>单元格的固定的宽度占比数</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>HorizontalAlignment</td>
+                            <td>文本水平方向的对齐方式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>                        
+                    </Content>
+        </ParameterTable>
+    </Body>
+</Pager>

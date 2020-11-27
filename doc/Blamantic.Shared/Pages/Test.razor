@@ -1,0 +1,35 @@
+﻿@page "/test"
+
+
+@*@code{
+    [System.ComponentModel.DataAnnotations.Required]
+    [System.ComponentModel.DataAnnotations.Display(Name = "姓名")]
+    public string Name { get; set; }
+
+
+    [System.ComponentModel.DataAnnotations.Display(Name = "年龄")]
+    [System.ComponentModel.DataAnnotations.Required]
+    [System.ComponentModel.DataAnnotations.Range(18, 60)]
+    public int Age { get; set; }
+
+    [System.ComponentModel.DataAnnotations.Required]
+    public bool Checked { get; set; }
+}
+
+<Form Model="this">
+    <DataAnnotationsValidator/>
+    <Field For="()=>Name" ErrorPointerPosition="RelativePosition.Right">
+        <InputText @bind-Value="Name"/>
+    </Field>
+    <Field For="()=>Age">
+        <InputNumber @bind-Value="Age"/>
+    </Field>
+    <Field For="()=>Checked">
+        <InputCheckbox @bind-Value="Checked"/>
+        你可以这样看待
+    </Field>
+    <Button>提交</Button>
+</Form>*@
+
+
+<Pagination CurrentPage="1" TotalCount="45"/>

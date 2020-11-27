@@ -1,0 +1,1419 @@
+﻿@page "/element/list"
+
+<Pager DataSource="Menu">
+    <Body>
+<Header1 Divider="true">
+    列表
+    <SubHeader>
+        列表用于对相关内容进行分组
+    </SubHeader>
+</Header1>
+<Message>
+    使用 <code>List</code> 作为列表组件，然后嵌套 <code>Item</code> 作为列表项。
+</Message>
+
+<PresentationPart Title="示例">
+    <RunTemplate>
+        <List>
+            <Item>苹果</Item>
+            <Item>香蕉</Item>
+            <Item>橘子</Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List>
+    <Item>苹果</Item>
+    <Item>香蕉</Item>
+    <Item>橘子</Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="带图标">
+    <RunTemplate>
+        <List>
+            <Item>
+                <Icon IconClass="users" />
+                <Content>
+                    CastUI
+                </Content>
+            </Item>
+            <Item>
+                <Icon IconClass="marker" />
+                <Content>
+                    北京（Beijing）
+                </Content>
+            </Item>
+            <Item>
+                <Icon IconClass="mail" />
+                <Content>
+                    <Anchor Link="mailto:www.baidu.com">www.baidu.com</Anchor>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List>
+    <Item>
+        <Icon IconClass=""users""/>
+        <Content>
+            CastUI
+        </Content>
+    </Item>
+    <Item>
+        <Icon IconClass=""marker""/>
+        <Content>
+            北京（Beijing）
+        </Content>
+    </Item>
+    <Item>
+        <Icon IconClass=""mail""/>
+        <Content>
+            <Anchor Link=""mailto:www.baidu.com"">www.baidu.com</Anchor>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="带标题和图标">
+    <RunTemplate>
+        <List Relaxed="true" Divider="true">
+            <Item>
+                <Icon Size="Size.Large" VerticalAlignment="VerticalAlignment.Middle" IconClass="github" />
+                <Content>
+                    <Anchor Header="true" Link="#">CastUI/src</Anchor>
+                    <Description>
+                        更新于 2 分钟前
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Icon Size="Size.Large" VerticalAlignment="VerticalAlignment.Middle" IconClass="github" />
+                <Content>
+                    <Anchor Header="true" Link="#">CastUI/doc</Anchor>
+                    <Description>
+                        更新于 8 小时前
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Icon Size="Size.Large" VerticalAlignment="VerticalAlignment.Middle" IconClass="github" />
+                <Content>
+                    <Anchor Header="true" Link="#">CastUI/demo</Anchor>
+                    <Description>
+                        更新于 24 小时前
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Relaxed=""true"" Divider=""true"">
+    <Item>
+        <Icon Size=""Size.Large"" VerticalAlignment=""VerticalAlignment.Middle"" IconClass=""github"" />
+        <Content>
+            <Anchor Header=""true"" Link=""#"">CastUI/src</Anchor>
+            <Description>
+                更新于 2 分钟前
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Icon Size=""Size.Large"" VerticalAlignment=""VerticalAlignment.Middle"" IconClass=""github"" />
+        <Content>
+            <Anchor Header=""true"" Link=""#"">CastUI/doc</Anchor>
+            <Description>
+                更新于 8 小时前
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Icon Size=""Size.Large"" VerticalAlignment=""VerticalAlignment.Middle"" IconClass=""github"" />
+        <Content>
+            <Anchor Header=""true"" Link=""#"">CastUI/demo</Anchor>
+            <Description>
+                更新于 24 小时前
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="树状结构">
+    <Description>
+        只要在 <code>Content</code> 组件中再次使用 <code>List</code> 即可形成树形列表。
+    </Description>
+    <RunTemplate>
+        <List>
+            <Item>
+                <Icon IconClass="folder" />
+                <Content>
+                    <Header>src</Header>
+                    <Description>项目的源代码</Description>
+                    <List>
+                        <Item>
+                            <Icon IconClass="folder" />
+                            <Content>
+                                <Header>Site</Header>
+                                <Description>项目的主题</Description>
+                            </Content>
+                        </Item>
+                    </List>
+                </Content>
+            </Item>
+            <Item>
+                <Icon IconClass="folder" />
+                <Content>
+                    <Header>themes</Header>
+                    <Description>主题文件夹</Description>
+                    <List>
+                        <Item>
+                            <Icon IconClass="folder" />
+                            <Content>
+                                <Header>default</Header>
+                                <Description>默认主题</Description>
+                                <List>
+                                    <Item>
+                                        <Icon IconClass="file" />
+                                        <Content>
+                                            <Header>default.css</Header>
+                                        </Content>
+                                    </Item>
+                                    <Item>
+                                        <Icon IconClass="file" />
+                                        <Content>
+                                            <Header>asset.css</Header>
+                                        </Content>
+                                    </Item>
+                                </List>
+                            </Content>
+                        </Item>
+                        <Item>
+                            <Icon IconClass="folder" />
+                            <Content>
+                                <Header>bootstrap</Header>
+                                <Description>Bootstrap 主题</Description>
+                                <List>
+                                    <Item>
+                                        <Icon IconClass="file" />
+                                        <Content>
+                                            <Header>default.css</Header>
+                                        </Content>
+                                    </Item>
+                                    <Item>
+                                        <Icon IconClass="file" />
+                                        <Content>
+                                            <Header>asset.css</Header>
+                                        </Content>
+                                    </Item>
+                                </List>
+                            </Content>
+                        </Item>
+                    </List>
+                </Content>
+            </Item>
+            <Item>
+                <Icon IconClass="folder" />
+                <Content>
+                    <Header>test</Header>
+                    <Description>测试项目</Description>
+                    <List>
+                        <Item>
+                            <Icon IconClass="file" />
+                            <Content>
+                                <Header>Test.csproj</Header>
+                            </Content>
+                        </Item>
+                        <Item>
+                            <Icon IconClass="file" />
+                            <Content>
+                                <Header>TestClass.cs</Header>
+                            </Content>
+                        </Item>
+                    </List>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List>
+    <Item>
+        <Icon IconClass=""folder""/>
+        <Content>
+            <Header>src</Header>
+            <Description>项目的源代码</Description>
+            <List>
+                <Item>
+                    <Icon IconClass=""folder""/>
+                    <Content>
+                        <Header>Site</Header>
+                        <Description>项目的主题</Description>
+                    </Content>
+                </Item>
+            </List>
+        </Content>
+    </Item>
+    <Item>
+        <Icon IconClass=""folder""/>
+        <Content>
+            <Header>themes</Header>
+            <Description>主题文件夹</Description>
+            <List>
+                <Item>
+                    <Icon IconClass=""folder"" />
+                    <Content>
+                        <Header>default</Header>
+                        <Description>默认主题</Description>
+                        <List>
+                            <Item>
+                                <Icon IconClass=""file"" />
+                                <Content>
+                                    <Header>default.css</Header>
+                                </Content>
+                            </Item>
+                            <Item>
+                                <Icon IconClass=""file"" />
+                                <Content>
+                                    <Header>asset.css</Header>
+                                </Content>
+                            </Item>
+                        </List>
+                    </Content>
+                </Item>
+                <Item>
+                    <Icon IconClass=""folder"" />
+                    <Content>
+                        <Header>bootstrap</Header>
+                        <Description>Bootstrap 主题</Description>
+                        <List>
+                            <Item>
+                                <Icon IconClass=""file"" />
+                                <Content>
+                                    <Header>default.css</Header>
+                                </Content>
+                            </Item>
+                            <Item>
+                                <Icon IconClass=""file"" />
+                                <Content>
+                                    <Header>asset.css</Header>
+                                </Content>
+                            </Item>
+                        </List>
+                    </Content>
+                </Item>
+            </List>
+        </Content>
+    </Item>
+    <Item>
+        <Icon IconClass=""folder""/>
+        <Content>
+            <Header>test</Header>
+            <Description>测试项目</Description>
+            <List>
+                <Item>
+                    <Icon IconClass=""file"" />
+                    <Content>
+                        <Header>Test.csproj</Header>
+                    </Content>
+                </Item>
+                <Item>
+                    <Icon IconClass=""file"" />
+                    <Content>
+                        <Header>TestClass.cs</Header>
+                    </Content>
+                </Item>
+            </List>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="子弹标记">
+    <Description>
+        设置 <code>Bulleted="true"</code> 可让列表中的所有项呈现子弹标记。
+    </Description>
+    <RunTemplate>
+        <List Bulleted="true">
+            <Item>背景</Item>
+            <Item>目标</Item>
+            <Item>
+                <Content>
+                    方案
+                    <List>
+                        <Item>架构体系</Item>
+                        <Item>网络拓扑</Item>
+                        <Item>研发流程</Item>
+                    </List>
+                </Content>
+            </Item>
+            <Item>联系方式</Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Bulleted=""true"">
+    <Item>背景</Item>
+    <Item>目标</Item>
+    <Item>
+        <Content>
+            方案
+            <List>
+                <Item>架构体系</Item>
+                <Item>网络拓扑</Item>
+                <Item>研发流程</Item>
+            </List>
+        </Content>
+    </Item>
+    <Item>联系方式</Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="顺序标记">
+    <Description>
+        设置 <code>Ordered="true"</code> 让列表项的层级具有顺序标记。
+    </Description>
+    <RunTemplate>
+        <List Ordered="true">
+            <Item>背景</Item>
+            <Item>目标</Item>
+            <Item>
+                <Content>
+                    方案
+                    <List>
+                        <Item>架构体系</Item>
+                        <Item>网络拓扑</Item>
+                        <Item>研发流程</Item>
+                    </List>
+                </Content>
+            </Item>
+            <Item>联系方式</Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Ordered=""true"">
+    <Item>背景</Item>
+    <Item>目标</Item>
+    <Item>
+        <Content>
+            方案
+            <List>
+                <Item>架构体系</Item>
+                <Item>网络拓扑</Item>
+                <Item>研发流程</Item>
+            </List>
+        </Content>
+    </Item>
+    <Item>联系方式</Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+
+<PresentationPart Title="顺序标记后缀">
+    <Description>
+        设置 <code>Suffixed="true"</code> 让具有顺序的标记出现“.”的后缀。
+    </Description>
+    <RunTemplate>
+        <List Ordered="true" Suffixed="true">
+            <Item>背景</Item>
+            <Item>目标</Item>
+            <Item>
+                <Content>
+                    方案
+                    <List>
+                        <Item>架构体系</Item>
+                        <Item>网络拓扑</Item>
+                        <Item>研发流程</Item>
+                    </List>
+                </Content>
+            </Item>
+            <Item>联系方式</Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Ordered=""true"">
+    <Item>背景</Item>
+    <Item>目标</Item>
+    <Item>
+        <Content>
+            方案
+            <List>
+                <Item>架构体系</Item>
+                <Item>网络拓扑</Item>
+                <Item>研发流程</Item>
+            </List>
+        </Content>
+    </Item>
+    <Item>联系方式</Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="超链接样式">
+    <Description>设置 <code>Linked="true"</code> 可让超链接项拥有特殊的超链接样式。</Description>
+    <RunTemplate>
+        <List Linked="true">
+            <LinkItem Actived="true" Link="#">首页</LinkItem>
+            <LinkItem Link="#">关于我们</LinkItem>
+            <LinkItem Link="#">联系方式</LinkItem>
+            <LinkItem Link="#">团队介绍</LinkItem>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Linked=""true"">
+    <LinkItem Actived=""true"" Link=""#"">首页</LinkItem>
+    <LinkItem Link=""#"">关于我们</LinkItem>
+    <LinkItem Link=""#"">联系方式</LinkItem>
+    <LinkItem Link=""#"">团队介绍</LinkItem>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="带图像">
+    <RunTemplate>
+        <List>
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        5分钟前访问了 <b><Anchor>亚历山大</Anchor></b> 的空间。
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        2小时前评论了 <b><Anchor>亚历山大</Anchor></b> 的说说。
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        2小时前查看了 <b><Anchor>前端三大框架的区别</Anchor></b> 并留下了评论。
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        什么都没有留下。
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List>
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                5分钟前访问了 <b><Anchor>亚历山大</Anchor></b> 的空间。
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                2小时前评论了 <b><Anchor>亚历山大</Anchor></b> 的说说。
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                2小时前查看了 <b><Anchor>前端三大框架的区别</Anchor></b> 并留下了评论。
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                什么都没有留下。
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="超链接项">
+    <Description>
+        使用 <code>LinkItem</code> 可使列表的项拥有超链接的功能。
+    </Description>
+    <RunTemplate>
+        <List>
+            <LinkItem Link="#">百度</LinkItem>
+            <LinkItem Link="#">谷歌</LinkItem>
+            <LinkItem Link="#">高德</LinkItem>
+            <LinkItem Link="#">阿里巴巴</LinkItem>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+        <List>
+            <LinkItem Link=""#"">百度</LinkItem>
+            <LinkItem Link=""#"">谷歌</LinkItem>
+            <LinkItem Link=""#"">高德</LinkItem>
+            <LinkItem Link=""#"">阿里巴巴</LinkItem>
+        </List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="水平排列">
+    <Description>
+        设置 <code>Horizontal="true"</code> 使列表项在水平方向排列。
+    </Description>
+    <RunTemplate>
+        <List Horizontal="true">
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Horizontal=""true"">
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="可选择">
+    <Description>
+        设置 <code>Selectable="true"</code> 后，项可以变为可选择的样式。
+    </Description>
+    <RunTemplate>
+        <List Selectable="true" VerticalAlignment="VerticalAlignment.Middle" >
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Selectable=""true"" VerticalAlignment=""VerticalAlignment.Middle"" >
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="悬浮动画">
+    <Description>
+        设置 <code>Animated="true"</code> 鼠标悬浮时可以有一个动画效果。
+
+           <Message State="State.Warning">
+               在使用动画时，请确保内容能适合一行，否则当鼠标悬停时，文本内容将重新流动。
+           </Message>
+    </Description>
+    <RunTemplate>
+        <List Animated="true" VerticalAlignment="VerticalAlignment.Middle">
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Animated=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="项的边框">
+    <Description>
+        设置 <code>Celled="true"</code> 让项的之间都有分割线。
+    </Description>
+    <RunTemplate>
+        <List Celled="true" VerticalAlignment="VerticalAlignment.Middle">
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Celled=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart>
+    <RunTemplate>
+        <List Celled="true" Horizontal="true">
+            <Item>
+                版本
+            </Item>
+            <Item>
+                关于
+            </Item>
+            <Item>
+                源码
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Celled=""true"" Horizontal=""true"">
+    <Item>
+        版本
+    </Item>
+    <Item>
+        关于
+    </Item>
+    <Item>
+        源码
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="尺寸">
+    <Description>
+        <Description>设置 <code>Size</code> 可让列表拥有不同的尺寸。</Description>
+    </Description>
+    <RunTemplate>
+        <List Size="Size.Mini" Horizontal="true" VerticalAlignment="VerticalAlignment.Middle">
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+        <br />
+        <List Size="Size.Large" Horizontal="true" VerticalAlignment="VerticalAlignment.Middle">
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+        <br />
+        <List Size="Size.Massive"  Horizontal="true" VerticalAlignment="VerticalAlignment.Middle">
+            <Item>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                    <Description>
+                        管理员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                    <Description>
+                        程序员
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                    <Description>
+                        UI 设计
+                    </Description>
+                </Content>
+            </Item>
+            <Item>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                    <Description>
+                        项目经理
+                    </Description>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Size=""Size.Mini"" Horizontal=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+
+<List Size=""Size.Large"" Horizontal=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+
+<List Size=""Size.Massive""  Horizontal=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+    <Item>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+            <Description>
+                管理员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+            <Description>
+                程序员
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+            <Description>
+                UI 设计
+            </Description>
+        </Content>
+    </Item>
+    <Item>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+            <Description>
+                项目经理
+            </Description>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="浮动项">
+    <Description>
+        可以在列表项中增加左右浮动的元素。
+    </Description>
+    <RunTemplate>
+        <List Divider="true" VerticalAlignment="VerticalAlignment.Middle">
+            <Item>
+                <Content Floated="HorizontalPosition.Right"><Button Color="Color.Blue">加关注</Button></Content>
+                <Avatar Source="img/avatar/zoe.jpg" />
+                <Content>
+                    <Header>Zoe</Header>
+                </Content>
+            </Item>
+            <Item>
+                <Content Floated="HorizontalPosition.Right"><Button Color="Color.Blue">加关注</Button></Content>
+                <Avatar Source="img/avatar/christian.jpg" />
+                <Content>
+                    <Header>Christian</Header>
+                </Content>
+            </Item>
+            <Item>
+                <Content Floated="HorizontalPosition.Right"><Button Color="Color.Blue">加关注</Button></Content>
+                <Avatar Source="img/avatar/jenny.jpg" />
+                <Content>
+                    <Header>Jenny</Header>
+                </Content>
+            </Item>
+            <Item>
+                <Content Floated="HorizontalPosition.Right"><Button Color="Color.Blue">加关注</Button></Content>
+                <Avatar Source="img/avatar/veronika.jpg" />
+                <Content>
+                    <Header>Veronika</Header>
+                </Content>
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<List Divider=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+    <Item>
+        <Content Floated=""HorizontalPosition.Right""><Button Color=""Color.Blue"">加关注</Button></Content>
+        <Avatar Source=""img/avatar/zoe.jpg"" />
+        <Content>
+            <Header>Zoe</Header>
+        </Content>
+    </Item>
+    <Item>
+        <Content Floated=""HorizontalPosition.Right""><Button Color=""Color.Blue"">加关注</Button></Content>
+        <Avatar Source=""img/avatar/christian.jpg"" />
+        <Content>
+            <Header>Christian</Header>
+        </Content>
+    </Item>
+    <Item>
+        <Content Floated=""HorizontalPosition.Right""><Button Color=""Color.Blue"">加关注</Button></Content>
+        <Avatar Source=""img/avatar/jenny.jpg"" />
+        <Content>
+            <Header>Jenny</Header>
+        </Content>
+    </Item>
+    <Item>
+        <Content Floated=""HorizontalPosition.Right""><Button Color=""Color.Blue"">加关注</Button></Content>
+        <Avatar Source=""img/avatar/veronika.jpg"" />
+        <Content>
+            <Header>Veronika</Header>
+        </Content>
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                <ParameterTable>
+                    <Content>
+                        <tr>
+                            <td>Horizontal</td>
+                            <td>使用横向的方式排列</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Relaxed</td>
+                            <td>列表的内容呈现松散的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Divider</td>
+                            <td>列表的项具有分割线</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Bulleted</td>
+                            <td>列表项带有子弹标记</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Ordered</td>
+                            <td>列表项具有顺序数字的标记</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Suffixed</td>
+                            <td>列表项的标记具有“.”作为后缀</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Linked</td>
+                            <td>列表的项呈现超链接的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Selectable</td>
+                            <td>列表项是否具鼠标悬浮背景高亮变 cursor 鼠标的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Animated</td>
+                            <td>列表项可使用动画效果来展现内容</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Celled</td>
+                            <td>项之间具有边框效果</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Size</td>
+                            <td>列表的尺寸大小</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>VerticalAlignment</td>
+                            <td>列表项的垂直对齐方式</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                    </Content>
+        </ParameterTable>
+    </Body>
+</Pager>
+@code{
+    List<string> Menu = new List<string>(new[]{
+        "示例","带图标","带标题和图标","树状结构","子弹标记","顺序标记","顺序标记后缀","超链接样式","图像",
+        "超链接项","水平排列","可选择样式","悬浮动画","项的边框","尺寸","浮动项","参数"
+    });
+}

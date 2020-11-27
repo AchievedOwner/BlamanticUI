@@ -1,0 +1,121 @@
+﻿@page "/service/dialog"
+@inject IDialogService DialogService
+
+<Pager DataSource="@(new List<string>(new[] { 
+                         "示例","自定义配置","回调函数","IDialogService 方法"
+                     }))">
+    <Body>
+
+<Header1 Divider="true">
+    对话框服务
+    <SubHeader>
+        通过注入的服务动态唤醒模态框
+    </SubHeader>
+</Header1>
+
+<Segment>
+    对话框实现了通过注入服务的方式对【确认框】【提示框】【弹出框】三种基本对话框进行唤醒。
+    若要自定义实现对话框模式，请使用<Anchor Link="/component/modal">模态框(Modal)组件</Anchor> 。
+
+    <Header4>
+        配置说明：
+    </Header4>
+    <List Ordered="true">
+        <Item>添加 <code>AddDialog();</code> 服务</Item>
+        <Item>在页面插入 <code>&lt;DialogContainer /></code> 组件作为占位符</Item>
+        <Item>注入服务 <code>IDialogService</code> </Item>
+    </List>
+</Segment>
+
+<DialogContainer/>
+
+<PresentationPart Title="示例">
+    <RunTemplate>
+        <Button @onclick="@(()=>DialogService.ShowAlert("提示"))" Emphasis="Emphasis.Primary">提示框</Button>
+        <Button @onclick="@(()=>DialogService.ShowConfirm("确认要删除吗？"))" Emphasis="Emphasis.Secondary">确认框</Button>
+        <Button @onclick="@(()=>DialogService.ShowPropmt("请输入姓名："))" Emphasis="Emphasis.Negative">弹出框</Button>
+    </RunTemplate>
+    <CodeTemplate>
+@Code.GetCode(@"
+```html
+@inject IDialogService DialogService
+
+<DialogContainer/>
+
+<Button @onclick=""@(()=>DialogService.ShowAlert(""提示""))"" Emphasis=""Emphasis.Primary"">提示框</Button>
+<Button @onclick=""@(()=>DialogService.ShowConfirm(""确认要删除吗？""))"" Emphasis=""Emphasis.Secondary"">确认框</Button>
+<Button @onclick=""@(()=>DialogService.ShowPropmt(""请输入姓名""))"" Emphasis=""Emphasis.Negative"">弹出框</Button>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="自定义配置">
+    <Description>
+        通过 <code>Show</code> 方法可以自定义弹出框的特殊配置。
+    </Description>
+    <RunTemplate>
+
+        <Button @onclick="@(()=>DialogService.Show(option=>
+                           {
+                               option.CancelColor = Color.Purple;
+                               option.ConfirmColor = Color.Brown;
+                               option.ConfirmText = "我知道啦！";
+                               option.ConfirmOutline = true;
+                               option.Size = Size.Large;
+                               option.Title = "超级大的提示";
+                               option.Message = "如果有这么大的提示，你还愿意看吗？";
+                           }))">自定义</Button>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Button @onclick=""@(()=>DialogService.Show(option=>
+                    {
+                        option.CancelColor = Color.Purple;
+                        option.ConfirmColor = Color.Brown;
+                        option.ConfirmText = ""我知道啦！"";
+                        option.ConfirmOutline = true;
+                        option.Size = Size.Large;
+                        option.Title = ""超级大的提示"";
+                        option.Message = ""如果有这么大的提示，你还愿意看吗？"";
+                    }))"">自定义</Button>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="回调函数">
+            <RunTemplate>
+                <Button @onclick="@(()=>DialogService.ShowAlert("提交成功啦","提示",_=>JS.InvokeVoidAsync("alert","提示成功")))" Emphasis="Emphasis.Primary">提示框</Button>
+                <Button @onclick="@(()=>DialogService.ShowConfirm("确认要删除吗？","删除",flag=>JS.InvokeVoidAsync("alert",$"点击了确定"),()=>JS.InvokeVoidAsync("alert","点击了取消")))" Emphasis="Emphasis.Secondary">确认框</Button>
+                <Button @onclick="@(()=>DialogService.ShowPropmt("请输入姓名：","输入",value=>JS.InvokeVoidAsync("alert",$"值是{value}")))" Emphasis="Emphasis.Negative">弹出框</Button>
+            </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+@inject IJSRuntime JS
+<Button @onclick=""@(()=>DialogService.ShowAlert(""提交成功啦"",""提示"",_=>JS.InvokeVoidAsync(""alert"",""提示成功"")))"" Emphasis=""Emphasis.Primary"">提示框</Button>
+<Button @onclick=""@(()=>DialogService.ShowConfirm(""确认要删除吗？"",""删除"",flag=>JS.InvokeVoidAsync(""alert"",$""点击了确定""),()=>JS.InvokeVoidAsync(""alert"",""点击了取消"")))"" Emphasis=""Emphasis.Secondary"">确认框</Button>
+<Button @onclick=""@(()=>DialogService.ShowPropmt(""请输入姓名："",""输入"",value=>JS.InvokeVoidAsync(""alert"",$""值是{value}"")))"" Emphasis=""Emphasis.Negative"">弹出框</Button>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <MethodTable Title="IDialogService 方法">
+            <Content>
+                <tr>
+                    <td>ShowAlert(string message, string title = default, Action&lt;object> onConfirm = default)</td>
+                    <td>带有一个确定按钮的提示框</td>
+                </tr>
+                <tr>
+                    <td>ShowConfirm(string message, string title = default, Action&lt;object> onConfirm = default, Action onCancel = default)</td>
+                    <td>带有一个确定和取消按钮的确认框</td>
+                </tr>
+                <tr>
+                    <td>ShowPrompt(string message, string title = default, Action&lt;object> onConfirm = default)</td>
+                    <td>带有一个输入框和确定按钮的弹出框</td>
+                </tr>
+            </Content>
+        </MethodTable>
+    </Body>
+</Pager>
+@inject IJSRuntime JS

@@ -1,0 +1,36 @@
+﻿
+<Header4 id="@Title">
+    <a href="javascript:hash('@(Title)')">
+        @Title
+    </a>
+    @if (SubTitle != null)
+    {
+        <SubHeader>@SubTitle</SubHeader>
+    }
+</Header4>
+@if (Description != null)
+{
+    <p>
+        @Description
+    </p>
+}
+<Tab VerticalPosition="VerticalPosition.Bottom" Color="Color.Blue">
+    <TabItem Title="运行效果" AdditionalStyle="@style">
+        @RunTemplate
+    </TabItem>
+    <TabItem Title="示例代码" AdditionalStyle="@style">
+        @CodeTemplate
+    </TabItem>
+</Tab>
+@inject IJSRuntime JS
+
+@code{
+    [Parameter] public string Id { get; set; }
+    [Parameter] public string Title { get; set; }
+    [Parameter] public RenderFragment SubTitle { get; set; }
+    [Parameter] public RenderFragment Description { get; set; }
+    [Parameter] public RenderFragment RunTemplate { get; set; }
+    [Parameter] public RenderFragment CodeTemplate { get; set; }
+
+    string style = "min-height:100px;max-height:600px;overflow-y:auto";
+}

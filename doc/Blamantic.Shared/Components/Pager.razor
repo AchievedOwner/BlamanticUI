@@ -1,0 +1,48 @@
+﻿
+@inject IJSRuntime JS
+
+<div style="display:flex;" class="full-height" id="backtop">
+    <div class="full-height" style="width:85%;overflow-y:auto;padding-left:10px; padding-right:20px;padding-bottom:20px">
+        @Body
+    </div>
+    <div class="full-height" style="margin-left:20px;">
+        <Menu IconOnly="true" Fluid="true">
+            <LinkItem Link="https://github.com/AchievedOwner/CastUI.git" Target="LinkTarget.Blank" Title="查看源码">
+                <Icon IconClass="github" Size="Size.Large" />
+            </LinkItem>
+            <LinkItem Link="https://github.com/AchievedOwner/CastUI.git/issues/new" Target="LinkTarget.Blank" Title="提问题">
+                <Icon IconClass="bug" Size="Size.Large" />
+            </LinkItem>
+        </Menu>
+        @if (DataSource != null)
+        {
+            <Menu Style="MenuStyle.Texted" Compact="true" Size="Size.Tiny" Linked="true" Vertical="true">
+                @foreach (var item in DataSource)
+                {
+                    <Item Fitted="true" Actived="Actived(item)" @onclick="@(e=>Click(item))">
+                        @item
+                    </Item>
+                }
+            </Menu>
+        }
+    </div>
+</div>
+@code{
+    [Parameter] public RenderFragment Body { get; set; }
+
+    /// <summary>
+    /// 导航菜单的数据源，Key 是 Id，Value 是显示的值。
+    /// </summary>
+    [Parameter] public List<string> DataSource { get; set; }
+
+    string SelectedId;
+    bool Actived(string id)
+    => SelectedId == id;
+
+    async Task Click(string id)
+    {
+        SelectedId = id;
+        await JS.InvokeVoidAsync("hash", id);
+        StateHasChanged();
+    }
+}

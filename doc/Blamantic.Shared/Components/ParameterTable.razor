@@ -1,0 +1,24 @@
+﻿
+<Header4 id="@Title">
+    <a href="javascript:hash('@(Title)')">
+        @Title
+    </a>
+</Header4>
+<Table>
+    <Header>
+        <Tr>
+            <Th>名称</Th>
+            <Th>说明</Th>
+            <Th>数据类型</Th>
+            <Th>默认值</Th>
+        </Tr>
+    </Header>
+    <Body>
+        @Content
+    </Body>
+</Table>
+
+@code{
+    [Parameter] public string Title { get; set; } = "参数";
+    [Parameter] public RenderFragment Content { get; set; }
+}

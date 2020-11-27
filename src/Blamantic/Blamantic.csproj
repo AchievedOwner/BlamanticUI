@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
+    <RazorLangVersion>3.0</RazorLangVersion>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug</OutputPath>
+    <DocumentationFile>bin\Debug\Blamantic.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>bin\Release\Blamantic.xml</DocumentationFile>
+    <FileAlignment>4096</FileAlignment>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\themes\default\assets\fonts\brand-icons.svg" />
+    <None Include="wwwroot\themes\default\assets\fonts\brand-icons.woff2" />
+    <None Include="wwwroot\themes\default\assets\fonts\icons.svg" />
+    <None Include="wwwroot\themes\default\assets\fonts\icons.woff2" />
+    <None Include="wwwroot\themes\default\assets\fonts\outline-icons.svg" />
+    <None Include="wwwroot\themes\default\assets\fonts\outline-icons.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+    <PackageReference Include="YoiBlazor" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>

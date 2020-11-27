@@ -1,0 +1,504 @@
+﻿@page "/element/header"
+
+<Pager DataSource="Menu">
+    <Body>
+<Header1 Divider="true">
+    标题
+    <SubHeader>
+        标题提供内容的简短摘要
+    </SubHeader>
+</Header1>
+
+<PresentationPart Title="页面标题">
+    <Description>
+        <p>标题可能是面向在页面的上下文中给出一个部分的层次结构。</p>
+        <Segment>
+            使用组件 <code>&lt;HeaderX></code> 代替 HTML 标记 <code>&lt;hx></code> 以此可以使用组件内提供的任何特性。
+        </Segment>
+        <Message State="State.Info">
+            页面标题的大小使用 <code>rem</code>，不受周围内容大小的影响。
+        </Message>
+    </Description>
+    <RunTemplate>
+        <Header1>标题 1</Header1>
+        <ParagraphDemo />
+        <Header2>标题 2</Header2>
+        <ParagraphDemo />
+        <Header3>标题 3</Header3>
+        <ParagraphDemo />
+        <Header4>标题 4</Header4>
+        <ParagraphDemo />
+        <Header5>标题 5</Header5>
+        <ParagraphDemo />
+        <Header6>标题 6</Header6>
+        <ParagraphDemo />
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header1>标题 1</Header1>
+<Header2>标题 2</Header2>
+<Header3>标题 3</Header3>
+<Header4>标题 4</Header4>
+<Header5>标题 5</Header5>
+<Header6>标题 6</Header6>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="内容标题">
+    <Description>
+        标题的目的可能是为了说明一个部分在其周围内容的重要性。
+
+        <Message State="State.Info">
+            内容标题使用 <code>em</code> 调整大小，并基于其容器的字体大小。
+        </Message>
+    </Description>
+    <RunTemplate>
+        <Segment Vertical="true">
+            <ContentHeader Size="Size.Massive">超巨大标题</ContentHeader>
+            <ParagraphDemo />
+            <ContentHeader Size="Size.Huge">巨大标题</ContentHeader>
+            <ParagraphDemo />
+            <ContentHeader Size="Size.Large">大标题</ContentHeader>
+            <ParagraphDemo />
+            <ContentHeader Size="Size.Medium">默认标题</ContentHeader>
+            <ParagraphDemo />
+            <ContentHeader Size="Size.Small">小标题</ContentHeader>
+            <ParagraphDemo />
+            <ContentHeader Size="Size.Tiny">微小标题</ContentHeader>
+            <ParagraphDemo />
+            <ContentHeader Size="Size.Mini">迷你标题</ContentHeader>
+            <ParagraphDemo />
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+@Code.GetCode(@"
+```html
+<Segment Vertical=""true"">
+    <ContentHeader Size=""Size.Massive"">超巨大标题</ContentHeader>
+    <ContentHeader Size=""Size.Huge"">巨大标题</ContentHeader>
+    <ContentHeader Size=""Size.Large"">大标题</ContentHeader>
+    <ContentHeader Size=""Size.Medium"">默认标题</ContentHeader>
+    <ContentHeader Size=""Size.Small"">小标题</ContentHeader>
+    <ContentHeader Size=""Size.Tiny"">微小标题</ContentHeader>
+    <ContentHeader Size=""Size.Mini"">迷你标题</ContentHeader>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="带图标的标题">
+    <Description>
+        标题可以通过格式化强调图标。
+    </Description>
+    <RunTemplate>
+        <Header1>
+            <Icon IconClass="plug" />
+            <Content>
+                插件模式
+            </Content>
+        </Header1>
+        <ParagraphDemo />
+        <Header1>
+            <Icon IconClass="settings" />
+            <Content>
+                帐号配置
+                <SubHeader>
+                    管理你的个性化
+                </SubHeader>
+            </Content>
+        </Header1>
+        <ParagraphDemo />
+
+        <Segment>
+            设置 <code>Icon="true"</code> 可以让图标和标题各占一行
+        </Segment>
+        <Header5 Icon="true" HorizontalAlignment="HorizontalAlignment.Center">
+            <Icon Circular="true" IconClass="users" />
+            <Content>
+                朋友圈
+                <SubHeader>随时随地分享你的喜悦</SubHeader>
+            </Content>
+        </Header5>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header1>
+    <Icon IconClass=""plug"" />
+    <Content>
+        插件模式
+    </Content>
+</Header1>
+
+<Header1>
+    <Icon IconClass=""settings"" />
+    <Content>
+        帐号配置
+        <SubHeader>
+            管理你的个性化
+        </SubHeader>
+    </Content>
+</Header1>
+
+<Segment>
+    设置 <code>Icon=""true""</code> 可以让图标和标题各占一行
+</Segment>
+
+<Header5 Icon=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+    <Icon Circular=""true"" IconClass=""users"" />
+    <Content>
+        朋友圈
+        <SubHeader>随时随地分享你的喜悦</SubHeader>
+    </Content>
+</Header5>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="副标题">
+    <SubTitle>
+        标题可以格式化为标记较小或不强调的内容。
+    </SubTitle>
+    <Description>
+        设置页面标题的 <code>SubHeader="true"</code> 或在页面标题中使用 <code>SubHeader</code>，若单独使用 <code>SubHeader</code> 组件，则需要设置 <code>UI="true"</code> 手动提升成 UI 组件。
+    </Description>
+    <RunTemplate>
+
+        <Header4>
+            敏捷开发
+            <SubHeader>颠覆传统软件开发的模式</SubHeader>
+        </Header4>
+
+        <Header1 SubHeader="true">
+            价格
+        </Header1>
+        ￥299.99
+
+        <br />
+        <List Horizontal="true">
+            <Item>
+                <SubHeader UI="true">
+                    James
+                </SubHeader>
+                项目经理
+            </Item>
+            <Item>
+                <SubHeader UI="true">
+                    Polly
+                </SubHeader>
+                程序员
+            </Item>
+            <Item>
+                <SubHeader UI="true">
+                    Phillips
+                </SubHeader>
+                CEO
+            </Item>
+        </List>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header4>
+    敏捷开发
+    <SubHeader>颠覆传统软件开发的模式</SubHeader>
+</Header4>
+
+<Header1 SubHeader=""true"">
+    价格
+</Header1>
+￥299.99
+
+<br />
+<List Horizontal=""true"">
+    <Item>
+        <SubHeader UI=""true"">
+            James
+        </SubHeader>
+        项目经理
+    </Item>
+    <Item>
+        <SubHeader UI=""true"">
+            Polly
+        </SubHeader>
+        程序员
+    </Item>
+    <Item>
+        <SubHeader UI=""true"">
+            Phillips
+        </SubHeader>
+        CEO
+    </Item>
+</List>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="分割线">
+    <Description>
+        设置 <code>Divider="true"</code> 会在标题下方自动加入分割线。
+    </Description>
+    <RunTemplate>
+        <ParagraphDemo/>
+        <Header1 Divider="true">
+            第三章 分割线的使用
+        </Header1>
+        <ParagraphDemo/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header1 Divider=""true"">
+    第三章 分割线的使用
+</Header1>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="区域">
+    <Description>
+        设置 <code>Blocked="true"</code> 可以格式化标题以显示在内容块中
+    </Description>
+    <RunTemplate>
+        <Header2 Blocked="true">
+            区域标题
+        </Header2>
+        <MediaParagraphDemo/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header2 Blocked=""true"">
+    区域标题
+</Header2>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="吸附">
+    <Description>
+        设置 <code>Attached</code> 可以让标题吸附到定义了其方向上的容器。
+    </Description>
+    <RunTemplate>
+        <Header3 AttachedVertical="VerticalPosition.Top" Attached="true">
+            顶部吸附
+        </Header3>
+        <Segment Attached="true">
+            <ParagraphDemo />
+        </Segment>
+        <Header3 Attached="true">
+            Header3 吸附
+        </Header3>
+        <Header2 Attached="true">
+            Header2 吸附
+        </Header2>
+        <Segment Attached="true">
+            <ParagraphDemo />
+        </Segment>
+        <Header3 AttachedVertical="VerticalPosition.Bottom" Attached="true">
+            底部吸附
+        </Header3>
+    </RunTemplate> 
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header3 AttachedVertical=""VerticalPosition.Bottom"" Attached=""true"">
+    顶部吸附
+</Header3>
+<Segment Attached=""true"">
+    <ParagraphDemo/>
+</Segment>
+<Header3 Attached=""true"">
+    Header3 吸附
+</Header3>
+<Header2 Attached=""true"">
+    Header2 吸附
+</Header2>
+<Segment Attached=""true"">
+    <ParagraphDemo />
+</Segment>
+<Header3 AttachedVertical=""VerticalPosition.Bottom"" Attached=""true"">
+    底部吸附
+</Header3>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="浮动">
+    <Description>
+        设置 <code>Floated</code> 开启浮动，并赋值 <code>Left/Right</code> 定义浮动方向。
+    </Description>
+    <RunTemplate>
+        <Segment Clearing="true">
+            <Header1 Floated="HorizontalPosition.Left">
+                左浮动
+            </Header1>
+            <Header2 Floated="HorizontalPosition.Right">
+                右浮动
+            </Header2>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header1 Floated=""HorizontalPosition.Left"">
+    左浮动
+</Header1>
+<Header2 Floated=""HorizontalPosition.Right"">
+    右浮动
+</Header2>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="对齐方式">
+    <Description>
+        设置 <code>HorizontalAlignment</code> 开启对齐方式，然后设置 <code>Left/Right/Center/Justified</code> 表示对齐的位置。
+    </Description>
+    <RunTemplate>
+        <Header2 HorizontalAlignment="HorizontalAlignment.Right">右对齐</Header2>
+        <Header2 HorizontalAlignment="HorizontalAlignment.Left">左对齐</Header2>
+        <Header2 HorizontalAlignment="HorizontalAlignment.Justified">两端对齐</Header2>
+        <Header2 HorizontalAlignment="HorizontalAlignment.Center">中间对齐</Header2>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header2 HorizontalAlignment=""HorizontalAlignment.Right"">右对齐</Header2>
+<Header2 HorizontalAlignment=""HorizontalAlignment.Left"">左对齐</Header2>
+<Header2 HorizontalAlignment=""HorizontalAlignment.Justified"">两端对齐</Header2>
+<Header2 HorizontalAlignment=""HorizontalAlignment.Center"">中间对齐</Header2>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="颜色">
+    <Description>
+        设置 <code>Color</code> 可以有不同标题的颜色。同时加上 <code>Inverted="true"</code> 呈现反选颜色。
+    </Description>
+    <RunTemplate>
+        <Header1 Color="Color.Red">红色</Header1>
+        <Header1 Color="Color.Orange">橘色</Header1>
+        <Header2 Color="Color.Yellow">黄色</Header2>
+        <Header3 Color="Color.Green">绿色</Header3>
+        <Header4 Color="Color.Teal">青色</Header4>
+        <Header5 Color="Color.Blue">蓝色</Header5>
+        <Header6 Color="Color.Purple">紫色</Header6>
+                
+        <br />
+        <Segment Inverted="true">
+            <Header1 Color="Color.Red" Inverted="true">红色</Header1>
+            <Header1 Color="Color.Orange" Inverted="true">橘色</Header1>
+            <Header2 Color="Color.Yellow" Inverted="true">黄色</Header2>
+            <Header3 Color="Color.Green" Inverted="true">绿色</Header3>
+            <Header4 Color="Color.Teal" Inverted="true">青色</Header4>
+            <Header5 Color="Color.Blue" Inverted="true">蓝色</Header5>
+            <Header6 Color="Color.Purple" Inverted="true">紫色</Header6>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Header1 Color=""Color.Red"">红色</Header>
+<Header1 Color=""Color.Orange"">橘色</Header1>
+<Header2 Color=""Color.Yellow"">黄色</Header2>
+<Header3 Color=""Color.Green"">绿色</Header3>
+<Header4 Color=""Color.Teal"">青色</Header4>
+<Header5 Color=""Color.Blue"">蓝色</Header5>
+<Header6 Color=""Color.Purple"">紫色</Header6>
+                
+<br />
+<Segment Inverted=""true"">
+    <Header1 Color=""Color.Red"" Inverted=""true"">红色</Header>
+    <Header1 Color=""Color.Orange"" Inverted=""true"">橘色</Header1>
+    <Header2 Color=""Color.Yellow"" Inverted=""true"">黄色</Header2>
+    <Header3 Color=""Color.Green"" Inverted=""true"">绿色</Header3>
+    <Header4 Color=""Color.Teal"" Inverted=""true"">青色</Header4>
+    <Header5 Color=""Color.Blue"" Inverted=""true"">蓝色</Header5>
+    <Header6 Color=""Color.Purple"" Inverted=""true"">紫色</Header6>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <ParameterTable Title="参数">
+            <Content>
+                <tr>
+                    <td>Divider</td>
+                    <td>显示分割线</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>SubHeader</td>
+                    <td>作为副标题</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Blocked</td>
+                    <td>区域标题</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Attached </td>
+                    <td>吸附其他组件</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>AttachedVertical</td>
+                    <td>吸附的位置，设置了 <code>Attached</code> 有效</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Floated</td>
+                    <td>浮动方式</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>HorizontalAlignment </td>
+                    <td>文本的水平对齐方式</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>颜色</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Inverted</td>
+                    <td>反转颜色</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+            </Content>
+        </ParameterTable>
+    </Body>
+</Pager>
+@code{
+    List<string> Menu = new List<string>(new[]{
+        "页面标题","内容标题","带图标的标题","副标题","分割线","区域","吸附","浮动","对齐方式","颜色","参数"
+        });
+}

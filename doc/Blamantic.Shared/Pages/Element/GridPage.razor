@@ -1,0 +1,532 @@
+﻿@page "/element/grid"
+<Pager DataSource="Menu">
+    <Body>
+<Header2 Divider="true">
+    栅格
+    <SubHeader>
+        网格是用来协调布局中的负空间的
+    </SubHeader>
+</Header2>
+
+<PresentationPart Title="基本栅格" Id="grid">
+    <Description>
+        使用 <code>Grid</code> 表示栅格容器，使用 <code>Column</code> 表示每一个列
+    </Description>
+    <RunTemplate>
+        <Grid>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid>
+    <Column>...</Column>
+    <Column>...</Column>
+    <Column>...</Column>
+    <Column>...</Column>
+    <Column>...</Column>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<Message>
+    Grid 将列分隔为 16 个平均宽度的比例。
+</Message>
+
+<PresentationPart Title="指定列的宽度占比" Id="width-count">
+    <Description>
+        设置列的 <code>WidthCount</code> 定义列的占比，但同时要设置 <code>Wide="true"</code> 参数。如果空间不足，则会自动换行。
+    </Description>
+    <RunTemplate>
+        <Grid>
+            <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            <Column Color="Color.Olive" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            <Column Color="Color.Olive" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            <Column Color="Color.Grey" WidthCount="WidthCount.Seven7" Wide="true">Seven7</Column>
+            <Column Color="Color.Olive" WidthCount="WidthCount.Three3" Wide="true">Three3</Column>
+            <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            <Column Color="Color.Olive" WidthCount="WidthCount.Six6" Wide="true">Six6</Column>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid>
+    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    <Column WidthCount=""WidthCount.Seven7"" Wide=""true"">Seven7</Column>
+    <Column WidthCount=""WidthCount.Three3"" Wide=""true"">Three3</Column>
+    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    <Column WidthCount=""WidthCount.Six6"" Wide=""true"">Six6</Column>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="行" Id="row">
+    <Description>通过 <code>Row</code> 来定义栅格的行。</Description>
+    <RunTemplate>
+        <Grid>
+            <Row>
+                <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+                <Column Color="Color.Olive" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+                <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            </Row>
+            <Row>
+                <Column Color="Color.Grey" WidthCount="WidthCount.Seven7" Wide="true">Seven7</Column>
+                <Column Color="Color.Olive" WidthCount="WidthCount.Three3" Wide="true">Three3</Column>
+                <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+            </Row>
+            <Row>
+                <Column Color="Color.Olive" WidthCount="WidthCount.Six6" Wide="true">Six6</Column>
+            </Row>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid>
+    <Row>
+        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+        <Column Color=""Color.Olive"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    </Row>
+    <Row>
+        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Seven7"" Wide=""true"">Seven7</Column>
+        <Column Color=""Color.Olive"" WidthCount=""WidthCount.Three3"" Wide=""true"">Three3</Column>
+        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+    </Row>
+    <Row>
+        <Column Color=""Color.Olive"" WidthCount=""WidthCount.Six6"" Wide=""true"">Six6</Column>
+    </Row>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="固定一行的列宽" Id="row-width-count">
+    <Description>
+        如果在 <code>Row</code> 组件设置了 <code>WidthCount</code> 参数，就意味着对该行的列进行总数宽度固定。
+        例如 <code>WidthCount="WidthCount.Three3"</code> 则表示该行最多使用 3 个 <code>Column</code> 组件，多余的将换行显示。
+    </Description>
+    <RunTemplate>
+        <Grid>
+            <Row  WidthCount="WidthCount.Three3" Wide="true">
+                <Column Color="Color.Grey">Three3</Column>
+                <Column Color="Color.Olive">Three3</Column>
+                <Column Color="Color.Grey">Three3</Column>
+            </Row>
+            <Row  WidthCount="WidthCount.Six6" Wide="true">
+                <Column Color="Color.Grey">Six6</Column>
+                <Column Color="Color.Olive">Six6</Column>
+                <Column Color="Color.Grey">Six6</Column>
+                <Column Color="Color.Olive">Six6</Column>
+                <Column Color="Color.Grey">Six6</Column>
+                <Column Color="Color.Olive">Six6</Column>
+                <Column Color="Color.Olive">Six6</Column>
+            </Row>
+            <Row  WidthCount="WidthCount.Four4" Wide="true">
+                <Column Color="Color.Grey">Four4</Column>
+                <Column Color="Color.Olive">Four4</Column>
+            </Row>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid>
+    <Row WidthCount=""WidthCount.Three3"">
+        <Column Color=""Color.Grey"">Three3</Column>
+        <Column Color=""Color.Olive"">Three3</Column>
+        <Column Color=""Color.Grey"">Three3</Column>
+    </Row>
+    <Row WidthCount=""WidthCount.Six6"">
+        <Column Color=""Color.Grey"">Six6</Column>
+        <Column Color=""Color.Olive"">Six6</Column>
+        <Column Color=""Color.Grey"">Six6</Column>
+        <Column Color=""Color.Olive"">Six6</Column>
+        <Column Color=""Color.Grey"">Six6</Column>
+        <Column Color=""Color.Olive"">Six6</Column>
+        <Column Color=""Color.Olive"">Six6</Column>
+    </Row>
+    <Row WidthCount=""WidthCount.Four4"">
+        <Column Color=""Color.Grey"">Four4</Column>
+        <Column Color=""Color.Olive"">Four4</Column>
+    </Row>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="等宽" Id="equal-width">
+    <Description>
+        设置 <code>EqualWidth="true"</code> 可以使子组件自动根据数量进行等宽设置。
+    </Description>
+    <RunTemplate>
+        <Grid EqualWidth="true">
+            <Column Color="Color.Grey">...</Column>
+            <Column Color="Color.Olive">...</Column>
+            <Column Color="Color.Grey">...</Column>
+            <Row EqualWidth="true">
+                <Column Color="Color.Olive">...</Column>
+                <Column Color="Color.Grey">...</Column>
+            </Row>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid EqualWidth=""true"">
+    <Column Color=""Color.Grey"">...</Column>
+    <Column Color=""Color.Olive"">...</Column>
+    <Column Color=""Color.Grey"">...</Column>
+    <Row EqualWidth=""true"">
+        <Column Color=""Color.Olive"">...</Column>
+        <Column Color=""Color.Grey"">...</Column>
+    </Row>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart  Title="居中延展" Id="centered">
+    <Description>
+        通常列是从左到右排列，设置 <code>Centered="true"</code> 可使列居中开始往两边延展排列。
+    </Description>
+    <RunTemplate>
+        <Grid Centered="true" WidthCount="WidthCount.Two2">
+            <Column Color="Color.Grey">...</Column>
+            <Row Centered="true" WidthCount="WidthCount.Four4">
+                <Column Color="Color.Grey">...</Column>
+                <Column Color="Color.Olive">...</Column>
+            </Row>
+            <Row Centered="true" WidthCount="WidthCount.Five5">
+                <Column Color="Color.Grey">...</Column>
+                <Column Color="Color.Olive">...</Column>
+                <Column Color="Color.Grey">...</Column>
+            </Row>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid Centered=""true"" WidthCount=""WidthCount.Two2"">
+    <Column Color=""Color.Grey"">...</Column>
+    <Row Centered=""true"" WidthCount=""WidthCount.Four4"">
+        <Column Color=""Color.Grey"">...</Column>
+        <Column Color=""Color.Olive"">...</Column>
+    </Row>
+    <Row Centered=""true"" WidthCount=""WidthCount.Five5"">
+        <Column Color=""Color.Grey"">...</Column>
+        <Column Color=""Color.Olive"">...</Column>
+        <Column Color=""Color.Grey"">...</Column>
+    </Row>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="浮动列" Id="floated">
+    <Description>
+        设置 <code>Floated</code> 可以让列脱离 Grid 的布局，成为自由浮动的列。
+    </Description>
+    <RunTemplate>
+        <Grid>
+            <Row WidthCount="WidthCount.Four4">
+                <Column Floated="HorizontalPosition.Left" Color="Color.Grey">左浮动</Column>
+                <Column Floated="HorizontalPosition.Right" Color="Color.Grey">左浮动</Column>
+            </Row>
+            <Row WidthCount="WidthCount.Four4">
+                <Column Color="Color.Grey">...</Column>
+                <Column Color="Color.Olive">...</Column>
+                <Column Color="Color.Grey">...</Column>
+                <Column Color="Color.Olive">...</Column>
+            </Row>
+            <Row WidthCount="WidthCount.Eight8" Centered="true">
+                <Column Color="Color.Grey">...</Column>
+                <Column Color="Color.Olive">...</Column>
+                <Column Color="Color.Grey">...</Column>
+            </Row>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid>
+    <Row WidthCount=""WidthCount.Four4"">
+        <Column Floated=""HorizontalPosition.Left"" Color=""Color.Grey"">左浮动</Column>
+        <Column Floated=""HorizontalPosition.Right"" Color=""Color.Grey"">左浮动</Column>
+    </Row>
+    <Row WidthCount=""WidthCount.Four4"">
+        <Column Color=""Color.Grey"">...</Column>
+        <Column Color=""Color.Olive"">...</Column>
+        <Column Color=""Color.Grey"">...</Column>
+        <Column Color=""Color.Olive"">...</Column>
+    </Row>
+    <Row WidthCount=""WidthCount.Eight8"" Centered=""true"">
+        <Column Color=""Color.Grey"">...</Column>
+        <Column Color=""Color.Olive"">...</Column>
+        <Column Color=""Color.Grey"">...</Column>
+    </Row>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="具有分割线的列" Id="celled">
+    <Description>
+        设置 <code>Celled="true"</code> 让行列具有分割线。
+    </Description>
+    <RunTemplate>
+        <Grid Celled="true" Centered="true">
+            <Row>
+                <Column WidthCount="WidthCount.Two2" Wide="true">
+                    <Image Source="img/image.png" />
+                </Column>
+                <Column WidthCount="WidthCount.Ten10" Wide="true">
+                    <ParagraphDemo FullWidth="true" />
+                </Column>
+                <Column WidthCount="WidthCount.Two2" Wide="true">
+                    <Image Source="img/image.png" />
+                </Column>
+            </Row>
+            <Row>
+                <Column WidthCount="WidthCount.Two2" Wide="true">
+                    <Image Source="img/image.png" />
+                </Column>
+                <Column WidthCount="WidthCount.Ten10" Wide="true">
+                    <ParagraphDemo  FullWidth="true"/>
+                </Column>
+                <Column WidthCount="WidthCount.Two2" Wide="true">
+                    <Image Source="img/image.png" />
+                </Column>
+            </Row>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid Celled=""true"" Centered=""true"">
+    <Row>
+        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+            <Image Source=""img/image.png"" />
+        </Column>
+        <Column WidthCount=""WidthCount.Ten10"" Wide=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+            <ParagraphDemo />
+        </Column>
+        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+            <Image Source=""img/image.png"" />
+        </Column>
+    </Row>
+    <Row>
+        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+            <Image Source=""img/image.png"" />
+        </Column>
+        <Column WidthCount=""WidthCount.Ten10"" Wide=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+            <ParagraphDemo />
+        </Column>
+        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+            <Image Source=""img/image.png"" />
+        </Column>
+    </Row>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                <ParameterTable Title="Grid 参数">
+                    <Content>
+                        <tr>
+                            <td>Stackable</td>
+                            <td>允许在移动设备上自动将行压缩成单个列</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Reserved</td>
+                            <td>在设备上允许行或列进行反向排序</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Doubling</td>
+                            <td>在每个设备切换时加倍列宽</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile</td>
+                            <td>具有手机适配的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Tablet</td>
+                            <td>具有平板电脑适配的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Computer</td>
+                            <td>具有台式电脑适配的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>LargeScreen</td>
+                            <td>具有超大屏适配的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Only</td>
+                            <td>仅对某些设备进行适配</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>EqualWidth</td>
+                            <td>内部的 <code>Column</code> 组件根据数量进行等宽适配</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Centered</td>
+                            <td>栅格整体居中显示</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>WidthCount</td>
+                            <td>每行固定的 <code>Column</code> 数量</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Padded</td>
+                            <td>增强每个 <code>Column</code> 内边距的空间</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td>Celled</td>
+                            <td>栅格的列具有单元格的分隔效果并在分隔的部分呈现分割线</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Very</td>
+                            <td>恰如其分的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Relaxed</td>
+                            <td>每个 <code>Column</code> 呈现松散的样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                    </Content>
+        </ParameterTable>
+                <ParameterTable Title="Row 参数">
+            <Content>
+                <tr>
+                    <td>EqualWidth</td>
+                    <td>根据 <code>Column</code> 数量进行等宽适配</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>WidthCount</td>
+                    <td>每个 <code>Column</code> 固定的宽度占比数</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Centered</td>
+                    <td>所有的 <code>Column</code> 整体居中显示</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>                
+            </Content>
+        </ParameterTable>
+                <ParameterTable Title="Column 参数">
+            <Content>
+                <tr>
+                    <td>Wide</td>
+                    <td>使用固定宽度</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>WidthCount</td>
+                    <td>固定宽度占比</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>背景颜色</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Floated</td>
+                    <td>浮动方式</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>                
+            </Content>
+        </ParameterTable>
+    </Body>
+</Pager>
+
+@code{
+    List<string> Menu = new List<string>(new[] {
+
+         "基本栅格",
+         "指定列的宽度占比",
+        "行",
+        "固定一行的列宽",
+        "等宽",
+        "居中延展",
+        "浮动列",
+        "具有分割线的列",
+        "Grid 参数",
+        "Row 参数",
+        "Column 参数"
+    });
+}

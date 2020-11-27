@@ -1,0 +1,267 @@
+﻿@page "/component/pagination"
+
+<Pager DataSource="@(new List<string>(new[] { 
+                         "示例","尺寸","隐藏统计数据","隐藏跳转到","双向绑定支持","参数","事件","方法"
+                     }))">
+    <Body>
+        <Header1 Divider="true">
+            分页组件
+        </Header1>
+        <Segment>
+            使用 <code>Pagination</code> 组件作为分页组件，并提供分页相关的事件和参数。
+        </Segment>
+        <PresentationPart Title="示例">
+            <Description>
+                <code>CurrentPage</code> 和 <code>TotalCount</code> 是必要参数。<code>PageSize</code> 必须大于0
+            </Description>
+    <RunTemplate>
+        <Pagination CurrentPage="1" TotalCount="50"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Pagination CurrentPage=""1"" TotalCount=""50""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="尺寸">
+    <Description>
+        设置 <code>Size</code> 可以拥有不同尺寸的分页组件。
+    </Description>
+    <RunTemplate>
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Mini" />
+        <br />
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Tiny" />
+        <br />
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Small" />
+        <br />
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Medium" />
+        <br />
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Large" />
+        <br />
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Big" />
+        <br />
+        <Pagination CurrentPage="1" TotalCount="100" Size="Size.Massive" />
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Mini"" />
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Tiny"" />
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Small"" />
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Medium"" />
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Large"" />
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Big"" />
+<Pagination CurrentPage=""1"" TotalCount=""100"" Size=""Size.Massive"" />
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="隐藏统计数据">
+    <Description>
+        设置 <code>ShowTotalCount="false"</code> 隐藏总数据了的统计。
+    </Description>
+    <RunTemplate>
+        <Pagination CurrentPage="1" TotalCount="100"  ShowTotalCount="false"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Pagination CurrentPage=""1"" TotalCount=""100""  ShowTotalCount=""false""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="隐藏跳转到">
+    <Description>
+        设置 <code>ShowNavigateTo="false"</code> 隐藏跳转到功能。
+    </Description>
+    <RunTemplate>
+        <Pagination CurrentPage="1" TotalCount="100"  ShowNavigateTo="false"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Pagination CurrentPage=""1"" TotalCount=""100""  ShowNavigateTo=""false""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="双向绑定支持">
+    <Description>
+        参数 <code>CurrentPage</code>、<code>TotalCount</code> 和 <code>PageSize</code> 支持双向绑定功能。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Field Inline="true">
+                <label>当前页</label>
+                <InputNumber @bind-Value="CurrentPage" />
+                <label>每页</label>
+                <InputNumber @bind-Value="PageSize" />
+                <label>总共</label>
+                <InputNumber @bind-Value="TotalCount" />
+            </Field>
+        </Form>
+        <br />
+        <Pagination @bind-CurrentPage="CurrentPage" @bind-PageSize="PageSize" @bind-TotalCount="TotalCount"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Field Inline=""true"">
+        <label>当前页</label>
+        <InputNumber @bind-Value=""CurrentPage"" />
+        <label>每页</label>
+        <InputNumber @bind-Value=""PageSize"" />
+        <label>总共</label>
+        <InputNumber @bind-Value=""TotalCount"" />
+    </Field>
+</Form>
+<Pagination @bind-CurrentPage=""CurrentPage"" @bind-PageSize=""PageSize"" @bind-TotalCount=""TotalCount""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                <ParameterTable Title="参数">
+                    <Content>
+                        <tr>
+                            <td>
+                                CurrentPage
+                                <Label Color="Color.Red">必填</Label>
+                            </td>
+                            <td>当前页码
+                            <Label Color="Color.Green">双向绑定</Label></td>
+                            <td>int</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                PageSizeStakeholders<Label Color="Color.Red">必填</Label>
+                            </td>
+                            <td>每页数据量的下拉候选项，至少有一个元素</td>
+                            <td>IEnumerable&lt;int></td>
+                            <td>10, 20, 30, 50, 100</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                PageSize
+                            </td>
+                            <td>每一页呈现的数据量，不建议使用
+                            <Label Color="Color.Green">双向绑定</Label></td>
+                            <td>int</td>
+                            <td>使用 PageSizeStakeholders 的第一个元素</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                TotalCount
+                                <Label Color="Color.Red">必填</Label>
+                            </td>
+                            <td>数据的总记录数
+                            <Label Color="Color.Green">双向绑定</Label></td>
+                            <td>int</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                PageNumberCount
+                            </td>
+                            <td>显示页码的个数，范围是5-21的奇数</td>
+                            <td>int</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ShowTotalCount
+                            </td>
+                            <td>是否显示总记录数统计</td>
+                            <td>bool</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ShowNavigateTo
+                            </td>
+                            <td>是否显示“跳转到”</td>
+                            <td>bool</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Size
+                            </td>
+                            <td>尺寸</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Alignment
+                            </td>
+                            <td>对齐方式</td>
+                            <td>enum</td>
+                            <td></td>
+                        </tr>
+                    </Content>
+        </ParameterTable>
+        <CallbackTable>
+            <Content>
+                <tr>
+                    <td>OnCurrentPageChanged</td>
+                    <td>当 <code>CurrentPage</code> 发生改变后的回调方法</td>
+                    <td>EventCallback&lt;int></td>
+                </tr>
+                <tr>
+                    <td>CurrentPageChanged<Label Color="Color.Red">自动调用</Label></td>
+                    <td>使用 <code>bind-CurrentPage</code> 双向绑定指令的回调方法。</td>
+                    <td>EventCallback&lt;int></td>
+                </tr>
+                <tr>
+                    <td>PageSizeChanged<Label Color="Color.Red">自动调用</Label></td>
+                    <td>使用 <code>bind-PageSize</code> 双向绑定指令的回调方法。</td>
+                    <td>EventCallback&lt;int></td>
+                </tr>
+                <tr>
+                    <td>TotalCountChanged<Label Color="Color.Red">自动调用</Label></td>
+                    <td>使用 <code>bind-TotalCount</code> 双向绑定指令的回调方法。</td>
+                    <td>EventCallback&lt;int></td>
+                </tr>
+            </Content>
+        </CallbackTable>
+                <MethodTable>
+                    <Content>
+                        <tr>
+                            <td>NavigateToFirst()</td>
+                            <td>导航到首页</td>
+                        </tr>
+                        <tr>
+                            <td>NavigateToPrevious()</td>
+                            <td>导航到上一页</td>
+                        </tr>
+                        <tr>
+                            <td>NavigateToNext()</td>
+                            <td>导航到下一页</td>
+                        </tr>
+                        <tr>
+                            <td>NavigateToFirst()</td>
+                            <td>导航到首页</td>
+                        </tr>
+                        <tr>
+                            <td>NavigateToLast()</td>
+                            <td>导航到末页</td>
+                        </tr>
+                        <tr>
+                            <td>NavigateToPage(int page)</td>
+                            <td>导航到自定义页</td>
+                        </tr>
+
+                    </Content>
+        </MethodTable>
+    </Body>
+</Pager>
+@code{
+    int CurrentPage=1;
+    int PageSize=10;
+    int TotalCount=100;
+}

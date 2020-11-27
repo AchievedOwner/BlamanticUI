@@ -1,0 +1,692 @@
+﻿@page "/element/itemlist"
+
+<Pager DataSource="@(new List<string>(new[]{
+                         "示例","分割线","内容垂直对齐方式","不支持响应式","简介","描述","Extra 其他","超链接样式","浮动内容","反转背景","参数"
+                     }))">
+    <Body>
+        <Header1>
+            项目组
+            <SubHeader>
+                项目视图显示大量的站点内容集合
+            </SubHeader>
+        </Header1>
+        <Segment>
+            使用 <code>&lt;ItemList></code> 组件表示项目组，使用 <code>&lt;Item></code> 作为每一项的子元素。
+        </Segment>
+
+        <Message State="State.Success" Icon="true">
+            <Icon IconClass="mobile" />
+            <Content>
+                <Header4>
+                    响应式布局
+                </Header4>
+                项目视图被设计为可被移动端适配的响应式布局。
+            </Content>
+        </Message>
+        <PresentationPart Title="示例">
+            <Description>
+                一组项目视图。
+            </Description>
+            <RunTemplate>
+                <ItemList>
+                    <Item>
+                        <Image Source="img/image.png" />
+                        <Content>
+                            <Anchor Header="true">
+                                标题
+                            </Anchor>
+                            <Introduction>简单描述</Introduction>
+                            <Description>
+                                <ParagraphDemo />
+                            </Description>
+                            <Extra>
+                                其他详细信息
+                            </Extra>
+                        </Content>
+                    </Item>
+                    <Item>
+                        <Image Source="img/image.png" />
+                        <Content>
+                            <Anchor Header="true">
+                                标题
+                            </Anchor>
+                            <Introduction>简单描述</Introduction>
+                            <Description>
+                                <ParagraphDemo />
+                            </Description>
+                            <Extra>
+                                其他详细信息
+                            </Extra>
+                        </Content>
+                    </Item>
+                    <Item>
+                        <Image Source="img/image.png" />
+                        <Content>
+                            <Anchor Header="true">
+                                标题
+                            </Anchor>
+                            <Introduction>简单描述</Introduction>
+                            <Description>
+                                <ParagraphDemo />
+                            </Description>
+                            <Extra>
+                                其他详细信息
+                            </Extra>
+                        </Content>
+                    </Item>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ItemList>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Anchor Header=""true"">
+                标题
+            </Anchor>
+            <Introduction>简单描述</Introduction>
+            <Description>
+                <ParagraphDemo />
+            </Description>
+            <Extra>
+                其他详细信息
+            </Extra>
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Anchor Header=""true"">
+                标题
+            </Anchor>
+            <Introduction>简单描述</Introduction>
+            <Description>
+                <ParagraphDemo />
+            </Description>
+            <Extra>
+                其他详细信息
+            </Extra>
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Anchor Header=""true"">
+                标题
+            </Anchor>
+            <Introduction>简单描述</Introduction>
+            <Description>
+                <ParagraphDemo />
+            </Description>
+            <Extra>
+                其他详细信息
+            </Extra>
+        </Content>
+    </Item>
+</ItemList>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="分割线">
+            <Description>
+                设置 <code>Divider="true"</code> 使每一个项之间具有分割线。
+            </Description>
+            <RunTemplate>
+                <ItemList Divider="true">
+                    <Item>
+                        <Image Source="img/image.png" />
+                    </Item>
+                    <Item>
+                        <Image Source="img/image.png" />
+                    </Item>
+                    <Item>
+                        <Image Source="img/image.png" />
+                    </Item>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList Divider=""true"">
+    <Item>
+        <Image Source=""img/image.png"" />
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+    </Item>
+</ItemList>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="内容垂直对齐方式">
+    <Description>
+        使用 <code>Content</code> 组件并设置 <code>VerticalAlignment</code> 定义垂直对齐方式。
+    </Description>
+    <RunTemplate>
+        <ItemList>
+            <Item>
+                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Content VerticalAlignment="VerticalAlignment.Top">顶部对齐</Content>
+            </Item>
+            <Item>
+                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Content VerticalAlignment="VerticalAlignment.Middle">中部对齐</Content>
+            </Item>
+            <Item>
+                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Content VerticalAlignment="VerticalAlignment.Bottom">底部对齐</Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList>
+    <Item>
+        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Content VerticalAlignment=""VerticalAlignment.Top"">顶部对齐</Content>
+    </Item>
+    <Item>
+        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Content VerticalAlignment=""VerticalAlignment.Middle"">中部对齐</Content>
+    </Item>
+    <Item>
+        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Content VerticalAlignment=""VerticalAlignment.Bottom"">底部对齐</Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="不支持响应式">
+    <Description>
+        设置 <code>Unstackable="true"</code> 则不会支持响应式布局。
+    </Description>
+    <RunTemplate>
+        <ItemList Unstackable="true">
+            <Item>
+                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Content VerticalAlignment="VerticalAlignment.Top">顶部对齐</Content>
+            </Item>
+            <Item>
+                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Content VerticalAlignment="VerticalAlignment.Middle">中部对齐</Content>
+            </Item>
+            <Item>
+                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Content VerticalAlignment="VerticalAlignment.Bottom">底部对齐</Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList Unstackable=""true"">
+    <Item>
+        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Content VerticalAlignment=""VerticalAlignment.Top"">顶部对齐</Content>
+    </Item>
+    <Item>
+        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Content VerticalAlignment=""VerticalAlignment.Middle"">中部对齐</Content>
+    </Item>
+    <Item>
+        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Content VerticalAlignment=""VerticalAlignment.Bottom"">底部对齐</Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="简介">
+    <Description>
+        使用 <code>Introduction</code> 组件呈现简介样式。
+    </Description>
+    <RunTemplate>
+        <ItemList>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>水晶鞋</Header2>
+                    <Introduction>
+                        <List Horizontal="true">
+                            <Item>
+                                ￥399.00
+                            </Item>
+                            <Item>
+                                <Icon IconClass="heart" />305
+                            </Item>
+                        </List>
+                    </Introduction>
+                    <ParagraphDemo />
+                </Content>
+            </Item>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>同款成龙大鼻子面具</Header2>
+                    <Introduction>
+                        <List Horizontal="true">
+                            <Item>
+                                ￥59.00
+                            </Item>
+                            <Item>
+                                <Icon IconClass="heart" />172
+                            </Item>
+                        </List>
+                    </Introduction>
+                    <ParagraphDemo />
+                </Content>
+            </Item>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>标题党起的标题的名字都很标题哟！</Header2>
+                    <Introduction>
+                        <List Horizontal="true">
+                            <Item>
+                                ￥12.99
+                            </Item>
+                            <Item>
+                                <Icon IconClass="heart" />1024
+                            </Item>
+                        </List>
+                    </Introduction>
+                    <ParagraphDemo />
+                </Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>水晶鞋</Header2>
+            <Introduction>
+                <List Horizontal=""true"">
+                    <Item>
+                        ￥399.00
+                    </Item>
+                    <Item>
+                        <Icon IconClass=""heart"" />305
+                    </Item>
+                </List>
+            </Introduction>
+            <ParagraphDemo />
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>同款成龙大鼻子面具</Header2>
+            <Introduction>
+                <List Horizontal=""true"">
+                    <Item>
+                        ￥59.00
+                    </Item>
+                    <Item>
+                        <Icon IconClass=""heart"" />172
+                    </Item>
+                </List>
+            </Introduction>
+            <ParagraphDemo />
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>标题党起的标题的名字都很标题哟！</Header2>
+            <Introduction>
+                <List Horizontal=""true"">
+                    <Item>
+                        ￥12.99
+                    </Item>
+                    <Item>
+                        <Icon IconClass=""heart"" />1024
+                    </Item>
+                </List>
+            </Introduction>
+            <ParagraphDemo />
+        </Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="描述">
+    <Description>
+        使用 <code>Description</code> 组件可很好地呈现内容描述。
+    </Description>
+    <RunTemplate>
+        <ItemList>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>可爱的狗</Header2>
+                    <Description>
+                        可爱的狗有各种各样的形状和大小。一些可爱的狗之所以可爱是因为它们可爱的脸，另一些是因为它们瘦小的身材，甚至还有一些是因为它们巨大的体型。
+
+                        <p>许多人也有自己的晴雨表来衡量可爱的狗。</p>
+                    </Description>
+                </Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>可爱的狗</Header2>
+            <Description>
+                可爱的狗有各种各样的形状和大小。一些可爱的狗之所以可爱是因为它们可爱的脸，另一些是因为它们瘦小的身材，甚至还有一些是因为它们巨大的体型。
+
+                <p>许多人也有自己的晴雨表来衡量可爱的狗。</p>
+            </Description>
+        </Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="Extra 其他">
+    <Description>
+        使用 <code>Extra</code> 组件可以表示在描述之后的其他内容。
+    </Description>
+    <RunTemplate>
+        <ItemList>
+            <Item>
+                <Content>
+                    <Header2>可爱的狗</Header2>
+                    <Description>
+                        可爱的狗有各种各样的形状和大小。一些可爱的狗之所以可爱是因为它们可爱的脸，另一些是因为它们瘦小的身材，甚至还有一些是因为它们巨大的体型。
+
+                        <p>许多人也有自己的晴雨表来衡量可爱的狗。</p>
+                    </Description>
+                    <Extra>
+                        <Icon Color="Color.Green" IconClass="check"/> 1351 票
+                    </Extra>
+                </Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList>
+    <Item>
+        <Content>
+            <Header2>可爱的狗</Header2>
+            <Description>
+                可爱的狗有各种各样的形状和大小。一些可爱的狗之所以可爱是因为它们可爱的脸，另一些是因为它们瘦小的身材，甚至还有一些是因为它们巨大的体型。
+
+                <p>许多人也有自己的晴雨表来衡量可爱的狗。</p>
+            </Description>
+            <Extra>
+                <Icon Color=""Color.Green"" IconClass=""check""/> 1351 票
+            </Extra>
+        </Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="超链接样式">
+    <Description>
+        设置 <code>Linked="true"</code> 拥有超链接样式。
+    </Description>
+    <RunTemplate>
+        <ItemList Linked="true">
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>可爱的狗</Header2>
+                    <ParagraphDemo />
+                </Content>
+            </Item>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>超级猫粮</Header2>
+                    <ParagraphDemo />
+                </Content>
+            </Item>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>棕熊传说</Header2>
+                    <ParagraphDemo />
+                </Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ItemList Linked=""true"">
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>可爱的狗</Header2>
+            <ParagraphDemo />
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>超级猫粮</Header2>
+            <ParagraphDemo />
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>棕熊传说</Header2>
+            <ParagraphDemo />
+        </Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="浮动内容">
+    <RunTemplate>
+          <ItemList>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>可爱的狗</Header2>
+                    <ParagraphDemo />
+                    <Extra>                        
+                        <Button Linked="true" Floated="HorizontalPosition.Right">
+                            点击阅读更多 >>
+                        </Button>
+                    </Extra>
+                </Content>
+            </Item>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>超级猫粮</Header2>
+                    <ParagraphDemo />
+                    <Extra>
+                        <Button Linked="true" Floated="HorizontalPosition.Right">
+                            点击阅读更多 >>
+                        </Button>
+                    </Extra>
+                </Content>
+            </Item>
+            <Item>
+                <Image Source="img/image.png" />
+                <Content>
+                    <Header2>棕熊传说</Header2>
+                    <ParagraphDemo />
+                    <Extra>
+                        <Button Linked="true" Floated="HorizontalPosition.Right">
+                            点击阅读更多 >>
+                        </Button>
+                    </Extra>
+                </Content>
+            </Item>
+        </ItemList>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+    <ItemList>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>可爱的狗</Header2>
+            <ParagraphDemo />
+            <Extra>                        
+                <Button Linked=""true"" Floated=""HorizontalPosition.Right"">
+                    点击阅读更多 >>
+                </Button>
+            </Extra>
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>超级猫粮</Header2>
+            <ParagraphDemo />
+            <Extra>
+                <Button Linked=""true"" Floated=""HorizontalPosition.Right"">
+                    点击阅读更多 >>
+                </Button>
+            </Extra>
+        </Content>
+    </Item>
+    <Item>
+        <Image Source=""img/image.png"" />
+        <Content>
+            <Header2>棕熊传说</Header2>
+            <ParagraphDemo />
+            <Extra>
+                <Button Linked=""true"" Floated=""HorizontalPosition.Right"">
+                    点击阅读更多 >>
+                </Button>
+            </Extra>
+        </Content>
+    </Item>
+</ItemList>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="反转背景">
+    <Description>
+        设置 <code>Inverted="true"</code> 使组件识别反转的背景颜色。
+    </Description>
+    <RunTemplate>
+        <Segment Inverted="true">
+            <ItemList Inverted="true">
+                <Item>
+                    <Image Source="img/image.png" />
+                    <Content>
+                        <Header2>标题1</Header2>
+                        <Introduction>
+                            ￥2999
+                        </Introduction>
+                        <ParagraphDemo />
+                    </Content>
+                </Item>
+                <Item>
+                    <Image Source="img/image.png" />
+                    <Content>
+                        <Header2>标题2</Header2>
+                        <Introduction>
+                            ￥599
+                        </Introduction>
+                        <ParagraphDemo />
+                    </Content>
+                </Item>
+            </ItemList>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment Inverted=""true"">
+    <ItemList Inverted=""true"">
+        <Item>
+            <Image Source=""img/image.png"" />
+            <Content>
+                <Header2>标题1</Header2>
+                <Introduction>
+                    ￥2999
+                </Introduction>
+                <ParagraphDemo />
+            </Content>
+        </Item>
+        <Item>
+            <Image Source=""img/image.png"" />
+            <Content>
+                <Header2>标题2</Header2>
+                <Introduction>
+                    ￥599
+                </Introduction>
+                <ParagraphDemo />
+            </Content>
+        </Item>
+    </ItemList>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                        <ParameterTable>
+                    <Content>
+                        <tr>
+                            <td>Divider</td>
+                            <td>项之间呈现分割线</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Unstackable</td>
+                            <td>不支持响应式布局</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Relaxed</td>
+                            <td>增加项之间的空间</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Linked</td>
+                            <td>呈现超链接样式</td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Inverted</td>
+                            <td>适应父组件的 <code>Inverted</code></td>
+                            <td>bool</td>
+                            <td></td>
+                        </tr>
+                    </Content>
+        </ParameterTable>
+    </Body>
+</Pager>

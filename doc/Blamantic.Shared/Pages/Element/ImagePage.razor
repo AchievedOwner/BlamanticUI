@@ -1,0 +1,313 @@
+﻿@page "/element/image"
+
+<Pager DataSource="Menu">
+    <Body>
+<Header1 Divider="true">
+    图像
+    <SubHeader>图像是某物的图形表示</SubHeader>
+</Header1>
+
+<Segment>
+    使用 <code>&lt;Image></code> 作为图像组件。
+    <br />
+    通常情况，<code>Image</code> 组件会被包含在其他组件使用，例如 <code>Anchor</code> 或 <code>Item</code>。
+    当图像没有被其他组件所封装使用时，要设置 <code>UI="true"</code> 参数。
+</Segment>
+
+<PresentationPart Title="示例">
+    <Description>
+        设置 <code>Source</code> 作为图像的来源地址。
+        <Message>
+            除非指定了大小，否则图像将使用图像的原始尺寸，直到其容器的大小。
+        </Message>
+    </Description>
+    <RunTemplate>
+        <Image Source="/img/image.png" Size="Size.Small" UI="true"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Source=""/img/image.png"" Size=""Size.Small"" UI=""true""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<Message State="State.Warning">
+   <Icon IconClass="attention"/>通常情况，图像都会嵌入能设置 <code>Image="true"</code> 参数的组件作为子组件出现。若要将 <code>Image</code> 组件单独使用时，需要设置 <code>UI="true"</code> 参数。
+</Message>
+
+<PresentationPart Title="图片链接">
+    <Description>
+        在 <code>Image</code> 外面嵌套 <code>ImageAnchor</code> 组件可使图像拥有超链接的功能。
+    </Description>
+    <RunTemplate>
+        <ImageAnchor Link="http://www.baidu.com" Target="LinkTarget.Blank" Size="Size.Small" Title="去百度">
+            <Image Source="/img/image.png" />
+        </ImageAnchor>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ImageAnchor Link=""http://www.baidu.com"" Target=""LinkTarget.Blank"" Size=""Size.Small"" Title=""去百度"">
+    <Image Source=""/img/image.png"" />
+</ImageAnchor>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+<PresentationPart Title="头像">
+    <SubTitle>
+        可以将图像格式化为与文本一起显示为头像
+    </SubTitle>
+    <Description>
+        设置 <code>Avatar="true"</code> 和 <code>UI="true"</code> 参数，或使用 <code>Avatar</code> 组件呈现头像。
+    </Description>
+    <RunTemplate>
+        <Image Avatar="true" UI="true" Source="/img/image.png"/> 张三
+        <Avatar Source="/img/image.png"/> 李四
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Avatar=""true"" UI=""true"" Source=""/img/image.png""/> 张三
+<Avatar Source=""/img/image.png"" /> 李四
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="边框">
+    <SubTitle>
+        图像可以包括用于强调白色或透明内容的边缘的边框
+    </SubTitle>
+    <Description>
+        设置 <code>Bordered="true"</code> 使图像呈现边框效果。
+    </Description>
+    <RunTemplate>
+        <Image Source="/img/image.png" Bordered="true" Size="Size.Small" UI="true"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Source=""/img/image.png"" Bordered=""true""  UI=""true""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="撑满">
+    <Description>
+        设置 <code>Fluid="true"</code> 可以让图像撑满整个容器。
+    </Description>
+    <RunTemplate>
+        <Image Source="/img/image.png" Fluid="true"  UI="true"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Source=""/img/image.png"" Fluid=""true"" UI=""true""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+<PresentationPart Title="圆角">
+    <Description>
+        设置 <code>Rounded="true"</code> 使图像变成圆角。
+    </Description>
+    <RunTemplate>
+        <Image Source="/img/image.png" Rounded="true" Size="Size.Small" UI="true"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Source=""/img/image.png"" Rounded=""true"" Size=""Size.Small"" UI=""true""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+<PresentationPart Title="圆形">
+    <Description>
+        设置 <code>Circular="true"</code> 使图像变成圆。
+    </Description>
+    <RunTemplate>
+        <Image Source="/img/image.png" Circular="true" Size="Size.Small" UI="true"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Source=""/img/image.png"" Circular=""true"" Size=""Size.Small"" UI=""true""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="尺寸">
+    <Description>
+        设置 <code>Size</code> 定义图像的尺寸。
+    </Description>
+    <RunTemplate>
+
+        <table class="ui definition table">
+            <tbody>
+                <tr>
+                    <td width="30px">Mini</td>
+                    <td width="50px">35px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Mini"  UI="true"/></td>
+                </tr>
+                <tr>
+                    <td>Tiny</td>
+                    <td>80px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Tiny"  UI="true"/></td>
+                </tr>
+                <tr>
+                    <td>Small</td>
+                    <td>150px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Small" UI="true" /></td>
+                </tr>
+                <tr>
+                    <td>Medium</td>
+                    <td>300px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Medium" UI="true" /></td>
+                </tr>
+                <tr>
+                    <td>Large</td>
+                    <td>450px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Large" UI="true" /></td>
+                </tr>
+                <tr>
+                    <td>Big</td>
+                    <td>600px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Big" UI="true" /></td>
+                </tr>
+                <tr>
+                    <td>Huge</td>
+                    <td>800px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Huge" UI="true" /></td>
+                </tr>
+                <tr>
+                    <td>Massive</td>
+                    <td>960px</td>
+                    <td><Image Source="/img/image.png" Size="Size.Massive" UI="true" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Image Source=""/img/image.png"" Size=""Size.Mini"" UI=""true""/>
+<Image Source=""/img/image.png"" Size=""Size.Tiny"" UI=""true""/>
+<Image Source=""/img/image.png"" Size=""Size.Small"" UI=""true""/>
+<Image Source=""/img/image.png"" Size=""Size.Medium"" UI=""true"" />
+<Image Source=""/img/image.png"" Size=""Size.Large"" UI=""true"" />
+<Image Source=""/img/image.png"" Size=""Size.Big"" UI=""true"" />
+<Image Source=""/img/image.png"" Size=""Size.Huge"" UI=""true"" />
+<Image Source=""/img/image.png"" Size=""Size.Massive"" UI=""true"" />
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="图片组">
+    <SubTitle>
+        一组图像可以格式化为具有相同的大小。
+    </SubTitle>
+    <Description>
+        <code>&lt;ImageGroup></code> 作为图片组的容器组件，可以嵌套无数个 <code>&lt;Image></code> 组件。        
+    </Description>
+    <RunTemplate>
+        <ImageGroup Size="Size.Tiny">
+            <Image Source="/img/image.png" />
+            <Image Source="/img/image.png" />
+            <Image Source="/img/image.png" />
+            <Image Source="/img/image.png" />
+        </ImageGroup>
+
+        <ImageGroup Size="Size.Small">
+            <Image Source="/img/image.png" />
+            <Image Source="/img/image.png" />
+            <Image Source="/img/image.png" />
+            <Image Source="/img/image.png" />
+        </ImageGroup>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<ImageGroup Size=""Size.Tiny"">
+    <Image Source=""/img/image.png"" />
+    <Image Source=""/img/image.png"" />
+    <Image Source=""/img/image.png"" />
+    <Image Source=""/img/image.png"" />
+</ImageGroup>
+<ImageGroup Size=""Size.Small"">
+    <Image Source=""/img/image.png"" />
+    <Image Source=""/img/image.png"" />
+    <Image Source=""/img/image.png"" />
+    <Image Source=""/img/image.png"" />
+</ImageGroup>
+```
+")
+    </CodeTemplate>
+</PresentationPart>        
+        <ParameterTable>
+            <Content>
+                <tr>
+                    <td>Source</td>
+                    <td>图片来源地址</td>
+                    <td>string</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Rounded</td>
+                    <td>呈现圆角</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Avatar</td>
+                    <td>呈现头像的样式，推荐使用 <code>Avatar</code> 组件</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Size</td>
+                    <td>图像的大小比例</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fluid</td>
+                    <td>成流式布局并把宽度设置为 100% 以此撑满整个父元素</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Circular</td>
+                    <td>呈现圆形样式</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Bordered</td>
+                    <td>显示边框</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>UI</td>
+                    <td>能单独使用的组件</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+            </Content>
+        </ParameterTable>
+    </Body>
+</Pager>
+
+@code{ 
+    List<string> Menu = new List<string>(new[]
+    {
+        "示例","图片链接","头像","边框","撑满","圆角","圆形","尺寸","图片组","参数"
+    });
+}

@@ -1,0 +1,192 @@
+﻿@page "/service/toast"
+@inject IToastService ToastService
+
+<ToastContainer />
+
+<Pager DataSource="@(new List<string>(new[]
+                     {
+                         "示例","自定义配置", "ToastContainer 参数","IToastService 方法"
+                     }))">
+    <Body>
+        <Header1>
+            事件通知(Toast)
+            <SubHeader>
+                允许用户收到事件的通知
+            </SubHeader>
+        </Header1>
+        <Segment>
+            <Header4>配置说明：</Header4>
+            <List Ordered="true">
+                <Item>添加 <code>services.AddToast();</code> 服务</Item>
+                <Item>配置 <code>ToastContainer</code> 组件</Item>
+                <Item>注入 <code>IToastService</code> 服务并调用方法</Item>
+            </List>
+        </Segment>
+        <PresentationPart Title="示例">
+            <Description>
+                默认在上方正中间弹出。
+            </Description>
+            <RunTemplate>
+                <Button @onclick="@(()=>ToastService.Show("默认弹出消息"))">默认</Button>
+                <Button Color="Color.Red" @onclick="@(()=>ToastService.ShowError("这是一段错误"))">错误</Button>
+                <Button Color="Color.Yellow" @onclick="@(()=>ToastService.ShowWarning("警告内容已经输出"))">警告</Button>
+                <Button Color="Color.Blue" @onclick="@(()=>ToastService.ShowInfo("普通信息的提示"))">提示</Button>
+                <Button Color="Color.Green" @onclick="@(()=>ToastService.ShowSuccess("提交成功啦！"))">成功</Button>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ToastContainer />
+
+<Button @onclick=""@(() => ToastService.Show(""默认弹出消息""))"">默认</Button>
+<Button Color=""Color.Red"" @onclick=""@(()=>ToastService.ShowError(""这是一段错误""))"">错误</Button>
+<Button Color=""Color.Yellow"" @onclick=""@(()=>ToastService.ShowWarning(""警告内容已经输出""))"">警告</Button>
+<Button Color=""Color.Blue"" @onclick=""@(()=>ToastService.ShowInfo(""普通信息的提示""))"">提示</Button>
+<Button Color=""Color.Green"" @onclick=""@(()=>ToastService.ShowSuccess(""提交成功啦！""))"">成功</Button>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="自定义配置">
+    <Description>
+        
+    </Description>
+    <RunTemplate>
+        <Button Color="Color.Pink" @onclick="@(()=>ToastService.Show(options=> {
+                                                  options.Message = "粉红的回忆";
+                                                  options.Color = Color.Pink;
+                                              }))">
+            粉红色
+        </Button>
+        <Button Color="Color.Olive" @onclick="@(()=>ToastService.Show(options=> {
+                                                   options.Title = "伍佰";
+                                                   options.Message = "挪威的森林";
+                                                   options.Color = Color.Olive;
+                                               }))">
+            橄榄绿
+        </Button>
+        <ButtonGroup>
+            <Button Color="Color.Black" @onclick="@(()=>ToastService.Show(options=> {
+                                                       options.Color = Color.Blue;
+                                                       options.Message = "进度条在上面！";
+                                                       options.ProgressBar = VerticalPosition.Top;
+                                                      options.ProgressBarColor = Color.Red;
+                                                   }))">
+                进度条在上面
+            </Button>
+            <Button Color="Color.Grey" @onclick="@(()=>ToastService.Show(options=> {
+                                                      options.Color = Color.Yellow;
+                                                      options.Message = "进度条在下面！";
+                                                      options.ProgressBar = VerticalPosition.Bottom;
+                                                      options.ProgressBarColor = Color.Blue;
+                                                  }))">
+                进度条在下面
+            </Button>
+        </ButtonGroup>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Button Color=""Color.Pink"" @onclick=""@(()=>ToastService.Show(options=> {
+                                            options.Title = ""伍佰"";
+                                            options.Message = ""粉红的回忆"";
+                                            options.Color = Color.Pink;
+                                        }))"">
+    粉红色
+</Button>
+<Button Color=""Color.Olive"" @onclick=""@(()=>ToastService.Show(options=> {
+                                            options.Message = ""橄榄绿的森林"";
+                                            options.Color = Color.Olive;
+                                        }))"">
+    橄榄绿
+</Button>
+<Button Color=""Color.Black"" @onclick=""@(()=>ToastService.Show(options=> {
+                                            options.Color = Color.Blue;
+                                            options.Message = ""进度条在上面！"";
+                                            options.ProgressBar = VerticalPosition.Top;
+                                            options.ProgressBarColor = Color.Red;
+                                        }))"">
+    进度条在上面
+</Button>
+<Button Color=""Color.Grey"" @onclick=""@(()=>ToastService.Show(options=> {
+                                            options.Color = Color.Yellow;
+                                            options.Message = ""进度条在下面！"";
+                                            options.ProgressBar = VerticalPosition.Bottom;
+                                            options.ProgressBarColor = Color.Blue;
+                                        }))"">
+    进度条在下面
+</Button>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <ParameterTable Title="ToastContainer 参数">
+            <Content>
+                <tr>
+                    <td>VerticalPosition</td>
+                    <td>垂直方向显示的位置</td>
+                    <td>enum</td>
+                    <td>VerticalPosition.Top</td>
+                </tr>
+                <tr>
+                    <td>HorizontalAlignment</td>
+                    <td>水平方向的对齐方式</td>
+                    <td>enum</td>
+                    <td>HorizontalAlignment.Center</td>
+                </tr>
+                <tr>
+                    <td>ClearWhenLocationChanged</td>
+                    <td>当页面切换路由时清除当前的所有弹窗提示</td>
+                    <td>bool</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>Timeout</td>
+                    <td>弹窗消息的持续时间，单位秒。null 则不自动关闭</td>
+                    <td>int?</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>FadeInterval</td>
+                    <td>淡入淡出动画效果的帧间隔</td>
+                    <td>int</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>ProgressBar</td>
+                    <td>显示进度条</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+            </Content>
+        </ParameterTable>
+        <MethodTable Title="IToastService 方法">
+            <Content>
+                <tr>
+                    <td>ShowSuccess(string message, string title = default, string iconClass = "check circle")</td>
+                    <td>弹出带有绿色背景并拥有 <Icon IconClass="check circle" /> 图标的提示</td>
+                </tr>
+                <tr>
+                    <td>ShowInfo(string message, string title = default, string iconClass = "info circle")</td>
+                    <td>弹出带有蓝色背景并拥有 <Icon IconClass="info circle" /> 图标的提示</td>
+                </tr>
+                <tr>
+                    <td>ShowError(string message, string title = default, string iconClass = "times circle")</td>
+                    <td>弹出带有红色背景并拥有 <Icon IconClass="times circle" /> 图标的提示</td>
+                </tr>
+                <tr>
+                    <td>ShowWarning(string message, string title = default, string iconClass = "attention circle")</td>
+                    <td>弹出带有黄色背景并拥有 <Icon IconClass="attention circle" /> 图标的提示</td>
+                </tr>
+                <tr>
+                    <td>Show(string message, string title = default, string iconClass = default)</td>
+                    <td>默认白色背景的提示框，不带任何图标。</td>
+                </tr>
+                <tr>
+                    <td>Show(Action&lt;ToastSetting> settingAction)</td>
+                    <td>重载，自定义配置显示内容</td>
+                </tr>
+            </Content>
+        </MethodTable>
+    </Body>
+</Pager>
