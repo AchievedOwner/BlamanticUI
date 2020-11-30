@@ -388,9 +388,10 @@ namespace Blamantic
         void BuildDropDownItems(RenderTreeBuilder builder)
         {
             builder.OpenComponent<Menu>(0);
-            builder.AddAttribute(1, nameof(Menu.UI), false);            
-            builder.AddAttribute(2, nameof(Menu.AdditionalStyles), Style.Create.Add( Actived ,"display","block"));
-            builder.AddAttribute(3, nameof(Menu.AdditionalCssClass), Css.Create.Add( Actived ? "visible" : "hidden"));
+            builder.AddAttribute(1, nameof(Menu.UI), false);
+
+            builder.AddAttribute(2, nameof(Menu.AdditionalStyles), (StyleCollection)(Style.Create.Add( Actived,"display","block")));
+            builder.AddAttribute(3, nameof(Menu.AdditionalCssClass), (CssClassCollection)( Actived ? "visible" : "hidden"));
             builder.AddAttribute(10, nameof(Menu.ChildContent), (RenderFragment)(menu =>
               {
                   var sequence = 0;
@@ -402,7 +403,7 @@ namespace Blamantic
                           var index = i;
                           menu.OpenComponent<Item>(sequence + i);
                           menu.SetKey(index);
-                          menu.AddAttribute( 1, nameof(Item.AdditionalCssClass), BuildMenuItemCssClass(source));
+                          menu.AddAttribute( 1, nameof(Item.AdditionalCssClass), (CssClassCollection)BuildMenuItemCssClass(source));
                           
                           menu.AddAttribute( 5, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, () => SelectItem(source)));
                           menu.AddAttribute( 10, nameof(Item.ChildContent), (RenderFragment)(item =>

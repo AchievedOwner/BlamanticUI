@@ -36,9 +36,7 @@ namespace Blamantic.Shared
 
         public static IServiceCollection AddBlamanticUI(this IServiceCollection services)
         {
-
-            services.AddDialog();
-            services.AddToast();
+            services.AddBUI();
             services.AddNavigation(nav =>
             {
                 nav.Add(new Navigation

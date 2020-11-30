@@ -68,12 +68,5 @@ namespace Blamantic
         setting.Title = title;
         setting.IconClass = iconClass;
     });
-
-        /// <summary>
-        /// 向 <see cref="IServiceCollection"/> 添加具备 <see cref="IToastService"/> 注入的弹窗消息服务。
-        /// </summary>
-        /// <param name="services"><see cref="IServiceCollection"/> 实例。</param>
-        public static IServiceCollection AddToast(this IServiceCollection services)
-            => services.AddScoped<IToastService, ToastService>();
     }
 }

@@ -4,6 +4,8 @@
     <TargetFramework>netcoreapp5.0</TargetFramework>
     <RazorLangVersion>3.0</RazorLangVersion>
     <LangVersion>8.0</LangVersion>
+    <Authors>周大侠</Authors>
+    <Product>Blamantic</Product>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -31,10 +33,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
     <PackageReference Include="YoiBlazor" Version="2.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\YoiBlazor\src\YoiBlazor\YoiBlazor.csproj" />
   </ItemGroup>
 
 </Project>

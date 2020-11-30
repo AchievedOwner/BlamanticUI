@@ -101,7 +101,7 @@ namespace Blamantic
             builder.AddAttribute(3, nameof(Dimmer.Inverted), Inverted);
             if (Alignment.HasValue)
             {
-                builder.AddAttribute(4, nameof(Dimmer.AdditionalCssClass), "modals");
+                builder.AddAttribute(4, nameof(Dimmer.AdditionalCssClass), (CssClassCollection)"modals");
             }
 
             builder.AddAttribute(8, nameof(Dimmer.ChildContent), (RenderFragment)BuildModal);
@@ -148,13 +148,6 @@ namespace Blamantic
             builder.CloseElement();
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (Actived)
-            {
-                await ElementRef.FocusAsync();
-            }
-        }
 
         /// <summary>
         /// 创建组件所需要的 class 类。

@@ -69,11 +69,5 @@ namespace Blamantic
                 options.Cancel = onCancel;
                 options.Alignment = alignment;
             });
-
-        /// <summary>
-        /// 添加对话框服务。
-        /// </summary>
-        public static IServiceCollection AddDialog(this IServiceCollection services)
-            => services.AddScoped<IDialogService, DialogService>();
     }
 }
