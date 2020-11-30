@@ -172,8 +172,11 @@ namespace Blamantic
         /// <param name="css">css 类名称集合。</param>
         protected override void CreateComponentCssClass(Css css)
         {
-                css.Add(_fieldState.HasValue,_fieldState.Value.GetEnumCssClass())
-                .Add("field");
+            if (_fieldState.HasValue)
+            {
+                css.Add(_fieldState.Value.GetEnumCssClass());
+            }
+            css.Add("field");
         }
 
         /// <summary>

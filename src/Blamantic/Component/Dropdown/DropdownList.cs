@@ -389,8 +389,8 @@ namespace Blamantic
         {
             builder.OpenComponent<Menu>(0);
             builder.AddAttribute(1, nameof(Menu.UI), false);            
-            builder.AddAttribute(2, nameof(Menu.AdditionalStyles), Actived ? "display:block" : null);
-            builder.AddAttribute(3, nameof(Menu.AdditionalCssClass), Actived ? "visible" : "hidden");
+            builder.AddAttribute(2, nameof(Menu.AdditionalStyles), Style.Create.Add( Actived ,"display","block"));
+            builder.AddAttribute(3, nameof(Menu.AdditionalCssClass), Css.Create.Add( Actived ? "visible" : "hidden"));
             builder.AddAttribute(10, nameof(Menu.ChildContent), (RenderFragment)(menu =>
               {
                   var sequence = 0;

@@ -33,7 +33,7 @@ namespace Blamantic
             builder.OpenComponent<Segment>(0);
             builder.AddAttribute(1, nameof(Segment.Attached), true);
             builder.AddAttribute(2, nameof(Segment.AttachedVertical), Parent.VerticalPosition == VerticalPosition.Top ? VerticalPosition.Bottom : VerticalPosition.Top);
-            builder.AddAttribute(6, nameof(Segment.AdditionalCssClass), BuildCssClassString());
+            builder.AddAttribute(6, nameof(Segment.AdditionalCssClass),(CssClassCollection)BuildCssClassString());
             builder.AddAttribute(10, nameof(Segment.ChildContent), ChildContent);
             builder.CloseComponent();
         }

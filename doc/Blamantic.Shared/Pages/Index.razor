@@ -1,281 +1,256 @@
 ﻿@page "/"
 
-    <div style="padding-left:5px">
-        <Header1 Divider="true">
+<div style="padding-left:5px">
+    <Header1 Divider="true">
 
-            <Image Source="img/logo.png" />
-            <Content>
-                CastUI
-                <SubHeader>让 C# 程序员也能用熟悉的语言编写前端。</SubHeader>
-            </Content>
-        </Header1>
-        
-        <Segment Raised="true" Stacked="true" Tall="true">
+        <Image Source="img/logo.png" />
+        <Content>
+            @Code.TITLE
+            <SubHeader>让 C# 程序员也能用熟悉的语言编写前端。</SubHeader>
+        </Content>
+    </Header1>
+
+    <Segment Raised="true" Stacked="true" Tall="true">
         <Grid>
             <Row>
-                <Column Wide="true" WidthCount="WidthCount.Eleven11"><p>
-    CastUI 是基于 Formantic UI 为 CSS 样式库基础的 Blazor 前端框架。
-</p>
+                <Column Wide="true" WidthCount="WidthCount.Eleven11">
+                    <p>
+                        @Code.TITLE 是基于 Formantic UI 为 CSS 样式库基础的 Blazor 前端框架。
+                    </p>
                     <p>
                         通过简单的参数设置，抛弃复杂的 css 名称和搭配顺序，
                         并且可以随意组合，极大地提升了后端程序员编写前端的效率。
                     </p>
-            <p>
-                内置的自动化机制，只需几行代码即可完成组件的开发.。
-            </p>
+                    <p>
+                        内置的自动化机制，只需几行代码即可完成组件的开发.。
+                    </p>
                     <Tab>
                         <TabItem Title="程序包管理控制台(Package Manager)">
                             <Segment Color="Color.Grey" Inverted="true">
-                                @($"PM> Install-Package {name} -Version {verion}")
+                                @($"PM> Install-Package {@Code.TITLE} -Version {verion}")
                             </Segment>
                         </TabItem>
                         <TabItem Title=".NET CLI(命令行)">
                             <Segment Inverted="true">
-                                @($"dotnet add package {name} --version {verion}")
+                                @($"dotnet add package {@Code.TITLE} --version {verion}")
                             </Segment>
                         </TabItem>
                         <TabItem Title="PackageReference(.csproj)">
-        @Code.GetCode($@"
-```html
-<PackageReference Include=""{name}"" Version=""{verion}"" />
-```
-")
+                            @Code.GetCode($@"
+                    ```html
+                    <PackageReference Include=""{@Code.TITLE}"" Version=""{verion}"" />
+                    ```
+                    ")
                         </TabItem>
                     </Tab>
 
                     <Header3 Divider="true">
                         如何开始
                     </Header3>
-                    在 <code>_Import.razor</code> 引入命名空间 <code>@name</code>
-                    <Tab AdditionalStyle="margin-top:5px">
+                    在 <code>_Import.razor</code> 引入命名空间 <code>@@Code.TITLE</code>
+                    <Tab AdditionalStyles="@("margin-top:5px")">
                         <TabItem Title="WebAssembly">
                             在 <code>index.html</code> 引入 <code>semantic.min.css</code>
                             @Code.GetCode(@"
 ```html
-<link href=""css/blazementic.min.css"" rel=""stylesheet"" />
+<link href=""_content/BUI/semantic.min.css"" rel=""stylesheet"" />
 ```
 ")
                         </TabItem>
                         <TabItem Title="Blazor Server">
 
-                            <List Ordered="true">
-                                <Item>
-                                    下载 <code>CastUI.AspNetCore</code> 的包
-                                </Item>
-                                <Item>
-                                    在 <code>Startup.cs</code> 的 <code>Configure</code> 方法中调用 <code>app.UseCastUI()</code>：
-                                    @Code.GetCode(@"
-```csharp
-public void Configure(IApplicationBuilder app)
-{
-    //...
-    app.UseCastUI();
-    //...
-}
-```
-")
-                                </Item>
-                                <Item>
-                                    在 <code>_Host.cshtml</code> 的 <code>head</code> 标记中调用 <code>Html.RenderCastUI()</code> 方法：
-                                    @Code.GetCode(@"
+                            在 <code>_Host.cshtml</code> 引入 <code>semantic.min.css</code>
+                            @Code.GetCode(@"
 ```html
-...
-<head>
-    ...
-    @Html.RenderCastUI()
-    ...
-</head>
-...
+<link href=""_content/BUI/semantic.min.css"" rel=""stylesheet"" />
 ```
 ")
-                                </Item>
-                            </List>
                         </TabItem>
                     </Tab>
                 </Column>
-                <Column Wide="true" WidthCount="WidthCount.Five5" AdditionalStyle="height:450px;overflow-y:auto;">
-                    <CastUI.Demo.Shared.Pages.Common.ReleaseNote/>
+                <Column Wide="true" WidthCount="WidthCount.Five5" AdditionalStyles="@("height:450px;overflow-y:auto")">
+                    <Blamantic.Shared.Pages.Common.ReleaseNote />
                 </Column>
             </Row>
         </Grid>
-            
-        </Segment>
 
-        <Container Fluid="true">
-            <Grid EqualWidth="true">
-                <Row>
-                    <Column>
-                        <Header2 Divider="true">按钮</Header2>
-                        <Tab>
-                            <TabItem Title="运行效果" AdditionalStyle="@tabItemStyle">
-                                <ButtonGroup>
-                                    <Button>按钮1</Button>
-                                    <Button Emphasis="Emphasis.Primary">按钮2</Button>
-                                    <Button Color="Color.Pink">按钮3</Button>
-                                </ButtonGroup>
-                            </TabItem>
-                            <TabItem Title="示例代码" AdditionalStyle="@tabItemStyle">
-                        @Code.GetCode(@"
-```html
-<ButtonGroup>
-    <Button>按钮1</Button>
-    <Button Emphasis=""Emphasis.Primary"">按钮2</Button>
-    <Button Color=""Color.Pink"">按钮3</Button>
-</ButtonGroup>
-```
-")
-                            </TabItem>
-                        </Tab>
-                    </Column>
-                    <Column>
-                        <Header2 Divider="true">表单</Header2>
-                        <Tab>
-                            <TabItem Title="运行效果" AdditionalStyle="@tabItemStyle">
+    </Segment>
 
-                                <Form Model="this">
-                                    <DataAnnotationsValidator />
-                                    <Fields Inline="true">
-                                        <Field For="()=>UserName">
-                                            <InputBox Icon="HorizontalPosition.Left">
-                                                <Icon IconClass="user" />
-                                                <InputText @bind-Value="UserName" placeholder="用户名" />
-                                            </InputBox>
-                                        </Field>
-                                        <Field For="()=>Password">
-                                            <InputBox Icon="HorizontalPosition.Left">
-                                                <Icon IconClass="lock" />
-                                                <InputText @bind-Value="Password" placeholder="密码" type="password"/>
-                                            </InputBox>
-                                        </Field>
-                                        <Button Emphasis="Emphasis.Positive">
-                                            <Icon IconClass="check" />
-                                            提 交
-                                        </Button>
-                                    </Fields>
-                                </Form>
-                            </TabItem>
-                            <TabItem Title="示例代码" AdditionalStyle="@tabItemStyle">
-                        @Code.GetCode(@"
-```html
-<Form Model=""this"">
-<DataAnnotationsValidator/>
-<Fields Inline=""true"">
-    <Field For=""()=>UserName"">
-        <InputBox Icon=""HorizontalPosition.Left"">
-            <Icon IconClass=""user"" />
-            <InputText @bind-Value=""UserName"" placeholder=""用户名"" />
-        </InputBox>
-    </Field>
-    <Field For=""()=>Password"">
-        <InputBox Icon=""HorizontalPosition.Left"">
-            <Icon IconClass=""lock"" />
-            <InputText @bind-Value=""Password"" placeholder=""密码"" type=""password""/>
-        </InputBox>
-    </Field>
-    <Button Emphasis=""Emphasis.Positive"">
-        <Icon IconClass=""check"" />
-        提 交
-    </Button>
-</Fields>
-</Form>
-```
-")
-                            </TabItem>
-                        </Tab>
-                    </Column>
-                </Row>
-                <Row>
-                    <Column>
-                        <Header2 Divider="true">标签</Header2>
-                        <Tab>
-                            <TabItem Title="运行效果" AdditionalStyle="@tabItemStyle">
-                                <Label Image="true" Color="Color.Red">
-                                    <Image Source="img/avatar/ade.jpg" /> Ade
-                                </Label>
-                                <Label Image="true" Color="Color.Green">
-                                    <Image Source="img/avatar/christian.jpg" /> Christian
-                                </Label>
-                                <Label Image="true" Color="Color.Brown">
-                                    <Image Source="img/avatar/elliot.jpg" /> Elliot
-                                </Label>
-                            </TabItem>
-                            <TabItem Title="示例代码" AdditionalStyle="@tabItemStyle">
-                        @Code.GetCode(@"
-```html
-<Label Image=""true"" Color=""Color.Red"">
-    <Image Source=""img/avatar/ade.jpg"" /> Ade
-</Label>
-<Label Image=""true"" Color=""Color.Green"">
-    <Image Source=""img/avatar/christian.jpg"" /> Christian
-</Label>
-<Label Image=""true"" Color=""Color.Brown"">
-    <Image Source=""img/avatar/elliot.jpg"" /> Elliot
-</Label>
-```
-")
-                            </TabItem>
-                        </Tab>
-                    </Column>
-                    <Column>
-                        <Header2 Divider="true">消息</Header2>
-                        <Tab>
-                            <TabItem Title="运行效果" AdditionalStyle="@tabItemStyle">
-                                <Message State="State.Warning" Icon="true">
-                                    <Icon IconClass="attention" />
-                                    <Content>
-                                        <Header>注意！</Header>
-                                        前方有路障，请注意绕行！
-                                    </Content>
-                                </Message>
-                            </TabItem>
-                            <TabItem Title="示例代码" AdditionalStyle="@tabItemStyle">
-                        @Code.GetCode(@"
-```html
-<Message State=""State.Warning"" Icon=""true"">
-    <Icon IconClass=""attention""/>
-    <Content>
-        <Header>注意！</Header>
-        前方有路障，请注意绕行！
-    </Content>
-</Message>
-```
-")
-                            </TabItem>
-                        </Tab>
-                    </Column>
-                </Row>
-                <Row>
-                    <Column>
-                        <Header2 Divider="true">模态框</Header2>
-                        <Tab>
-                            <TabItem Title="运行效果">
-                                <Button Color="Color.Blue" @onclick="@(e=>DialogService.ShowAlert("今天天气真好"))">提示框</Button>
-                                <Button Color="Color.Yellow" @onclick="@(e=>DialogService.ShowConfirm("确定要删除吗"))">确认框</Button>
-                                <Button Color="Color.Purple" @onclick="@(e=>DialogService.ShowPropmt("你输入了什么"))">弹出框</Button>
-                            </TabItem>
-                            <TabItem Title="示例代码">
-                                @Code.GetCode(@"
+    <Container Fluid="true">
+        <Grid EqualWidth="true">
+            <Row>
+                <Column>
+                    <Header2 Divider="true">按钮</Header2>
+                    <Tab>
+                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
+                            <ButtonGroup>
+                                <Button>按钮1</Button>
+                                <Button Emphasis="Emphasis.Primary">按钮2</Button>
+                                <Button Color="Color.Pink">按钮3</Button>
+                            </ButtonGroup>
+                        </TabItem>
+                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                            @Code.GetCode(@"
+    ```html
+    <ButtonGroup>
+        <Button>按钮1</Button>
+        <Button Emphasis=""Emphasis.Primary"">按钮2</Button>
+        <Button Color=""Color.Pink"">按钮3</Button>
+    </ButtonGroup>
+    ```
+    ")
+                        </TabItem>
+                    </Tab>
+                </Column>
+                <Column>
+                    <Header2 Divider="true">表单</Header2>
+                    <Tab>
+                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
+
+                            <Form Model="this">
+                                <DataAnnotationsValidator />
+                                <Fields Inline="true">
+                                    <Field For="()=>UserName">
+                                        <InputBox Icon="HorizontalPosition.Left">
+                                            <Icon IconClass="user" />
+                                            <InputText @bind-Value="UserName" placeholder="用户名" />
+                                        </InputBox>
+                                    </Field>
+                                    <Field For="()=>Password">
+                                        <InputBox Icon="HorizontalPosition.Left">
+                                            <Icon IconClass="lock" />
+                                            <InputText @bind-Value="Password" placeholder="密码" type="password" />
+                                        </InputBox>
+                                    </Field>
+                                    <Button Emphasis="Emphasis.Positive">
+                                        <Icon IconClass="check" />
+                                        提 交
+                                    </Button>
+                                </Fields>
+                            </Form>
+                        </TabItem>
+                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                            @Code.GetCode(@"
+    ```html
+    <Form Model=""this"">
+    <DataAnnotationsValidator/>
+    <Fields Inline=""true"">
+        <Field For=""()=>UserName"">
+            <InputBox Icon=""HorizontalPosition.Left"">
+                <Icon IconClass=""user"" />
+                <InputText @bind-Value=""UserName"" placeholder=""用户名"" />
+            </InputBox>
+        </Field>
+        <Field For=""()=>Password"">
+            <InputBox Icon=""HorizontalPosition.Left"">
+                <Icon IconClass=""lock"" />
+                <InputText @bind-Value=""Password"" placeholder=""密码"" type=""password""/>
+            </InputBox>
+        </Field>
+        <Button Emphasis=""Emphasis.Positive"">
+            <Icon IconClass=""check"" />
+            提 交
+        </Button>
+    </Fields>
+    </Form>
+    ```
+    ")
+                        </TabItem>
+                    </Tab>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <Header2 Divider="true">标签</Header2>
+                    <Tab>
+                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
+                            <Label Image="true" Color="Color.Red">
+                                <Image Source="img/avatar/ade.jpg" /> Ade
+                            </Label>
+                            <Label Image="true" Color="Color.Green">
+                                <Image Source="img/avatar/christian.jpg" /> Christian
+                            </Label>
+                            <Label Image="true" Color="Color.Brown">
+                                <Image Source="img/avatar/elliot.jpg" /> Elliot
+                            </Label>
+                        </TabItem>
+                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                            @Code.GetCode(@"
+    ```html
+    <Label Image=""true"" Color=""Color.Red"">
+        <Image Source=""img/avatar/ade.jpg"" /> Ade
+    </Label>
+    <Label Image=""true"" Color=""Color.Green"">
+        <Image Source=""img/avatar/christian.jpg"" /> Christian
+    </Label>
+    <Label Image=""true"" Color=""Color.Brown"">
+        <Image Source=""img/avatar/elliot.jpg"" /> Elliot
+    </Label>
+    ```
+    ")
+                        </TabItem>
+                    </Tab>
+                </Column>
+                <Column>
+                    <Header2 Divider="true">消息</Header2>
+                    <Tab>
+                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
+                            <Message State="State.Warning" Icon="true">
+                                <Icon IconClass="attention" />
+                                <Content>
+                                    <Header>注意！</Header>
+                                    前方有路障，请注意绕行！
+                                </Content>
+                            </Message>
+                        </TabItem>
+                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                            @Code.GetCode(@"
+    ```html
+    <Message State=""State.Warning"" Icon=""true"">
+        <Icon IconClass=""attention""/>
+        <Content>
+            <Header>注意！</Header>
+            前方有路障，请注意绕行！
+        </Content>
+    </Message>
+    ```
+    ")
+                        </TabItem>
+                    </Tab>
+                </Column>
+            </Row>
+            <Row>
+                <Column>
+                    <Header2 Divider="true">模态框</Header2>
+                    <Tab>
+                        <TabItem Title="运行效果">
+                            <Button Color="Color.Blue" @onclick="@(e=>DialogService.ShowAlert("今天天气真好"))">提示框</Button>
+                            <Button Color="Color.Yellow" @onclick="@(e=>DialogService.ShowConfirm("确定要删除吗"))">确认框</Button>
+                            <Button Color="Color.Purple" @onclick="@(e=>DialogService.ShowPropmt("你输入了什么"))">弹出框</Button>
+                        </TabItem>
+                        <TabItem Title="示例代码">
+                            @Code.GetCode(@"
 ```html
 <Button Color=""Color.Blue"" @onclick=""@(e=>DialogService.ShowAlert(""今天天气真好""))"">提示框</Button>
 <Button Color=""Color.Yellow"" @onclick=""@(e=>DialogService.ShowAlert(""确定要删除吗""))"">确认框</Button>
 <Button Color=""Color.Purple"" @onclick=""@(e=>DialogService.ShowAlert(""你输入了什么""))"">弹出框</Button>
 ```
 ")
-                            </TabItem>
-                        </Tab>
-                    </Column>
-                    <Column>
-                        <Header2 Divider="true">提示消息</Header2>
-                        <Tab>
-                            <TabItem Title="运行效果">
-                                <Button Color="Color.Green" @onclick="@(e=>ToastService.ShowSuccess("提交成功"))">成功</Button>
-                                <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowError("表单出现了错误"))">错误</Button>
-                                <Button Color="Color.Yellow" @onclick="@(e=>ToastService.ShowWarning("你的数据已经上传到云端"))">注意</Button>
-                                <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("提示一下"))">提示</Button>
-                                <ToastContainer />
-                            </TabItem>
-                            <TabItem Title="示例代码">
-                                @Code.GetCode(@"
+                        </TabItem>
+                    </Tab>
+                </Column>
+                <Column>
+                    <Header2 Divider="true">提示消息</Header2>
+                    <Tab>
+                        <TabItem Title="运行效果">
+                            <Button Color="Color.Green" @onclick="@(e=>ToastService.ShowSuccess("提交成功"))">成功</Button>
+                            <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowError("表单出现了错误"))">错误</Button>
+                            <Button Color="Color.Yellow" @onclick="@(e=>ToastService.ShowWarning("你的数据已经上传到云端"))">注意</Button>
+                            <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("提示一下"))">提示</Button>
+                            <ToastContainer />
+                        </TabItem>
+                        <TabItem Title="示例代码">
+                            @Code.GetCode(@"
 ```html
 <Button Color=""Color.Green"" @onclick=""@(e=>ToastService.ShowSuccess(""提交成功""))"">成功</Button>
 <Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowError(""表单出现了错误""))"">错误</Button>
@@ -283,25 +258,24 @@ public void Configure(IApplicationBuilder app)
 <Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""提示一下""))"">提示</Button>
 ```
 ")
-                            </TabItem>
-                        </Tab>
-                    </Column>
-                </Row>
-            </Grid>
-        </Container>
-    </div>
+                        </TabItem>
+                    </Tab>
+                </Column>
+            </Row>
+        </Grid>
+    </Container>
+</div>
 @using System.ComponentModel.DataAnnotations
 @code{
-    [Required(ErrorMessage ="字段是必填项")]
+    [Required(ErrorMessage = "字段是必填项")]
     public string UserName { get; set; }
     [Required(ErrorMessage = "字段是必填项")]
     public string Password { get; set; }
 
-    string tabItemStyle = "height:100px;overflow-y:auto;";
+    string tabItemStyle = "height:100px;overflow-y:auto";
 
     string verion = Code.GetVersion();
-    string name = "CastUI";
 }
-<DialogContainer/>
+<DialogContainer />
 @inject IDialogService DialogService
 @inject IToastService ToastService

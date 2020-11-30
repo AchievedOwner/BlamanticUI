@@ -33,4 +33,8 @@
     <PackageReference Include="YoiBlazor" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\YoiBlazor\src\YoiBlazor\YoiBlazor.csproj" />
+  </ItemGroup>
+
 </Project>
