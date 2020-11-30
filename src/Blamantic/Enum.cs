@@ -106,10 +106,10 @@ namespace Blamantic
     }
 
     /// <summary>
-    /// 组件的宽度占比。
+    /// 跨列的占比。
     /// </summary>
     [System.Flags]
-    public enum WidthCount
+    public enum Span
     {
         /// <summary>
         /// 比例为 1。

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using System.Reflection;
 
 using Blamantic.Abstractions;
@@ -12,7 +10,6 @@ using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
 using YoiBlazor;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 
 namespace Blamantic
 {
@@ -21,12 +18,12 @@ namespace Blamantic
     /// </summary>
     /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
-    public class Field : BlamanticChildContentComponentBase, IHasWidthCount, IHasState, IHasDisabled, IHasInline
+    public class Field : BlamanticChildContentComponentBase, IHasSpan, IHasState, IHasDisabled, IHasInline
     {
         /// <summary>
         /// 设置表单域固定的宽度占比数。
         /// </summary>
-        [Parameter] [CssClass(" wide", Order = 1, Suffix = true)] public WidthCount? WidthCount { get; set; }
+        [Parameter] [CssClass(" wide", Order = 1, Suffix = true)] public Span? Span { get; set; }
         /// <summary>
         /// 设置文本具有醒目状态的样式。
         /// </summary>
@@ -124,12 +121,11 @@ namespace Blamantic
                             var errorMessages = CascadedEditContext.GetValidationMessages(fieldIdentified);
                             if (errorMessages.Any())
                             {
-
                                 child.OpenComponent<Label>(50);
                                 child.AddAttribute(51, nameof(Label.Pointer), RelativePosition.Above);
                                 child.AddAttribute(52, nameof(Label.Basic), true);
                                 child.AddAttribute(53, nameof(Label.Color), Color.Red);
-                                child.AddAttribute(54, nameof(Label.AdditionalStyles), "position:absolute;display:block;z-index:100");
+                                child.AddAttribute(54, nameof(Label.AdditionalStyles), (StyleCollection)"position:absolute;display:block;z-index:100");
                                 child.AddAttribute(60, nameof(Label.ChildContent), (RenderFragment)(label =>
                                   {
                                       label.OpenComponent<List>(0);
@@ -186,18 +182,6 @@ namespace Blamantic
         protected override void CreateComponentStyle(Style style)
         {
             style.Add(For != null, "position:relative");
-        }
-
-        /// <summary>
-        /// 使组件被禁止使用。
-        /// </summary>
-        /// <param name="disabled"><c>true</c> 为禁用操作；否则为 <c>false</c>。</param>
-        /// <returns></returns>
-        public Task Disable(bool disabled = true)
-        {
-            Disabled = disabled;
-            StateHasChanged();
-            return Task.CompletedTask;
         }
 
         private MemberInfo GetMember(Expression expression)

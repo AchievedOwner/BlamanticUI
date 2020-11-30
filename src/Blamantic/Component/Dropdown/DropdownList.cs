@@ -33,7 +33,7 @@ namespace Blamantic
         IHasSize,
         IHasCompact,
         IHasInverted,
-        IHasWidthCount,
+        IHasSpan,
         IHasInline
     {
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
@@ -107,7 +107,7 @@ namespace Blamantic
         /// <summary>
         /// 设置下拉列表的列数排版。
         /// </summary>
-        [Parameter] [CssClass(" column", Suffix = true)] public WidthCount? WidthCount { get; set; }
+        [Parameter] [CssClass(" column", Suffix = true)] public Span? Span { get; set; }
         /// <summary>
         /// 设置成为行内样式模式。
         /// </summary>

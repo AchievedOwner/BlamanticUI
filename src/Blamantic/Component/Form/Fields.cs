@@ -13,7 +13,7 @@ namespace Blamantic
     /// </summary>
     /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
-    public class Fields : BlamanticChildContentComponentBase, IHasInline, IHasWidthCount, IHasEqualWidth
+    public class Fields : BlamanticChildContentComponentBase, IHasInline, IHasSpan, IHasEqualWidth
     {
         /// <summary>
         /// 设置字段使用内联行的样式显示内容。
@@ -22,7 +22,7 @@ namespace Blamantic
         /// <summary>
         /// 设置字段的固定的宽度占比数。
         /// </summary>
-        [Parameter]public WidthCount? WidthCount { get; set; }
+        [Parameter]public Span? Span { get; set; }
         /// <summary>
         /// 设置字段组根据数量进行等宽适配。
         /// </summary>

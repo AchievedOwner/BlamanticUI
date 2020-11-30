@@ -16,7 +16,7 @@ namespace Blamantic
     /// </summary>
     /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag("td")]
-    public class Td : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasWidthCount
+    public class Td : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasSpan
     {
         /// <summary>
         /// 设置单元格跨列的数量。
@@ -59,7 +59,7 @@ namespace Blamantic
         /// <summary>
         /// 设置单元格的固定的宽度占比数。
         /// </summary>
-        [Parameter][CssClass(" wide",Suffix =true)]public WidthCount? WidthCount { get; set; }
+        [Parameter][CssClass(" wide",Suffix =true)]public Span? Span { get; set; }
         /// <summary>
         /// 设置文本水平方向的对齐方式。
         /// </summary>

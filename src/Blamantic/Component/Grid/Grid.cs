@@ -23,7 +23,7 @@ namespace Blamantic
         IHasStackable,
         IHasDoubling,
         IHasPadded,
-        IHasWidthCount,
+        IHasSpan,
         IHasCelled,
         IHasRelaxed,
         IHasVery
@@ -80,7 +80,7 @@ namespace Blamantic
         /// <summary>
         /// 设置每行固定的 <see cref="Column"/> 数量。
         /// </summary>
-        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public WidthCount? WidthCount { get; set; }
+        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public Span? Span { get; set; }
         /// <summary>
         /// 设置增强每个 <see cref="Column"/> 内边距的空间。
         /// </summary>

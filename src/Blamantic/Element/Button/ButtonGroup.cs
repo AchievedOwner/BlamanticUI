@@ -14,7 +14,7 @@ namespace Blamantic
     /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
     [HtmlTag]
     [CssClass("buttons")]
-    public class ButtonGroup : BlamanticChildContentComponentBase, IHasUIComponent,IHasVertical,IHasWidthCount,IHasAttatched
+    public class ButtonGroup : BlamanticChildContentComponentBase, IHasUIComponent,IHasVertical,IHasSpan,IHasAttatched
     {
         /// <summary>
         /// 初始化 <see cref="ButtonGroup"/> 类的新实例。
@@ -33,7 +33,7 @@ namespace Blamantic
         /// <summary>
         /// 设置响应式宽度比例。
         /// </summary>
-        [Parameter]public WidthCount? WidthCount { get; set; }
+        [Parameter]public Span? Span { get; set; }
         /// <summary>
         /// 设置组件是否需要吸附于相对位置的其他组件。
         /// </summary>

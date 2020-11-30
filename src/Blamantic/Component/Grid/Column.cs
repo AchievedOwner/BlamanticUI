@@ -13,7 +13,7 @@
     /// </summary>
     /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
-    public class Column : BlamanticChildContentComponentBase, IHasColor, IHasWide, IHasWidthCount,IHasFloated
+    public class Column : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Column"/> class.
@@ -22,13 +22,9 @@
         {
         }
         /// <summary>
-        /// 设置使用固定宽度。
-        /// </summary>
-        [Parameter] public bool? Wide { get; set; }
-        /// <summary>
         /// 设置固定宽度占比。
         /// </summary>
-        [Parameter] public WidthCount? WidthCount { get; set; }
+        [Parameter] [CssClass(" wide", Suffix = true)] public Span? Span { get; set; }
         /// <summary>
         /// 设置背景颜色。
         /// </summary>

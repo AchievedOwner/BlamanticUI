@@ -13,7 +13,7 @@ namespace Blamantic
     /// </summary>
     /// <seealso cref="BlamanticChildContentComponentBase" />
     [HtmlTag]
-    public class Row : BlamanticChildContentComponentBase, IHasEqualWidth,IHasWidthCount,IHasCentered
+    public class Row : BlamanticChildContentComponentBase, IHasEqualWidth,IHasSpan,IHasCentered
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Row"/> class.
@@ -29,7 +29,7 @@ namespace Blamantic
         /// <summary>
         /// 设置每个 <see cref="Column"/> 固定的宽度占比数。
         /// </summary>
-        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public WidthCount? WidthCount { get; set; }
+        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public Span? Span { get; set; }
         /// <summary>
         /// 设置所有的 <see cref="Column"/> 整体居中显示。
         /// </summary>

@@ -9,7 +9,7 @@ namespace Blamantic.Shared
 {
     public static class Code
     {
-        public const string TITLE = "BUI";
+        public const string TITLE = "B-UI";
         public static MarkupString GetCode(string value)
         {
             if (string.IsNullOrWhiteSpace(value))

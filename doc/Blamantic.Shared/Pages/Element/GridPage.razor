@@ -53,32 +53,32 @@
 
 <PresentationPart Title="指定列的宽度占比" Id="width-count">
     <Description>
-        设置列的 <code>WidthCount</code> 定义列的占比，但同时要设置 <code>Wide="true"</code> 参数。如果空间不足，则会自动换行。
+        设置列的 <code>Span</code> 定义列的占比，但同时要设置 <code></code> 参数。如果空间不足，则会自动换行。
     </Description>
     <RunTemplate>
         <Grid>
-            <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-            <Column Color="Color.Olive" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-            <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-            <Column Color="Color.Olive" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-            <Column Color="Color.Grey" WidthCount="WidthCount.Seven7" Wide="true">Seven7</Column>
-            <Column Color="Color.Olive" WidthCount="WidthCount.Three3" Wide="true">Three3</Column>
-            <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-            <Column Color="Color.Olive" WidthCount="WidthCount.Six6" Wide="true">Six6</Column>
+            <Column Color="Color.Grey" Span="Span.Four4" >Four4</Column>
+            <Column Color="Color.Olive" Span="Span.Four4" >Four4</Column>
+            <Column Color="Color.Grey" Span="Span.Four4" >Four4</Column>
+            <Column Color="Color.Olive" Span="Span.Four4" >Four4</Column>
+            <Column Color="Color.Grey" Span="Span.Seven7" >Seven7</Column>
+            <Column Color="Color.Olive" Span="Span.Three3" >Three3</Column>
+            <Column Color="Color.Grey" Span="Span.Four4" >Four4</Column>
+            <Column Color="Color.Olive" Span="Span.Six6" >Six6</Column>
         </Grid>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-    <Column WidthCount=""WidthCount.Seven7"" Wide=""true"">Seven7</Column>
-    <Column WidthCount=""WidthCount.Three3"" Wide=""true"">Three3</Column>
-    <Column WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-    <Column WidthCount=""WidthCount.Six6"" Wide=""true"">Six6</Column>
+    <Column Span=""Span.Four4"">Four4</Column>
+    <Column Span=""Span.Four4"">Four4</Column>
+    <Column Span=""Span.Four4"">Four4</Column>
+    <Column Span=""Span.Four4"">Four4</Column>
+    <Column Span=""Span.Seven7"">Seven7</Column>
+    <Column Span=""Span.Three3"">Three3</Column>
+    <Column Span=""Span.Four4"">Four4</Column>
+    <Column Span=""Span.Six6"">Six6</Column>
 </Grid>
 ```
 ")
@@ -90,17 +90,17 @@
     <RunTemplate>
         <Grid>
             <Row>
-                <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-                <Column Color="Color.Olive" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
-                <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+                <Column Color="Color.Grey" Span="Span.Four4" >Four4</Column>
+                <Column Color="Color.Olive" Span="Span.Four4" >Four4</Column>
+                <Column Color="Color.Grey" Span="Span.Four4" >Four4</Column>
             </Row>
             <Row>
-                <Column Color="Color.Grey" WidthCount="WidthCount.Seven7" Wide="true">Seven7</Column>
-                <Column Color="Color.Olive" WidthCount="WidthCount.Three3" Wide="true">Three3</Column>
-                <Column Color="Color.Grey" WidthCount="WidthCount.Four4" Wide="true">Four4</Column>
+                <Column Color="Color.Grey" Span="Span.Seven7" >Seven7</Column>
+                <Column Color="Color.Olive" Span="Span.Three3" >Three3</Column>
+                <Column Color="Color.Grey" Span="Span.Four4" >Four4</Column>
             </Row>
             <Row>
-                <Column Color="Color.Olive" WidthCount="WidthCount.Six6" Wide="true">Six6</Column>
+                <Column Color="Color.Olive" Span="Span.Six6" >Six6</Column>
             </Row>
         </Grid>
     </RunTemplate>
@@ -109,17 +109,17 @@
 ```html
 <Grid>
     <Row>
-        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-        <Column Color=""Color.Olive"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
-        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+        <Column Color=""Color.Grey"" Span=""Span.Four4"">Four4</Column>
+        <Column Color=""Color.Olive"" Span=""Span.Four4"">Four4</Column>
+        <Column Color=""Color.Grey"" Span=""Span.Four4"">Four4</Column>
     </Row>
     <Row>
-        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Seven7"" Wide=""true"">Seven7</Column>
-        <Column Color=""Color.Olive"" WidthCount=""WidthCount.Three3"" Wide=""true"">Three3</Column>
-        <Column Color=""Color.Grey"" WidthCount=""WidthCount.Four4"" Wide=""true"">Four4</Column>
+        <Column Color=""Color.Grey"" Span=""Span.Seven7"">Seven7</Column>
+        <Column Color=""Color.Olive"" Span=""Span.Three3"">Three3</Column>
+        <Column Color=""Color.Grey"" Span=""Span.Four4"">Four4</Column>
     </Row>
     <Row>
-        <Column Color=""Color.Olive"" WidthCount=""WidthCount.Six6"" Wide=""true"">Six6</Column>
+        <Column Color=""Color.Olive"" Span=""Span.Six6"">Six6</Column>
     </Row>
 </Grid>
 ```
@@ -129,17 +129,17 @@
 
 <PresentationPart Title="固定一行的列宽" Id="row-width-count">
     <Description>
-        如果在 <code>Row</code> 组件设置了 <code>WidthCount</code> 参数，就意味着对该行的列进行总数宽度固定。
-        例如 <code>WidthCount="WidthCount.Three3"</code> 则表示该行最多使用 3 个 <code>Column</code> 组件，多余的将换行显示。
+        如果在 <code>Row</code> 组件设置了 <code>Span</code> 参数，就意味着对该行的列进行总数宽度固定。
+        例如 <code>Span="Span.Three3"</code> 则表示该行最多使用 3 个 <code>Column</code> 组件，多余的将换行显示。
     </Description>
     <RunTemplate>
         <Grid>
-            <Row  WidthCount="WidthCount.Three3" Wide="true">
+            <Row  Span="Span.Three3" >
                 <Column Color="Color.Grey">Three3</Column>
                 <Column Color="Color.Olive">Three3</Column>
                 <Column Color="Color.Grey">Three3</Column>
             </Row>
-            <Row  WidthCount="WidthCount.Six6" Wide="true">
+            <Row  Span="Span.Six6" >
                 <Column Color="Color.Grey">Six6</Column>
                 <Column Color="Color.Olive">Six6</Column>
                 <Column Color="Color.Grey">Six6</Column>
@@ -148,7 +148,7 @@
                 <Column Color="Color.Olive">Six6</Column>
                 <Column Color="Color.Olive">Six6</Column>
             </Row>
-            <Row  WidthCount="WidthCount.Four4" Wide="true">
+            <Row  Span="Span.Four4" >
                 <Column Color="Color.Grey">Four4</Column>
                 <Column Color="Color.Olive">Four4</Column>
             </Row>
@@ -158,12 +158,12 @@
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Row WidthCount=""WidthCount.Three3"">
+    <Row Span=""Span.Three3"">
         <Column Color=""Color.Grey"">Three3</Column>
         <Column Color=""Color.Olive"">Three3</Column>
         <Column Color=""Color.Grey"">Three3</Column>
     </Row>
-    <Row WidthCount=""WidthCount.Six6"">
+    <Row Span=""Span.Six6"">
         <Column Color=""Color.Grey"">Six6</Column>
         <Column Color=""Color.Olive"">Six6</Column>
         <Column Color=""Color.Grey"">Six6</Column>
@@ -172,7 +172,7 @@
         <Column Color=""Color.Olive"">Six6</Column>
         <Column Color=""Color.Olive"">Six6</Column>
     </Row>
-    <Row WidthCount=""WidthCount.Four4"">
+    <Row Span=""Span.Four4"">
         <Column Color=""Color.Grey"">Four4</Column>
         <Column Color=""Color.Olive"">Four4</Column>
     </Row>
@@ -219,13 +219,13 @@
         通常列是从左到右排列，设置 <code>Centered="true"</code> 可使列居中开始往两边延展排列。
     </Description>
     <RunTemplate>
-        <Grid Centered="true" WidthCount="WidthCount.Two2">
+        <Grid Centered="true" Span="Span.Two2">
             <Column Color="Color.Grey">...</Column>
-            <Row Centered="true" WidthCount="WidthCount.Four4">
+            <Row Centered="true" Span="Span.Four4">
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
             </Row>
-            <Row Centered="true" WidthCount="WidthCount.Five5">
+            <Row Centered="true" Span="Span.Five5">
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
                 <Column Color="Color.Grey">...</Column>
@@ -235,13 +235,13 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid Centered=""true"" WidthCount=""WidthCount.Two2"">
+<Grid Centered=""true"" Span=""Span.Two2"">
     <Column Color=""Color.Grey"">...</Column>
-    <Row Centered=""true"" WidthCount=""WidthCount.Four4"">
+    <Row Centered=""true"" Span=""Span.Four4"">
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
     </Row>
-    <Row Centered=""true"" WidthCount=""WidthCount.Five5"">
+    <Row Centered=""true"" Span=""Span.Five5"">
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
         <Column Color=""Color.Grey"">...</Column>
@@ -258,17 +258,17 @@
     </Description>
     <RunTemplate>
         <Grid>
-            <Row WidthCount="WidthCount.Four4">
+            <Row Span="Span.Four4">
                 <Column Floated="HorizontalPosition.Left" Color="Color.Grey">左浮动</Column>
                 <Column Floated="HorizontalPosition.Right" Color="Color.Grey">左浮动</Column>
             </Row>
-            <Row WidthCount="WidthCount.Four4">
+            <Row Span="Span.Four4">
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
             </Row>
-            <Row WidthCount="WidthCount.Eight8" Centered="true">
+            <Row Span="Span.Eight8" Centered="true">
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
                 <Column Color="Color.Grey">...</Column>
@@ -279,17 +279,17 @@
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Row WidthCount=""WidthCount.Four4"">
+    <Row Span=""Span.Four4"">
         <Column Floated=""HorizontalPosition.Left"" Color=""Color.Grey"">左浮动</Column>
         <Column Floated=""HorizontalPosition.Right"" Color=""Color.Grey"">左浮动</Column>
     </Row>
-    <Row WidthCount=""WidthCount.Four4"">
+    <Row Span=""Span.Four4"">
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
     </Row>
-    <Row WidthCount=""WidthCount.Eight8"" Centered=""true"">
+    <Row Span=""Span.Eight8"" Centered=""true"">
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
         <Column Color=""Color.Grey"">...</Column>
@@ -307,24 +307,24 @@
     <RunTemplate>
         <Grid Celled="true" Centered="true">
             <Row>
-                <Column WidthCount="WidthCount.Two2" Wide="true">
+                <Column Span="Span.Two2" >
                     <Image Source="img/image.png" />
                 </Column>
-                <Column WidthCount="WidthCount.Ten10" Wide="true">
+                <Column Span="Span.Ten10" >
                     <ParagraphDemo FullWidth="true" />
                 </Column>
-                <Column WidthCount="WidthCount.Two2" Wide="true">
+                <Column Span="Span.Two2" >
                     <Image Source="img/image.png" />
                 </Column>
             </Row>
             <Row>
-                <Column WidthCount="WidthCount.Two2" Wide="true">
+                <Column Span="Span.Two2" >
                     <Image Source="img/image.png" />
                 </Column>
-                <Column WidthCount="WidthCount.Ten10" Wide="true">
+                <Column Span="Span.Ten10" >
                     <ParagraphDemo  FullWidth="true"/>
                 </Column>
-                <Column WidthCount="WidthCount.Two2" Wide="true">
+                <Column Span="Span.Two2" >
                     <Image Source="img/image.png" />
                 </Column>
             </Row>
@@ -335,24 +335,24 @@
 ```html
 <Grid Celled=""true"" Centered=""true"">
     <Row>
-        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+        <Column Span=""Span.Two2"">
             <Image Source=""img/image.png"" />
         </Column>
-        <Column WidthCount=""WidthCount.Ten10"" Wide=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+        <Column Span=""Span.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
             <ParagraphDemo />
         </Column>
-        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+        <Column Span=""Span.Two2"">
             <Image Source=""img/image.png"" />
         </Column>
     </Row>
     <Row>
-        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+        <Column Span=""Span.Two2"">
             <Image Source=""img/image.png"" />
         </Column>
-        <Column WidthCount=""WidthCount.Ten10"" Wide=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+        <Column Span=""Span.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
             <ParagraphDemo />
         </Column>
-        <Column WidthCount=""WidthCount.Two2"" Wide=""true"">
+        <Column Span=""Span.Two2"">
             <Image Source=""img/image.png"" />
         </Column>
     </Row>
@@ -424,7 +424,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>WidthCount</td>
+                            <td>Span</td>
                             <td>每行固定的 <code>Column</code> 数量</td>
                             <td>enum</td>
                             <td></td>
@@ -470,7 +470,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>WidthCount</td>
+                    <td>Span</td>
                     <td>每个 <code>Column</code> 固定的宽度占比数</td>
                     <td>enum</td>
                     <td></td>
@@ -492,7 +492,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>WidthCount</td>
+                    <td>Span</td>
                     <td>固定宽度占比</td>
                     <td>enum</td>
                     <td></td>
