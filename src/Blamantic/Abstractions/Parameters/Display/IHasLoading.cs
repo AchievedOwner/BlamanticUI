@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供组件拥有加载中 UI 的功能。

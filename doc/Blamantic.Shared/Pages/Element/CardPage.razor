@@ -370,7 +370,7 @@
         设置 <code>Fluid="true"</code> 将宽度占满父容器。
     </Description>
     <RunTemplate>
-        <Grid WidthCount="WidthCount.Three3">
+        <Grid ColSpan="ColSpan.Three3">
             <Column>
                 <Card Fluid="true">
                     <ImageContent>
@@ -406,7 +406,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid WidthCount=""WidthCount.Three3"">
+<Grid ColSpan=""ColSpan.Three3"">
     <Column>
         <Card Fluid=""true"">
             <ImageContent>
@@ -585,10 +585,10 @@
 </PresentationPart>
         <PresentationPart Title="固定每行数量">
     <Description>
-        设置 <code>WidthCount</code> 固定每行的数量。
+        设置 <code>ColSpan</code> 固定每行的数量。
     </Description>
     <RunTemplate>
-        <CardGroup WidthCount="WidthCount.Five5">
+        <CardGroup ColSpan="ColSpan.Five5">
             <Card Color="Color.Red">
                 <ImageContent>
                     <Image Source="img/image.png" />
@@ -654,7 +654,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<CardGroup WidthCount=""WidthCount.Five5"">
+<CardGroup ColSpan=""ColSpan.Five5"">
     <Card Color=""Color.Red"">
         <ImageContent>
             <Image Source=""img/image.png"" />
@@ -788,7 +788,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>WidthCount</td>
+                            <td>ColSpan</td>
                             <td>每行固定数量</td>
                             <td>bool</td>
                             <td></td>

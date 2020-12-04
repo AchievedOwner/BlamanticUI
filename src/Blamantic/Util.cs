@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 using Microsoft.AspNetCore.Components.Forms;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 工具类。

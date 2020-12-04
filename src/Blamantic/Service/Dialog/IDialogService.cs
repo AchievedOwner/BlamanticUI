@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 提供基本的对话框服务。

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     using System.ComponentModel;
 
@@ -14,8 +14,8 @@ namespace Blamantic
     /// <summary>
     /// 表示标题组件的基类。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     public abstract class HeaderComponentBase : BlamanticChildContentComponentBase,IHasUIComponent,IHasIcon,IHasAttatched,IHasHeader,IHasDivider,IHasInverted,IHasFloated,IHasHorizontalAlignment,IHasColor
     {
         /// <summary>
@@ -71,7 +71,7 @@ namespace Blamantic
         /// </summary>
         [Parameter] public bool SubHeader { get; set; }
         /// <summary>
-        /// 设置子组件可以很适合的容纳 <see cref="Blamantic.Icon"/> 组件。
+        /// 设置子组件可以很适合的容纳 <see cref="BlamanticUI.Icon"/> 组件。
         /// </summary>
         [Parameter]public bool Icon { get; set; }
         /// <summary>

@@ -5,11 +5,11 @@ using Markdig.SyntaxHighlighting;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blamantic.Shared
+namespace BlamanticUI.Shared
 {
     public static class Code
     {
-        public const string TITLE = "B-UI";
+        public const string TITLE = "Blamantic-UI";
         public static MarkupString GetCode(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
@@ -22,7 +22,7 @@ namespace Blamantic.Shared
 
         public static string GetVersion(bool full = false)
         {
-            var version = typeof(Blamantic.Abstractions.BlamanticComponentBase).Assembly.GetName().Version;
+            var version = typeof(BlamanticUI.Abstractions.BlamanticComponentBase).Assembly.GetName().Version;
             if (version == null)
             {
                 return string.Empty;

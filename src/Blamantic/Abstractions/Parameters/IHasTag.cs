@@ -1,7 +1,7 @@
 ﻿
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供组件具有临时标记的功能。

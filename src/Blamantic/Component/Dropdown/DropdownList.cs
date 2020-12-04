@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -14,16 +14,16 @@ using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示多功能的下拉列表。
     /// </summary>
     /// <typeparam name="T">The type of the source.</typeparam>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
-    /// <seealso cref="Blamantic.Abstractions.IHasSelectable" />
-    /// <seealso cref="Blamantic.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSelectable" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     public class DropDownList<T> : BlamanticComponentBase,IDisposable,
         IHasUIComponent, 
         IHasSelectable, 
@@ -107,7 +107,7 @@ namespace Blamantic
         /// <summary>
         /// 设置下拉列表的列数排版。
         /// </summary>
-        [Parameter] [CssClass(" column", Suffix = true)] public Span? Span { get; set; }
+        [Parameter] [CssClass(" column", Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
         /// 设置成为行内样式模式。
         /// </summary>

@@ -1,7 +1,7 @@
 ﻿
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供流式布局的功能。

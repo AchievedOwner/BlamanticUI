@@ -1,6 +1,6 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 表示仅具备指定设备适配的功能。

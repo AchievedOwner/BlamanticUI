@@ -1,4 +1,4 @@
-﻿namespace Blamantic.Abstractions
+﻿namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 表示能在任何终端适配的功能。

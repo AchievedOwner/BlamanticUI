@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示元素用于呈现内容的部分。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Content : BlamanticChildContentComponentBase,IHasVisibility,IHasHidden,IHasFloated,IHasVerticalAlignment
     {

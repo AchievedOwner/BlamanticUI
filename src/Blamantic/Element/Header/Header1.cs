@@ -1,9 +1,9 @@
-﻿namespace Blamantic
+﻿namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 h1 元素的标题。
     /// </summary>
-    /// <seealso cref="Blamantic.HeaderComponentBase" />
+    /// <seealso cref="BlamanticUI.HeaderComponentBase" />
     public class Header1 : HeaderComponentBase
     {
         /// <summary>

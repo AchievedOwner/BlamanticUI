@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.CompilerServices;
@@ -15,12 +15,12 @@ using Microsoft.AspNetCore.Components.Web;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示结合 <see cref="Menu"/> 元素呈现分页的功能，并提供相应的交互。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     public class Pagination:BlamanticComponentBase
     {
         /// <summary>

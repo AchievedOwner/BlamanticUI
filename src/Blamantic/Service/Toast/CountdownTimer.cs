@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Timers;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示倒计时计数器。

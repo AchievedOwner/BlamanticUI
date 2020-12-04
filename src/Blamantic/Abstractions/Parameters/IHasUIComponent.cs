@@ -1,6 +1,6 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 定义组件是符合 SemanticUI 的 UI 定义的 UI 组件。

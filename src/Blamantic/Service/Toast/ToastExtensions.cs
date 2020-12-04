@@ -4,7 +4,7 @@ using System.Text;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 轻量级弹窗的扩展。

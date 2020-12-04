@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 在 <see cref="Grid"/> 组件中表示栅格的行。
@@ -29,7 +29,7 @@ namespace Blamantic
         /// <summary>
         /// 设置每个 <see cref="Column"/> 固定的宽度占比数。
         /// </summary>
-        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public Span? Span { get; set; }
+        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
         /// 设置所有的 <see cref="Column"/> 整体居中显示。
         /// </summary>

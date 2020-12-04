@@ -1,17 +1,17 @@
 ﻿
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示带有超链接的图像。
     /// </summary>
-    /// <seealso cref="Blamantic.Anchor" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Anchor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [CssClass("image")]
     public class ImageAnchor : Anchor, IHasUIComponent,IHasSize
     {

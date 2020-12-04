@@ -1,7 +1,7 @@
 ﻿
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 表示组件能使用普通文本。

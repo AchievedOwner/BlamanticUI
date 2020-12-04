@@ -1,7 +1,7 @@
 ﻿
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供组件具备文本垂直对齐的功能。

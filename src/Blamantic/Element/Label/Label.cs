@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 div 元素的标签组件。
@@ -40,7 +40,7 @@ namespace Blamantic
         /// </summary>
         [Parameter]public bool? Tag { get; set; }
         /// <summary>
-        /// 设置包含 <see cref="Blamantic.Image" /> 组件显示图像。
+        /// 设置包含 <see cref="BlamanticUI.Image" /> 组件显示图像。
         /// </summary>
         [Parameter] public bool Image { get; set; }
         /// <summary>

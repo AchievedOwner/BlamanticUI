@@ -13,7 +13,7 @@
     <Segment Raised="true" Stacked="true" Tall="true">
         <Grid>
             <Row>
-                <Column  Span="Span.Eleven11">
+                <Column  Span="ColSpan.Eleven11">
                     <p>
                         @Code.TITLE 是基于 Formantic UI 为 CSS 样式库基础的 Blazor 前端框架。
                     </p>
@@ -37,9 +37,9 @@
                         </TabItem>
                         <TabItem Title="PackageReference(.csproj)">
                             @Code.GetCode($@"
-                    ```html
-                    <PackageReference Include=""{@Code.TITLE}"" Version=""{verion}"" />
-                    ```
+```html
+<PackageReference Include=""{@Code.TITLE}"" Version=""{verion}"" />
+```
                     ")
                         </TabItem>
                     </Tab>
@@ -47,13 +47,13 @@
                     <Header3 Divider="true">
                         如何开始
                     </Header3>
-                    在 <code>_Import.razor</code> 引入命名空间 <code>@@Code.TITLE</code>
+                    在 <code>_Import.razor</code> 引入命名空间 <code>@@BlamanticUI</code>
                     <Tab AdditionalStyles="@("margin-top:5px")">
                         <TabItem Title="WebAssembly">
                             在 <code>index.html</code> 引入 <code>semantic.min.css</code>
                             @Code.GetCode(@"
 ```html
-<link href=""_content/BUI/semantic.min.css"" rel=""stylesheet"" />
+<link href=""_content/BlamanticUI/semantic.min.css"" rel=""stylesheet"" />
 ```
 ")
                         </TabItem>
@@ -62,14 +62,14 @@
                             在 <code>_Host.cshtml</code> 引入 <code>semantic.min.css</code>
                             @Code.GetCode(@"
 ```html
-<link href=""_content/BUI/semantic.min.css"" rel=""stylesheet"" />
+<link href=""_content/BlamanticUI/semantic.min.css"" rel=""stylesheet"" />
 ```
 ")
                         </TabItem>
                     </Tab>
                 </Column>
-                <Column  Span="Span.Five5" AdditionalStyles="@("height:450px;overflow-y:auto")">
-                    <Blamantic.Shared.Pages.Common.ReleaseNote />
+                <Column  Span="@(5)" AdditionalStyles="@("height:450px;overflow-y:auto")">
+                    <BlamanticUI.Shared.Pages.Common.ReleaseNote />
                 </Column>
             </Row>
         </Grid>

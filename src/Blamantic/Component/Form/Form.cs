@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示表单区域，功能与 <see cref="EditForm"/> 一致。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="YoiBlazor.IHasChildContent{EditContext}" />
     public class Form : BlamanticComponentBase, IHasUIComponent,
         IHasChildContent<EditContext>,

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     public static class DependencyInjectionExtensions
     {

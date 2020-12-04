@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示可以进行响应式布局的项目列表视图。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class ItemList : BlamanticChildContentComponentBase, IHasUIComponent,IHasDivider,IHasRelaxed,IHasLinked,IHasInverted
     {

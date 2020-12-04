@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 button 组件之间的附加层。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     public class Or : BlazorComponentBase
     {
         /// <summary>

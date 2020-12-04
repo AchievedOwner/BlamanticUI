@@ -1,4 +1,4 @@
-﻿namespace Blamantic
+﻿namespace BlamanticUI
 {
     using System.Collections.Generic;
 
@@ -9,7 +9,7 @@
     /// <summary>
     /// 仅用于 <see cref="Item"/> 组件中呈现其他扩展信息的部分。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     [CssClass("extra")]
     public class Extra : BlamanticChildContentComponentBase
@@ -19,7 +19,7 @@
     /// <summary>
     /// 
     /// </summary>
-    /// <seealso cref="Blamantic.Content" />
+    /// <seealso cref="BlamanticUI.Content" />
     [HtmlTag]
     public class ExtraContent : Content
     {

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示默认的导航菜单管理器。
     /// </summary>
-    /// <seealso cref="Blamantic.INavigationService" />
+    /// <seealso cref="BlamanticUI.INavigationService" />
     public class NavigationService : INavigationService
     {
         /// <summary>

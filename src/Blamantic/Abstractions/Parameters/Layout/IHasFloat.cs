@@ -4,7 +4,7 @@ using System.Text;
 
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供组件具备浮动布局的功能。

@@ -1,18 +1,18 @@
 ﻿
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示表格中的一行。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag("tr")]
     public class Tr : BlamanticChildContentComponentBase,IHasState,IHasActive,IHasDisabled
     {

@@ -1,17 +1,17 @@
 ﻿
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示呈现内容中的标题组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Header" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Header" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
     public class ContentHeader : Header, IHasUIComponent, IHasSize, IHasColor, IHasInverted
     {

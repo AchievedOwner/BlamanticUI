@@ -1,4 +1,4 @@
-﻿namespace Blamantic
+﻿namespace BlamanticUI
 {
     /// <summary>
     /// 对话框类型。

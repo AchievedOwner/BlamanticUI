@@ -367,34 +367,34 @@ IReadOnlyList<User> Users => new List<User>
         </PresentationPart>
         <PresentationPart Title="列数排版">
             <Description>
-                设置 <code>WidthCount</code> 可以根据值进行列数的排版。
+                设置 <code>ColSpan</code> 可以根据值进行列数的排版。
             </Description>
             <RunTemplate>
 
                 <div class="ui form">
                     <Field>
-                        <DropDownList DataSource="Users" WidthCount="WidthCount.Two2">
+                        <DropDownList DataSource="Users" ColSpan="ColSpan.Two2">
                             <DefaultItem>
                                 两列
                             </DefaultItem>
                         </DropDownList>
                     </Field>
                     <Field>
-                        <DropDownList DataSource="Users" WidthCount="WidthCount.Three3">
+                        <DropDownList DataSource="Users" ColSpan="ColSpan.Three3">
                             <DefaultItem>
                                 三列
                             </DefaultItem>
                         </DropDownList>
                     </Field>
                     <Field>
-                        <DropDownList DataSource="Users" WidthCount="WidthCount.Four4">
+                        <DropDownList DataSource="Users" ColSpan="ColSpan.Four4">
                             <DefaultItem>
                                 四列
                             </DefaultItem>
                         </DropDownList>
                     </Field>
                     <Field>
-                        <DropDownList DataSource="Users" WidthCount="WidthCount.Five5">
+                        <DropDownList DataSource="Users" ColSpan="ColSpan.Five5">
                             <DefaultItem>
                                 五列
                             </DefaultItem>
@@ -407,28 +407,28 @@ IReadOnlyList<User> Users => new List<User>
 ```html
 <Form Model=""this"">
     <Field>
-        <DropDownList DataSource=""Users"" WidthCount=""WidthCount.Two2"">
+        <DropDownList DataSource=""Users"" ColSpan=""ColSpan.Two2"">
             <DefaultItem>
                 两列
             </DefaultItem>
         </DropDownList>
     </Field>
     <Field>
-        <DropDownList DataSource=""Users"" WidthCount=""WidthCount.Three3"">
+        <DropDownList DataSource=""Users"" ColSpan=""ColSpan.Three3"">
             <DefaultItem>
                 三列
             </DefaultItem>
         </DropDownList>
     </Field>
     <Field>
-        <DropDownList DataSource=""Users"" WidthCount=""WidthCount.Four4"">
+        <DropDownList DataSource=""Users"" ColSpan=""ColSpan.Four4"">
             <DefaultItem>
                 四列
             </DefaultItem>
         </DropDownList>
     </Field>
     <Field>
-        <DropDownList DataSource=""Users"" WidthCount=""WidthCount.Five5"">
+        <DropDownList DataSource=""Users"" ColSpan=""ColSpan.Five5"">
             <DefaultItem>
                 五列
             </DefaultItem>
@@ -550,7 +550,7 @@ IReadOnlyList<User> Users => new List<User>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>WidthCount</td>
+                    <td>ColSpan</td>
                     <td>下拉列表的列数排版</td>
                     <td>bool</td>
                     <td></td>

@@ -1,7 +1,7 @@
 ﻿
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     using System.Collections.Generic;
 
@@ -12,8 +12,8 @@ namespace Blamantic
     /// <summary>
     /// 表示作为栅格系统的主容器。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
     public class Grid : BlamanticChildContentComponentBase, 
         IHasUIComponent,
@@ -80,7 +80,7 @@ namespace Blamantic
         /// <summary>
         /// 设置每行固定的 <see cref="Column"/> 数量。
         /// </summary>
-        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public Span? Span { get; set; }
+        [Parameter] [CssClass(" column", Order = 1, Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
         /// 设置增强每个 <see cref="Column"/> 内边距的空间。
         /// </summary>

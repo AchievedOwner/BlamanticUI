@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示作为容器中的遮罩层，需要通过代码进行调用。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
-    /// <seealso cref="Blamantic.Abstractions.IHasActive" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
     [HtmlTag]
     public class Dimmer : BlamanticChildContentComponentBase, IHasUIComponent, IHasActive, IHasDisabled, IHasVerticalAlignment,IHasInverted
     {

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示预先通过服务配置呈现的导航菜单。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     public class NavMenu : BlamanticComponentBase
     {
         /// <summary>

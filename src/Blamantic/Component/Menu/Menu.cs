@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现菜单组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     [HtmlTag]
     public class Menu : BlamanticChildContentComponentBase, IHasUI,
         IHasSize,

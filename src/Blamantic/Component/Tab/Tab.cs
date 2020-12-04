@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Components.Web;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 以 <see cref="Menu"/> 组件为基础呈现的 Tab 标签栏组件。
@@ -24,7 +24,7 @@ namespace Blamantic
         /// </summary>
         public Tab()
         {
-            VerticalPosition = Blamantic.VerticalPosition.Top;
+            VerticalPosition = BlamanticUI.VerticalPosition.Top;
         }
         /// <summary>
         /// 设置选项卡在垂直方向的位置。
@@ -102,7 +102,7 @@ namespace Blamantic
         /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            if (VerticalPosition.HasValue && VerticalPosition.Value== Blamantic.VerticalPosition.Bottom)
+            if (VerticalPosition.HasValue && VerticalPosition.Value== BlamanticUI.VerticalPosition.Bottom)
             {
                 BuildTabItems(builder);
                 BuildTabHeader(builder);

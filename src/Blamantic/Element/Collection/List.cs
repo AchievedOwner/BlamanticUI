@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示具有列表功能的组件。配合子组件 <see cref="Item"/> 构建列表项。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
     public class List : BlamanticChildContentComponentBase, IHasUIComponent,IHasHorizontal,IHasRelaxed,IHasDivider,IHasLinked,IHasSelectable,IHasAnimated,IHasSize,IHasCelled,IHasVerticalAlignment
     {

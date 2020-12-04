@@ -1,19 +1,19 @@
 ﻿
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示列表组件的项组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasItem" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasItem" />
     [HtmlTag]
     public class Item : BlamanticChildContentComponentBase, IHasItem, IHasActive, IHasDisabled
     {

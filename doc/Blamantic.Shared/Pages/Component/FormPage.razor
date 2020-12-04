@@ -16,6 +16,14 @@
     [Range(18,60,ErrorMessage ="填写范围是{1}-{2}之间")]
     public string Age { get; set; }
 
+    [Display(Name = "描述")]
+    public string Description { get; set; }
+
+    [Display(Name = "同意协议")]
+    public bool Checked { get; set; }
+
+    public string School { get; set; }
+
     public class User
     {
         [Required(ErrorMessage = "字段是必填项")]
@@ -50,44 +58,86 @@
         </Header1>
         <Segment>
             使用 <code>Form</code> 代替 <code>EditForm</code> 作为表单组件。
-            <br />
-            支持原生的 <code>InputText</code> 等控件以及正常的表单验证，不需要额外添加代码和其他组件。
         </Segment>
 
         <PresentationPart Title="示例">
-            <Description>
-                <code>Field</code> 组件可以很好地控制表单的排版。
-            </Description>
             <RunTemplate>
-                <Form Model="this">
-                    <Field>
-                        <label>用户名</label>
-                        <InputText @bind-Value="Name" placeholder="用户名" />
-                    </Field>
-                    <Field>
-                        <label>密码</label>
-                        <InputText @bind-Value="Password" placeholder="密码" type="password" />
-                    </Field>
-                </Form>
+                <Grid EqualWidth="true">                    
+                    <Column>
+                        <Form Model="this">
+                            <Field>
+                                <TextField @bind-Value="Name" DisplayName="用户名" DisplayAsPlaceholder="true" />
+                            </Field>
+                            <Field>
+                                <TextField @bind-Value="Password" DisplayName="密码" Type="TextFieldType.Password" DisplayAsPlaceholder="true" />
+                            </Field>
+                            <Field>
+                                <TextField @bind-Value="Age" DisplayName="年龄" Type="TextFieldType.Number" DisplayAsPlaceholder="true" />
+                            </Field>
+                            <Field>
+                                <TextField @bind-Value="Description" DisplayName="描述" DisplayAsPlaceholder="true" Type="TextFieldType.MultiLine" />
+                            </Field>
+                            <Field>
+                                <CheckBox @bind-Value="Checked" Label="同意协议" />
+                            </Field>
+                            <Fields Inline="true">
+                                <label>请选择一项水果：</label>
+                                <RadioGroup @bind-Value="School">
+                                    <RadioBox Value="@("苹果")" Label="苹果" />
+                                    <RadioBox Value="@("香蕉")" Label="香蕉" />
+                                    <RadioBox Value="@("菠萝")" Label="菠萝" />
+                                </RadioGroup>
+                            </Fields>
+                            <Button Emphasis="Emphasis.Primary">提交</Button>
+                        </Form>
+                    </Column>
+                    <Column>
+                        姓名：@Name
+                        <br />
+                        密码：@Password
+                        <br />
+                        描述：@Description
+                        <br />
+                        复选框：@Checked
+                        <br />
+                        单选框：@School
+                    </Column>
+                </Grid>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <Form Model=""this"">
     <Field>
-        <label>用户名</label>
-        <InputText @bind-Value=""Name"" placeholder=""用户名"" />
+        <TextField @bind-Value=""Name"" DisplayName=""用户名"" DisplayAsPlaceholder=""true"" />
     </Field>
     <Field>
-        <label>密码</label>
-        <InputText @bind-Value=""Password"" placeholder=""密码"" type=""password"" />
+        <TextField @bind-Value=""Password"" DisplayName=""密码"" Type=""TextFieldType.Password"" DisplayAsPlaceholder=""true"" />
     </Field>
+    <Field>
+        <TextField @bind-Value=""Age"" DisplayName=""年龄"" Type=""TextFieldType.Number"" DisplayAsPlaceholder=""true"" />
+    </Field>
+    <Field>
+        <TextField @bind-Value=""Description"" DisplayName=""描述"" DisplayAsPlaceholder=""true"" Type=""TextFieldType.MultiLine"" />
+    </Field>
+    <Field>
+        <CheckBox @bind-Value=""Checked"" Label=""同意协议"" />
+    </Field>
+    <Fields Inline=""true"">
+        <label>请选择一项水果：</label>
+        <RadioGroup @bind-Value=""School"">
+            <RadioBox Value=""@(""苹果"")"" Label=""苹果"" />
+            <RadioBox Value=""@(""香蕉"")"" Label=""香蕉"" />
+            <RadioBox Value=""@(""菠萝"")"" Label=""菠萝"" />
+        </RadioGroup>
+    </Fields>
+    <Button Emphasis=""Emphasis.Primary"">提交</Button>
 </Form>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="字段">
+        <PresentationPart Title="排版">
             <Description>
                 要使用 <code>Field</code> 将输入框和普通的 HTML <code>label</code> 包装起来
             </Description>
@@ -108,6 +158,35 @@
         <InputText @bind-Value=""Name""/>
     </Field>
 </Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="复选框和单选框">
+            <Description>
+                使用 <code>CheckedArea</code> 包裹复选框，若是单选框，则设置 <code>Radio="true"</code>。
+            </Description>
+            <RunTemplate>            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+<CheckedArea>
+    <label>
+        <input type=""checkbox"" /> 选择后表示同意
+    </label>
+</CheckedArea>
+<br />
+<CheckedArea Radio=""true"">
+    <label>
+        <input type=""radio"" /> 苹果
+    </label>
+    <label>
+        <input type=""radio"" /> 香蕉
+    </label>
+    <label>
+        <input type=""radio"" /> 菠萝
+    </label>
+</CheckedArea>
 ```
 ")
             </CodeTemplate>
@@ -171,7 +250,7 @@
     </Description>
     <RunTemplate>
         <Form Model="this">
-            <Fields WidthCount="WidthCount.Three3">
+            <Fields Span="ColSpan.Three3">
                 <Field>
                     <label>姓</label>
                     <input placeholder="姓" />
@@ -191,7 +270,7 @@
         @Code.GetCode(@"
 ```html
 <Form>
-    <Fields WidthCount=""WidthCount.Three3"">
+    <Fields Span=""ColSpan.Three3"">
         <Field>
             <label>姓</label>
             <input placeholder=""姓"" />
@@ -217,14 +296,14 @@
     <RunTemplate>
         <Form Model="this">
             <Fields Inline="true">
-                <Field WidthCount="WidthCount.Eight8">
+                <Field Span="ColSpan.Eight8">
                     <label>姓名</label>
                     <input placeholder="姓" />
                 </Field>
-                <Field WidthCount="WidthCount.Three3">                    
+                <Field Span="ColSpan.Three3">                    
                     <input placeholder="名" />
                 </Field>
-                <Field WidthCount="WidthCount.Five5">
+                <Field Span="ColSpan.Five5">
                     <input placeholder="拼音" />
                 </Field>
             </Fields>
@@ -235,14 +314,14 @@
 ```html
 <Form>
     <Fields Inline=""true"">
-        <Field WidthCount=""WidthCount.Eight8"">
+        <Field Span=""ColSpan.Eight8"">
             <label>姓名</label>
             <input placeholder=""姓"" />
         </Field>
-        <Field WidthCount=""WidthCount.Three3"">                    
+        <Field Span=""ColSpan.Three3"">                    
             <input placeholder=""名"" />
         </Field>
-        <Field WidthCount=""WidthCount.Five5"">
+        <Field Span=""ColSpan.Five5"">
             <input placeholder=""拼音"" />
         </Field>
     </Fields>
@@ -445,31 +524,31 @@ void ChangeTextState(ChangeEventArgs e)
     </Description>
     <RunTemplate>
         <Form Model="this" Size="Size.Mini">
-            <Fields WidthCount="WidthCount.Two2">
+            <Fields Span="ColSpan.Two2">
                 <Field><input placeholder="姓氏" /></Field>
                 <Field><input placeholder="名字" /></Field>
             </Fields>
         </Form>
         <Form Model="this" Size="Size.Tiny">
-            <Fields WidthCount="WidthCount.Two2">
+            <Fields Span="ColSpan.Two2">
                 <Field><input placeholder="姓氏" /></Field>
                 <Field><input placeholder="名字" /></Field>
             </Fields>
         </Form>
         <Form Model="this" Size="Size.Medium">
-            <Fields WidthCount="WidthCount.Two2">
+            <Fields Span="ColSpan.Two2">
                 <Field><input placeholder="姓氏" /></Field>
                 <Field><input placeholder="名字" /></Field>
             </Fields>
         </Form>
         <Form Model="this" Size="Size.Big">
-            <Fields WidthCount="WidthCount.Two2">
+            <Fields Span="ColSpan.Two2">
                 <Field><input placeholder="姓氏" /></Field>
                 <Field><input placeholder="名字" /></Field>
             </Fields>
         </Form>
         <Form Model="this" Size="Size.Massive">
-            <Fields WidthCount="WidthCount.Two2">
+            <Fields Span="ColSpan.Two2">
                 <Field><input placeholder="姓氏" /></Field>
                 <Field><input placeholder="名字" /></Field>
             </Fields>
@@ -479,31 +558,31 @@ void ChangeTextState(ChangeEventArgs e)
         @Code.GetCode(@"
 ```html
 <Form Model=""this"" Size=""Size.Mini"">
-    <Fields WidthCount=""WidthCount.Two2"">
+    <Fields Span=""ColSpan.Two2"">
         <Field><input placeholder=""姓氏"" /></Field>
         <Field><input placeholder=""名字"" /></Field>
     </Fields>
 </Form>
 <Form Model=""this"" Size=""Size.Tiny"">
-    <Fields WidthCount=""WidthCount.Two2"">
+    <Fields Span=""ColSpan.Two2"">
         <Field><input placeholder=""姓氏"" /></Field>
         <Field><input placeholder=""名字"" /></Field>
     </Fields>
 </Form>
 <Form Model=""this"" Size=""Size.Medium"">
-    <Fields WidthCount=""WidthCount.Two2"">
+    <Fields Span=""ColSpan.Two2"">
         <Field><input placeholder=""姓氏"" /></Field>
         <Field><input placeholder=""名字"" /></Field>
     </Fields>
 </Form>
 <Form Model=""this"" Size=""Size.Big"">
-    <Fields WidthCount=""WidthCount.Two2"">
+    <Fields Span=""ColSpan.Two2"">
         <Field><input placeholder=""姓氏"" /></Field>
         <Field><input placeholder=""名字"" /></Field>
     </Fields>
 </Form>
 <Form Model=""this"" Size=""Size.Massive"">
-    <Fields WidthCount=""WidthCount.Two2"">
+    <Fields Span=""ColSpan.Two2"">
         <Field><input placeholder=""姓氏"" /></Field>
         <Field><input placeholder=""名字"" /></Field>
     </Fields>
@@ -608,7 +687,7 @@ void ChangeTextState(ChangeEventArgs e)
     </Description>
     <RunTemplate>
         <Form Model="this">
-            <Fields WidthCount="WidthCount.Four4">
+            <Fields Span="ColSpan.Four4">
                 <Field>
                     <label>姓名</label>
                     <input />
@@ -622,7 +701,7 @@ void ChangeTextState(ChangeEventArgs e)
                     <input />
                 </Field>
             </Fields>
-            <Fields WidthCount="WidthCount.Two2">
+            <Fields Span="ColSpan.Two2">
                 <Field>
                     <label>身高</label>
                     <input />
@@ -638,7 +717,7 @@ void ChangeTextState(ChangeEventArgs e)
         @Code.GetCode(@"
 ```html
 <Form Model=""this"">
-    <Fields WidthCount=""WidthCount.Four4"">
+    <Fields Span=""ColSpan.Four4"">
         <Field>
             <label>姓名</label>
             <input />
@@ -652,7 +731,7 @@ void ChangeTextState(ChangeEventArgs e)
             <input />
         </Field>
     </Fields>
-    <Fields WidthCount=""WidthCount.Two2"">
+    <Fields Span=""ColSpan.Two2"">
         <Field>
             <label>身高</label>
             <input />

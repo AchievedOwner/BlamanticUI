@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 用于存储弹窗的实例。

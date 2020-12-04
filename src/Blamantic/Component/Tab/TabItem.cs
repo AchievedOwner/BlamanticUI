@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 以 segment 组件呈现 <see cref="Tab"/> 组件的项。

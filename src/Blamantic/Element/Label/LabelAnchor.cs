@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示具备超链接的 <see cref="Label"/> 标签。
     /// </summary>
-    /// <seealso cref="Blamantic.Anchor" />
+    /// <seealso cref="BlamanticUI.Anchor" />
     [HtmlTag("a")]
     public class LabelAnchor : Label, IHasUIComponent, IHasLink
     {

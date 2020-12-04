@@ -4,18 +4,19 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:59897",
-      "sslPort": 44375
+      "sslPort": 0
     }
   },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
+      "commandLineArgs": "--watch",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Blamantic.Server": {
+    "BlamanticUI.Server": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {

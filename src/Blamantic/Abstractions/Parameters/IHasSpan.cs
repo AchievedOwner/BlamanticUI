@@ -1,7 +1,7 @@
 ﻿
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 表示组件跨列的宽度。
@@ -11,6 +11,6 @@ namespace Blamantic.Abstractions
         /// <summary>
         /// 设置组件的跨列数。
         /// </summary>
-        [CssClass(Order = 1)] Span? Span { get; set; }
+        [CssClass(Order = 1)] ColSpan? Span { get; set; }
     }
 }

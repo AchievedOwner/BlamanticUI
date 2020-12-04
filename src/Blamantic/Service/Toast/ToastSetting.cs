@@ -1,4 +1,4 @@
-﻿namespace Blamantic
+﻿namespace BlamanticUI
 {
     /// <summary>
     /// 表示弹窗的设置参数。

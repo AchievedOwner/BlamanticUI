@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示用于包含多个 <see cref="Card"/> 组件的卡片组。
@@ -39,7 +39,7 @@ namespace Blamantic
         /// <summary>
         /// 设置卡片每一行的固定的数量。
         /// </summary>
-        [Parameter]public Span? Span { get; set; }
+        [Parameter]public ColSpan Span { get; set; }
         /// <summary>
         /// 设置在移动端小尺寸屏幕时每行固定显示2个。
         /// </summary>

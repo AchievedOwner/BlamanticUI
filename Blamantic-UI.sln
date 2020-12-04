@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blamantic", "src\Blamantic\Blamantic.csproj", "{264E3CB7-A0E5-473C-AFBC-C12FB901B31C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlamanticUI", "src\Blamantic\BlamanticUI.csproj", "{264E3CB7-A0E5-473C-AFBC-C12FB901B31C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{167538FD-E8BC-4A3C-AE97-F328C4DFFFA5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{C7BF0D65-3B8A-4D2F-B9E5-B4A70162BABC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blamantic.Server", "doc\Blamantic.Server\Blamantic.Server.csproj", "{2E97686D-4935-417C-AD6A-454E3802CEA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlamanticUI.Server", "doc\Blamantic.Server\BlamanticUI.Server.csproj", "{2E97686D-4935-417C-AD6A-454E3802CEA4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blamantic.Shared", "doc\Blamantic.Shared\Blamantic.Shared.csproj", "{10F504C9-A551-419A-BCB6-92CF9A5C7CE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlamanticUI.Shared", "doc\Blamantic.Shared\BlamanticUI.Shared.csproj", "{10F504C9-A551-419A-BCB6-92CF9A5C7CE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

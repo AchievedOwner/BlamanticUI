@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 提供菜单导航管理的功能。

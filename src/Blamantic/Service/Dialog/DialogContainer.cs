@@ -1,17 +1,17 @@
 ﻿
 using System;
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示用于作为使用服务的方式呈现对话框的占位容器。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     public class DialogContainer : BlamanticChildContentComponentBase,IDisposable
     {
         /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace Blamantic
+﻿namespace BlamanticUI
 {
     using System.Collections.Generic;
 
@@ -11,7 +11,7 @@
     /// <summary>
     /// 表示 <see cref="Grid"/> 栅格组件的列。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Column : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated
     {
@@ -24,7 +24,7 @@
         /// <summary>
         /// 设置固定宽度占比。
         /// </summary>
-        [Parameter] [CssClass(" wide", Suffix = true)] public Span? Span { get; set; }
+        [Parameter] [CssClass(" wide", Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
         /// 设置背景颜色。
         /// </summary>

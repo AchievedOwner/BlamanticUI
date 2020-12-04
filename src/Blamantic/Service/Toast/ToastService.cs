@@ -5,12 +5,12 @@ using System.Text;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示弹窗消息的默认服务。
     /// </summary>
-    /// <seealso cref="Blamantic.IToastService" />
+    /// <seealso cref="BlamanticUI.IToastService" />
     internal class ToastService : IToastService
     {
         /// <summary>

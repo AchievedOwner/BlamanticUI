@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示默认的内部对话框服务的实现。
     /// </summary>
-    /// <seealso cref="Blamantic.IDialogService" />
+    /// <seealso cref="BlamanticUI.IDialogService" />
     internal class DialogService : IDialogService
     {
         /// <summary>

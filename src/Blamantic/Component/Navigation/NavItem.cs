@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     internal class NavItem : BlamanticComponentBase
     {

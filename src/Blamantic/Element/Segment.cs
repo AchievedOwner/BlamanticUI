@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 div 元素的片段组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Segment : BlamanticChildContentComponentBase, 
         IHasUIComponent,
@@ -137,7 +137,7 @@ namespace Blamantic
     /// <summary>
     /// 表示作为一组片段组的组件，用于包装 <see cref="Segment"/> 组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Segments : BlamanticChildContentComponentBase, IHasUIComponent,IHasBasic,IHasHorizontal
     {

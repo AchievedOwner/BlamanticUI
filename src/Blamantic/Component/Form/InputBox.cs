@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示用于封装输入框控件的组件。
@@ -16,7 +16,7 @@ namespace Blamantic
     public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasInverted,IHasFluid,IHasSize
     {
         /// <summary>
-        /// 设置是否使用 <see cref="Blamantic.Icon"/> 组件和输入控件组合显示。
+        /// 设置是否使用 <see cref="BlamanticUI.Icon"/> 组件和输入控件组合显示。
         /// </summary>
         [Parameter] [CssClass(" icon", Suffix = true)] public HorizontalPosition? Icon { get; set; }
         /// <summary>
@@ -47,7 +47,7 @@ namespace Blamantic
         [Parameter] [CssClass("transparent")] public bool? Transparent { get; set; }
 
         /// <summary>
-        /// 设置使用角标的方式呈现 <see cref="Blamantic.Label"/> 的角标，不需要设置 <see cref="Labeled"/> 参数。
+        /// 设置使用角标的方式呈现 <see cref="BlamanticUI.Label"/> 的角标，不需要设置 <see cref="Labeled"/> 参数。
         /// </summary>
         [Parameter] [CssClass(" corner labeled", Order = 120, Suffix =true)] public HorizontalPosition? CorneredLabel { get; set; }
         /// <summary>

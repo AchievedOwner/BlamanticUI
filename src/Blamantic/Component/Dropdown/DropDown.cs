@@ -3,13 +3,13 @@
 //using System.Text;
 //using System.Threading.Tasks;
 
-//using Blamantic.Abstractions;
+//using BlamanticUI.Abstractions;
 
 //using Microsoft.AspNetCore.Components;
 //using Microsoft.AspNetCore.Components.Rendering;
 //using Microsoft.JSInterop;
 
-//namespace Blamantic
+//namespace BlamanticUI
 //{
 //    public partial class DropDown:BlamanticComponentBase
 //    {

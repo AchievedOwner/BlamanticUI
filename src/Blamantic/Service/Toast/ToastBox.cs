@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using System.Timers;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示弹窗组件的容器盒子。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     internal class ToastBox : BlamanticComponentBase,IDisposable
     {
         /// <summary>

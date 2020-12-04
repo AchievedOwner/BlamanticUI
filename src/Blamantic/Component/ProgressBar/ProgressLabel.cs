@@ -2,7 +2,7 @@
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示进度条的文本标签。

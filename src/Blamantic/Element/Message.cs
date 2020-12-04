@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 div 元素包含着提示消息。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
     public class Message : BlamanticChildContentComponentBase, 
         IHasUIComponent,
@@ -39,7 +39,7 @@ namespace Blamantic
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置是否包含 <see cref="Blamantic.Icon"/> 组件。
+        /// 设置是否包含 <see cref="BlamanticUI.Icon"/> 组件。
         /// </summary>
         [Parameter]public bool Icon { get; set; }
         /// <summary>

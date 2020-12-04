@@ -198,7 +198,7 @@
         设置 <code>Cornered</code> 再配合方位可以让标签显示在四个角。
     </Description>
     <RunTemplate>
-        <Grid WidthCount="WidthCount.Two2">
+        <Grid ColSpan="ColSpan.Two2">
             <Column>
                 <ImageContent>
                     <Label Color="Color.Red" Cornered="HorizontalPosition.Left">
@@ -220,7 +220,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid WidthCount=""WidthCount.Two2"">
+<Grid ColSpan=""ColSpan.Two2"">
     <Column>
         <ImageContent>
             <Label Color=""Color.Red"" Cornered=""HorizontalPosition.Left"">
@@ -280,7 +280,7 @@
         设置 <code>Ribbon="true"</code> 可以附加到其他组件上呈现绸带书签样式。
     </Description>
     <RunTemplate>
-        <Grid WidthCount="WidthCount.Two2">
+        <Grid ColSpan="ColSpan.Two2">
             <Column>
                 <Segment Raised="true">
                     <Label Ribbon="HorizontalPosition.Left" Color="Color.Red">概览</Label>
@@ -302,7 +302,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid WidthCount=""WidthCount.Two2"">
+<Grid ColSpan=""ColSpan.Two2"">
     <Column>
         <Segment Raised=""true"">
             <Label Ribbon=""HorizontalPosition.Left"" Color=""Color.Red"">概览</Label>
@@ -327,7 +327,7 @@
 
 <PresentationPart>
     <RunTemplate>
-        <Grid WidthCount="WidthCount.Two2">
+        <Grid ColSpan="ColSpan.Two2">
             <Column>
                 <ImageContent Fluid="true">
                     <Label Ribbon="HorizontalPosition.Left" Color="Color.Red">全局</Label>
@@ -345,7 +345,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid WidthCount=""WidthCount.Two2"">
+<Grid ColSpan=""ColSpan.Two2"">
     <Column>
         <ImageContent Fluid=""true"">
             <Label Ribbon=""HorizontalPosition.Left"" Color=""Color.Red"">全局</Label>
@@ -369,7 +369,7 @@
         设置 <code>Attached="true"</code> 以及方位可以让标签吸附在容器中。
     </Description>
     <RunTemplate>
-        <Grid WidthCount="WidthCount.Three3">
+        <Grid ColSpan="ColSpan.Three3">
             <Column>
                 <Segment>
                     <Label Attached="true" AttachedVertical="VerticalPosition.Top">HTML</Label>
@@ -411,7 +411,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid WidthCount=""WidthCount.Three3"">
+<Grid ColSpan=""ColSpan.Three3"">
     <Column>
         <Segment>
             <Label Attached=""true"" AttachedVertical=""VerticalPosition.Top"">HTML</Label>

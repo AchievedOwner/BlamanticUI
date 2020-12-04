@@ -1,19 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示呈现卡片布局的元素。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUI" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUI" />
     [HtmlTag]
     public class Card : BlamanticChildContentComponentBase, IHasUI,IHasFluid,IHasCentered,IHasHorizontal,IHasLinked,IHasLink,IHasColor
     {

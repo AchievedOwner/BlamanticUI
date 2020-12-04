@@ -1,6 +1,6 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 表示组件的尺寸将随着设备的不同而倍增。

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供状态切换的功能。

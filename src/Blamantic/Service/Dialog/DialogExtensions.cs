@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示对话框的扩展。

@@ -1,19 +1,19 @@
 ﻿
 using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 让子组件呈现标签的样式。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
     public class Labeled : BlamanticChildContentComponentBase, IHasUIComponent
     {
@@ -26,7 +26,7 @@ namespace Blamantic
 
 
         /// <summary>
-        /// 设置子组件是否兼容 <see cref="Blamantic.Button"/> 组件。
+        /// 设置子组件是否兼容 <see cref="BlamanticUI.Button"/> 组件。
         /// </summary>
         [Parameter] public bool Button { get; set; }
 

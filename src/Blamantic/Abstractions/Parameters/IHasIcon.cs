@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供组件显示图标的功能。

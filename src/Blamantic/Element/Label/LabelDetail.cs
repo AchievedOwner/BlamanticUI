@@ -1,14 +1,14 @@
 ﻿
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示标签后面的详情。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     [CssClass("detail")]
     public class LabelDetail : BlamanticChildContentComponentBase

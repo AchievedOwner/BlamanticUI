@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示导航的扩展。

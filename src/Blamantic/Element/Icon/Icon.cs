@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 i 元素的图标组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     [HtmlTag("i")]
     public class Icon : BlamanticComponentBase, IHasColor,IHasInverted, IHasSize, IHasCircular, IHasLinked,IHasFitted,IHasBorder,IHasCornered
     {

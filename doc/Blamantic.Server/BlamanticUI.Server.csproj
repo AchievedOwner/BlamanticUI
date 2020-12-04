@@ -4,8 +4,7 @@
     <RazorLangVersion>3.0</RazorLangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Blamantic\Blamantic.csproj" />
-    <ProjectReference Include="..\Blamantic.Shared\Blamantic.Shared.csproj" />
+    <ProjectReference Include="..\Blamantic.Shared\BlamanticUI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

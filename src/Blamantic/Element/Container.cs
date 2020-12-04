@@ -1,15 +1,15 @@
 ﻿
 using YoiBlazor;
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示容器的组件，用于支持响应式合理布局。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Container : BlamanticChildContentComponentBase, IHasUIComponent, IHasChildContent, IHasFluid,IHasTexted
     {

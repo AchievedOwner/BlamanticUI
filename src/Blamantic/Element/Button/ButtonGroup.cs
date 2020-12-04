@@ -1,17 +1,17 @@
 ﻿
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示用于包含多个 <see cref="Button"/> 组件的按钮组。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
-    /// <seealso cref="Blamantic.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
     [CssClass("buttons")]
     public class ButtonGroup : BlamanticChildContentComponentBase, IHasUIComponent,IHasVertical,IHasSpan,IHasAttatched
@@ -27,13 +27,13 @@ namespace Blamantic
         /// </summary>
         [Parameter]public bool Vertical { get; set; }
         /// <summary>
-        /// 设置所有的按钮仅显示 <see cref="Blamantic.Icon"/> 图标。
+        /// 设置所有的按钮仅显示 <see cref="BlamanticUI.Icon"/> 图标。
         /// </summary>
         [Parameter][CssClass("icon")]public bool IconOnly { get; set; }
         /// <summary>
         /// 设置响应式宽度比例。
         /// </summary>
-        [Parameter]public Span? Span { get; set; }
+        [Parameter]public ColSpan Span { get; set; }
         /// <summary>
         /// 设置组件是否需要吸附于相对位置的其他组件。
         /// </summary>

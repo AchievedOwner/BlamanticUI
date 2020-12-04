@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示存储已注册的导航表格。

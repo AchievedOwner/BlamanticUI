@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示可以对表单进行字段分组。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Fields : BlamanticChildContentComponentBase, IHasInline, IHasSpan, IHasEqualWidth
     {
@@ -22,7 +22,7 @@ namespace Blamantic
         /// <summary>
         /// 设置字段的固定的宽度占比数。
         /// </summary>
-        [Parameter]public Span? Span { get; set; }
+        [Parameter]public ColSpan Span { get; set; }
         /// <summary>
         /// 设置字段组根据数量进行等宽适配。
         /// </summary>

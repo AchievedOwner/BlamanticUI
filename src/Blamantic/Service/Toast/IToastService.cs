@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 提供轻量级弹窗提示服务的功能。

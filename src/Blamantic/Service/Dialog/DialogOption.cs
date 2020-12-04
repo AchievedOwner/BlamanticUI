@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示对话框配置的选项。

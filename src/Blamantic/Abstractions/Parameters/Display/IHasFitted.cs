@@ -1,6 +1,6 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供对组件内部空间的定制化功能。

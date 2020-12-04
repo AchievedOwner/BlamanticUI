@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 组件的尺寸。
@@ -105,93 +105,7 @@ namespace Blamantic
         Black
     }
 
-    /// <summary>
-    /// 跨列的占比。
-    /// </summary>
-    [System.Flags]
-    public enum Span
-    {
-        /// <summary>
-        /// 比例为 1。
-        /// </summary>
-        [CssClass("one")]
-        One1 = 1,
-        /// <summary>
-        /// 比例为 2。
-        /// </summary>
-        [CssClass("two")]
-        Two2 = 2,
-        /// <summary>
-        /// 比例为 3。
-        /// </summary>
-        [CssClass("three")]
-        Three3 = 3,
-        /// <summary>
-        /// 比例为 4。
-        /// </summary>
-        [CssClass("four")]
-        Four4 = 4,
-        /// <summary>
-        /// 比例为 5。
-        /// </summary>
-        [CssClass("five")]
-        Five5 = 5,
-        /// <summary>
-        /// 比例为 6。
-        /// </summary>
-        [CssClass("six")]
-        Six6 = 6,
-        /// <summary>
-        /// 比例为 7。
-        /// </summary>
-        [CssClass("seven")]
-        Seven7 = 7,
-        /// <summary>
-        /// 比例为 8。
-        /// </summary>
-        [CssClass("eight")]
-        Eight8 = 8,
-        /// <summary>
-        /// 比例为 9。
-        /// </summary>
-        [CssClass("nine")]
-        Nine9 = 9,
-        /// <summary>
-        /// 比例为 10。
-        /// </summary>
-        [CssClass("ten")]
-        Ten10 = 10,
-        /// <summary>
-        /// 比例为 11。
-        /// </summary>
-        [CssClass("eleven")]
-        Eleven11 = 11,
-        /// <summary>
-        /// 比例为 12。
-        /// </summary>
-        [CssClass("twelve")]
-        Twelve12 = 12,
-        /// <summary>
-        /// 比例为 13。
-        /// </summary>
-        [CssClass("thirteen")]
-        Thirteen13 = 13,
-        /// <summary>
-        /// 比例为 14。
-        /// </summary>
-        [CssClass("fourteen")]
-        Fourteen14 = 14,
-        /// <summary>
-        /// 比例为 15。
-        /// </summary>
-        [CssClass("fifteen")]
-        Fifteen15 = 15,
-        /// <summary>
-        /// 比例为 16。
-        /// </summary>
-        [CssClass("sixteen")]
-        Sixteen16 = 16
-    }
+    
 
     /// <summary>
     /// 强调的类型。

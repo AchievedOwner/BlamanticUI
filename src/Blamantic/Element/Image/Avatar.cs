@@ -1,9 +1,9 @@
-﻿namespace Blamantic
+﻿namespace BlamanticUI
 {
     /// <summary>
     /// 作为呈现头像的图像组件。
     /// </summary>
-    /// <seealso cref="Blamantic.Image" />
+    /// <seealso cref="BlamanticUI.Image" />
     public class Avatar:Image
     {
         /// <summary>

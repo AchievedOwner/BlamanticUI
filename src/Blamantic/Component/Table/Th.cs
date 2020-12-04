@@ -1,11 +1,11 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示表格中的标题单元格。
     /// </summary>
-    /// <seealso cref="Blamantic.Td" />
+    /// <seealso cref="BlamanticUI.Td" />
     [HtmlTag("th")]
     public class Th : Td
     {

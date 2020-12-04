@@ -1,6 +1,6 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
     /// 提供组件可以被隐藏的功能。

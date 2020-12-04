@@ -3,7 +3,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -11,19 +11,19 @@ using Microsoft.AspNetCore.Components.Rendering;
 using YoiBlazor;
 using System.ComponentModel.DataAnnotations;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 表示表单中的字段。
     /// </summary>
-    /// <seealso cref="Blamantic.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
     public class Field : BlamanticChildContentComponentBase, IHasSpan, IHasState, IHasDisabled, IHasInline
     {
         /// <summary>
-        /// 设置表单域固定的宽度占比数。
+        /// 设置表单域的跨列占比。
         /// </summary>
-        [Parameter] [CssClass(" wide", Order = 1, Suffix = true)] public Span? Span { get; set; }
+        [Parameter] [CssClass(" wide", Order = 1, Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
         /// 设置文本具有醒目状态的样式。
         /// </summary>

@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/blamentic.css",
+    "inputFile": "wwwroot/blamentic.scss"
+  },
+  {
+    "outputFile": "wwwroot/blamantic.css",
+    "inputFile": "wwwroot/blamantic.scss"
+  }
+]

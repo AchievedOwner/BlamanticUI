@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 定义对话框的传递对象。

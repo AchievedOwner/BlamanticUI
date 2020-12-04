@@ -1,9 +1,9 @@
 ﻿using YoiBlazor;
 
-namespace Blamantic.Abstractions
+namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示创建 Blamantic 组件的基类。这是一个抽象类。
+    /// 表示创建 BlamanticUI 组件的基类。这是一个抽象类。
     /// </summary>
     /// <seealso cref="YoiBlazor.BlazorComponentBase" />
     public abstract class BlamanticComponentBase : BlazorComponentBase

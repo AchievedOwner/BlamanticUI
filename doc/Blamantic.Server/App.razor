@@ -1,10 +1,10 @@
 ﻿
-<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(Blamantic.Shared.Code).Assembly }">
+<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(BlamanticUI.Shared.Code).Assembly }">
     <Found Context="routeData">
-        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Blamantic.Shared.Shared.MainLayout)" />
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(BlamanticUI.Shared.Shared.MainLayout)" />
     </Found>
     <NotFound>
-        <LayoutView Layout="@typeof(Blamantic.Shared.Shared.MainLayout)">
+        <LayoutView Layout="@typeof(BlamanticUI.Shared.Shared.MainLayout)">
             <p>Sorry, there's nothing at this address.</p>
         </LayoutView>
     </NotFound>

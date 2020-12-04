@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-using Blamantic.Abstractions;
+using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 
 using YoiBlazor;
 
-namespace Blamantic
+namespace BlamanticUI
 {
     /// <summary>
     /// 呈现 button 元素表示用户操作的按钮。
@@ -90,11 +90,11 @@ namespace Blamantic
         /// </summary>
         [Parameter] public bool Basic { get; set; }
         /// <summary>
-        /// 设置 <see cref="Blamantic.Icon"/> 在按钮中具有标签样式的兼容，以及元素的排列顺序。
+        /// 设置 <see cref="BlamanticUI.Icon"/> 在按钮中具有标签样式的兼容，以及元素的排列顺序。
         /// </summary>
         [Parameter] [CssClass(" labeled icon", Suffix = true)] public HorizontalPosition? IconLabeled { get; set; }
         /// <summary>
-        /// 设置是否只有 <see cref="Blamantic.Icon"/> 图标。
+        /// 设置是否只有 <see cref="BlamanticUI.Icon"/> 图标。
         /// </summary>
         [Parameter][CssClass("icon")]public bool IconOnly { get; set; }
         /// <summary>
