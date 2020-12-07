@@ -1,11 +1,11 @@
 ﻿@page "/service/toast"
 @inject IToastService ToastService
 
-<ToastContainer />
+<ToastContainer  />
 
 <Pager DataSource="@(new List<string>(new[]
                      {
-                         "示例","自定义配置", "ToastContainer 参数","IToastService 方法"
+                         "示例","自定义配置","多种类型", "ToastContainer 参数","IToastService 方法"
                      }))">
     <Body>
         <Header1>
@@ -17,9 +17,8 @@
         <Segment>
             <Header4>配置说明：</Header4>
             <List Ordered="true">
-                <Item>添加 <code>services.AddToast();</code> 服务</Item>
-                <Item>配置 <code>ToastContainer</code> 组件</Item>
-                <Item>注入 <code>IToastService</code> 服务并调用方法</Item>
+                <Item>在页面中放入 <code>ToastContainer</code> 组件</Item>
+                <Item>使用注入的 <code>IToastService</code> 服务并调用方法</Item>
             </List>
         </Segment>
         <PresentationPart Title="示例">
@@ -120,18 +119,45 @@
 ")
     </CodeTemplate>
 </PresentationPart>
+        <PresentationPart Title="多种类型">
+            <Description>
+                设置 <code>Key</code> 可以兼容多种不同的 Toaster 消息。在调用 <code>ToastService</code> 时要指定 <code>Key</code>
+            </Description>
+            <RunTemplate>
+                <ToastContainer Key="TopRight" Position="DockUpasPosition.TopRight" />
+                <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowSuccess("我显示在右上角",key:"TopRight"))">右上显示</Button>
+                <ToastContainer Key="BottmRight" Position="DockUpasPosition.BottomRight" />
+                <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("你好，你拨打的电话暂时无法接通",key:"BottmRight"))">右下显示</Button>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<ToastContainer Key=""TopRight"" Position=""DockUpasPosition.TopRight"" />
+<Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowSuccess(""我显示在右上角"",key:""TopRight""))"">右上显示</Button>
+<ToastContainer Key=""BottmRight"" Position=""DockUpasPosition.BottomRight"" />
+<Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""你好，你拨打的电话暂时无法接通"",key:""BottmRight""))"">右下显示</Button>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
         <ParameterTable Title="ToastContainer 参数">
             <Content>
                 <tr>
+                    <td>Key</td>
+                    <td>区别不同显示容器的唯一标识。</td>
+                    <td>string</td>
+                    <td>Default</td>
+                </tr>
+                <tr>
                     <td>VerticalPosition</td>
                     <td>垂直方向显示的位置</td>
-                    <td>enum</td>
+                    <td>VerticalPosition</td>
                     <td>VerticalPosition.Top</td>
                 </tr>
                 <tr>
                     <td>HorizontalAlignment</td>
                     <td>水平方向的对齐方式</td>
-                    <td>enum</td>
+                    <td>HorizontalAlignment</td>
                     <td>HorizontalAlignment.Center</td>
                 </tr>
                 <tr>
@@ -148,43 +174,39 @@
                 </tr>
                 <tr>
                     <td>FadeInterval</td>
-                    <td>淡入淡出动画效果的帧间隔</td>
+                    <td>淡入淡出动画效果的帧间隔(毫秒)</td>
                     <td>int</td>
                     <td>30</td>
                 </tr>
                 <tr>
                     <td>ProgressBar</td>
                     <td>显示进度条</td>
-                    <td>enum</td>
-                    <td></td>
+                    <td>VerticalPosition?</td>
+                    <td>null</td>
                 </tr>
             </Content>
         </ParameterTable>
         <MethodTable Title="IToastService 方法">
             <Content>
                 <tr>
-                    <td>ShowSuccess(string message, string title = default, string iconClass = "check circle")</td>
+                    <td>ShowSuccess</td>
                     <td>弹出带有绿色背景并拥有 <Icon IconClass="check circle" /> 图标的提示</td>
                 </tr>
                 <tr>
-                    <td>ShowInfo(string message, string title = default, string iconClass = "info circle")</td>
+                    <td>ShowInfo</td>
                     <td>弹出带有蓝色背景并拥有 <Icon IconClass="info circle" /> 图标的提示</td>
                 </tr>
                 <tr>
-                    <td>ShowError(string message, string title = default, string iconClass = "times circle")</td>
+                    <td>ShowError</td>
                     <td>弹出带有红色背景并拥有 <Icon IconClass="times circle" /> 图标的提示</td>
                 </tr>
                 <tr>
-                    <td>ShowWarning(string message, string title = default, string iconClass = "attention circle")</td>
+                    <td>ShowWarning</td>
                     <td>弹出带有黄色背景并拥有 <Icon IconClass="attention circle" /> 图标的提示</td>
                 </tr>
                 <tr>
-                    <td>Show(string message, string title = default, string iconClass = default)</td>
-                    <td>默认白色背景的提示框，不带任何图标。</td>
-                </tr>
-                <tr>
-                    <td>Show(Action&lt;ToastSetting> settingAction)</td>
-                    <td>重载，自定义配置显示内容</td>
+                    <td>Show</td>
+                    <td>自定义配置显示内容</td>
                 </tr>
             </Content>
         </MethodTable>

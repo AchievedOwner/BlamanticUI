@@ -6,6 +6,10 @@
     public class ToastSetting
     {
         /// <summary>
+        /// 获取或设置容器的唯一标识。
+        /// </summary>
+        public string Key { get; set; } = "Default";
+        /// <summary>
         /// 获取或设置提示的标题。
         /// </summary>
         public string Title { get; set; }

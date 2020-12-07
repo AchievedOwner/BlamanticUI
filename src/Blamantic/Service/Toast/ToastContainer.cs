@@ -22,6 +22,7 @@ namespace BlamanticUI
         public ToastContainer()
         {
             Position = DockUpasPosition.TopCenter;
+            
         }
 
         [Inject] IToastService ToastService { get; set; }
@@ -51,6 +52,11 @@ namespace BlamanticUI
         /// 设置显示进度条的位置。
         /// </summary>
         [Parameter] public VerticalPosition? ProgressBar { get; set; }
+
+        /// <summary>
+        /// 设置唯一标志。用于调用时区别配置。
+        /// </summary>
+        [Parameter] public string Key { get; set; } = "Default";
 
         /// <summary>
         /// 存储弹窗的列表。
@@ -145,13 +151,16 @@ namespace BlamanticUI
         {
             InvokeAsync(() =>
             {
-                ToastList.Add(new ToastInstance
+                if (setting.Key == Key)
                 {
-                    Id = Guid.NewGuid(),
-                    Settings = setting,
-                    Timestamp = DateTime.Now
-                });
-                StateHasChanged();
+                    ToastList.Add(new ToastInstance
+                    {
+                        Id = Guid.NewGuid(),
+                        Settings = setting,
+                        Timestamp = DateTime.Now
+                    });
+                    StateHasChanged();
+                }
             });
         }
     }

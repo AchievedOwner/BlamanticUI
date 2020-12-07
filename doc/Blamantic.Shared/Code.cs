@@ -156,11 +156,6 @@ namespace BlamanticUI.Shared
         {
             nav.Add(new Navigation
             {
-                Name = "经纬度输入框",
-                Link = "/component/coordinate"
-            });
-            nav.Add(new Navigation
-            {
                 Name = "下拉菜单(Dropdown)",
                 Link = "/component/dropdown"
             });

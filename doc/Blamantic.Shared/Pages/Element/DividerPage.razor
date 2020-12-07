@@ -18,13 +18,13 @@
                 <ParagraphDemo />
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        ...
-        <Divider/>
-        ...
-        ```
-        ")
+@Code.GetCode(@"
+```html
+...
+<Divider/>
+...
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -59,27 +59,27 @@
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Segment>
-            <Grid ColSpan=""ColSpan.Two2"">
-                <Column>
-                    <ParagraphDemo />
-                    <br />
-                    <ParagraphDemo />
-                </Column>
-                <Column>
-                    <ParagraphDemo />
-                    <br />
-                    <ParagraphDemo />
-                </Column>
-            </Grid>
-            <Divider Vertical=""true"">
-                AND
-            </Divider>
-        </Segment>
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Grid ColSpan=""ColSpan.Two2"">
+        <Column>
+            <ParagraphDemo />
+            <br />
+            <ParagraphDemo />
+        </Column>
+        <Column>
+            <ParagraphDemo />
+            <br />
+            <ParagraphDemo />
+        </Column>
+    </Grid>
+    <Divider Vertical=""true"">
+        AND
+    </Divider>
+</Segment>
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -105,6 +105,21 @@
                     <Label Tag="true" Color="Color.Blue">加入到书签栏</Label>
                 </Segment>
             </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment HorizontalAlignment=""HorizontalAlignment.Center"" Basic=""true"">
+    <Button Color=""Color.Orange"">
+        <Icon IconClass=""home"" /> 回到主页
+    </Button>
+    <Divider Horizontal=""true"">
+        或者
+    </Divider>
+    <Label Tag=""true"" Color=""Color.Blue"">加入到书签栏</Label>
+</Segment>
+```
+")
+            </CodeTemplate>
         </PresentationPart>
 
         <PresentationPart Title="带有图标的分割线">
@@ -138,37 +153,37 @@
                 </Table>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Divider Horizontal=""true"">
-            <Header2>
-                <Icon IconClass=""tag"" /> 商品描述
-            </Header2>
-        </Divider>
-        <p>小飞象大衣是目前为止最具有保暖效果的羽绒服</p>
-        <Divider Horizontal=""true"">
-            <Header2>
-                <Icon IconClass=""bar chart"" /> 规格参数
-            </Header2>
-        </Divider>
-        <Table Definition=""true"">
-            <Body>
-                <Tr>
-                    <Td>尺寸</Td>
-                    <Td>1 * 2</Td>
-                </Tr>
-                <Tr>
-                    <Td>体重</Td>
-                    <Td>6 KG</Td>
-                </Tr>
-                <Tr>
-                    <Td>颜色</Td>
-                    <Td>黄色</Td>
-                </Tr>
-            </Body>
-        </Table>
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Divider Horizontal=""true"">
+    <Header2>
+        <Icon IconClass=""tag"" /> 商品描述
+    </Header2>
+</Divider>
+<p>小飞象大衣是目前为止最具有保暖效果的羽绒服</p>
+<Divider Horizontal=""true"">
+    <Header2>
+        <Icon IconClass=""bar chart"" /> 规格参数
+    </Header2>
+</Divider>
+<Table Definition=""true"">
+    <Body>
+        <Tr>
+            <Td>尺寸</Td>
+            <Td>1 * 2</Td>
+        </Tr>
+        <Tr>
+            <Td>体重</Td>
+            <Td>6 KG</Td>
+        </Tr>
+        <Tr>
+            <Td>颜色</Td>
+            <Td>黄色</Td>
+        </Tr>
+    </Body>
+</Table>
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -194,25 +209,25 @@
                 </Divider>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Left"">
-            <Header3>
-                <Icon IconClass=""left align"" /> 左对齐
-            </Header3>
-        </Divider>
-        <Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
-            <Header3>
-                <Icon IconClass=""center align"" /> 居中对齐
-            </Header3>
-        </Divider>
-        <Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Right"">
-            <Header3>
-                <Icon IconClass=""right align"" /> 右对齐
-            </Header3>
-        </Divider>
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Left"">
+    <Header3>
+        <Icon IconClass=""left align"" /> 左对齐
+    </Header3>
+</Divider>
+<Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+    <Header3>
+        <Icon IconClass=""center align"" /> 居中对齐
+    </Header3>
+</Divider>
+<Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Right"">
+    <Header3>
+        <Icon IconClass=""right align"" /> 右对齐
+    </Header3>
+</Divider>
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -228,17 +243,17 @@
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Segment Inverted=""true"">
-            <ParagraphDemo/>
-            <Divider Horizontal=""true"" Inverted=""true"">
-                水平显示
-            </Divider>
-            <ParagraphDemo/>
-        </Segment>
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Segment Inverted=""true"">
+    <ParagraphDemo/>
+    <Divider Horizontal=""true"" Inverted=""true"">
+        水平显示
+    </Divider>
+    <ParagraphDemo/>
+</Segment>
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -254,15 +269,15 @@
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Segment HorizontalAlignment=""HorizontalAlignment.Center"">
-            无敌是多么，多么的寂寞，无敌是多么，多么的空虚。
-            <Divider Fitted=""true"" />
-            独自在屏风中，冷风能不能吹过，我的寂寞，无情的寂寞！
-        </Segment>
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Segment HorizontalAlignment=""HorizontalAlignment.Center"">
+    无敌是多么，多么的寂寞，无敌是多么，多么的空虚。
+    <Divider Fitted=""true"" />
+    独自在屏风中，冷风能不能吹过，我的寂寞，无情的寂寞！
+</Segment>
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -278,15 +293,15 @@
                 <ParagraphDemo />
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Header3>第一部分</Header3>
-        <ParagraphDemo />
-        <Divider Hidden=""true"" />
-        <Header3>第二部分</Header3>
-        <ParagraphDemo />
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Header3>第一部分</Header3>
+<ParagraphDemo />
+<Divider Hidden=""true"" />
+<Header3>第二部分</Header3>
+<ParagraphDemo />
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -302,15 +317,15 @@
                 <ParagraphDemo />
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Header3>第一部分</Header3>
-        <ParagraphDemo />
-        <Divider Hidden=""true"" />
-        <Header3>第二部分</Header3>
-        <ParagraphDemo />
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Header3>第一部分</Header3>
+<ParagraphDemo />
+<Divider Section=""true"" />
+<Header3>第二部分</Header3>
+<ParagraphDemo />
+```
+")
             </CodeTemplate>
         </PresentationPart>
 
@@ -326,15 +341,15 @@
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
-        ```html
-        <Segment>
-            <Header2 Floated=""HorizontalPosition.Right"">右浮动标题</Header2>
-            <Divider Clearing=""true""/>
-            <ParagraphDemo/>
-        </Segment>
-        ```
-        ")
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Header2 Floated=""HorizontalPosition.Right"">右浮动标题</Header2>
+    <Divider Clearing=""true""/>
+    <ParagraphDemo/>
+</Segment>
+```
+")
             </CodeTemplate>
         </PresentationPart>
         <ParameterTable Title="参数">
