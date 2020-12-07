@@ -101,19 +101,10 @@ namespace BlamanticUI
                 builder.OpenElement(0, "div");
                 AddCommonAttributes(builder);
 
-                builder.AddContent(10,(RenderFragment)(child =>
+                builder.AddContent(10,(child =>
                 {
                     if (member != null)
                     {
-                        var displayAttribute = member?.GetCustomAttribute<DisplayAttribute>();
-                        if (displayAttribute != null)
-                        {
-                            child.OpenElement(0, "label");
-                            child.AddAttribute(1, "for", member.Name);
-                            child.AddContent(6, displayAttribute.Name);
-                            child.CloseElement();
-                        }
-
                         child.AddContent(20, ChildContent);
 
                         if (CascadedEditContext != null)

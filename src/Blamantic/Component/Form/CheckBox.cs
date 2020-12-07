@@ -11,11 +11,6 @@ namespace BlamanticUI
     public class CheckBox : FormInputBase<bool>
     {
         /// <summary>
-        /// 设置显示的文本。
-        /// </summary>
-        [Parameter] public string Label { get; set; }
-
-        /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
         /// </summary>
         /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
@@ -37,7 +32,7 @@ namespace BlamanticUI
                     builder.AddAttribute(4, "checked", BindConverter.FormatValue(CurrentValue));
                     builder.AddAttribute(5, "onchange", EventCallback.Factory.CreateBinder<bool>(this, __value => CurrentValue = __value, CurrentValue));
                     label.CloseElement();
-                    label.AddContent(10, Label);
+                    label.AddContent(10, DisplayName);
                 });
                 child.CloseElement();
             });

@@ -63,10 +63,17 @@ namespace BlamanticUI
         /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            builder.OpenComponent<CascadingValue<RadioGroup<TValue>>>(0);
-            builder.AddAttribute(1, "IsFixed", true);
-            builder.AddAttribute(2, "Value", this);
-            builder.AddAttribute(3, "ChildContent", ChildContent);
+            if (!string.IsNullOrEmpty(DisplayName))
+            {
+                builder.OpenElement(0, "label");
+                builder.AddAttribute(1, "for", FieldIdentifier.FieldName);
+                builder.AddContent(2, DisplayName);
+                builder.CloseElement();
+            }
+            builder.OpenComponent<CascadingValue<RadioGroup<TValue>>>(5);
+            builder.AddAttribute(6, "IsFixed", true);
+            builder.AddAttribute(7, "Value", this);
+            builder.AddAttribute(8, "ChildContent", ChildContent);
             builder.CloseComponent();
         }
     }

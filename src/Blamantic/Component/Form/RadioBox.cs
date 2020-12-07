@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace BlamanticUI
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq.Expressions;
+    using System.Reflection;
     using Abstractions;
     using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Components.Rendering;
@@ -23,9 +26,10 @@ namespace BlamanticUI
         [CascadingParameter]RadioGroup<TValue> CascadedRadioGroup { get; set; }
 
         /// <summary>
-        /// 设置显示的文本。
+        /// 设置显示文本。
         /// </summary>
-        [Parameter] public string Label { get; set; }
+        [Parameter]
+        public string Text { get; set; }
         /// <summary>
         /// 设置单选按钮包含的值。
         /// </summary>
@@ -79,7 +83,7 @@ namespace BlamanticUI
                         builder.AddAttribute(4, "checked", Checked);
                         builder.AddAttribute(5, "onchange", CascadedRadioGroup.ChangeEventCallback);
                         label.CloseElement();
-                        label.AddContent(10, Label);
+                        label.AddContent(10, Text);
                     });
                     child.CloseElement();
                 });

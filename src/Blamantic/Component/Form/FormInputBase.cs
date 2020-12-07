@@ -15,6 +15,12 @@ namespace BlamanticUI
     using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Components.Forms;
 
+    /// <summary>
+    /// 表示表单的输入组件基类。
+    /// </summary>
+    /// <typeparam name="TValue">值得类型。</typeparam>
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="System.IDisposable" />
     public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable
     {
         #region Private
@@ -24,35 +30,50 @@ namespace BlamanticUI
         private Type? _nullableUnderlyingType;
         #endregion
 
-        #region Constructor
+        #region Constructor        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FormInputBase{TValue}"/> class.
+        /// </summary>
         protected FormInputBase()
         {
             _validationStateChangedHandler = OnvalidateStateChanged;
         }
         #endregion
 
+        /// <summary>
+        /// Gets or sets the cascaded edit context.
+        /// </summary>
         [CascadingParameter] EditContext CascadedEditContext { get; set; } = default;
 
-        #region Parameters
+        #region Parameters        
+        /// <summary>
+        /// 设置输入组件的值。
+        /// </summary>
         [Parameter]public TValue? Value { get; set; }
+        /// <summary>
+        /// 设置一个回调方法，当值改变时触发。
+        /// </summary>
         [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
+        /// <summary>
+        /// Gets or sets the value expression.
+        /// </summary>
         [Parameter] public Expression<Func<TValue>> ValueExpression { get; set; }
 
         private string _displayName;
+        /// <summary>
+        /// 获取显示名称。优先从 <see cref="DisplayAttribute.Name"/> 中获取值。
+        /// </summary>
         [Parameter] public string DisplayName
         {
-            get => _displayName;
-            set
+            get
             {
-                if (value == null)
+                if (_displayName == null)
                 {
-                    _displayName = Value?.GetType()?.GetCustomAttribute<DisplayAttribute>()?.Name;
+                    return ((MemberExpression)ValueExpression?.Body)?.Member?.GetCustomAttribute<DisplayAttribute>()?.Name;
                 }
-                else
-                {
-                    _displayName = value;
-                }
+                return _displayName;
             }
+            set => _displayName = value;
         }
         #endregion
 
@@ -282,6 +303,5 @@ namespace BlamanticUI
 
             return newDictionaryCreated;
         }
-
     }
 }
