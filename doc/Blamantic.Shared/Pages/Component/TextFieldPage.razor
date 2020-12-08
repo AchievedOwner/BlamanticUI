@@ -1,0 +1,485 @@
+﻿@page "/component/textfield"
+
+<Pager DataSource="@(new List<string>
+                     {
+                         "文本框","密码框","多行文本框","数字框","显示标签的文本","触发方式","图标","图标模式","标签模式","行为模式","透明边框","尺寸"
+                     })">
+    <Body>
+        <Header1 Divider="true">
+            输入控件
+            <SubHeader>
+                输入是用于从用户那里引出响应的字段
+            </SubHeader>
+        </Header1>
+        <Message State="State.Info">
+            示例的实体：
+            @Code.GetCode(@"
+```cs
+class User
+{
+    [Display(Name = ""用户名"")]
+    [Required(ErrorMessage = ""{0}不能为空"")]
+    public string UserName { get; set; }
+
+    [Display(Name = ""密码"")]
+    [Required(ErrorMessage = ""{0}不能为空"")]
+    [StringLength(16, MinimumLength = 6)]
+    public string Password { get; set; }
+
+    [Display(Name = ""个人资料"")]
+    [StringLength(100)]
+    public string Description { get; set; }
+
+    [Display(Name = ""年龄"")]
+    [Required(ErrorMessage = ""{0}不能为空"")]
+    public int Age { get; set; }
+}
+```
+")
+        </Message>
+        <Message State="State.Warning" Icon="true">
+            <Icon IconClass="warning" Circular="true"/>
+            <Content>
+                使用 <code>Form</code> 代替 <code>EditForm</code> 并使用 <code>Field</code> 包装字段。
+            </Content>
+        </Message>
+        <PresentationPart Title="文本框">
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.UserName" />
+                        <br />
+                        @user.UserName
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.UserName"" />
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="密码框">
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.Password" Type="TextFieldType.Password" />
+                        <br />
+                        @user.Password
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.Password"" Type=""TextFieldType.Password"" />
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="多行文本框">
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.Description" Type="TextFieldType.MultiLine" Rows="6" />
+                        <br />
+                        @user.Description
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.Description"" Type=""TextFieldType.MultiLine"" Rows=""6"" />
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="数字文本框">
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.Age" Type="TextFieldType.Number" />
+                        <br />
+                        @user.Age
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.Age"" Type=""TextFieldType.Number"" />
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="显示标签的文本">
+            <Description>
+                自动识别 <code>System.ComponentModel.DataAnnotations.DisplayAttribute</code> 的 <code>Name</code> 值，作为标签显示，或设置 <code>DisplayName</code> 重写显示的文本。
+                <br />
+                设置 <code>DisplayNameType.Placeholder</code> 可以将显示的文本改为在 <code>placeholder</code> 中显示，可以设置 <code>Placeholder</code> 覆盖。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <Header5>原始：</Header5>
+                        <TextField @bind-Value="user.UserName" />
+                        <br />
+                        <Header5>设置 DisplayName</Header5>
+                        <TextField @bind-Value="user.UserName" DisplayName="自定义显示标签" />
+                        <br />
+                        <Header5>设置 DisplayNameType.Placeholder</Header5>
+                        <TextField @bind-Value="user.UserName" DisplayNameType="DisplayNameType.Placeholder" />
+                        <br />
+                        <Header5>设置 Placeholder</Header5>
+                        <TextField @bind-Value="user.UserName" Placeholder="用户名不能超过10个字符" />
+                        <br />
+                        <Header5>设置 DisplyaNameType.Placeholder 和 Placeholder</Header5>
+                        <TextField @bind-Value="user.UserName" DisplayNameType="DisplayNameType.Placeholder" Placeholder="必填项" />
+                        </Field>
+</Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<TextField @bind-Value=""user.UserName"" />
+<TextField @bind-Value=""user.UserName"" DisplayName=""自定义显示标签"" />
+<TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Placeholder"" />
+<TextField @bind-Value=""user.UserName"" Placeholder=""用户名不能超过10个字符"" />
+<TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Placeholder""  Placeholder=""必填项""/>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="触发方式">
+            <Description>
+                设置 <code>Trigger</code> 改变双向绑定的触发方式。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <Header5>默认：oninput</Header5>
+                        <TextField @bind-Value="user.UserName" />
+                        <br />
+                        @user.UserName
+                        <br />
+                        <Header5>改变为 onchange</Header5>
+                        <TextField @bind-Value="user.Description" Trigger="TextFieldTrigger.OnChange" />
+                        <br />
+                        @user.Description
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<TextField @bind-Value=""user.UserName"" />
+<TextField @bind-Value=""user.Description"" Trigger=""TextFieldTrigger.OnChange"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <Header2 Divider="true">装饰</Header2>
+        <PresentationPart Title="图标">
+            <Description>
+                设置 <code>Icon</code> 图标的类名称，会在文本框的左边显示图标。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.UserName" Icon="user" />
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.UserName"" Icon=""user"" />
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="图标模式">
+            <Description>
+                设置 <code>IconModel="true"</code> 后可以在 <code>Left</code> 或 <code>Right</code> 设置 UI 片段呈现图标。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.UserName" IconMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Right>
+                                <Icon IconClass="search" Circular="true" Inverted="true" Color="Color.Pink" Linked="true" />
+                            </Right>
+                        </TextField>
+                        <TextField @bind-Value="user.Password" IconMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Left>
+                                <Icon IconClass="lock" Circular="true" Inverted="true" Color="Color.Red" />
+                            </Left>
+                        </TextField>
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.UserName"" IconMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+            <Right>
+                <Icon IconClass=""user"" Circular=""true"" Inverted=""true"" Color=""Color.Pink"" />
+            </Right>
+        </TextField>
+        <TextField @bind-Value=""user.Password"" IconMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+            <Left>
+                <Icon IconClass=""lock"" Circular=""true"" Inverted=""true"" Color=""Color.Red"" />
+            </Left>
+        </TextField>
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="标签模式">
+            <Description>
+                设置 <code>LabelMode</code> 可以在 <code>Left</code> 和 <code>Right</code> 使用 <code>Label</code> 组件呈现内容。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.UserName" LabelMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Left>
+                                <Label Basic="true">用户名：</Label>
+                            </Left>
+                        </TextField>
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="user.Age" LabelMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Right>
+                                <Label>岁</Label>
+                            </Right>
+                        </TextField>
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="user.Age" Icon="tag" LabelMode="true" Placeholder="图标和标签可以混合搭配" DisplayNameType="DisplayNameType.Placeholder">
+                            <Right>
+                                <Label Tag="true" Color="Color.Orange">新标签</Label>
+                            </Right>
+                        </TextField>
+                    </Field>
+                </Form>
+            </RunTemplate>
+        </PresentationPart>
+        <PresentationPart Title="行为模式">
+            <Description>
+                设置 <code>ActionMode</code> 可以呈现具有行为的组件，例如 <code>Button</code>。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <Field>
+                        <TextField @bind-Value="user.UserName" ActionMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Right>
+                                <Button Color="Color.Blue">
+                                    搜索
+                                </Button>
+                            </Right>
+                        </TextField>
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="user.UserName" LabelMode="true" ActionMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Left>
+                                <Label>关键字</Label>
+                            </Left>
+                            <Right>
+                                <Button Basic="true" Color="Color.Black">
+                                    <Icon IconClass="search" />
+                                </Button>
+                            </Right>
+                        </TextField>
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="user.UserName" Icon="search" ActionMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                            <Right>
+                                <Button Animated="true" Color="Color.Green">
+                                    <Content Visibile="true" >
+                                        <Icon IconClass="cart" />
+                                    </Content>
+                                    <Content Hidden="true">
+                                        购物车
+                                    </Content>
+                                </Button>
+                            </Right>
+                        </TextField>
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.UserName"" ActionMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+            <Right>
+                <Button Color=""Color.Blue"">
+                    搜索
+                </Button>
+            </Right>
+        </TextField>
+    </Field>
+    <Field>
+        <TextField @bind-Value=""user.UserName"" LabelMode=""true"" ActionMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+            <Left>
+                <Label>关键字</Label>
+            </Left>
+            <Right>
+                <Button Basic=""true"" Color=""Color.Black"">
+                    <Icon IconClass=""search"" />
+                </Button>
+            </Right>
+        </TextField>
+    </Field>
+    <Field>
+        <TextField @bind-Value=""user.UserName"" Icon=""search"" ActionMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+            <Right>
+                <Button Animated=""true"" Color=""Color.Green"">
+                    <Content Visibile=""true"" >
+                        <Icon IconClass=""cart"" />
+                    </Content>
+                    <Content Hidden=""true"">
+                        购物车
+                    </Content>
+                </Button>
+            </Right>
+        </TextField>
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="透明边框">
+            <Description>
+                设置 <code>Transparent="true"</code> 隐藏边框。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                        <Field>
+                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent="true" />
+                        </Field>
+                        <Field>
+                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent="true" Icon="calendar" />
+                        </Field>
+                        <Field>
+                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent="true" IconMode="true">
+                                <Right>
+                                    <Icon IconClass="time" Circular="true" />
+                                </Right>
+                            </TextField>
+                        </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+        <Field>
+            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent=""true"" />
+        </Field>
+        <Field>
+            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent=""true"" Icon=""calendar"" />
+        </Field>
+        <Field>
+            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent=""true"" IconMode=""true"">
+                <Right>
+                    <Icon IconClass=""time"" Circular=""true"" />
+                </Right>
+            </TextField>
+        </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="尺寸">
+            <Description>
+                设置 <code>Size</code> 可以显示不同的尺寸。
+            </Description>
+            <RunTemplate>
+                <Form Model="user">
+                    <TextField @bind-Value="user.Search" Size="Size.Mini" Placeholder="Mini" />
+                    <TextField @bind-Value="user.Search" Size="Size.Tiny" Placeholder="Tiny" />
+                    <TextField @bind-Value="user.Search" Size="Size.Small" Placeholder="Small" />
+                    <TextField @bind-Value="user.Search" Size="Size.Medium" Placeholder="Medium" />
+                    <TextField @bind-Value="user.Search" Size="Size.Large" Placeholder="Large" />
+                    <TextField @bind-Value="user.Search" Size="Size.Big" Placeholder="Big" />
+                    <TextField @bind-Value="user.Search" Size="Size.Huge" Placeholder="Huge" />
+                    <TextField @bind-Value="user.Search" Size="Size.Massive" Placeholder="Massive" />
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <TextField @bind-Value=""user.Search"" Size=""Size.Mini"" Placeholder=""Mini"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Tiny"" Placeholder=""Tiny"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Small"" Placeholder=""Small"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Medium"" Placeholder=""Medium"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Large"" Placeholder=""Large"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Big"" Placeholder=""Big"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Huge"" Placeholder=""Huge"" />
+    <TextField @bind-Value=""user.Search"" Size=""Size.Massive"" Placeholder=""Massive"" />
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager>
+
+@code{
+    class User
+    {
+        [Display(Name = "用户名")]
+        [Required(ErrorMessage = "{0}不能为空")]
+        public string UserName { get; set; }
+
+        [Display(Name = "密码")]
+        [Required(ErrorMessage = "{0}不能为空")]
+        [StringLength(16, MinimumLength = 6)]
+        public string Password { get; set; }
+
+        [Display(Name = "个人资料")]
+        [StringLength(100)]
+        public string Description { get; set; }
+
+        [Display(Name = "年龄")]
+        [Required(ErrorMessage = "{0}不能为空")]
+        public int Age { get; set; }
+
+        public string Search { get; set; }
+    }
+
+    private User user = new User();
+}
