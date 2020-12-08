@@ -1,0 +1,78 @@
+﻿@page "/component/common/flag"
+<Pager DataSource="@(new List<string>(new[] {" 示例","遍历" }))">
+    <Body>
+<Header1 Divider="true">
+    旗帜
+    <SubHeader>
+        旗帜被用来代表一个政治国家。
+    </SubHeader>
+</Header1>
+<Segment>
+    使用 <code>Flag</code> 组件并设置 <code>FlagType</code> 选择旗帜。
+</Segment>
+
+<PresentationPart Title="示例">
+    <Description>
+        <code>FlagType</code> 是一个枚举类型，基本涵盖了全世界的国家和地区。
+    </Description>
+    <RunTemplate>
+        <Flag FlagType="Flag.Type.China" title="中国"/>
+        <Flag FlagType="Flag.Type.UnitedStates" title="美国"/>
+        <Flag FlagType="Flag.Type.Brazil" title="巴西"/>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Flag FlagType=""Flag.Type.China"" />
+<Flag FlagType=""Flag.Type.UnitedStates"" />
+<Flag FlagType=""Flag.Type.Brazil"" />
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="遍历">
+    <Description>
+        通过代码的方式输出所有的旗帜图案。
+    </Description>
+    <RunTemplate>
+            @Flags
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+@Flags
+```
+```csharp
+RenderFragment Flags = builder =>
+{
+    var flagList = Enum.GetNames(typeof(Flag.Type));
+    var i = 0;
+    foreach (var item in flagList)
+    {
+        builder.OpenComponent<Flag>(i);
+        builder.AddAttribute(i + 1, nameof(Flag.FlagType), Enum.Parse<Flag.Type>(item));
+        builder.CloseComponent();
+        i++;
+    }
+};
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+    </Body>
+</Pager>
+
+@code{
+    RenderFragment Flags = builder =>
+    {
+        var flagList = Enum.GetNames(typeof(Flag.Type));
+        var i = 0;
+        foreach (var item in flagList)
+        {
+            builder.OpenComponent<Flag>(i);
+            builder.AddAttribute(i + 1, nameof(Flag.FlagType), Enum.Parse<Flag.Type>(item));
+            builder.CloseComponent();
+            i++;
+        }
+    };
+}

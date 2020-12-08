@@ -1,98 +1,19 @@
-﻿<Menu Fixed="AbsolutePosition.Top" BackgroundColor="Color.Black">
+﻿<Menu BackgroundColor="Color.Purple">
     <Item>
-        <Header2 Inverted="true">
-            @Code.TITLE
-        </Header2>
+        <Image Source="img/logo-white.png" />
     </Item>
-
-    <LinkItem Link="/">首页(Home)</LinkItem>
-    <LinkItem Link="/common/global">全局(Global)</LinkItem>
-    <DropDownItem>
-        元素(Element)
-        <Icon IconClass="dropdown" />
-        <SubMenu AdditionalStyles="@("overflow-y:auto;max-height:400px")">
-            @foreach (var item in Elements)
-            {
-                <LinkItem Link="@item.Link" Match="NavLinkMatch.All">
-                    @item.Name
-                </LinkItem>
-            }
-        </SubMenu>
-    </DropDownItem>
-    <DropDownItem>
-        组件(Component)
-        <Icon IconClass="dropdown" />
-        <SubMenu>
-            @foreach (var item in Components)
-            {
-                <LinkItem Link="@item.Link" Match="NavLinkMatch.All">
-                    @item.Name
-                </LinkItem>
-            }
-        </SubMenu>
-    </DropDownItem>
-    <DropDownItem>
-        服务(Service)
-        <Icon IconClass="dropdown" />
-        <SubMenu>
-            @foreach (var item in Services)
-            {
-                <LinkItem Link="@item.Link" Match="NavLinkMatch.All">
-                    @item.Name
-                </LinkItem>
-            }
-        </SubMenu>
-    </DropDownItem>
-    <Item AdditionalStyles="@("width:200px")">
-        <DropDownList AdditionalStyles="@("width:90%!important")" MaxFilterItems="5" Removable="true" Size="Size.Mini" Compact="true" Fluid="true" Filterable="true" T="Navigation" DataSource="SearchMenus" OnItemSelected="SelectItem" FilterField="@nameof(Navigation.Name)">
-            <DefaultItem>关键字</DefaultItem>
-            <ItemFormat>
-                @context.Name
-            </ItemFormat>
-        </DropDownList>
+    <Item>
+        <Header1 Inverted="true">@Code.TITLE</Header1>
     </Item>
     <Menu UI="false" HorizontalPosition="HorizontalPosition.Right">
-
-        <LinkItem Link="https://github.com/AchievedOwner/CastUI.git" Target="LinkTarget.Blank" Title="Github">
-            <Content>
-                <Icon IconClass="github" Size="Size.Large" />
-                <Label Inverted="true" Color="Color.Yellow">@Code.GetVersion()</Label>
-            </Content>
+        <LinkItem Link="/">首页</LinkItem>
+        <LinkItem Link="/component" Match="NavLinkMatch.Prefix">组件</LinkItem>
+        <LinkItem>
+            <Icon IconClass="github" Size="Size.Large" />
+            <Label Inverted="true" Color="Color.Yellow">@Code.GetVersion()</Label>
+        </LinkItem>
+        <LinkItem>
+            <Icon IconClass="bug" Size="Size.Large" />
         </LinkItem>
     </Menu>
 </Menu>
-
-@inject INavigationService NavService
-@inject Microsoft.AspNetCore.Components.NavigationManager NavManager
-@code{
-
-    IEnumerable<Navigation> SearchMenus { get; set; }
-
-    IEnumerable<Navigation> Components { get; set; }
-    IEnumerable<Navigation> Elements { get; set; }
-    IEnumerable<Navigation> Services { get; set; }
-
-    protected override void OnInitialized()
-    {
-        Components = NavService.GetNavigations("Component");
-        Elements = NavService.GetNavigations("Element");
-        Services = NavService.GetNavigations("Service");
-
-        SearchMenus = Components.Concat(Elements).Concat(Services).OrderBy(m=>m.Name);
-    }
-
-    void SelectItem(Navigation item)
-    {
-        if (item == null)
-        {
-            return;
-        }
-
-        if (NavManager.Uri.Contains(item.Link))
-        {
-            return;
-        }
-
-        NavManager.NavigateTo(item.Link);
-    }
-}

@@ -1,0 +1,86 @@
+﻿@page "/component"
+
+<Header4 Divider="true">
+    通用(Common)
+</Header4>
+<Grid Span="ColSpan.Five5">
+    @foreach (var item in Common)
+    {
+        <Column>
+            <NavLink href="@item.Link">
+                @item.Name
+            </NavLink>
+        </Column>
+    }
+</Grid>
+<Header4 Divider="true">
+    输入(Input)
+</Header4>
+<Grid Span="ColSpan.Five5">
+    @foreach (var item in Input)
+    {
+        <Column>
+            <NavLink href="@item.Link">
+                @item.Name
+            </NavLink>
+        </Column>
+    }
+</Grid>
+<Header4 Divider="true">
+    布局(Layout)
+</Header4>
+<Grid Span="ColSpan.Five5">
+    @foreach (var item in Layout)
+    {
+        <Column>
+            <NavLink href="@item.Link">
+                @item.Name
+            </NavLink>
+        </Column>
+    }
+</Grid>
+<Header4 Divider="true">
+    数据(Data)
+</Header4>
+<Grid Span="ColSpan.Five5">
+    @foreach (var item in Data)
+    {
+        <Column>
+            <NavLink href="@item.Link">
+                @item.Name
+            </NavLink>
+        </Column>
+    }
+</Grid>
+<Header4 Divider="true">
+    反馈(Feedback)
+</Header4>
+<Grid Span="ColSpan.Five5">
+    @foreach (var item in Feedback)
+    {
+        <Column>
+            <NavLink href="@item.Link">
+                @item.Name
+            </NavLink>
+        </Column>
+    }
+</Grid>
+
+@inject INavigationService NavService
+
+@code{
+    IEnumerable<Navigation> Common { get; set; }
+    IEnumerable<Navigation> Input { get; set; }
+    IEnumerable<Navigation> Layout { get; set; }
+    IEnumerable<Navigation> Data { get; set; }
+    IEnumerable<Navigation> Feedback { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Common = NavService.GetNavigations("Common");
+        Input = NavService.GetNavigations("Input");
+        Layout = NavService.GetNavigations("Layout");
+        Data = NavService.GetNavigations("Data");
+        Feedback = NavService.GetNavigations("Feedback");
+    }
+}

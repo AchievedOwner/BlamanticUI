@@ -1,0 +1,568 @@
+﻿@page "/component/input/input"
+
+<Pager DataSource="@(new List<string>(new[]{
+                         "示例","焦点状态","图标","标签样式","角标输入框","行为样式","透明","反色背景","撑满","尺寸","参数","方法"
+                     }))">
+    <Body>
+        <Header1>
+            输入控件
+            <SubHeader>
+                输入是用于从用户那里引出响应的字段
+            </SubHeader>
+        </Header1>
+        <Segment>
+            使用 <code>InputBox</code> 组件进行包装可以多样化显示输入控件。
+        </Segment>
+        <PresentationPart Title="示例">
+            <RunTemplate>
+                <InputBox>
+                    <input placeholder="文本框"/>
+                </InputBox>                
+            </RunTemplate>
+            <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox>
+    <input placeholder=""文本框""/>
+</InputBox>     
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="焦点状态">
+    <Description>
+        设置 <code>Focus="true"</code> 使控件呈现焦点状态。
+    </Description>
+    <RunTemplate>
+        <InputBox Focus="true">
+            <input placeholder="文本框" />
+        </InputBox>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox Focus=""true"">
+    <input placeholder=""文本框"" />
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="图标">
+    <Description>
+        设置 <code>Icon</code> 可以包装并显示 <code>Icon</code> 组件的图标。
+    </Description>
+    <RunTemplate>
+        <InputBox Icon="HorizontalPosition.Left">
+            <Icon IconClass="search" />
+            <input placeholder="关键字" />
+        </InputBox>
+        <br />
+        <InputBox Icon="HorizontalPosition.Right">
+            <Icon IconClass="search" />
+            <input placeholder="关键字" />
+        </InputBox>
+        <br />
+        <InputBox Icon="HorizontalPosition.Left">
+            <Icon IconClass="search" Circular="true" Inverted="true"/>
+            <input placeholder="关键字" />
+        </InputBox>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox Icon=""HorizontalPosition.Left"">
+    <Icon IconClass=""search"" />
+    <input placeholder=""关键字""/>
+</InputBox>
+<br/>
+<InputBox Icon=""HorizontalPosition.Right"">
+    <Icon IconClass=""search"" />
+    <input placeholder=""关键字""/>
+</InputBox>
+<br />
+<InputBox Icon=""HorizontalPosition.Left"">
+    <Icon IconClass=""search"" Circular=""true"" Inverted=""true""/>
+    <input placeholder=""关键字"" />
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="标签样式">
+    <Description>
+        设置 <code>Labeled</code> 让包装的控件和 <code>Label</code> 组件能无缝黏贴在一起。
+    </Description>
+    <RunTemplate>
+        <InputBox Labeled="HorizontalPosition.Left">
+            <Label>http://</Label>
+            <input placeholder="site.com" />
+        </InputBox>
+        <br />
+        <br />
+        <InputBox Labeled="HorizontalPosition.Right">
+            <input />
+            <Label Dropdown="true">
+                <Text>.com</Text>
+                <Icon IconClass="dropdown" />
+                <Menu>
+                    <Item>.net</Item>
+                    <Item>.io</Item>
+                    <Item>.org</Item>
+                </Menu>
+            </Label>
+        </InputBox>
+        <br />
+        <br />
+        <InputBox Labeled="HorizontalPosition.Right">
+            <input 身高 />
+            <Label Basic="true">CM</Label>
+        </InputBox>
+        <br />
+        <br />
+
+        <Message State="State.Info" Compact="true">
+            如果前后都有 <code>Label</code> 则设置 <code>Labeled="HorizontalPosition.Right"</code>。
+        </Message>
+        <br />
+        <InputBox Labeled="HorizontalPosition.Right">
+            <Label>￥</Label>
+            <input placeholder="价格" />
+            <Label Basic="true">.00</Label>
+        </InputBox>
+        <br />
+        <br />
+        <InputBox Labeled="HorizontalPosition.Right" Icon="HorizontalPosition.Right">
+            <Icon IconClass="tags" />
+            <input placeholder="价格" />
+            <Label Tag="true" Color="Color.Brown">新标签</Label>
+        </InputBox>
+
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox Labeled=""HorizontalPosition.Left"">
+    <Label>http://</Label>
+    <input placeholder=""site.com"" />
+</InputBox>
+<br />
+<br />
+<InputBox Labeled=""HorizontalPosition.Right"">
+    <input />
+    <Label Dropdown=""true"">
+        <Text>.com</Text>
+        <Icon IconClass=""dropdown"" />
+        <Menu>
+            <Item>.net</Item>
+            <Item>.io</Item>
+            <Item>.org</Item>
+        </Menu>
+    </Label>
+</InputBox>
+<br />
+<br />
+<InputBox Labeled=""HorizontalPosition.Right"">
+    <input 身高 />
+    <Label Basic=""true"">CM</Label>
+</InputBox>
+<br />
+<br />
+
+<Message State=""State.Info"" Compact=""true"">
+    如果前后都有 <code>Label</code> 则设置 <code>Labeled=""HorizontalPosition.Right""</code>。
+</Message>
+<br />
+<InputBox Labeled=""HorizontalPosition.Right"">
+    <Label>￥</Label>
+    <input placeholder=""价格"" />
+    <Label Basic=""true"">.00</Label>
+</InputBox>
+<br />
+<br />
+<InputBox Labeled=""HorizontalPosition.Right"" Icon=""HorizontalPosition.Right"">
+    <Icon IconClass=""tags"" />
+    <input placeholder=""价格"" />
+    <Label Tag=""true"" Color=""Color.Brown"">新标签</Label>
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="角标输入框">
+            <Description>
+                设置 <code>CorneredLabel</code> 可以呈现角标在文本框。但不需要设置 <code>Labeled</code> 参数
+            </Description>
+            <RunTemplate>
+                <InputBox CorneredLabel="HorizontalPosition.Left">
+                    <input placeholder="姓名" />
+                    <Label Cornered="HorizontalPosition.Left">
+                        <Icon Color="Color.Red" IconClass="asterisk" />
+                    </Label>
+                </InputBox>
+                <InputBox CorneredLabel="HorizontalPosition.Right">
+                    <input placeholder="姓名" />
+                    <Label Color="Color.Green" Cornered="HorizontalPosition.Right">
+                        <Icon IconClass="asterisk" />
+                    </Label>
+                </InputBox>
+            </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox CorneredLabel=""HorizontalPosition.Left"">
+    <input placeholder=""姓名"" />
+    <Label Cornered=""HorizontalPosition.Left"">
+        <Icon Color=""Color.Red"" IconClass=""asterisk"" />
+    </Label>
+</InputBox>
+<InputBox CorneredLabel=""HorizontalPosition.Right"">
+    <input placeholder=""姓名"" />
+    <Label Color=""Color.Green"" Cornered=""HorizontalPosition.Right"">
+        <Icon IconClass=""asterisk"" />
+    </Label>
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="行为样式">
+            <SubTitle>
+                可以对输入进行格式化，以提醒用户可能执行的操作
+            </SubTitle>
+            <Description>
+                设置 <code>Action</code> 则可配合按钮等可操作的行为呈现样式。
+            </Description>
+            <RunTemplate>
+                <InputBox Action="HorizontalPosition.Right">
+                    <input placeholder="关键字..." />
+                    <Button>搜索</Button>
+                </InputBox>
+                <br />
+                <br />
+                <InputBox Action="HorizontalPosition.Left">
+                    <Button Color="Color.Blue" IconLabeled="HorizontalPosition.Left">
+                        <Icon IconClass="cart" />
+                        加入购物车
+                    </Button>
+                    <input placeholder="数量" />
+                </InputBox>
+            </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox Action=""HorizontalPosition.Right"">
+    <input placeholder=""关键字..."" />
+    <Button>搜索</Button>
+</InputBox>
+<br />
+<br />
+<InputBox Action=""HorizontalPosition.Left"">
+    <Button Color=""Color.Blue"" Labeled=""true"" Icon=""true"">
+        <Icon IconClass=""cart"" />
+        加入购物车
+    </Button>
+    <input placeholder=""数量"" />
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="透明">
+    <Description>
+        设置 <code>Transparent="true"</code> 让组件内的边框透明。
+    </Description>
+    <RunTemplate>
+        <InputBox Transparent="true">
+            <input placeholder="关键字" />
+        </InputBox>
+        <br />
+        <br />
+        <InputBox Transparent="true" Icon="HorizontalPosition.Left">
+            <input placeholder="关键字" />
+            <Icon IconClass="search" />
+        </InputBox>
+        <br />
+        <br />
+        <InputBox Transparent="true" Icon="HorizontalPosition.Right">
+            <input placeholder="关键字" />
+            <Icon IconClass="search" />
+        </InputBox>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox Transparent=""true"">
+    <input placeholder=""关键字"" />
+</InputBox>
+<br />
+<br />
+<InputBox Transparent=""true"" Icon=""HorizontalPosition.Left"">
+    <input placeholder=""关键字"" />
+    <Icon IconClass=""search"" />
+</InputBox>
+<br />
+<br />
+<InputBox Transparent=""true"" Icon=""HorizontalPosition.Right"">
+    <input placeholder=""关键字"" />
+    <Icon IconClass=""search"" />
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="反色背景">
+    <Description>
+        设置 <code>Inverted="true"</code> 可以显示在反色背景中。
+    </Description>
+    <RunTemplate>
+        <Segment Inverted="true">
+            <InputBox Inverted="true">
+                <input placeholder="关键字" />
+            </InputBox>
+            <br />
+            <br />
+            <InputBox Inverted="true" Icon="HorizontalPosition.Left">
+                <input placeholder="关键字" />
+                <Icon IconClass="search" />
+            </InputBox>
+            <br />
+            <br />
+            <InputBox Inverted="true" Icon="HorizontalPosition.Right" Transparent="true">
+                <input placeholder="关键字" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment Inverted=""true"">
+    <InputBox Inverted=""true"">
+        <input placeholder=""关键字"" />
+    </InputBox>
+    <br />
+    <br />
+    <InputBox Inverted=""true"" Icon=""true"">
+        <input placeholder=""关键字"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+    <br />
+    <br />
+    <InputBox Inverted=""true"" Icon=""false"" Transparent=""true"">
+        <input placeholder=""关键字"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="撑满">
+    <Description>
+        设置 <code>Fluid="true"</code> 撑满整个父容器。
+    </Description>
+    <RunTemplate>
+        <InputBox Fluid="true">
+            <input placeholder="关键字"/>
+        </InputBox>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<InputBox Fluid=""true"">
+    <input placeholder=""关键字""/>
+</InputBox>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="尺寸">
+    <Description>
+        设置 <code>Size</code> 将使包装的组件与大小相匹配。
+    </Description>
+    <RunTemplate>
+        <p>
+            <InputBox Size="Size.Mini" Icon="HorizontalPosition.Right">
+                <input placeholder="Mini" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Tiny" Icon="HorizontalPosition.Right">
+                <input placeholder="Tiny" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Small" Icon="HorizontalPosition.Right">
+                <input placeholder="Small" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Medium" Icon="HorizontalPosition.Right">
+                <input placeholder="Medium" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Large" Icon="HorizontalPosition.Right">
+                <input placeholder="Large" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Big" Icon="HorizontalPosition.Right">
+                <input placeholder="Big" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Huge" Icon="HorizontalPosition.Right">
+                <input placeholder="Huge" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+        <p>
+            <InputBox Size="Size.Massive" Icon="HorizontalPosition.Right">
+                <input placeholder="Massive" />
+                <Icon IconClass="search" />
+            </InputBox>
+        </p>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<p>
+    <InputBox Size=""Size.Mini"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Mini"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Tiny"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Tiny"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Small"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Small"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Medium"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Medium"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Large"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Large"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Big"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Big"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Huge"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Huge"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+<p>
+    <InputBox Size=""Size.Massive"" Icon=""HorizontalPosition.Right"">
+        <input placeholder=""Massive"" />
+        <Icon IconClass=""search"" />
+    </InputBox>
+</p>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                <ParameterTable>
+            <Content>
+                <tr>
+                    <td>Icon</td>
+                    <td>是否使用 <code>Icon</code> 组件和输入控件组合显示</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Focus</td>
+                    <td>输入框的已获取焦点</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Action</td>
+                    <td>配合可操作的行为的样式</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Loading</td>
+                    <td>是否处于加载中状态</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Disabled</td>
+                    <td>是否禁用状态</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Labeled</td>
+                    <td>与 <code>Label</code> 组件的组合，让组件无缝黏贴在一起</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Transparent</td>
+                    <td>输入框变为透明，不显示任何边框</td>
+                    <td>true</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CorneredLabel</td>
+                    <td>使用角标的方式呈现 <code>Label</code> 组件的图标，但不需要设置 <code>Labeled</code> 参数</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Inverted</td>
+                    <td>反色背景</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Fluid</td>
+                    <td>成流式布局并把宽度设置为 100% 以此撑满整个父元素</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Size</td>
+                    <td>尺寸大小</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+            </Content>
+        </ParameterTable>                
+        <MethodTable>
+            <Content>
+                <tr>
+                    <td>Disable(bool disabled = true)</td>
+                    <td>使组件被禁止使用</td>
+                </tr>
+            </Content>
+        </MethodTable>
+    </Body>
+</Pager>

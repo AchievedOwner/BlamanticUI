@@ -1,29 +1,40 @@
 ﻿@page "/"
-
+@layout Shared.EmptyLayout
 <div style="padding-left:5px">
-    <Header1 Divider="true">
-
-        <Image Source="img/logo.png" />
-        <Content>
-            @Code.TITLE
-            <SubHeader>让 C# 程序员也能用熟悉的语言编写前端。</SubHeader>
-        </Content>
-    </Header1>
 
     <Segment Raised="true" Stacked="true" Tall="true">
-        <Grid>
-            <Row>
-                <Column  Span="ColSpan.Eleven11">
-                    <p>
-                        @Code.TITLE 是基于 Formantic UI 为 CSS 样式库基础的 Blazor 前端框架。
-                    </p>
-                    <p>
-                        通过简单的参数设置，抛弃复杂的 css 名称和搭配顺序，
-                        并且可以随意组合，极大地提升了后端程序员编写前端的效率。
-                    </p>
-                    <p>
-                        内置的自动化机制，只需几行代码即可完成组件的开发.。
-                    </p>
+        <Header1 Divider="true">
+            <Image Source="img/logo.png" />
+            <Content>
+                @Code.TITLE
+                <SubHeader>可以自由组合的 UI 框架。</SubHeader>
+            </Content>
+        </Header1>
+
+        <Header2 Divider="true">
+            快速开始
+        </Header2>
+        
+ 
+        <Table Celled="true" Definition="true" Compact="true">
+            <Tr>
+                <Th HorizontalAlignment="HorizontalAlignment.Center">
+                    <h2>步骤</h2>
+                </Th>
+                <Th HorizontalAlignment="HorizontalAlignment.Center">
+                    <h2> Blazor WebAssembly</h2>
+                </Th>
+                <Th HorizontalAlignment="HorizontalAlignment.Center">
+                    <h2> Blazor Server</h2>
+                </Th>
+            </Tr>
+            <Tr>
+                <Td>
+                    <Icon IconClass="dice one" Size="Size.Huge" />
+                </Td>
+                <Td ColSpan="2">
+                    通过以下方式安装组件包：
+                    <br />
                     <Tab>
                         <TabItem Title="程序包管理控制台(Package Manager)">
                             <Segment Color="Color.Grey" Inverted="true">
@@ -36,43 +47,102 @@
                             </Segment>
                         </TabItem>
                         <TabItem Title="PackageReference(.csproj)">
-                            @Code.GetCode($@"
+                @Code.GetCode($@"
 ```html
 <PackageReference Include=""{@Code.TITLE}"" Version=""{verion}"" />
 ```
-                    ")
+        ")
                         </TabItem>
                     </Tab>
-
-                    <Header3 Divider="true">
-                        如何开始
-                    </Header3>
-                    在 <code>_Import.razor</code> 引入命名空间 <code>@@BlamanticUI</code>
-                    <Tab AdditionalStyles="@("margin-top:5px")">
-                        <TabItem Title="WebAssembly">
-                            在 <code>index.html</code> 引入 <code>semantic.min.css</code>
-                            @Code.GetCode(@"
+                </Td>
+            </Tr>
+            <Tr>
+                <Td>
+                    <Icon IconClass="dice two" Size="Size.Huge" />
+                </Td>
+                <Td>
+                    @Code.GetCode(@"
+在 `index.html` 引入
 ```html
 <link href=""_content/BlamanticUI/semantic.min.css"" rel=""stylesheet"" />
-```
+<link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
+````
 ")
-                        </TabItem>
-                        <TabItem Title="Blazor Server">
-
-                            在 <code>_Host.cshtml</code> 引入 <code>semantic.min.css</code>
-                            @Code.GetCode(@"
+                </Td>
+                <Td>
+                    @Code.GetCode(@"
+在 `_Host.cshtml` 引入
 ```html
 <link href=""_content/BlamanticUI/semantic.min.css"" rel=""stylesheet"" />
+<link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
+````
+")
+                </Td>
+            </Tr>
+            <Tr>
+                <td>
+                    <Icon IconClass="dice three" Size="Size.Huge" />
+                </td>
+                <td>
+                    @Code.GetCode(@"
+```cs
+//在 Program.cs 中
+
+//...
+Host.Services.AddBlamanticUI();//添加服务
+//...
 ```
 ")
-                        </TabItem>
-                    </Tab>
-                </Column>
-                <Column  Span="@(5)" AdditionalStyles="@("height:450px;overflow-y:auto")">
-                    <BlamanticUI.Shared.Pages.Common.ReleaseNote />
-                </Column>
-            </Row>
-        </Grid>
+                </td>
+                <td>
+                    @Code.GetCode(@"
+```cs
+// 在 Startup.cs 中
+
+public void ConfigureServices(IServiceCollection services)
+{
+//...
+services.AddBlamanticUI(); //添加服务
+//...
+}
+```
+")
+                </td>
+            </Tr>
+            <Tr>
+                <Td>
+                    <Icon IconClass="dice four" Size="Size.Huge" />
+                </Td>
+                <Td ColSpan="2">
+                    在 <code>_Import.razor</code> 引入命名空间 <code>BlamanticUI</code>
+                </Td>
+            </Tr>
+            <Tr>
+                <td>
+                    <Icon IconClass="dice five" Size="Size.Huge" />
+                </td>
+                <td colspan="2">
+                    @Code.GetCode(@"
+修改 `App.razor` 添加 `BlamanticUIContainer` 用于加载动态组件
+```html
+<Router AppAssembly=""@typeof(Program).Assembly"">
+<Found Context=""routeData"">
+<RouteView RouteData=""@routeData"" DefaultLayout=""@typeof(MainLayout)"" />
+</Found>
+<NotFound>
+<LayoutView Layout=""@typeof(MainLayout)"">
+<p>Sorry, there's nothing at this address.</p>
+</LayoutView>
+</NotFound>
+</Router>
+
+<BlamanticUIContainer /> <!--动态组件加载容器-->
+```
+")
+                </td>
+            </Tr>
+        </Table>
+
 
     </Segment>
 

@@ -1,0 +1,1108 @@
+﻿@page "/component/input/form"
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+
+@code{
+    [Required(ErrorMessage ="字段是必填项")]
+    [Display(Name="姓名")]
+    public string Name { get; set; }
+
+    [Required(ErrorMessage = "字段是必填项")]
+    [Display(Name = "密码")]
+    [StringLength(6,ErrorMessage ="最多{1}个字符")]
+    public string Password { get; set; }
+
+    [Display(Name = "年龄")]
+    [Range(18,60,ErrorMessage ="填写范围是{1}-{2}之间")]
+    public string Age { get; set; }
+
+    [Display(Name = "描述")]
+    public string Description { get; set; }
+
+    [Display(Name = "同意协议")]
+    public bool Checked { get; set; }
+    public string School { get; set; }
+
+    public class User
+    {
+        [Required(ErrorMessage = "字段是必填项")]
+        [Display(Name = "姓名")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "字段是必填项")]
+        [Display(Name = "密码")]
+        [StringLength(6, ErrorMessage = "最多{1}个字符")]
+        public string Password { get; set; }
+
+        [Display(Name = "年龄")]
+        [Range(18, 60, ErrorMessage = "填写范围是{1}-{2}之间")]
+        public string Age { get; set; }
+
+        [Display(Name = "性别")]
+        [Required(ErrorMessage = "字段是必填项")]
+        public string Gender { get; set; }
+
+        [Display(Name = "同意")]
+        [Required(ErrorMessage = "请勾选{0}")]
+        public bool Agree { get; set; }
+
+        [Display(Name = "图表")]
+        [Required(ErrorMessage = "选择一个")]
+        public string Chart { get; set; }
+    }
+}
+
+<Pager DataSource="@(new List<string>(new[] { 
+                         "示例","文本框","复选框和单选框","字段排版","指定字段宽度","内联样式","加载中状态","与消息组件联动","字段状态","尺寸",
+                         "均等宽度","必填字段","字段组统一宽度","字段组等宽","注解与验证","Form 参数","Form 事件","Form 方法"
+                     }))">
+    <Body>
+        <Header1>
+            表单
+            <SubHeader>
+                表单以结构化的方式显示一组相关的用户输入字段
+            </SubHeader>
+        </Header1>
+        <Segment>
+            使用 <code>Form</code> 代替 <code>EditForm</code> 作为表单组件。
+        </Segment>
+
+        <PresentationPart Title="示例">
+            <RunTemplate>
+                <Grid EqualWidth="true">                    
+                    <Column>
+                        <Form Model="this">
+                            <Field>
+                                <TextField @bind-Value="Name" DisplayName="用户名" />
+                            </Field>
+                            <Field>
+                                <TextField @bind-Value="Password" DisplayName="密码" Type="TextFieldType.Password"  />
+                            </Field>
+                            <Field>
+                                <TextField @bind-Value="Age" DisplayName="年龄" Type="TextFieldType.Number" DisplayType="DisplayNameType.Placeholder" />
+                            </Field>
+                            <Field>
+                                <TextField @bind-Value="Description" DisplayName="描述" Placeholder="最少输入3个字" Type="TextFieldType.MultiLine" />
+                            </Field>
+                            <Field>
+                                <CheckBox @bind-Value="Checked" DisplayName="同意协议" />
+                            </Field>
+                            <Fields Inline="true">
+                                <RadioGroup @bind-Value="School" DisplayName="选择一个水果：">
+                                    <RadioBox Value="@("苹果")" Text="苹果" />
+                                    <RadioBox Value="@("香蕉")" Text="香蕉" />
+                                    <RadioBox Value="@("菠萝")" Text="菠萝" />
+                                </RadioGroup>
+                            </Fields>
+                            <Button Emphasis="Emphasis.Primary">提交</Button>
+                        </Form>
+                    </Column>
+                    <Column>
+                        姓名：@Name
+                        <br />
+                        密码：@Password
+                        <br />
+                        描述：@Description
+                        <br />
+                        复选框：@Checked
+                        <br />
+                        单选框：@School
+                    </Column>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+                ```html
+                <Form Model=""this"">
+                    <Field>
+                        <TextField @bind-Value=""Name"" DisplayName=""用户名"" DisplayAsPlaceholder=""true"" />
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value=""Password"" DisplayName=""密码"" Type=""TextFieldType.Password"" DisplayAsPlaceholder=""true"" />
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value=""Age"" DisplayName=""年龄"" Type=""TextFieldType.Number"" DisplayAsPlaceholder=""true"" />
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value=""Description"" DisplayName=""描述"" DisplayAsPlaceholder=""true"" Type=""TextFieldType.MultiLine"" />
+                    </Field>
+                    <Field>
+                        <CheckBox @bind-Value=""Checked"" Label=""同意协议"" />
+                    </Field>
+                    <Fields Inline=""true"">
+                        <RadioGroup @bind-Value=""School"" DisplayName=""选择一个水果："">
+                            < RadioBox Value=""@(""苹果"")"" Text=""苹果"" />
+                            <RadioBox Value=""@(""香蕉"")"" Text=""香蕉"" />
+                            <RadioBox Value=""@(""菠萝"")"" Text=""菠萝"" />
+                        </RadioGroup>
+                    </Fields>
+                    <Button Emphasis=""Emphasis.Primary"">提交</Button>
+                </Form>
+                ```
+                ")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="文本框">
+            <Description>
+                组件 <code>TextField</code> 表示文本框。
+                <br />
+                <code>TextFieldType</code> 设置不同类型的文本框。<br />
+                <code>Trigger</code> 改变双向绑定事件的模式，默认是 <code>OnInput</code> 即输入立刻获得。<br />
+                <code>DisplayName</code> 显示的名称，不填写，则使用 <code>DisplayAttribute</code> 特性的 <code>Name</code> 属性。
+            </Description>
+            <RunTemplate>
+                <Form Model="this">
+                    <Field>
+                        <TextField @bind-Value="Name" />
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="Password" Type="TextFieldType.Password" />
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="Age" Type="TextFieldType.Number" />
+                    </Field>
+                    <Field>
+                        <TextField @bind-Value="Description" Type="TextFieldType.MultiLine" Rows="3" DisplayName="多行文本" DisplayAsLabel="true" />
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Field>
+        <TextField @bind-Value=""Name"" />
+    </Field>
+    <Field>
+        <TextField @bind-Value=""Password"" Type=""TextFieldType.Password"" DisplayAsPlaceholder=""true"" />
+    </Field>
+    <Field>
+        <TextField @bind-Value=""Age"" Type=""TextFieldType.Number"" />
+    </Field>
+    <Field>
+        <TextField @bind-Value=""Password"" Type=""TextFieldType.MultiLine"" Rows=""3"" DisplayName=""多行文本"" DisplayAsLabel=""true""/>
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="复选框和单选框">
+            <Description>
+                <code>CheckBox</code> 是复选框，<code>RadioBox</code> 是单选框，要放在 <code>RadioGroup</code> 组件内。
+            </Description>
+            <RunTemplate>
+                <Form Model="this">
+                    <Field>
+                        <CheckBox @bind-Value="Checked" />
+                    </Field>
+                    <Fields Inline="true">
+                        <RadioGroup @bind-Value="School" DisplayName="横向显示：">
+                            <RadioBox Value="@("苹果")" Text="苹果" />
+                            <RadioBox Value="@("香蕉")" Text="香蕉" />
+                            <RadioBox Value="@("菠萝")" Text="菠萝" />
+                        </RadioGroup>
+                    </Fields>
+                    <Field>
+                        垂直显示：
+                    </Field>
+                        <RadioGroup @bind-Value="School">
+                            <RadioBox Value="@("苹果")" Text="苹果" />
+                            <RadioBox Value="@("香蕉")" Text="香蕉" />
+                            <RadioBox Value="@("菠萝")" Text="菠萝" />
+                        </RadioGroup>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Field>
+        <CheckBox @bind-Value=""Checked"" />
+    </Field>
+    <Fields Inline=""true"">
+        <RadioGroup @bind-Value=""School"" DisplayName=""横向显示："">
+            <RadioBox Value=""@(""苹果"")"" Text=""苹果"" />
+            <RadioBox Value=""@(""香蕉"")"" Text=""香蕉"" />
+            <RadioBox Value=""@(""菠萝"")"" Text=""菠萝"" />
+        </RadioGroup>
+    </Fields>
+    <Field>
+        垂直显示：
+    </Field>
+    <RadioGroup @bind-Value=""School"">
+        <RadioBox Value=""@(""苹果"")"" Text=""苹果"" />
+        <RadioBox Value=""@(""香蕉"")"" Text=""香蕉"" />
+        <RadioBox Value=""@(""菠萝"")"" Text=""菠萝"" />
+    </RadioGroup>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="字段排版">
+    <Description>
+        使用 <code>Fields</code> 可以将里面的 <code>Field</code> 封装在一行。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Fields>
+                <Field>
+                    <label>姓</label>
+                    <input placeholder="姓" />
+                </Field>
+                <Field>
+                    <label>名</label>
+                    <input placeholder="名" />
+                </Field>
+                <Field>
+                    <label>拼音</label>
+                    <input placeholder="拼音" />
+                </Field>
+                <Field>
+                    <label>英文</label>
+                    <input placeholder="英文" />
+                </Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form>
+    <Fields>
+        <Field>
+            <label>姓</label>
+            <input placeholder=""姓"" />
+        </Field>
+        <Field>
+            <label>名</label>
+            <input placeholder=""名"" />
+        </Field>
+        <Field>
+            <label>拼音</label>
+            <input placeholder=""拼音"" />
+        </Field>
+        <Field>
+            <label>英文</label>
+            <input placeholder=""英文"" />
+        </Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="指定字段宽度">
+    <Description>
+        在 <code>Fields</code> 设置 <code>Span</code> 跨行比例。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Fields Span="ColSpan.Three3">
+                <Field>
+                    <label>姓</label>
+                    <input placeholder="姓" />
+                </Field>
+                <Field>
+                    <label>名</label>
+                    <input placeholder="名" />
+                </Field>
+                <Field>
+                    <label>拼音</label>
+                    <input placeholder="拼音" />
+                </Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form>
+    <Fields Span=""ColSpan.Three3"">
+        <Field>
+            <label>姓</label>
+            <input placeholder=""姓"" />
+        </Field>
+        <Field>
+            <label>名</label>
+            <input placeholder=""名"" />
+        </Field>
+        <Field>
+            <label>拼音</label>
+            <input placeholder=""拼音"" />
+        </Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="内联样式">
+    <Description>
+        设置 <code>Inline="true"</code> 使所有的组件使用内联样式。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Fields Inline="true">
+                <Field Span="ColSpan.Eight8">
+                    <label>姓名</label>
+                    <input placeholder="姓" />
+                </Field>
+                <Field Span="ColSpan.Three3">                    
+                    <input placeholder="名" />
+                </Field>
+                <Field Span="ColSpan.Five5">
+                    <input placeholder="拼音" />
+                </Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form>
+    <Fields Inline=""true"">
+        <Field Span=""ColSpan.Eight8"">
+            <label>姓名</label>
+            <input placeholder=""姓"" />
+        </Field>
+        <Field Span=""ColSpan.Three3"">                    
+            <input placeholder=""名"" />
+        </Field>
+        <Field Span=""ColSpan.Five5"">
+            <input placeholder=""拼音"" />
+        </Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="加载中状态">
+    <Description>
+        设置 <code>Form</code> 组件的 <code>Loading="true"</code> 让表单整个显示成加载中的状态，设置 <code>Color</code> 可以改变 Loading 的颜色。
+    </Description>
+    <RunTemplate>
+        <Form Model="this" Loading="true">
+            <Field>
+                Email
+                <input />
+            </Field>
+            <Field>
+                <Button>Submit</Button>
+            </Field>
+        </Form>
+        <Form Model="this" Loading="true" Color="Color.Red">
+            <Field>
+                Email
+                <input />
+            </Field>
+            <Field>
+                <Button>Submit</Button>
+            </Field>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"" Loading=""true"">
+    <Field>
+        Email
+        <input />
+    </Field>
+    <Field>
+        <Button>Submit</Button>
+    </Field>
+</Form>
+<Form Model=""this"" Loading=""true"" Color=""Color.Red"">
+    <Field>
+        Email
+        <input />
+    </Field>
+    <Field>
+        <Button>Submit</Button>
+    </Field>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="与消息组件联动">
+    <Description>
+        如果包含了 <code>Message</code> 组件，那么 <code>Form</code> 的 <code>State</code> 将会联动同样类型的 <code>Message.State</code> 的消息进行显示。
+    </Description>
+    <RunTemplate>
+        <Form Model="this" State="textState">
+            <Field>
+                <select @onchange="ChangeTextState">
+                    <option value="">默认</option>
+                    <option value="Success">Success</option>
+                    <option value="Error">Error</option>
+                    <option value="Info">Info</option>
+                    <option value="Warning">Warning</option>
+                </select>
+            </Field>
+            <Field>
+                <label>Email</label>
+                <input type="email" />
+            </Field>
+            <Message State="State.Success">
+                <Header>恭喜你提交成功啦！</Header>
+                <p>表单已经成功的提交，接下来你可以去完成资料的补充。</p>
+            </Message>
+            <Message State="State.Error">
+                <Header>提交失败啦！</Header>
+                <p>对不起，你还有没有填写的项。</p>
+            </Message>
+            <Message State="State.Info">
+                <Header>提示！</Header>
+                <p>表单需要填写1-20项以后才能提交</p>
+            </Message>
+            <Message State="State.Warning">
+                <Header>警告！</Header>
+                <p>你违反了第三条第二款的规定，请立即停止。</p>
+            </Message>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"" State=""textState"">
+    <Field>
+        <select @onchange=""ChangeTextState"">
+            <option value="""">默认</option>
+            <option value=""Success"">Success</option>
+            <option value=""Error"">Error</option>
+            <option value=""Info"">Info</option>
+            <option value=""Warning"">Warning</option>
+        </select>
+    </Field>
+    <Field>
+        <label>Email</label>
+        <input type=""email"" />
+    </Field>
+    <Message State=""State.Success"">
+        <Header>恭喜你提交成功啦！</Header>
+        <p>表单已经成功的提交，接下来你可以去完成资料的补充。</p>
+    </Message>
+    <Message State=""State.Error"">
+        <Header>提交失败啦！</Header>
+        <p>对不起，你还有没有填写的项。</p>
+    </Message>
+    <Message State=""State.Info"">
+        <Header>提示！</Header>
+        <p>表单需要填写1-20项以后才能提交</p>
+    </Message>
+    <Message State=""State.Warning"">
+        <Header>警告！</Header>
+        <p>你违反了第三条第二款的规定，请立即停止。</p>
+    </Message>
+</Form>
+```
+```csharp
+State? textState;
+void ChangeTextState(ChangeEventArgs e)
+{
+    if(Enum.TryParse(e.Value?.ToString(),out State state))
+    {
+        textState = state;
+    }
+    else
+    {
+        textState = null;
+    }
+    StateHasChanged();
+}
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="字段状态">
+    <Description>
+        设置 <code>Field</code> 的 <code>State</code> 字段会让控件呈现状态颜色。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Field State="State.Error">
+                <label>姓名</label>
+                <input />
+            </Field>
+            <Field State="State.Success">
+                <label>英文名称</label>
+                <input />
+            </Field>
+            <Field State="State.Info">
+                <label>中文名称</label>
+                <input />
+            </Field>
+            <Field State="State.Warning">
+                <label>曾用名</label>
+                <input />
+            </Field>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Field State=""State.Error"">
+        <label>姓名</label>
+        <input />
+    </Field>
+    <Field State=""State.Success"">
+        <label>英文名称</label>
+        <input />
+    </Field>
+    <Field State=""State.Info"">
+        <label>中文名称</label>
+        <input />
+    </Field>
+    <Field State=""State.Warning"">
+        <label>曾用名</label>
+        <input />
+    </Field>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="尺寸">
+    <Description>
+        设置 <code>Size</code> 可以控制表单内所有输入控件的尺寸。
+    </Description>
+    <RunTemplate>
+        <Form Model="this" Size="Size.Mini">
+            <Fields Span="ColSpan.Two2">
+                <Field><input placeholder="姓氏" /></Field>
+                <Field><input placeholder="名字" /></Field>
+            </Fields>
+        </Form>
+        <Form Model="this" Size="Size.Tiny">
+            <Fields Span="ColSpan.Two2">
+                <Field><input placeholder="姓氏" /></Field>
+                <Field><input placeholder="名字" /></Field>
+            </Fields>
+        </Form>
+        <Form Model="this" Size="Size.Medium">
+            <Fields Span="ColSpan.Two2">
+                <Field><input placeholder="姓氏" /></Field>
+                <Field><input placeholder="名字" /></Field>
+            </Fields>
+        </Form>
+        <Form Model="this" Size="Size.Big">
+            <Fields Span="ColSpan.Two2">
+                <Field><input placeholder="姓氏" /></Field>
+                <Field><input placeholder="名字" /></Field>
+            </Fields>
+        </Form>
+        <Form Model="this" Size="Size.Massive">
+            <Fields Span="ColSpan.Two2">
+                <Field><input placeholder="姓氏" /></Field>
+                <Field><input placeholder="名字" /></Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"" Size=""Size.Mini"">
+    <Fields Span=""ColSpan.Two2"">
+        <Field><input placeholder=""姓氏"" /></Field>
+        <Field><input placeholder=""名字"" /></Field>
+    </Fields>
+</Form>
+<Form Model=""this"" Size=""Size.Tiny"">
+    <Fields Span=""ColSpan.Two2"">
+        <Field><input placeholder=""姓氏"" /></Field>
+        <Field><input placeholder=""名字"" /></Field>
+    </Fields>
+</Form>
+<Form Model=""this"" Size=""Size.Medium"">
+    <Fields Span=""ColSpan.Two2"">
+        <Field><input placeholder=""姓氏"" /></Field>
+        <Field><input placeholder=""名字"" /></Field>
+    </Fields>
+</Form>
+<Form Model=""this"" Size=""Size.Big"">
+    <Fields Span=""ColSpan.Two2"">
+        <Field><input placeholder=""姓氏"" /></Field>
+        <Field><input placeholder=""名字"" /></Field>
+    </Fields>
+</Form>
+<Form Model=""this"" Size=""Size.Massive"">
+    <Fields Span=""ColSpan.Two2"">
+        <Field><input placeholder=""姓氏"" /></Field>
+        <Field><input placeholder=""名字"" /></Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="均等宽度">
+    <Description>
+        设置 <code>EqualWidth="true"</code> 可以让 <code>Fields</code> 内的输入控件根据数量均等划分宽度。
+    </Description>
+    <RunTemplate>
+        <Form Model="this" EqualWidth="true">
+            <Fields>
+                <Field>
+                    <input placeholder="姓氏" />
+                </Field>
+                <Field>
+                    <input placeholder="名字" />
+                </Field>
+                <Field>
+                    <input placeholder="曾用名" />
+                </Field>
+            </Fields>
+            <Fields>
+                <Field>
+                    <label>性别</label>
+                    <select>
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+                </Field>
+                <Field>
+                    <label>年龄</label>
+                    <input/>
+                </Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"" EqualWidth=""true"">
+    <Fields>
+        <Field>
+            <input placeholder=""姓氏"" />
+        </Field>
+        <Field>
+            <input placeholder=""名字"" />
+        </Field>
+        <Field>
+            <input placeholder=""曾用名"" />
+        </Field>
+    </Fields>
+    <Fields>
+        <Field>
+            <label>性别</label>
+            <select>
+                <option>男</option>
+                <option>女</option>
+            </select>
+        </Field>
+        <Field>
+            <label>年龄</label>
+            <input/>
+        </Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="必填字段">
+    <Description>
+        设置 <code>Required="true"</code> 可以让 <code>label</code> 标签后面出现红色的“*”星号。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Field Required="true">
+                <label>姓名</label>
+                <input/>
+            </Field>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Field Required=""true"">
+        <label>姓名</label>
+        <input/>
+    </Field>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="字段组统一宽度">
+    <Description>
+        设置 <code>Fields</code> 的 <code>Span</code> 可让组里的所有 <code>Field</code> 内的宽度占比一致。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Fields Span="ColSpan.Four4">
+                <Field>
+                    <label>姓名</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>年龄</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>身份证</label>
+                    <input />
+                </Field>
+            </Fields>
+            <Fields Span="ColSpan.Two2">
+                <Field>
+                    <label>身高</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>体重</label>
+                    <input />
+                </Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Fields Span=""ColSpan.Four4"">
+        <Field>
+            <label>姓名</label>
+            <input />
+        </Field>
+        <Field>
+            <label>年龄</label>
+            <input />
+        </Field>
+        <Field>
+            <label>身份证</label>
+            <input />
+        </Field>
+    </Fields>
+    <Fields Span=""ColSpan.Two2"">
+        <Field>
+            <label>身高</label>
+            <input />
+        </Field>
+        <Field>
+            <label>体重</label>
+            <input />
+        </Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                <PresentationPart Title="字段组等宽">
+    <Description>
+        设置 <code>Fields</code> 的 <code>EqualWidth</code> 可以根据 <code>Field</code> 的数量自动计算宽度。
+    </Description>
+    <RunTemplate>
+        <Form Model="this">
+            <Fields EqualWidth="true">
+                <Field>
+                    <label>姓名</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>年龄</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>身份证</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>国籍</label>
+                    <input />
+                </Field>
+            </Fields>
+            <Fields EqualWidth="true">
+                <Field>
+                    <label>身高</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>体重</label>
+                    <input />
+                </Field>
+                <Field>
+                    <label>健康程度</label>
+                    <input />
+                </Field>
+            </Fields>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Fields EqualWidth=""true"">
+        <Field>
+            <label>姓名</label>
+            <input />
+        </Field>
+        <Field>
+            <label>年龄</label>
+            <input />
+        </Field>
+        <Field>
+            <label>身份证</label>
+            <input />
+        </Field>
+        <Field>
+            <label>国籍</label>
+            <input />
+        </Field>
+    </Fields>
+    <Fields EqualWidth=""true"">
+        <Field>
+            <label>身高</label>
+            <input />
+        </Field>
+        <Field>
+            <label>体重</label>
+            <input />
+        </Field>
+        <Field>
+            <label>健康程度</label>
+            <input />
+        </Field>
+    </Fields>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+        @code{
+            User model = new User();
+        }
+
+        <PresentationPart Title="注解与验证">
+            <Description>
+                设置 <code>Field</code> 的 <code>For</code> 参数可以自动识别字段对于 <code>System.ComponentModel.DataAnnotations</code> 的注解识别，并能显示错误信息。<br />
+
+                <Message State="State.Info">
+                    <List Ordered="true">
+                        <Item>自动将 <code>Display</code> 特性的 <code>Name</code> 值作为标题</Item>
+                        <Item>若字段标记了 <code>Required</code> 特性，则自动加上 <code>*</code> 符号。</Item>
+                        <Item>当字段被修改且验证失败时，整体会呈现红色；修改正确后会呈现绿色，设置 <code>RecoverOnValid="true"</code> 则呈现默认样式</Item>
+                    </List>
+                </Message>
+            </Description>
+    <RunTemplate>        
+        <Form Model="model" OnValidSubmit="Submit" DelayBeforeValidSubmit="1000">
+            <DataAnnotationsValidator />
+            <Fields EqualWidth="true">
+                <Field For="()=>model.Name">
+                    <TextField @bind-Value="model.Name" />
+                </Field>
+                <Field For="()=>model.Password">
+                    <TextField @bind-Value="model.Password" Type="TextFieldType.Password" />
+                </Field>
+                <Field For="()=>model.Age" RecoverOnValid="true">
+                    <TextField @bind-Value="model.Age" Type="TextFieldType.Number" />
+                </Field>
+                <Field For="()=>model.Gender">
+                    <DropDownList @bind-Value="model.Gender" DataSource="@(new[] { "男","女" })">
+                        <DefaultItem>-请选择-</DefaultItem>
+                    </DropDownList>
+                </Field>
+            </Fields>
+            <Fields Inline="true">
+                <Field For="()=>model.Agree">
+                    <CheckBox @bind-Value="model.Agree" />
+                </Field>
+                <RadioGroup @bind-Value="model.Chart">
+                    <RadioBox Value="@("柱状图")" Text="柱状图" />
+                    <RadioBox Value="@("饼状图")" Text="饼状图" />
+                    <RadioBox Value="@("折线图")" Text="折线图" />
+                </RadioGroup>
+            </Fields>
+            <Button Color="Color.Blue">提 交</Button>
+        </Form>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```csharp
+[Required(ErrorMessage =""字段是必填项"")]
+[Display(Name=""姓名"")]
+public string Name { get; set; }
+
+[Required(ErrorMessage = ""字段是必填项"")]
+[Display(Name = ""密码"")]
+[StringLength(6,ErrorMessage =""最多{1}个字符"")]
+public string Password { get; set; }
+
+[Display(Name = ""年龄"")]
+[Range(18,60,ErrorMessage =""填写范围是{1}-{2}之间"")]
+public string Age { get; set; }
+
+[Display(Name=""性别"")]
+[Required(ErrorMessage = ""字段是必填项"")]
+public string Gender { get; set; }
+```
+
+```html
+<Form Model=""model"" OnValidSubmit=""Submit"" DelayBeforeValidSubmit=""1000"">
+<DataAnnotationsValidator />
+<Fields EqualWidth=""true"">
+    <Field For=""()=>Name"">
+        <InputText @bind-Value=""Name"" />
+    </Field>
+    <Field For=""()=>Password"">
+        <InputText @bind-Value=""Password"" type=""password""/>
+    </Field>
+    <Field For=""()=>Age"" RecoverOnValid=""true"">
+        <InputText @bind-Value=""Age"" />
+    </Field>
+    <Field For=""()=>model.Gender"">
+    <DropDownList @bind-Value=""model.Gender"" DataSource=""@(new[] { ""男"",""女"" })"">
+        <DefaultItem>-请选择-</DefaultItem>
+    </DropDownList>
+</Field>
+</Fields>
+<Fields Inline=""true"">
+    <Field For=""()=>model.Agree"">
+        <CheckBox @bind-Value=""model.Agree"" />
+    </Field>
+    <RadioGroup @bind-Value=""model.Chart"">
+        <RadioBox Value=""@(""柱状图"")"" Text=""柱状图"" />
+        <RadioBox Value=""@(""饼状图"")"" Text=""饼状图"" />
+        <RadioBox Value=""@(""折线图"")"" Text=""折线图"" />
+    </RadioGroup>
+</Fields>
+<Button Color=""Color.Blue"">提 交</Button>
+</Form>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <ParameterTable Title="Form 参数">
+            <Content>
+                <tr>
+                    <td>Model</td>
+                    <td>指定最上层的表单模型绑定对象。一个新的 <code>EditContext</code> 对象将被该模型构造。若设置了该属性，则不需要再设置 <code>EditContext</code> 属性。</td>
+                    <td>object</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>EditContext</td>
+                    <td>显式地提供表单编辑上下文。若设置了 <code>Model</code> 的值，则不要再设置 <code>EditContext</code> 属性。然后该值将取代 <code>EditContext.Model</code> 的属性。</td>
+                    <td>EditContext</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Loading</td>
+                    <td>是否处于加载中状态</td>
+                    <td>bool</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>Size</td>
+                    <td>文本的尺寸大小</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>EqualWidth</td>
+                    <td>表单域的控件根据数量进行等宽适配</td>
+                    <td>bool</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>加载中状态的颜色</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Inverted</td>
+                    <td>加载中状态的反转颜色</td>
+                    <td>bool</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>State</td>
+                    <td>表单自动显示 <code>Message</code> 组件中同一种 <code>Message.State</code> 值一样的消息</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>LoadingOnValidSubmit</td>
+                    <td>当 <code>OnValidSubmit</code> 触发时，<code>Loading</code> 自动设为 <code>true</code></td>
+                    <td>bool</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>DelayBeforeValidSubmit</td>
+                    <td>延迟执行 <code>OnValidSubmit</code> 事件的毫秒</td>
+                    <td>int</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>For</td>
+                    <td>设置识别自动化 <code>System.ComponentModel.DataAnnotations</code> 的注解并动态添加错误提示信息。</td>
+                    <td>Expression&lt;Func&lt;dynamic>></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>RecoverOnValid</td>
+                    <td>当字段修改过并再次验证成功后恢复默认样式还是使用 <code>State.Success</code> 样式。</td>
+                    <td>bool</td>
+                    <td>false</td>
+                </tr>
+            </Content>
+        </ParameterTable>
+                <CallbackTable Title="Form 事件">
+                    <Content>
+                        <tr>
+                            <td>OnSubmit</td>
+                            <td>提交表单时将调用的回调。如果使用这个参数，您有责任手动触发任何验证。</td>
+                            <td>EventCallback&lt;EditContext></td>
+                        </tr>
+                        <tr>
+                            <td>OnValidSubmit</td>
+                            <td>它将在表单被提交时被调用，并且 <code>Microsoft.AspNetCore.Components.Forms.EditContext</code> 被确定为有效。</td>
+                            <td>EventCallback&lt;EditContext></td>
+                        </tr>
+                        <tr>
+                            <td>OnInvalidSubmit</td>
+                            <td>它将在表单被提交时被调用，并且 <code>Microsoft.AspNetCore.Components.Forms.EditContext</code> 被确定为无效。</td>
+                            <td>EventCallback&lt;EditContext></td>
+                        </tr>
+                    </Content>
+        </CallbackTable>
+                        <MethodTable Title="Form 方法">
+            <Content>
+                <tr>
+                    <td>Submit()</td>
+                    <td>处理表单提交的操作</td>
+                </tr>
+            </Content>
+        </MethodTable>
+    </Body>
+</Pager>
+@code{
+    State? textState;
+    void ChangeTextState(ChangeEventArgs e)
+    {
+        if(Enum.TryParse(e.Value?.ToString(),out State state))
+        {
+            textState = state;
+        }
+        else
+        {
+            textState = null;
+        }
+        StateHasChanged();
+    }
+
+    void Submit()
+    {
+
+    }
+}

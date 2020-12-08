@@ -1,0 +1,370 @@
+﻿@page "/component/feedback/loader"
+
+    <Pager DataSource="@(new List<string>(new[] { 
+                             "示例","配合 Dimmer 组件","显示文本","不确定样式","行内样式","居中行内样式","速度","颜色","尺寸",
+                             "反选背景","动画类型","参数","方法"
+                         }))">
+        <Body>
+            <Header1 Divider="true">
+                加载器
+                <SubHeader>
+                    加载器提醒用户等待活动完成
+                </SubHeader>
+            </Header1>
+            <Segment>
+                使用 <code>Loader</code> 作为加载器，可以配合 <code>Dimmer</code> 组件使加载状态的背景有一个遮罩层。
+            </Segment>
+            <PresentationPart Title="示例">
+                <Description>
+                    <Message State="State.Info">
+                        默认情况下，<code>Loader</code> 组件是隐藏状态，通过设置 <code>Active="true"</code> 或当 <code>Dimmer</code> 组件被启用时才会显示。
+                    </Message>
+                </Description>
+                <RunTemplate>
+                    <Loader Actived="true"/>                    
+                </RunTemplate>
+                <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Loader Actived=""true""/>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="配合 Dimmer 组件">
+    <RunTemplate>
+        <Segment>
+            <Dimmer Actived="true">
+                <Loader/>
+            </Dimmer>
+            <ParagraphDemo/>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Actived=""true"">
+        <Loader/>
+    </Dimmer>
+    <ParagraphDemo/>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+    <PresentationPart Title="设置文本">
+        <Description>
+            可以在组件中间编写文本并显示。
+        </Description>
+    <RunTemplate>
+        <Segment>
+            <Dimmer Actived="true">
+                <Loader>处理中，请稍后...</Loader>
+            </Dimmer>
+            <ParagraphDemo/>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Actived=""true"">
+        <Loader>处理中，请稍后...</Loader>
+    </Dimmer>
+    <ParagraphDemo/>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="不确定样式">
+                <SubTitle>
+                    一般用于显示它不确定任务将花费多长时间
+                </SubTitle>
+        <Description>
+            设置 <code>Indeterminated="true"</code> 改变加载动画的方式。
+        </Description>
+    <RunTemplate>
+        <Segment>
+            <Dimmer Actived="true">
+                <Loader Texted="true" Indeterminated="true">正在准备启动...</Loader>
+            </Dimmer>
+            <ParagraphDemo/>
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Actived=""true"">
+        <Loader Texted=""true"" Indeterminated=""true"">正在准备启动...</Loader>
+    </Dimmer>
+    <ParagraphDemo/>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="行内样式">
+    <Description>
+        设置 <code>Inline="true"</code> 可以让加载器在内容之间显示。
+    </Description>
+    <RunTemplate>
+        <Segment>
+            如果没有他的出现 <Loader Inline="true" Actived="true"/> 就没有现在生活的我们
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    如果没有他的出现 <Loader Inline=""true""/> 就没有现在生活的我们
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                        <PresentationPart Title="居中行内样式">
+    <Description>
+        设置 <code>Inline="true"</code> 和 <code>Centered="true"</code> 可以让加载器在内容之间显示并显示在正中间。
+    </Description>
+    <RunTemplate>
+        <Segment>
+            如果<Loader Inline="true" Actived="true" Centered="true" />没有他的出现  就没有现在生活的我们
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    如果 <Loader Inline=""true"" Centered=""true""/>没有他的出现 就没有现在生活的我们
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="速度">
+    <Description>
+        设置 <code>Speed</code> 改变旋转速度。
+    </Description>
+    <RunTemplate>
+        <Loader Inline="true" Actived="true" Speed="Speed.Fast" />
+        <Loader Inline="true" Actived="true" />
+        <Loader Inline="true" Actived="true" Speed="Speed.Slow" />
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Loader Inline=""true"" Actived=""true"" Speed=""Speed.Fast"" />
+<Loader Inline=""true"" Actived=""true"" />
+<Loader Inline=""true"" Actived=""true"" Speed=""Speed.Slow"" />
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="颜色">
+    <Description>
+        设置 <code>Color</code> 可以改变颜色。
+    </Description>
+    <RunTemplate>
+        <Loader Inline="true" Actived="true" Color="Color.Red" />
+        <Loader Inline="true" Actived="true" Color="Color.Orange" />
+        <Loader Inline="true" Actived="true" Color="Color.Yellow" />
+        <Loader Inline="true" Actived="true" Color="Color.Green" />
+        <Loader Inline="true" Actived="true" Color="Color.Violet" />
+        <Loader Inline="true" Actived="true" Color="Color.Blue" />
+        <Loader Inline="true" Actived="true" Color="Color.Purple" />
+        <Loader Inline="true" Actived="true" Color="Color.Grey" />
+        <Loader Inline="true" Actived="true" Color="Color.Black" />
+        <Loader Inline="true" Actived="true" Color="Color.Pink" />
+        <Loader Inline="true" Actived="true" Color="Color.Olive" />
+        <Loader Inline="true" Actived="true" Color="Color.Brown" />
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Red"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Orange"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Yellow"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Green"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Violet"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Blue"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Purple"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Grey"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Black"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Pink"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Olive"" />
+<Loader Inline=""true"" Actived=""true"" Color=""Color.Brown"" />
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="尺寸">
+    <Description>
+        设置 <code>Size</code> 可以改变组件的尺寸。
+    </Description>
+    <RunTemplate>
+        <Loader Inline="true" Actived="true" Size="Size.Mini" />
+        <Loader Inline="true" Actived="true" Size="Size.Tiny" />
+        <Loader Inline="true" Actived="true" Size="Size.Small" />
+        <Loader Inline="true" Actived="true" Size="Size.Medium" />
+        <Loader Inline="true" Actived="true" Size="Size.Large" />
+        <Loader Inline="true" Actived="true" Size="Size.Big" />
+        <Loader Inline="true" Actived="true" Size="Size.Huge" />
+        <Loader Inline="true" Actived="true" Size="Size.Massive" />
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Mini"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Tiny"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Small"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Medium"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Large"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Big"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Huge"" />
+<Loader Inline=""true"" Actived=""true"" Size=""Size.Massive"" />
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="反选背景">
+    <Description>
+        在反选背景下，要加入 <code>Inverted="true"</code> 才能看到。
+        <Message>
+            在 <code>Dimmer</code> 组件中，只需要设置 <code>Dimmer</code> 组件的 <code>Inverted="true"</code> 即可。
+        </Message>
+    </Description>
+    <RunTemplate>
+        <Segment Inverted="true">
+            <Loader Inverted="true" Actived="true" />
+            <ParagraphDemo />
+            <ParagraphDemo />
+        </Segment>
+        <Segment>
+            <Dimmer Actived="true" Inverted="true">
+                <Loader />
+            </Dimmer>
+            <ParagraphDemo />
+            <ParagraphDemo />
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment Inverted=""true"">
+    <Loader Inverted=""true"" Actived=""true""/>
+</Segment>
+<Segment>
+    <Dimmer Actived=""true"" Inverted=""true"">
+        <Loader/>
+    </Dimmer>
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="动画类型">
+    <Description>
+        设置 <code>Animiation</code> 选择不同的动画效果。
+    </Description>
+    <RunTemplate>
+        <Segment>
+            <Loader Actived="true" Animation="Loader.AnimationStyle.Double" Color="Color.Blue" />
+            <ParagraphDemo />
+            <ParagraphDemo />
+        </Segment>
+        <Segment>
+            <ParagraphDemo />
+            <ParagraphDemo />
+            <Loader Actived="true" Animation="Loader.AnimationStyle.Elastic" Color="Color.Purple" Size="Size.Big" />
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Loader Actived=""true"" Animation=""Loader.AnimationStyle.Double"" Color=""Color.Blue"" />
+<Loader Actived=""true"" Animation=""Loader.AnimationStyle.Elastic"" Color=""Color.Purple""  Size=""Size.Big""/>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+                    <ParameterTable>
+            <Content>
+                <tr>
+                    <td>Actived</td>
+                    <td>是否显示</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Disabled</td>
+                    <td>是否禁用</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>颜色</td>
+                    <td>enum</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Inverted</td>
+                    <td>反选颜色</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Inline</td>
+                    <td>允许显示在文本之间</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Centered</td>
+                    <td>在行中的文本居中显示，<code>Inline</code> 为 <code>true</code> 时有效</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Size</td>
+                    <td>尺寸大小</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Animation</td>
+                    <td>动画效果</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Indeterminated</td>
+                    <td>加载方式成为不确定样式</td>
+                    <td>bool</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Speed</td>
+                    <td>旋转的速度</td>
+                    <td>enum</td>
+                    <td>Speed.Default</td>
+                </tr>
+            </Content>
+        </ParameterTable>
+                            <MethodTable>
+            <Content>
+                <tr>
+                    <td>Active(bool active = true)</td>
+                    <td>显示/隐藏操作</td>
+                </tr>
+                <tr>
+                    <td>Disabled(bool diabled = true)</td>
+                    <td>禁用/启用操作</td>
+                </tr>
+            </Content>
+        </MethodTable>
+        </Body>
+    </Pager>

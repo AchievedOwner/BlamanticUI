@@ -1,0 +1,120 @@
+﻿@page "/common/global"
+
+<Pager DataSource="@(new List<string>(new[] {"颜色","尺寸","特殊" }))">
+    <Body>
+<PresentationPart Title="颜色">
+    <Description>
+        大部分元素都会有 <code>Color</code> 参数，它是一个枚举类型，一共有以下几种色系：
+    </Description>
+    <RunTemplate>
+        <Grid Span="ColSpan.Five5" Padded="true" Stackable="true">
+            <Column Color="Color.Red">红色(Red)</Column>
+            <Column Color="Color.Orange">橙色(Orange)</Column>
+            <Column Color="Color.Yellow">黄色(Yellow)</Column>
+            <Column Color="Color.Green">绿色(Green)</Column>
+            <Column Color="Color.Blue">蓝色(Blue)</Column>
+            <Column Color="Color.Teal">深蓝绿色(Teal)</Column>
+            <Column Color="Color.Purple">紫色(Purple)</Column>
+            <Column Color="Color.Pink">粉红色(Pink)</Column>
+            <Column Color="Color.Olive">橄榄绿色(Olive)</Column>
+            <Column Color="Color.Violet">紫罗兰色(Violet)</Column>
+            <Column Color="Color.Brown">棕色(Brown)</Column>
+            <Column Color="Color.Grey">灰色(Grey)</Column>
+            <Column Color="Color.Black">黑色(Black)</Column>
+        </Grid>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid Span=""ColSpan.Five5"" Padded=""true"" Stackable=""true"">
+    <Column Color=""Color.Red"">红色(Red)</Column>
+    <Column Color=""Color.Orange"">橙色(Orange)</Column>
+    <Column Color=""Color.Yellow"">黄色(Yellow)</Column>
+    <Column Color=""Color.Green"">绿色(Green)</Column>
+    <Column Color=""Color.Blue"">蓝色(Blue)</Column>
+    <Column Color=""Color.Teal"">深蓝绿色(Teal)</Column>
+    <Column Color=""Color.Purple"">紫色(Purple)</Column>
+    <Column Color=""Color.Pink"">粉红色(Pink)</Column>
+    <Column Color=""Color.Olive"">橄榄绿色(Olive)</Column>
+    <Column Color=""Color.Violet"">紫罗兰色(Violet)</Column>
+    <Column Color=""Color.Brown"">棕色(Brown)</Column>
+    <Column Color=""Color.Grey"">灰色(Grey)</Column>
+    <Column Color=""Color.Black"">黑色(Black)</Column>
+</Grid>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+
+<PresentationPart Title="尺寸">
+    <Description>
+        尺寸则使用 <code>Size</code> 作为参数，并拥有以下枚举：
+    </Description>
+    <RunTemplate>
+        <Text Size="Size.Mini">迷你(Mini)</Text>
+        <br />
+        <Text Size="Size.Tiny">微小(Tiny)</Text>
+        <br />
+        <Text Size="Size.Small">小型(Small)</Text>
+        <br />
+        <Text Size="Size.Medium">中等(Medium)</Text>
+        <br />
+        <Text Size="Size.Large">大型(Large)</Text>
+        <br />
+        <Text Size="Size.Big">很大(Big)</Text>
+        <br />
+        <Text Size="Size.Huge">超大(Huge)</Text>
+        <br />
+        <Text Size="Size.Massive">巨大(Massive)</Text>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Text Size=""Size.Mini"">迷你(Mini)</Text>
+<br />
+<Text Size=""Size.Tiny"">微小(Tiny)</Text>
+<br />
+<Text Size=""Size.Small"">小型(Small)</Text>
+<br />
+<Text Size=""Size.Medium"">中等(Medium)</Text>
+<br />
+<Text Size=""Size.Large"">大型(Large)</Text>
+<br />
+<Text Size=""Size.Big"">很大(Big)</Text>
+<br />
+<Text Size=""Size.Huge"">超大(Huge)</Text>
+<br />
+<Text Size=""Size.Massive"">巨大(Massive)</Text>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="特殊">
+    <Description>
+        每个组件都有两个特殊的参数，分别是 <code>AdditionalCssClass</code> 和 <code>AdditionalStyle</code>，
+        用于追加当前组件不满足的 <code>class</code> 或 <code>style</code>，直接用 <code>class</code> 或 <code>style</code> 表示覆盖组件现有的样式。
+    </Description>
+    <RunTemplate>
+        <Button AdditionalCssClass="@("fluid")">AddtitionalCssClass</Button>
+        <br />
+        <Button AdditionalStyles="@("width:150px;height:60px")">AdditionalStyles</Button>
+        <br />
+        <Button class="btn-primary">class</Button>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Button AdditionalCssClass=""""fluid"""">AddtitionalCssClass</Button>
+<button class=""ui button fluid"">AddtitionalCssClass</button>
+
+<Button AdditionalStyle=""""width:150px;height:60px"""">AdditionalStyle</Button>
+<button class=""ui button"" style=""width:150px;height:60px"">AdditionalStyle</button>
+
+<Button class=""btn-primary"">class</Button>
+<button class=""btn-primary"">class</button>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+    </Body>
+</Pager>

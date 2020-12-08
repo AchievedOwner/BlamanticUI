@@ -1,2 +1,16 @@
 ﻿@inherits LayoutComponentBase
-@Body
+<div style="        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+        margin-left:-1px;
+">
+    <div style="width:100%;">
+        <TopMenu />
+    </div>
+    <div style="width:100%;overflow-y:auto;height:100%;margin-top:10px">
+        <Container>
+            @Body
+        </Container>
+    </div>
+</div>

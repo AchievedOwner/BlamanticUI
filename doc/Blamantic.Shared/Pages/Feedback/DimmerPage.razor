@@ -1,0 +1,516 @@
+﻿@page "/component/feedback/dimmer"
+
+    <Pager DataSource="@(new List<string>(new[]{
+                             "示例","自定义内容","全屏显示","启用状态","禁用状态","文本位置","浅色背景","不透明度","部分遮罩","参数","方法"
+                         }))">
+        <Body>
+            <Header1 Divider="true">
+                遮罩层
+                <SubHeader>
+                    遮罩层可以隐藏分散注意力的东西，使注意力集中在特定的内容上
+                </SubHeader>
+            </Header1>
+
+            <Segment>
+                遮罩层使用 <code>Dimmer</code> 组件，但通常需要通过代码的方式唤醒。即通过 <code>@@ref</code> 将实例绑定到组件上。
+
+            </Segment>
+
+            <PresentationPart Title="示例">
+                <Description>
+                    通过调用 <code>Active</code> 进行显示遮罩层，调用 <code>Active(false)</code> 关闭遮罩层。
+                </Description>
+                <RunTemplate>
+                    <Segment>
+                        <Dimmer @ref="refSample1" />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                    </Segment>
+                    <br />
+                    <Labeled Button="true">
+                        <Button @onclick="()=>refSample1.Active()">显示遮罩层</Button>
+                        <Button @onclick="()=>refSample1.Active(false)">关闭遮罩层</Button>
+                    </Labeled>
+                </RunTemplate>
+                <CodeTemplate>
+                    @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer @ref=""refSample1"" />
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<br />
+<Labeled Button=""true"">
+    <Button @onclick=""()=>refSample1.Active()"">显示遮罩层</Button>
+    <Button @onclick=""()=>refSample1.Active(false)"">关闭遮罩层</Button>
+</Labeled>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="自定义内容">
+                <Description>
+                    在遮罩层组件内部使用 <code>Content</code> 组件可以定义遮罩层显示的文字。
+                </Description>
+                <RunTemplate>
+                    <Segment>
+                        <Dimmer @ref="refSample2">
+                            <Content>
+                                <Header2 Inverted="true" Icon="true">
+                                    <Icon IconClass="heart" /> 你喜欢我吗？
+                                </Header2>
+                            </Content>
+                        </Dimmer>
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                    </Segment>
+                    <br />
+                    <Labeled Button="true">
+                        <Button @onclick="()=>refSample2.Active()">显示遮罩层</Button>
+                        <Button @onclick="()=>refSample2.Active(false)">关闭遮罩层</Button>
+                    </Labeled>
+                </RunTemplate>
+                <CodeTemplate>
+                    @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer @ref=""refSample2"">
+        <Content>
+            <Header2 Inverted=""true"" Icon=""true"">
+                <Icon IconClass=""heart"" /> 你喜欢我吗？
+            </Header2>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<br />
+<Labeled Button=""true"">
+    <Button @onclick=""()=>refSample2.Active()"">显示遮罩层</Button>
+    <Button @onclick=""()=>refSample2.Active(false)"">关闭遮罩层</Button>
+</Labeled>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="全屏显示">
+                <Description>
+                    设置 <code>FullScreen="true"</code> 全屏遮罩。
+                </Description>
+                <RunTemplate>
+                    <Dimmer FullScreen="true" @ref="refSample3">
+                        <Content>
+                            <Header2 Inverted="true" Icon="true">
+                                <Icon IconClass="attention" />
+                                使用组件的同学注意啦！
+                                <SubHeader>
+                                    请您在使用组件的过程中积极提问
+                                </SubHeader>
+                                <Button Emphasis="Emphasis.Positive" @onclick="()=>refSample3.Active(false)">点这里关闭</Button>
+                            </Header2>
+                        </Content>
+                    </Dimmer>
+                    <Button Emphasis="Emphasis.Primary" @onclick="()=>refSample3.Active()">显示</Button>
+                </RunTemplate>
+                <CodeTemplate>
+@Code.GetCode(@"
+```html
+<Dimmer FullScreen=""true"" @ref=""refSample3"">
+    <Content>
+        <Header2 Inverted=""true"" Icon=""true"">
+            <Icon IconClass=""attention"" />
+            使用组件的同学注意啦！
+            <SubHeader>
+                请您在使用组件的过程中积极提问
+            </SubHeader>
+            <Button Emphasis=""Emphasis.Positive"" @onclick=""()=>refSample3.Active(false)"">点这里关闭</Button>
+        </Header2>
+    </Content>
+</Dimmer>
+<Button Emphasis=""Emphasis.Primary"" @onclick=""()=>refSample3.Active()"">显示</Button>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="启用状态">
+                <Description>
+                    设置 <code>Actived="true"</code> 启用遮罩层。
+                </Description>
+                <RunTemplate>
+                    <Segment>
+                        <Dimmer Actived="true" />
+                        <ParagraphDemo />
+                    </Segment>
+                </RunTemplate>
+                <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Actived=""true""/>
+    <ParagraphDemo/>
+</Segment>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="禁用状态">
+                <Description>
+                    设置 <code>Disabled="true"</code> 禁用遮罩层。
+                </Description>
+                <RunTemplate>
+                    <Segment>
+                        <Dimmer Disabled="true" />
+                        <ParagraphDemo />
+                    </Segment>
+                </RunTemplate>
+                <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Disabled=""true""/>
+    <ParagraphDemo/>
+</Segment>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="文本位置">
+                <Description>
+                    设置 <code>VerticalPosition</code> 可以改变遮罩层中文本显示的位置
+                </Description>
+                <RunTemplate>
+                    <Segment>
+                        <Dimmer @ref="refSample4" VerticalAlignment="VerticalAlignment.Top">
+                            <Content>
+                                <Header2 Inverted="true" Icon="true">
+                                    <Icon IconClass="heart" /> 我在最顶部
+                                </Header2>
+                            </Content>
+                        </Dimmer>
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                    </Segment>
+                    <Labeled Button="true">
+                        <Button @onclick="()=>refSample4.Active()">显示</Button>
+                        <Button @onclick="()=>refSample4.Active(false)">关闭</Button>
+                    </Labeled>
+                    <Segment>
+                        <Dimmer @ref="refSample5" VerticalAlignment="VerticalAlignment.Middle">
+                            <Content>
+                                <Header2 Inverted="true" Icon="true">
+                                    <Icon IconClass="heart" /> 我在中间哟
+                                </Header2>
+                            </Content>
+                        </Dimmer>
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                    </Segment>
+                    <Labeled Button="true">
+                        <Button @onclick="()=>refSample5.Active()">显示</Button>
+                        <Button @onclick="()=>refSample5.Active(false)">关闭</Button>
+                    </Labeled>
+                    <Segment>
+                        <Dimmer @ref="refSample6" VerticalAlignment="VerticalAlignment.Bottom">
+                            <Content>
+                                <Header2 Inverted="true" Icon="true">
+                                    <Icon IconClass="heart" /> 我喜欢下面
+                                </Header2>
+                            </Content>
+                        </Dimmer>
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                    </Segment>
+                    <Labeled Button="true">
+                        <Button @onclick="()=>refSample6.Active()">显示</Button>
+                        <Button @onclick="()=>refSample6.Active(false)">关闭</Button>
+                    </Labeled>
+                </RunTemplate>
+                <CodeTemplate>
+                    @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer @ref=""refSample4"" VerticalAlignment=""VerticalAlignment.Top"">
+        <Content>
+            <Header2 Inverted=""true"" Icon=""true"">
+                <Icon IconClass=""heart"" /> 我在最顶部
+            </Header2>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<Labeled Button=""true"">
+    <Button @onclick=""()=>refSample4.Active()"">显示</Button>
+    <Button @onclick=""()=>refSample4.Active(false)"">关闭</Button>
+</Labeled>
+<Segment>
+    <Dimmer @ref=""refSample5"" VerticalAlignment=""VerticalAlignment.Middle"">
+        <Content>
+            <Header2 Inverted=""true"" Icon=""true"">
+                <Icon IconClass=""heart"" /> 我在中间哟
+            </Header2>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<Labeled Button=""true"">
+    <Button @onclick=""()=>refSample5.Active()"">显示</Button>
+    <Button @onclick=""()=>refSample5.Active(false)"">关闭</Button>
+</Labeled>
+<Segment>
+    <Dimmer @ref=""refSample6"" VerticalAlignment=""VerticalAlignment.Bottom"">
+        <Content>
+            <Header2 Inverted=""true"" Icon=""true"">
+                <Icon IconClass=""heart"" /> 我喜欢下面
+            </Header2>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<Labeled Button=""true"">
+    <Button @onclick=""()=>refSample6.Active()"">显示</Button>
+    <Button @onclick=""()=>refSample6.Active(false)"">关闭</Button>
+</Labeled>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="浅色背景">
+                <Description>
+                    设置 <code>Inverted="true"</code> 可以让遮罩层颜色变为淡色。
+                </Description>
+                <RunTemplate>
+                    <Segment>
+                        <Dimmer @ref="refSample7" Inverted="true"/>
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                        <ParagraphDemo />
+                    </Segment>
+                    <Labeled Button="true">
+                        <Button @onclick="()=>refSample7.Active()">显示</Button>
+                        <Button @onclick="()=>refSample7.Active(false)">关闭</Button>
+                    </Labeled>
+                </RunTemplate>
+                <CodeTemplate>
+    @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer @ref=""refSample7"" Inverted=""true""/>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<Labeled Button=""true"">
+    <Button @onclick=""()=>refSample7.Active()"">显示</Button>
+    <Button @onclick=""()=>refSample7.Active(false)"">关闭</Button>
+</Labeled>
+```
+")
+                </CodeTemplate>
+            </PresentationPart>
+            <PresentationPart Title="不透明度">
+    <Description>
+        设置 <code>Opacity</code> 改变背景的不透明度。
+    </Description>
+    <RunTemplate>
+        <Segment>
+            <Dimmer Actived="true" Opacity="Dimmer.OpacityLevel.Medium" />
+            <ParagraphDemo />
+        </Segment>
+        <Segment>
+            <Dimmer Actived="true" Opacity="Dimmer.OpacityLevel.Light" />
+            <ParagraphDemo />
+        </Segment>
+        <Segment>
+            <Dimmer Actived="true" Opacity="Dimmer.OpacityLevel.VeryLight" />
+            <ParagraphDemo />
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Actived=""true"" Opacity=""Dimmer.OpacityLevel.Medium"" />
+    <ParagraphDemo />
+</Segment>
+<Segment>
+    <Dimmer Actived=""true"" Opacity=""Dimmer.OpacityLevel.Light"" />
+    <ParagraphDemo />
+</Segment>
+<Segment>
+    <Dimmer Actived=""true"" Opacity=""Dimmer.OpacityLevel.VeryLight"" />
+    <ParagraphDemo />
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <PresentationPart Title="部分遮罩">
+    <Description>
+        设置 <code>Partially</code> 可以将遮罩层定义在某个位置显示。
+    </Description>
+    <RunTemplate>
+        <Segment>
+            <Dimmer Actived="true" Partially="Dimmer.PartialPosition.Top">
+                <Content>
+                    <Header4 Inverted="true">看！</Header4>
+                    <SubHeader>我只有一部分显示在顶部</SubHeader>
+                </Content>
+            </Dimmer>
+            <ParagraphDemo />
+            <ParagraphDemo />
+            <ParagraphDemo />
+        </Segment>
+        <Segment>
+            <Dimmer Actived="true" Partially="Dimmer.PartialPosition.Center">
+                <Content>
+                    <Header4 Inverted="true">看！</Header4>
+                    <SubHeader>我只有一部分显示在中间</SubHeader>
+                </Content>
+            </Dimmer>
+            <ParagraphDemo />
+            <ParagraphDemo />
+            <ParagraphDemo />
+        </Segment>
+        <Segment>
+            <Dimmer Actived="true" Partially="Dimmer.PartialPosition.Bottom">
+                <Content>
+                    <Header4 Inverted="true">看！</Header4>
+                    <SubHeader>我只有一部分显示在底部</SubHeader>
+                </Content>
+            </Dimmer>
+            <ParagraphDemo />
+            <ParagraphDemo />
+            <ParagraphDemo />
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment>
+    <Dimmer Actived=""true"" Partially=""Dimmer.PartialPosition.Top"">
+        <Content>
+            <Header4 Inverted=""true"">看！</Header4>
+            <SubHeader>我只有一部分显示在顶部</SubHeader>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<Segment>
+    <Dimmer Actived=""true"" Partially=""Dimmer.PartialPosition.Center"">
+        <Content>
+            <Header4 Inverted=""true"">看！</Header4>
+            <SubHeader>我只有一部分显示在中间</SubHeader>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+<Segment>
+    <Dimmer Actived=""true"" Partially=""Dimmer.PartialPosition.Bottom"">
+        <Content>
+            <Header4 Inverted=""true"">看！</Header4>
+            <SubHeader>我只有一部分显示在底部</SubHeader>
+        </Content>
+    </Dimmer>
+    <ParagraphDemo />
+    <ParagraphDemo />
+    <ParagraphDemo />
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+            <ParameterTable Title="参数">
+                <Content>
+                    <tr>
+                        <td>FullScreen</td>
+                        <td>是否全屏</td>
+                        <td>bool</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Actived</td>
+                        <td>是否显示遮罩层</td>
+                        <td>bool</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Disabled</td>
+                        <td>是否禁用</td>
+                        <td>bool</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Inverted</td>
+                        <td>反选遮罩背景</td>
+                        <td>bool</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Partially</td>
+                        <td>部分遮罩层</td>
+                        <td>enum</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Opacity</td>
+                        <td>遮罩层的透明度</td>
+                        <td>enum</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>VerticalAlignment</td>
+                        <td>文本的垂直显示方式</td>
+                        <td>enum</td>
+                        <td></td>
+                    </tr>
+                </Content>
+        </ParameterTable>
+                            <MethodTable>
+            <Content>
+                <tr>
+                    <td>Active(bool active = true)</td>
+                    <td>显示/隐藏遮罩层</td>
+                </tr>
+                <tr>
+                    <td>Disabled(bool disabled = true)</td>
+                    <td>启用/禁用遮罩层</td>
+                </tr>
+            </Content>
+        </MethodTable>
+        </Body>
+    </Pager>
+@code{
+    Dimmer refSample1;
+    Dimmer refSample2;
+    Dimmer refSample3;
+    Dimmer refSample4;
+    Dimmer refSample5;
+    Dimmer refSample6;
+    Dimmer refSample7;
+}

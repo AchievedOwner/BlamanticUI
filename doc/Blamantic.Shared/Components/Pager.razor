@@ -1,19 +1,11 @@
 ﻿
 @inject IJSRuntime JS
 
-<div style="display:flex;" class="full-height" id="backtop">
+<div style="display:flex;flex-direction:row" class="full-height" id="backtop">
     <div class="full-height" style="width:85%;overflow-y:auto;padding-left:10px; padding-right:20px;padding-bottom:20px">
         @Body
     </div>
     <div class="full-height" style="margin-left:20px;">
-        <Menu IconOnly="true" Fluid="true">
-            <LinkItem Link="https://github.com/AchievedOwner/CastUI.git" Target="LinkTarget.Blank" Title="查看源码">
-                <Icon IconClass="github" Size="Size.Large" />
-            </LinkItem>
-            <LinkItem Link="https://github.com/AchievedOwner/CastUI.git/issues/new" Target="LinkTarget.Blank" Title="提问题">
-                <Icon IconClass="bug" Size="Size.Large" />
-            </LinkItem>
-        </Menu>
         @if (DataSource != null)
         {
             <Menu Style="MenuStyle.Texted" Compact="true" Size="Size.Tiny" Linked="true" Vertical="true">

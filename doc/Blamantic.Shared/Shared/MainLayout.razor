@@ -1,27 +1,32 @@
 ﻿@inherits LayoutComponentBase
 <div style="        display: flex;
-        flex-direction: row;
+        flex-direction: column;
         height: 100%;
         overflow: hidden;
         margin-left:-1px;
 ">
-    <div style="        background-color: #2185d0;
+    <div style="width:100%;">
+        <TopMenu/>
+    </div>
+    <div style="display:flex; flex-direction:row;overflow-y:auto">
+        <div style="
         width: 230px;
         height: 100%;
         overflow-y: auto;
         overflow-x: hidden
     ">
-        <SideMenu />
-    </div>
-    <div style="        width: 100%;
+            <SideMenu />
+        </div>
+        <div style="        width: 100%;
         margin-left:10px;
         padding-right:10px;
         padding-top:20px;
-        
+
         height: 100%;
         overflow-x: hidden;
         overflow-y:auto
         ">
-        @Body
+            @Body
+        </div>
     </div>
 </div>
