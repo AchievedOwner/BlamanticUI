@@ -134,6 +134,7 @@ namespace BlamanticUI.Shared
                 .AddNavigation("Layout", AddLayout)
                 .AddNavigation("Data", AddData)
                 .AddNavigation("Feedback", AddFeedback)
+                .AddNavigation("Nav", AddNav)
             ;
 
             return services;
@@ -425,11 +426,6 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
-                Name = "导航菜单(NavMenu)",
-                Link = $"/component/{prefix}/navmenu"
-            });
-            nav.Add(new Navigation
-            {
                 Name = "分页(Pagination)",
                 Link = $"/component/{prefix}/pagination"
             });
@@ -472,6 +468,21 @@ namespace BlamanticUI.Shared
             {
                 Name = "加载器(Loader)",
                 Link = $"/component/{prefix}/loader"
+            });
+        }
+
+        static void AddNav(ICollection<Navigation> nav)
+        {
+            string prefix = "nav";
+            nav.Add(new Navigation
+            {
+                Name = "导航菜单(NavMenu)",
+                Link = $"/component/{prefix}/navmenu"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "步骤引导(Steps)",
+                Link = $"/component/{prefix}/steps"
             });
         }
     }

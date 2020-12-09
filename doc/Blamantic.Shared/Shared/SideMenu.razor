@@ -1,6 +1,6 @@
 ﻿
 
-<Menu Vertical="true" Style="MenuStyle.Pill" Compact="true">
+<Menu Vertical="true" Style="MenuStyle.Pill" Compact="true"  ActivedColor="Color.Purple">
     <Item>
         <DropDownList AdditionalStyles="@("width:90%!important")" MaxFilterItems="5" Removable="true" Size="Size.Mini" Compact="true" Fluid="true" Filterable="true" T="Navigation" DataSource="SearchMenus" OnItemSelected="SelectItem" FilterField="@nameof(Navigation.Name)">
             <DefaultItem>关键字</DefaultItem>
@@ -11,7 +11,7 @@
     </Item>
     <LinkItem Link="/common/global">概念(Concept)</LinkItem>
     <ItemHeader Header="true">
-        <Header6 Divider="true">
+        <Header6 Divider="true" Color="Color.Purple">
             通用(Common)
         </Header6>
     </ItemHeader>
@@ -22,7 +22,7 @@
         </LinkItem>
     }
     <ItemHeader Header="true">
-        <Header6 Divider="true">
+        <Header6 Divider="true" Color="Color.Purple">
             输入(Input)
         </Header6>
     </ItemHeader>
@@ -33,7 +33,7 @@
         </LinkItem>
     }
     <ItemHeader Header="true">
-        <Header6 Divider="true">
+        <Header6 Divider="true" Color="Color.Purple">
             布局(Layout)
         </Header6>
     </ItemHeader>
@@ -44,7 +44,18 @@
         </LinkItem>
     }
     <ItemHeader Header="true">
-        <Header6 Divider="true">
+        <Header6 Divider="true" Color="Color.Purple">
+            导航(Nav)
+        </Header6>
+    </ItemHeader>
+    @foreach (var item in Nav)
+    {
+        <LinkItem Link="@item.Link" Match="NavLinkMatch.All">
+            @item.Name
+        </LinkItem>
+    }
+    <ItemHeader Header="true">
+        <Header6 Divider="true" Color="Color.Purple">
             数据(Data)
         </Header6>
     </ItemHeader>
@@ -55,7 +66,7 @@
         </LinkItem>
     }
     <ItemHeader Header="true">
-        <Header6 Divider="true">
+        <Header6 Divider="true" Color="Color.Purple">
             反馈(Feedback)
         </Header6>
     </ItemHeader>
@@ -78,6 +89,7 @@
     IEnumerable<Navigation> Layout { get; set; }
     IEnumerable<Navigation> Data { get; set; }
     IEnumerable<Navigation> Feedback { get; set; }
+    IEnumerable<Navigation> Nav { get; set; }
 
     protected override void OnInitialized()
     {
@@ -86,8 +98,9 @@
         Layout = NavService.GetNavigations("Layout");
         Data = NavService.GetNavigations("Data");
         Feedback = NavService.GetNavigations("Feedback");
+        Nav = NavService.GetNavigations("Nav");
 
-        SearchMenus = Common.Concat(Input).Concat(Layout).Concat(Data).Concat(Feedback).OrderBy(m => m.Name);
+        SearchMenus = Common.Concat(Input).Concat(Layout).Concat(Data).Concat(Feedback).Concat(Nav).OrderBy(m => m.Name);
     }
 
     void SelectItem(Navigation item)

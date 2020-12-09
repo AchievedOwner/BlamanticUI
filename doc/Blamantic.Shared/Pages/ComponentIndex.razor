@@ -40,6 +40,19 @@
     }
 </Grid>
 <Header4 Divider="true">
+    导航(Nav)
+</Header4>
+<Grid Span="ColSpan.Five5">
+    @foreach (var item in Nav)
+    {
+        <Column>
+            <NavLink href="@item.Link">
+                @item.Name
+            </NavLink>
+        </Column>
+    }
+</Grid>
+<Header4 Divider="true">
     数据(Data)
 </Header4>
 <Grid Span="ColSpan.Five5">
@@ -74,6 +87,7 @@
     IEnumerable<Navigation> Layout { get; set; }
     IEnumerable<Navigation> Data { get; set; }
     IEnumerable<Navigation> Feedback { get; set; }
+    IEnumerable<Navigation> Nav { get; set; }
 
     protected override void OnInitialized()
     {
@@ -82,5 +96,6 @@
         Layout = NavService.GetNavigations("Layout");
         Data = NavService.GetNavigations("Data");
         Feedback = NavService.GetNavigations("Feedback");
+        Nav = NavService.GetNavigations("Nav");
     }
 }
