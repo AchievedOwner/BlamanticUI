@@ -34,7 +34,7 @@ namespace BlamanticUI.Shared
             return $"{version.Major}.{version.Minor}.{version.Build}";
         }
 
-        public static IServiceCollection AddBlamanticUI(this IServiceCollection services)
+        public static IServiceCollection AddDemo(this IServiceCollection services)
         {
             DependencyInjectionExtensions.AddBlamanticUI(services);
             services.AddNavigation(nav =>

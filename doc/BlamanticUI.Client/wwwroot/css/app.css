@@ -1,0 +1,77 @@
+﻿html, body, pre {
+    font-family: 'Microsoft YaHei', Helvetica, Arial, sans-serif;
+}
+
+/*.editor-colors {
+    margin-top:5px;
+    margin-bottom:5px;
+    border:#ccc solid 1px;
+    padding-left: 5px;
+    padding-right:5px;
+    border-radius: 5px;
+}*/
+
+/*.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}*/
+
+code {
+    color: #e83e8c;
+    font-size: 97.5%
+}
+
+.validation-message {
+    color: red;
+}
+
+.full-height {
+    height: 100% !important;
+}
+
+.full-width {
+    width: 100% !important;
+}
+
+.goto-top {
+    position: fixed;
+    right: 150px;
+    bottom: 60px;
+    width: 70px;
+    height: 60px;
+    z-index: 500;
+    border: 1px solid #ccc;
+    border-radius: 5px
+}
+
+    .goto-top:hover {
+        cursor: pointer;
+        background-color: #ddd;
+    }
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+    #blazor-error-ui .dismiss {
+        cursor: pointer;
+        position: absolute;
+        right: 0.75rem;
+        top: 0.5rem;
+    }
+
+#menu.ui.text.menu .active.item {
+    font-weight: bolder;
+    font-size: 1.1rem;
+}
