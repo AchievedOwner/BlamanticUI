@@ -11,7 +11,7 @@ namespace BlamanticUI
     /// <summary>
     /// 表示用于包含多个 <see cref="Card"/> 组件的卡片组。
     /// </summary>
-    public class CardGroup:BlamanticChildContentComponentBase, IParentComponent<Card>, IHasUIComponent,IHasHorizontal,IHasInverted,IHasSpan,IHasDoubling,IHasStackable
+    public class CardGroup:BlamanticChildContentComponentBase, IHasUIComponent,IHasHorizontal,IHasInverted,IHasSpan,IHasDoubling,IHasStackable
     {
         /// <summary>
         /// 初始化 <see cref="CardGroup"/> 类的新实例。

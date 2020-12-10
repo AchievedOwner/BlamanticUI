@@ -17,12 +17,8 @@ namespace BlamanticUI
     /// </summary>
     [HtmlTag]
     [CssClass("step",Order =999)]
-    public class Step : ChildBlazorComponentBase<Steps>
+    public class Step : BlamanticChildComponentBase<Steps,Step>
     {
-        /// <summary>
-        /// 设置成为激活状态。
-        /// </summary>
-        [Parameter][CssClass("active")]public bool Actived { get; set; }
         /// <summary>
         /// 设置成为禁用状态。
         /// </summary>
@@ -49,12 +45,6 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public Color? IconColor { get; set; }
 
-        /// <summary>
-        /// 组件索引。
-        /// </summary>
-        internal int Index { get; set; }
-
-        internal void Active(bool active=true) => Actived = active;
         internal void Disable(bool disabled=true) => Disabled = disabled;
 
         protected override void CreateComponentCssClass(Css css)
@@ -70,7 +60,7 @@ namespace BlamanticUI
                 AddCommonAttributes(builder);
                 if (Parent.ClickToActive)
                 {
-                    builder.AddAttribute(1, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, e => Parent.Active(Index)));
+                    AddClickToActiveAttribute(builder, 2);
                 }
                 builder.AddContent(1, child =>
                 {

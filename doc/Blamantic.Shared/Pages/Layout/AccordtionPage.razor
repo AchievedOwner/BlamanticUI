@@ -1,0 +1,232 @@
+﻿@page "/component/data/accordion"
+
+<Pager DataSource="@(new List<string>
+                     {
+                         "示例","琴键风格","初始化展开","流式布局","反色模式"
+                     })">
+    <Body>
+        <Header1>
+            手风琴
+            <SubHeader>手风琴允许用户切换内容部分的显示</SubHeader>
+        </Header1>
+
+        <PresentationPart Title="示例">
+            <RunTemplate>
+                <Accordion>
+                    <AccordionItem>
+                        <Title>狗的介绍</Title>
+                        <Content>
+                            狗是一种家养动物。它以忠诚和忠诚而闻名，世界各地的许多家庭都欢迎它的到来。
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>狗的品种</Title>
+                        <Content>有许多种狗。每个品种的大小和性情都不一样。主人通常会选择一种与自己的生活方式和对伴侣的渴望相匹配的狗。</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>购买方式</Title>
+                        <Content>
+                            想要养狗的人有三种常见的方式:从宠物店、私人主人或收容所。
+                            <br />
+                            宠物店可能是买狗最方便的方式。从私人主人那里买狗可以让你在选择带它回家之前评估你的狗的血统和教养。最后，从收容所找到你的狗，可以给那些不太容易找到的狗一个好的家。
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="琴键风格">
+            <Description>
+                设置 <code>Styled="true"</code> 显示琴键风格
+            </Description>
+            <RunTemplate>
+                <Accordion Styled="true">
+                    <AccordionItem>
+                        <Title>狗的介绍</Title>
+                        <Content>
+                            狗是一种家养动物。它以忠诚和忠诚而闻名，世界各地的许多家庭都欢迎它的到来。
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>狗的品种</Title>
+                        <Content>有许多种狗。每个品种的大小和性情都不一样。主人通常会选择一种与自己的生活方式和对伴侣的渴望相匹配的狗。</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>购买方式</Title>
+                        <Content>
+                            想要养狗的人有三种常见的方式:从宠物店、私人主人或收容所。
+                            <br />
+                            宠物店可能是买狗最方便的方式。从私人主人那里买狗可以让你在选择带它回家之前评估你的狗的血统和教养。最后，从收容所找到你的狗，可以给那些不太容易找到的狗一个好的家。
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Styled=""true"">
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="初始化展开">
+            <Description>
+                设置 <code>InitIndex</code> 可以在初始化时展开指定索引的内容。<code>-1</code> 则不展开任何内容。
+                <Message State="State.Warning">
+                    索引是从 0 开始的！
+                </Message>
+            </Description>
+            <RunTemplate>
+                <Accordion Styled="true" InitIndex="1">
+                    <AccordionItem>
+                        <Title>狗的介绍</Title>
+                        <Content>
+                            狗是一种家养动物。它以忠诚和忠诚而闻名，世界各地的许多家庭都欢迎它的到来。
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>狗的品种</Title>
+                        <Content>有许多种狗。每个品种的大小和性情都不一样。主人通常会选择一种与自己的生活方式和对伴侣的渴望相匹配的狗。</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>购买方式</Title>
+                        <Content>
+                            想要养狗的人有三种常见的方式:从宠物店、私人主人或收容所。
+                            <br />
+                            宠物店可能是买狗最方便的方式。从私人主人那里买狗可以让你在选择带它回家之前评估你的狗的血统和教养。最后，从收容所找到你的狗，可以给那些不太容易找到的狗一个好的家。
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Styled=""true""  InitIndex=""1"">
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        <PresentationPart Title="流式布局">
+            <Description>
+                设置 <code>Fluid="true"</code> 将撑满整个父元素的所有宽度。
+            </Description>
+            <RunTemplate>
+                <Accordion Fluid="true" Styled="true">
+                    <AccordionItem>
+                        <Title>狗的介绍</Title>
+                        <Content>
+                            狗是一种家养动物。它以忠诚和忠诚而闻名，世界各地的许多家庭都欢迎它的到来。
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>狗的品种</Title>
+                        <Content>有许多种狗。每个品种的大小和性情都不一样。主人通常会选择一种与自己的生活方式和对伴侣的渴望相匹配的狗。</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>购买方式</Title>
+                        <Content>
+                            想要养狗的人有三种常见的方式:从宠物店、私人主人或收容所。
+                            <br />
+                            宠物店可能是买狗最方便的方式。从私人主人那里买狗可以让你在选择带它回家之前评估你的狗的血统和教养。最后，从收容所找到你的狗，可以给那些不太容易找到的狗一个好的家。
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Fluid=""true"">
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="反色模式">
+            <Description>
+                设置 <code>Inverted="true"</code> 可以兼容反色模式。
+            </Description>
+            <RunTemplate>
+                <Segment Inverted=" true">
+                    <Accordion Inverted="true">
+                        <AccordionItem>
+                            <Title>狗的介绍</Title>
+                            <Content>
+                                狗是一种家养动物。它以忠诚和忠诚而闻名，世界各地的许多家庭都欢迎它的到来。
+                            </Content>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <Title>狗的品种</Title>
+                            <Content>有许多种狗。每个品种的大小和性情都不一样。主人通常会选择一种与自己的生活方式和对伴侣的渴望相匹配的狗。</Content>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <Title>购买方式</Title>
+                            <Content>
+                                想要养狗的人有三种常见的方式:从宠物店、私人主人或收容所。
+                                <br />
+                                宠物店可能是买狗最方便的方式。从私人主人那里买狗可以让你在选择带它回家之前评估你的狗的血统和教养。最后，从收容所找到你的狗，可以给那些不太容易找到的狗一个好的家。
+                            </Content>
+                        </AccordionItem>
+                    </Accordion>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Inverted=""true"">
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager> 
