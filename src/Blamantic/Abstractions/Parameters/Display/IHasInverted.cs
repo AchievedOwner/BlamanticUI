@@ -9,10 +9,7 @@ namespace BlamanticUI.Abstractions
     public interface IHasInverted
     {
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// 设置基于父组件的反色兼容模式。
         /// </summary>
         [CssClass("inverted")] bool Inverted { get; set; }
     }

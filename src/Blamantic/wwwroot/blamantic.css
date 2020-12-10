@@ -1,10 +1,11 @@
-﻿.ui .checkbox input[type="checkbox"], .ui .checkbox input[type="radio"] {
+﻿@import url(semantic.css);
+.ui.checkbox:not(.toggle):not(.slider) input[type="checkbox"], .ui.checkbox:not(.toggle):not(.slider) input[type="radio"] {
   opacity: unset !important; }
 
-.ui .checkbox.checked label::after, .ui .checkbox.checked .box:after {
+.ui.checkbox.checked:not(.toggle):not(.slider) label::after, .ui.checkbox.checked:not(.toggle):not(.slider) .box:after {
   content: '\e800'; }
 
-.ui .checkbox.checked label::after {
+.ui.checkbox.checked:not(.toggle):not(.slider) label::after {
   opacity: 1;
   color: rgba(0, 0, 0, 0.95);
   font-family: CheckBox;

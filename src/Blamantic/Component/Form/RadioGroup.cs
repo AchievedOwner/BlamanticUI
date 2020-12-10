@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -13,7 +12,7 @@ namespace BlamanticUI
     /// <typeparam name="TValue">值得类型。</typeparam>
     /// <seealso cref="BlamanticUI.FormInputBase{TValue}" />
     /// <seealso cref="YoiBlazor.IHasChildContent" />
-    public class RadioGroup<TValue> : FormInputBase<TValue>, IHasChildContent
+    public class RadioGroup<TValue> : FormInputBase<TValue>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RadioGroup{TValue}"/> class.

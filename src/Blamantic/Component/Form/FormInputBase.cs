@@ -21,7 +21,7 @@ namespace BlamanticUI
     /// <typeparam name="TValue">值得类型。</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="System.IDisposable" />
-    public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable
+    public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable,IHasInverted
     {
         #region Private
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
@@ -59,6 +59,11 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public Expression<Func<TValue>> ValueExpression { get; set; }
 
+        /// <summary>
+        /// Gets or sets the edit context.
+        /// </summary>
+        [Parameter] public EditContext EditContext { get; set; }
+
         private string _displayName;
         /// <summary>
         /// 获取显示名称。优先从 <see cref="DisplayAttribute.Name"/> 中获取值。
@@ -77,10 +82,32 @@ namespace BlamanticUI
         }
         #endregion
 
-        #region Protected
-        protected EditContext EditContext { get; set; }
-        protected internal FieldIdentifier FieldIdentifier { get; set; }
 
+        #region Protected        
+        /// <summary>
+        /// Gets or sets the field identifier.
+        /// </summary>
+        protected internal FieldIdentifier FieldIdentifier { get; set; }
+        /// <summary>
+        /// Gets the field id.
+        /// </summary>
+        protected string FieldId
+        {
+            get
+            {
+                if (AdditionalAttributes.TryGetValue("id", out var id))
+                {
+                    return id.ToString();
+                }
+                return FieldIdentifier.FieldName;
+            }
+        }
+        /// <summary>
+        /// Gets or sets the current value.
+        /// </summary>
+        /// <value>
+        /// The current value.
+        /// </value>
         protected TValue? CurrentValue
         {
             get => Value;
@@ -91,7 +118,7 @@ namespace BlamanticUI
                 {
                     Value = value;
                     _ = ValueChanged.InvokeAsync(Value);
-                    EditContext.NotifyFieldChanged(FieldIdentifier);
+                    EditContext?.NotifyFieldChanged(FieldIdentifier);
                 }
             }
         }
@@ -133,48 +160,54 @@ namespace BlamanticUI
                     _parsingValidationMessages.Add(FieldIdentifier, validationErrorMessage);
 
                     // Since we're not writing to CurrentValue, we'll need to notify about modification from here
-                    EditContext.NotifyFieldChanged(FieldIdentifier);
+                    EditContext?.NotifyFieldChanged(FieldIdentifier);
                 }
 
                 // We can skip the validation notification if we were previously valid and still are
                 if (parsingFailed || _previousParsingAttemptFailed)
                 {
-                    EditContext.NotifyValidationStateChanged();
+                    EditContext?.NotifyValidationStateChanged();
                     _previousParsingAttemptFailed = parsingFailed;
                 }
             }
         }
+        /// <summary>
+        /// 设置基于父组件的反色兼容模式。
+        /// </summary>
+        [Parameter]public bool Inverted { get; set; }
         #endregion
 
         public override Task SetParametersAsync(ParameterView parameters)
         {
             parameters.SetParameterProperties(this);
 
-            if (EditContext == null)
+            //if (CascadedEditContext == null && EditContext == null)
+            //{
+            //    throw new InvalidOperationException($"{GetType()} requires a cascading parameter " +
+            //        $"of type {nameof(EditContext)}. For example, you can use {GetType().FullName} inside " +
+            //        $"an {nameof(Form)}.");
+            //}
+
+            if (ValueExpression == null)
             {
-                // This is the first run
-                // Could put this logic in OnInit, but its nice to avoid forcing people who override OnInit to call base.OnInit()
+                throw new InvalidOperationException($"{GetType()} requires a value for the 'ValueExpression' " +
+                    $"parameter. Normally this is provided automatically when using 'bind-Value'.");
+            }
 
-                if (CascadedEditContext == null)
-                {
-                    throw new InvalidOperationException($"{GetType()} requires a cascading parameter " +
-                        $"of type {nameof(EditContext)}. For example, you can use {GetType().FullName} inside " +
-                        $"an {nameof(EditForm)}.");
-                }
-
-                if (ValueExpression == null)
-                {
-                    throw new InvalidOperationException($"{GetType()} requires a value for the 'ValueExpression' " +
-                        $"parameter. Normally this is provided automatically when using 'bind-Value'.");
-                }
-
+            if (EditContext is null)
+            {
                 EditContext = CascadedEditContext;
-                FieldIdentifier = FieldIdentifier.Create(ValueExpression);
-                _nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
+            }
+            
+            FieldIdentifier = FieldIdentifier.Create(ValueExpression);
+            _nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
 
+            if (EditContext is not null)
+            {
                 EditContext.OnValidationStateChanged += _validationStateChangedHandler;
             }
-            else if (CascadedEditContext != EditContext)
+
+            if (CascadedEditContext != EditContext)
             {
                 // Not the first run
 
@@ -231,12 +264,6 @@ namespace BlamanticUI
             }
         }
 
-        /// <summary>
-        /// Gets a string that indicates the status of the field being edited. This will include
-        /// some combination of "modified", "valid", or "invalid", depending on the status of the field.
-        /// </summary>
-        private string FieldClass
-            => EditContext.FieldCssClass(FieldIdentifier);
 
         private void OnvalidateStateChanged(object? sender, ValidationStateChangedEventArgs args)
         {
@@ -250,14 +277,17 @@ namespace BlamanticUI
 
         void IDisposable.Dispose()
         {
-            EditContext.OnValidationStateChanged -= _validationStateChangedHandler;
+            if (EditContext is not null)
+            {
+                EditContext.OnValidationStateChanged -= _validationStateChangedHandler;
+            }
             Dispose(disposing: true);
         }
 
 
         private void SetAdditionalAttributesIfValidationFailed()
         {
-            if (EditContext.GetValidationMessages(FieldIdentifier).Any())
+            if (EditContext is not null && EditContext.GetValidationMessages(FieldIdentifier).Any())
             {
                 if (AdditionalAttributes != null && AdditionalAttributes.ContainsKey("aria-invalid"))
                 {

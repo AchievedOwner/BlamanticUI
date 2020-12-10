@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlamanticUI.Server", "doc\B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlamanticUI.Shared", "doc\Blamantic.Shared\BlamanticUI.Shared.csproj", "{10F504C9-A551-419A-BCB6-92CF9A5C7CE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlamanticUI.Client", "doc\BlamanticUI.Client\BlamanticUI.Client.csproj", "{FAAA851B-8A85-4BDA-B0D2-61DE5DB792C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlamanticUI.Client", "doc\BlamanticUI.Client\BlamanticUI.Client.csproj", "{FAAA851B-8A85-4BDA-B0D2-61DE5DB792C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

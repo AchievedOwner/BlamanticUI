@@ -9,13 +9,14 @@ namespace BlamanticUI
     using Abstractions;
     using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Components.Rendering;
+    using YoiBlazor;
 
     /// <summary>
     /// 用于从一组选项中选择值的输入组件。
     /// </summary>
     /// <typeparam name="TValue">值类型。</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
-    public class RadioBox<TValue> : BlamanticComponentBase
+    public class RadioBox<TValue> : BlamanticComponentBase,IHasUIComponent
     {
         /// <summary>
         /// Gets or sets the cascaded radio group.
@@ -66,8 +67,7 @@ namespace BlamanticUI
             {
 
                 field.OpenElement(0, "div");
-                field.AddAttribute(1, "class", BuildCssClass());
-                field.AddMultipleAttributes(5, AdditionalAttributes);
+                AddCommonAttributes(field);
                 field.AddContent(10, child =>
                 {
                     child.OpenElement(1, "label");
@@ -93,19 +93,13 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// Builds the CSS class.
+        /// 创建组件所需要的 class 类。
         /// </summary>
-        /// <returns></returns>
-        string BuildCssClass()
+        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
+        protected override void CreateComponentCssClass(Css css)
         {
-            var list = new List<string>();
-            list.Add("ui radio");
-            list.Add("checkbox");
-            if (Checked.HasValue && Checked.Value)
-            {
-                list.Add("checked");
-            }
-            return string.Join(" ", list);
+            css.Add(Checked.HasValue && Checked.Value, "checked")
+                .Add("radio").Add("checkbox");
         }
 
         /// <summary>

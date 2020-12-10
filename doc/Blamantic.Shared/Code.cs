@@ -354,7 +354,7 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
-                Name = "单选复选(Radio/CheckBox)",
+                Name = "单/复选(CheckBox)",
                 Link = $"/component/{prefix}/checkbox"
             });
             nav.Add(new Navigation
