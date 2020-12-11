@@ -64,7 +64,6 @@
                     @Code.GetCode(@"
 在 `index.html` 引入
 ```html
-<link href=""_content/BlamanticUI/semantic.min.css"" rel=""stylesheet"" />
 <link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
 ````
 ")
@@ -73,7 +72,6 @@
                     @Code.GetCode(@"
 在 `_Host.cshtml` 引入
 ```html
-<link href=""_content/BlamanticUI/semantic.min.css"" rel=""stylesheet"" />
 <link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
 ````
 ")
@@ -89,7 +87,7 @@
 //在 Program.cs 中
 
 //...
-Host.Services.AddBlamanticUI();//添加服务
+builder.Services.AddBlamanticUI();//添加服务
 //...
 ```
 ")
@@ -126,14 +124,14 @@ services.AddBlamanticUI(); //添加服务
 修改 `App.razor` 添加 `BlamanticUIContainer` 用于加载动态组件
 ```html
 <Router AppAssembly=""@typeof(Program).Assembly"">
-<Found Context=""routeData"">
-<RouteView RouteData=""@routeData"" DefaultLayout=""@typeof(MainLayout)"" />
-</Found>
-<NotFound>
-<LayoutView Layout=""@typeof(MainLayout)"">
-<p>Sorry, there's nothing at this address.</p>
-</LayoutView>
-</NotFound>
+    <Found Context=""routeData"">
+        <RouteView RouteData=""@routeData"" DefaultLayout=""@typeof(MainLayout)"" />
+    </Found>
+    <NotFound>
+    <LayoutView Layout=""@typeof(MainLayout)"">
+        <p>Sorry, there's nothing at this address.</p>
+    </LayoutView>
+    </NotFound>
 </Router>
 
 <BlamanticUIContainer /> <!--动态组件加载容器-->
@@ -160,15 +158,15 @@ services.AddBlamanticUI(); //添加服务
                             </ButtonGroup>
                         </TabItem>
                         <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
-                            @Code.GetCode(@"
-    ```html
-    <ButtonGroup>
-        <Button>按钮1</Button>
-        <Button Emphasis=""Emphasis.Primary"">按钮2</Button>
-        <Button Color=""Color.Pink"">按钮3</Button>
-    </ButtonGroup>
-    ```
-    ")
+                        @Code.GetCode(@"
+```html
+<ButtonGroup>
+    <Button>按钮1</Button>
+    <Button Emphasis=""Emphasis.Primary"">按钮2</Button>
+    <Button Color=""Color.Pink"">按钮3</Button>
+</ButtonGroup>
+```
+")
                         </TabItem>
                     </Tab>
                 </Column>
@@ -201,30 +199,30 @@ services.AddBlamanticUI(); //添加服务
                         </TabItem>
                         <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
                             @Code.GetCode(@"
-    ```html
-    <Form Model=""this"">
-    <DataAnnotationsValidator/>
-    <Fields Inline=""true"">
-        <Field For=""()=>UserName"">
-            <InputBox Icon=""HorizontalPosition.Left"">
-                <Icon IconClass=""user"" />
-                <InputText @bind-Value=""UserName"" placeholder=""用户名"" />
-            </InputBox>
-        </Field>
-        <Field For=""()=>Password"">
-            <InputBox Icon=""HorizontalPosition.Left"">
-                <Icon IconClass=""lock"" />
-                <InputText @bind-Value=""Password"" placeholder=""密码"" type=""password""/>
-            </InputBox>
-        </Field>
-        <Button Emphasis=""Emphasis.Positive"">
-            <Icon IconClass=""check"" />
-            提 交
-        </Button>
-    </Fields>
-    </Form>
-    ```
-    ")
+```html
+<Form Model=""this"">
+<DataAnnotationsValidator/>
+<Fields Inline=""true"">
+    <Field For=""()=>UserName"">
+        <InputBox Icon=""HorizontalPosition.Left"">
+            <Icon IconClass=""user"" />
+            <InputText @bind-Value=""UserName"" placeholder=""用户名"" />
+        </InputBox>
+    </Field>
+    <Field For=""()=>Password"">
+        <InputBox Icon=""HorizontalPosition.Left"">
+            <Icon IconClass=""lock"" />
+            <InputText @bind-Value=""Password"" placeholder=""密码"" type=""password""/>
+        </InputBox>
+    </Field>
+    <Button Emphasis=""Emphasis.Positive"">
+        <Icon IconClass=""check"" />
+        提 交
+    </Button>
+</Fields>
+</Form>
+```
+")
                         </TabItem>
                     </Tab>
                 </Column>
@@ -246,18 +244,18 @@ services.AddBlamanticUI(); //添加服务
                         </TabItem>
                         <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
                             @Code.GetCode(@"
-    ```html
-    <Label Image=""true"" Color=""Color.Red"">
-        <Image Source=""img/avatar/ade.jpg"" /> Ade
-    </Label>
-    <Label Image=""true"" Color=""Color.Green"">
-        <Image Source=""img/avatar/christian.jpg"" /> Christian
-    </Label>
-    <Label Image=""true"" Color=""Color.Brown"">
-        <Image Source=""img/avatar/elliot.jpg"" /> Elliot
-    </Label>
-    ```
-    ")
+```html
+<Label Image=""true"" Color=""Color.Red"">
+    <Image Source=""img/avatar/ade.jpg"" /> Ade
+</Label>
+<Label Image=""true"" Color=""Color.Green"">
+    <Image Source=""img/avatar/christian.jpg"" /> Christian
+</Label>
+<Label Image=""true"" Color=""Color.Brown"">
+    <Image Source=""img/avatar/elliot.jpg"" /> Elliot
+</Label>
+```
+")
                         </TabItem>
                     </Tab>
                 </Column>
@@ -274,17 +272,17 @@ services.AddBlamanticUI(); //添加服务
                             </Message>
                         </TabItem>
                         <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
-                            @Code.GetCode(@"
-    ```html
-    <Message State=""State.Warning"" Icon=""true"">
-        <Icon IconClass=""attention""/>
-        <Content>
-            <Header>注意！</Header>
-            前方有路障，请注意绕行！
-        </Content>
-    </Message>
-    ```
-    ")
+                        @Code.GetCode(@"
+```html
+<Message State=""State.Warning"" Icon=""true"">
+    <Icon IconClass=""attention""/>
+    <Content>
+        <Header>注意！</Header>
+        前方有路障，请注意绕行！
+    </Content>
+</Message>
+```
+")
                         </TabItem>
                     </Tab>
                 </Column>

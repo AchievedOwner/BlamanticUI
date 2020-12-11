@@ -1,57 +1,57 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp5.0</TargetFramework>
-    <RazorLangVersion>3.0</RazorLangVersion>
-    <LangVersion>9.0</LangVersion>
-    <Authors>William Chow</Authors>
-    <Product>BlamanticUI</Product>
-    <PackageId>BlamanticUI</PackageId>
-    <Description>The css framework from Semantic-UI for blazor which is called Blamentic-UI with short name BUI.</Description>
-    <AssemblyName>BlamanticUI</AssemblyName>
-    <RootNamespace>BlamanticUI</RootNamespace>
-	  <PackageId>BlamanticUI</PackageId>
-	  <PackageVersion>1.0</PackageVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp5.0</TargetFramework>
+		<RazorLangVersion>3.0</RazorLangVersion>
+		<LangVersion>9.0</LangVersion>
+		<Authors>William Chow</Authors>
+		<Product>BlamanticUI</Product>
+		<PackageId>BlamanticUI</PackageId>
+		<Description>The css framework from Semantic-UI for blazor which is called Blamentic-UI with short name BUI.</Description>
+		<AssemblyName>BlamanticUI</AssemblyName>
+		<RootNamespace>BlamanticUI</RootNamespace>
+		<PackageId>BlamanticUI</PackageId>
+		<PackageVersion>1.0</PackageVersion>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug</OutputPath>
-    <DocumentationFile>bin\Debug\BlamanticUI.xml</DocumentationFile>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>bin\Debug</OutputPath>
+		<DocumentationFile>bin\Debug\BlamanticUI.xml</DocumentationFile>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\Release</OutputPath>
-    <DocumentationFile>bin\Release\BlamanticUI.xml</DocumentationFile>
-    <FileAlignment>4096</FileAlignment>
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<OutputPath>bin\Release</OutputPath>
+		<DocumentationFile>bin\Release\BlamanticUI.xml</DocumentationFile>
+		<FileAlignment>4096</FileAlignment>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="compilerconfig.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<Content Remove="compilerconfig.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="compilerconfig.json" />
-  </ItemGroup>
+	<ItemGroup>
+		<_ContentIncludedByDefault Remove="compilerconfig.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="compilerconfig.json" />
-    <None Include="wwwroot\themes\basic\assets\fonts\icons.svg" />
-    <None Include="wwwroot\themes\default\assets\fonts\brand-icons.svg" />
-    <None Include="wwwroot\themes\default\assets\fonts\brand-icons.woff2" />
-    <None Include="wwwroot\themes\default\assets\fonts\icons.svg" />
-    <None Include="wwwroot\themes\default\assets\fonts\icons.woff2" />
-    <None Include="wwwroot\themes\default\assets\fonts\outline-icons.svg" />
-    <None Include="wwwroot\themes\default\assets\fonts\outline-icons.woff2" />
-    <None Include="wwwroot\themes\github\assets\fonts\octicons.svg" />
-    <None Include="wwwroot\themes\material\assets\fonts\icons.svg" />
-    <None Include="wwwroot\themes\material\assets\fonts\icons.woff2" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="compilerconfig.json" />
+		<None Include="wwwroot\themes\basic\assets\fonts\icons.svg" />
+		<None Include="wwwroot\themes\default\assets\fonts\brand-icons.svg" />
+		<None Include="wwwroot\themes\default\assets\fonts\brand-icons.woff2" />
+		<None Include="wwwroot\themes\default\assets\fonts\icons.svg" />
+		<None Include="wwwroot\themes\default\assets\fonts\icons.woff2" />
+		<None Include="wwwroot\themes\default\assets\fonts\outline-icons.svg" />
+		<None Include="wwwroot\themes\default\assets\fonts\outline-icons.woff2" />
+		<None Include="wwwroot\themes\github\assets\fonts\octicons.svg" />
+		<None Include="wwwroot\themes\material\assets\fonts\icons.svg" />
+		<None Include="wwwroot\themes\material\assets\fonts\icons.woff2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
-    <PackageReference Include="YoiBlazor" Version="2.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
+		<PackageReference Include="YoiBlazor" Version="2.0.0" />
+	</ItemGroup>
 
 </Project>

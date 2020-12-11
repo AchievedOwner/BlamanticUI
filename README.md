@@ -9,7 +9,7 @@
 
 # 快速开始
 * `Install-Package BlamanticUI`
-* 引入 `_content/BlamanticUI/semantic.min.css` 和 `_content/BlamanticUI/blamantic.min.css` 样式
+* 引入 `_content/BlamanticUI/blamantic.min.css` 样式
 * 在 `_Import.razor` 中 `using BlamanticUI`
 * 添加 `AddBlamanticUI` 服务
 
