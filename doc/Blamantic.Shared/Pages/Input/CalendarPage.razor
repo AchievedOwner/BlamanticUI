@@ -1,0 +1,46 @@
+﻿@page "/component/input/calendar" 
+
+<Pager>
+    <Body>
+        <Header1>
+            日历(Calendar)
+            <SubHeader>日历可以允许用户选择日期和时间</SubHeader>
+        </Header1>
+        <PresentationPart Title="示例">
+            <Description>
+                默认显示的是日期。
+            </Description>
+            <RunTemplate>
+                <Calendar />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Calendar />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="视图模式">
+            <Description>
+                设置 <code>ViewMode</code> 展现不同的视图。
+            </Description>
+            <RunTemplate>
+                <Header3>月视图</Header3>
+                <Calendar ViewMode="CalendarViewMode.Month" />
+                <Header3>年视图</Header3>
+                <Calendar ViewMode="CalendarViewMode.Year" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Header3>月视图</Header3>
+<Calendar ViewMode=""CalendarViewMode.Month"" />
+<Header3>年视图</Header3>
+<Calendar ViewMode=""CalendarViewMode.Year"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager>

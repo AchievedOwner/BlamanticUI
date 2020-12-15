@@ -194,6 +194,11 @@ namespace BlamanticUI.Shared
                 Name = "下拉列表(DropdownList)",
                 Link = $"/component/{prefix}/dropdown"
             });
+            nav.Add(new Navigation
+            {
+                Name = "日历(Calendar)",
+                Link = $"/component/{prefix}/calendar"
+            });
         }
 
         static void AddLayout(ICollection<Navigation> nav)
