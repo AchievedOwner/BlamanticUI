@@ -126,7 +126,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the current value of the input, represented as a string.
         /// </summary>
-        protected string? CurrentValueAsString
+        protected string CurrentValueAsString
         {
             get => FormatValueAsString(CurrentValue);
             set
@@ -177,6 +177,18 @@ namespace BlamanticUI
         [Parameter]public bool Inverted { get; set; }
         #endregion
 
+        /// <summary>
+        /// Sets the parameters asynchronous.
+        /// </summary>
+        /// <param name="parameters">The parameters.</param>
+        /// <returns></returns>
+        /// <exception cref="InvalidOperationException">
+        /// $"{GetType()} requires a value for the 'ValueExpression' " +
+        ///                     $"parameter. Normally this is provided automatically when using 'bind-Value'.
+        /// or
+        /// $"{GetType()} requires a value for the 'ValueExpression' " +
+        ///                     $"parameter. Normally this is provided automatically when using 'bind-Value'.
+        /// </exception>
         public override Task SetParametersAsync(ParameterView parameters)
         {
             parameters.SetParameterProperties(this);
@@ -271,6 +283,11 @@ namespace BlamanticUI
             StateHasChanged();
         }
 
+        /// <summary>
+        /// Disposes the specified disposing.
+        /// </summary>
+        /// <param name="disposing">if set to <c>true</c> [disposing].</param>
+        /// <returns></returns>
         protected virtual void Dispose(bool disposing)
         {
         }
@@ -310,7 +327,7 @@ namespace BlamanticUI
         /// Returns a dictionary with the same values as the specified <paramref name="source"/>.
         /// </summary>
         /// <returns>true, if a new dictrionary with copied values was created. false - otherwise.</returns>
-        private bool ConvertToDictionary(IReadOnlyDictionary<string, object>? source, out Dictionary<string, object> result)
+        private bool ConvertToDictionary(IReadOnlyDictionary<string, object> source, out Dictionary<string, object> result)
         {
             var newDictionaryCreated = true;
             if (source == null)

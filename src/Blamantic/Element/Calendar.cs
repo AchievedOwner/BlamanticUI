@@ -12,7 +12,7 @@
     /// <summary>
     /// 表示日期的呈现组件。
     /// </summary>
-    public class Calendar:BlamanticComponentBase,IHasUIComponent
+    public class Calendar:BlamanticComponentBase,IHasUIComponent,IHasInverted
     {
         /// <summary>
         /// 一周几天。
@@ -31,33 +31,78 @@
         /// </summary>
         private const int MAX_YEAR_RANGE = 10;
 
+        /// <summary>
+        /// 初始化 <see cref="Calendar"/> 类的新实例。
+        /// </summary>
         public Calendar()
         {
             Year = DateTime.Now.Year;
             Month = DateTime.Now.Month;
 
-            WeekTitles = new string[] { "周日", "周一", "周二", "周三", "周四", "周五", "周六" };
-
-            ViewMode = CalendarViewMode.Date;
-
-            MonthMapper = new Dictionary<int, string>(MAX_MONTH);
-            for (int i = 1; i <= MAX_MONTH; i++)
+            WeekMapper = new Dictionary<DayOfWeek, string>
             {
-                MonthMapper.Add(i, $"{i}月");
-            }
+                [DayOfWeek.Sunday] = "周日",
+                [DayOfWeek.Monday] = "周一",
+                [DayOfWeek.Tuesday] = "周二",
+                [DayOfWeek.Wednesday] = "周三",
+                [DayOfWeek.Thursday] = "周四",
+                [DayOfWeek.Friday] = "周五",
+                [DayOfWeek.Saturday] = "周六"
+            };
+
+            MonthMapper = new Dictionary<CalendarMonth, string>(MAX_MONTH)
+            {
+                [CalendarMonth.Janurary] = "一月",
+                [CalendarMonth.February] = "二月",
+                [CalendarMonth.March] = "三月",
+                [CalendarMonth.April] = "四月",
+                [CalendarMonth.May] = "五月",
+                [CalendarMonth.June] = "六月",
+                [CalendarMonth.July] = "七月",
+                [CalendarMonth.Augest] = "八月",
+                [CalendarMonth.September] = "九月",
+                [CalendarMonth.October] = "十月",
+                [CalendarMonth.November] = "十一月",
+                [CalendarMonth.December] = "十二月",
+            };
         }
 
+        /// <summary>
+        /// 设置显示的年份。默认是当前年。
+        /// </summary>
         [Parameter]public int Year { get; set; }
+        /// <summary>
+        /// 设置显示的月份。默认是当前月。
+        /// </summary>
         [Parameter] public int Month { get; set; }
-        [Parameter] public string[] WeekTitles { get; set; }
-        [Parameter] public CalendarViewMode ViewMode { get; set; }
 
-        [Parameter] public string StringFormat { get; set; }
+        /// <summary>
+        /// 设置视图模式。
+        /// </summary>
+        [Parameter] public CalendarViewMode ViewMode { get; set; } = CalendarViewMode.Date;
 
-        [Parameter] public EventCallback<DateTime> OnClick { get; set; }
+        /// <summary>
+        /// 设置匹配今日的背景颜色。
+        /// </summary>
+        [Parameter] public Color TodayColor { get; set; } = Color.Blue;
 
-        [Parameter] public Color CurrentColor { get; set; } = Color.Blue;
-        [Parameter] public Dictionary<int,string> MonthMapper { get; set; }
+        /// <summary>
+        /// 设置一个布尔值，表示是否高亮今日。
+        /// </summary>
+        [Parameter] public bool HightlightToday { get; set; } = true;
+
+        /// <summary>
+        /// 设置对 <see cref="DayOfWeek"/> 对应的文本委托。
+        /// </summary>
+        [Parameter] public Action<IDictionary<DayOfWeek,string>> WeekMapExpression { get; set; }
+        /// <summary>
+        /// 设置对指定 <see cref="CalendarMonth"/> 对应的文本委托。
+        /// </summary>
+        [Parameter] public Action<IDictionary<CalendarMonth, string>> MonthMapExpression { get; set; }
+        /// <summary>
+        /// 设置一个回调方法，当点击值时触发。
+        /// </summary>
+        [Parameter] public EventCallback<DateTime?> OnClick { get; set; }
 
         protected int CurrentYear { get; set; }
         protected int CurrentMonth { get; set; }
@@ -65,13 +110,18 @@
         protected int CurrentHour { get; set; }
         protected int CurrentMinute { get; set; }
         protected int CurrentSecond { get; set; }
+        protected IDictionary<DayOfWeek, string> WeekMapper { get; set; }
+        protected IDictionary<CalendarMonth, string> MonthMapper { get; set; }
 
-        RenderFragment GetCalendarBody => this.BuildBody;
+        [Parameter]public bool Inverted { get; set; }
 
         protected override void OnParametersSet()
         {
             CurrentYear = Year;
             CurrentMonth = Month;
+
+            WeekMapExpression?.Invoke(WeekMapper);
+            MonthMapExpression?.Invoke(MonthMapper);
         }
 
 
@@ -87,7 +137,13 @@
             builder.AddContent(10, calendar =>
             {
                 calendar.OpenElement(0, "table");
-                calendar.AddAttribute(2, "class", (CssClassCollection)"ui celled center aligned table");
+                calendar.AddAttribute(2, "class", (CssClassCollection)Css
+                    .Create
+                    .Add("ui")
+                    .Add("celled center aligned")
+                    .Add(Inverted,"inverted")
+                    .Add("table")
+                    );
                 calendar.AddContent(5, thead =>
                 {
                     thead.OpenElement(0, "thead");
@@ -190,15 +246,27 @@
             th.CloseElement();
         }
 
+        /// <summary>
+        /// 构造周的标题。
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildWeekTitle(RenderTreeBuilder builder)
         {
-            foreach (var item in WeekTitles)
+            var weekNames= typeof(DayOfWeek).GetEnumNames();
+            foreach (var name in weekNames)
             {
+                var week = Enum.Parse<DayOfWeek>(name);
+                if(!WeekMapper.TryGetValue(week,out string value))
+                {
+                    value = name;
+                }
+
+
                 builder.OpenComponent<Th>(0);
                 builder.AddAttribute(10, nameof(Th.ChildContent), (RenderFragment)(th =>
-                    {
-                        th.AddContent(0, item);
-                    }));
+                {
+                    th.AddContent(0, value);
+                }));
                 builder.CloseComponent();
             }
         }
@@ -231,7 +299,7 @@
             for (int i = min; i <= max; i++)
             {
                 var today = DateTime.Today;
-                BuildCalendarContent(builder, i, i, new DateTime(i, 1, 1), (today.Year == i));
+                BuildCalendarContent(builder, i, i.ToString(), i, (today.Year == i));
                 if (i % 5 == 0)
                 {
                     BuildNewLine(builder, i + 10);
@@ -280,15 +348,24 @@
             }
 
             builder.OpenElement(0, "tr");
-            for (int i = 1; i <= MonthMapper.Count; i++)
+
+            var monthNames= typeof(CalendarMonth).GetEnumNames();
+            var i = 1;
+            foreach (var name in monthNames)
             {
-                var item = MonthMapper[i];
+                var month = Enum.Parse<CalendarMonth>(name);
+                if(!MonthMapper.TryGetValue(month,out string value))
+                {
+                    value = name;
+                }
+                var item = (int)month;
                 var today = DateTime.Today;
-                BuildCalendarContent(builder, i, item,new DateTime(CurrentYear,CurrentMonth,1), (today.Year == CurrentYear && today.Month == i));
+                BuildCalendarContent(builder, i, value, (int)month, (today.Year == CurrentYear && today.Month == item));
                 if (i % 3 == 0)
                 {
                     BuildNewLine(builder, i + 10);
                 }
+                i++;
             }
             builder.CloseElement();
         }
@@ -323,7 +400,8 @@
             var lastDays = (lastMonthDays - dayOfWeek);
             for (int i = lastDays; i < lastMonthDays; i++)
             {
-                BuildCalendarContent(builder, i, i + 1, disabled:true);
+                var day = i + 1;
+                BuildCalendarContent(builder, i,day.ToString(),day, disabled:true);
             }
 
             var daysInMounth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
@@ -332,7 +410,7 @@
                 var day = i;
                 var today = DateTime.Today;
 
-                BuildCalendarContent(builder, i, i, focus: new DateTime(CurrentYear, CurrentMonth, day) == today);
+                BuildCalendarContent(builder, i, day.ToString(),day, focus: new DateTime(CurrentYear, CurrentMonth, day) == today);
 
                 if ((i + dayOfWeek) % DAYS_IN_WEEK == 0)
                 {
@@ -346,7 +424,7 @@
             for (int i = 0; i < (DAYS_IN_WEEK - nextDayWeek); i++)
             {
                 var day = i + 1;
-                BuildCalendarContent(builder, i, day, new DateTime(CurrentYear, CurrentMonth, day), disabled: true);
+                BuildCalendarContent(builder, i, day.ToString(),day,  disabled: true);
             }            
 
             builder.CloseElement();
@@ -358,24 +436,40 @@
             builder.OpenElement(sequence, "tr");
         }
 
-        void BuildCalendarContent(RenderTreeBuilder builder, int sequence, object value,DateTime? clickedValue=default, bool focus = false, bool disabled = false)
+        void BuildCalendarContent(RenderTreeBuilder builder, int sequence,string text, int value, bool focus = false, bool disabled = false)
         {
 
-            builder.OpenComponent<Td>(0);
-            builder.AddAttribute(1 + sequence, nameof(Td.AdditionalCssClass), (CssClassCollection)Css.Create.Add(disabled, "adjacent").Add(focus, CurrentColor.GetEnumCssClass()).Add("link"));
-            if (clickedValue.HasValue)
-            {
-                builder.AddAttribute(2 + sequence, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, async (e) =>
-                {
-                    await OnClick.InvokeAsync(clickedValue.Value);
-                }));
-            }
-            builder.AddAttribute(10 + sequence, nameof(Td.ChildContent), (RenderFragment)(td =>
-            {
-                td.AddContent(0 + sequence, value);
-            }));
+            builder.OpenElement(0,"td");
+            builder.AddAttribute(100 + sequence, "class", Css.Create.Add(disabled, "adjacent")
+                .Add(focus&&HightlightToday,TodayColor.GetEnumCssClass())
+                .Add("link"));
 
-            builder.CloseComponent();
+            builder.AddAttribute(200 + sequence, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, (e) =>
+            {
+                DateTime? clickedValue = default ;
+                switch (ViewMode)
+                {
+                    case CalendarViewMode.Year:
+                        clickedValue = new DateTime(value, 1, 1);
+                        break;
+                    case CalendarViewMode.Month:
+                        clickedValue = new DateTime(CurrentYear,value, 1);
+                        break;
+                    case CalendarViewMode.Date:
+                        clickedValue = new DateTime(CurrentYear,CurrentMonth , value);
+                        break;
+                    case CalendarViewMode.Time:
+                        break;
+                    case CalendarViewMode.DateTime:
+                        break;
+                    default:
+                        break;
+                }
+                OnClick.InvokeAsync(clickedValue);
+            }));
+            builder.AddContent(1000 + sequence, text);
+
+            builder.CloseElement();
         }
     }
 
@@ -404,5 +498,60 @@
         /// 显示日期和时间。
         /// </summary>
         DateTime = 4,
+    }
+
+    /// <summary>
+    /// 日历月份。
+    /// </summary>
+    public enum CalendarMonth
+    {
+        /// <summary>
+        /// 一月。
+        /// </summary>
+        Janurary = 1,
+        /// <summary>
+        /// 二月。
+        /// </summary>
+        February = 2,
+        /// <summary>
+        /// 三月
+        /// </summary>
+        March = 3,
+        /// <summary>
+        /// 四月。
+        /// </summary>
+        April = 4,
+        /// <summary>
+        /// 五月。
+        /// </summary>
+        May = 5,
+        /// <summary>
+        /// 六月。
+        /// </summary>
+        June = 6,
+        /// <summary>
+        /// 七月。
+        /// </summary>
+        July = 7,
+        /// <summary>
+        /// 八月。
+        /// </summary>
+        Augest = 8,
+        /// <summary>
+        /// 九月。
+        /// </summary>
+        September = 9,
+        /// <summary>
+        /// 十月。
+        /// </summary>
+        October = 10,
+        /// <summary>
+        /// 十一月。
+        /// </summary>
+        November = 11,
+        /// <summary>
+        /// 十二月。
+        /// </summary>
+        December = 12
     }
 }

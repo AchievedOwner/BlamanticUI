@@ -70,6 +70,10 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// 创建组件所需要的 class 类。
+        /// </summary>
+        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add(CurrentValue, "checked")                

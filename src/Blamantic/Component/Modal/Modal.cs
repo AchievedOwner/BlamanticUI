@@ -13,7 +13,7 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示模态框的组件，通过调用 <see cref="Active(bool)"/> 方法显示/隐藏模态框。
+    /// 表示模态框的组件，通过调用 <see cref="Util.Active(IHasActive, bool)"/> 方法显示/隐藏模态框。
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     public class Modal : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize,IHasBasic,IHasInverted,IHasStateToggle,IHasActive

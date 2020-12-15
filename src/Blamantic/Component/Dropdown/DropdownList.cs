@@ -212,6 +212,9 @@ namespace BlamanticUI
         /// 设置当输入过滤值时触发的回调方法。
         /// </summary>
         [Parameter] public EventCallback<string> OnFiltering { get; set; }
+        /// <summary>
+        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// </summary>
         public EventCallback<bool> OnActived { get; set; }
 
         /// <summary>

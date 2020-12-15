@@ -11,6 +11,6 @@ namespace BlamanticUI.Abstractions
         /// <summary>
         /// 设置组件的跨列数。
         /// </summary>
-        [CssClass(Order = 1)] ColSpan? Span { get; set; }
+        [CssClass(Order = 1)] ColSpan Span { get; set; }
     }
 }

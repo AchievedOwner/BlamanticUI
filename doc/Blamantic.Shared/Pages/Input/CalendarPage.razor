@@ -1,6 +1,9 @@
 ﻿@page "/component/input/calendar" 
 
-<Pager>
+<Pager DataSource="@(new List<string>
+                     {
+                         "示例","视图模型","自定义“周”文本","自定义“月”文本","更改今日高亮","点击事件","反色背景"
+                     })">
     <Body>
         <Header1>
             日历(Calendar)
@@ -42,5 +45,139 @@
 ")
             </CodeTemplate>
         </PresentationPart>
+        <PresentationPart Title="自定义“周”文本">
+            <Description>
+                设置 <code>WeekMapExpression</code> 自由改写周的文本。
+            </Description>
+            <RunTemplate>
+                <Calendar WeekMapExpression="@(week=>
+                                               {
+                                                   week[DayOfWeek.Monday] = "金曜日";
+                                                   week[DayOfWeek.Tuesday] = "木曜日";
+                                                   week[DayOfWeek.Wednesday] = "水曜日 ";
+                                                   week[DayOfWeek.Thursday] = "火曜日";
+                                                   week[DayOfWeek.Friday] = "土曜日";
+                                                   week[DayOfWeek.Saturday] = "月曜日";
+                                                   week[DayOfWeek.Sunday] = "日曜日";
+                                               })"/>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<Calendar WeekMapExpression=""@(week=>
+                                {
+                                    week[DayOfWeek.Monday] = ""金曜日"";
+                                    week[DayOfWeek.Tuesday] = ""木曜日"";
+                                    week[DayOfWeek.Wednesday] = ""水曜日 "";
+                                    week[DayOfWeek.Thursday] = ""火曜日"";
+                                    week[DayOfWeek.Friday] = ""土曜日"";
+                                    week[DayOfWeek.Saturday] = ""月曜日"";
+                                    week[DayOfWeek.Sunday] = ""日曜日"";
+                                })""/>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="自定义“月”文本">
+            <Description>
+                设置 <code>MonthMapExpression</code> 自定义月的显示文本。
+            </Description>
+            <RunTemplate>
+                <Calendar ViewMode="CalendarViewMode.Month" MonthMapExpression="@(month=>month.Clear())" />
+                <Calendar ViewMode="CalendarViewMode.Month" Year="2012" MonthMapExpression="@(month=>
+                                                                                              {
+                                                                                                  month[CalendarMonth.Janurary] = "Jan.";
+                                                                                                  month[CalendarMonth.February] = "Feb.";
+                                                                                                  month[CalendarMonth.March] = "Mar.";
+                                                                                                  month[CalendarMonth.April] = "Apr.";
+                                                                                                  month[CalendarMonth.May] = "May.";
+                                                                                                  month[CalendarMonth.June] = "Jun.";
+                                                                                                  month[CalendarMonth.July] = "Jul.";
+                                                                                                  month[CalendarMonth.Augest] = "Aug.";
+                                                                                                  month[CalendarMonth.September] = "Sep.";
+                                                                                                  month[CalendarMonth.October] = "Oct.";
+                                                                                                  month[CalendarMonth.November] = "Nov.";
+                                                                                                  month[CalendarMonth.December] = "Dec.";
+                                                                                              })" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Calendar ViewMode=""CalendarViewMode.Month"" MonthMapExpression=""@(month=>month.Clear())""/>
+<Calendar ViewMode=""CalendarViewMode.Month"" Year=""2012"" MonthMapExpression=""@(month=>
+                                                                                {
+                                                                                    month[CalendarMonth.Janurary] = ""Jan."";
+                                                                                    month[CalendarMonth.February] = ""Feb."";
+                                                                                    month[CalendarMonth.March] = ""Mar."";
+                                                                                    month[CalendarMonth.April] = ""Apr."";
+                                                                                    month[CalendarMonth.May] = ""May."";
+                                                                                    month[CalendarMonth.June] = ""Jun."";
+                                                                                    month[CalendarMonth.July] = ""Jul."";
+                                                                                    month[CalendarMonth.Augest] = ""Aug."";
+                                                                                    month[CalendarMonth.September] = ""Sep."";
+                                                                                    month[CalendarMonth.October] = ""Oct."";
+                                                                                    month[CalendarMonth.November] = ""Nov."";
+                                                                                    month[CalendarMonth.December] = ""Dec."";
+                                                                                })"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="更改今日高亮">
+            <Description>
+                设置 <code>TodayColor</code> 可以更改【今日】的高亮颜色。设置 <code>HighlightToday="false"</code> 则取消今日高亮。
+            </Description>
+            <RunTemplate>
+                <Calendar TodayColor="Color.Red"/>
+                <Calendar HightlightToday="false"/>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Calendar TodayColor=""Color.Red""/>
+<Calendar HightlightToday=""false""/>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="点击事件">
+            <Description>
+                当点击视图上的单元格的值触发 <code>OnClick</code> 事件。
+            </Description>
+            <RunTemplate>
+                <Calendar OnClick="v => date = v" />
+                @date
+                <br />
+                <Calendar OnClick="v => month = v" ViewMode="CalendarViewMode.Month" />
+                @month
+                <br />
+                <Calendar OnClick="v => year = v" ViewMode="CalendarViewMode.Year" />
+                @year
+            </RunTemplate>
+        </PresentationPart>
+        <PresentationPart Title="反色背景">
+            <Description>
+                设置 <code>Inverted="true"</code> 兼容父容器的反色效果。
+            </Description>
+            <RunTemplate>
+                <Segment Inverted="true">
+                    <Calendar Inverted="true" />
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment Inverted=""true"">
+    <Calendar Inverted=""true"" />
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
     </Body>
 </Pager>
+@code{ 
+    DateTime? date;
+    DateTime? month;
+    DateTime? year;
+}
