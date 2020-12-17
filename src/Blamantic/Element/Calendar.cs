@@ -124,12 +124,19 @@
             MonthMapExpression?.Invoke(MonthMapper);
         }
 
-
+        /// <summary>
+        /// 创建组件所需要的 class 类。
+        /// </summary>
+        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("calendar");
         }
 
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             builder.OpenElement(0, "div");
