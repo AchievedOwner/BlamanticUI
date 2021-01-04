@@ -1,0 +1,38 @@
+﻿@page "/component/input/datefield" 
+
+<Pager DataSource="@(new List<string>
+                     {
+                         "示例"
+                     })">
+    <Body>
+        <Header1 Divider="true">
+            日期字段(DateField)
+            <SubHeader></SubHeader>
+        </Header1>
+        <Message State="State.Warning">
+            仅支持 <code>DateTime</code> / <code>DateTimeOffset</code> 两种数据类型。
+        </Message>
+        <PresentationPart Title="示例">
+            <RunTemplate>
+                <Form Model="this">
+                    <DateField @bind-Value="Today" />
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+DateTime? Today { get; set; }
+```
+```html
+<Form Model=""this"">
+    <DateField @bind-Value=""Today"" />
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager>
+@code{
+    DateTime? Today { get; set; }
+}

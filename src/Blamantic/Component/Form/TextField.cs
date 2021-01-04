@@ -143,7 +143,7 @@ namespace BlamanticUI
             }
         }
 
-        private void BuildInput(RenderTreeBuilder builder,int sequence=10)
+        protected virtual void BuildInput(RenderTreeBuilder builder,int sequence=10)
         {
             if (Type == TextFieldType.MultiLine)
             {

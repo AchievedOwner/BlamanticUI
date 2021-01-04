@@ -196,6 +196,11 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
+                Name = "日期输入框(DateField)",
+                Link = $"/component/{prefix}/datefield"
+            });
+            nav.Add(new Navigation
+            {
                 Name = "日历(Calendar)",
                 Link = $"/component/{prefix}/calendar"
             });

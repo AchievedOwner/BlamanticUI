@@ -119,7 +119,7 @@ namespace BlamanticUI
             {
                 throw new ArgumentException("至少要有1个候选项", nameof(PageSizeStakeholders));
             }
-            PageSize = PageSizeStakeholders.First();
+            PageSize = PageSizeStakeholders[0];
             base.OnInitialized();
         }
 

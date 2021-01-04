@@ -2,7 +2,7 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "示例","视图模型","自定义“周”文本","自定义“月”文本","更改今日高亮","点击事件","反色背景"
+                         "示例","视图模型","自定义“周”文本","自定义“月”文本","更改今日高亮","双向绑定","反色背景"
                      })">
     <Body>
         <Header1>
@@ -140,20 +140,34 @@
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="点击事件">
+        <PresentationPart Title="双向绑定">
             <Description>
-                当点击视图上的单元格的值触发 <code>OnClick</code> 事件。
+                支持双向绑定 <code>@@bind-Value</code> 的参数。
             </Description>
             <RunTemplate>
-                <Calendar OnClick="v => date = v" />
+                <Calendar @bind-Value="date" />
                 @date
                 <br />
-                <Calendar OnClick="v => month = v" ViewMode="CalendarViewMode.Month" />
+                <Calendar @bind-Value="month" ViewMode="CalendarViewMode.Month" />
                 @month
                 <br />
-                <Calendar OnClick="v => year = v" ViewMode="CalendarViewMode.Year" />
+                <Calendar @bind-Value="year" ViewMode="CalendarViewMode.Year" />
                 @year
             </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Calendar @bind-Value=""date"" />
+@date
+<br />
+<Calendar @bind-Value=""month"" ViewMode=""CalendarViewMode.Month"" />
+@month
+<br />
+<Calendar @bind-Value=""year"" ViewMode=""CalendarViewMode.Year"" />
+@year
+```
+")
+            </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="反色背景">
             <Description>

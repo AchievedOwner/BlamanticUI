@@ -102,7 +102,9 @@
         /// <summary>
         /// 设置一个回调方法，当点击值时触发。
         /// </summary>
-        [Parameter] public EventCallback<DateTime?> OnClick { get; set; }
+        [Parameter] public EventCallback<DateTime?> ValueChanged { get; set; }
+
+        [Parameter] public DateTime? Value { get; set; }
 
         protected int CurrentYear { get; set; }
         protected int CurrentMonth { get; set; }
@@ -408,7 +410,7 @@
             for (int i = lastDays; i < lastMonthDays; i++)
             {
                 var day = i + 1;
-                BuildCalendarContent(builder, i,day.ToString(),day, disabled:true);
+                BuildCalendarContent(builder, i, day.ToString(), day, disabled: true);
             }
 
             var daysInMounth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
@@ -417,7 +419,7 @@
                 var day = i;
                 var today = DateTime.Today;
 
-                BuildCalendarContent(builder, i, day.ToString(),day, focus: new DateTime(CurrentYear, CurrentMonth, day) == today);
+                BuildCalendarContent(builder, i + 500, day.ToString(), day, focus: new DateTime(CurrentYear, CurrentMonth, day) == today);
 
                 if ((i + dayOfWeek) % DAYS_IN_WEEK == 0)
                 {
@@ -431,8 +433,8 @@
             for (int i = 0; i < (DAYS_IN_WEEK - nextDayWeek); i++)
             {
                 var day = i + 1;
-                BuildCalendarContent(builder, i, day.ToString(),day,  disabled: true);
-            }            
+                BuildCalendarContent(builder, i + 100, day.ToString(), day, disabled: true);
+            }
 
             builder.CloseElement();
         }
@@ -443,40 +445,73 @@
             builder.OpenElement(sequence, "tr");
         }
 
-        void BuildCalendarContent(RenderTreeBuilder builder, int sequence,string text, int value, bool focus = false, bool disabled = false)
+        void BuildCalendarContent(RenderTreeBuilder builder, int sequence, string text, int value, bool focus = false, bool disabled = false)
         {
-
+            builder.OpenRegion(sequence + 1000);
             builder.OpenElement(0,"td");
-            builder.AddAttribute(100 + sequence, "class", Css.Create.Add(disabled, "adjacent")
-                .Add(focus&&HightlightToday,TodayColor.GetEnumCssClass())
-                .Add("link"));
+            builder.AddAttribute(100 + sequence, "class", Css.Create
+                .Add(disabled, "adjacent")
+                .Add(focus && HightlightToday, TodayColor.GetEnumCssClass())
+                .Add(CompareCurrent(),"active focus")
+                .Add(!disabled, "link"));
 
-            builder.AddAttribute(200 + sequence, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, (e) =>
+            if (!disabled)
             {
-                DateTime? clickedValue = default ;
+                builder.AddAttribute(200 + sequence, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, (e) =>
+                {
+                    DateTime? clickedValue = default;
+                    switch (ViewMode)
+                    {
+                        case CalendarViewMode.Year:
+                            clickedValue = new DateTime(value, 1, 1);
+                            break;
+                        case CalendarViewMode.Month:
+                            clickedValue = new DateTime(CurrentYear, value, 1);
+                            break;
+                        case CalendarViewMode.Date:
+                            clickedValue = new DateTime(CurrentYear, CurrentMonth, value);
+                            break;
+                        case CalendarViewMode.Time:
+                            break;
+                        case CalendarViewMode.DateTime:
+                            break;
+                        default:
+                            break;
+                    }
+                    Value = clickedValue;
+                    ValueChanged.InvokeAsync(clickedValue);
+                }));
+            }
+            builder.AddContent(1000 + sequence, text);
+
+            builder.CloseElement();
+            builder.CloseRegion();
+
+
+            bool CompareCurrent()
+            {
+                if (!Value.HasValue)
+                {
+                    return false;
+                }
+                var selectedValue = Value.Value;
                 switch (ViewMode)
                 {
                     case CalendarViewMode.Year:
-                        clickedValue = new DateTime(value, 1, 1);
-                        break;
+                        return selectedValue.Year == value;
                     case CalendarViewMode.Month:
-                        clickedValue = new DateTime(CurrentYear,value, 1);
-                        break;
+                        return selectedValue.Month == value && selectedValue.Year == CurrentYear;
                     case CalendarViewMode.Date:
-                        clickedValue = new DateTime(CurrentYear,CurrentMonth , value);
-                        break;
+                        return selectedValue.Day == value && selectedValue.Year == CurrentYear && selectedValue.Month == CurrentMonth;
                     case CalendarViewMode.Time:
                         break;
                     case CalendarViewMode.DateTime:
                         break;
                     default:
-                        break;
+                        return false;
                 }
-                OnClick.InvokeAsync(clickedValue);
-            }));
-            builder.AddContent(1000 + sequence, text);
-
-            builder.CloseElement();
+                return false;
+            }
         }
     }
 
