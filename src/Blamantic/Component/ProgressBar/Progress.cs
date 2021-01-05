@@ -13,7 +13,7 @@ namespace BlamanticUI
     /// <summary>
     /// 表示进度条的容器组件。
     /// </summary>
-    public class Progress : ParentBlazorComponentBase<Progress>, IHasUIComponent, IHasColor, IHasInverted, IHasState, IHasActive, IHasDisabled, IHasAttatched, IHasSize
+    public class Progress : ParentBlazorComponentBase<Progress>, IHasUIComponent, IHasColor, IHasDarkness, IHasState, IHasActive, IHasDisabled, IHasAttatched, IHasSize
     {
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置组件的颜色。
         /// </summary>

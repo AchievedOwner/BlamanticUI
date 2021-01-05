@@ -16,7 +16,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag("span")]
-    public class Text : BlamanticChildContentComponentBase, IHasUIComponent,IHasColor,IHasSize,IHasInverted
+    public class Text : BlamanticChildContentComponentBase, IHasUIComponent,IHasColor,IHasSize,IHasDarkness
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Text"/> class.
@@ -36,7 +36,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置文本的尺寸大小。
         /// </summary>

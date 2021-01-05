@@ -27,7 +27,7 @@ namespace BlamanticUI
         IHasFitted,
         IHasCompact,
         IHasCircular,
-        IHasInverted,
+        IHasDarkness,
         IHasHorizontalAlignment
     {
         /// <summary>
@@ -48,7 +48,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置反转背景，配合 <see cref="Color"/> 成为背景颜色。
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置是否需要吸附于相对位置的其他组件。
         /// </summary>
@@ -96,7 +96,7 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] [CssClass("piled")] public bool Piled { get; set; }
         /// <summary>
-        /// 设置顶部边框的颜色。设置 <see cref="Inverted"/> 成为背景颜色。
+        /// 设置顶部边框的颜色。设置 <see cref="Darkness"/> 成为背景颜色。
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>

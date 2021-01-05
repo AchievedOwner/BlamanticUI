@@ -15,7 +15,7 @@ namespace BlamanticUI
     /// 表示呈现一个可转动的圈作为加载中状态的 div 元素的状态加载器。
     /// </summary>
     [HtmlTag]
-    public class Loader : BlamanticChildContentComponentBase, IHasUIComponent, IHasDisabled, IHasActive, IHasColor, IHasInverted, IHasInline, IHasSize, IHasTexted, IHasCentered
+    public class Loader : BlamanticChildContentComponentBase, IHasUIComponent, IHasDisabled, IHasActive, IHasColor, IHasDarkness, IHasInline, IHasSize, IHasTexted, IHasCentered
     {
         /// <summary>
         /// 设置是否禁用。
@@ -35,7 +35,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter] public bool Inverted { get; set; }
+        [Parameter] public bool Darkness { get; set; }
         /// <summary>
         /// 设置允许显示在文本之间。
         /// </summary>

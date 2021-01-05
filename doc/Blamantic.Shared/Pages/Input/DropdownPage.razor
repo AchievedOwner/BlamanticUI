@@ -348,18 +348,18 @@ IReadOnlyList<User> Users => new List<User>
         </PresentationPart>
         <PresentationPart Title="反转背景颜色">
             <Description>
-                设置 <code>Inverted="true"</code> 可以在反色背景中显示。
+                设置 <code>Darkness="true"</code> 可以在反色背景中显示。
             </Description>
             <RunTemplate>
-                <Segment Inverted="true">
-                    <DropDownList DataSource="Users" Inverted="true" />
+                <Segment Darkness="true">
+                    <DropDownList DataSource="Users" Darkness="true" />
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <DropDownList DataSource=""Users"" Inverted=""true"" />
+<Segment Darkness=""true"">
+    <DropDownList DataSource=""Users"" Darkness=""true"" />
 </Segment>
 ```
 ")
@@ -532,7 +532,7 @@ IReadOnlyList<User> Users => new List<User>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反色背景</td>
                     <td>bool</td>
                     <td></td>

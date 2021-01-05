@@ -119,25 +119,25 @@
         </PresentationPart>
         <PresentationPart Title="反色背景">
             <Description>
-                设置 <code>Inverted="true"</code> 可以很好的兼容反色背景效果。
+                设置 <code>Darkness="true"</code> 可以很好的兼容反色背景效果。
             </Description>
             <RunTemplate>
-                <Segment Inverted="true">
-                    <CheckBox Inverted="true" DisplayName="普通复选框" @bind-Value="Agree" />
+                <Segment Darkness="true">
+                    <CheckBox Darkness="true" DisplayName="普通复选框" @bind-Value="Agree" />
                     <br />
                     <br />
-                    <CheckBox Inverted="true" DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
+                    <CheckBox Darkness="true" DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
                     <br />
                     <br />
-                    <CheckBox Inverted="true" DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
+                    <CheckBox Darkness="true" DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<CheckBox Inverted=""true"" DisplayName=""普通复选框"" @bind-Value=""Agree""/>
-<CheckBox Inverted=""true"" DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
-<CheckBox Inverted=""true"" DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
+<CheckBox Darkness=""true"" DisplayName=""普通复选框"" @bind-Value=""Agree""/>
+<CheckBox Darkness=""true"" DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
+<CheckBox Darkness=""true"" DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
 ```
 ")
             </CodeTemplate>

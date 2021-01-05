@@ -22,7 +22,7 @@ namespace BlamanticUI
         IHasLoading,
         IHasSize,
         IHasEqualWidth,
-        IHasInverted,
+        IHasDarkness,
         IHasColor,
         IHasDoubling,
         IHasState
@@ -70,7 +70,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置表单加载中状态的反转颜色。
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置表单加载中状态的颜色。
         /// </summary>

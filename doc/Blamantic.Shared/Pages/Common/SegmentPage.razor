@@ -231,17 +231,17 @@
 
 <PresentationPart Title="反选背景" Id="inverted">
     <Description>
-        设置 <code>Inverted="true"</code> 可以反选背景。
+        设置 <code>Darkness="true"</code> 可以反选背景。
     </Description>
     <RunTemplate>
-        <Segment Inverted="true">
+        <Segment Darkness="true">
             背景反选了，所以颜色是黑的，但文字是白色的。
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
+<Segment Darkness=""true"">
     背景反选了，所以颜色是黑的，但文字是白色的。
 </Segment>
 ```
@@ -295,41 +295,41 @@
 
 <PresentationPart Title="背景颜色" Id="bg-color">
     <Description>
-        设置 <code>Color</code> 和 <code>Inverted</code> 可以让片段有背景颜色。
+        设置 <code>Color</code> 和 <code>Darkness</code> 可以让片段有背景颜色。
     </Description>
     <RunTemplate>
-        <Segment Color="Color.Red" Inverted="true">
+        <Segment Color="Color.Red" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Color="Color.Blue" Inverted="true">
+        <Segment Color="Color.Blue" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Color="Color.Green" Inverted="true">
+        <Segment Color="Color.Green" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Color="Color.Orange" Inverted="true">
+        <Segment Color="Color.Orange" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Color="Color.Pink" Inverted="true">
+        <Segment Color="Color.Pink" Darkness="true">
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Color=""Color.Red"" Inverted=""true"">
+<Segment Color=""Color.Red"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Blue"" Inverted=""true"">
+<Segment Color=""Color.Blue"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Green"" Inverted=""true"">
+<Segment Color=""Color.Green"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Orange"" Inverted=""true"">
+<Segment Color=""Color.Orange"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Pink"" Inverted=""true"">
+<Segment Color=""Color.Pink"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
 ```
@@ -352,43 +352,43 @@
             <ParagraphDemo />
         </Segment>
         <br />
-        <Segment Color="Color.Red" Inverted="true">
+        <Segment Color="Color.Red" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="true" Color="Color.Red" Inverted="true">
+        <Segment Emphasis="true" Color="Color.Red" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="false" Color="Color.Red" Inverted="true">
-            <ParagraphDemo />
-        </Segment>
-        <br />
-        <Segment Color="Color.Green" Inverted="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Emphasis="true" Color="Color.Green" Inverted="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Emphasis="false" Color="Color.Green" Inverted="true">
+        <Segment Emphasis="false" Color="Color.Red" Darkness="true">
             <ParagraphDemo />
         </Segment>
         <br />
-        <Segment Color="Color.Black" Inverted="true">
+        <Segment Color="Color.Green" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="true" Color="Color.Black" Inverted="true">
+        <Segment Emphasis="true" Color="Color.Green" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="false" Color="Color.Black" Inverted="true">
+        <Segment Emphasis="false" Color="Color.Green" Darkness="true">
             <ParagraphDemo />
         </Segment>
         <br />
-        <Segment Color="Color.Pink" Inverted="true">
+        <Segment Color="Color.Black" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="true" Color="Color.Pink" Inverted="true">
+        <Segment Emphasis="true" Color="Color.Black" Darkness="true">
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="false" Color="Color.Pink" Inverted="true">
+        <Segment Emphasis="false" Color="Color.Black" Darkness="true">
+            <ParagraphDemo />
+        </Segment>
+        <br />
+        <Segment Color="Color.Pink" Darkness="true">
+            <ParagraphDemo />
+        </Segment>
+        <Segment Emphasis="true" Color="Color.Pink" Darkness="true">
+            <ParagraphDemo />
+        </Segment>
+        <Segment Emphasis="false" Color="Color.Pink" Darkness="true">
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
@@ -405,43 +405,43 @@
     <ParagraphDemo />
 </Segment>
 <br />
-<Segment Color=""Color.Red"" Inverted=""true"">
+<Segment Color=""Color.Red"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""true"" Color=""Color.Red"" Inverted=""true"">
+<Segment Emphasis=""true"" Color=""Color.Red"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""false"" Color=""Color.Red"" Inverted=""true"">
-    <ParagraphDemo />
-</Segment>
-<br />
-<Segment Color=""Color.Green"" Inverted=""true"">
-    <ParagraphDemo />
-</Segment>
-<Segment Emphasis=""true"" Color=""Color.Green"" Inverted=""true"">
-    <ParagraphDemo />
-</Segment>
-<Segment Emphasis=""false"" Color=""Color.Green"" Inverted=""true"">
+<Segment Emphasis=""false"" Color=""Color.Red"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
 <br />
-<Segment Color=""Color.Black"" Inverted=""true"">
+<Segment Color=""Color.Green"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""true"" Color=""Color.Black"" Inverted=""true"">
+<Segment Emphasis=""true"" Color=""Color.Green"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""false"" Color=""Color.Black"" Inverted=""true"">
+<Segment Emphasis=""false"" Color=""Color.Green"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
 <br />
-<Segment Color=""Color.Pink"" Inverted=""true"">
+<Segment Color=""Color.Black"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""true"" Color=""Color.Pink"" Inverted=""true"">
+<Segment Emphasis=""true"" Color=""Color.Black"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""false"" Color=""Color.Pink"" Inverted=""true"">
+<Segment Emphasis=""false"" Color=""Color.Black"" Darkness=""true"">
+    <ParagraphDemo />
+</Segment>
+<br />
+<Segment Color=""Color.Pink"" Darkness=""true"">
+    <ParagraphDemo />
+</Segment>
+<Segment Emphasis=""true"" Color=""Color.Pink"" Darkness=""true"">
+    <ParagraphDemo />
+</Segment>
+<Segment Emphasis=""false"" Color=""Color.Pink"" Darkness=""true"">
     <ParagraphDemo />
 </Segment>
 ```
@@ -579,8 +579,8 @@
                 </SubHeader>
             </Header2>
         </Segment>
-        <Segment Circular="true" Inverted="true">
-            <Header2 Inverted="true">
+        <Segment Circular="true" Darkness="true">
+            <Header2 Darkness="true">
                 立即购买
                 <SubHeader>
                     ￥29.98
@@ -599,8 +599,8 @@
         </SubHeader>
     </Header2>
 </Segment>
-<Segment Circular=""true"" Inverted=""true"">
-    <Header2 Inverted=""true"">
+<Segment Circular=""true"" Darkness=""true"">
+    <Header2 Darkness=""true"">
         立即购买
         <SubHeader>
             ￥99.99
@@ -999,7 +999,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反转背景，配合 <code>Color</code> 成为背景颜色</td>
                     <td>bool</td>
                     <td></td>
@@ -1030,7 +1030,7 @@
                 </tr>
                 <tr>
                     <td>Color</td>
-                    <td>顶部边框的颜色。设置 <code>Inverted</code> 成为背景颜色</td>
+                    <td>顶部边框的颜色。设置 <code>Darkness</code> 成为背景颜色</td>
                     <td>enum</td>
                     <td></td>
                 </tr>

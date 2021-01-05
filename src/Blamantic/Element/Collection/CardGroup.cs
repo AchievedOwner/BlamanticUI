@@ -11,7 +11,7 @@ namespace BlamanticUI
     /// <summary>
     /// 表示用于包含多个 <see cref="Card"/> 组件的卡片组。
     /// </summary>
-    public class CardGroup:BlamanticChildContentComponentBase, IHasUIComponent,IHasHorizontal,IHasInverted,IHasSpan,IHasDoubling,IHasStackable
+    public class CardGroup:BlamanticChildContentComponentBase, IHasUIComponent,IHasHorizontal,IHasDarkness,IHasSpan,IHasDoubling,IHasStackable
     {
         /// <summary>
         /// 初始化 <see cref="CardGroup"/> 类的新实例。
@@ -35,7 +35,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置卡片组的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置卡片每一行的固定的数量。
         /// </summary>

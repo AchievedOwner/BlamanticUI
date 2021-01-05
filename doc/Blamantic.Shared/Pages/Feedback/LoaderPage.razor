@@ -231,19 +231,19 @@
 </PresentationPart>
             <PresentationPart Title="反选背景">
     <Description>
-        在反选背景下，要加入 <code>Inverted="true"</code> 才能看到。
+        在反选背景下，要加入 <code>Darkness="true"</code> 才能看到。
         <Message>
-            在 <code>Dimmer</code> 组件中，只需要设置 <code>Dimmer</code> 组件的 <code>Inverted="true"</code> 即可。
+            在 <code>Dimmer</code> 组件中，只需要设置 <code>Dimmer</code> 组件的 <code>Darkness="true"</code> 即可。
         </Message>
     </Description>
     <RunTemplate>
-        <Segment Inverted="true">
-            <Loader Inverted="true" Actived="true" />
+        <Segment Darkness="true">
+            <Loader Darkness="true" Actived="true" />
             <ParagraphDemo />
             <ParagraphDemo />
         </Segment>
         <Segment>
-            <Dimmer Actived="true" Inverted="true">
+            <Dimmer Actived="true" Darkness="true">
                 <Loader />
             </Dimmer>
             <ParagraphDemo />
@@ -253,11 +253,11 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <Loader Inverted=""true"" Actived=""true""/>
+<Segment Darkness=""true"">
+    <Loader Darkness=""true"" Actived=""true""/>
 </Segment>
 <Segment>
-    <Dimmer Actived=""true"" Inverted=""true"">
+    <Dimmer Actived=""true"" Darkness=""true"">
         <Loader/>
     </Dimmer>
 </Segment>
@@ -311,7 +311,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反选颜色</td>
                     <td>bool</td>
                     <td></td>

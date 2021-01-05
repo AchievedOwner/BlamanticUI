@@ -32,7 +32,7 @@ namespace BlamanticUI
         IHasActive,
         IHasSize,
         IHasCompact,
-        IHasInverted,
+        IHasDarkness,
         IHasSpan,
         IHasInline
     {
@@ -94,7 +94,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置反转背景。
         /// </summary>
-        [Parameter] public bool Inverted { get; set; }
+        [Parameter] public bool Darkness { get; set; }
         /// <summary>
         /// 设置内边距的压缩。
         /// </summary>

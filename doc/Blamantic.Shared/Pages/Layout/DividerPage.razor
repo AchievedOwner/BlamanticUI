@@ -232,11 +232,11 @@
         </PresentationPart>
 
         <PresentationPart Title="反选背景">
-            <Description>设置 <code>Inverted="true"</code> 使颜色反选显示。</Description>
+            <Description>设置 <code>Darkness="true"</code> 使颜色反选显示。</Description>
             <RunTemplate>
-                <Segment Inverted="true">
+                <Segment Darkness="true">
                     <ParagraphDemo />
-                    <Divider Horizontal="true" Inverted="true">
+                    <Divider Horizontal="true" Darkness="true">
                         水平显示
                     </Divider>
                     <ParagraphDemo />
@@ -245,9 +245,9 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
+<Segment Darkness=""true"">
     <ParagraphDemo/>
-    <Divider Horizontal=""true"" Inverted=""true"">
+    <Divider Horizontal=""true"" Darkness=""true"">
         水平显示
     </Divider>
     <ParagraphDemo/>
@@ -373,7 +373,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反转背景</td>
                     <td>bool</td>
                     <td></td>

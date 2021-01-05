@@ -23,7 +23,7 @@ namespace BlamanticUI
         IHasVery, 
         IHasSize, 
         IHasBasic, 
-        IHasInverted, 
+        IHasDarkness, 
         IHasCelled
     {
         /// <summary>
@@ -75,13 +75,13 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] [CssClass("collapsing")] public bool Collapsing { get; set; }
         /// <summary>
-        /// 设置表格的上边框颜色。若设置了 <see cref="Inverted"/> 可变为背景颜色。
+        /// 设置表格的上边框颜色。若设置了 <see cref="Darkness"/> 可变为背景颜色。
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
         /// 设置反转颜色，配合 <see cref="Color"/> 成为背景颜色。
         /// </summary>
-        [Parameter] public bool Inverted { get; set; }
+        [Parameter] public bool Darkness { get; set; }
         /// <summary>
         /// 设置所有单元格对内边距的空间进行一定的压缩。
         /// </summary>

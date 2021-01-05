@@ -2275,10 +2275,10 @@
 
 <PresentationPart>
     <Description>
-        再设置 <code>Inverted="true"</code> 可以将整个表格填充上颜色。
+        再设置 <code>Darkness="true"</code> 可以将整个表格填充上颜色。
     </Description>
     <RunTemplate>
-        <Table Color="Color.Red" Inverted="true">
+        <Table Color="Color.Red" Darkness="true">
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2302,7 +2302,7 @@
                 </Tr>
             </Body>
         </Table>
-        <Table Color="Color.Blue" Inverted="true">
+        <Table Color="Color.Blue" Darkness="true">
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2326,7 +2326,7 @@
                 </Tr>
             </Body>
         </Table>
-        <Table Color="Color.Green" Inverted="true">
+        <Table Color="Color.Green" Darkness="true">
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2350,7 +2350,7 @@
                 </Tr>
             </Body>
         </Table>
-        <Table Color="Color.Pink" Inverted="true">
+        <Table Color="Color.Pink" Darkness="true">
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2378,7 +2378,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Color=""Color.Red"" Inverted=""true"">
+<Table Color=""Color.Red"" Darkness=""true"">
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2402,7 +2402,7 @@
         </Tr>
     </Body>
 </Table>
-<Table Color=""Color.Blue"" Inverted=""true"">
+<Table Color=""Color.Blue"" Darkness=""true"">
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2426,7 +2426,7 @@
         </Tr>
     </Body>
 </Table>
-<Table Color=""Color.Green"" Inverted=""true"">
+<Table Color=""Color.Green"" Darkness=""true"">
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2450,7 +2450,7 @@
         </Tr>
     </Body>
 </Table>
-<Table Color=""Color.Purple"" Inverted=""true"">
+<Table Color=""Color.Purple"" Darkness=""true"">
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2952,12 +2952,12 @@
                 </tr>
                 <tr>
                     <td>Color</td>
-                    <td>表格的上边框颜色。若设置了 <code>Inverted</code> 可变为背景颜色。</td>
+                    <td>表格的上边框颜色。若设置了 <code>Darkness</code> 可变为背景颜色。</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反转颜色，配合 <code>Color</code> 成为背景颜色</td>
                     <td>bool</td>
                     <td></td>

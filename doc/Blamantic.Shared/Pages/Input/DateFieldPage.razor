@@ -2,15 +2,17 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "示例"
+                         "示例","日历视图","自定义格式","禁用状态","深色背景"
                      })">
     <Body>
         <Header1 Divider="true">
             日期字段(DateField)
-            <SubHeader></SubHeader>
+            <SubHeader>
+                结合了 Input 和 Calendar 组件形成的日期选择框。
+            </SubHeader>
         </Header1>
         <Message State="State.Warning">
-            仅支持 <code>DateTime</code> / <code>DateTimeOffset</code> 两种数据类型。
+            仅支持 <code>DateTimeOffset?</code> 数据类型。
         </Message>
         <PresentationPart Title="示例">
             <RunTemplate>
@@ -31,8 +33,105 @@ DateTime? Today { get; set; }
 ")
             </CodeTemplate>
         </PresentationPart>
+
+        <PresentationPart Title="日历视图">
+            <Description>
+                设置 <code>ViewMode</code> 显示不同的日历视图。
+            </Description>
+            <RunTemplate>
+                <Form Model="this">
+                    <Fields Span="@(3)">
+                        <Field>
+                            <DateField @bind-Value="Year" ViewMode="CalendarViewMode.Year" placeholder="年" />
+                        </Field>
+                        <Field>
+                            <DateField @bind-Value="Month" ViewMode="CalendarViewMode.Month" placeholder="月" />
+                        </Field>
+                        <Field>
+                            <DateField @bind-Value="Today" ViewMode="CalendarViewMode.Date" placeholder="日" />
+                        </Field>
+                    </Fields>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Fields Span=""@(3)"">
+        <Field>
+            <DateField @bind-Value=""Year"" ViewMode=""CalendarViewMode.Year"" placeholder=""年"" />
+        </Field>
+        <Field>
+            <DateField @bind-Value=""Month"" ViewMode=""CalendarViewMode.Month"" placeholder=""月"" />
+        </Field>
+        <Field>
+            <DateField @bind-Value=""Today"" ViewMode=""CalendarViewMode.Date"" placeholder=""日"" />
+        </Field>
+    </Fields>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="自定义格式">
+            <Description>
+                设置 <code>Format</code> 自定义显示的格式。<b>仅对 <code>DateTimeOffset</code> 要求的格式受支持。</b>
+            </Description>
+            <RunTemplate>
+                <DateField @bind-Value="Today" Format="MMM,dd,yyyy" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<DateField @bind-Value=""Today"" Format=""MMM,dd,yyyy"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="禁用状态">
+            <Description>
+                设置 <code>Disabled="true"</code> 禁用控件。
+            </Description>
+            <RunTemplate>
+                <Form Model="this">
+                    <DateField @bind-Value="Today" Disabled="true" />
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <DateField @bind-Value=""Today"" Disabled=""true"" />
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="深色背景">
+            <RunTemplate>
+                <Segment Darkness="true">
+                    <Form Model="this">
+                        <DateField @bind-Value="Today" Darkness="true" />
+                    </Form>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment Darkness=""true"">
+    <Form Model=""this"">
+        <DateField @bind-Value=""Today"" Darkness=""true""/>
+    </Form>
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
     </Body>
 </Pager>
 @code{
-    DateTime? Today { get; set; }
+    DateTimeOffset? Today { get; set; }
+
+    DateTimeOffset? Year { get; set; }
+    DateTimeOffset? Month { get; set; }
 }

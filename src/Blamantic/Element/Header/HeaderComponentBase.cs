@@ -16,7 +16,7 @@ namespace BlamanticUI
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
-    public abstract class HeaderComponentBase : BlamanticChildContentComponentBase,IHasUIComponent,IHasIcon,IHasAttatched,IHasHeader,IHasDivider,IHasInverted,IHasFloated,IHasHorizontalAlignment,IHasColor
+    public abstract class HeaderComponentBase : BlamanticChildContentComponentBase,IHasUIComponent,IHasIcon,IHasAttatched,IHasHeader,IHasDivider,IHasDarkness,IHasFloated,IHasHorizontalAlignment,IHasColor
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderComponentBase"/> class.
@@ -92,7 +92,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置浮动方式。
         /// </summary>

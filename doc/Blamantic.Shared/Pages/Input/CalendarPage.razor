@@ -9,6 +9,9 @@
             日历(Calendar)
             <SubHeader>日历可以允许用户选择日期和时间</SubHeader>
         </Header1>
+        <Message State="State.Warning">
+            仅支持 <code>DateTimeOffset?</code> 数据类型。
+        </Message>
         <PresentationPart Title="示例">
             <Description>
                 默认显示的是日期。
@@ -171,18 +174,18 @@
         </PresentationPart>
         <PresentationPart Title="反色背景">
             <Description>
-                设置 <code>Inverted="true"</code> 兼容父容器的反色效果。
+                设置 <code>Darkness="true"</code> 兼容父容器的反色效果。
             </Description>
             <RunTemplate>
-                <Segment Inverted="true">
-                    <Calendar Inverted="true" />
+                <Segment Darkness="true">
+                    <Calendar Darkness="true" />
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <Calendar Inverted=""true"" />
+<Segment Darkness=""true"">
+    <Calendar Darkness=""true"" />
 </Segment>
 ```
 ")
@@ -191,7 +194,7 @@
     </Body>
 </Pager>
 @code{ 
-    DateTime? date;
-    DateTime? month;
-    DateTime? year;
+    DateTimeOffset? date;
+    DateTimeOffset? month;
+    DateTimeOffset? year;
 }

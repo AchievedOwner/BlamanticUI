@@ -12,7 +12,7 @@ namespace BlamanticUI
     /// 呈现 div 元素的标签组件。
     /// </summary>
     [HtmlTag]
-    public class Label : BlamanticChildContentComponentBase,IHasUIComponent, IHasBasic, IHasColor, IHasInverted, IHasTag, IHasImage, IHasAttatched, IHasCircular, IHasSize, IHasDropdown,IHasHorizontal
+    public class Label : BlamanticChildContentComponentBase,IHasUIComponent, IHasBasic, IHasColor, IHasDarkness, IHasTag, IHasImage, IHasAttatched, IHasCircular, IHasSize, IHasDropdown,IHasHorizontal
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Label"/> class.
@@ -34,7 +34,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter] public bool Inverted { get; set; }
+        [Parameter] public bool Darkness { get; set; }
         /// <summary>
         /// 设置标签为标记的样式。
         /// </summary>

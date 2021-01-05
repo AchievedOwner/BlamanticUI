@@ -292,10 +292,10 @@
 </PresentationPart>
         <PresentationPart Title="互换背景">
             <Description>
-                设置 <code>Inverted="true"</code> 互换遮罩层与模态框的背景深浅样式。
+                设置 <code>Darkness="true"</code> 互换遮罩层与模态框的背景深浅样式。
             </Description>
     <RunTemplate>
-        <Modal Inverted="true" @ref="refModal11">
+        <Modal Darkness="true" @ref="refModal11">
             <Header>
                 互换背景的深浅
             </Header>
@@ -312,7 +312,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal Inverted=""true"" @ref=""refModal11"">
+<Modal Darkness=""true"" @ref=""refModal11"">
     <Header>
         深色背景
     </Header>
@@ -520,7 +520,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>互换遮罩层与模态框的背景深浅样式</td>
                     <td>boo</td>
                     <td></td>

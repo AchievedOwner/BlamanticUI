@@ -595,11 +595,11 @@
 </PresentationPart>
         <PresentationPart Title="反转背景">
     <Description>
-        设置 <code>Inverted="true"</code> 使组件识别反转的背景颜色。
+        设置 <code>Darkness="true"</code> 使组件识别反转的背景颜色。
     </Description>
     <RunTemplate>
-        <Segment Inverted="true">
-            <ItemList Inverted="true">
+        <Segment Darkness="true">
+            <ItemList Darkness="true">
                 <Item>
                     <Image Source="img/image.png" />
                     <Content>
@@ -626,8 +626,8 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <ItemList Inverted=""true"">
+<Segment Darkness=""true"">
+    <ItemList Darkness=""true"">
         <Item>
             <Image Source=""img/image.png"" />
             <Content>
@@ -681,8 +681,8 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Inverted</td>
-                            <td>适应父组件的 <code>Inverted</code></td>
+                            <td>Darkness</td>
+                            <td>适应父组件的 <code>Darkness</code></td>
                             <td>bool</td>
                             <td></td>
                         </tr>

@@ -528,11 +528,11 @@
 </PresentationPart>
                 <PresentationPart Title="反转颜色">
     <Description>
-        设置 <code>Inverted="true"</code> 可以在父组件的 <code>Inverted="true"</code> 时进行反色背景显示。
+        设置 <code>Darkness="true"</code> 可以在父组件的 <code>Darkness="true"</code> 时进行反色背景显示。
     </Description>
     <RunTemplate>
-        <Segment Inverted="true">
-            <CardGroup Inverted="true">
+        <Segment Darkness="true">
+            <CardGroup Darkness="true">
                 <Card>
                     <ImageContent>
                         <Image Source="img/avatar/molly.png" />
@@ -557,8 +557,8 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <CardGroup Inverted=""true"">
+<Segment Darkness=""true"">
+    <CardGroup Darkness=""true"">
         <Card>
             <ImageContent>
                 <Image Source=""img/avatar/molly.png"" />
@@ -782,7 +782,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Inverted</td>
+                            <td>Darkness</td>
                             <td>反转背景</td>
                             <td>bool</td>
                             <td></td>

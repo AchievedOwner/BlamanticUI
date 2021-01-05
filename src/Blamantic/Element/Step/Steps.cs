@@ -10,7 +10,7 @@
     /// </summary>
     [HtmlTag]
     [CssClass("steps", Order = 999)]
-    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasInverted,IHasFluid
+    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasDarkness,IHasFluid
     {
         /// <summary>
         /// 设置使用纵向的方式排列。
@@ -38,7 +38,7 @@
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置点击后呈现被启用状态。
         /// </summary>

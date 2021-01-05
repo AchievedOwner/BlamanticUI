@@ -12,7 +12,7 @@
     /// <summary>
     /// 表示日期的呈现组件。
     /// </summary>
-    public class Calendar:BlamanticComponentBase,IHasUIComponent,IHasInverted
+    public class Calendar : BlamanticComponentBase, IHasUIComponent, IHasDarkness
     {
         /// <summary>
         /// 一周几天。
@@ -102,9 +102,9 @@
         /// <summary>
         /// 设置一个回调方法，当点击值时触发。
         /// </summary>
-        [Parameter] public EventCallback<DateTime?> ValueChanged { get; set; }
+        [Parameter] public EventCallback<DateTimeOffset?> ValueChanged { get; set; }
 
-        [Parameter] public DateTime? Value { get; set; }
+        [Parameter] public DateTimeOffset? Value { get; set; }
 
         protected int CurrentYear { get; set; }
         protected int CurrentMonth { get; set; }
@@ -115,7 +115,7 @@
         protected IDictionary<DayOfWeek, string> WeekMapper { get; set; }
         protected IDictionary<CalendarMonth, string> MonthMapper { get; set; }
 
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
 
         protected override void OnParametersSet()
         {
@@ -149,8 +149,8 @@
                 calendar.AddAttribute(2, "class", (CssClassCollection)Css
                     .Create
                     .Add("ui")
-                    .Add("celled center aligned")
-                    .Add(Inverted,"inverted")
+                    .Add("celled center aligned fixed")
+                    .Add(Darkness,"inverted")
                     .Add("table")
                     );
                 calendar.AddContent(5, thead =>
@@ -194,7 +194,25 @@
         private void BuildTitle(RenderTreeBuilder tr)
         {
             tr.OpenComponent<Th>(0);
-            tr.AddAttribute(1, nameof(Th.ColSpan), DAYS_IN_WEEK);
+
+            switch (ViewMode)
+            {
+                case CalendarViewMode.Year:
+                    tr.AddAttribute(1, nameof(Th.ColSpan), 5);
+                    break;
+                case CalendarViewMode.Month:
+                    tr.AddAttribute(1, nameof(Th.ColSpan), 3);
+                    break;
+                case CalendarViewMode.Date:
+                    tr.AddAttribute(1, nameof(Th.ColSpan), DAYS_IN_WEEK);
+                    break;
+                case CalendarViewMode.Time:
+                    break;
+                case CalendarViewMode.DateTime:
+                    break;
+                default:
+                    break;
+            }
             tr.AddAttribute(10, nameof(Th.ChildContent), (RenderFragment)(th =>
             {
                 th.OpenElement(0, "span");

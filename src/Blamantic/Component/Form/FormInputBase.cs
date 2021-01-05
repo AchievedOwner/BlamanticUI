@@ -21,7 +21,7 @@ namespace BlamanticUI
     /// <typeparam name="TValue">值得类型。</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="System.IDisposable" />
-    public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable,IHasInverted
+    public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable,IHasDarkness
     {
         #region Private
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
@@ -174,7 +174,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置基于父组件的反色兼容模式。
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         #endregion
 
         /// <summary>

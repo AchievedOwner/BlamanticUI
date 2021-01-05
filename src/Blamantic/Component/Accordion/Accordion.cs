@@ -7,7 +7,7 @@
     /// <summary>
     /// 表示手风琴组件，使用 <see cref="AccordionItem"/> 设置手风琴组件的项。
     /// </summary>
-    public class Accordion : BlamanticParentComponentBase<Accordion, AccordionItem>, IHasUIComponent, IHasFluid, IHasInverted
+    public class Accordion : BlamanticParentComponentBase<Accordion, AccordionItem>, IHasUIComponent, IHasFluid, IHasDarkness
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Accordion"/> class.
@@ -24,7 +24,7 @@
         /// <summary>
         /// 设置基于父组件的反色兼容模式。
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
         /// </summary>

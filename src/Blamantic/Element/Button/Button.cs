@@ -31,7 +31,7 @@ namespace BlamanticUI
         IHasCircular,
         IHasAttatched,
         IHasAnimated,
-        IHasInverted,
+        IHasDarkness,
         IHasFloated,
         IHasLinked
     {
@@ -76,7 +76,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter] public bool Inverted { get; set; }
+        [Parameter] public bool Darkness { get; set; }
         /// <summary>
         /// 设置按钮的尺寸大小。
         /// </summary>

@@ -13,7 +13,7 @@ namespace BlamanticUI
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
-    public class ItemList : BlamanticChildContentComponentBase, IHasUIComponent,IHasDivider,IHasRelaxed,IHasLinked,IHasInverted
+    public class ItemList : BlamanticChildContentComponentBase, IHasUIComponent,IHasDivider,IHasRelaxed,IHasLinked,IHasDarkness
     {
         /// <summary>
         /// 设置项之间是否具有分割线。
@@ -36,7 +36,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
 
         /// <summary>
         /// 创建组件所需要的 class 类。

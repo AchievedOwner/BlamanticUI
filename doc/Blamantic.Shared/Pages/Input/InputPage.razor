@@ -64,7 +64,7 @@
         </InputBox>
         <br />
         <InputBox Icon="HorizontalPosition.Left">
-            <Icon IconClass="search" Circular="true" Inverted="true"/>
+            <Icon IconClass="search" Circular="true" Darkness="true"/>
             <input placeholder="关键字" />
         </InputBox>
     </RunTemplate>
@@ -82,7 +82,7 @@
 </InputBox>
 <br />
 <InputBox Icon=""HorizontalPosition.Left"">
-    <Icon IconClass=""search"" Circular=""true"" Inverted=""true""/>
+    <Icon IconClass=""search"" Circular=""true"" Darkness=""true""/>
     <input placeholder=""关键字"" />
 </InputBox>
 ```
@@ -313,22 +313,22 @@
 </PresentationPart>
         <PresentationPart Title="反色背景">
     <Description>
-        设置 <code>Inverted="true"</code> 可以显示在反色背景中。
+        设置 <code>Darkness="true"</code> 可以显示在反色背景中。
     </Description>
     <RunTemplate>
-        <Segment Inverted="true">
-            <InputBox Inverted="true">
+        <Segment Darkness="true">
+            <InputBox Darkness="true">
                 <input placeholder="关键字" />
             </InputBox>
             <br />
             <br />
-            <InputBox Inverted="true" Icon="HorizontalPosition.Left">
+            <InputBox Darkness="true" Icon="HorizontalPosition.Left">
                 <input placeholder="关键字" />
                 <Icon IconClass="search" />
             </InputBox>
             <br />
             <br />
-            <InputBox Inverted="true" Icon="HorizontalPosition.Right" Transparent="true">
+            <InputBox Darkness="true" Icon="HorizontalPosition.Right" Transparent="true">
                 <input placeholder="关键字" />
                 <Icon IconClass="search" />
             </InputBox>
@@ -337,19 +337,19 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <InputBox Inverted=""true"">
+<Segment Darkness=""true"">
+    <InputBox Darkness=""true"">
         <input placeholder=""关键字"" />
     </InputBox>
     <br />
     <br />
-    <InputBox Inverted=""true"" Icon=""true"">
+    <InputBox Darkness=""true"" Icon=""true"">
         <input placeholder=""关键字"" />
         <Icon IconClass=""search"" />
     </InputBox>
     <br />
     <br />
-    <InputBox Inverted=""true"" Icon=""false"" Transparent=""true"">
+    <InputBox Darkness=""true"" Icon=""false"" Transparent=""true"">
         <input placeholder=""关键字"" />
         <Icon IconClass=""search"" />
     </InputBox>
@@ -537,7 +537,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反色背景</td>
                     <td>bool</td>
                     <td></td>

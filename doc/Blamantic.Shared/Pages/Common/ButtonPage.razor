@@ -329,75 +329,72 @@
 </PresentationPart>
         <PresentationPart Title="反转颜色" Id="inverted">
             <Description>
-                设置 <code>Inverted="true"</code> 可以设置深色背景下对按钮颜色的反转
-                <Message>
-                    为了演示，最外层的 <code>Segment</code> 组件设置成深色背景。
-                </Message>
+                设置 <code>Darkness="true"</code> 兼容深色样式。
             </Description>
             <RunTemplate>
 
-                <Segment Inverted="true">
-                    <Button Inverted="true" Color="Color.Red">红色</Button>
-                    <Button Inverted="true" Color="Color.Orange">橘红色</Button>
-                    <Button Inverted="true" Color="Color.Yellow">黄色</Button>
-                    <Button Inverted="true" Color="Color.Olive">橄榄绿</Button>
-                    <Button Inverted="true" Color="Color.Green">绿色</Button>
-                    <Button Inverted="true" Color="Color.Teal">深蓝绿</Button>
-                    <Button Inverted="true" Color="Color.Violet">紫罗兰色</Button>
-                    <Button Inverted="true" Color="Color.Purple">紫色</Button>
-                    <Button Inverted="true" Color="Color.Pink">粉色</Button>
-                    <Button Inverted="true" Color="Color.Brown">褐色</Button>
-                    <Button Inverted="true" Color="Color.Grey">灰色</Button>
-                    <Button Inverted="true" Color="Color.Black">黑色</Button>
+                <Segment Darkness="true">
+                    <Button Darkness="true" Color="Color.Red">红色</Button>
+                    <Button Darkness="true" Color="Color.Orange">橘红色</Button>
+                    <Button Darkness="true" Color="Color.Yellow">黄色</Button>
+                    <Button Darkness="true" Color="Color.Olive">橄榄绿</Button>
+                    <Button Darkness="true" Color="Color.Green">绿色</Button>
+                    <Button Darkness="true" Color="Color.Teal">深蓝绿</Button>
+                    <Button Darkness="true" Color="Color.Violet">紫罗兰色</Button>
+                    <Button Darkness="true" Color="Color.Purple">紫色</Button>
+                    <Button Darkness="true" Color="Color.Pink">粉色</Button>
+                    <Button Darkness="true" Color="Color.Brown">褐色</Button>
+                    <Button Darkness="true" Color="Color.Grey">灰色</Button>
+                    <Button Darkness="true" Color="Color.Black">黑色</Button>
                 </Segment>
 
-                <Segment Inverted="true">
-                    <Button Inverted="true" Basic="true" Color="Color.Red">红色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Orange">橘红色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Yellow">黄色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Olive">橄榄绿</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Green">绿色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Teal">深蓝绿</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Violet">紫罗兰色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Purple">紫色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Pink">粉色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Brown">褐色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Grey">灰色</Button>
-                    <Button Inverted="true" Basic="true" Color="Color.Black">黑色</Button>
+                <Segment Darkness="true">
+                    <Button Darkness="true" Basic="true" Color="Color.Red">红色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Orange">橘红色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Yellow">黄色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Olive">橄榄绿</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Green">绿色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Teal">深蓝绿</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Violet">紫罗兰色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Purple">紫色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Pink">粉色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Brown">褐色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Grey">灰色</Button>
+                    <Button Darkness="true" Basic="true" Color="Color.Black">黑色</Button>
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
 
 @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <Button Inverted=""true"" Color=""Color.Red"">红色</Button>
-    <Button Inverted=""true"" Color=""Color.Orange"">橘红色</Button>
-    <Button Inverted=""true"" Color=""Color.Yellow"">黄色</Button>
-    <Button Inverted=""true"" Color=""Color.Olive"">橄榄绿</Button>
-    <Button Inverted=""true"" Color=""Color.Green"">绿色</Button>
-    <Button Inverted=""true"" Color=""Color.Teal"">深蓝绿</Button>
-    <Button Inverted=""true"" Color=""Color.Violet"">紫罗兰色</Button>
-    <Button Inverted=""true"" Color=""Color.Purple"">紫色</Button>
-    <Button Inverted=""true"" Color=""Color.Pink"">粉色</Button>
-    <Button Inverted=""true"" Color=""Color.Brown"">褐色</Button>
-    <Button Inverted=""true"" Color=""Color.Grey"">灰色</Button>
-    <Button Inverted=""true"" Color=""Color.Black"">黑色</Button>
+<Segment Darkness=""true"">
+    <Button Darkness=""true"" Color=""Color.Red"">红色</Button>
+    <Button Darkness=""true"" Color=""Color.Orange"">橘红色</Button>
+    <Button Darkness=""true"" Color=""Color.Yellow"">黄色</Button>
+    <Button Darkness=""true"" Color=""Color.Olive"">橄榄绿</Button>
+    <Button Darkness=""true"" Color=""Color.Green"">绿色</Button>
+    <Button Darkness=""true"" Color=""Color.Teal"">深蓝绿</Button>
+    <Button Darkness=""true"" Color=""Color.Violet"">紫罗兰色</Button>
+    <Button Darkness=""true"" Color=""Color.Purple"">紫色</Button>
+    <Button Darkness=""true"" Color=""Color.Pink"">粉色</Button>
+    <Button Darkness=""true"" Color=""Color.Brown"">褐色</Button>
+    <Button Darkness=""true"" Color=""Color.Grey"">灰色</Button>
+    <Button Darkness=""true"" Color=""Color.Black"">黑色</Button>
 </Segment>
 
-<Segment Inverted=""true"">
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Red"">红色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Orange"">橘红色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Yellow"">黄色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Olive"">橄榄绿</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Green"">绿色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Teal"">深蓝绿</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Violet"">紫罗兰色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Purple"">紫色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Pink"">粉色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Brown"">褐色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Grey"">灰色</Button>
-    <Button Inverted=""true"" Basic=""true"" Color=""Color.Black"">黑色</Button>
+<Segment Darkness=""true"">
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Red"">红色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Orange"">橘红色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Yellow"">黄色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Olive"">橄榄绿</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Green"">绿色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Teal"">深蓝绿</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Violet"">紫罗兰色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Purple"">紫色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Pink"">粉色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Brown"">褐色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Grey"">灰色</Button>
+    <Button Darkness=""true"" Basic=""true"" Color=""Color.Black"">黑色</Button>
 </Segment>
 ```
 ")
@@ -706,7 +703,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反转颜色</td>
                     <td>bool</td>
                     <td></td>

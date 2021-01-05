@@ -18,7 +18,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
-    public class Toaster : BlamanticChildContentComponentBase, IHasUIComponent, IHasColor, IHasState,IHasInverted
+    public class Toaster : BlamanticChildContentComponentBase, IHasUIComponent, IHasColor, IHasState,IHasDarkness
     {
         internal Guid Id { get; set; }
         /// <summary>
@@ -44,7 +44,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter][CssClass]public bool Inverted { get; set; }
+        [Parameter][CssClass]public bool Darkness { get; set; }
 
         /// <summary>
         /// 设置图标的样式名称。

@@ -185,17 +185,17 @@
         </PresentationPart>
         <PresentationPart Title="反色兼容">
             <Description>
-                设置 <code>Inverted="true"</code> 兼容反色背景
+                设置 <code>Darkness="true"</code> 兼容反色背景
             </Description>
             <RunTemplate>
-                <Segment Inverted="true">
-                    <Steps Inverted="true">
+                <Segment Darkness="true">
+                    <Steps Darkness="true">
                         <Step Completed="true" IconClass="registered" Title="注册" Description="注册一个新账号" />
                         <Step Actived="true" IconClass="envelope" Title="验证" Description="验证你的邮箱" />
                         <Step Disabled="true" IconClass="check" Title="成功" Description="注册完成！" />
                     </Steps>
                     <br />
-                    <Steps Inverted="true" Vertical="true">
+                    <Steps Darkness="true" Vertical="true">
                         <Step Completed="true" IconClass="registered" Title="注册" Description="注册一个新账号" />
                         <Step Actived="true" IconClass="envelope" Title="验证" Description="验证你的邮箱" />
                         <Step Disabled="true" IconClass="check" Title="成功" Description="注册完成！" />
@@ -205,13 +205,13 @@
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Segment Inverted=""true"">
-    <Steps Inverted=""true"">
+<Segment Darkness=""true"">
+    <Steps Darkness=""true"">
         <Step Completed=""true"" IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
         <Step Actived=""true"" IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
         <Step Disabled=""true"" IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
     </Steps>
-    <Steps Inverted=""true"" Vertical=""true"">
+    <Steps Darkness=""true"" Vertical=""true"">
         <Step Completed=""true"" IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
         <Step Actived=""true"" IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
         <Step Disabled=""true"" IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
@@ -254,7 +254,7 @@
                     <td></td>
                 </Tr>
                 <Tr>
-                    <td>Inverted</td>
+                    <td>Darkness</td>
                     <td>反色兼容</td>
                     <td>bool</td>
                     <td>false</td>

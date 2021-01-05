@@ -18,7 +18,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
     [HtmlTag]
-    public class Dimmer : BlamanticChildContentComponentBase, IHasUIComponent, IHasActive, IHasDisabled, IHasVerticalAlignment,IHasInverted
+    public class Dimmer : BlamanticChildContentComponentBase, IHasUIComponent, IHasActive, IHasDisabled, IHasVerticalAlignment,IHasDarkness
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Dimmer"/> class.
@@ -46,7 +46,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
 
         /// <summary>
         /// 设置部分遮罩层的位置。

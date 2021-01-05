@@ -122,7 +122,7 @@ namespace BlamanticUI
             builder.AddAttribute(4, nameof(Toaster.Color), Setting.Color);
             builder.AddAttribute(5, nameof(Toaster.State), Setting.State);
             builder.AddAttribute(6, nameof(Toaster.IconClass), Setting.IconClass);
-            builder.AddAttribute(7, nameof(Toaster.Inverted), Setting.Inverted);
+            builder.AddAttribute(7, nameof(Toaster.Darkness), Setting.Inverted);
             builder.CloseComponent();
 
             if (ProgressBar.HasValue && ProgressBar.Value == VerticalPosition.Bottom)
@@ -140,7 +140,7 @@ namespace BlamanticUI
             builder.AddAttribute(52, nameof(Progress.AttachedVertical), ProgressBar);
             builder.AddAttribute(53, nameof(Progress.Percent), (double)_progress);
             builder.AddAttribute(54, nameof(Progress.Color), Setting.ProgressBarColor ?? Setting.Color);
-            builder.AddAttribute(55, nameof(Progress.Inverted), Setting.Inverted);
+            builder.AddAttribute(55, nameof(Progress.Darkness), Setting.Inverted);
             builder.AddAttribute(56, nameof(Progress.State),Setting.ProgressBarState?? Setting.State);
             builder.AddAttribute(60, nameof(Progress.ChildContent), (RenderFragment)(progress =>
             {

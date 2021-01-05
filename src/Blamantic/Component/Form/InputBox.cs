@@ -13,7 +13,7 @@ namespace BlamanticUI
     /// 表示用于封装输入框控件的组件。
     /// </summary>
     [HtmlTag]
-    public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasInverted,IHasFluid,IHasSize
+    public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasDarkness,IHasFluid,IHasSize
     {
         /// <summary>
         /// 设置是否使用 <see cref="BlamanticUI.Icon"/> 组件和输入控件组合显示。
@@ -56,7 +56,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
         /// </summary>

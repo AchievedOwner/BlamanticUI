@@ -14,7 +14,7 @@ namespace BlamanticUI
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
-    public class Divider : BlamanticChildContentComponentBase, IHasUIComponent, IHasVertical, IHasHorizontal,IHasInverted,IHasFitted,IHasHidden,IHasHorizontalAlignment
+    public class Divider : BlamanticChildContentComponentBase, IHasUIComponent, IHasVertical, IHasHorizontal,IHasDarkness,IHasFitted,IHasHidden,IHasHorizontalAlignment
     {
         /// <summary>
         /// 初始化 <see cref="Divider"/> 类的新实例。
@@ -36,7 +36,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置分割线清除所有的边距。
         /// </summary>

@@ -13,7 +13,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Header" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     [HtmlTag]
-    public class ContentHeader : Header, IHasUIComponent, IHasSize, IHasColor, IHasInverted
+    public class ContentHeader : Header, IHasUIComponent, IHasSize, IHasColor, IHasDarkness
     {
         /// <summary>
         /// 设置尺寸大小。
@@ -25,7 +25,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter]public bool Inverted { get; set; }
+        [Parameter]public bool Darkness { get; set; }
         /// <summary>
         /// 设置文本的颜色。
         /// </summary>

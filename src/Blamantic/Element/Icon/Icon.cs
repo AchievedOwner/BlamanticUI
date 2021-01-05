@@ -15,7 +15,7 @@ namespace BlamanticUI
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     [HtmlTag("i")]
-    public class Icon : BlamanticComponentBase, IHasColor,IHasInverted, IHasSize, IHasCircular, IHasLinked,IHasFitted,IHasBorder,IHasCornered
+    public class Icon : BlamanticComponentBase, IHasColor,IHasDarkness, IHasSize, IHasCircular, IHasLinked,IHasFitted,IHasBorder,IHasCornered
     {
         /// <summary>
         /// 设置图标的样式名称。参考 https://fomantic-ui.com/elements/icon.html
@@ -39,7 +39,7 @@ namespace BlamanticUI
         /// 若父组件是深色，则子组件会为浅色；反之亦然。
         /// </para>
         /// </summary>
-        [Parameter] public bool Inverted { get; set; }
+        [Parameter] public bool Darkness { get; set; }
         /// <summary>
         /// 设置图标呈现圆形样式。
         /// </summary>

@@ -16,7 +16,7 @@ namespace BlamanticUI
     /// 表示模态框的组件，通过调用 <see cref="Util.Active(IHasActive, bool)"/> 方法显示/隐藏模态框。
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
-    public class Modal : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize,IHasBasic,IHasInverted,IHasStateToggle,IHasActive
+    public class Modal : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize,IHasBasic,IHasDarkness,IHasStateToggle,IHasActive
     {
         /// <summary>
         /// 初始化 <see cref="Modal"/> 类的新实例。
@@ -57,7 +57,7 @@ namespace BlamanticUI
         /// <summary>
         /// 设置互换遮罩层与模态框的背景深浅样式。
         /// </summary>
-        [Parameter][CssClass("inverted",Order =10)] public bool Inverted { get; set; }
+        [Parameter][CssClass("inverted",Order =10)] public bool Darkness { get; set; }
         /// <summary>
         /// 设置内容是否允许在超出范围的时候使用滚动条。
         /// </summary>
@@ -98,7 +98,7 @@ namespace BlamanticUI
             builder.OpenComponent<Dimmer>(0);
             builder.AddAttribute(1, nameof(Dimmer.FullScreen), true);
             builder.AddAttribute(2, nameof(Dimmer.Actived), Actived);
-            builder.AddAttribute(3, nameof(Dimmer.Inverted), Inverted);
+            builder.AddAttribute(3, nameof(Dimmer.Darkness), Darkness);
             if (Alignment.HasValue)
             {
                 builder.AddAttribute(4, nameof(Dimmer.AdditionalCssClass), (CssClassCollection)"modals");

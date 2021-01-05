@@ -37,12 +37,12 @@
                     <br />
                     <Tab>
                         <TabItem Title="程序包管理控制台(Package Manager)">
-                            <Segment Color="Color.Grey" Inverted="true">
+                            <Segment Color="Color.Grey" Darkness="true">
                                 @($"PM> Install-Package {@Code.TITLE} -Version {verion}")
                             </Segment>
                         </TabItem>
                         <TabItem Title=".NET CLI(命令行)">
-                            <Segment Inverted="true">
+                            <Segment Darkness="true">
                                 @($"dotnet add package {@Code.TITLE} --version {verion}")
                             </Segment>
                         </TabItem>
