@@ -8,38 +8,47 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示用于包含多个 <see cref="Button"/> 组件的按钮组。
+    /// Represents a group of <see cref="Button"/> components and layout them properly.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
     [HtmlTag]
     [CssClass("buttons")]
     public class ButtonGroup : BlamanticChildContentComponentBase, IHasUIComponent,IHasVertical,IHasSpan,IHasAttatched
     {
         /// <summary>
-        /// 初始化 <see cref="ButtonGroup"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="ButtonGroup"/> class.
         /// </summary>
         public ButtonGroup()
         {
         }
         /// <summary>
-        /// 设置按钮纵向排列。
+        /// Gets or sets a value indicating whether this layout is vertical.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if vertical; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Vertical { get; set; }
         /// <summary>
-        /// 设置所有的按钮仅显示 <see cref="BlamanticUI.Icon"/> 图标。
+        /// Gets or sets a value indicating whether this group of buttons only show icon.
         /// </summary>
         [Parameter][CssClass("icon")]public bool IconOnly { get; set; }
         /// <summary>
-        /// 设置响应式宽度比例。
+        /// Gets or sets the span of column.
         /// </summary>
         [Parameter]public ColSpan Span { get; set; }
         /// <summary>
-        /// 设置组件是否需要吸附于相对位置的其他组件。
+        /// Gets or sets a value indicating whether attach to another.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if attached; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Attached { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attach position in vertical.
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
     }

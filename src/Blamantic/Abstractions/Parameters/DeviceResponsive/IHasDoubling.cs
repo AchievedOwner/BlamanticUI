@@ -3,13 +3,17 @@
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件的尺寸将随着设备的不同而倍增。
+    /// Represents the double column of layout in responsive adapter.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDeviceResponsive" />
     public interface IHasDoubling : IHasDeviceResponsive
     {
         /// <summary>
-        /// 设置在不同设备将组件大小进行倍增处理。
+        /// Gets or sets a value indicating whether double column of layout in responsive adapter.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if doubling; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("doubling")] public bool Doubling { get; set; }
     }
 }

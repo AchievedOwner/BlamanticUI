@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -11,33 +8,43 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示元素用于呈现内容的部分。
+    /// Layout certain components with <see cref="Icon"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVisibility" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHidden" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVerticalAlignment" />
     [HtmlTag]
-    public class Content : BlamanticChildContentComponentBase,IHasVisibility,IHasHidden,IHasFloated,IHasVerticalAlignment
+    public class Content : BlamanticChildContentComponentBase, IHasVisibility, IHasHidden, IHasFloated, IHasVerticalAlignment
     {
         /// <summary>
-        /// 设置组件是否可见。若不可见则依然会占据组件原有的空间。
+        /// Gets or sets a value indicating whether is visibile.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if visibile; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Visibile { get; set; }
         /// <summary>
-        /// 设置组件是否隐藏。若隐藏则不占据空间。
+        /// Gets or sets a value indicating whether is hidden.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if hidden; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Hidden { get; set; }
         /// <summary>
-        /// 设置内容的浮动方式。
+        /// Gets or sets the float position.
         /// </summary>
         [Parameter]public HorizontalPosition? Floated { get; set; }
         /// <summary>
-        /// 设置组件文本的垂直对齐方式。
+        /// Gets or sets the vertical alignment of text.
         /// </summary>
         [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("content");

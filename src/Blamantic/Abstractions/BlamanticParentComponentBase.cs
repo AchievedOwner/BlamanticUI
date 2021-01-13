@@ -7,30 +7,35 @@ namespace BlamanticUI.Abstractions
     using YoiBlazor;
 
     /// <summary>
-    /// 表示作为父组件的组件基类。
+    /// Represents a base class of parent component for nested component.
     /// </summary>
-    /// <typeparam name="TParentComponent">父组件类型。</typeparam>
-    /// <typeparam name="TChildComponent">子组件类型。</typeparam>
+    /// <typeparam name="TParentComponent">The type of the parent component.</typeparam>
+    /// <typeparam name="TChildComponent">The type of the child component.</typeparam>
     /// <seealso cref="YoiBlazor.ParentBlazorComponentBase{TParentComponent}" />
-    public class BlamanticParentComponentBase<TParentComponent, TChildComponent> : ParentBlazorComponentBase<TParentComponent>
+    public abstract class BlamanticParentComponentBase<TParentComponent, TChildComponent> : ParentBlazorComponentBase<TParentComponent>
         where TParentComponent : BlamanticParentComponentBase<TParentComponent, TChildComponent>
         where TChildComponent : BlamanticChildComponentBase<TParentComponent, TChildComponent>
     {
         /// <summary>
-        /// 设置活动的初始索引。
+        /// Gets or sets the index of the initialize to active.
         /// </summary>
         [Parameter] public int? InitIndex { get; set; }
 
         /// <summary>
-        /// 设置一个回调方法，当步骤被启用时触发的事件。
+        /// Gets or sets a callback method after child component has actived.
         /// </summary>
         [Parameter] public EventCallback<int> OnActived { get; set; }
 
+        /// <summary>
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
+        /// </summary>
+        /// <exception cref="ArgumentException"></exception>
         protected override void OnParametersSet()
         {
             if (InitIndex < 0)
             {
-                throw new ArgumentException($"{nameof(InitIndex)} 必须大于 -1");
+                throw new ArgumentException($"{nameof(InitIndex)} must greater than -1");
             }
         }
 
@@ -58,12 +63,17 @@ namespace BlamanticUI.Abstractions
             }
         }
 
+        /// <summary>
+        /// Gets the child component.
+        /// </summary>
+        /// <param name="index">The index.</param>
+        /// <returns></returns>
         protected virtual TChildComponent GetChild(int index) => (TChildComponent)ChildComponents[index];
 
         /// <summary>
-        /// 添加指定的子组件。
+        /// Adds the specified component.
         /// </summary>
-        /// <param name="component">子组件。</param>
+        /// <param name="component">The component.</param>
         public override void Add(IComponent component)
         {
             var child = component as TChildComponent;
@@ -72,9 +82,9 @@ namespace BlamanticUI.Abstractions
         }
 
         /// <summary>
-        /// 启用指定索引的步骤。
+        /// Actives the component with specified index.
         /// </summary>
-        /// <param name="index">索引。</param>
+        /// <param name="index">The index of component to active.</param>
         public async Task Active(int index)
         {
             ActivedIndex = index;

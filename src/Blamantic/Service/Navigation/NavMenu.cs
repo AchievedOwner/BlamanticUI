@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Components.Rendering;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示预先通过服务配置呈现的导航菜单。
+    /// Represents a navigation container that registered by service.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
-    public class NavMenu : BlamanticComponentBase
+    public class NavMenu : BlamanticComponentBase,IHasVertical,IHasSize
     {
         /// <summary>
-        /// 初始化 <see cref="NavMenu"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="NavMenu"/> class.
         /// </summary>
         public NavMenu()
         {
@@ -22,60 +22,64 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 获取注入的 <see cref="INavigationService"/> 服务。
+        /// Gets the <see cref="INavigationService"/> service.
         /// </summary>
         [Inject] INavigationService NavigationService { get; set; }
 
         /// <summary>
-        /// 指定 <see cref="Key"/> 的导航菜单集合。
+        /// Gets the navigations by value of <see cref="Key"/>.
         /// </summary>
         IEnumerable<Navigation> Navigations { get; set; }
 
         /// <summary>
-        /// 设置导航菜单的唯一键。
+        /// Gets or sets the key that registered.
         /// </summary>
         [Parameter] public string Key { get; set; }
 
         /// <summary>
-        /// 设置垂直显示。
+        /// Gets or sets a value indicating whether this layout is vertical.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if vertical; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Vertical { get; set; }
 
         /// <summary>
-        /// 设置背景颜色。
+        /// Gets or sets the background color of menu.
         /// </summary>
         [Parameter] public Color? BackgroundColor { get; set; }
         /// <summary>
-        /// 设置无背景颜色时的选中颜色。
+        /// Gets or sets the color of actived item.
         /// </summary>
         [Parameter] public Color? ActivedColor { get; set; }
 
         /// <summary>
-        /// 设置尺寸。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
 
         /// <summary>
-        /// 设置是否只显示图标。
+        /// Gets or sets a value indicating whether only show icon.
         /// </summary>
         [Parameter] public bool IconOnly { get; set; }
+
         /// <summary>
-        /// 设置是否图文混搭。
+        /// Gets or sets a value indicating whether display the text and icon with new line fo each other.
         /// </summary>
         [Parameter] public bool LabeledIcon { get; set; }
         /// <summary>
-        /// 设置导航菜单的风格。
+        /// Gets or sets the style.
         /// </summary>
         [Parameter] public MenuStyle Style { get; set; } = MenuStyle.Default;
 
         /// <summary>
-        /// 设置呈现在导航菜单前的 UI 内容。
+        /// Gets or sets a UI content before all nav items.
         /// </summary>
-        [Parameter] public RenderFragment StartChildContent { get; set; }
+        [Parameter] public RenderFragment StartContent { get; set; }
         /// <summary>
-        /// 设置呈现在导航菜单后的 UI 内容。
+        /// Gets or sets a UI content after all nav items.
         /// </summary>
-        [Parameter] public RenderFragment EndChildContent { get; set; }
+        [Parameter] public RenderFragment EndContent { get; set; }
 
         /// <summary>
         /// Method invoked when the component is ready to start, having received its
@@ -104,9 +108,9 @@ namespace BlamanticUI
 
             builder.AddAttribute(10, nameof(Menu.ChildContent), (RenderFragment)(child =>
               {
-                  if (StartChildContent != null)
+                  if (StartContent != null)
                   {
-                      child.AddContent(10, StartChildContent);
+                      child.AddContent(10, StartContent);
                   }
 
                   if (Navigations != null)
@@ -120,9 +124,9 @@ namespace BlamanticUI
                       }
                   }
 
-                  if (EndChildContent != null)
+                  if (EndContent != null)
                   {
-                      child.AddContent(100, EndChildContent);
+                      child.AddContent(100, EndContent);
                   }
               }));
             builder.CloseComponent();

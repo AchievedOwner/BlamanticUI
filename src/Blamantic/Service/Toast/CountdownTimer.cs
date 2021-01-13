@@ -4,13 +4,13 @@ using System.Timers;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示倒计时计数器。
+    /// Represents a countdown timer.
     /// </summary>
     internal class CountdownTimer
     {
         private Timer _timer;
-        private int _timeout;
-        private int _countdownTotal;
+        private readonly int _timeout;
+        private readonly int _countdownTotal;
         private int _percentComplete;
 
         internal Action<int> OnTick;
@@ -29,7 +29,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 启动计时器。
+        /// Starts this timer.
         /// </summary>
         internal void Start()
         {
@@ -37,7 +37,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置计时器的配置。
+        /// Setup the timer.
         /// </summary>
         private void SetupTimer()
         {
@@ -47,7 +47,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 处理计时器每秒的工作。
+        /// Handles the tick.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="args">The <see cref="ElapsedEventArgs"/> instance containing the event data.</param>

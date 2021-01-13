@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件具有单元格边框。
+    /// Represents a component has border style.
     /// </summary>
     public interface IHasCelled
     {
         /// <summary>
-        /// 设置组件具有单元格的分隔效果并具有边框。
+        /// Gets or sets a value indicating whether to display border.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if has border; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("celled",Order =23)]bool Celled { get; set; }
     }
 }

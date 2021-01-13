@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件有主题颜色的参数。
+    /// Represents the component has color.
     /// </summary>
     public interface IHasColor
     {
         /// <summary>
-        /// 设置组件的颜色。
+        /// Gets or sets the color.
         /// </summary>
         [CssClass(Order =100)] Color? Color { get; set; }
     }

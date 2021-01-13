@@ -3,7 +3,7 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示默认的内部对话框服务的实现。
+    /// Represents the default instance of <see cref="IDialogService"/>.
     /// </summary>
     /// <seealso cref="BlamanticUI.IDialogService" />
     internal class DialogService : IDialogService
@@ -15,15 +15,13 @@ namespace BlamanticUI
         {
 
         }
-
         /// <summary>
-        /// 获取对话框实例。
+        /// Gets the config data.
         /// </summary>
         public DialogModel Modal { get; private set; }
 
-
         /// <summary>
-        /// 当对话框被更新时触发的事件。
+        /// An action represents when dialog updating status.
         /// </summary>
         public event Action OnDialogUpdated;
 
@@ -36,9 +34,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 显示指定配置的对话框。
+        /// Shows the dialog with specify config of dialog.
         /// </summary>
-        /// <param name="configure">配置对话框的委托。</param>
+        /// <param name="configure">A delegate to configure how to show dialog.</param>
         public void Show(Action<DialogOption> configure)
         {
             var options = new DialogOption();
@@ -50,7 +48,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 关闭对话框。
+        /// Closes this instance.
         /// </summary>
         void Close()
         {

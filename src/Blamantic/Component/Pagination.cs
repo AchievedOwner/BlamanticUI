@@ -18,76 +18,81 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示结合 <see cref="Menu"/> 元素呈现分页的功能，并提供相应的交互。
+    /// Render a pagination component using by <see cref="Menu"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
-    public class Pagination:BlamanticComponentBase
+    public class Pagination : BlamanticComponentBase
     {
         /// <summary>
-        /// 设置当前页码。
+        /// Initializes a new instance of the <see cref="Pagination"/> class.
+        /// </summary>
+        public Pagination()
+        {
+
+        }
+
+        /// <summary>
+        /// Gets or sets the current page.
         /// </summary>
         [Parameter] public int CurrentPage { get; set; }
-        /// <summary>
-        /// 设置每一页呈现的数据量。默认使用 <see cref="PageSizeStakeholders"/> 的第1个元素。
-        /// <para>
-        /// 在使用双向绑定支持时，建议只获取而不修改，以免造成与 <see cref="PageSizeStakeholders"/> 值不匹配的问题。
-        /// </para>
-        /// </summary>
 
+        /// <summary>
+        /// Gets or sets the size of the page. Default is the first element of <see cref="PageSizeStakeholders"/>.
+        /// </summary>
         [Parameter] public int PageSize { get; set; }
 
         /// <summary>
-        /// 设置每页数据量的下拉候选项，至少有一个元素。默认是10, 20, 30, 50, 100。
+        /// Gets or sets the page size stakeholders. Default is 10 20 30 50 100.
         /// </summary>
         [Parameter] public IReadOnlyList<int> PageSizeStakeholders { get; set; } = new[] { 10, 20, 30, 50, 100 };
         /// <summary>
-        /// 设置数据的总记录数。
+        /// Gets or sets the total count of data source.
         /// </summary>
         [Parameter] public int TotalCount { get; set; }
         /// <summary>
-        /// 设置显示页码的个数，范围是5-21的奇数。默认是 7 个。
+        /// Gets or sets the page number count that must a even number from 5 to 21. Default is 7.
         /// </summary>
         [Parameter] public int PageNumberCount { get; set; } = 7;
         /// <summary>
-        /// 设置一个布尔值，表示是否显示总记录数统计，默认是 <c>true</c>。
+        /// Gets or sets a value indicating whether to show total count. Default is <c>true</c>.
         /// </summary>
         [Parameter] public bool ShowTotalCount { get; set; } = true;
 
         /// <summary>
-        /// 设置一个布尔值，表示是否显示“跳转到”的组件。默认是 <c>true</c>。
-        /// </summary> 
+        /// Gets or sets a value indicating whether to show 'navigate to'. Default is <c>true</c>.
+        /// </summary>
         [Parameter] public bool ShowNavigateTo { get; set; } = true;
 
         /// <summary>
-        /// 设置分页的尺寸。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
 
         /// <summary>
-        /// 设置分页的对齐方式。
+        /// Gets or sets the alignment.
         /// </summary>
         [Parameter] public JustifyContent Alignment { get; set; } = JustifyContent.Around;
 
         /// <summary>
-        /// 设置当 <see cref="CurrentPage"/> 发生改变后的回调方法。
+        /// A callback method invoked when <see cref="CurrentPage"/> changed.
         /// </summary>
         [Parameter] public EventCallback<int> OnCurrentPageChanged { get; set; }
 
         /// <summary>
-        /// 表示使用 <c>@bind-CurrentPage</c> 双向绑定指令的回调方法。
+        /// A callback method invoked when <see cref="CurrentPage"/> changed.
         /// </summary>
         [Parameter] public EventCallback<int> CurrentPageChanged { get; set; }
         /// <summary>
-        /// 表示使用 <c>@bind-PageSize</c> 双向绑定指令的回调方法。
+        /// A callback method invoked when <see cref="PageSize"/> changed.
         /// </summary>
         [Parameter] public EventCallback<int> PageSizeChanged { get; set; }
         /// <summary>
-        /// 表示使用 <c>@bind-TotalCount</c> 双向绑定指令的回调方法。
+        /// A callback method invoked when <see cref="TotalCount"/> changed.
         /// </summary>
         [Parameter] public EventCallback<int> TotalCountChanged { get; set; }
 
         /// <summary>
-        /// 获取总页数。
+        /// Gets the total pages.
         /// </summary>
         public int TotalPages => (TotalCount + PageSize - 1) / PageSize;
 
@@ -97,36 +102,36 @@ namespace BlamanticUI
         /// initial parameters from its parent in the render tree.
         /// </summary>
         /// <exception cref="ArgumentException">
-        /// 不能小于1 - CurrentPage
+        /// Must greater than 1 - CurrentPage
         /// or
-        /// 不能小于1 - TotalCount
+        /// Must greater than 1 - TotalCount
         /// or
-        /// 至少要有1个候选项 - PageSizeStakeholders
+        /// At lease one element - PageSizeStakeholders
         /// </exception>
         protected override void OnInitialized()
         {
             if (CurrentPage <= 0)
             {
-                throw new ArgumentException("不能小于1", nameof(CurrentPage));
+                throw new ArgumentException("Must greater than 1", nameof(CurrentPage));
             }
 
             if (TotalCount <= 0)
             {
-                throw new ArgumentException("不能小于1", nameof(TotalCount));
+                throw new ArgumentException("Must greater than 1", nameof(TotalCount));
             }
 
             if (PageSizeStakeholders == null || !PageSizeStakeholders.Any())
             {
-                throw new ArgumentException("至少要有1个候选项", nameof(PageSizeStakeholders));
+                throw new ArgumentException("At lease one element", nameof(PageSizeStakeholders));
             }
             PageSize = PageSizeStakeholders[0];
             base.OnInitialized();
         }
 
         /// <summary>
-        /// 构造分页组件。
+        /// Builds the render tree.
         /// </summary>
-        /// <param name="root"><see cref="RenderTreeBuilder"/> 实例。</param>
+        /// <param name="root">The root.</param>
         protected override void BuildRenderTree(RenderTreeBuilder root)
         {
             root.OpenElement(0, "div");
@@ -141,7 +146,7 @@ namespace BlamanticUI
                     {
                         input.OpenElement(0, "label");
                         input.AddAttribute(1, "style", "display:flex;align-items:center;margin-right:5px");
-                        input.AddContent(5, $"共 {TotalCount} 条");
+                        input.AddContent(5, $"{TotalCount} Count");
                         input.CloseElement();
                     }));
                     builder.CloseComponent();
@@ -158,36 +163,30 @@ namespace BlamanticUI
                 {
                     BuildPageSizeForm(builder);
                 }
-
-
             });
-            root.CloseElement();
-
-            
+            root.CloseElement();            
 
             void BuildPaginationPart(RenderTreeBuilder builder)
             {
-                #region 分页项
+                #region Pager
                 builder.AddAttribute(10, nameof(Menu.ChildContent), (RenderFragment)(item =>
                 {
-
-
-                    #region 第一个页码（首页）
+                    #region First page
                     if (CurrentPage <= 1)
                     {
                         BuildPageItem(item, 10, 1, 1, disabled: true, active: true);
                     }
                     else
                     {
-                        #region 上一页
-                        BuildPageItem(item, 1, "<<", "上一页", NavigateToPrevious);
+                        #region Previous
+                        BuildPageItem(item, 1, "<<", "Previous", NavigateToPrevious);
                         #endregion
 
                         BuildPageItem(item, 10, 1, 1, NavigateToFirst);
                     }
                     #endregion
 
-                    #region 后退5页
+                    #region Next 5 pages
                     if (CurrentPage > PageNumberCount / 2)
                     {
                         var backTo = PageNumberCount - 5;
@@ -195,11 +194,11 @@ namespace BlamanticUI
                         {
                             backTo = 1;
                         }
-                        BuildPageItem(item, 20, "...", "后退5页", () => NavigateToPage(backTo));
+                        BuildPageItem(item, 20, "...", "Next 5 pages", () => NavigateToPage(backTo));
                     }
                     #endregion
 
-                    #region 分页数字
+                    #region Page Number
                     var (start, end) = ComputePageNumber();
                     for (int i = start + 1; i <= end - 1; i++)
                     {
@@ -216,7 +215,7 @@ namespace BlamanticUI
                     }
                     #endregion
 
-                    #region 前进5页
+                    #region Previous 5 page
                     if (CurrentPage < TotalPages - PageNumberCount / 2)
                     {
                         var nextTo = CurrentPage + 5;
@@ -224,11 +223,11 @@ namespace BlamanticUI
                         {
                             nextTo = TotalPages;
                         }
-                        BuildPageItem(item, 20, "...", "前进5页", () => NavigateToPage(nextTo));
+                        BuildPageItem(item, 20, "...", "Previous 5 pages", () => NavigateToPage(nextTo));
                     }
                     #endregion
 
-                    #region 最后一个页码(末页)
+                    #region Last page
                     if (TotalPages > 1)
                     {
                         if (CurrentPage >= TotalPages)
@@ -239,8 +238,8 @@ namespace BlamanticUI
                         {
                             BuildPageItem(item, 90, TotalPages, TotalPages, NavigateToLast);
 
-                            #region  下一页
-                            BuildPageItem(item, 100, ">>", "下一页", NavigateToNext);
+                            #region  Next page
+                            BuildPageItem(item, 100, ">>", "Next", NavigateToNext);
                             #endregion
                         }
                     }
@@ -276,7 +275,7 @@ namespace BlamanticUI
                            form.AddAttribute(1, nameof(Field.Inline), true);
                            form.AddAttribute(2, nameof(Field.ChildContent), (RenderFragment)(field =>
                              {
-                                 #region 数据呈现候选下拉菜单
+                                 #region Dropdown Page Size
                                  field.OpenComponent<InputBox>(0);
                                  field.AddAttribute(1, nameof(InputBox.Size), Size);
                                  field.AddAttribute(2, nameof(InputBox.ChildContent), (RenderFragment)(input =>
@@ -290,7 +289,7 @@ namespace BlamanticUI
                                                     var value = PageSizeStakeholders[i];
                                                     select.OpenElement(i, "option");
                                                     select.AddAttribute(i, "value", value);
-                                                    select.AddContent(i, $"{value}/页");
+                                                    select.AddContent(i, $"{value}");
                                                     select.CloseElement();
                                                 }
                                             }));
@@ -299,7 +298,7 @@ namespace BlamanticUI
                                  field.CloseComponent();
                                  #endregion
 
-                                 #region 跳转到
+                                 #region Navigate to
 
                                  field.OpenComponent<InputBox>(10);
                                  field.AddAttribute(11, nameof(InputBox.Size), Size);                                 
@@ -307,7 +306,7 @@ namespace BlamanticUI
                                    {
                                        input.OpenElement(0, "label");
                                        input.AddAttribute(1, "style", "display:flex;align-items:center");
-                                       input.AddContent(6, "跳转到");
+                                       input.AddContent(6, "Navigate To");
                                        input.CloseElement();
 
                                        input.OpenElement(10, "input");
@@ -326,14 +325,13 @@ namespace BlamanticUI
         }
 
 
-
         /// <summary>
-        /// 导航到首页。
+        /// Navigates to first.
         /// </summary>
         public Task NavigateToFirst() => ChangeCurrentPage(1);
 
         /// <summary>
-        /// 导航到上一页。
+        /// Navigates to previous.
         /// </summary>
         public async Task NavigateToPrevious()
         {
@@ -349,7 +347,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 导航到下一页。
+        /// Navigates to next.
         /// </summary>
         public async Task NavigateToNext()
         {
@@ -365,20 +363,21 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 导航到末页。
+        /// Navigates to last.
         /// </summary>
+        /// <returns></returns>
         public Task NavigateToLast() => ChangeCurrentPage(TotalPages);
 
         /// <summary>
-        /// 导航到自定义页。
+        /// Navigates to specify page.
         /// </summary>
-        /// <param name="page">要导航的页。</param>
+        /// <param name="page">The page to navigate.</param>
         public Task NavigateToPage(int page) => ChangeCurrentPage(page);
 
         /// <summary>
-        /// 变更当前分页的页码，并触发 <see cref="CurrentPageChanged"/> 事件。
+        /// Changes the current page.
         /// </summary>
-        /// <param name="page">要设置的分页页码。</param>
+        /// <param name="page">The page.</param>
         async Task ChangeCurrentPage(int page)
         {
             CurrentPage = page;
@@ -387,9 +386,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 变更每页的呈现的数据，并触发 <see cref="PageSizeChanged"/> 事件。
+        /// Changes the size of the page.
         /// </summary>
-        /// <param name="size">每页呈现的数据。</param>
+        /// <param name="size">The size.</param>
         async Task ChangePageSize(int size)
         {
             await NavigateToFirst();
@@ -398,9 +397,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 选择每页呈现的数据量选项。
+        /// Selects the size of the page.
         /// </summary>
-        /// <param name="selectedItem">选择的项。</param>
+        /// <param name="selectedItem">The selected item.</param>
         async Task SelectPageSize(object selectedItem)
         {
             if (!int.TryParse(selectedItem.ToString(), out int size))
@@ -412,9 +411,10 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 跳转到指定的页面
+        /// Redirects to specify page.
         /// </summary>
-        /// <param name="e">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>        
+        /// <param name="e">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>
+        /// <returns></returns>
         Task RedirectToSpecifyPage(ChangeEventArgs e)
         {
             var page = 1;
@@ -426,9 +426,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 变更分页的总记录数，并触发 <see cref="TotalCountChanged"/> 事件。
+        /// Changes the total count.
         /// </summary>
-        /// <param name="count">要变更的总记录数。</param>
+        /// <param name="count">The count.</param>
         async Task ChangeTotalCount(int count)
         {
             await NavigateToFirst();
@@ -437,8 +437,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 计算分页数字并返回开始和结束的索引。
+        /// Computes the page number.
         /// </summary>
+        /// <returns></returns>
         (int start, int end) ComputePageNumber()
         {
             var start = 0;
@@ -472,32 +473,32 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置 Flex 的横向布局模式。
+        /// Defiens the layout of flex.
         /// </summary>
         public enum JustifyContent
         {
             /// <summary>
-            /// 居左。
+            /// Left of content.
             /// </summary>
             [DefaultValue("left")]
             Left,
             /// <summary>
-            /// 居右。
+            /// Right of content.
             /// </summary>
             [DefaultValue("right")]
             Right,
             /// <summary>
-            /// 居中。
+            /// Cneter of content.
             /// </summary>
             [DefaultValue("center")]
             Center,
             /// <summary>
-            /// 两端。
+            /// Between of content.
             /// </summary>
             [DefaultValue("space-between")]
             Between,
             /// <summary>
-            /// 环绕。
+            /// Around of content.
             /// </summary>
             [DefaultValue("space-around")]
             Around

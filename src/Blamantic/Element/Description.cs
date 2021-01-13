@@ -9,7 +9,7 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示在其他组件中用于进行描述类说明的组件。
+    /// Render a div HTML tag with description style in other component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [CssClass("description")]

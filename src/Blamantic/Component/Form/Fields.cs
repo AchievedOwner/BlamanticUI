@@ -10,29 +10,32 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示可以对表单进行字段分组。
+    /// Represents a group of fields in row in <see cref="Form"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInline" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasEqualWidth" />
     [HtmlTag]
     public class Fields : BlamanticChildContentComponentBase, IHasInline, IHasSpan, IHasEqualWidth
     {
         /// <summary>
-        /// 设置字段使用内联行的样式显示内容。
+        /// Gets or sets a value indicating whether is inlined in one row.
         /// </summary>
         [Parameter]public bool Inline { get; set; }
         /// <summary>
-        /// 设置字段的固定的宽度占比数。
+        /// Gets or sets the span for each <see cref="Field"/> component.
         /// </summary>
         [Parameter]public ColSpan Span { get; set; }
         /// <summary>
-        /// 设置字段组根据数量进行等宽适配。
+        /// Gets or sets a value indicating whether each <see cref="Field"/> has equal width.
         /// </summary>
         [Parameter]public bool EqualWidth { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("fields");

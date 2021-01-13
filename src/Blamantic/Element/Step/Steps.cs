@@ -6,57 +6,68 @@
     using YoiBlazor;
 
     /// <summary>
-    /// 表示具备一组 <see cref="Step"/> 组件的步骤容器。
+    /// Represents a container contains a certain <see cref="Step"/> components.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     [HtmlTag]
     [CssClass("steps", Order = 999)]
     public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasDarkness,IHasFluid
     {
         /// <summary>
-        /// 设置使用纵向的方式排列。
+        /// Gets or sets a value indicating whether this layout is vertical.
         /// </summary>
         [Parameter] [CssClass("vertical", Order = 50)] public bool Vertical { get; set; }
         /// <summary>
-        /// 设置在右侧时的垂直显示。<see cref="Vertical"/> 为 <c>true</c> 时有效。
+        /// Gets or sets a value indicating whether vertical at right.
         /// </summary>
         [Parameter][CssClass("right")] public bool VerticalRight { get; set; }
         /// <summary>
-        /// 设置组件是否需要吸附于相对位置的其他组件。
+        /// Gets or sets a value indicating whether attach to another.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if attached; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Attached { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attach position in vertical.
         /// </summary>
         [Parameter]public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置组件的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置点击后呈现被启用状态。
+        /// Gets or sets a value indicating whether click to active.
         /// </summary>
         [Parameter]public bool ClickToActive { get; set; }
-
         /// <summary>
-        /// 设置一个回调方法，当步骤被禁用时触发的事件。
+        /// A callback method invoked when disabled.
         /// </summary>
         [Parameter] public EventCallback<int> OnDisabled { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Fluid { get; set; }
 
         /// <summary>
-        /// 禁用指定索引的步骤。
+        /// Disables the specified index of <see cref="Step"/>.
         /// </summary>
-        /// <param name="index">索引。</param>
+        /// <param name="index">The index to disable.</param>
         public async Task Disable(int index)
         {
             for (int i = 0; i < ChildComponents.Count; i++)

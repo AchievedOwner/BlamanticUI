@@ -7,7 +7,7 @@
 		<Authors>William Chow</Authors>
 		<Product>BlamanticUI</Product>
 		<PackageId>BlamanticUI</PackageId>
-		<Description>The css framework from Semantic-UI for blazor which is called Blamentic-UI with short name BUI.</Description>
+		<Description>The css framework from Semantic-UI for blazor.</Description>
 		<AssemblyName>BlamanticUI</AssemblyName>
 		<RootNamespace>BlamanticUI</RootNamespace>
 		<PackageId>BlamanticUI</PackageId>
@@ -53,7 +53,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.0" />
-		<PackageReference Include="YoiBlazor" Version="2.0.0" />
+		<PackageReference Include="YoiBlazor" Version="2.1.0" />
 	</ItemGroup>
 
 </Project>

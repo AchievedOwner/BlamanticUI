@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件拥有不同大小尺寸的功能。
+    /// Represents the component can has kinds of size.
     /// </summary>
     public interface IHasSize
     {
         /// <summary>
-        /// 设置组件的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [CssClass] public Size? Size { get; set; }
     }

@@ -9,10 +9,19 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 div 元素的标签组件。
+    /// Render a div HTML tag with label style.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
     [HtmlTag]
-    public class Label : BlamanticChildContentComponentBase,IHasUIComponent, IHasBasic, IHasColor, IHasDarkness, IHasTag, IHasImage, IHasAttatched, IHasCircular, IHasSize, IHasDropdown,IHasHorizontal
+    public class Label : BlamanticChildContentComponentBase,IHasUIComponent, IHasBasic, IHasColor, IHasDarkness, IHasAttatched, IHasCircular, IHasSize, IHasHorizontal
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Label"/> class.
@@ -21,83 +30,100 @@ namespace BlamanticUI
         {
         }
         /// <summary>
-        /// 设置是否使用边框样式。
+        /// Gets or sets a value indicating whether this style is outline.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if outline; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Basic { get; set; }
         /// <summary>
-        /// 设置颜色。
+        /// Gets or sets the color of text.
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Darkness { get; set; }
         /// <summary>
-        /// 设置标签为标记的样式。
+        /// Gets or sets the tag style.
         /// </summary>
-        [Parameter]public bool? Tag { get; set; }
+        [Parameter] [CssClass("tag", Order = 18)] public bool? Tag { get; set; }
         /// <summary>
-        /// 设置包含 <see cref="BlamanticUI.Image" /> 组件显示图像。
+        /// Gets or sets a value indicating whether including <see cref="BlamanticUI.Image"/> component.
         /// </summary>
-        [Parameter] public bool Image { get; set; }
+        /// <value>
+        ///   <c>true</c> if has <see cref="BlamanticUI.Image"/> component; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter][CssClass("image")] public bool Image { get; set; }
         /// <summary>
-        /// 设置标签呈现为绸带样式。
+        /// Gets or sets the ribbon style and position.
         /// </summary>
         [Parameter] [CssClass(" ribbon", Suffix = true)] public HorizontalPosition? Ribbon { get; set; }
         /// <summary>
-        /// 设置组件是否需要吸附于相对位置的其他组件。
+        /// Gets or sets a value indicating whether attach to another.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if attached; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Attached { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attach position in vertical.
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置呈现圆形样式。
+        /// Gets or sets a value indicating whether this is circular.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if circular; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Circular { get; set; }
         /// <summary>
-        /// 设置尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
-        ///// <summary>
-        ///// 设置在垂直方向的位置。
-        ///// </summary>
-        //[Parameter]public VerticalPosition? VerticalPosition { get; set; }
 
         /// <summary>
-        /// 设置为标签下拉菜单，要结合 <see cref="Menu"/> 组件一起使用。
+        /// Gets or sets a value indicating whether to display dropdown style.
         /// </summary>
-        [Parameter] public bool Dropdown { get; set; }
+        /// <value>
+        ///   <c>true</c> if dropdown; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter] [CssClass("dropdown", Order = 66)] public bool Dropdown { get; set; }
         /// <summary>
-        /// 设置下拉菜单悬浮呈现。
+        /// Gets or sets a value indicating whether hover to dropdown.
         /// </summary>
-        [Parameter]public bool HoverDropdown { get; set; }
+        /// <value>
+        ///   <c>true</c> if [hover dropdown]; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter] [CssClass("simple", Order = 66)] public bool HoverDropdown { get; set; }
         /// <summary>
-        /// 设置使用横向的方式排列。
+        /// Gets or sets a value indicating whether this is horizontal layout.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if horizontal; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Horizontal { get; set; }
         /// <summary>
-        /// 设置角标的位置。
+        /// Gets or sets the corner postion.
         /// </summary>
         [Parameter][CssClass(" corner",Suffix =true)] public HorizontalPosition? Cornered { get; set; }
-
         /// <summary>
-        /// 设置呈现为悬浮其他元素之上的位置。
+        /// Gets or sets the floating position of corner.
         /// </summary>
         [Parameter] [CssClass(" floating", Order = 40, Suffix = true)] public CornerPosition? Floating { get; set; }
+
         /// <summary>
-        /// 设置标签的箭头方向。
+        /// Gets or sets the pointer position.
         /// </summary>
         [Parameter] [CssClass(" pointing", Suffix = true)] public RelativePosition? Pointer { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("label");

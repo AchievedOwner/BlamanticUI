@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
@@ -16,11 +15,12 @@ namespace BlamanticUI
     using Microsoft.AspNetCore.Components.Forms;
 
     /// <summary>
-    /// 表示表单的输入组件基类。
+    /// Represents a base class for input component in form.
     /// </summary>
-    /// <typeparam name="TValue">值得类型。</typeparam>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="System.IDisposable" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable,IHasDarkness
     {
         #region Private
@@ -45,17 +45,17 @@ namespace BlamanticUI
         /// </summary>
         [CascadingParameter] EditContext CascadedEditContext { get; set; } = default;
 
-        #region Parameters        
+        #region Parameters                
         /// <summary>
-        /// 设置输入组件的值。
+        /// Gets or sets the value of the input. This should be used with two-way binding.
         /// </summary>
         [Parameter]public TValue? Value { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当值改变时触发。
+        /// Gets or sets a callback that updates the bound value.
         /// </summary>
         [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
         /// <summary>
-        /// Gets or sets the value expression.
+        /// Gets or sets an expression that identifies the bound value.
         /// </summary>
         [Parameter] public Expression<Func<TValue>> ValueExpression { get; set; }
 
@@ -66,7 +66,7 @@ namespace BlamanticUI
 
         private string _displayName;
         /// <summary>
-        /// 获取显示名称。优先从 <see cref="DisplayAttribute.Name"/> 中获取值。
+        /// Gets or sets the display name. if <c>null</c>, get the value of <see cref="DisplayAttribute.Name"/>.
         /// </summary>
         [Parameter] public string DisplayName
         {
@@ -172,8 +172,11 @@ namespace BlamanticUI
             }
         }
         /// <summary>
-        /// 设置基于父组件的反色兼容模式。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         #endregion
 
@@ -276,7 +279,12 @@ namespace BlamanticUI
             }
         }
 
-
+        /// <summary>
+        /// Called when [state changed].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="args">The <see cref="Microsoft.AspNetCore.Components.Forms.ValidationStateChangedEventArgs"/> instance containing the event data.</param>
+        /// <returns></returns>
         private void OnvalidateStateChanged(object? sender, ValidationStateChangedEventArgs args)
         {
             SetAdditionalAttributesIfValidationFailed();
@@ -292,6 +300,10 @@ namespace BlamanticUI
         {
         }
 
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <returns></returns>
         void IDisposable.Dispose()
         {
             if (EditContext is not null)
@@ -301,7 +313,10 @@ namespace BlamanticUI
             Dispose(disposing: true);
         }
 
-
+        /// <summary>
+        /// Sets the additional attributes if validation failed.
+        /// </summary>
+        /// <returns></returns>
         private void SetAdditionalAttributesIfValidationFailed()
         {
             if (EditContext is not null && EditContext.GetValidationMessages(FieldIdentifier).Any())

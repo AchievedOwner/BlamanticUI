@@ -1,18 +1,19 @@
 ﻿
-using System.Threading.Tasks;
-
 using YoiBlazor;
 
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件拥有加载中 UI 的功能。
+    /// Represents the loading status of this component.
     /// </summary>
     public interface IHasLoading
     {
         /// <summary>
-        /// 设置组件是否处于加载中状态。
+        /// Gets or sets a value indicating whether this component is loading status.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if loading; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("loading")] bool Loading { get; set; }
     }
 }

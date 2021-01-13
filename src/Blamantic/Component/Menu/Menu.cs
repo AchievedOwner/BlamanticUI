@@ -11,9 +11,17 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现菜单组件。
+    /// Represents a menu container within certain <see cref="Item"/> component to be the menu item.
     /// </summary>
-    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUI" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasStackable" />
     [HtmlTag]
     public class Menu : BlamanticChildContentComponentBase, IHasUI,
         IHasSize,
@@ -34,83 +42,98 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置菜单的样式风格。
+        /// Gets or sets the menu style.
         /// </summary>
         [Parameter] [CssClass] public MenuStyle Style { get; set; } = MenuStyle.Default;
 
         /// <summary>
-        /// 设置是否固定在视窗的指定位置。
+        /// Gets or sets the position is fixed.
         /// </summary>
         [Parameter] [CssClass(" fixed", Suffix = true)] public AbsolutePosition? Fixed { get; set; }
         /// <summary>
-        /// 设置尺寸大小。
+        /// Gets or sets the size of text.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
         /// <summary>
-        /// 设置当项的 <c>Actived="true"</c> 时文本的颜色。
+        /// Gets or sets the active color of item.
         /// </summary>
         [Parameter] [CssClass] public Color? ActivedColor { get; set; }
         /// <summary>
-        /// 设置菜单的背景颜色。
+        /// Gets or sets the color of the background.
         /// </summary>
         [Parameter] [CssClass("inverted ")] public Color? BackgroundColor { get; set; }
         /// <summary>
-        /// 设置菜单在水平方向的位置。
+        /// Gets or sets the horizontal position.
         /// </summary>
         [Parameter] [CssClass] public HorizontalPosition? HorizontalPosition { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Fluid { get; set; }
         /// <summary>
-        /// 设置使用纵向的方式排列。
+        /// Gets or sets a value indicating whether the items of menu is vertical layout.
         /// </summary>
         [Parameter] public bool Vertical { get; set; }
         /// <summary>
-        /// 设置是否需要吸附于相对位置的其他组件。
+        /// Gets or sets a value indicating whether attach to another.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if attached; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Attached { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attach position in vertical.
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置菜单项内是否只显示图标。
+        /// Gets or sets a value indicating whether only display the icon for items.
         /// </summary>
         [Parameter] [CssClass("icon")] public bool IconOnly { get; set; }
         /// <summary>
-        /// 设置菜单项的图标和文本各占一行。
+        /// Gets or sets a value indicating whether display a text below of icon.
         /// </summary>
         [Parameter] [CssClass("labeled icon")] public bool LabeledIcon { get; set; }
         /// <summary>
-        /// 设置子项使用超链接的样式。
+        /// Gets or sets a value indicating whether item is linked style.
         /// </summary>
         [Parameter] public bool Linked { get; set; }
         /// <summary>
-        /// 设置菜单项无任何边框。
+        /// Gets or sets a value indicating whether this <see cref="Menu"/> is borderless.
         /// </summary>
         [Parameter] [CssClass("borderless")] public bool Borderless { get; set; }
         /// <summary>
-        /// 设置菜单项对内边距的空间进行一定的压缩。
+        /// Gets or sets a value indicating whether to compact space of text.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if compact; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Compact { get; set; }
         /// <summary>
-        /// 设置菜单呈现分页样式。
+        /// Gets or sets a value indicating whether display as pagination style.
         /// </summary>
         [Parameter] [CssClass("pagination")] public bool Pagination { get; set; }
         /// <summary>
-        /// 设置组件提升为独立的 UI 组件。
+        /// Gets or sets component can be UI component.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> to be UI component,otherwise <c>false</c>.
+        /// </value>
         [Parameter] public bool? UI { get; set; }
         /// <summary>
-        /// 设置组件是否允许在不同设备进行空间压缩。
+        /// Gets or sets a value indicating whether layout always stackable.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if stackable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Stackable { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("menu");
@@ -119,37 +142,37 @@ namespace BlamanticUI
 
 
     /// <summary>
-    /// 菜单的样式风格。
+    /// Defines the style of menu.
     /// </summary>
     public enum MenuStyle
     {
         /// <summary>
-        /// 默认样式。
+        /// The default style.
         /// </summary>
         [CssClass]
         Default = 0,
         /// <summary>
-        /// 药丸样式。
+        /// The items display like pill for actived item.
         /// </summary>
         [CssClass("secondary")]
         Pill = 1,
         /// <summary>
-        /// 下划线样式。
+        /// The items display like underline for actived item.
         /// </summary>
         [CssClass("pointing secondary")]
         Underline = 2,
         /// <summary>
-        /// 具有向下指向的样式。
+        /// The items display like pointer for actived item.
         /// </summary>
         [CssClass("pointing")]
         Pointer = 3,
         /// <summary>
-        /// 选项卡样式。
+        /// The items display like tab for actived item.
         /// </summary>
         [CssClass("tabular")]
         Tab = 4,
         /// <summary>
-        /// 普通文本样式。
+        /// The items display like bold text for actived item.
         /// </summary>
         [CssClass("text")]
         Texted = 5,

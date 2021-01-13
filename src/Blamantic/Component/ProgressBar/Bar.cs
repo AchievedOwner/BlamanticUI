@@ -10,21 +10,22 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示进度条中的条状组件。
+    /// Represents a progress bar in <see cref="Progress"/> component.
     /// </summary>
+    /// <seealso cref="YoiBlazor.ChildBlazorComponentBase{BlamanticUI.Progress}" />
     public class Bar : ChildBlazorComponentBase<Progress>
     {
         /// <summary>
-        /// 设置是否显示进度条的百分比文本。
+        /// Gets or sets a value indicating whether to show percentage text.
         /// </summary>
         [Parameter] public bool ShowPercent { get; set; }
 
         /// <summary>
-        /// 设置呈现进度条内的 UI 片段。
+        /// Gets or sets the text of content.
         /// </summary>
         [Parameter] public RenderFragment<double> Text { get; set; }
         /// <summary>
-        /// 设置内容的文本是否居中。
+        /// Gets or sets a value indicating whether to align the text be centered.
         /// </summary>
         [Parameter]public bool Centered { get; set; }
 
@@ -63,18 +64,18 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("bar");
         }
 
         /// <summary>
-        /// 创建组件所需要的 style 样式。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="style"><see cref="T:YoiBlazor.Style" /> 实例。</param>
+        /// <param name="style">The instance of <see cref="T:YoiBlazor.Style" /> class.</param>
         protected override void CreateComponentStyle(Style style)
         {
             style.Add("transition-duration:300ms")

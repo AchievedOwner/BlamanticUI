@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件紧凑的样式。
+    /// Represents the text of component compact the width.
     /// </summary>
     public interface IHasCompact
     {
         /// <summary>
-        /// 设置组件对内边距的空间进行一定的压缩。
+        /// Gets or sets a value indicating whether to compact space of text.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if compact; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("compact", Order = 41)] bool Compact { get; set; }
     }
 }

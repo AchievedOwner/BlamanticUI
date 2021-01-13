@@ -8,28 +8,37 @@ namespace BlamanticUI
     using YoiBlazor;
 
     /// <summary>
-    /// 表示复选框组件。
+    /// Renders a 'input' represents type is checkbox HTML tag.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFitted" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
     public class CheckBox : FormInputBase<bool>,IHasUIComponent,IHasFitted,IHasDisabled
     {
         /// <summary>
-        /// 设置复选框的风格。
+        /// Gets or sets the display style.
         /// </summary>
         [Parameter] [CssClass] public Style? DisplayStyle { get; set; }
         /// <summary>
-        /// 设置组件取消当前 padding 的边距。
+        /// Gets or sets a value indicating whether the text remove paddings.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fitted; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Fitted { get; set; }
         /// <summary>
-        /// 设置是否处于禁用状态。
+        /// Gets or sets a value indicating whether this is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Disabled { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter] public EventCallback<bool> OnDisabled { get; set; }
         /// <summary>
-        /// 设置为只读模式。
+        /// Gets or sets a value indicating whether is read-only
         /// </summary>
         [Parameter] [CssClass("read only")]public bool ReadOnly { get; set; }
 
@@ -50,6 +59,10 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the label.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildLabel(RenderTreeBuilder builder)
         {
             builder.OpenElement(1, "label");            
@@ -59,6 +72,10 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the input checkbox.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildInputCheckbox(RenderTreeBuilder builder)
         {
             builder.OpenElement(1, "input");            
@@ -71,9 +88,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add(CurrentValue, "checked")                
@@ -81,16 +98,16 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 复选框的显示风格。
+        /// Defines the style of checkbox.
         /// </summary>
         public enum Style
         {
             /// <summary>
-            /// 开关。
+            /// The switch type.
             /// </summary>
             [CssClass("toggle")] Switch,
             /// <summary>
-            /// 滑动器。
+            /// The slider type.
             /// </summary>
             [CssClass("slider")] Slider
         }

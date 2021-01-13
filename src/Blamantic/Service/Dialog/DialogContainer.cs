@@ -9,29 +9,30 @@ using Microsoft.AspNetCore.Components.Web;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示用于作为使用服务的方式呈现对话框的占位容器。
+    /// Represents a placeholder for dialog component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="System.IDisposable" />
     public class DialogContainer : BlamanticChildContentComponentBase,IDisposable
     {
         /// <summary>
-        /// 初始化 <see cref="DialogContainer"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="DialogContainer"/> class.
         /// </summary>
         public DialogContainer()
         {
         }
         /// <summary>
-        /// 获取注入的 <see cref="IDialogService"/> 服务。
+        /// Gets the dialog service.
         /// </summary>
         [Inject]IDialogService DialogService { get; set; }
 
         /// <summary>
-        /// 获取对话框的配置。
+        /// Gets the option.
         /// </summary>
         DialogOption Option => DialogService?.Modal?.Option;
 
         /// <summary>
-        /// 定义确认框需要的值。
+        /// Gets or sets the confirmed value.
         /// </summary>
         object ConfirmedValue { get; set; }
 
@@ -46,7 +47,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 渲染对话框组件。
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
         /// </summary>
         /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -92,7 +93,7 @@ namespace BlamanticUI
                       #region ConfirmButton
                       footer.OpenComponent<Button>(0);
                       footer.AddAttribute(1, nameof(Button.Color), Option.ConfirmColor);
-                      footer.AddAttribute(2, Util.EVENT_CLICK, EventCallback.Factory.Create(this, Confirm));
+                      footer.AddAttribute(2, Exntensions.EVENT_CLICK, EventCallback.Factory.Create(this, Confirm));
                       footer.AddAttribute(3, nameof(Button.Basic), Option.ConfirmOutline);
                       footer.AddAttribute(5, nameof(Button.ChildContent), (RenderFragment)(confirm =>
                       {
@@ -106,7 +107,7 @@ namespace BlamanticUI
                       {
                           footer.OpenComponent<Button>(10);
                           footer.AddAttribute(11, nameof(Button.Color), Option.CancelColor);
-                          footer.AddAttribute(12, Util.EVENT_CLICK, EventCallback.Factory.Create(this,Cancel));
+                          footer.AddAttribute(12, Exntensions.EVENT_CLICK, EventCallback.Factory.Create(this,Cancel));
                           footer.AddAttribute(13, nameof(Button.Basic), Option.CancelOutline);
                           footer.AddAttribute(15, nameof(Button.ChildContent), (RenderFragment)(cancel =>
                           {
@@ -131,7 +132,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 弹出框中文本框输入的改变。
+        /// Texts the changed.
         /// </summary>
         /// <param name="e">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>
         void TextChanged(ChangeEventArgs e)
@@ -140,7 +141,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 点击【确定】按钮触发的回调方法。
+        /// Click to confirm.
         /// </summary>
         /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         void Confirm(MouseEventArgs e)
@@ -153,7 +154,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 点击【取消】按钮触发的回调方法。
+        /// Click to cancel.
         /// </summary>
         /// <param name="e">The <see cref="MouseEventArgs"/> instance containing the event data.</param>
         void Cancel(MouseEventArgs e)
@@ -163,7 +164,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 关闭对话框。
+        /// Close dialog.
         /// </summary>
         void Close()
         {

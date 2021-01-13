@@ -9,50 +9,69 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示用于包含多个 <see cref="Card"/> 组件的卡片组。
+    /// Render a container that has group of <see cref="Card"/> components to layout together.
     /// </summary>
-    public class CardGroup:BlamanticChildContentComponentBase, IHasUIComponent,IHasHorizontal,IHasDarkness,IHasSpan,IHasDoubling,IHasStackable
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDoubling" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasStackable" />
+    public class CardGroup : BlamanticChildContentComponentBase, IHasUIComponent, IHasHorizontal, IHasDarkness, IHasSpan, IHasDoubling, IHasStackable
     {
         /// <summary>
-        /// 初始化 <see cref="CardGroup"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="CardGroup"/> class.
         /// </summary>
         public CardGroup()
         {
             _cardList = new List<Card>();
         }
 
-        private List<Card> _cardList;
+        private readonly List<Card> _cardList;
 
         /// <summary>
-        /// 获取子组件的列表。
+        /// Gets the components.
         /// </summary>
         public IReadOnlyList<Card> Components => _cardList;
 
         /// <summary>
-        /// 设置包含的 <see cref="Card"/> 内部采用水平方式排列。
+        /// Gets or sets a value indicating whether all <see cref="Card"/> are horizontal layout.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if horizontal; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Horizontal { get; set; }
         /// <summary>
-        /// 设置卡片组的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置卡片每一行的固定的数量。
+        /// Gets or sets the span of each card.
         /// </summary>
         [Parameter]public ColSpan Span { get; set; }
         /// <summary>
-        /// 设置在移动端小尺寸屏幕时每行固定显示2个。
+        /// Gets or sets a value indicating whether double column of layout in responsive adapter.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if doubling; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Doubling { get; set; }
         /// <summary>
-        /// 设置在移动端小屏幕尺寸时采用单独列的布局方式。
+        /// Gets or sets a value indicating whether layout always stackable.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if stackable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Stackable { get; set; }
 
         /// <summary>
-        /// 添加子组件。
+        /// Adds the component.
         /// </summary>
-        /// <param name="component">子组件。</param>
+        /// <param name="component">The component.</param>
         /// <exception cref="System.ArgumentNullException">component</exception>
         public void AddComponent(Card component)
         {
@@ -85,9 +104,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("cards");

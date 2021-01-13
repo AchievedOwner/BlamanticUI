@@ -3,22 +3,22 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 提供基本的对话框服务。
+    /// Provide a service to call dialog.
     /// </summary>
     /// <seealso cref="System.IDisposable" />
     public interface IDialogService : IDisposable
     {
         /// <summary>
-        /// 显示指定配置的对话框。
+        /// Shows the dialog with specify config of dialog.
         /// </summary>
-        /// <param name="configure">配置对话框的委托。</param>
+        /// <param name="configure">A delegate to configure how to show dialog.</param>
         void Show(Action<DialogOption> configure);
         /// <summary>
-        /// 获取对话框配置的传递模型。
+        /// Gets the config data.
         /// </summary>
         DialogModel Modal { get; }
         /// <summary>
-        /// 当对话框被更新时触发的事件。
+        /// An action represents when dialog updating status.
         /// </summary>
         event Action OnDialogUpdated;
     }

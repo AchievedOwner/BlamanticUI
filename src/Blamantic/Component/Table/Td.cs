@@ -12,64 +12,70 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示表格中的单元格组件，要求嵌套在 <see cref="Tr"/> 中。
+    /// Render a td HTML tag represents a cell in one row.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSelectable" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     [HtmlTag("td")]
     public class Td : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasSpan
     {
         /// <summary>
-        /// 设置单元格跨列的数量。
-        /// </summary>
-        [Parameter] [HtmlTagProperty("colspan")] public int? ColSpan { get; set; }
-        /// <summary>
-        /// 设置单元格跨行的数量。
-        /// </summary>
-        [Parameter] [HtmlTagProperty("rowspan")] public int? RowSpan { get; set; }
-
-        /// <summary>
-        /// 设置当被跨行时对 UI 的突出显示。
+        /// Gets or sets the highlight color when row spanned.
         /// </summary>
         [Parameter] [CssClass("rowspanned")] public bool RowSpanned { get; set; }
 
         /// <summary>
-        /// 设置呈现书签的样式。
+        /// Gets or sets the marker style.
         /// </summary>
         [Parameter] [CssClass(" marked",Suffix =true)] public HorizontalPosition? Marked { get; set; }
         /// <summary>
-        /// 设置单元格拥有可选择的效果。
+        /// Gets or sets a value indicating whether hover style while cursor moving over items.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if selectable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Selectable { get; set; }
         /// <summary>
-        /// 设置压缩单元格的空间使其刚好与文本长度一致
+        /// Gets or sets a value indicating whether collaps space of text in cell.
         /// </summary>
         [Parameter] [CssClass("collapsing")] public bool Collapsing { get; set; }
         /// <summary>
-        /// 设置具有醒目状态的样式。
+        /// Gets or sets the state.
         /// </summary>
         [Parameter]public State? State { get; set; }
         /// <summary>
-        /// 设置是否处于激活状态。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Actived { get; set; }
         /// <summary>
-        /// 设置是否处于禁用状态。
+        /// Gets or sets a value indicating whether this is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Disabled { get; set; }
         /// <summary>
-        /// 设置单元格的固定的宽度占比数。
+        /// Gets or sets the span of cell.
         /// </summary>
         [Parameter][CssClass(" wide",Suffix =true)]public ColSpan Span { get; set; }
         /// <summary>
-        /// 设置文本水平方向的对齐方式。
+        /// Gets or sets the horizontal alignment of text.
         /// </summary>
         [Parameter]public HorizontalAlignment? HorizontalAlignment { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnActived { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
     }

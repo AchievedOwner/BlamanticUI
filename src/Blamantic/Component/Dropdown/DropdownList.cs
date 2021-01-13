@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 
 using BlamanticUI.Abstractions;
@@ -17,14 +15,22 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示多功能的下拉列表。
+    /// Render a dropdown list component that support two-way binding.
     /// </summary>
-    /// <typeparam name="T">The type of the source.</typeparam>
+    /// <typeparam name="T">The type of data source.</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="System.IDisposable" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSelectable" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
-    public class DropDownList<T> : BlamanticComponentBase,IDisposable,
+    /// <seealso cref="BlamanticUI.Abstractions.IHasStateToggle" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInline" />
+    public class DropDownList<T> : FormInputBase<string>,IDisposable,
         IHasUIComponent, 
         IHasSelectable, 
         IHasFluid, 
@@ -37,8 +43,9 @@ namespace BlamanticUI
         IHasInline
     {
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
+
         /// <summary>
-        /// 初始化 <see cref="DropDownList{T}"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="DropDownList{T}"/> class.
         /// </summary>
         public DropDownList()
         {
@@ -47,175 +54,147 @@ namespace BlamanticUI
             _validationStateChangedHandler = (s, e) => StateHasChanged();
         }
 
-        #region 参数
+        #region Parameters        
         /// <summary>
-        /// 设置是否具有选择样式。
+        /// Gets or sets a value indicating whether hover style while cursor moving over items.
         /// </summary>
         [Parameter] [CssClass("selection")] public bool Selectable { get; set; }
 
         /// <summary>
-        /// 设置对数据源是否可以直接进行过滤。
+        /// Gets or sets to display a input filter for candidate items.
         /// </summary>
         [Parameter] [CssClass("search")] public bool Filterable { get; set; }
 
         /// <summary>
-        /// 设置菜单向上显示。
+        /// Gets or sets a value indicating whether the drop up direction.
         /// </summary>
         [Parameter] [CssClass("upward")]public bool Up { get; set; }
 
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Fluid { get; set; }
 
         /// <summary>
-        /// 设置是否显示列表。
+        /// Gets or sets a value indicating whether this drop down list is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("active")] public bool Actived { get; set; }
 
         /// <summary>
-        /// 当数据源是复杂类型（通常是实体）时，用于指定过滤的字段。未指定 <see cref="FilterExpression"/> 时有效。
+        /// Gets or sets the field of data source to be filtered.
         /// </summary>
+        /// <value>
         [Parameter] public string FilterField { get; set; }
 
         /// <summary>
-        /// 设置当选择项后显示一个“x”可移除选中项。
+        /// Gets or sets a value indicating whether the selected item can be removable.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if removable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Removable { get; set; }
 
         /// <summary>
-        /// 设置是否禁用。
+        /// Gets or sets a value indicating whether this <see cref="DropDownList{T}"/> is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Disabled { get; set; }
         /// <summary>
-        /// 设置尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
         /// <summary>
-        /// 设置反转背景。
+        /// Gets or sets a value indicating whether to compact space of text.
         /// </summary>
-        [Parameter] public bool Darkness { get; set; }
-        /// <summary>
-        /// 设置内边距的压缩。
-        /// </summary>
+        /// <value>
+        ///   <c>true</c> if compact; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Compact { get; set; }
 
         /// <summary>
-        /// 设置在搜索候选列表中的最大数量。默认是 10。
+        /// Gets or sets the maximum filter items.
         /// </summary>
         [Parameter] public int MaxFilterItems { get; set; } = 10;
         /// <summary>
-        /// 设置下拉列表的列数排版。
+        /// Gets or sets the span of column.
         /// </summary>
         [Parameter] [CssClass(" column", Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
-        /// 设置成为行内样式模式。
+        /// Gets or sets a value indicating whether is inline paragraph.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if inline; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Inline { get; set; }
 
         /// <summary>
-        /// 设置初始化时的默认项 UI 内容。
+        /// Gets or sets the default item before selected.
         /// </summary>
         [Parameter] public RenderFragment DefaultItem { get; set; }
         /// <summary>
-        /// 设置对列表项呈现的 UI 内容。
+        /// Gets or sets the format of item to display in list.
         /// </summary>
         [Parameter] public RenderFragment<T> ItemFormat { get; set; }
 
         /// <summary>
-        /// 设置选中项的值。
-        /// </summary>
-        [Parameter] public string Value { get; set; }
-        /// <summary>
-        /// 设置当选中值更改后触发的回调。
-        /// </summary>
-        [Parameter] public EventCallback<string> ValueChanged { get; set; }
-        /// <summary>
-        /// 表示双向绑定的表达式。
-        /// </summary>
-        [Parameter]public Expression<Func<string>> ValueExpression { get; set; }
-
-        /// <summary>
-        /// 表示用于自定义搜索数据的表达式。
-        /// <para>
-        /// 参数1：搜索框键入的文本；参数2：数据源中每一行的类型；返回 <c>true</c> 则为匹配过滤的结果，否则为 <c>false</c>。
-        /// </para>
+        /// Gets or sets an expression for filter that can do customization data filtered.
+        /// <list type="bullet">
+        /// <item>arg1: the text of search input;</item>
+        /// <item>arg2: a item of data source;</item>
+        /// <item>return <c>true</c> if result matched for filter, otherwise <c>false</c>.</item>
+        /// </list>
         /// </summary>
         [Parameter] public Func<string, T, bool> FilterExpression { get; set; }
 
-        /// <summary>
-        /// 级联 <see cref="EditContext"/> 参数，可以结合 <see cref="Form"/> 对控件进行验证。
-        /// </summary>
-        [CascadingParameter]EditContext CascadedEditContext { get; set; }
-
 
         /// <summary>
-        /// 表示已过滤的数据源。
-        /// </summary>
-        protected IEnumerable<T> FilterdDataSource { get;private set; }
-        #endregion
-
-        /// <summary>
-        /// 获取一个布尔值，表示搜索过滤已经输入了内容。
-        /// </summary>
-        protected bool Filtered { get; private set; }
-
-        /// <summary>
-        /// 表示搜索框已输入的值。
-        /// </summary>
-        protected string FilterdInputValue { get; private set; }
-
-        /// <summary>
-        /// 获取经过双向绑定之后的当前值。
-        /// </summary>
-        protected string CurrentValue
-        {
-            get => Value;
-            set
-            {
-                var hasChanged = !EqualityComparer<string>.Default.Equals(value, Value);
-                if (hasChanged)
-                {
-                    Value = value;
-                    ValueChanged.InvokeAsync(value);
-                    if (CascadedEditContext != null)
-                    {
-                        var fieldIdentifier = FieldIdentifier.Create(ValueExpression);
-                        CascadedEditContext.NotifyFieldChanged(fieldIdentifier);
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// 获取或设置列表中选中的项。
-        /// </summary>
-        T SelectedItem { get; set; }
-        
-
-
-        /// <summary>
-        /// 设置当下拉列表显示或隐藏时触发的回调方法。
-        /// </summary>
-        [Parameter] public EventCallback<bool> OnActive { get; set; }
-        /// <summary>
-        /// 设置下拉列表的数据源。
+        /// Gets or sets the data source.
         /// </summary>
         [Parameter] public IEnumerable<T> DataSource { get; set; }
 
         /// <summary>
-        /// 设置当列表项被选中后触发的回调方法。
+        /// Gets or sets a callback method invoked when item is selected.
         /// </summary>
         [Parameter] public EventCallback<T> OnItemSelected { get; set; }
 
         /// <summary>
-        /// 设置当输入过滤值时触发的回调方法。
+        /// Gets or sets a callback method invoked when a item is filtered.
         /// </summary>
         [Parameter] public EventCallback<string> OnFiltering { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets a callback method whether active state has changed.
         /// </summary>
-        public EventCallback<bool> OnActived { get; set; }
+        [Parameter] public EventCallback<bool> OnActived { get; set; }
+
+        #endregion
+
+        /// <summary>
+        /// Gets the filtered data source.
+        /// </summary>
+        protected IEnumerable<T> FilterdDataSource { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether display in drop down list that has filtered items.
+        /// </summary>
+        protected bool Filtered { get; private set; }
+
+        /// <summary>
+        /// Gets the filterd value of search input.
+        /// </summary>
+        protected string FilterdInputValue { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the selected item.
+        /// </summary>
+        T SelectedItem { get; set; }
 
         /// <summary>
         /// Method invoked when the component has received parameters from its parent in
@@ -231,11 +210,6 @@ namespace BlamanticUI
             if (ItemFormat == null)
             {
                 ItemFormat = value => new RenderFragment(builder => builder.AddContent(0, value?.ToString()));
-            }
-
-            if (CascadedEditContext != null)
-            {
-                CascadedEditContext.OnValidationStateChanged += _validationStateChangedHandler;
             }
         }
 
@@ -261,9 +235,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add(Actived, "visible").Add(Removable, "clearable").Add("dropdown");
@@ -299,6 +273,10 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the remove icon.
+        /// </summary>
+        /// <param name="child">The child.</param>
         private void BuildRemoveIcon(RenderTreeBuilder child)
         {
             if (Removable && SelectedItem != null)
@@ -312,9 +290,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构建搜索框。
+        /// Builds the search input.
         /// </summary>
-        /// <param name="child"></param>
+        /// <param name="child">The child.</param>
         private void BuildSearchInput(RenderTreeBuilder child)
         {
             if (Filterable)
@@ -328,9 +306,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构建下拉图标。
+        /// Builds the dropdown icon.
         /// </summary>
-        /// <param name="child"></param>
+        /// <param name="child">The child.</param>
         private static void BuildDropdownIcon(RenderTreeBuilder child)
         {
             child.OpenComponent<Icon>(20);
@@ -339,9 +317,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构建默认文本。
+        /// Builds the default text.
         /// </summary>
-        /// <param name="child"></param>
+        /// <param name="child">The child.</param>
         private void BuildDefaultText(RenderTreeBuilder child)
         {
             child.OpenElement(10, "div");
@@ -385,7 +363,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构造下拉菜单项。
+        /// Builds the drop down items.
         /// </summary>
         /// <param name="builder">The builder.</param>
         void BuildDropDownItems(RenderTreeBuilder builder)
@@ -448,7 +426,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 切换下拉菜单的显示/隐藏。
+        /// Perform the toggle for actived.
         /// </summary>
         public async Task Toggle()
         {
@@ -456,35 +434,19 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 释放组件。
+        /// Defaults the filter.
         /// </summary>
-        public void Dispose()
-        {
-            if (CascadedEditContext != null)
-            {
-                CascadedEditContext.OnValidationStateChanged -= _validationStateChangedHandler;
-            }
-        }
+        /// <param name="input">The input.</param>
+        /// <returns></returns>
+        IEnumerable<T> GetDefaultFilter(string input) => DataSource.Where(value => FilterExpression(input, value));
+
 
         /// <summary>
-        /// 默认过滤方式。
+        /// Compares the search value.
         /// </summary>
-        /// <param name="input">搜索框输入的值。</param>
-        /// <returns>过滤后的结果。</returns>
-        IEnumerable<T> DefaultFilter(string input)
-        {
-            return DataSource.Where(value =>
-            {
-                return FilterExpression(input,value);
-            });
-        }
-
-        /// <summary>
-        /// 比较搜索框输入的值。
-        /// </summary>
-        /// <param name="input">输入的值。</param>
-        /// <param name="value">选择的值。</param>
-        /// <returns>匹配返回 <c>true</c>；否则返回 <c>false</c>。</returns>
+        /// <param name="input">The input.</param>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         private bool CompareSearchValue(string input, T value)
         {
             if (typeof(T).IsClass && typeof(T) != typeof(string))
@@ -503,9 +465,10 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 获取指定数据源的值。
+        /// Gets the value.
         /// </summary>
-        /// <param name="source">数据源。</param>
+        /// <param name="source">The source.</param>
+        /// <returns></returns>
         private string GetValue(T source)
         {
             if (source == null)
@@ -521,9 +484,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 输入指定值并过滤检索数据。
+        /// Searches the specified input.
         /// </summary>
-        /// <param name="input">搜索框输入的值。</param>
+        /// <param name="input">The input.</param>
         public async Task Search(string input)
         {
             FilterdInputValue = input;
@@ -531,7 +494,7 @@ namespace BlamanticUI
             Filtered = !string.IsNullOrEmpty(input);
             if (Filtered)
             {
-                FilterdDataSource = DefaultFilter(input);
+                FilterdDataSource = GetDefaultFilter(input);
             }
             else
             {
@@ -541,9 +504,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 选择指定列表的项。
+        /// Selects the item.
         /// </summary>
-        /// <param name="selectedItem">选择的项。</param>
+        /// <param name="selectedItem">The selected item.</param>
         public async Task SelectItem(T selectedItem)
         {
             SelectedItem = selectedItem;
@@ -553,19 +516,8 @@ namespace BlamanticUI
             FilterdDataSource = DataSource;
             await OnItemSelected.InvokeAsync(selectedItem);
 
-            CascadedEditContext?.NotifyValidationStateChanged();
+            EditContext?.NotifyValidationStateChanged();
             StateHasChanged();
-        }
-
-        /// <summary>
-        /// 切换禁用/启用状态。
-        /// </summary>
-        /// <param name="disabled"><c>true</c> 为禁用；否则为启用。</param>
-        public Task Disable(bool disabled = true)
-        {
-            Disabled = disabled;
-            StateHasChanged();
-            return Task.CompletedTask;
         }
     }
 }

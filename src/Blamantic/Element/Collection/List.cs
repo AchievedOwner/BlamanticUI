@@ -9,67 +9,97 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示具有列表功能的组件。配合子组件 <see cref="Item"/> 构建列表项。
+    /// Render a list container and certain <see cref="Item"/> components to create a list of items.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasRelaxed" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDivider" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSelectable" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAnimated" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCelled" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVerticalAlignment" />
     [HtmlTag]
-    public class List : BlamanticChildContentComponentBase, IHasUIComponent,IHasHorizontal,IHasRelaxed,IHasDivider,IHasLinked,IHasSelectable,IHasAnimated,IHasSize,IHasCelled,IHasVerticalAlignment
+    public class List : BlamanticChildContentComponentBase, IHasUIComponent, IHasHorizontal, IHasRelaxed, IHasDivider, IHasLinked, IHasSelectable, IHasAnimated, IHasSize, IHasCelled, IHasVerticalAlignment
     {
         /// <summary>
-        /// 设置使用横向的方式排列。
+        /// Gets or sets a value indicating whether this is horizontal layout.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if horizontal; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Horizontal { get; set; }
         /// <summary>
-        /// 设置列表的内容呈现松散的样式。
+        /// Gets or sets a value indicating whether this is relaxed style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if relaxed; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Relaxed { get; set; }
         /// <summary>
-        /// 设置列表的项具有分割线。
+        /// Gets or sets a value indicating whether a divider between components.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if has divider; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("divided")]public bool Divider { get; set; }
 
         /// <summary>
-        /// 设置列表项带有子弹标记。
+        /// Gets or sets items has bullete style.
         /// </summary>
         [Parameter] [CssClass("bulleted")] public bool? Bulleted { get; set; }
         /// <summary>
-        /// 设置列表项具有顺序数字的标记。
+        /// Gets or sets items has order number.
         /// </summary>
         [Parameter] [CssClass("ordered")] public bool? Ordered { get; set; }
         /// <summary>
-        /// 设置列表项的标记具有“.”作为后缀。
+        /// Gets or sets items has '.' after order number.
         /// </summary>
         [Parameter] [CssClass("suffixed")] public bool? Suffixed { get; set; }
         /// <summary>
-        /// 设置列表的项呈现超链接的样式。
+        /// Gets or sets a value indicating whether this is linked style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if linked; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Linked { get; set; }
         /// <summary>
-        /// 设置列表项是否具鼠标悬浮背景高亮变 cursor 鼠标的样式。
+        /// Gets or sets a value indicating whether hover style while cursor moving over items.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if selectable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("selection")]public bool Selectable { get; set; }
         /// <summary>
-        /// 设置列表项可使用动画效果来展现内容。
+        /// Gets or sets a value indicating whether this is animated.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if animated; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Animated { get; set; }
         /// <summary>
-        /// 设置项之间具有边框效果。
+        /// Gets or sets a value indicating whether to display border.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if has border; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Celled { get; set; }
         /// <summary>
-        /// 设置列表的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置列表项的垂直对齐方式。
+        /// Gets or sets the vertical alignment of text.
         /// </summary>
         [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("list");

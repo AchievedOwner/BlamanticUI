@@ -10,34 +10,43 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示表格中的一行。
+    /// Render a tr HTML tag to display a new row in table.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
     [HtmlTag("tr")]
     public class Tr : BlamanticChildContentComponentBase,IHasState,IHasActive,IHasDisabled
     {
         /// <summary>
-        /// 设置行作为书签的方式呈现。
+        /// Gets or sets the marker style of border in cell.
         /// </summary>
         [Parameter] [CssClass(" marked",Suffix =true)] public HorizontalPosition? Marked { get; set; }
         /// <summary>
-        /// 设置使行的单元格具有醒目状态的样式。
+        /// Gets or sets the state of row.
         /// </summary>
         [Parameter]public State? State { get; set; }
         /// <summary>
-        /// 设置是否处于激活状态。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Actived { get; set; }
         /// <summary>
-        /// 设置是否处于禁用状态。
+        /// Gets or sets a value indicating whether row is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Disabled { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnActived { get; set; }
     }

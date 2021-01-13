@@ -7,17 +7,17 @@ using Microsoft.AspNetCore.Components.Forms;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 工具类。
+    /// The extensions.
     /// </summary>
-    public static class Util
+    public static class Exntensions
     {
         /// <summary>
-        /// onclick 事件名称。
+        /// onclick event。
         /// </summary>
         public const string EVENT_CLICK = "onclick";
 
         /// <summary>
-        /// 获取指定表单字段的状态。
+        /// Get the <see cref="FieldIdentifier"/> instance of <see cref="State"/>.
         /// </summary>
         /// <param name="context">The context.</param>
         /// <param name="fieldIdentifier">The field identifier.</param>
@@ -45,10 +45,10 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 执行组件的激活/不激活状态的操作。
+        /// Perform the active action
         /// </summary>
-        /// <param name="instance">The instance.</param>
-        /// <param name="active"><c>true</c> 激活状态，否则为不激活状态。</param>
+        /// <param name="instance">The instance of <see cref="IHasActive"/>.</param>
+        /// <param name="active">the active status.</param>
         public static async Task Active(this IHasActive instance, bool active = true)
         {
             instance.Actived = active;
@@ -57,10 +57,10 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 执行组件的禁用/可用状态操作。
+        /// Perform the disable action.
         /// </summary>
-        /// <param name="instance">The instance.</param>
-        /// <param name="disabled"><c>true</c> 禁用状态，否则为可用状态。</param>
+        /// <param name="instance">The instance of <see cref="IHasDisabled"/>.</param>
+        /// <param name="disabled">the disabled status.</param>
         public static async Task Disable(this IHasDisabled instance, bool disabled = true)
         {
             instance.Disabled = disabled;

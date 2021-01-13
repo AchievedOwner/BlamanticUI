@@ -4,78 +4,79 @@ using Microsoft.AspNetCore.Components.Rendering;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示可以提供给用户输入内容的文本域组件。
+    /// Render a input of 
     /// </summary>
-    /// <typeparam name="TValue">值类型。</typeparam>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="BlamanticUI.FormInputBase{TValue}" />
     public class TextField<TValue> : FormInputBase<TValue>
     {
         /// <summary>
-        /// 设置文本域类型。
+        /// Gets or sets the type of input.
         /// </summary>
         [Parameter] public TextFieldType Type { get; set; } = TextFieldType.Text;
         /// <summary>
-        /// 设置 <see cref="Type"/> 是 <see cref="TextFieldType.MultiLine"/> 时的多行文本框的行高。默认是 3。
+        /// Gets or sets rows when the value of <see cref="Type"/> is <see cref="TextFieldType.MultiLine"/>. Default is 3.
         /// </summary>
         [Parameter] public int Rows { get; set; } = 3;
 
         /// <summary>
-        /// 设置 <see cref="FormInputBase{TValue}.DisplayName"/> 的显示类型。
+        /// Gets or sets the display type of <see cref="FormInputBase{TValue}.DisplayName"/>.
         /// </summary>
         [Parameter] public DisplayNameType DisplayNameType { get; set; } = DisplayNameType.Label;
 
         /// <summary>
-        /// 设置 placeholder 的值。
+        /// Gets or sets the value of placeholder.
         /// </summary>
         [Parameter] public string Placeholder { get; set; }
 
         /// <summary>
-        /// 设置当 <see cref="TextFieldType.Custom"/> 的自定义类型字符串。
+        /// Gets or sets the input type while <see cref="TextFieldType.Custom"/>.
         /// </summary>
         [Parameter] public string CustomType { get; set; }
         /// <summary>
-        /// 设置文本框触发双向绑定的事件类型。默认是 <see cref="TextFieldTrigger.OnInput"/>。
+        /// Gets or sets the trigger of two-way binding, Default is <see cref="TextFieldTrigger.OnInput"/>.
         /// </summary>
         [Parameter] public TextFieldTrigger Trigger { get; set; } = TextFieldTrigger.OnInput;
 
         /// <summary>
-        /// 设置为具有焦点的状态。
+        /// Gets or sets the focus staus.
         /// </summary>
         [Parameter] public bool Focus { get; set; }
 
         /// <summary>
-        /// 设置显示在输入框组件左边的 UI 片段。
+        /// Gets or sets the UI content at the left side of input.
         /// </summary>
         [Parameter] public RenderFragment Left { get; set; }
         /// <summary>
-        /// 设置显示在输入框组件右边的 UI 片段。
+        /// Gets or sets the UI content at the right side of input.
         /// </summary>
         [Parameter] public RenderFragment Right { get; set; }
 
         /// <summary>
-        /// 设置显示在输入框组件左侧的图标名称。
+        /// Gets or sets the icon class at the left side of input.
         /// </summary>
         [Parameter] public string Icon { get; set; }
 
         /// <summary>
-        /// 设置使用图标模式，使用 <see cref="Left"/> 或 <see cref="Right"/> 的 UI 内容呈现图标。
+        /// Gets or sets wheither using icon mode, and set <see cref="Left"/> or <see cref="Right"/> to render icon.
         /// </summary>
         [Parameter] public bool IconMode { get; set; }
 
         /// <summary>
-        /// 设置使用标签模式，使用 <see cref="Left"/> 或 <see cref="Right"/> 的 UI 内容呈现标签。
+        /// Gets or sets a value indicating whether to render a <see cref="Label"/> component by <see cref="Left"/> or <see cref="Right"/>.
         /// </summary>
         [Parameter] public bool LabelMode { get; set; }
+
         /// <summary>
-        /// 设置使用行为模式，使用 <see cref="Left"/> 或 <see cref="Right"/> 的 UI 内容呈现按钮。
+        /// Gets or sets a value indicating whether to render a <see cref="Button"/> component by <see cref="Left"/> or <see cref="Right"/>.
         /// </summary>
         [Parameter] public bool ActionMode { get; set; }
         /// <summary>
-        /// 设置为透明，隐藏边框。
+        /// Gets or sets the transparent style.
         /// </summary>
         [Parameter] public bool Transparent { get; set; }
         /// <summary>
-        /// 设置尺寸。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
 
@@ -131,6 +132,12 @@ namespace BlamanticUI
             builder.CloseComponent();
         }
 
+        /// <summary>
+        /// Builds the mode.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="mode">if set to <c>true</c> [mode].</param>
+        /// <param name="name">The name.</param>
         private void BuildMode(RenderTreeBuilder builder,bool mode,string name)
         {
             if (mode)
@@ -143,6 +150,12 @@ namespace BlamanticUI
             }
         }
 
+        /// <summary>
+        /// Builds the input.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="sequence">The sequence.</param>
+        /// <returns></returns>
         protected virtual void BuildInput(RenderTreeBuilder builder,int sequence=10)
         {
             if (Type == TextFieldType.MultiLine)
@@ -171,58 +184,58 @@ namespace BlamanticUI
     }
 
     /// <summary>
-    /// 文本域类型。
+    /// The type of text field,
     /// </summary>
     public enum TextFieldType
     {
         /// <summary>
-        /// 单行文本框。
+        /// A single line text box.
         /// </summary>
         Text = 0,
         /// <summary>
-        /// 多行文本框。
+        /// A multiple line text box.
         /// </summary>
         MultiLine = 1,
         /// <summary>
-        /// 密码框。
+        /// A password of text.
         /// </summary>
         Password = 2,
         /// <summary>
-        /// 数字框。
+        ///A numberic type of text.
         /// </summary>
         Number = 3,
         /// <summary>
-        /// 自定义类型。
+        /// A custom type supported by HTML5.
         /// </summary>
         Custom = 4
     }
 
     /// <summary>
-    /// 文本框触发双向绑定的事件类型。
+    /// The trigger event for input tag.
     /// </summary>
     public enum TextFieldTrigger
     {
         /// <summary>
-        /// 输入任何值时触发。
+        /// Triggered by oninput event.
         /// </summary>
         OnInput = 0,
         /// <summary>
-        /// 焦点离开，文本框改变后触发。
+        /// Triggered by onchange event.
         /// </summary>
         OnChange = 1,
     }
 
     /// <summary>
-    /// 显示名称的类型。
+    /// The type of display name property.
     /// </summary>
     public enum DisplayNameType
     {
         /// <summary>
-        /// 作为 label 控件显示。
+        /// Display as label HTML tag.
         /// </summary>
         Label,
         /// <summary>
-        /// 作为 placeholder 属性显示。
+        /// Display as placeholder in input.
         /// </summary>
         Placeholder
     }

@@ -8,26 +8,29 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示呈现内容中的标题组件。
+    /// Render a title in certain content component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Header" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     [HtmlTag]
     public class ContentHeader : Header, IHasUIComponent, IHasSize, IHasColor, IHasDarkness
     {
         /// <summary>
-        /// 设置尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置文本的颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
     }

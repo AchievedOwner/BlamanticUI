@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -10,10 +9,19 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示表格的组件。
+    /// Render a table HTML tag.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSelectable" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasPadded" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVery" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCelled" />
     public class Table : BlamanticChildContentComponentBase, 
         IHasUIComponent, 
         IHasSelectable, 
@@ -27,85 +35,102 @@ namespace BlamanticUI
         IHasCelled
     {
         /// <summary>
-        /// 设置表格的 thead 部分。
+        /// Gets or sets the UI content of thead.
         /// </summary>
         [Parameter] public RenderFragment Header { get; set; }
 
         /// <summary>
-        /// 设置表格的 tbody 部分。
+        /// Gets or sets the UI content of tbody.
         /// </summary>
         [Parameter] public RenderFragment Body { get; set; }
 
         /// <summary>
-        /// 设置表格的 tfoot 部分。
+        /// Gets or sets the UI content of tfoot.
         /// </summary>
         [Parameter] public RenderFragment Footer { get; set; }
 
         /// <summary>
-        /// 设置每个单元格都具有边框样式。
+        /// Gets or sets a value indicating whether to display border.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if has border; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Celled { get; set; }
         /// <summary>
-        /// 设置行具备条纹效果。
+        /// Gets or sets the striped style for alternative row.
         /// </summary>
         [Parameter] [CssClass("striped")] public bool? Striped { get; set; }
         /// <summary>
-        /// 设置第一列呈现具有格式强调风格。
+        /// Gets or sets the first row and first column has a background color.
         /// </summary>
         [Parameter] [CssClass("definition")] public bool? Definition { get; set; }
         /// <summary>
-        /// 设置对单元格进行结构化处理。
-        /// <para>
-        /// 当单元格设置了 <see cref="Td.RowSpan"/> 或 <see cref="Td.ColSpan"/> 后，有可能会因为 HTML 或浏览器问题导致边框的丢失，
-        /// 则可以设置该参数为 <c>true</c> 以此来保证能正确地显示每一个合法的单元格的 HTML 内容。
-        /// </para>
+        /// Gets or sets the structured border of cells.
         /// </summary>
         [Parameter] [CssClass("structured")] public bool? Structured { get; set; }
         /// <summary>
-        /// 设置单元格的内容不进行换行并保持单行显示。
+        /// Gets or sets the text always in single line in cell.
         /// </summary>
         [Parameter] [CssClass("single line")] public bool? SingleLine { get; set; }
         /// <summary>
-        /// 设置行鼠标悬浮行高亮和 cursor:pointer 的效果。
+        /// Gets or sets a value indicating whether hover style while cursor moving over items.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if selectable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Selectable { get; set; }
 
         /// <summary>
-        /// 设置压缩表格的空间，使宽度刚刚与文本长度相同。
+        /// Gets or sets a value indicating whether collpse the space of text in cell.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if collapsing; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("collapsing")] public bool Collapsing { get; set; }
         /// <summary>
-        /// 设置表格的上边框颜色。若设置了 <see cref="Darkness"/> 可变为背景颜色。
+        /// Gets or sets the color of table.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
-        /// 设置反转颜色，配合 <see cref="Color"/> 成为背景颜色。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Darkness { get; set; }
         /// <summary>
-        /// 设置所有单元格对内边距的空间进行一定的压缩。
+        /// Gets or sets a value indicating whether to compact space of text.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if compact; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Compact { get; set; }
         /// <summary>
-        /// 设置所有单元格增强内边距的空间。
+        /// Gets or sets a value indicating whether text increasing padding space.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if padded; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Padded { get; set; }
         /// <summary>
-        /// 设置表格的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置呈现简单的样式。
+        /// Gets or sets a value indicating whether this style is basic.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if basic; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Basic { get; set; }
         /// <summary>
-        /// 设置进一步增强 <see cref="Padded"/> 的效果。
+        /// Gets or sets a layout that can be automatically recognized
         /// </summary>
         [Parameter]public bool Very { get; set; }
         /// <summary>
-        /// 设置固定单元格的宽度且不能被重新定义尺寸。
+        /// Gets or sets the width of table is fixed.
         /// </summary>
-        [Parameter] [CssClass] public bool? Fixed { get; set; }
+        [Parameter] [CssClass] public bool Fixed { get; set; }
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
@@ -139,11 +164,10 @@ namespace BlamanticUI
             }
             builder.CloseElement();
         }
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("table");

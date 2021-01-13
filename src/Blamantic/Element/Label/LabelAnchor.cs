@@ -11,9 +11,11 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示具备超链接的 <see cref="Label"/> 标签。
+    /// Render a <see cref="Label"/> with an anchor feature.
     /// </summary>
-    /// <seealso cref="BlamanticUI.Anchor" />
+    /// <seealso cref="BlamanticUI.Label" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLink" />
     [HtmlTag("a")]
     public class LabelAnchor : Label, IHasUIComponent, IHasLink
     {
@@ -24,11 +26,11 @@ namespace BlamanticUI
         {
         }
         /// <summary>
-        /// 设置超链接的地址。
+        /// Gets or sets the link of uri.
         /// </summary>
         [Parameter] [HtmlTagProperty("href")] public string Link { get; set; }
         /// <summary>
-        /// 设置超链接的目标。
+        /// Gets or sets the target behavior of the link.
         /// </summary>
         [Parameter] [HtmlTagProperty("target")] public LinkTarget? Target { get; set; }
     }

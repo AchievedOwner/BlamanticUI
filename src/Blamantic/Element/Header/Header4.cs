@@ -1,13 +1,13 @@
 ﻿namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 h4 元素的标题。
+    /// Render a header as 'h4' HTML tag.
     /// </summary>
     /// <seealso cref="BlamanticUI.HeaderComponentBase" />
     public class Header4 : HeaderComponentBase
     {
         /// <summary>
-        /// 初始化 <see cref="Header1"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Header4"/> class.
         /// </summary>
         public Header4():base(4)
         {

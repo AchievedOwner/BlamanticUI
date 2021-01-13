@@ -1,57 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlamanticUI
+﻿namespace BlamanticUI
 {
     using Abstractions;
     using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Components.Rendering;
-    using Microsoft.AspNetCore.Components.Web;
     using YoiBlazor;
 
     /// <summary>
-    /// 表示 <see cref="Steps"/> 组件的一个步骤。
+    /// Represents one step in <see cref="Steps"/> component.
     /// </summary>
     [HtmlTag]
     [CssClass("step",Order =999)]
     public class Step : BlamanticChildComponentBase<Steps,Step>
     {
         /// <summary>
-        /// 设置成为禁用状态。
+        /// Gets or sets a value indicating whether this <see cref="Step"/> is disabled.
         /// </summary>
         [Parameter][CssClass("disabled")]public bool Disabled { get; set; }
         /// <summary>
-        /// 设置成为完成状态。
+        /// Gets or sets a value indicating whether this <see cref="Step"/> is completed.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if completed; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("completed")] public bool Completed { get; set; }
-
         /// <summary>
-        /// 设置步骤的标题。
+        /// Gets or sets the title.
         /// </summary>
         [Parameter] public string Title { get; set; }
         /// <summary>
-        /// 设置步骤的描述。
+        /// Gets or sets the description.
         /// </summary>
         [Parameter] public string Description { get; set; }
         /// <summary>
-        /// 设置步骤的图标。
+        /// Gets or sets the icon class.
         /// </summary>
         [Parameter] public string IconClass { get; set; }
         /// <summary>
-        /// 设置步骤图标的颜色。
+        /// Gets or sets the color of the icon.
         /// </summary>
         [Parameter] public Color? IconColor { get; set; }
 
-        internal void Disable(bool disabled=true) => Disabled = disabled;
+        /// <summary>
+        /// Disables the specified disabled.
+        /// </summary>
+        /// <param name="disabled">if set to <c>true</c> [disabled].</param>
+        internal void Disable(bool disabled = true) => Disabled = disabled;
 
+        /// <summary>
+        /// Override to create the CSS class that component need.
+        /// </summary>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add(Parent.ClickToActive, "link");
         }
 
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             if (ChildContent is null)
@@ -81,7 +88,10 @@ namespace BlamanticUI
                 base.BuildRenderTree(builder);
             }
         }
-
+        /// <summary>
+        /// Builds the title.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildTitle(RenderTreeBuilder builder)
         {
             builder.OpenElement(0, "div");

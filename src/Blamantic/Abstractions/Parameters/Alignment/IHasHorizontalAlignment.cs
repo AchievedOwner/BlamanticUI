@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件的文本在水平方向的对齐方式。
+    /// Represents the text of horizontal alignment.
     /// </summary>
     public interface IHasHorizontalAlignment
     {
         /// <summary>
-        /// 设置组件内文本水平方向的对齐方式。
+        /// Gets or sets the horizontal alignment of text.
         /// </summary>
         [CssClass(" aligned", Order = 32, Suffix = true)] public HorizontalAlignment? HorizontalAlignment { get; set; }
     }

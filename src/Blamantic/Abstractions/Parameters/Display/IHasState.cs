@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供状态样式的功能。
+    /// Represents a state color of component.
     /// </summary>
     public interface IHasState
     {
         /// <summary>
-        /// 设置文本具有醒目状态的样式。
+        /// Gets or sets the state.
         /// </summary>
         [CssClass] public State? State { get; set; }
     }

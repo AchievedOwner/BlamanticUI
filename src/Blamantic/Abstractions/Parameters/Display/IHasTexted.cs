@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件能使用普通文本。
+    /// Represents component can display text.
     /// </summary>
     public interface IHasTexted
     {
         /// <summary>
-        /// 设置组件内使用普通文本。
+        /// Gets or sets a value indicating whether to display text in component.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if texted; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("text")]bool Texted { get; set; }
     }
 }

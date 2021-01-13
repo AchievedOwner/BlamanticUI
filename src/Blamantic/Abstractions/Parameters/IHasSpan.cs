@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件跨列的宽度。
+    /// Represents the span of column in container.
     /// </summary>
     public interface IHasSpan
     {
         /// <summary>
-        /// 设置组件的跨列数。
+        /// Gets or sets the span of column.
         /// </summary>
         [CssClass(Order = 1)] ColSpan Span { get; set; }
     }

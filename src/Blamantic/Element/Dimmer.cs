@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -12,11 +8,14 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示作为容器中的遮罩层，需要通过代码进行调用。
+    /// Represents a dimmer that cover on the panel.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVerticalAlignment" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     [HtmlTag]
     public class Dimmer : BlamanticChildContentComponentBase, IHasUIComponent, IHasActive, IHasDisabled, IHasVerticalAlignment,IHasDarkness
     {
@@ -28,77 +27,64 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置组件是否处于激活状态。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Actived { get; set; }
         /// <summary>
-        /// 设置是否处于禁用状态。
+        /// Gets or sets a value indicating whether this <see cref="IHasDisabled" /> is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Disabled { get; set; }
 
         /// <summary>
-        /// 设置遮罩层全屏显示。
+        /// Gets or sets display in full screen.
         /// </summary>
         [Parameter][CssClass("page")] public bool? FullScreen { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
 
         /// <summary>
-        /// 设置部分遮罩层的位置。
+        /// Gets or sets the cover object partially.
         /// </summary>
-        [Parameter] [CssClass(Order =66)] public PartialPosition? Partially { get; set; }
+        [Parameter] [CssClass(Order =66)] public VerticalAlignment? Partially { get; set; }
         /// <summary>
-        /// 设置遮罩层的不透明度。
+        /// Gets or sets the opacity.
         /// </summary>
         [Parameter] [CssClass(Order = 60)] public OpacityLevel? Opacity { get; set; }
         /// <summary>
-        /// 设置显示文本的垂直对齐方式。
+        /// Gets or sets the vertical alignment of text.
         /// </summary>
         [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         [Parameter] public EventCallback<bool> OnActived { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter] public EventCallback<bool> OnDisabled { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("dimmer");
         }
 
         /// <summary>
-        /// 部分遮罩的位置。
-        /// </summary>
-        public enum PartialPosition
-        {
-            /// <summary>
-            /// 处于视窗顶部位置。
-            /// </summary>
-            Top,
-            /// <summary>
-            /// 处于视窗正中间的位置。
-            /// </summary>
-            Center,
-            /// <summary>
-            /// 处于视窗底部位置。
-            /// </summary>
-            Bottom
-        }
-
-        /// <summary>
-        /// 遮罩层的不透明的程度。
+        /// Defines the level of opcacity in dimmer.
         /// </summary>
         public enum OpacityLevel
         {

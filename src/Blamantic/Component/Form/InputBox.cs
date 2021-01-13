@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -10,70 +8,82 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示用于封装输入框控件的组件。
+    /// Represents a container to display input tag layout. 
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLoading" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     [HtmlTag]
     public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasDarkness,IHasFluid,IHasSize
     {
         /// <summary>
-        /// 设置是否使用 <see cref="BlamanticUI.Icon"/> 组件和输入控件组合显示。
+        /// Gets or sets icon position of input.
         /// </summary>
         [Parameter] [CssClass(" icon", Suffix = true)] public HorizontalPosition? Icon { get; set; }
         /// <summary>
-        /// 设置输入框的已获取焦点。
+        /// Gets or sets the focus style.
         /// </summary>
         [Parameter][CssClass("focus")] public bool? Focus { get; set; }
         /// <summary>
-        /// 设置配合可操作的行为的样式。
+        /// Gets or sets the action position of input.
         /// </summary>
         [Parameter] [CssClass(" action",Suffix =true)] public HorizontalPosition? Action { get; set; }
         /// <summary>
-        /// 设置是否处于加载中状态。
+        /// Gets or sets a value indicating whether this component is loading status.
         /// </summary>
         [Parameter] public bool Loading { get; set; }
         /// <summary>
-        /// 设置是否禁用状态。
+        /// Gets or sets a value indicating whether this is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Disabled { get; set; }
 
         /// <summary>
-        /// 设置与 <see cref="Label"/> 组件的组合，让组件无缝黏贴在一起。
+        /// Gets or sets the position of <see cref="Label"/> component.
         /// </summary>
         [Parameter][CssClass(" labeled",Order =150, Suffix =true)]public HorizontalPosition? Labeled { get; set; }
 
         /// <summary>
-        /// 设置输入框变为透明，不显示任何边框。
+        /// Gets or sets the transparent style.
         /// </summary>
         [Parameter] [CssClass("transparent")] public bool? Transparent { get; set; }
 
         /// <summary>
-        /// 设置使用角标的方式呈现 <see cref="BlamanticUI.Label"/> 的角标，不需要设置 <see cref="Labeled"/> 参数。
+        /// Gets or sets the corner postion of label.
         /// </summary>
         [Parameter] [CssClass(" corner labeled", Order = 120, Suffix =true)] public HorizontalPosition? CorneredLabel { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Fluid { get; set; }
         /// <summary>
-        /// 设置整体的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("input");

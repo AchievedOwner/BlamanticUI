@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件可以在一行呈现。
+    /// Represents the style can display as inline in paragragh.
     /// </summary>
     public interface IHasInline
     {
         /// <summary>
-        /// 设置组件使用内联行的样式显示内容。
+        /// Gets or sets a value indicating whether is inline paragraph.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if inline; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("inline")]bool Inline { get; set; }
     }
 }

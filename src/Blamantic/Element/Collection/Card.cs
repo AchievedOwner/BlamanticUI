@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -10,12 +9,18 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示呈现卡片布局的元素。
+    /// Render a div tag as card layout.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUI" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCentered" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLink" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
     [HtmlTag]
-    public class Card : BlamanticChildContentComponentBase, IHasUI,IHasFluid,IHasCentered,IHasHorizontal,IHasLinked,IHasLink,IHasColor
+    public class Card : BlamanticChildContentComponentBase, IHasUI, IHasFluid, IHasCentered, IHasHorizontal, IHasLinked, IHasLink, IHasColor
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Card"/> class.
@@ -26,48 +31,60 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置组件变成 UI 组件。
+        /// Gets or sets component can be UI component. default is <c>true</c>.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> to be UI component,otherwise <c>false</c>.
+        /// </value>
         public bool? UI { get; set; }
 
         /// <summary>
         /// Gets or sets the parent.
         /// </summary>
-        /// <value>
-        /// The parent.
-        /// </value>
         [CascadingParameter]CardGroup Parent { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Fluid { get; set; }
         /// <summary>
-        /// 设置在容器居中。
+        /// Gets or sets a value indicating whether alighment is centered in container.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if centered; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Centered { get; set; }
         /// <summary>
-        /// 设置卡片的内容横向的方式排列。
+        /// Gets or sets a value indicating whether this is horizontal layout.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if horizontal; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Horizontal { get; set; }
 
         /// <summary>
-        /// 设置卡片呈现阴影效果。
+        /// Gets or sets a value indicating whether this <see cref="Card"/> has shadow.
         /// </summary>
-        [Parameter][CssClass("raised")] public bool Raised { get; set; }
+        [Parameter][CssClass("raised")] public bool Shadow { get; set; }
         /// <summary>
-        /// 设置呈现超链接的样式。
+        /// Gets or sets a value indicating whether this is linked style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if linked; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Linked { get; set; }
         /// <summary>
-        /// 设置超链接的地址。
+        /// Gets or sets the link of uri.
         /// </summary>
         [Parameter]public string Link { get; set; }
         /// <summary>
-        /// 设置超链接的目标。
+        /// Gets or sets the target behavior of the link.
         /// </summary>
         [Parameter]public LinkTarget? Target { get; set; }
         /// <summary>
-        /// 设置卡片底部的颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
 
@@ -109,9 +126,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("card");

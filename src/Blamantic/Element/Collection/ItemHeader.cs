@@ -3,7 +3,7 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 以 div 元素呈现带有标题的列表项组件。
+    /// Represents a head of <see cref="Item"/>.
     /// </summary>
     /// <seealso cref="BlamanticUI.Item" />
     [CssClass("header")]

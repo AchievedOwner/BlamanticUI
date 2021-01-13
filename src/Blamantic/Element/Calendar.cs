@@ -10,29 +10,32 @@
     using YoiBlazor;
 
     /// <summary>
-    /// 表示日期的呈现组件。
+    /// Render a calendar component.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     public class Calendar : BlamanticComponentBase, IHasUIComponent, IHasDarkness
     {
         /// <summary>
-        /// 一周几天。
+        /// Days in weeks.
         /// </summary>
         private const int DAYS_IN_WEEK = 7;
         /// <summary>
-        /// 最大月份数。
+        /// Max month in a year.
         /// </summary>
         private const int MAX_MONTH = 12;
         /// <summary>
-        /// 最小月份数。
+        /// Min month in a year.
         /// </summary>
         private const int MIN_MONTH = 1;
         /// <summary>
-        /// 最大年份区间。
+        /// Max years range when layout.
         /// </summary>
         private const int MAX_YEAR_RANGE = 10;
 
         /// <summary>
-        /// 初始化 <see cref="Calendar"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Calendar"/> class.
         /// </summary>
         public Calendar()
         {
@@ -41,69 +44,67 @@
 
             WeekMapper = new Dictionary<DayOfWeek, string>
             {
-                [DayOfWeek.Sunday] = "周日",
-                [DayOfWeek.Monday] = "周一",
-                [DayOfWeek.Tuesday] = "周二",
-                [DayOfWeek.Wednesday] = "周三",
-                [DayOfWeek.Thursday] = "周四",
-                [DayOfWeek.Friday] = "周五",
-                [DayOfWeek.Saturday] = "周六"
+                [DayOfWeek.Sunday] = "S",
+                [DayOfWeek.Monday] = "M",
+                [DayOfWeek.Tuesday] = "T",
+                [DayOfWeek.Wednesday] = "W",
+                [DayOfWeek.Thursday] = "T",
+                [DayOfWeek.Friday] = "F",
+                [DayOfWeek.Saturday] = "S"
             };
 
             MonthMapper = new Dictionary<CalendarMonth, string>(MAX_MONTH)
             {
-                [CalendarMonth.Janurary] = "一月",
-                [CalendarMonth.February] = "二月",
-                [CalendarMonth.March] = "三月",
-                [CalendarMonth.April] = "四月",
-                [CalendarMonth.May] = "五月",
-                [CalendarMonth.June] = "六月",
-                [CalendarMonth.July] = "七月",
-                [CalendarMonth.Augest] = "八月",
-                [CalendarMonth.September] = "九月",
-                [CalendarMonth.October] = "十月",
-                [CalendarMonth.November] = "十一月",
-                [CalendarMonth.December] = "十二月",
+                [CalendarMonth.Janurary] = "Jan.",
+                [CalendarMonth.February] = "Feb.",
+                [CalendarMonth.March] = "Mar.",
+                [CalendarMonth.April] = "Apr.",
+                [CalendarMonth.May] = "May.",
+                [CalendarMonth.June] = "Jun.",
+                [CalendarMonth.July] = "Jul.",
+                [CalendarMonth.Augest] = "Aug.",
+                [CalendarMonth.September] = "Sep.",
+                [CalendarMonth.October] = "Oct.",
+                [CalendarMonth.November] = "Nov.",
+                [CalendarMonth.December] = "Dec.",
             };
         }
 
         /// <summary>
-        /// 设置显示的年份。默认是当前年。
+        /// Gets or sets the year to display. Default is current year.
         /// </summary>
         [Parameter]public int Year { get; set; }
         /// <summary>
-        /// 设置显示的月份。默认是当前月。
+        /// Gets or sets the month to display. Default is current month.
         /// </summary>
         [Parameter] public int Month { get; set; }
 
         /// <summary>
-        /// 设置视图模式。
+        /// Gets or sets the view mode of calendar. Default is Date.
         /// </summary>
         [Parameter] public CalendarViewMode ViewMode { get; set; } = CalendarViewMode.Date;
 
         /// <summary>
-        /// 设置匹配今日的背景颜色。
+        /// Gets or sets the highlight color of today. Default is <see cref="Color.Blue"/>.
         /// </summary>
-        [Parameter] public Color TodayColor { get; set; } = Color.Blue;
+        [Parameter] public Color? TodayColor { get; set; } = Color.Blue;
 
         /// <summary>
-        /// 设置一个布尔值，表示是否高亮今日。
-        /// </summary>
-        [Parameter] public bool HightlightToday { get; set; } = true;
-
-        /// <summary>
-        /// 设置对 <see cref="DayOfWeek"/> 对应的文本委托。
+        /// Gets or sets a delegate that can change the text of <see cref="DayOfWeek"/>.
         /// </summary>
         [Parameter] public Action<IDictionary<DayOfWeek,string>> WeekMapExpression { get; set; }
         /// <summary>
-        /// 设置对指定 <see cref="CalendarMonth"/> 对应的文本委托。
+        /// Gets or sets a delegate that can change the text of <see cref="CalendarMonth"/>.
         /// </summary>
         [Parameter] public Action<IDictionary<CalendarMonth, string>> MonthMapExpression { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当点击值时触发。
+        /// Gets or sets a callback that updates the bound value.
         /// </summary>
         [Parameter] public EventCallback<DateTimeOffset?> ValueChanged { get; set; }
 
+        /// <summary>
+        /// Gets or sets the value of the input. This should be used with two-way binding.
+        /// </summary>
         [Parameter] public DateTimeOffset? Value { get; set; }
 
         protected int CurrentYear { get; set; }
@@ -112,11 +113,21 @@
         protected int CurrentHour { get; set; }
         protected int CurrentMinute { get; set; }
         protected int CurrentSecond { get; set; }
-        protected IDictionary<DayOfWeek, string> WeekMapper { get; set; }
-        protected IDictionary<CalendarMonth, string> MonthMapper { get; set; }
+        protected IDictionary<DayOfWeek, string> WeekMapper { get;private set; }
+        protected IDictionary<CalendarMonth, string> MonthMapper { get;private set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this is dark style.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
 
+        /// <summary>
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
+        /// </summary>
         protected override void OnParametersSet()
         {
             CurrentYear = Year;
@@ -127,9 +138,9 @@
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("calendar");
@@ -170,6 +181,10 @@
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the head.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         void BuildHead(RenderTreeBuilder builder)
         {
             builder.OpenComponent<Tr>(0);
@@ -191,6 +206,10 @@
 
         }
 
+        /// <summary>
+        /// Builds the title.
+        /// </summary>
+        /// <param name="tr">The tr.</param>
         private void BuildTitle(RenderTreeBuilder tr)
         {
             tr.OpenComponent<Th>(0);
@@ -248,6 +267,10 @@
             tr.CloseComponent();
         }
 
+        /// <summary>
+        /// Gets the year range.
+        /// </summary>
+        /// <returns></returns>
         private (int min, int max) GetYearRange()
         {
             var range = (CurrentYear-1) * 0.1;
@@ -256,6 +279,12 @@
             return (min, max);
         }
 
+        /// <summary>
+        /// Builds the previous and next.
+        /// </summary>
+        /// <param name="th">The th.</param>
+        /// <param name="prevOrNext">if set to <c>true</c> [previous or next].</param>
+        /// <param name="sequence">The sequence.</param>
         private void BuildPrevAndNext(RenderTreeBuilder th,bool prevOrNext,int sequence=11)
         {
             th.OpenElement(11+sequence, "span");
@@ -274,7 +303,7 @@
         }
 
         /// <summary>
-        /// 构造周的标题。
+        /// Builds the week title.
         /// </summary>
         /// <param name="builder">The builder.</param>
         private void BuildWeekTitle(RenderTreeBuilder builder)
@@ -298,6 +327,10 @@
             }
         }
 
+        /// <summary>
+        /// Builds the body.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildBody(RenderTreeBuilder builder)
         {
             switch (ViewMode)
@@ -318,6 +351,10 @@
             }
         }
 
+        /// <summary>
+        /// Builds the year.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildYear(RenderTreeBuilder builder)
         {
             (var min, var max) = GetYearRange();
@@ -335,6 +372,10 @@
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Clicks the previous or next.
+        /// </summary>
+        /// <param name="prevOrNext">if set to <c>true</c> [previous or next].</param>
         void ClickPreviousOrNext(bool prevOrNext)
         {
             switch (ViewMode)
@@ -358,7 +399,7 @@
         }
 
         /// <summary>
-        /// 构造年/月。
+        /// Builds the year month.
         /// </summary>
         /// <param name="builder">The builder.</param>
         private void BuildYearMonth(RenderTreeBuilder builder)
@@ -398,7 +439,7 @@
         }
 
         /// <summary>
-        /// 构造年/月/日期
+        /// Builds the year month date.
         /// </summary>
         /// <param name="builder">The builder.</param>
         private void BuildYearMonthDate(RenderTreeBuilder builder)
@@ -457,19 +498,33 @@
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the new line.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="sequence">The sequence.</param>
         private static void BuildNewLine(RenderTreeBuilder builder, int sequence)
         {
             builder.CloseElement();
             builder.OpenElement(sequence, "tr");
         }
 
+        /// <summary>
+        /// Builds the content of the calendar.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="sequence">The sequence.</param>
+        /// <param name="text">The text.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="focus">if set to <c>true</c> [focus].</param>
+        /// <param name="disabled">if set to <c>true</c> [disabled].</param>
         void BuildCalendarContent(RenderTreeBuilder builder, int sequence, string text, int value, bool focus = false, bool disabled = false)
         {
             builder.OpenRegion(sequence + 1000);
             builder.OpenElement(0,"td");
             builder.AddAttribute(100 + sequence, "class", Css.Create
                 .Add(disabled, "adjacent")
-                .Add(focus && HightlightToday, TodayColor.GetEnumCssClass())
+                .Add(focus && TodayColor.HasValue, TodayColor.GetEnumCssClass())
                 .Add(CompareCurrent(),"active focus")
                 .Add(!disabled, "link"));
 
@@ -534,83 +589,83 @@
     }
 
     /// <summary>
-    /// 日历的视图模式。
+    /// Defines the view mode of calendar.
     /// </summary>
     public enum CalendarViewMode
     {
         /// <summary>
-        /// 仅显示年。
+        /// Display the years only.
         /// </summary>
         Year = 0,
         /// <summary>
-        /// 显示月份。
+        /// Display the years and months.
         /// </summary>
         Month = 1,
         /// <summary>
-        /// 显示日期。
+        /// Display the years, months and dates.
         /// </summary>
         Date = 2,
         /// <summary>
-        /// 仅显示时间。
+        /// Display time only.
         /// </summary>
         Time = 3,
         /// <summary>
-        /// 显示日期和时间。
+        /// Display date and time.
         /// </summary>
         DateTime = 4,
     }
 
     /// <summary>
-    /// 日历月份。
+    /// Defines the calendar months.
     /// </summary>
     public enum CalendarMonth
     {
         /// <summary>
-        /// 一月。
+        /// Janurary.
         /// </summary>
         Janurary = 1,
         /// <summary>
-        /// 二月。
+        /// February.
         /// </summary>
         February = 2,
         /// <summary>
-        /// 三月
+        /// March.
         /// </summary>
         March = 3,
         /// <summary>
-        /// 四月。
+        /// April.
         /// </summary>
         April = 4,
         /// <summary>
-        /// 五月。
+        /// May.
         /// </summary>
         May = 5,
         /// <summary>
-        /// 六月。
+        /// June.
         /// </summary>
         June = 6,
         /// <summary>
-        /// 七月。
+        /// July.
         /// </summary>
         July = 7,
         /// <summary>
-        /// 八月。
+        /// Augest.
         /// </summary>
         Augest = 8,
         /// <summary>
-        /// 九月。
+        /// September.
         /// </summary>
         September = 9,
         /// <summary>
-        /// 十月。
+        /// October.
         /// </summary>
         October = 10,
         /// <summary>
-        /// 十一月。
+        /// November.
         /// </summary>
         November = 11,
         /// <summary>
-        /// 十二月。
+        /// December.
         /// </summary>
         December = 12
     }

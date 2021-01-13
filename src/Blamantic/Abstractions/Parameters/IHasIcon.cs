@@ -9,13 +9,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件显示图标的功能。
+    /// Represents a component can display icon inside of container properly.
     /// </summary>
     public interface IHasIcon
     {
         /// <summary>
-        /// 设置组件内是否显示图标。
+        /// Gets or sets a value indicating whether the content of child can render <see cref="Icon"/> component properly.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if icon; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("icon", Order = 100)] bool Icon { get; set; }
     }
 }

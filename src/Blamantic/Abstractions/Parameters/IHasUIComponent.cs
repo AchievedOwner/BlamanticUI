@@ -3,7 +3,7 @@
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 定义组件是符合 SemanticUI 的 UI 定义的 UI 组件。
+    /// Represents the Semantic-UI component that using for UI.
     /// </summary>
     [CssClass("ui", Order = -9999)]
     public interface IHasUIComponent
@@ -11,13 +11,14 @@ namespace BlamanticUI.Abstractions
     }
 
     /// <summary>
-    /// 表示能让组件提升为 UI 组件。
+    /// Represents the component can be specified for UI component.
     /// </summary>
     public interface IHasUI
     {
         /// <summary>
-        /// 设置组件变成 UI 组件。
+        /// Gets or sets component can be UI component.
         /// </summary>
-        [CssClass("ui",Order =-9999)]bool? UI { get; set; }
+        /// <value><c>true</c> to be UI component,otherwise <c>false</c>.</value>
+        [CssClass("ui", Order = -9999)] bool? UI { get; set; }
     }
 }

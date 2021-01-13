@@ -6,16 +6,19 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件可以被启用/激活的功能。
+    /// Represents the state of components can be actived.
     /// </summary>
     public interface IHasActive : IStateChangeHandler
     {
         /// <summary>
-        /// 设置组件是否处于激活状态。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("active")] bool Actived { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)"/> 方法后触发。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         EventCallback<bool> OnActived { get; set; }
     }

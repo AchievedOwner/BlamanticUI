@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 using BlamanticUI.Abstractions;
@@ -12,11 +10,17 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示表单区域，功能与 <see cref="EditForm"/> 一致。
+    /// Render a 'form' HTML tag with same action of <see cref="EditForm"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
-    /// <seealso cref="YoiBlazor.IHasChildContent{EditContext}" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLoading" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasEqualWidth" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDoubling" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
     public class Form : BlamanticComponentBase, IHasUIComponent,
         IHasChildContent<EditContext>,
         IHasLoading,
@@ -29,98 +33,124 @@ namespace BlamanticUI
     {
         private EditContext _fixedEditContext;
         private readonly Func<Task> _handleSubmitDelegate;
+        private bool _hasSetEditContextExplicitly;
         /// <summary>
-        /// 初始化 <see cref="Form"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Form"/> class.
         /// </summary>
         public Form()
         {
             _handleSubmitDelegate = Submit;
             LoadingOnValidSubmit = true;
         }
+        /// <summary>
+        ///  Specifies the top-level model object for the form. An edit context will be constructed  for this model. If using this parameter, do not also supply a value for <see cref="Form.EditContext"/>.
+        /// </summary>
+        [Parameter]public object Model { get; set; }
 
         /// <summary>
-        /// 指定最上层的表单模型绑定对象。一个新的 <see cref="EditContext"/> 对象将被该模型构造。若设置了该属性，则不需要再设置 <see cref="EditContext"/> 属性。
+        /// Supplies the edit context explicitly. If using this parameter, do not also supply 
+        /// <see cref="Model"/>, since the model value will be taken from the <see cref="EditContext.Model"/> property.
         /// </summary>
         [Parameter]
-        public object Model { get; set; }
+        public EditContext EditContext
+        {
+            get => _fixedEditContext;
+            set
+            {
+                _fixedEditContext = value;
+                _hasSetEditContextExplicitly = (value != null);
+            }
+        }
 
         /// <summary>
-        /// 显式地提供表单编辑上下文，若设置了 <see cref="Model"/> 的值，则不要再设置 <see cref="EditContext"/> 属性。然后该值将取代 <see cref="EditContext.Model"/> 的属性。
+        /// Gets or sets the content of the form.
         /// </summary>
-        [Parameter]
-        public EditContext EditContext { get; set; }
-
+        [Parameter] public RenderFragment<EditContext> ChildContent { get; set; }
         /// <summary>
-        /// 设置表单内呈现的内容。
+        /// Gets or sets a value indicating whether this <see cref="Form"/> is loading.
         /// </summary>
-        [Parameter]
-        public RenderFragment<EditContext> ChildContent { get; set; }
-        /// <summary>
-        /// 设置表单是否处于加载中状态。
-        /// </summary>
+        /// <value>
+        ///   <c>true</c> if loading; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Loading { get; set; }
         /// <summary>
-        /// 设置表单内文本的尺寸大小。
+        /// Gets or sets the size of all input in form.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置表单域的控件根据数量进行等宽适配。
+        /// Gets or sets a value indicating whether each <see cref="Field"/> component has equal width.
         /// </summary>
         [Parameter]public bool EqualWidth { get; set; }
         /// <summary>
-        /// 设置表单加载中状态的反转颜色。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置表单加载中状态的颜色。
+        /// Gets or sets the color of <see cref="Loading"/>.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
-        /// 设置在不同设备将组件大小进行倍增处理。
+        /// Gets or sets a value indicating whether double column of layout in responsive adapter.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if doubling; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Doubling { get; set; }
         /// <summary>
-        /// 设置表单自动显示 <see cref="Message"/> 组件中同一种 <see cref="Message.State"/> 值一样的消息。
+        /// Gets or sets the state of <see cref="Message"/> component.
         /// </summary>
         [Parameter]public State? State { get; set; }
 
         /// <summary>
-        /// 设置一个布尔值，表示当 <see cref="OnValidSubmit"/> 触发时，<see cref="Loading"/> 自动设为 <c>true</c>。
+        /// Gets or sets a value indicating whether set <see cref="Loading"/> to be true while <see cref="OnValidSubmit"/> is called.
         /// </summary>
         [Parameter] public bool LoadingOnValidSubmit { get; set; }
         /// <summary>
-        /// 设置延迟执行 <see cref="OnValidSubmit"/> 事件的毫秒。
+        /// Gets or sets the delay milliseconds before valid submit. Default is 100.
         /// </summary>
         [Parameter] public int DelayBeforeValidSubmit { get; set; } = 100;
 
         /// <summary>
-        /// 提交表单时将调用的回调。如果使用这个参数，您有责任手动触发任何验证，例如，通过调用
-        /// <see cref="EditContext.Validate"/> 方法。
+        /// The callback that will be invoked when the form is submitted. 
+        /// If you use this parameter, it is your responsibility to trigger any validation manually，For example, by calling
+        /// <see cref="EditContext.Validate"/> method.
         /// </summary>
         [Parameter] public EventCallback<EditContext> OnSubmit { get; set; }
         /// <summary>
-        /// 一个回调函数，它将在表单被提交时被调用，并且 <see cref="Microsoft.AspNetCore.Components.Forms.EditContext"/> 被确定为有效。
+        ///  A callback that will be invoked when the form is submitted and the <see cref="EditContext"/> is determined to be valid.
         /// </summary>
         [Parameter] public EventCallback<EditContext> OnValidSubmit { get; set; }
         /// <summary>
-        /// 一个回调函数，它将在表单被提交时被调用，并且 <see cref="Microsoft.AspNetCore.Components.Forms.EditContext"/> 被确定为无效。
+        /// A callback that will be invoked when the form is submitted and the <see cref="EditContext"/> is determined to be invalid.
         /// </summary>
         [Parameter] public EventCallback<EditContext> OnInvalidSubmit { get; set; }
 
         /// <summary>
-        /// 当 <see cref="Form"/> 参数设置之后。
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
         /// </summary>
+        /// <exception cref="InvalidOperationException">
+        /// when supplying a {nameof(OnSubmit)} parameter to {nameof(Form)}, do not also supply {nameof(OnValidSubmit)} or {nameof(OnInvalidSubmit)}.
+        /// </exception>
         protected override void OnParametersSet()
         {
             if ((EditContext == null) == (Model == null))
             {
-                throw new InvalidOperationException($"{nameof(Form)} 要求一个 {nameof(Model)} " +
-                    $"参数，或者一个 {nameof(EditContext)} 参数，但不能两者都有。");
+                throw new InvalidOperationException($"{nameof(Form)} required a {nameof(Model)} " +
+                    $"paremeter, or a {nameof(EditContext)} parameter, but not both.");
+            }
+
+            if (!_hasSetEditContextExplicitly && Model == null)
+            {
+                throw new InvalidOperationException($"{nameof(Form)} requires either a {nameof(Model)} parameter, or an {nameof(EditContext)} parameter, please provide one of these.");
             }
 
             if (OnSubmit.HasDelegate && (OnValidSubmit.HasDelegate || OnInvalidSubmit.HasDelegate))
             {
-                throw new InvalidOperationException($"当向 {nameof(Form)} 提供 {nameof(OnSubmit)} 参数时，不要同时提供 {nameof(OnValidSubmit)} 或 {nameof(OnInvalidSubmit)}。");
+                throw new InvalidOperationException($"when supplying a {nameof(OnSubmit)} parameter to {nameof(Form)}, do not also supply {nameof(OnValidSubmit)} or {nameof(OnInvalidSubmit)}.");
             }
 
             // Update _fixedEditContext if we don't have one yet, or if they are supplying a
@@ -132,9 +162,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构造表单内容。
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
         /// </summary>
-        /// <param name="builder"></param>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             builder.OpenRegion(_fixedEditContext.GetHashCode());
@@ -153,20 +183,19 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("form");
         }
 
         /// <summary>
-        /// 处理表单提交的操作。
+        /// Submit this form.
         /// </summary>
         public async Task Submit()
         {
-
             if (OnSubmit.HasDelegate)
             {
                 await OnSubmit.InvokeAsync(_fixedEditContext);

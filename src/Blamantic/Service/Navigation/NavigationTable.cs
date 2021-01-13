@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示存储已注册的导航表格。
+    /// Represents the internal navigations that registered.
     /// </summary>
     internal class NavigationTable
     {
         /// <summary>
-        /// 获取或设置导航列表。
+        /// Gets or sets the registered navigations.
         /// </summary>
         internal static Dictionary<string, IList<Navigation>> Navigations { get; set; } = new Dictionary<string, IList<Navigation>>();
 
         /// <summary>
-        /// 默认的键。
+        /// The default key.
         /// </summary>
         public const string DEFAULT_KEY = "Default";
     }

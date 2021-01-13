@@ -13,9 +13,10 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示弹窗组件的容器盒子。
+    /// Render a configured toast message.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="System.IDisposable" />
     internal class ToastBox : BlamanticComponentBase,IDisposable
     {
         /// <summary>
@@ -24,25 +25,34 @@ namespace BlamanticUI
         [CascadingParameter] ToastContainer Container { get; set; }
 
         /// <summary>
-        /// 唯一标识。
+        /// Gets or sets the identifier.
         /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         [Parameter] public Guid Id { get; set; }
         /// <summary>
-        /// 配置。
+        /// Gets or sets the setting.
         /// </summary>
+        /// <value>
+        /// The setting.
+        /// </value>
         [Parameter] public ToastSetting Setting { get; set; }
         /// <summary>
-        /// 持续时间。
+        /// Gets or sets the timeout.
         /// </summary>
+        /// <value>
+        /// The timeout.
+        /// </value>
         [Parameter] public int? Timeout { get; set; }
 
         /// <summary>
-        /// 设置显示进度条的位置。
+        /// Gets or sets the position of progress bar.
         /// </summary>
         [Parameter] public VerticalPosition? ProgressBar { get; set; }
 
         /// <summary>
-        /// 设置淡入淡出动画效果的帧间隔。
+        /// Gets or sets the fade interval.
         /// </summary>
         [Parameter] public int FadeInterval { get; set; }
 
@@ -83,9 +93,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("floating")
@@ -133,6 +143,10 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the progress.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildProgress(RenderTreeBuilder builder)
         {
             builder.OpenComponent<Progress>(50);
@@ -161,7 +175,7 @@ namespace BlamanticUI
             _transitionTimer = null;
         }
         /// <summary>
-        /// 计算进度条。
+        /// Calculates the progress.
         /// </summary>
         /// <param name="percentComplete">The percent complete.</param>
         private async void CalculateProgress(int percentComplete)
@@ -170,7 +184,7 @@ namespace BlamanticUI
             await InvokeAsync(StateHasChanged);
         }
         /// <summary>
-        /// 关闭弹窗。
+        /// Closes this toast.
         /// </summary>
         private void Close()
         {

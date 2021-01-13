@@ -1,58 +1,51 @@
 ﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using BlamanticUI.Abstractions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.Web;
 using YoiBlazor;
-using System.Reflection;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示呈现日期选择的输入控件。
+    /// Render a input HTML tag that has calender to select a value.
     /// </summary>
-    /// <seealso cref="BlamanticUI.FormInputBase{TValue}" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
     public class DateField : FormInputBase<DateTimeOffset?>, IHasActive
     {
         /// <summary>
-        /// 设置显示的 <see cref="DateTime"/> 或 <see cref="DateTimeOffset"/> 的字符串格式。
+        /// Gets or sets the format of value displayed in input.
         /// </summary>
         [Parameter] public string Format { get; set; }
 
         /// <summary>
-        /// 设置是否直接显示日历。
+        /// Gets or sets a value indicating whether calendar is displayed.
         /// </summary>
         [Parameter] public bool Actived { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         [Parameter] public EventCallback<bool> OnActived { get; set; }
-
         /// <summary>
-        /// 设置是否为禁用状态。
+        /// Gets or sets a value indicating whether this <see cref="DateField"/> is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Disabled { get; set; }
 
         /// <summary>
-        /// 设置日历的视图模式。
+        /// Gets or sets the view mode of calendar.
         /// </summary>
         [Parameter] public CalendarViewMode ViewMode { get; set; } = CalendarViewMode.Date;
 
+        /// <summary>
+        /// Method invoked when the component has received parameters from its parent in
+        /// the render tree, and the incoming values have been assigned to properties.
+        /// </summary>
         protected override void OnParametersSet()
         {
-            //var valueType = ((PropertyInfo)((MemberExpression)ValueExpression.Body).Member).PropertyType;
-
-
-            //if (!new[] { typeof(DateTime), typeof(DateTimeOffset), typeof(DateTime?), typeof(DateTimeOffset?) }.Contains(valueType))
-            //{
-            //    throw new ArgumentException($"只支持 {nameof(DateTime)} 和 {nameof(DateTimeOffset)} 类型");
-            //}
-
             if (string.IsNullOrWhiteSpace(Format))
             {
                 switch (ViewMode)
@@ -77,6 +70,10 @@ namespace BlamanticUI
             }
         }
 
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             builder.OpenRegion(100);
@@ -84,7 +81,6 @@ namespace BlamanticUI
             builder.AddAttribute(1, nameof(InputBox.Icon), HorizontalPosition.Left);
             builder.AddAttribute(2, nameof(InputBox.Darkness), Darkness);
             builder.AddAttribute(3, nameof(InputBox.Disabled), Disabled);
-            //builder.AddAttribute(4, "class", "ui calendar");
             if (!Disabled)
             {
                 builder.AddAttribute(4, "onfocusin", EventCallback.Factory.Create(this, ShowCalendar));
@@ -96,6 +92,10 @@ namespace BlamanticUI
             builder.CloseRegion();
         }
 
+        /// <summary>
+        /// Builds the input.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         void BuildInput(RenderTreeBuilder builder)
         {
 
@@ -129,33 +129,43 @@ namespace BlamanticUI
             builder.AddAttribute(29, nameof(Calendar.ValueChanged), EventCallback.Factory.Create<DateTimeOffset?>(this, async _value =>
             {
                 CurrentValue = _value;
-                //if (typeof(TValue) == typeof(DateTimeOffset) || typeof(TValue)==typeof(DateTimeOffset?))
-                //{
-                //    CurrentValueAsString = new DateTimeOffset(_value.Value).ToString();
-                //}
-                //else
-                //{
-                //}
                 await HideCalendar(new FocusEventArgs());
             }));
             builder.CloseComponent();
         }
 
+        /// <summary>
+        /// Shows the calendar.
+        /// </summary>
+        /// <param name="e">The <see cref="FocusEventArgs"/> instance containing the event data.</param>
         async Task ShowCalendar(FocusEventArgs e)
         {
             await this.Active();
         }
 
+        /// <summary>
+        /// Hides the calendar.
+        /// </summary>
+        /// <param name="e">The <see cref="FocusEventArgs"/> instance containing the event data.</param>
         async Task HideCalendar(FocusEventArgs e)
         {
             await this.Active(false);
         }
 
+        /// <summary>
+        /// Inputs the text.
+        /// </summary>
+        /// <param name="e">The <see cref="ChangeEventArgs"/> instance containing the event data.</param>
         void InputText(ChangeEventArgs e)
         {
             FormatValue(e.Value);
         }
 
+        /// <summary>
+        /// Formats the value.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns></returns>
         protected virtual string FormatValue(object value)
             => value switch
             {

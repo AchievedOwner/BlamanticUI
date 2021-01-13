@@ -11,9 +11,22 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 div 元素的片段组件。
+    /// Render a segment of content that display with highlight section.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLoading" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasPadded" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFitted" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
     [HtmlTag]
     public class Segment : BlamanticChildContentComponentBase, 
         IHasUIComponent,
@@ -37,107 +50,158 @@ namespace BlamanticUI
         {
         }
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("segment");
         }
-
         /// <summary>
-        /// 设置反转背景，配合 <see cref="Color"/> 成为背景颜色。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置是否需要吸附于相对位置的其他组件。
+        /// Gets or sets a value indicating whether attach to another.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if attached; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Attached { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attach position in vertical.
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置使用纵向的方式排列。
+        /// Gets or sets a value indicating whether this layout is vertical.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if vertical; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Vertical { get; set; }
         /// <summary>
-        /// 设置底部有阴影部分的突出样式。
+        /// Gets or sets the raised.
         /// </summary>
+        /// <value>
+        /// The raised.
+        /// </value>
         [Parameter][CssClass("raised",Order =11)]public bool? Raised { get; set; }
         /// <summary>
-        /// 设置是否禁用。
+        /// Gets or sets a value indicating whether this is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Disabled { get; set; }
         /// <summary>
-        /// 设置是否处于加载中状态。
+        /// Gets or sets a value indicating whether this component is loading status.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if loading; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Loading { get; set; }
         /// <summary>
-        /// 设置去掉边框。
+        /// Gets or sets a value indicating whether this style is basic.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if basic; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Basic { get; set; }
         /// <summary>
-        /// 设置具有占位样式的效果。
+        /// Gets or sets a value indicating whether this <see cref="Segment"/> is placeholder.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if placeholder; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("placeholder")] public bool Placeholder { get; set; }
 
         /// <summary>
-        /// 设置片段呈现多页效果的样式。
+        /// Gets or sets a value indicating whether this <see cref="Segment"/> is stacked.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if stacked; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("stacked", Order = 40)] public bool Stacked { get; set; }
 
         /// <summary>
-        /// 设置强化 <see cref="Stacked"/> 效果。
+        /// Gets or sets a value indicating whether this <see cref="Segment"/> is tall.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if tall; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("tall", Order = 39)] public bool Tall { get; set; }
         /// <summary>
-        /// 设置呈现堆叠效果。要求显示地设置父容器的 z-index 和 position:relative。
+        /// Gets or sets a value indicating whether this <see cref="Segment"/> is piled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if piled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("piled")] public bool Piled { get; set; }
         /// <summary>
-        /// 设置顶部边框的颜色。设置 <see cref="Darkness"/> 成为背景颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
-        /// 设置增强内边距的空间。
+        /// Gets or sets a value indicating whether text increasing padding space.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if padded; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Padded { get; set; }
         /// <summary>
-        /// 设置清除内边距的空间。
+        /// Gets or sets a value indicating whether the text remove paddings.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fitted; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Fitted { get; set; }
         /// <summary>
-        /// 设置对内边距的空间进行一定的压缩。
+        /// Gets or sets a value indicating whether to compact space of text.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if compact; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Compact { get; set; }
         /// <summary>
-        /// 设置呈现圆形样式。
+        /// Gets or sets a value indicating whether this is circular.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if circular; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Circular { get; set; }
         /// <summary>
-        /// 设置内容清除浮动。
+        /// Gets or sets a value indicating clear the float.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if clear float; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("clearing")] public bool Clearing { get; set; }
 
         /// <summary>
-        /// 设置片段的背景颜色的深浅度。<c>true</c> 为第二强度，<c>false</c> 为第三强度。
+        /// Gets or sets the emphasis.
         /// </summary>
         [Parameter] [BooleanCssClass("secondary","tertiary")] public bool? Emphasis { get; set; }
+
         /// <summary>
-        /// 设置文本水平方向的对齐方式。
+        /// Gets or sets the horizontal alignment of text.
         /// </summary>
         [Parameter]public HorizontalAlignment? HorizontalAlignment { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
     }
 
     /// <summary>
-    /// 表示作为一组片段组的组件，用于包装 <see cref="Segment"/> 组件。
+    /// Render a group of <see cref="Segment"/> components.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
     [HtmlTag]
     public class Segments : BlamanticChildContentComponentBase, IHasUIComponent,IHasBasic,IHasHorizontal
     {
@@ -148,38 +212,55 @@ namespace BlamanticUI
         {
         }
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("segments");
         }
 
         /// <summary>
-        /// 设置片段组用分割线显示。
+        /// Gets or sets a value indicating whether this style is basic.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if basic; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Basic { get; set; }
         /// <summary>
-        /// 设置片段组件水平方向排列。
+        /// Gets or sets a value indicating whether this is horizontal layout.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if horizontal; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Horizontal { get; set; }
         /// <summary>
-        /// 设置片段呈现多页效果的样式。
+        /// Gets or sets a value indicating whether this <see cref="Segments"/> is stacked.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if stacked; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("stacked", Order = 40)] public bool Stacked { get; set; }
-
         /// <summary>
-        /// 设置强化 <see cref="Stacked"/> 效果。
+        /// Gets or sets a value indicating whether this <see cref="Segments"/> is tall.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if tall; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("tall", Order = 39)] public bool Tall { get; set; }
         /// <summary>
-        /// 设置呈现堆叠效果。要求显示地设置父容器的 z-index 和 position:relative。
+        /// Gets or sets a value indicating whether this <see cref="Segments"/> is piled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if piled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("piled")] public bool Piled { get; set; }
         /// <summary>
-        /// 设置底部有阴影部分的突出样式。
+        /// Gets or sets a value indicating whether this <see cref="Segments"/> is raised.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if raised; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("raised",Order =11)]public bool Raised { get; set; }
     }
 }

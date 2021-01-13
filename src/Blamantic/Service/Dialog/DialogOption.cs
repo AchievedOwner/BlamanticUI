@@ -3,65 +3,65 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示对话框配置的选项。
+    /// Represents the options for dialog.
     /// </summary>
     public class DialogOption
     {
         /// <summary>
-        /// 获取或设置对话框类型。默认是 <see cref="DialogType.Alert"/>。
+        /// Gets or sets the type of dialog. Default is <see cref="DialogType.Alert"/>.
         /// </summary>
         public DialogType Type { get; set; } = DialogType.Alert;
         /// <summary>
-        /// 获取或设置对话框标题。
+        /// Gets or sets the title of dialog.
         /// </summary>
         public string Title { get; set; }
         /// <summary>
-        /// 获取或设置对话框的消息，支持 HTML 字符串。
+        /// Gets or sets the message of dialog, it is required.
         /// </summary>
         public string Message { get; set; }
 
         /// <summary>
-        /// 设置对话框的尺寸。默认是 <see cref="Size.Mini"/>。
+        /// Gets or sets the size of dialog. Default is <see cref="Size.Mini"/>.
         /// </summary>
         public Size Size { get; set; } = Size.Mini;
         /// <summary>
-        /// 获取或设置【确定】按钮的文本，默认是【确定】。
+        /// Gets or set the text of confirm button.
         /// </summary>
-        public string ConfirmText { get; set; } = "确定";
+        public string ConfirmText { get; set; } = "Confirm";
         /// <summary>
-        /// 获取或设置【确定】按钮的颜色，默认是 <see cref="Color.Blue"/>。
+        /// Gets or sets the color of confirm button. Default is <see cref="Color.Blue"/>.
         /// </summary>
         public Color? ConfirmColor { get; set; } = Color.Blue;
         /// <summary>
-        /// 获取或设置【确定】按钮是否使用边框样式。
+        /// Gets or sets the confirm button that displayed as outline style.
         /// </summary>
         public bool ConfirmOutline { get; set; }
         /// <summary>
-        /// 设置当点击【确定】按钮后的回调方法。
+        /// Gets or sets a delegate is invoked when confirm button is clicked.
         /// <para>
-        /// 有一个输入参数：若对话框类型是 <see cref="DialogType.Prompt"/> 弹出框，则返回文本框输入的值。否则为 <c>true</c>。
+        /// A input argument represents the value of input when <see cref="Type"/> is <see cref="DialogType.Prompt"/>, otherwise is <c>true</c>.
         /// </para>
         /// </summary>
         public Action<object> Confirm { get; set; }
         /// <summary>
-        /// 设置【取消】按钮的文本。
+        /// Gets or sets the text of cancel button.
         /// </summary>
-        public string CancelText { get; set; } = "取消";
+        public string CancelText { get; set; } = "Cancel";
         /// <summary>
-        /// 设置【取消】按钮的颜色。
+        /// Gets or sets the color of cancel button.
         /// </summary>
         public Color? CancelColor { get; set; }
         /// <summary>
-        /// 设置【取消】按钮是否使用边框样式。默认是 <c>true</c>。
+        /// Gets or sets the cancel button that displayed as outline style. Default is <c>true</c>.
         /// </summary>
         public bool CancelOutline { get; set; } = true;
         /// <summary>
-        /// 设置当点击【取消】按钮后的回调方法。
+        /// Gets or sets a delegate is invoked when cancel button is clicked.
         /// </summary>
         public Action Cancel { get; set; }
 
         /// <summary>
-        /// 设置垂直显示的位置。
+        /// Gets or sets alignment of dialog.
         /// </summary>
         public VerticalPosition? Alignment { get; set; }
     }

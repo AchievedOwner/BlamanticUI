@@ -1,46 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlamanticUI.Abstractions
+﻿namespace BlamanticUI.Abstractions
 {
     using Microsoft.AspNetCore.Components;
     using Microsoft.AspNetCore.Components.Rendering;
     using Microsoft.AspNetCore.Components.Web;
     using YoiBlazor;
+
     /// <summary>
-    /// 表示作为子组件的组件基类。
+    /// Represents a base class of child component with specify <typeparamref name="TParentComponent"/> type.
     /// </summary>
-    /// <typeparam name="TParentComponent">父组件类型。</typeparam>
-    /// <typeparam name="TChildComponent">子组件类型。</typeparam>
+    /// <typeparam name="TParentComponent">The type of the parent component.</typeparam>
+    /// <typeparam name="TChildComponent">The type of the child component.</typeparam>
     /// <seealso cref="YoiBlazor.ChildBlazorComponentBase{TParentComponent}" />
-    public class BlamanticChildComponentBase<TParentComponent,TChildComponent> : ChildBlazorComponentBase<TParentComponent>
+    public abstract class BlamanticChildComponentBase<TParentComponent,TChildComponent> : ChildBlazorComponentBase<TParentComponent>
         where TParentComponent : BlamanticParentComponentBase<TParentComponent,TChildComponent>
         where TChildComponent : BlamanticChildComponentBase<TParentComponent, TChildComponent>
     {
         /// <summary>
-        /// 获取或设置子组件的索引。
+        /// Gets or sets the index of child component.
         /// </summary>
         internal int Index { get; set; }
-
         /// <summary>
-        /// 设置是否启用。
+        /// Gets or sets a value indicating whether this <see cref="BlamanticChildComponentBase{TParentComponent, TChildComponent}"/> is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("active")] public bool Actived { get; set; }
 
         /// <summary>
-        /// 激活组件。
+        /// Actives current component.
         /// </summary>
-        /// <param name="active"><c>true</c> 表示激活，否则为 <c>false</c>。</param>
+        /// <param name="active">if set to <c>true</c> [active].</param>
         internal void Active(bool active = true) => Actived = active;
 
         /// <summary>
-        /// 添加点击即激活的事件属性。
+        /// Add a click event attribute to component to switch the actived component.
         /// </summary>
         /// <param name="builder">The builder.</param>
-        /// <param name="sequence">序列号。</param>
+        /// <param name="sequence">The sequence.</param>
         protected virtual void AddClickToActiveAttribute(RenderTreeBuilder builder, int sequence)
             => builder.AddAttribute(sequence, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, e => Parent.Active(Index)));
     }

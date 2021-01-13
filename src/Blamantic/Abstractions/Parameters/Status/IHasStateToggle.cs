@@ -4,12 +4,13 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供状态切换的功能。
+    /// Represents a switch can be toggled.
     /// </summary>
+    /// <seealso cref="YoiBlazor.IStateChangeHandler" />
     public interface IHasStateToggle : IStateChangeHandler
     {
         /// <summary>
-        /// 对当前的状态进行切换。
+        /// Perform the toggle action.
         /// </summary>
         Task Toggle();
     }

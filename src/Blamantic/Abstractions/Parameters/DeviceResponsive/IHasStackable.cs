@@ -4,13 +4,17 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件可以在不同设备上进行空间压缩的功能。
+    /// Represents to layout with stack style in responsive adapter.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDeviceResponsive" />
     public interface IHasStackable : IHasDeviceResponsive
     {
         /// <summary>
-        /// 设置组件是否允许在不同设备进行空间压缩。
+        /// Gets or sets a value indicating whether layout always stackable.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if stackable; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("stackable")]bool Stackable { get; set; }
     }
 }

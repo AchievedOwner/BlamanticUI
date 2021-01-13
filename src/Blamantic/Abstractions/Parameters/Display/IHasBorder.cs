@@ -4,15 +4,15 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件可以切换边框显示与否的功能。
+    /// Represents to display borders.
     /// </summary>
     interface IHasBorder
     {
         /// <summary>
-        /// 设置组件显示边框。
+        /// Gets or sets a value indicating whether to display borders.
         /// </summary>
         /// <value>
-        /// <c>true</c> 加上边框；<c>false</c> 取消边框，包括已有的边框；<c>null</c> 不操作。
+        ///   <c>true</c> if bordered; otherwise, <c>false</c>.
         /// </value>
         [CssClass("bordered")] public bool Bordered { get; set; }
     }

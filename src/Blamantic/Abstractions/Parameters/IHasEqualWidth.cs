@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件的子组件具有等宽的功能。
+    /// Represents a equal width of child component.
     /// </summary>
     public interface IHasEqualWidth
     {
         /// <summary>
-        /// 设置子组件根据数量进行等宽适配。
+        /// Gets or sets a value indicating whether each child component has equal width.
         /// </summary>
         [CssClass("equal width", Order = 11)] public bool EqualWidth { get; set; }
     }

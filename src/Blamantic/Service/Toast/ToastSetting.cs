@@ -1,49 +1,49 @@
 ﻿namespace BlamanticUI
 {
     /// <summary>
-    /// 表示弹窗的设置参数。
+    /// Represents the setting of toast.
     /// </summary>
     public class ToastSetting
     {
         /// <summary>
-        /// 获取或设置容器的唯一标识。
+        /// Gets or sets the key.
         /// </summary>
         public string Key { get; set; } = "Default";
         /// <summary>
-        /// 获取或设置提示的标题。
+        /// Gets or sets the title.
         /// </summary>
         public string Title { get; set; }
         /// <summary>
-        /// 获取或设置提示的消息。
+        /// Gets or sets the message.
         /// </summary>
         public string Message { get; set; }
         /// <summary>
-        /// 获取或设置图标的样式名称。若不设置，则不会显示图标。
+        /// Gets or sets the icon class.
         /// </summary>
         public string IconClass { get; set; }
         /// <summary>
-        /// 获取或设置弹窗的状态颜色。
+        /// Gets or sets the state.
         /// </summary>
         public State? State { get; set; }
         /// <summary>
-        /// 获取或设置弹窗的背景颜色。
+        /// Gets or sets the color.
         /// </summary>
         public Color? Color { get; set; }
         /// <summary>
-        /// 获取或设置一个布尔值，表示使用反选背景。
+        /// Gets or sets a value indicating whether this <see cref="ToastSetting"/> is inverted.
         /// </summary>
         public bool Inverted { get; set; }
 
         /// <summary>
-        /// 获取或设置是否显示进度条。
+        /// Gets or sets the progress bar.
         /// </summary>
         public VerticalPosition? ProgressBar { get; set; }
         /// <summary>
-        /// 获取或设置进度条的颜色。
+        /// Gets or sets the color of the progress bar.
         /// </summary>
         public Color? ProgressBarColor { get; set; }
         /// <summary>
-        /// 获取或设置进度条的醒目状态颜色。
+        /// Gets or sets the state of the progress bar.
         /// </summary>
         public State? ProgressBarState { get; set; }
     }

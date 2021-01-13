@@ -7,59 +7,64 @@ using Microsoft.Extensions.DependencyInjection;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 轻量级弹窗的扩展。
+    /// An extensions of <see cref="IToastService"/> instance.
     /// </summary>
     public static class ToastExtensions
     {
         /// <summary>
-        /// 显示带有错误提示的弹窗消息。
+        /// Shows the error of toast message with red color.
         /// </summary>
-        /// <param name="toastService"><see cref="IToastService"/> 实例。</param>
-        /// <param name="message">显示的消息文本。</param>
-        /// <param name="title">显示消息的标题。</param>
-        /// <param name="iconClass">图标样式名称。</param>
+        /// <param name="toastService">The toast service.</param>
+        /// <param name="message">The message to show.</param>
+        /// <param name="title">The title to show. It can be <c>null</c>.</param>
+        /// <param name="iconClass">The icon class.</param>
+        /// <param name="key">The key of container.</param>
         public static void ShowError(this IToastService toastService, string message, string title = default, string iconClass = "times circle", string key = "Default")
     => toastService.Show(message, title, State.Error, iconClass, key);
 
         /// <summary>
-        /// 显示带有成功提示的弹窗消息。
+        /// Shows the success of toast message with green color.
         /// </summary>
-        /// <param name="toastService"><see cref="IToastService"/> 实例。</param>
-        /// <param name="message">显示的消息文本。</param>
-        /// <param name="title">显示消息的标题。</param>
-        /// <param name="iconClass">图标样式名称。</param>
+        /// <param name="toastService">The toast service.</param>
+        /// <param name="message">The message to show.</param>
+        /// <param name="title">The title to show. It can be <c>null</c>.</param>
+        /// <param name="iconClass">The icon class.</param>
+        /// <param name="key">The key of container.</param>
         public static void ShowSuccess(this IToastService toastService, string message, string title = default, string iconClass = "check circle", string key = "Default")
     => toastService.Show(message, title, State.Success, iconClass, key);
 
         /// <summary>
-        /// 显示带有信息提示的弹窗消息。
+        /// Shows the information of toast message with blue color.
         /// </summary>
-        /// <param name="toastService"><see cref="IToastService"/> 实例。</param>
-        /// <param name="message">显示的消息文本。</param>
-        /// <param name="title">显示消息的标题。</param>
-        /// <param name="iconClass">图标样式名称。</param>
+        /// <param name="toastService">The toast service.</param>
+        /// <param name="message">The message to show.</param>
+        /// <param name="title">The title to show. It can be <c>null</c>.</param>
+        /// <param name="iconClass">The icon class.</param>
+        /// <param name="key">The key of container.</param>
         public static void ShowInfo(this IToastService toastService, string message, string title = default, string iconClass = "info circle", string key = "Default")
     => toastService.Show(message, title, State.Info, iconClass, key);
 
         /// <summary>
-        /// 显示带有警告提示的弹窗消息。
+        /// Shows the warning of toast message with orange color.
         /// </summary>
-        /// <param name="toastService"><see cref="IToastService"/> 实例。</param>
-        /// <param name="message">显示的消息文本。</param>
-        /// <param name="title">显示消息的标题。</param>
-        /// <param name="iconClass">图标样式名称。</param>
+        /// <param name="toastService">The toast service.</param>
+        /// <param name="message">The message to show.</param>
+        /// <param name="title">The title to show. It can be <c>null</c>.</param>
+        /// <param name="iconClass">The icon class.</param>
+        /// <param name="key">The key of container.</param>
         public static void ShowWarning(this IToastService toastService, string message, string title = default, string iconClass = "attention circle", string key = "Default")
     => toastService.Show(message, title, State.Warning, iconClass, key);
 
 
         /// <summary>
-        /// 显示带有指定状态提示的弹窗消息。
+        /// Shows the toast message with specify state.
         /// </summary>
-        /// <param name="toastService"><see cref="IToastService"/> 实例。</param>
-        /// <param name="message">显示的消息文本。</param>
-        /// <param name="title">显示消息的标题。</param>
-        /// <param name="state">指定状态。</param>
-        /// <param name="iconClass">图标样式名称。</param>
+        /// <param name="toastService">The toast service.</param>
+        /// <param name="message">The message to show.</param>
+        /// <param name="title">The title to show. It can be <c>null</c>.</param>
+        /// <param name="state">The state of toast.</param>
+        /// <param name="iconClass">The icon class.</param>
+        /// <param name="key">The key of container.</param>
         public static void Show(this IToastService toastService, string message, string title = default, State? state = default, string iconClass = default,string key="Default")
     => toastService.Show(setting =>
     {

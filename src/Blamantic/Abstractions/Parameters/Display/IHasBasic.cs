@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件具备特定要素。
+    /// Represents components has basic style.
     /// </summary>
     public interface IHasBasic
     {
         /// <summary>
-        /// 设置组件是否具备特定要素。
+        /// Gets or sets a value indicating whether this style is basic.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if basic; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("basic", Order = 61)] public bool Basic { get; set; }
     }
 }

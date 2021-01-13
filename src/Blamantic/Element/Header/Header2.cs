@@ -1,13 +1,13 @@
 ﻿namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 h2 元素的标题。
+    /// Render a header as 'h2' HTML tag.
     /// </summary>
     /// <seealso cref="BlamanticUI.HeaderComponentBase" />
     public class Header2 : HeaderComponentBase
     {
         /// <summary>
-        /// 初始化 <see cref="Header1"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Header2"/> class.
         /// </summary>
         public Header2():base(2)
         {

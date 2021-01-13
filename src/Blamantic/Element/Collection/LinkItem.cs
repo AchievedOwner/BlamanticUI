@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -7,14 +6,19 @@ using Microsoft.AspNetCore.Components;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 a 元素并适用于项元素的超链接组件。
+    /// Render a anchor HTML tag of  <see cref="Item"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Anchor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLink" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasItem" />
     public class LinkItem : Anchor, IHasLink, IHasItem
     {
         /// <summary>
-        /// 设置去掉项的所有内边距。
+        /// Gets or sets a value indicating whether removing padding space of text.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fitted; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Fitted { get; set; }
     }
 }

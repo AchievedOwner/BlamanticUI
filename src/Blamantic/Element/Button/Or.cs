@@ -12,20 +12,20 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 button 组件之间的附加层。
+    /// Render a text of span element between tow <see cref="Button"/> components.
     /// </summary>
-    /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="YoiBlazor.BlazorComponentBase" />
     public class Or : BlazorComponentBase
     {
         /// <summary>
-        /// 设置自定义文本。
+        /// Gets or sets the text.
         /// </summary>
         [Parameter]public string Text { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("or");

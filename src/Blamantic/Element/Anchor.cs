@@ -1,7 +1,4 @@
-﻿
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 
 using BlamanticUI.Abstractions;
 
@@ -14,54 +11,58 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 a 元素的超链接组件。
+    /// A component that renders an anchor tag, automatically toggling its 'active' class based on whether it's link matches the current URI.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
-    public class Anchor : BlamanticChildContentComponentBase, IHasLink,IHasActive,IHasHeader
+    public class Anchor : BlamanticChildContentComponentBase, IHasLink, IHasActive, IHasHeader
     {
         /// <summary>
-        /// 初始化 <see cref="Anchor"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Anchor"/> class.
         /// </summary>
         public Anchor()
         {
         }
         /// <summary>
-        /// Gets or sets the match.
+        ///  Gets or sets a value representing the URL matching behavior.
         /// </summary>
         [Parameter] public NavLinkMatch Match { get; set; } = NavLinkMatch.All;
 
         /// <summary>
-        /// 设置超链接的地址。
+        /// Gets or sets the link of uri.
         /// </summary>
         [Parameter] [HtmlTagProperty("href")] public string Link { get; set; }
+
         /// <summary>
-        /// 设置被下载的超链接目标。
+        /// Gets or sets the target to download.
         /// </summary>
         [Parameter] [HtmlTagProperty] public string Download { get; set; }
         /// <summary>
-        /// 设置被链接文档的的 MIME 类型。
+        /// Gets or sets the MIME type of document.
         /// </summary>
         [Parameter] [HtmlTagProperty] public string Type { get; set; }
         /// <summary>
-        /// 设置组件在鼠标悬停后显示的标题内容。
+        /// Gets or sets the title that hover on target.
         /// </summary>
         [Parameter] [HtmlTagProperty] public string Title { get; set; }
         /// <summary>
-        /// 设置超链接的目标。
+        /// Gets or sets the target of link.
         /// </summary>
         [Parameter][HtmlTagProperty("target")] public LinkTarget? Target { get; set; }
         /// <summary>
-        /// 设置组件是否处于激活状态。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Actived { get; set; }
         /// <summary>
-        /// 设置作为标题显示。
+        /// Gets or sets the a callback method whether active state has changed.
+        /// </summary>
+        [Parameter] public EventCallback<bool> OnActived { get; set; }
+        /// <summary>
+        /// Gets or sets the text display as header.
         /// </summary>
         [Parameter]public bool Header { get; set; }
-        /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
-        /// </summary>
-        [Parameter]public EventCallback<bool> OnActived { get; set; }
 
 
         /// <summary>
@@ -79,5 +80,35 @@ namespace BlamanticUI
         }
     }
 
-    
+
+
+
+
+    /// <summary>
+    /// The target of anchor.
+    /// </summary>
+    [System.Flags]
+    public enum LinkTarget
+    {
+        /// <summary>
+        /// Open the linked document in new window or tab.
+        /// </summary>
+        [DefaultValue("_blank")]
+        Blank,
+        /// <summary>
+        /// Opens the link in the top-most frame.
+        /// </summary>
+        [DefaultValue("_top")]
+        Top,
+        /// <summary>
+        /// Opens the link in the parent frame.
+        /// </summary>
+        [DefaultValue("_parent")]
+        Parent,
+        /// <summary>
+        ///  Opens the linked document in the same frame.
+        /// </summary>
+        [DefaultValue("_self")]
+        Self
+    }
 }

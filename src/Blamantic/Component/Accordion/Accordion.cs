@@ -5,8 +5,11 @@
     using YoiBlazor;
 
     /// <summary>
-    /// 表示手风琴组件，使用 <see cref="AccordionItem"/> 设置手风琴组件的项。
+    /// Represents a container including <see cref="AccordionItem"/> component to collapse or expand.
     /// </summary>
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     public class Accordion : BlamanticParentComponentBase<Accordion, AccordionItem>, IHasUIComponent, IHasFluid, IHasDarkness
     {
         /// <summary>
@@ -18,22 +21,28 @@
         }
 
         /// <summary>
-        /// 设置琴键风格。
+        /// Gets or sets a value indicating whether this <see cref="Accordion"/> is styled.
         /// </summary>
         [Parameter][CssClass("styled")] public bool Styled { get; set; }
         /// <summary>
-        /// 设置基于父组件的反色兼容模式。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Fluid { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("accordion");

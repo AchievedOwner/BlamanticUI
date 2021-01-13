@@ -2,16 +2,14 @@
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Rendering;
-using YoiBlazor;
 
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示一组 <see cref="RadioBox{TValue}"/> 组件。
+    /// Represents a group of <see cref="RadioBox{TValue}"/> that can mutually exclusive each other.
     /// </summary>
-    /// <typeparam name="TValue">值得类型。</typeparam>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="BlamanticUI.FormInputBase{TValue}" />
-    /// <seealso cref="YoiBlazor.IHasChildContent" />
     public class RadioGroup<TValue> : FormInputBase<TValue>
     {
         /// <summary>
@@ -23,22 +21,28 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置组名称。
+        /// Gets or sets the name of group.
         /// </summary>
         [Parameter] public string Name { get; set; }
 
         /// <summary>
-        /// 设置组件的一段 UI 内容。
+        /// Gets or sets the content of the child.
         /// </summary>
         [Parameter] public RenderFragment ChildContent { get; set; }
 
         /// <summary>
-        /// 设置一个回调函数，表示当单选框的项被选中时触发。
+        ///  The callback that will be invoked when the <see cref="RadioBox{TValue}"/> is selected. 
         /// </summary>
         [Parameter] public EventCallback<string> OnValueSelected { get; set; }
 
+        /// <summary>
+        /// Gets or sets the change event callback.
+        /// </summary>
         internal EventCallback<ChangeEventArgs> ChangeEventCallback { get; set; }
 
+        /// <summary>
+        /// Gets the selected value.
+        /// </summary>
         internal TValue SelectedValue => CurrentValue;
 
         /// <summary>

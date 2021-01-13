@@ -1,23 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 using YoiBlazor;
 
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 button 元素表示用户操作的按钮。
+    /// Render a button with '&lt;button>' HTML tag.
     /// </summary>
-    /// <seealso cref="BlamanticChildContentComponentBase" />
-    /// <seealso cref="IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLoading" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAnimated" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
     [HtmlTag("button")]
+    [CssClass("button", Order = 500)]
     public class Button : BlamanticChildContentComponentBase, 
         IHasUIComponent, 
         IHasColor, 
@@ -43,108 +53,123 @@ namespace BlamanticUI
 
         }
 
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
-        /// </summary>
-        /// <param name="css">css 类名称集合。</param>
-        protected override void CreateComponentCssClass(Css css)
-        {
-            css.Add("button");
-        }
-
-        /// <summary>
-        /// 设置按钮的强调类型。
+        /// Gets or sets the emphasis style.
         /// </summary>
         [Parameter][CssClass]public Emphasis? Emphasis { get; set; }
 
         /// <summary>
-        /// 是否拥有动画效果。
+        /// Gets or sets a value indicating whether this is animated.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if animated; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Animated { get; set; }
         /// <summary>
-        /// 是否使用渐变的动画效果。
+        /// Gets or sets a value indicating whether this is a fade animation.
         /// </summary>
         [Parameter] [CssClass("fade")] public bool Fade { get; set; }
         /// <summary>
-        /// 设置按钮的颜色。
+        /// Gets or sets a color.
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// 设置按钮的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets dark style.
         /// </summary>
         [Parameter] public bool Darkness { get; set; }
         /// <summary>
-        /// 设置按钮的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
         /// <summary>
-        /// 设置是否使用纵向的方式排列。
+        /// Gets or sets layout to be vertical.
         /// </summary>
         [Parameter] public bool Vertical { get; set; }
         /// <summary>
-        /// 设置边框按钮的样式。
+        /// Gets or sets outline style.
         /// </summary>
         [Parameter] public bool Basic { get; set; }
+
         /// <summary>
-        /// 设置 <see cref="BlamanticUI.Icon"/> 在按钮中具有标签样式的兼容，以及元素的排列顺序。
+        /// Gets or sets the position of icon as label to layout in button.
         /// </summary>
         [Parameter] [CssClass(" labeled icon", Suffix = true)] public HorizontalPosition? IconLabeled { get; set; }
         /// <summary>
-        /// 设置是否只有 <see cref="BlamanticUI.Icon"/> 图标。
+        /// Gets or sets button only has icon.
         /// </summary>
         [Parameter][CssClass("icon")]public bool IconOnly { get; set; }
         /// <summary>
-        /// 设置是否处于启用状态。
+        /// Gets or sets the status is actived.
         /// </summary>
         [Parameter]public bool Actived { get; set; }
         /// <summary>
-        /// 设置是否处于禁用状态。
+        /// Gets or sets the status is disabled.
         /// </summary>
         [Parameter]public bool Disabled { get; set; }
         /// <summary>
-        /// 设置是否处于加载中状态。
+        /// Gets or sets the status is loading.
         /// </summary>
         [Parameter]public bool Loading { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets the width is 100% as parent.
         /// </summary>
         [Parameter]public bool Fluid { get; set; }
         /// <summary>
-        /// 设置呈现圆形样式。
+        /// Gets or sets the circular style.
         /// </summary>
         [Parameter]public bool Circular { get; set; }
         /// <summary>
-        /// 设置是否需要吸附于相对位置的其他组件。
+        /// Gets or sets position that can be attached to another component.
         /// </summary>
         [Parameter] public bool Attached { get; set; }
         /// <summary>
-        /// 设置水平方向上的吸附位置。
+        /// Gets or sets the attached at horizontal position.
         /// </summary>
         [Parameter][CssClass] public HorizontalPosition? AttachedHorizontal { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attached at vertical position.
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置组件的浮动方式。
+        /// Gets or sets the floated position with parent conponent.
         /// </summary>
         [Parameter]public HorizontalPosition? Floated { get; set; }
         /// <summary>
-        /// 设置按钮使用超链接的样式。
+        /// Gets or sets the underline style.
         /// </summary>
         [Parameter][CssClass("tertiary")] public bool Linked { get; set; }
 
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets a callback method invoke after actived.
         /// </summary>
         [Parameter]public EventCallback<bool> OnActived { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method invoke after disabled.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
+    }
+
+    /// <summary>
+    /// The empasis of button.
+    /// </summary>
+    [System.Flags]
+    public enum Emphasis
+    {
+        /// <summary>
+        /// The primary.
+        /// </summary>
+        Primary = 1,
+        /// <summary>
+        /// The secondary.
+        /// </summary>
+        Secondary = 2,
+        /// <summary>
+        /// The positive.
+        /// </summary>
+        Positive = 3,
+        /// <summary>
+        /// The nagative.
+        /// </summary>
+        Negative = 4,
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace BlamanticUI
 {
     /// <summary>
-    /// 作为呈现头像的图像组件。
+    /// Render a <see cref="Image"/> component with avatar style.
     /// </summary>
     /// <seealso cref="BlamanticUI.Image" />
     public class Avatar:Image

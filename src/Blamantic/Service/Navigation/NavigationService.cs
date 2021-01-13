@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示默认的导航菜单管理器。
+    /// Represents a default instance of <see cref="INavigationService"/>.
     /// </summary>
     /// <seealso cref="BlamanticUI.INavigationService" />
     public class NavigationService : INavigationService
     {
         /// <summary>
-        /// 获取所有的菜单导航。
+        /// Get navigations by given key.
         /// </summary>
-        /// <returns>
-        /// 已注册的菜单导航集合迭代器。
-        /// </returns>
+        /// <param name="key">The key to get.</param>
+        /// <returns></returns>
         public IEnumerable<Navigation> GetNavigations(string key) => NavigationTable.Navigations[key];
     }
 }

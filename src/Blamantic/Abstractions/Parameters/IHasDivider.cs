@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具有分割线的功能。
+    /// Represents a divider.
     /// </summary>
     public interface IHasDivider
     {
         /// <summary>
-        /// 设置组件是否具有分割线。
+        /// Gets or sets a value indicating whether a divider between components.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if has divider; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("divided")]bool Divider { get; set; }
     }
 }

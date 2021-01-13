@@ -9,29 +9,30 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示用于包含多个 <see cref="Image"/> 组件的图片组。
+    /// Represents a container include certain <see cref="Image"/> of group.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     [HtmlTag]
     public class ImageGroup : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize
     {
         /// <summary>
-        /// 初始化 <see cref="ImageGroup"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="ImageGroup"/> class.
         /// </summary>
         public ImageGroup()
         {
 
         }
         /// <summary>
-        /// 设置组件内图像的统一尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("images");

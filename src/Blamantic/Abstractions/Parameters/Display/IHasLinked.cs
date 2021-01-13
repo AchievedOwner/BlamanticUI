@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具备超链接的样式。
+    /// Represents component has linked style.
     /// </summary>
     public interface IHasLinked
     {
         /// <summary>
-        /// 设置组件可呈现超链接的样式。
+        /// Gets or sets a value indicating whether this is linked style.
         /// </summary>
-       [CssClass("link")] public bool Linked { get; set; }
+        /// <value>
+        ///   <c>true</c> if linked; otherwise, <c>false</c>.
+        /// </value>
+        [CssClass("link")] public bool Linked { get; set; }
     }
 }

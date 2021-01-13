@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using BlamanticUI.Abstractions;
 
@@ -12,42 +10,46 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示弹框消息的组件。可使用 <see cref="IToastService"/> 服务动态调用。
+    /// Represents a toast message that called by <see cref="IToastService"/> service.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     public class Toaster : BlamanticChildContentComponentBase, IHasUIComponent, IHasColor, IHasState,IHasDarkness
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
         internal Guid Id { get; set; }
         /// <summary>
-        /// 设置弹窗的标题。
+        /// Gets or sets the title.
         /// </summary>
         [Parameter] public string Title { get; set; }
         /// <summary>
-        /// 设置弹窗显示的消息。
+        /// Gets or sets the message.
         /// </summary>
         [Parameter] public string Message { get; set; }
 
         /// <summary>
-        /// 设置文本具有醒目状态的样式。
+        /// Gets or sets the state.
         /// </summary>
         [Parameter][CssClass]public State? State { get; set; }
         /// <summary>
-        /// 设置组件的颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter][CssClass] public Color? Color { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass]public bool Darkness { get; set; }
 
         /// <summary>
-        /// 设置图标的样式名称。
+        /// Gets or sets the icon class.
         /// </summary>
         [Parameter] public string IconClass { get; set; }
 
@@ -85,9 +87,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("toast");

@@ -13,13 +13,19 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示模态框的组件，通过调用 <see cref="Util.Active(IHasActive, bool)"/> 方法显示/隐藏模态框。
+    /// Represents a modal displays content that temporarily blocks interactions with the main view of a site.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasStateToggle" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
     public class Modal : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize,IHasBasic,IHasDarkness,IHasStateToggle,IHasActive
     {
         /// <summary>
-        /// 初始化 <see cref="Modal"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Modal"/> class.
         /// </summary>
         public Modal()
         {
@@ -27,63 +33,74 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置呈现标题内容的 UI 片段。
+        /// Gets or sets UI content of header.
         /// </summary>
         [Parameter]public RenderFragment Header { get; set; }
+
         /// <summary>
-        /// 设置呈现正文内容的 UI 片段。
+        /// Gets or sets UI content of body.
         /// </summary>
         [Parameter] public RenderFragment Content { get; set; }
+
         /// <summary>
-        /// 设置呈现操作的行为的 UI 片段。
+        /// Gets or sets UI content of footer.
         /// </summary>
         [Parameter] public RenderFragment Footer { get; set; }
         /// <summary>
-        /// 设置模态框的尺寸大小。
+        /// Gets or sets the size of modal.
         /// </summary>
         [Parameter][CssClass(Order =5)]public Size? Size { get; set; }
         /// <summary>
-        /// 设置模态框是否要撑满整个宽度。
+        /// Gets or sets a value indicating whether modal is full width display.
         /// </summary>
-        [Parameter][CssClass("fullscreen")] public bool? FullWidth { get; set; }
+        [Parameter][CssClass("fullscreen")] public bool FullWidth { get; set; }
         /// <summary>
-        /// 设置模态框是否全屏显示。
+        /// Gets or sets a value indicating whether modal is full screen display.
         /// </summary>
-        [Parameter][CssClass("overlay fullscreen")] public bool? FullScreen { get; set; }
+        [Parameter][CssClass("overlay fullscreen")] public bool FullScreen { get; set; }
         /// <summary>
-        /// 设置无边框样式。
+        /// Gets or sets a value indicating whether this style is basic.
         /// </summary>
         [Parameter] public bool Basic { get; set; }
         /// <summary>
-        /// 设置互换遮罩层与模态框的背景深浅样式。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("inverted",Order =10)] public bool Darkness { get; set; }
         /// <summary>
-        /// 设置内容是否允许在超出范围的时候使用滚动条。
+        /// Gets or sets a value indicating whether the content in body can be scrolled while the height is out of bound.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if scrollable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Scrollable { get; set; }
         /// <summary>
-        /// 设置是否包含图像的内容。
+        /// Gets or sets a value indicating whether the content has image at left.
         /// </summary>
         [Parameter] public bool ImageContent { get; set; }
 
         /// <summary>
-        /// 设置右上角是否出现一个可关闭的“X”图标，并点击后关闭模态框。
+        /// Gets or sets a value indicating whether this <see cref="Modal"/> is closable.
         /// </summary>
         [Parameter] public bool Closable { get; set; }
 
         /// <summary>
-        /// 设置是否处于显示状态。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Actived { get; set; }
 
         /// <summary>
-        /// 设置垂直方向的对齐方式。
+        /// Gets or sets the alignment position of modal.
         /// </summary>
         [Parameter] [CssClass(" aligned", Suffix = true)] public VerticalPosition? Alignment { get; set; }
 
         /// <summary>
-        /// 设置当模态框处于显示/隐藏时的回调方法。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         [Parameter] public EventCallback<bool> OnActived { get; set; }
 
@@ -112,6 +129,10 @@ namespace BlamanticUI
             builder.CloseComponent();
         }
 
+        /// <summary>
+        /// Builds the modal.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
         private void BuildModal(RenderTreeBuilder builder)
         {
             builder.OpenElement(0, "div");
@@ -120,7 +141,7 @@ namespace BlamanticUI
             {
                 builder.OpenComponent<Icon>(6);
                 builder.AddAttribute(7, nameof(Icon.IconClass), "close");
-                builder.AddAttribute(8, Util.EVENT_CLICK, EventCallback.Factory.Create<MouseEventArgs>(this, e => this.Active(false)));
+                builder.AddAttribute(8, Exntensions.EVENT_CLICK, EventCallback.Factory.Create<MouseEventArgs>(this, e => this.Active(false)));
                 builder.CloseComponent();
             }
 
@@ -148,18 +169,17 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("modal");
         }
 
         /// <summary>
-        /// 对隐藏或显示状态进行切换。
+        /// Perform the toggle action.
         /// </summary>
         public async Task Toggle()
         {
@@ -167,8 +187,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构建 content 部分的 Css
+        /// Builds the content CSS.
         /// </summary>
+        /// <returns></returns>
         string BuildContentCss()
         {
             var list = new List<string>();
@@ -184,7 +205,10 @@ namespace BlamanticUI
             return string.Join(" ", list);
         }
 
-
+        /// <summary>
+        /// Preses the escape.
+        /// </summary>
+        /// <param name="e">The <see cref="KeyboardEventArgs"/> instance containing the event data.</param>
         async Task PreseEsc(KeyboardEventArgs e)
         {
             if (e.Code.ToLower() == "escape")

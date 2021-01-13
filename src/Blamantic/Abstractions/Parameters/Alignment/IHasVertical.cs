@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具有纵向排列的功能。
+    /// Represents the component could be layout as vertical direction.
     /// </summary>
     public interface IHasVertical
     {
         /// <summary>
-        /// 设置组件的子组件使用纵向的方式排列。
+        /// Gets or sets a value indicating whether this layout is vertical.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if vertical; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("vertical")] public bool Vertical { get; set; }
     }
 }

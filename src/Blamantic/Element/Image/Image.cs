@@ -8,10 +8,14 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示呈现 img 元素的组件。
+    /// Render a 'img' HTML tag to display image properly.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUI" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasBorder" />
     [HtmlTag("img")]
     [CssClass("image")]
     public class Image : BlamanticComponentBase, IHasUI,IHasSize,IHasFluid,IHasCircular,IHasBorder
@@ -24,38 +28,50 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置图片来源地址。
+        /// Gets or sets the source of image.
         /// </summary>
         [Parameter] [HtmlTagProperty("src")] public string Source { get; set; }
 
         /// <summary>
-        /// 设置图片呈现圆角。
+        /// Gets or sets display border as rounded.
         /// </summary>
         [Parameter] [CssClass("rounded")] public bool? Rounded { get; set; }
 
         /// <summary>
-        /// 设置呈现头像的样式。
+        /// Gets or sets display image as avatar. Recommand to use <see cref="BlamanticUI.Avatar"/> component instead.
         /// </summary>
         [Parameter] [CssClass("avatar")] public bool? Avatar { get; set; }
         /// <summary>
-        /// 设置图像的大小比例。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// 设置成流式布局并把宽度设置为 100% 以此撑满整个父元素。
+        /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if fluid; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Fluid { get; set; }
         /// <summary>
-        /// 设置呈现圆形样式。
+        /// Gets or sets a value indicating whether this is circular.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if circular; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Circular { get; set; }
         /// <summary>
-        /// 设置组件变成 UI 组件。
+        /// Gets or sets component can be UI component.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> to be UI component,otherwise <c>false</c>.
+        /// </value>
         [Parameter]public bool? UI { get; set; }
         /// <summary>
-        /// 设置显示边框。
+        /// Gets or sets a value indicating whether to display borders.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if bordered; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Bordered { get; set; }
     }
 }

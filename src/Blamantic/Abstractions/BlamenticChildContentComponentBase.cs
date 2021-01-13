@@ -6,7 +6,7 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件内部可以呈现任意 UI 内容的组件基类。
+    /// Represents base class of child content for Blamantic-UI component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="YoiBlazor.IHasChildContent" />
@@ -19,7 +19,7 @@ namespace BlamanticUI.Abstractions
         {
         }
         /// <summary>
-        /// 设置组件的一段 UI 内容。
+        /// Sets the segment of UI content.
         /// </summary>
         [Parameter] public RenderFragment ChildContent { get; set; }
     }

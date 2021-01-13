@@ -12,7 +12,7 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示一个轻量级弹窗的容器占位组件。
+    /// Represents a container to display toast message.
     /// </summary>
     public class ToastContainer : BlamanticComponentBase, IHasUIComponent
     {
@@ -21,52 +21,58 @@ namespace BlamanticUI
         /// </summary>
         public ToastContainer()
         {
-            Position = DockUpasPosition.TopCenter;
+            Position = DockPosition.TopCenter;
             
         }
-
+        /// <summary>
+        /// Gets or sets the toast service.
+        /// </summary>
         [Inject] IToastService ToastService { get; set; }
+        /// <summary>
+        /// Gets or sets the navigation manager.
+        /// </summary>
         [Inject] NavigationManager NavigationManager { get; set; }
 
         /// <summary>
-        /// 设置停靠的位置。
+        /// Gets or sets the position to show.
         /// </summary>
-        [Parameter][CssClass]public DockUpasPosition? Position { get; set; }
+        /// <value>
+        [Parameter][CssClass]public DockPosition? Position { get; set; }
 
         /// <summary>
-        /// 设置一个布尔值，表示当页面切换路由时清除当前的所有弹窗提示。
+        /// Gets or sets a value indicating whether to clear all toast messages when location changed.
         /// </summary>
         [Parameter] public bool ClearWhenLocationChanged { get; set; }
 
         /// <summary>
-        /// 设置弹窗消息的持续时间，单位秒。
+        /// Gets or sets the time of seconds to show message.
         /// </summary>
         [Parameter] public int? Timeout { get; set; } = 5;
 
         /// <summary>
-        /// 设置淡入淡出动画效果的帧间隔。
+        /// Gets or sets the fade interval.
         /// </summary>
         [Parameter] public int FadeInterval { get; set; } = 30;
 
         /// <summary>
-        /// 设置显示进度条的位置。
+        /// Gets or sets the progress bar position.
         /// </summary>
         [Parameter] public VerticalPosition? ProgressBar { get; set; }
 
         /// <summary>
-        /// 设置唯一标志。用于调用时区别配置。
+        /// Gets or sets the key.
         /// </summary>
         [Parameter] public string Key { get; set; } = "Default";
 
         /// <summary>
-        /// 存储弹窗的列表。
+        /// Gets or sets the toast list.
         /// </summary>
         internal List<ToastInstance> ToastList { get; set; } = new List<ToastInstance>();
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("toast-container");
@@ -119,9 +125,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 移除指定弹窗。
+        /// Removes the specified toast identifier.
         /// </summary>
-        /// <param name="toastId">弹窗消息的标识。</param>
+        /// <param name="toastId">The toast identifier.</param>
         public void Remove(Guid toastId)
         {
             InvokeAsync(() =>
@@ -132,7 +138,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 清除所有的弹窗消息。
+        /// Clear all toast messages.
         /// </summary>
         public void Clear()
         {
@@ -144,9 +150,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 显示指定配置的弹窗消息。
+        /// Show the toast with specified setting.
         /// </summary>
-        /// <param name="setting">配置。</param>
+        /// <param name="setting">The setting of toast message.</param>
         public void Show(ToastSetting setting)
         {
             InvokeAsync(() =>

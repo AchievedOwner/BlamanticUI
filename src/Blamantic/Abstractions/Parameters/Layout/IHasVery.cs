@@ -4,12 +4,12 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件恰如其分的功能。
+    /// Represents a layout that can be automatically recognized.
     /// </summary>
     public interface IHasVery
     {
         /// <summary>
-        /// 设置恰如其分的样式。
+        /// Gets or sets a layout that can be automatically recognized
         /// </summary>
         [CssClass("very", Order = 60)]bool Very { get; set; }
     }

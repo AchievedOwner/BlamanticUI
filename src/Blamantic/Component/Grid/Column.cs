@@ -1,6 +1,5 @@
 ﻿namespace BlamanticUI
 {
-    using System.Collections.Generic;
 
     using Abstractions;
 
@@ -9,9 +8,12 @@
     using YoiBlazor;
 
     /// <summary>
-    /// 表示 <see cref="Grid"/> 栅格组件的列。
+    /// Represents a column in one row of grid.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
     [HtmlTag]
     public class Column : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated
     {
@@ -22,22 +24,22 @@
         {
         }
         /// <summary>
-        /// 设置固定宽度占比。
+        /// Gets or sets the span of column.
         /// </summary>
         [Parameter] [CssClass(" wide", Suffix = true)] public ColSpan Span { get; set; }
         /// <summary>
-        /// 设置背景颜色。
+        /// Gets or sets the background color.
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// 设置浮动方式。
+        /// Gets or sets the float position.
         /// </summary>
         [Parameter]public HorizontalPosition? Floated { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("column");

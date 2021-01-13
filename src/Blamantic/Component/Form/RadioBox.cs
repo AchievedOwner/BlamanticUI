@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
+using BlamanticUI.Abstractions;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+using YoiBlazor;
 
 namespace BlamanticUI
 {
-    using System.ComponentModel.DataAnnotations;
-    using System.Linq.Expressions;
-    using System.Reflection;
-    using Abstractions;
-    using Microsoft.AspNetCore.Components;
-    using Microsoft.AspNetCore.Components.Rendering;
-    using YoiBlazor;
-
     /// <summary>
-    /// 用于从一组选项中选择值的输入组件。
+    /// Render a type of radio for input.
     /// </summary>
-    /// <typeparam name="TValue">值类型。</typeparam>
+    /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     public class RadioBox<TValue> : BlamanticComponentBase,IHasUIComponent
     {
         /// <summary>
@@ -27,12 +23,11 @@ namespace BlamanticUI
         [CascadingParameter]RadioGroup<TValue> CascadedRadioGroup { get; set; }
 
         /// <summary>
-        /// 设置显示文本。
+        /// Gets or sets the text displayed behind input tag.
         /// </summary>
-        [Parameter]
-        public string Text { get; set; }
+        [Parameter] public string Text { get; set; }
         /// <summary>
-        /// 设置单选按钮包含的值。
+        /// Gets or sets the value.
         /// </summary>
         [Parameter] public TValue? Value { get; set; }
 
@@ -93,9 +88,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css"><see cref="T:YoiBlazor.Css" /> 实例。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add(Checked.HasValue && Checked.Value, "checked")

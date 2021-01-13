@@ -3,7 +3,7 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示呈现动态组件的容器。
+    /// Represents the container to show the dynamic component by service.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     public class BlamanticUIContainer : Abstractions.BlamanticComponentBase

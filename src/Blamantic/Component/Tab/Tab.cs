@@ -14,9 +14,8 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 以 <see cref="Menu"/> 组件为基础呈现的 Tab 标签栏组件。
+    /// Represents a tab with certain <see cref="TabItem"/> components.
     /// </summary>
-    /// <seealso cref="ParentBlazorComponentBase{Tab}" />
     public class Tab : ParentBlazorComponentBase<Tab>
     {
         /// <summary>
@@ -27,34 +26,34 @@ namespace BlamanticUI
             VerticalPosition = BlamanticUI.VerticalPosition.Top;
         }
         /// <summary>
-        /// 设置选项卡在垂直方向的位置。
+        /// Gets or sets the vertical position of tabs.
         /// </summary>
         [Parameter][CssClass] public VerticalPosition? VerticalPosition { get; set; }
 
         /// <summary>
-        /// 设置选项卡的背景颜色。
+        /// Gets or sets the color of the background.
         /// </summary>
         [Parameter]public Color? BackgroundColor { get; set; }
 
         /// <summary>
-        /// 设置是否手工切换标签页。
+        /// Gets or sets a value indicating whether switch <see cref="Tab"/> manually.
         /// </summary>
         [Parameter] public bool Manual { get; set; }
 
         /// <summary>
-        /// 设置当选项卡切换时的回调方法。
+        /// A callback method when switching tab.
         /// </summary>
         [Parameter] public EventCallback<int> OnSwtich { get; set; }
 
         /// <summary>
-        /// 激活的标签页索引。
+        /// Gets or sets the index of the actived tab page.
         /// </summary>
         internal int ActivedTabPageIndex { get; set; } = -1;
 
         /// <summary>
-        /// 添加指定的子组件。
+        /// Adds the specified component.
         /// </summary>
-        /// <param name="component">子组件。</param>
+        /// <param name="component">The component.</param>
         public override void Add(IComponent component)
         {
             ChildComponents.Add(component);
@@ -66,10 +65,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 切换选项卡。
+        /// Switches the specified index.
         /// </summary>
-        /// <param name="index">要切换的索引。</param>
-        /// <returns></returns>
+        /// <param name="index">The index.</param>
         async Task Switch(int index)
         {
             if (!Manual)
@@ -80,9 +78,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 切换指定索引的选项卡。
+        /// Switches to specify index of tab.
         /// </summary>
-        /// <param name="index">选项卡索引。</param>
+        /// <param name="index">The index.</param>
         public async Task SwitchTo(int index)
         {
             if (index < 0)
@@ -97,7 +95,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 使用 <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> 创建父组件的 <see cref="T:Microsoft.AspNetCore.Components.CascadingValue`1" /> 组件。
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
         /// </summary>
         /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
@@ -117,7 +115,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构建选项卡的内容。
+        /// Builds the tab items.
         /// </summary>
         /// <param name="builder">The builder.</param>
         private void BuildTabItems(RenderTreeBuilder builder)
@@ -129,7 +127,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 构建标签页的选项卡。
+        /// Builds the tab header.
         /// </summary>
         /// <param name="builder">The builder.</param>
         private void BuildTabHeader(RenderTreeBuilder builder)
@@ -158,12 +156,10 @@ namespace BlamanticUI
               }));
             builder.CloseComponent();
         }
-
-
         /// <summary>
-        /// 获取启用样式。
+        /// Gets the active class.
         /// </summary>
-        /// <param name="index"></param>
+        /// <param name="index">The index.</param>
         /// <returns></returns>
         string GetActiveClass(int index) => ActivedTabPageIndex == index ? "active " : null;
     }

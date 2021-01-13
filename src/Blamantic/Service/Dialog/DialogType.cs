@@ -1,20 +1,20 @@
 ﻿namespace BlamanticUI
 {
     /// <summary>
-    /// 对话框类型。
+    /// The dialog type.
     /// </summary>
     public enum DialogType
     {
         /// <summary>
-        /// 提示框。
+        /// An alert information dialog with one confirm button.
         /// </summary>
         Alert = 0,
         /// <summary>
-        /// 确认框。
+        /// A confirm information dialog with a confirm button and a cancel button.
         /// </summary>
         Confirm = 1,
         /// <summary>
-        /// 弹出框。
+        /// Promt with a textbox and a confirm button.
         /// </summary>
         Prompt = 2
     }

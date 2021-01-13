@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using YoiBlazor;
+﻿using YoiBlazor;
 
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具有动画效果的功能。
+    /// Represents component has animation.
     /// </summary>
     public interface IHasAnimated
     {
         /// <summary>
-        /// 设置组件可使用动画效果来展现内容。
+        /// Gets or sets a value indicating whether this is animated.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if animated; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("animated")]public bool Animated { get; set; }
     }
 }

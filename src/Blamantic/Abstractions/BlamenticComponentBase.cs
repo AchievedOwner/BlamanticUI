@@ -3,13 +3,13 @@
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示创建 BlamanticUI 组件的基类。这是一个抽象类。
+    /// Represents a base class of Blamantic-UI component.
     /// </summary>
     /// <seealso cref="YoiBlazor.BlazorComponentBase" />
     public abstract class BlamanticComponentBase : BlazorComponentBase
     {
         /// <summary>
-        /// 初始化 <see cref="BlamanticComponentBase"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="BlamanticComponentBase"/> class.
         /// </summary>
         protected BlamanticComponentBase() : base()
         {

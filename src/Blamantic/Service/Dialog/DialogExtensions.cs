@@ -1,22 +1,20 @@
 ﻿using System;
 
-using Microsoft.Extensions.DependencyInjection;
-
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示对话框的扩展。
+    /// The extensions of dialog services.
     /// </summary>
     public static class DialogExtensions
     {
         /// <summary>
-        /// 显示提示信息(Alert)的对话框。
+        /// Shows an 'alert' dialog with a confim button.
         /// </summary>
-        /// <param name="dialogService">对话框服务。</param>
-        /// <param name="message">提示信息。</param>
-        /// <param name="title">对话框标题，null 表示不显示。</param>
-        /// <param name="onConfirm">当点击【确认】按钮后的操作，这是一个委托。</param>
-        /// <param name="alignment">垂直对齐方式。</param>
+        /// <param name="dialogService"><see cref="IDialogService"/> extension.</param>
+        /// <param name="message">The message of dialog.</param>
+        /// <param name="title">The title of dialog, it can be <c>null</c>.</param>
+        /// <param name="onConfirm">A delegate when clicking confirm button.</param>
+        /// <param name="alignment">Alignment of dialog.</param>
         public static void ShowAlert(this IDialogService dialogService, string message, string title = default, Action<object> onConfirm = default, VerticalPosition? alignment = default)
             => dialogService
             .Show(options =>
@@ -29,14 +27,14 @@ namespace BlamanticUI
             });
 
         /// <summary>
-        /// 显示确认信息(Confirm)的对话框。
+        /// Shows a 'confirm' dialog with a confim button and cancel button.
         /// </summary>
-        /// <param name="dialogService">对话框服务。</param>
-        /// <param name="message">提示信息。</param>
-        /// <param name="title">对话框标题，null 表示不显示。</param>
-        /// <param name="onConfirm">当点击【确认】按钮后的操作，这是一个委托。</param>
-        /// <param name="onCancel">当点击【取消】按钮后的操作，这是一个委托。</param>
-        /// <param name="alignment">垂直对齐方式。</param>
+        /// <param name="dialogService"><see cref="IDialogService"/> extension.</param>
+        /// <param name="message">The message of dialog.</param>
+        /// <param name="title">The title of dialog, it can be <c>null</c>.</param>
+        /// <param name="onConfirm">A delegate when clicking confirm button.</param>
+        /// <param name="onCancel">A delegate when clicking cancel button.</param>
+        /// <param name="alignment">Alignment of dialog.</param>
         public static void ShowConfirm(this IDialogService dialogService, string message, string title = default, Action<object> onConfirm = default, Action onCancel = default, VerticalPosition? alignment = default)
         => dialogService
             .Show(options =>
@@ -50,14 +48,14 @@ namespace BlamanticUI
             });
 
         /// <summary>
-        /// 显示弹出输入信息(Prompt)的对话框。
+        /// Shows a 'prompt' dialog with input textbox, a confim button and cancel button.
         /// </summary>
-        /// <param name="dialogService">对话框服务。</param>
-        /// <param name="message">提示信息。</param>
-        /// <param name="title">对话框标题，null 表示不显示。</param>
-        /// <param name="onConfirm">当点击【确认】按钮后的操作，这是一个委托，参数为文本框输入的值。</param>
-        /// <param name="onCancel">当点击【取消】按钮后的操作，这是一个委托。</param>
-        /// <param name="alignment">垂直对齐方式。</param>
+        /// <param name="dialogService"><see cref="IDialogService"/> extension.</param>
+        /// <param name="message">The message of dialog.</param>
+        /// <param name="title">The title of dialog, it can be <c>null</c>.</param>
+        /// <param name="onConfirm">A delegate when clicking confirm button.</param>
+        /// <param name="onCancel">A delegate when clicking cancel button.</param>
+        /// <param name="alignment">Alignment of dialog.</param>
         public static void ShowPropmt(this IDialogService dialogService, string message, string title = default, Action<object> onConfirm = default, Action onCancel = default, VerticalPosition? alignment = default)
         => dialogService
             .Show(options =>

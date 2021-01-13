@@ -1,6 +1,4 @@
 ﻿
-using System.Collections.Generic;
-
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -10,7 +8,7 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 让子组件呈现标签的样式。
+    /// Rerepsents the child component display as <see cref="Label"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
@@ -26,19 +24,19 @@ namespace BlamanticUI
 
 
         /// <summary>
-        /// 设置子组件是否兼容 <see cref="BlamanticUI.Button"/> 组件。
+        /// Gets or sets a value indicating whether child component has <see cref="BlamanticUI.Button"/> component.
         /// </summary>
         [Parameter] public bool Button { get; set; }
 
         /// <summary>
-        /// 设置兼容 <see cref="Label"/> 组件在其他组件左边时的样式。
+        /// Gets or sets the layout of <see cref="Label"/> component at left.
         /// </summary>
         [Parameter] [CssClass("left")] public bool? Left { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("labeled");

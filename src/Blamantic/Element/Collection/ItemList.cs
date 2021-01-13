@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -9,39 +8,57 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示可以进行响应式布局的项目列表视图。
+    /// Render a list contains certain <see cref="Item"/> components with reponsive adaption.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDivider" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasRelaxed" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     [HtmlTag]
     public class ItemList : BlamanticChildContentComponentBase, IHasUIComponent,IHasDivider,IHasRelaxed,IHasLinked,IHasDarkness
     {
         /// <summary>
-        /// 设置项之间是否具有分割线。
+        /// Gets or sets a value indicating whether a divider between components.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if has divider; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("divided")]public bool Divider { get; set; }
 
-
         /// <summary>
-        /// 设置是否不支持响应式布局。
+        /// Gets or sets a value indicating whether this is unstackable.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if unstackable; otherwise, <c>false</c>.
+        /// </value>
         [Parameter][CssClass("unstackable")] public bool Unstackable { get; set; }
         /// <summary>
-        /// 设置组件中的内容呈现松散的样式。
+        /// Gets or sets a value indicating whether this is relaxed style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if relaxed; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Relaxed { get; set; }
         /// <summary>
-        /// 设置组件可呈现超链接的样式。
+        /// Gets or sets a value indicating whether this is linked style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if linked; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Linked { get; set; }
         /// <summary>
-        /// 设置反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("items");

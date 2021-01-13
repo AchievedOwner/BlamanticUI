@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件的布局整体居中。
+    /// Represents the center layout of container using flex.
     /// </summary>
     public interface IHasCentered
     {
         /// <summary>
-        /// 设置组件的布局方式在可视化范围内整体居中。
+        /// Gets or sets a value indicating whether alighment is centered in container.
         /// </summary>
-        [CssClass("centered",Order =15)] public bool Centered { get; set; }
+        /// <value>
+        ///   <c>true</c> if centered; otherwise, <c>false</c>.
+        /// </value>
+        [CssClass("centered", Order = 15)] public bool Centered { get; set; }
     }
 }

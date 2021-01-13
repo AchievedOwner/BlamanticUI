@@ -3,21 +3,30 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 用于存储弹窗的实例。
+    /// Represent the instance of toast.
     /// </summary>
     internal class ToastInstance
     {
         /// <summary>
-        /// 唯一标识。
+        /// Gets or sets the identifier.
         /// </summary>
+        /// <value>
+        /// The identifier.
+        /// </value>
         public Guid Id { get; set; }
         /// <summary>
-        /// 时间戳。
+        /// Gets or sets the timestamp.
         /// </summary>
+        /// <value>
+        /// The timestamp.
+        /// </value>
         public DateTime Timestamp { get; set; }
         /// <summary>
-        /// 配置。
+        /// Gets or sets the settings.
         /// </summary>
+        /// <value>
+        /// The settings.
+        /// </value>
         public ToastSetting Settings { get; set; }
     }
 }

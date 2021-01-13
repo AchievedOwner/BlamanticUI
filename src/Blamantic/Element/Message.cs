@@ -9,10 +9,18 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 div 元素包含着提示消息。
+    /// Render a box to display a message with state.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasIcon" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasHidden" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasVisibility" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     [HtmlTag]
     public class Message : BlamanticChildContentComponentBase, 
         IHasUIComponent,
@@ -27,46 +35,58 @@ namespace BlamanticUI
         
     {
         /// <summary>
-        /// 设置具有醒目状态的样式。
+        /// Gets or sets the state.
         /// </summary>
         [Parameter]public State? State { get; set; }
         /// <summary>
-        /// 设置是否需要吸附于相对位置的其他组件。
+        /// Gets or sets a value indicating whether attach to another.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if attached; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Attached { get; set; }
         /// <summary>
-        /// 设置垂直方向上的吸附位置。
+        /// Gets or sets the attach position in vertical.
         /// </summary>
         [Parameter] public VerticalPosition? AttachedVertical { get; set; }
         /// <summary>
-        /// 设置是否包含 <see cref="BlamanticUI.Icon"/> 组件。
+        /// Gets or sets a value indicating whether the content of child can render <see cref="Icon" /> component properly.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if icon; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Icon { get; set; }
         /// <summary>
-        /// 设置是否可见。
+        /// Gets or sets a value indicating whether is visibile.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if visibile; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Visibile { get; set; }
         /// <summary>
-        /// 设置是否隐藏。
+        /// Gets or sets a value indicating whether is hidden.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if hidden; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Hidden { get; set; }
         /// <summary>
         /// 设置是否对内边距的空间进行一定的压缩。
         /// </summary>
         [Parameter]public bool Compact { get; set; }
         /// <summary>
-        /// 设置颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
-        /// 设置尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("message");

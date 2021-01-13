@@ -12,46 +12,56 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示呈现一个可转动的圈作为加载中状态的 div 元素的状态加载器。
+    /// Represents a state loader that renders a rotatable loop as a div element with a state under load.
     /// </summary>
     [HtmlTag]
     public class Loader : BlamanticChildContentComponentBase, IHasUIComponent, IHasDisabled, IHasActive, IHasColor, IHasDarkness, IHasInline, IHasSize, IHasTexted, IHasCentered
     {
         /// <summary>
-        /// 设置是否禁用。
+        /// Gets or sets a value indicating whether this is disabled.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if disabled; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Disabled { get; set; }
         /// <summary>
-        /// 设置是否显示。
+        /// Gets or sets a value indicating whether this state is actived.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if actived; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Actived { get; set; }
         /// <summary>
-        /// 设置颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// 设置组件的反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] public bool Darkness { get; set; }
         /// <summary>
-        /// 设置允许显示在文本之间。
+        /// Gets or sets a value indicating whether is inline paragraph.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if inline; otherwise, <c>false</c>.
+        /// </value>
         [Parameter, CssClass("inline", Order = 46)] public bool Inline { get; set; }
-
         /// <summary>
-        /// 设置在行中的文本居中显示，<see cref="Inline"/> 为 <c>true</c> 时有效。
+        /// Gets or sets a value indicating whether alighment is centered in container.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if centered; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("centered", Order = 45)] public bool Centered { get; set; }
-
         /// <summary>
-        /// 设置组件的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
         /// <summary>
-        /// 设置动画效果。
+        /// Gets or sets the animation.
         /// </summary>
         [Parameter] [CssClass] public AnimationStyle? Animation { get; set; }
         /// <summary>
@@ -59,26 +69,29 @@ namespace BlamanticUI
         /// </summary>
         public bool Texted { get; set; }
         /// <summary>
-        /// 设置加载方式成为不确定样式。
+        /// Gets or sets a value indicating whether this <see cref="Loader"/> is indeterminated.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if indeterminated; otherwise, <c>false</c>.
+        /// </value>
         [Parameter] [CssClass("indeterminate")] public bool Indeterminated { get; set; }
         /// <summary>
-        /// 设置旋转的速度。
+        /// Gets or sets the speed of spin.
         /// </summary>
         [Parameter] public Speed Speed { get; set; } = Speed.Default;
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Disable(IHasDisabled, bool)" /> 方法时触发。
+        /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
         /// <summary>
-        /// 设置一个回调方法，当调用 <see cref="Util.Active(IHasActive, bool)" /> 方法后触发。
+        /// Gets or sets the a callback method whether active state has changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnActived { get; set; }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("loader");
@@ -97,7 +110,7 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 动画效果。
+        /// Animation style of loader.
         /// </summary>
         public enum AnimationStyle
         {

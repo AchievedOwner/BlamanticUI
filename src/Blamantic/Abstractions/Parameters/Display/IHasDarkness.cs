@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件支持暗色样式。
+    /// Represents component has dark style.
     /// </summary>
     public interface IHasDarkness
     {
         /// <summary>
-        /// 设置组件成为暗色样式。
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("inverted")] bool Darkness { get; set; }
     }
 }

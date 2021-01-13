@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -11,10 +8,13 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 span 元素的内联样式的文本组件。
+    /// Render a 'span' HTML tag to display inline text in paragraph.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
     [HtmlTag("span")]
     public class Text : BlamanticChildContentComponentBase, IHasUIComponent,IHasColor,IHasSize,IHasDarkness
     {
@@ -27,25 +27,24 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置颜色。
+        /// Gets or sets the color.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
-        /// 设置反转颜色（非黑即白），<c>true</c> 为深色，否则为浅色；
-        /// <para>
-        /// 若父组件是深色，则子组件会为浅色；反之亦然。
-        /// </para>
+        /// Gets or sets a value indicating whether this is dark style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        /// </value>
         [Parameter]public bool Darkness { get; set; }
         /// <summary>
-        /// 设置文本的尺寸大小。
+        /// Gets or sets the size.
         /// </summary>
         [Parameter] public Size? Size { get; set; }
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("text");

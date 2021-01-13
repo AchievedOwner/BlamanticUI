@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-
+﻿
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 
@@ -8,18 +7,17 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 以 segment 组件呈现 <see cref="Tab"/> 组件的项。
+    /// Render a segment of item in <see cref="Tab"/> component.
     /// </summary>
-    /// <seealso cref="ChildBlazorComponentBase{Tab}" />
     public class TabItem : ChildBlazorComponentBase<Tab>
     {
         /// <summary>
-        /// 设置标签页面标题。
+        /// Gets or sets the title.
         /// </summary>
         [Parameter]
         public string Title { get; set; }
         /// <summary>
-        /// 设置当标签页被激活时触发的事件。
+        /// A callback method invoked when tab item is actived.
         /// </summary>
         [Parameter]
         public EventCallback<TabItem> OnActived { get; set; }
@@ -39,9 +37,9 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             if (Parent.ChildComponents[Parent.ActivedTabPageIndex] == this)

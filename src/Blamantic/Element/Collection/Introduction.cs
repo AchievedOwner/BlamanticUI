@@ -4,8 +4,9 @@
 
     using YoiBlazor;
 
+    
     /// <summary>
-    /// 仅用于 <see cref="ItemList"/> 组件显示简介的内容。
+    /// Render a part of introduction of <see cref="ItemList"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [CssClass("meta")]

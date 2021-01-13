@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具有可见性的功能。
+    /// Represents components shoud be visible.
     /// </summary>
     public interface IHasVisibility
     {
         /// <summary>
-        /// 设置组件是否可见。
+        /// Gets or sets a value indicating whether is visibile.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if visibile; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("visible")] public bool Visibile { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Options;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示弹窗消息的默认服务。
+    /// Represents a default service。
     /// </summary>
     /// <seealso cref="BlamanticUI.IToastService" />
     internal class ToastService : IToastService
@@ -21,14 +21,14 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 当弹窗显示时触发的事件。
+        /// Occurs when showing toast.
         /// </summary>
         public event Action<ToastSetting> OnShow;
 
         /// <summary>
-        /// 显示指定配置委托的弹窗提示。
+        /// Shows toast by specified setting action.
         /// </summary>
-        /// <param name="settingAction">可以用于配置弹窗的委托。</param>
+        /// <param name="settingAction">The setting action.</param>
         public void Show(Action<ToastSetting> settingAction)
         {
             var setting = new ToastSetting();

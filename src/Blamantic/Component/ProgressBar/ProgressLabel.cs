@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-
+﻿
 using YoiBlazor;
 
 namespace BlamanticUI
 {
     /// <summary>
-    /// 表示进度条的文本标签。
-    /// </summary>    
+    /// Represents a label of in progress.
+    /// </summary>
     public class ProgressLabel:ChildBlazorComponentBase<Progress>
     {
         /// <summary>
@@ -17,9 +16,9 @@ namespace BlamanticUI
 
         }
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("label");

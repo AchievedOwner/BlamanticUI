@@ -7,7 +7,7 @@
     using YoiBlazor;
 
     /// <summary>
-    /// 仅用于 <see cref="Item"/> 组件中呈现其他扩展信息的部分。
+    /// Render an extra information div tag and only support in <see cref="Item"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     [HtmlTag]
@@ -17,7 +17,7 @@
     }
 
     /// <summary>
-    /// 
+    /// Render a div of extra content in <see cref="Card"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Content" />
     [HtmlTag]

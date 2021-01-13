@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-using YoiBlazor;
+﻿using YoiBlazor;
 
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具备浮动布局的功能。
+    /// Represents layout of component can be floated.
     /// </summary>
     public interface IHasFloated
     {
         /// <summary>
-        /// 设置组件的浮动方式。
+        /// Gets or sets the float position.
         /// </summary>
         [CssClass(" floated", Order = 36, Suffix = true)] HorizontalPosition? Floated { get; set; }
     }

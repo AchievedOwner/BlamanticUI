@@ -1,22 +1,20 @@
 ﻿
-using System.ComponentModel;
-
 using YoiBlazor;
 
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件具备超链接的功能。
+    /// Provide a component that can be navigate to specify link.
     /// </summary>
     /// <seealso cref="YoiBlazor.IHasChildContent" />
-    public interface IHasLink:IHasChildContent
+    public interface IHasLink : IHasChildContent
     {
         /// <summary>
-        /// 设置超链接的地址。
+        /// Gets or sets the link of uri.
         /// </summary>
         public string Link { get; set; }
         /// <summary>
-        /// 设置超链接的目标。
+        /// Gets or sets the target behavior of the link.
         /// </summary>
         public LinkTarget? Target { get; set; }
     }

@@ -3,7 +3,7 @@
 namespace BlamanticUI
 {
     /// <summary>
-    /// 定义对话框的传递对象。
+    /// Represents the DTO for dialog.
     /// </summary>
     public class DialogModel
     {
@@ -16,11 +16,11 @@ namespace BlamanticUI
             Option = option;
         }
         /// <summary>
-        /// 获取对话框的配置。
+        /// Gets the dialog option.
         /// </summary>
         public DialogOption Option { get; }
         /// <summary>
-        /// 表示关闭对话框的委托。
+        /// A delegate represents a method to call when closing.
         /// </summary>
         public Action OnClose;
     }

@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 表示组件呈现松散的样式。
+    /// Represents a relaxing style.
     /// </summary>
     public interface IHasRelaxed
     {
         /// <summary>
-        /// 设置组件中的内容呈现松散的样式。
+        /// Gets or sets a value indicating whether this is relaxed style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if relaxed; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("relaxed",Order =30)]bool Relaxed { get; set; }
     }
 }

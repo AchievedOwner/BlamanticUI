@@ -11,16 +11,17 @@ namespace BlamanticUI
     using Microsoft.AspNetCore.Components.Rendering;
     using YoiBlazor;
     /// <summary>
-    /// 表示 <see cref="Accordion"/> 组件的项。
+    /// Represents a child component of <see cref="Accordion"/> component.
     /// </summary>
     public class AccordionItem : BlamanticChildComponentBase<Accordion,AccordionItem>
     {
         /// <summary>
-        /// 设置标题的 UI 片段。
+        /// Gets or sets a UI content of title.
         /// </summary>
         [Parameter] public RenderFragment Title { get; set; }
+
         /// <summary>
-        /// 设置内容的 UI 片段。
+        /// Gets or sets a UI content of content.
         /// </summary>
         [Parameter] public RenderFragment Content { get; set; }
 

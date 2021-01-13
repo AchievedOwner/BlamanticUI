@@ -11,14 +11,14 @@ using YoiBlazor;
 namespace BlamanticUI
 {
     /// <summary>
-    /// 呈现 i 元素的旗帜组件。
+    /// Render a 'i' HTML tag to display flag.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     [HtmlTag("i")]
-    public class Flag:BlamanticComponentBase
+    public class Flag : BlamanticComponentBase
     {
         /// <summary>
-        /// 初始化 <see cref="Flag"/> 类的新实例。
+        /// Initializes a new instance of the <see cref="Flag"/> class.
         /// </summary>
         public Flag()
         {
@@ -26,21 +26,20 @@ namespace BlamanticUI
         }
 
         /// <summary>
-        /// 设置国旗的类型。
+        /// Gets or sets the type of the flag.
         /// </summary>
         [Parameter][CssClass]public Type FlagType { get; set; }
-
         /// <summary>
-        /// 创建组件所需要的 class 类。
+        /// Override to create the CSS class that component need.
         /// </summary>
-        /// <param name="css">css 类名称集合。</param>
+        /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("flag");
         }
 
         /// <summary>
-        /// 世界的国家。
+        /// Flag types.
         /// </summary>
         public enum Type
         {

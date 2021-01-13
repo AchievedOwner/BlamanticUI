@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供具备标题的样式。
+    /// Represents a component display as header style.
     /// </summary>
     public interface IHasHeader
     {
         /// <summary>
-        /// 设置组件作为标题显示。
+        /// Gets or sets a value indicating whether display as header style.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if header; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("header", Order = 90)] public bool Header { get; set; }
     }
 }

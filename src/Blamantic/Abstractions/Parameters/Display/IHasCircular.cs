@@ -4,13 +4,16 @@ using YoiBlazor;
 namespace BlamanticUI.Abstractions
 {
     /// <summary>
-    /// 提供组件能呈现圆形样式的功能。
+    /// Represents component has circular style.
     /// </summary>
     public interface IHasCircular
     {
         /// <summary>
-        /// 设置组件呈现圆形样式。
+        /// Gets or sets a value indicating whether this is circular.
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if circular; otherwise, <c>false</c>.
+        /// </value>
         [CssClass("circular")] bool Circular { get; set; }
     }
 }
