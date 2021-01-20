@@ -2,7 +2,7 @@
 
 <Pager DataSource="Menu">
     <Body>
-<Header1 Divider="true">
+<Header1 Divider>
     列表
     <SubHeader>
         列表用于对相关内容进行分组
@@ -86,11 +86,11 @@
 
 <PresentationPart Title="带标题和图标">
     <RunTemplate>
-        <List Relaxed="true" Divider="true">
+        <List Relaxed Divider>
             <Item>
                 <Icon Size="Size.Large" VerticalAlignment="VerticalAlignment.Middle" IconClass="github" />
                 <Content>
-                    <Anchor Header="true" Link="#">CastUI/src</Anchor>
+                    <Anchor Header Link="#">CastUI/src</Anchor>
                     <Description>
                         更新于 2 分钟前
                     </Description>
@@ -99,7 +99,7 @@
             <Item>
                 <Icon Size="Size.Large" VerticalAlignment="VerticalAlignment.Middle" IconClass="github" />
                 <Content>
-                    <Anchor Header="true" Link="#">CastUI/doc</Anchor>
+                    <Anchor Header Link="#">CastUI/doc</Anchor>
                     <Description>
                         更新于 8 小时前
                     </Description>
@@ -108,7 +108,7 @@
             <Item>
                 <Icon Size="Size.Large" VerticalAlignment="VerticalAlignment.Middle" IconClass="github" />
                 <Content>
-                    <Anchor Header="true" Link="#">CastUI/demo</Anchor>
+                    <Anchor Header Link="#">CastUI/demo</Anchor>
                     <Description>
                         更新于 24 小时前
                     </Description>
@@ -119,11 +119,11 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Relaxed=""true"" Divider=""true"">
+<List Relaxed Divider>
     <Item>
         <Icon Size=""Size.Large"" VerticalAlignment=""VerticalAlignment.Middle"" IconClass=""github"" />
         <Content>
-            <Anchor Header=""true"" Link=""#"">CastUI/src</Anchor>
+            <Anchor Header Link=""#"">CastUI/src</Anchor>
             <Description>
                 更新于 2 分钟前
             </Description>
@@ -132,7 +132,7 @@
     <Item>
         <Icon Size=""Size.Large"" VerticalAlignment=""VerticalAlignment.Middle"" IconClass=""github"" />
         <Content>
-            <Anchor Header=""true"" Link=""#"">CastUI/doc</Anchor>
+            <Anchor Header Link=""#"">CastUI/doc</Anchor>
             <Description>
                 更新于 8 小时前
             </Description>
@@ -141,7 +141,7 @@
     <Item>
         <Icon Size=""Size.Large"" VerticalAlignment=""VerticalAlignment.Middle"" IconClass=""github"" />
         <Content>
-            <Anchor Header=""true"" Link=""#"">CastUI/demo</Anchor>
+            <Anchor Header Link=""#"">CastUI/demo</Anchor>
             <Description>
                 更新于 24 小时前
             </Description>
@@ -349,10 +349,10 @@
 
 <PresentationPart Title="子弹标记">
     <Description>
-        设置 <code>Bulleted="true"</code> 可让列表中的所有项呈现子弹标记。
+        设置 <code>Bulleted</code> 可让列表中的所有项呈现子弹标记。
     </Description>
     <RunTemplate>
-        <List Bulleted="true">
+        <List Bulleted>
             <Item>背景</Item>
             <Item>目标</Item>
             <Item>
@@ -371,7 +371,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Bulleted=""true"">
+<List Bulleted>
     <Item>背景</Item>
     <Item>目标</Item>
     <Item>
@@ -393,10 +393,10 @@
 
 <PresentationPart Title="顺序标记">
     <Description>
-        设置 <code>Ordered="true"</code> 让列表项的层级具有顺序标记。
+        设置 <code>Ordered</code> 让列表项的层级具有顺序标记。
     </Description>
     <RunTemplate>
-        <List Ordered="true">
+        <List Ordered>
             <Item>背景</Item>
             <Item>目标</Item>
             <Item>
@@ -415,7 +415,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Ordered=""true"">
+<List Ordered>
     <Item>背景</Item>
     <Item>目标</Item>
     <Item>
@@ -438,10 +438,10 @@
 
 <PresentationPart Title="顺序标记后缀">
     <Description>
-        设置 <code>Suffixed="true"</code> 让具有顺序的标记出现“.”的后缀。
+        设置 <code>Suffixed</code> 让具有顺序的标记出现“.”的后缀。
     </Description>
     <RunTemplate>
-        <List Ordered="true" Suffixed="true">
+        <List Ordered Suffixed>
             <Item>背景</Item>
             <Item>目标</Item>
             <Item>
@@ -460,7 +460,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Ordered=""true"">
+<List Ordered>
     <Item>背景</Item>
     <Item>目标</Item>
     <Item>
@@ -481,10 +481,10 @@
 </PresentationPart>
 
 <PresentationPart Title="超链接样式">
-    <Description>设置 <code>Linked="true"</code> 可让超链接项拥有特殊的超链接样式。</Description>
+    <Description>设置 <code>Linked</code> 可让超链接项拥有特殊的超链接样式。</Description>
     <RunTemplate>
-        <List Linked="true">
-            <LinkItem Actived="true" Link="#">首页</LinkItem>
+        <List Linked>
+            <LinkItem Actived Link="#">首页</LinkItem>
             <LinkItem Link="#">关于我们</LinkItem>
             <LinkItem Link="#">联系方式</LinkItem>
             <LinkItem Link="#">团队介绍</LinkItem>
@@ -493,8 +493,8 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Linked=""true"">
-    <LinkItem Actived=""true"" Link=""#"">首页</LinkItem>
+<List Linked>
+    <LinkItem Actived Link=""#"">首页</LinkItem>
     <LinkItem Link=""#"">关于我们</LinkItem>
     <LinkItem Link=""#"">联系方式</LinkItem>
     <LinkItem Link=""#"">团队介绍</LinkItem>
@@ -619,10 +619,10 @@
 
 <PresentationPart Title="水平排列">
     <Description>
-        设置 <code>Horizontal="true"</code> 使列表项在水平方向排列。
+        设置 <code>Horizontal</code> 使列表项在水平方向排列。
     </Description>
     <RunTemplate>
-        <List Horizontal="true">
+        <List Horizontal>
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -664,7 +664,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Horizontal=""true"">
+<List Horizontal>
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -709,10 +709,10 @@
 
 <PresentationPart Title="可选择">
     <Description>
-        设置 <code>Selectable="true"</code> 后，项可以变为可选择的样式。
+        设置 <code>Selectable</code> 后，项可以变为可选择的样式。
     </Description>
     <RunTemplate>
-        <List Selectable="true" VerticalAlignment="VerticalAlignment.Middle" >
+        <List Selectable VerticalAlignment="VerticalAlignment.Middle" >
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -754,7 +754,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Selectable=""true"" VerticalAlignment=""VerticalAlignment.Middle"" >
+<List Selectable VerticalAlignment=""VerticalAlignment.Middle"" >
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -799,14 +799,14 @@
 
 <PresentationPart Title="悬浮动画">
     <Description>
-        设置 <code>Animated="true"</code> 鼠标悬浮时可以有一个动画效果。
+        设置 <code>Animated</code> 鼠标悬浮时可以有一个动画效果。
 
            <Message State="State.Warning">
                在使用动画时，请确保内容能适合一行，否则当鼠标悬停时，文本内容将重新流动。
            </Message>
     </Description>
     <RunTemplate>
-        <List Animated="true" VerticalAlignment="VerticalAlignment.Middle">
+        <List Animated VerticalAlignment="VerticalAlignment.Middle">
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -848,7 +848,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Animated=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+<List Animated VerticalAlignment=""VerticalAlignment.Middle"">
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -893,10 +893,10 @@
 
 <PresentationPart Title="项的边框">
     <Description>
-        设置 <code>Celled="true"</code> 让项的之间都有分割线。
+        设置 <code>Celled</code> 让项的之间都有分割线。
     </Description>
     <RunTemplate>
-        <List Celled="true" VerticalAlignment="VerticalAlignment.Middle">
+        <List Celled VerticalAlignment="VerticalAlignment.Middle">
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -938,7 +938,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Celled=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+<List Celled VerticalAlignment=""VerticalAlignment.Middle"">
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -983,7 +983,7 @@
 
 <PresentationPart>
     <RunTemplate>
-        <List Celled="true" Horizontal="true">
+        <List Celled Horizontal>
             <Item>
                 版本
             </Item>
@@ -998,7 +998,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Celled=""true"" Horizontal=""true"">
+<List Celled Horizontal>
     <Item>
         版本
     </Item>
@@ -1019,7 +1019,7 @@
         <Description>设置 <code>Size</code> 可让列表拥有不同的尺寸。</Description>
     </Description>
     <RunTemplate>
-        <List Size="Size.Mini" Horizontal="true" VerticalAlignment="VerticalAlignment.Middle">
+        <List Size="Size.Mini" Horizontal VerticalAlignment="VerticalAlignment.Middle">
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -1058,7 +1058,7 @@
             </Item>
         </List>
         <br />
-        <List Size="Size.Large" Horizontal="true" VerticalAlignment="VerticalAlignment.Middle">
+        <List Size="Size.Large" Horizontal VerticalAlignment="VerticalAlignment.Middle">
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -1097,7 +1097,7 @@
             </Item>
         </List>
         <br />
-        <List Size="Size.Massive"  Horizontal="true" VerticalAlignment="VerticalAlignment.Middle">
+        <List Size="Size.Massive"  Horizontal VerticalAlignment="VerticalAlignment.Middle">
             <Item>
                 <Avatar Source="img/avatar/zoe.jpg" />
                 <Content>
@@ -1139,7 +1139,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Size=""Size.Mini"" Horizontal=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+<List Size=""Size.Mini"" Horizontal VerticalAlignment=""VerticalAlignment.Middle"">
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -1178,7 +1178,7 @@
     </Item>
 </List>
 
-<List Size=""Size.Large"" Horizontal=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+<List Size=""Size.Large"" Horizontal VerticalAlignment=""VerticalAlignment.Middle"">
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -1217,7 +1217,7 @@
     </Item>
 </List>
 
-<List Size=""Size.Massive""  Horizontal=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+<List Size=""Size.Massive""  Horizontal VerticalAlignment=""VerticalAlignment.Middle"">
     <Item>
         <Avatar Source=""img/avatar/zoe.jpg"" />
         <Content>
@@ -1265,7 +1265,7 @@
         可以在列表项中增加左右浮动的元素。
     </Description>
     <RunTemplate>
-        <List Divider="true" VerticalAlignment="VerticalAlignment.Middle">
+        <List Divider VerticalAlignment="VerticalAlignment.Middle">
             <Item>
                 <Content Floated="HorizontalPosition.Right"><Button Color="Color.Blue">加关注</Button></Content>
                 <Avatar Source="img/avatar/zoe.jpg" />
@@ -1299,7 +1299,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<List Divider=""true"" VerticalAlignment=""VerticalAlignment.Middle"">
+<List Divider VerticalAlignment=""VerticalAlignment.Middle"">
     <Item>
         <Content Floated=""HorizontalPosition.Right""><Button Color=""Color.Blue"">加关注</Button></Content>
         <Avatar Source=""img/avatar/zoe.jpg"" />

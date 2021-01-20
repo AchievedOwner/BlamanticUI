@@ -20,7 +20,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasVery" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCelled" />
     public class Table : BlamanticChildContentComponentBase, 
         IHasUIComponent, 
@@ -31,7 +31,7 @@ namespace BlamanticUI
         IHasVery, 
         IHasSize, 
         IHasBasic, 
-        IHasDarkness, 
+        IHasInverted, 
         IHasCelled
     {
         /// <summary>
@@ -59,19 +59,19 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the striped style for alternative row.
         /// </summary>
-        [Parameter] [CssClass("striped")] public bool? Striped { get; set; }
+        [Parameter] [CssClass("striped")] public bool Striped { get; set; }
         /// <summary>
         /// Gets or sets the first row and first column has a background color.
         /// </summary>
-        [Parameter] [CssClass("definition")] public bool? Definition { get; set; }
+        [Parameter] [CssClass("definition")] public bool Definition { get; set; }
         /// <summary>
         /// Gets or sets the structured border of cells.
         /// </summary>
-        [Parameter] [CssClass("structured")] public bool? Structured { get; set; }
+        [Parameter] [CssClass("structured")] public bool Structured { get; set; }
         /// <summary>
         /// Gets or sets the text always in single line in cell.
         /// </summary>
-        [Parameter] [CssClass("single line")] public bool? SingleLine { get; set; }
+        [Parameter] [CssClass("single line")] public bool SingleLine { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether hover style while cursor moving over items.
         /// </summary>
@@ -92,12 +92,12 @@ namespace BlamanticUI
         /// </summary>
         [Parameter]public Color? Color { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter] public bool Darkness { get; set; }
+        [Parameter] public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether to compact space of text.
         /// </summary>

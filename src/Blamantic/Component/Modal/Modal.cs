@@ -19,10 +19,10 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasStateToggle" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
-    public class Modal : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize,IHasBasic,IHasDarkness,IHasStateToggle,IHasActive
+    public class Modal : BlamanticChildContentComponentBase, IHasUIComponent,IHasSize,IHasBasic,IHasInverted,IHasStateToggle,IHasActive
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Modal"/> class.
@@ -63,12 +63,12 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public bool Basic { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter][CssClass("inverted",Order =10)] public bool Darkness { get; set; }
+        [Parameter][CssClass("inverted",Order =10)] public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether the content in body can be scrolled while the height is out of bound.
         /// </summary>
@@ -115,7 +115,7 @@ namespace BlamanticUI
             builder.OpenComponent<Dimmer>(0);
             builder.AddAttribute(1, nameof(Dimmer.FullScreen), true);
             builder.AddAttribute(2, nameof(Dimmer.Actived), Actived);
-            builder.AddAttribute(3, nameof(Dimmer.Darkness), Darkness);
+            builder.AddAttribute(3, nameof(Dimmer.Inverted), Inverted);
             if (Alignment.HasValue)
             {
                 builder.AddAttribute(4, nameof(Dimmer.AdditionalCssClass), (CssClassCollection)"modals");

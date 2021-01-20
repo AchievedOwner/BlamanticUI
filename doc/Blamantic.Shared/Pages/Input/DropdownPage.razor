@@ -7,7 +7,7 @@
                          "参数","事件","方法"
                      }))">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             下拉列表
             <SubHeader>
                 下拉列表允许用户从一系列选项中选择一个值
@@ -85,15 +85,15 @@ IReadOnlyList<User> Users => new List<User>
         </PresentationPart>
         <PresentationPart Title="上拉列表">
             <Description>
-                设置 <code>Up="true"</code> 使菜单向上显示。
+                设置 <code>Up</code> 使菜单向上显示。
             </Description>
             <RunTemplate>
-                <DropDownList DataSource="Users" Up="true" />
+                <DropDownList DataSource="Users" Up />
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList DataSource=""Users"" Up=""true""/>
+<DropDownList DataSource=""Users"" Up/>
 ```
 ")
             </CodeTemplate>
@@ -137,7 +137,7 @@ IReadOnlyList<User> Users => new List<User>
                 <Form Model="this">
                     <DataAnnotationsValidator />
                     <Field For="()=>SelectName">
-                        <DropDownList DataSource="Users" @bind-Value="SelectName" Removable="true">
+                        <DropDownList DataSource="Users" @bind-Value="SelectName" Removable>
                             <DefaultItem>-请选择-</DefaultItem>
                         </DropDownList>
                     </Field>
@@ -150,7 +150,7 @@ IReadOnlyList<User> Users => new List<User>
 <Form Model=""this"">
     <DataAnnotationsValidator/>
     <Field For=""()=>SelectName"">
-        <DropDownList DataSource=""Users"" @bind-Value=""SelectName"" Removable=""true"">
+        <DropDownList DataSource=""Users"" @bind-Value=""SelectName"" Removable>
             <DefaultItem>-请选择-</DefaultItem>
         </DropDownList>
     </Field>
@@ -193,33 +193,33 @@ IReadOnlyList<User> Users => new List<User>
         </PresentationPart>
         <PresentationPart Title="过滤">
             <Description>
-                设置 <code>Filterable="true"</code> 可以过滤数据源。如果是一个实体对象，必须指定一个 <code>FilterField</code> 搜索框需要进行数据源检索的字段。
+                设置 <code>Filterable</code> 可以过滤数据源。如果是一个实体对象，必须指定一个 <code>FilterField</code> 搜索框需要进行数据源检索的字段。
             </Description>
             <RunTemplate>
-                <DropDownList DataSource="Users" Filterable="true" FilterField="@nameof(User.Name)" />
+                <DropDownList DataSource="Users" Filterable FilterField="@nameof(User.Name)" />
                 <DropDownList DataSource="@(new List<string>
                                     {
                                         "中国","中东","美国","英国","法国","德国","南非","保加利亚","比利时","俄罗斯","白俄罗斯"
-                                    })" Filterable="true" />
+                                    })" Filterable />
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList DataSource=""Users"" Filterable=""true"" FilterField=""@nameof(User.Name)""/>
+<DropDownList DataSource=""Users"" Filterable FilterField=""@nameof(User.Name)""/>
 <DropDownList DataSource=""@(new List<string>
                             {
                                 ""中国"",""中东"",""美国"",""英国"",""法国"",""德国"",""南非"",""保加利亚"",""比利时"",""俄罗斯"",""白俄罗斯""
-                            })"" Filterable=""true""/>
+                            })"" Filterable/>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="可移除">
             <Description>
-                设置 <code>Removable="true"</code> 显示一个“x”并在点击后移除选中项。
+                设置 <code>Removable</code> 显示一个“x”并在点击后移除选中项。
             </Description>
             <RunTemplate>
-                <DropDownList DataSource="Users" Removable="true">
+                <DropDownList DataSource="Users" Removable>
                     <DefaultItem>
                         -请选择-
                     </DefaultItem>
@@ -228,7 +228,7 @@ IReadOnlyList<User> Users => new List<User>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList DataSource=""Users"" Removable=""true"">
+<DropDownList DataSource=""Users"" Removable>
     <DefaultItem>
         -请选择-
     </DefaultItem>
@@ -243,25 +243,25 @@ IReadOnlyList<User> Users => new List<User>
             </Description>
             <RunTemplate>
                 <DropDownList DataSource="Users" Selectable="false" />
-                <DropDownList DataSource="Users" Selectable="false" Filterable="true" FilterField="@nameof(User.Name)" />
+                <DropDownList DataSource="Users" Selectable="false" Filterable FilterField="@nameof(User.Name)" />
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <DropDownList DataSource=""Users"" Selectable=""false"" />
-<DropDownList DataSource=""Users"" Selectable=""false"" Filterable=""true"" FilterField=""@nameof(User.Name)"" />
+<DropDownList DataSource=""Users"" Selectable=""false"" Filterable FilterField=""@nameof(User.Name)"" />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="行内样式">
             <Description>
-                设置 <code>Inline="true"</code> 可以与文本混搭。
+                设置 <code>Inline</code> 可以与文本混搭。
             </Description>
             <RunTemplate>
                 <Segment>
                     这里需要项目经理
-                    <DropDownList DataSource="Users" Selectable="false" Inline="true">
+                    <DropDownList DataSource="Users" Selectable="false" Inline>
                         <ItemFormat>
                             <Avatar Source="@context.Avatar" />
                             @context.Name
@@ -275,7 +275,7 @@ IReadOnlyList<User> Users => new List<User>
 ```html
 <Segment>
     这里需要项目经理
-    <DropDownList DataSource=""Users"" Selectable=""false"" Inline=""true"">
+    <DropDownList DataSource=""Users"" Selectable=""false"" Inline>
         <ItemFormat>
             <Avatar Source=""@context.Avatar"" />
             @context.Name
@@ -289,15 +289,15 @@ IReadOnlyList<User> Users => new List<User>
         </PresentationPart>
         <PresentationPart Title="禁用状态">
             <Description>
-                设置 <code>Disabled="true"</code> 可以禁用下拉列表。
+                设置 <code>Disabled</code> 可以禁用下拉列表。
             </Description>
             <RunTemplate>
-                <DropDownList DataSource="Users" Disabled="true" />
+                <DropDownList DataSource="Users" Disabled />
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList DataSource=""Users"" Disabled=""true"" />
+<DropDownList DataSource=""Users"" Disabled />
 ```
 ")
             </CodeTemplate>
@@ -333,33 +333,33 @@ IReadOnlyList<User> Users => new List<User>
         </PresentationPart>
         <PresentationPart Title="压缩内边距">
             <Description>
-                设置 <code>Compact="true"</code> 使宽度与选项最大值一样。
+                设置 <code>Compact</code> 使宽度与选项最大值一样。
             </Description>
             <RunTemplate>
-                <DropDownList DataSource="Users" Compact="true" />
+                <DropDownList DataSource="Users" Compact />
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList DataSource=""Users"" Compact=""true""/>
+<DropDownList DataSource=""Users"" Compact/>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="反转背景颜色">
             <Description>
-                设置 <code>Darkness="true"</code> 可以在反色背景中显示。
+                设置 <code>Inverted</code> 可以在反色背景中显示。
             </Description>
             <RunTemplate>
-                <Segment Darkness="true">
-                    <DropDownList DataSource="Users" Darkness="true" />
+                <Segment Inverted>
+                    <DropDownList DataSource="Users" Inverted />
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <DropDownList DataSource=""Users"" Darkness=""true"" />
+<Segment Inverted>
+    <DropDownList DataSource=""Users"" Inverted />
 </Segment>
 ```
 ")
@@ -444,12 +444,12 @@ IReadOnlyList<User> Users => new List<User>
         设置 <code>MaxFilterItems</code> 可以规定显示在搜索列表中的最大数量，默认 10 个。
     </Description>
     <RunTemplate>
-        <DropDownList DataSource="Users" MaxFilterItems="5"  Filterable="true" FilterField="@nameof(User.Name)"/>
+        <DropDownList DataSource="Users" MaxFilterItems="5"  Filterable FilterField="@nameof(User.Name)"/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList DataSource=""Users"" MaxFilterItems=""5""  Filterable=""true"" FilterField=""@nameof(User.Name)""/>
+<DropDownList DataSource=""Users"" MaxFilterItems=""5""  Filterable FilterField=""@nameof(User.Name)""/>
 ```
 ")
     </CodeTemplate>
@@ -459,12 +459,12 @@ IReadOnlyList<User> Users => new List<User>
         设置 <code>FilterExpression</code> 自定义过滤方式，这是一个委托。示例自定义了过滤规则，即过滤以输入内容结尾的结果。
     </Description>
     <RunTemplate>
-        <DropDownList T="User" DataSource="Users" FilterExpression="@((input,value)=>value.Name.ToLower().EndsWith(input))" Filterable="true"/>
+        <DropDownList T="User" DataSource="Users" FilterExpression="@((input,value)=>value.Name.ToLower().EndsWith(input))" Filterable/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<DropDownList T=""User"" DataSource=""Users"" FilterExpression=""@((input,value)=>value.Name.ToLower().EndsWith(input))"" Filterable=""true""/>
+<DropDownList T=""User"" DataSource=""Users"" FilterExpression=""@((input,value)=>value.Name.ToLower().EndsWith(input))"" Filterable/>
 ```
 ")
     </CodeTemplate>
@@ -532,7 +532,7 @@ IReadOnlyList<User> Users => new List<User>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>反色背景</td>
                     <td>bool</td>
                     <td></td>

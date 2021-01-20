@@ -8,10 +8,10 @@
     <div class="full-height" style="margin-left:20px;">
         @if (DataSource != null)
         {
-            <Menu Style="MenuStyle.Texted" Compact="true" Size="Size.Tiny" Linked="true" Vertical="true">
+            <Menu Style="MenuStyle.Texted" Compact Size="Size.Tiny" Linked Vertical>
                 @foreach (var item in DataSource)
                 {
-                    <Item Fitted="true" Actived="Actived(item)" @onclick="@(e=>Click(item))">
+                    <Item Fitted Actived="Actived(item)" @onclick="@(e=>Click(item))">
                         @item
                     </Item>
                 }
@@ -22,9 +22,6 @@
 @code{
     [Parameter] public RenderFragment Body { get; set; }
 
-    /// <summary>
-    /// 导航菜单的数据源，Key 是 Id，Value 是显示的值。
-    /// </summary>
     [Parameter] public List<string> DataSource { get; set; }
 
     string SelectedId;

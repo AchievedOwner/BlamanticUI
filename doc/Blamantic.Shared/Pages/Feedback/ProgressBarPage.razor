@@ -5,7 +5,7 @@
                          "动画速度","颜色","反色背景","尺寸","吸附","Progress 参数","Progress 方法","Bar 参数"
                      }))">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             进度条
             <SubHeader>进度条显示任务的进度</SubHeader>
         </Header1>
@@ -32,10 +32,10 @@
         </PresentationPart>
                 <PresentationPart Title="进度信号">
             <Description>
-                设置 <code>Indicating="true"</code> 可以让进度条随着 <code>Percent</code> 的值会有明显的红黄绿的颜色变化。
+                设置 <code>Indicating</code> 可以让进度条随着 <code>Percent</code> 的值会有明显的红黄绿的颜色变化。
             </Description>
             <RunTemplate>
-                <Progress Percent="percent" Indicating="true">
+                <Progress Percent="percent" Indicating>
                     <Bar/>
                     <ProgressLabel>@percent %</ProgressLabel>
                 </Progress>
@@ -44,7 +44,7 @@
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Progress Percent=""percent"" Indicating=""true"">
+<Progress Percent=""percent"" Indicating>
     <Bar/>
     <ProgressLabel>@percent %</ProgressLabel>
 </Progress>
@@ -84,18 +84,18 @@ void Start()
         </PresentationPart>
         <PresentationPart Title="显示进度条百分比文本">
     <Description>
-        设置 <code>Bar</code> 的 <code>ShowPercent="true"</code> 会显示当前进度条的百分比文本。
+        设置 <code>Bar</code> 的 <code>ShowPercent</code> 会显示当前进度条的百分比文本。
     </Description>
     <RunTemplate>
         <Progress Percent="80">
-            <Bar ShowPercent="true"/>
+            <Bar ShowPercent/>
         </Progress>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Progress Percent=""80"">
-    <Bar ShowPercent=""true""/>
+    <Bar ShowPercent/>
 </Progress>
 ```
 ")
@@ -114,7 +114,7 @@ void Start()
             </Bar>
         </Progress>
         <Progress Percent="50">
-            <Bar Centered="true">
+            <Bar Centered>
                 <Text>
                    还剩下 @(100-context)%
                 </Text>
@@ -132,7 +132,7 @@ void Start()
     </Bar>
 </Progress>
 <Progress Percent=""50"">
-    <Bar Centered=""true"">
+    <Bar Centered>
         <Text>
             还剩下 @(100-context)%
         </Text>
@@ -144,10 +144,10 @@ void Start()
 </PresentationPart>
         <PresentationPart Title="激活状态">
     <Description>
-        设置 <code>Progress</code> 的 <code>Actived="true"</code> 使组件呈现被激活的状态。
+        设置 <code>Progress</code> 的 <code>Actived</code> 使组件呈现被激活的状态。
     </Description>
     <RunTemplate>
-        <Progress Percent="76" Actived="true">
+        <Progress Percent="76" Actived>
             <Bar/>
             <ProgressLabel>上传文件</ProgressLabel>
         </Progress>
@@ -155,7 +155,7 @@ void Start()
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Progress Percent=""76"" Actived=""true"">
+<Progress Percent=""76"" Actived>
     <Bar/>
     <ProgressLabel>上传文件</ProgressLabel>
 </Progress>
@@ -165,10 +165,10 @@ void Start()
 </PresentationPart>
                 <PresentationPart Title="禁用状态">
     <Description>
-        设置 <code>Progress</code> 的 <code>Disabled="true"</code> 使进度条被禁用。
+        设置 <code>Progress</code> 的 <code>Disabled</code> 使进度条被禁用。
     </Description>
     <RunTemplate>
-        <Progress Percent="43" Disabled="true">
+        <Progress Percent="43" Disabled>
             <Bar/>
             <ProgressLabel>上传文件</ProgressLabel>
         </Progress>
@@ -176,7 +176,7 @@ void Start()
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Progress Percent=""43"" Disabled=""true"">
+<Progress Percent=""43"" Disabled>
     <Bar/>
     <ProgressLabel>上传文件</ProgressLabel>
 </Progress>
@@ -190,15 +190,15 @@ void Start()
     </Description>
     <RunTemplate>
         <Progress Percent="100" State="State.Success">
-            <Bar ShowPercent="true" />
+            <Bar ShowPercent />
             <ProgressLabel>恭喜你完成训练</ProgressLabel>
         </Progress>
         <Progress Percent="100" State="State.Warning">
-            <Bar ShowPercent="true" />
+            <Bar ShowPercent />
             <ProgressLabel>你上传的文件超过了大小限制</ProgressLabel>
         </Progress>
         <Progress Percent="100" State="State.Error">
-            <Bar ShowPercent="true" />
+            <Bar ShowPercent />
             <ProgressLabel>有错误出现了</ProgressLabel>
         </Progress>
     </RunTemplate>
@@ -206,15 +206,15 @@ void Start()
         @Code.GetCode(@"
 ```html
 <Progress Percent=""100"" State=""State.Success"">
-    <Bar ShowPercent=""true"" />
+    <Bar ShowPercent />
     <ProgressLabel>恭喜你完成训练</ProgressLabel>
 </Progress>
 <Progress Percent=""100"" State=""State.Warning"">
-    <Bar ShowPercent=""true"" />
+    <Bar ShowPercent />
     <ProgressLabel>你上传的文件超过了大小限制</ProgressLabel>
 </Progress>
 <Progress Percent=""100"" State=""State.Error"">
-    <Bar ShowPercent=""true"" />
+    <Bar ShowPercent />
     <ProgressLabel>有错误出现了</ProgressLabel>
 </Progress>
 ```
@@ -382,38 +382,38 @@ void Start()
 </PresentationPart>
         <PresentationPart Title="反色背景">
     <Description>
-        设置 <code>Darkness="true"</code> 可以使用反选背景颜色。
+        设置 <code>Inverted</code> 可以使用反选背景颜色。
     </Description>
     <RunTemplate>
-        <Segment Darkness="true">
-            <Progress Color="Color.Red" Percent="95" Darkness="true">
+        <Segment Inverted>
+            <Progress Color="Color.Red" Percent="95" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Green" Percent="15" Darkness="true">
+            <Progress Color="Color.Green" Percent="15" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Yellow" Percent="76" Darkness="true">
+            <Progress Color="Color.Yellow" Percent="76" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Pink" Percent="35" Darkness="true">
+            <Progress Color="Color.Pink" Percent="35" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Olive" Percent="66" Darkness="true">
+            <Progress Color="Color.Olive" Percent="66" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Orange" Percent="28" Darkness="true">
+            <Progress Color="Color.Orange" Percent="28" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Black" Percent="80" Darkness="true">
+            <Progress Color="Color.Black" Percent="80" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Blue" Percent="56" Darkness="true">
+            <Progress Color="Color.Blue" Percent="56" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Brown" Percent="42" Darkness="true">
+            <Progress Color="Color.Brown" Percent="42" Inverted>
                 <Bar />
             </Progress>
-            <Progress Color="Color.Purple" Percent="74" Darkness="true">
+            <Progress Color="Color.Purple" Percent="74" Inverted>
                 <Bar />
             </Progress>
         </Segment>
@@ -421,35 +421,35 @@ void Start()
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <Progress Color=""Color.Red"" Percent=""95"" Darkness=""true"">
+<Segment Inverted>
+    <Progress Color=""Color.Red"" Percent=""95"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Green"" Percent=""15"" Darkness=""true"">
+    <Progress Color=""Color.Green"" Percent=""15"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Yellow"" Percent=""76"" Darkness=""true"">
+    <Progress Color=""Color.Yellow"" Percent=""76"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Pink"" Percent=""35"" Darkness=""true"">
+    <Progress Color=""Color.Pink"" Percent=""35"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Olive"" Percent=""66"" Darkness=""true"">
+    <Progress Color=""Color.Olive"" Percent=""66"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Orange"" Percent=""28"" Darkness=""true"">
+    <Progress Color=""Color.Orange"" Percent=""28"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Black"" Percent=""80"" Darkness=""true"">
+    <Progress Color=""Color.Black"" Percent=""80"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Blue"" Percent=""56"" Darkness=""true"">
+    <Progress Color=""Color.Blue"" Percent=""56"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Brown"" Percent=""42"" Darkness=""true"">
+    <Progress Color=""Color.Brown"" Percent=""42"" Inverted>
         <Bar />
     </Progress>
-    <Progress Color=""Color.Purple"" Percent=""74"" Darkness=""true"">
+    <Progress Color=""Color.Purple"" Percent=""74"" Inverted>
         <Bar />
     </Progress>
 </Segment>
@@ -520,17 +520,17 @@ void Start()
 </PresentationPart>
         <PresentationPart Title="吸附">
     <Description>
-        设置 <code>Attached="true"</code> 和 <code>VerticalPosition</code> 可以吸附在其他组件上
+        设置 <code>Attached</code> 和 <code>VerticalPosition</code> 可以吸附在其他组件上
     </Description>
     <RunTemplate>
         <Segment>
-            <Progress Percent="70" Attached="true" AttachedVertical="VerticalPosition.Top">
+            <Progress Percent="70" Attached AttachedVertical="VerticalPosition.Top">
                 <Bar />
             </Progress>
             <p>
                 阿里路呀
             </p>
-            <Progress Percent="40" Attached="true" AttachedVertical="VerticalPosition.Bottom">
+            <Progress Percent="40" Attached AttachedVertical="VerticalPosition.Bottom">
                 <Bar />
             </Progress>
         </Segment>
@@ -539,13 +539,13 @@ void Start()
         @Code.GetCode(@"
 ```html
 <Segment>
-    <Progress Percent=""70"" Attached=""true"" AttachedVertical=""VerticalPosition.Top"">
+    <Progress Percent=""70"" Attached AttachedVertical=""VerticalPosition.Top"">
         <Bar />
     </Progress>
     <p>
         阿里路呀
     </p>
-    <Progress Percent=""40"" Attached=""true"" AttachedVertical=""VerticalPosition.Bottom"">
+    <Progress Percent=""40"" Attached AttachedVertical=""VerticalPosition.Bottom"">
         <Bar />
     </Progress>
 </Segment>
@@ -568,7 +568,7 @@ void Start()
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>深色背景</td>
                     <td>bool</td>
                     <td></td>

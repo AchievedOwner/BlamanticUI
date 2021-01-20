@@ -47,7 +47,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets this field is required to append a red '*' symbol in front of text.
         /// </summary>
-        [Parameter] [CssClass("required")] public bool? Required { get; set; }
+        [Parameter] [CssClass("required")] public bool Required { get; set; }
 
         /// <summary>
         /// Gets or sets identify the <c>System.ComponentModel.DataAnnotations</c> of field.

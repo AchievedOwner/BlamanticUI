@@ -2,24 +2,24 @@
 @layout Shared.EmptyLayout
 <div style="padding-left:5px">
 
-    <Segment Raised="true" Stacked="true" Tall="true">
-        <Header1 Divider="true">
+    <Segment Raised Stacked Tall>
+        <Header1 Divider>
             <Image Source="img/logo.png" />
             <Content>
                 @Code.TITLE
-                <SubHeader>可以自由组合的 UI 框架。</SubHeader>
+                <SubHeader>The Semantic-UI for Blazor.</SubHeader>
             </Content>
         </Header1>
 
-        <Header2 Divider="true">
-            快速开始
+        <Header2 Divider>
+            Quick Start
         </Header2>
         
  
-        <Table Celled="true" Definition="true" Compact="true">
+        <Table Celled Definition Compact>
             <Tr>
                 <Th HorizontalAlignment="HorizontalAlignment.Center">
-                    <h2>步骤</h2>
+                    <h2>Steps</h2>
                 </Th>
                 <Th HorizontalAlignment="HorizontalAlignment.Center">
                     <h2> Blazor WebAssembly</h2>
@@ -32,21 +32,21 @@
                 <Td>
                     <Icon IconClass="dice one" Size="Size.Huge" />
                 </Td>
-                <Td ColSpan="2">
-                    通过以下方式安装组件包：
+                <Td colspan="2">
+                    Install as below:
                     <br />
                     <Tab>
-                        <TabItem Title="程序包管理控制台(Package Manager)">
-                            <Segment Color="Color.Grey" Darkness="true">
+                        <TabItem Title="Package Manage Console">
+                            <Segment Color="Color.Grey" Inverted>
                                 @($"PM> Install-Package {@Code.TITLE} -Version {verion}")
                             </Segment>
                         </TabItem>
-                        <TabItem Title=".NET CLI(命令行)">
-                            <Segment Darkness="true">
+                        <TabItem Title=".NET CLI">
+                            <Segment Inverted>
                                 @($"dotnet add package {@Code.TITLE} --version {verion}")
                             </Segment>
                         </TabItem>
-                        <TabItem Title="PackageReference(.csproj)">
+                        <TabItem Title="PackageReference">
                 @Code.GetCode($@"
 ```html
 <PackageReference Include=""{@Code.TITLE}"" Version=""{verion}"" />
@@ -62,7 +62,7 @@
                 </Td>
                 <Td>
                     @Code.GetCode(@"
-在 `index.html` 引入
+Import css in `index.html`
 ```html
 <link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
 ````
@@ -70,7 +70,7 @@
                 </Td>
                 <Td>
                     @Code.GetCode(@"
-在 `_Host.cshtml` 引入
+Import css in `_Host.cshtml`
 ```html
 <link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
 ````
@@ -84,10 +84,10 @@
                 <td>
                     @Code.GetCode(@"
 ```cs
-//在 Program.cs 中
+//In Program.cs
 
 //...
-builder.Services.AddBlamanticUI();//添加服务
+Builder.Services.AddBlamanticUI();
 //...
 ```
 ")
@@ -95,12 +95,12 @@ builder.Services.AddBlamanticUI();//添加服务
                 <td>
                     @Code.GetCode(@"
 ```cs
-// 在 Startup.cs 中
+// In Startup.cs
 
 public void ConfigureServices(IServiceCollection services)
 {
 //...
-services.AddBlamanticUI(); //添加服务
+services.AddBlamanticUI();
 //...
 }
 ```
@@ -111,8 +111,8 @@ services.AddBlamanticUI(); //添加服务
                 <Td>
                     <Icon IconClass="dice four" Size="Size.Huge" />
                 </Td>
-                <Td ColSpan="2">
-                    在 <code>_Import.razor</code> 引入命名空间 <code>BlamanticUI</code>
+                <Td colspan="2">
+                    In <code>_Import.razor</code> using <code>BlamanticUI</code>
                 </Td>
             </Tr>
             <Tr>
@@ -121,7 +121,7 @@ services.AddBlamanticUI(); //添加服务
                 </td>
                 <td colspan="2">
                     @Code.GetCode(@"
-修改 `App.razor` 添加 `BlamanticUIContainer` 用于加载动态组件
+Modify `App.razor` to add `BlamanticUIContainer` for loading dynamic component like 'Modal','Toaster' etc.
 ```html
 <Router AppAssembly=""@typeof(Program).Assembly"">
     <Found Context=""routeData"">
@@ -134,7 +134,7 @@ services.AddBlamanticUI(); //添加服务
     </NotFound>
 </Router>
 
-<BlamanticUIContainer /> <!--动态组件加载容器-->
+<BlamanticUIContainer /> <!--Dynamic container here-->
 ```
 ")
                 </td>
@@ -144,26 +144,26 @@ services.AddBlamanticUI(); //添加服务
 
     </Segment>
 
-    <Container Fluid="true">
-        <Grid EqualWidth="true">
+    <Container Fluid>
+        <Grid EqualWidth>
             <Row>
                 <Column>
-                    <Header2 Divider="true">按钮</Header2>
+                    <Header2 Divider>Button</Header2>
                     <Tab>
-                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
+                        <TabItem Title="Run" AdditionalStyles="@tabItemStyle">
                             <ButtonGroup>
-                                <Button>按钮1</Button>
-                                <Button Emphasis="Emphasis.Primary">按钮2</Button>
-                                <Button Color="Color.Pink">按钮3</Button>
+                                <Button>Default</Button>
+                                <Button Emphasis="Emphasis.Primary">Primary</Button>
+                                <Button Color="Color.Pink">Pink</Button>
                             </ButtonGroup>
                         </TabItem>
-                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                        <TabItem Title="Code" AdditionalStyles="@tabItemStyle">
                         @Code.GetCode(@"
 ```html
 <ButtonGroup>
-    <Button>按钮1</Button>
-    <Button Emphasis=""Emphasis.Primary"">按钮2</Button>
-    <Button Color=""Color.Pink"">按钮3</Button>
+    <Button>Default</Button>
+    <Button Emphasis=""Emphasis.Primary"">Primary</Button>
+    <Button Color=""Color.Pink"">Pink</Button>
 </ButtonGroup>
 ```
 ")
@@ -171,53 +171,51 @@ services.AddBlamanticUI(); //添加服务
                     </Tab>
                 </Column>
                 <Column>
-                    <Header2 Divider="true">表单</Header2>
+                    <Header2 Divider>Form</Header2>
                     <Tab>
-                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
+                        <TabItem Title="Run" AdditionalStyles="@tabItemStyle">
 
                             <Form Model="this">
                                 <DataAnnotationsValidator />
-                                <Fields Inline="true">
+                                <Fields Inline>
                                     <Field For="()=>UserName">
                                         <InputBox Icon="HorizontalPosition.Left">
                                             <Icon IconClass="user" />
-                                            <InputText @bind-Value="UserName" placeholder="用户名" />
+                                            <InputText @bind-Value="UserName" placeholder="User name" />
                                         </InputBox>
                                     </Field>
                                     <Field For="()=>Password">
                                         <InputBox Icon="HorizontalPosition.Left">
                                             <Icon IconClass="lock" />
-                                            <InputText @bind-Value="Password" placeholder="密码" type="password" />
+                                            <InputText @bind-Value="Password" placeholder="Password" type="password" />
                                         </InputBox>
                                     </Field>
-                                    <Button Emphasis="Emphasis.Positive">
-                                        <Icon IconClass="check" />
-                                        提 交
+                                    <Button Emphasis="Emphasis.Positive">                                        
+                                        Submit
                                     </Button>
                                 </Fields>
                             </Form>
                         </TabItem>
-                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                        <TabItem Title="Code" AdditionalStyles="@tabItemStyle">
                             @Code.GetCode(@"
 ```html
 <Form Model=""this"">
 <DataAnnotationsValidator/>
-<Fields Inline=""true"">
+<Fields Inline>
     <Field For=""()=>UserName"">
         <InputBox Icon=""HorizontalPosition.Left"">
             <Icon IconClass=""user"" />
-            <InputText @bind-Value=""UserName"" placeholder=""用户名"" />
+            <InputText @bind-Value=""UserName"" placeholder=""User name"" />
         </InputBox>
     </Field>
     <Field For=""()=>Password"">
         <InputBox Icon=""HorizontalPosition.Left"">
             <Icon IconClass=""lock"" />
-            <InputText @bind-Value=""Password"" placeholder=""密码"" type=""password""/>
+            <InputText @bind-Value=""Password"" placeholder=""Password"" type=""password""/>
         </InputBox>
     </Field>
     <Button Emphasis=""Emphasis.Positive"">
-        <Icon IconClass=""check"" />
-        提 交
+        Submit
     </Button>
 </Fields>
 </Form>
@@ -229,29 +227,29 @@ services.AddBlamanticUI(); //添加服务
             </Row>
             <Row>
                 <Column>
-                    <Header2 Divider="true">标签</Header2>
+                    <Header2 Divider>Label</Header2>
                     <Tab>
-                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
-                            <Label Image="true" Color="Color.Red">
+                        <TabItem Title="Run" AdditionalStyles="@tabItemStyle">
+                            <Label Image Color="Color.Red">
                                 <Image Source="img/avatar/ade.jpg" /> Ade
                             </Label>
-                            <Label Image="true" Color="Color.Green">
+                            <Label Image Color="Color.Green">
                                 <Image Source="img/avatar/christian.jpg" /> Christian
                             </Label>
-                            <Label Image="true" Color="Color.Brown">
+                            <Label Image Color="Color.Brown">
                                 <Image Source="img/avatar/elliot.jpg" /> Elliot
                             </Label>
                         </TabItem>
-                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                        <TabItem Title="Code" AdditionalStyles="@tabItemStyle">
                             @Code.GetCode(@"
 ```html
-<Label Image=""true"" Color=""Color.Red"">
+<Label Image Color=""Color.Red"">
     <Image Source=""img/avatar/ade.jpg"" /> Ade
 </Label>
-<Label Image=""true"" Color=""Color.Green"">
+<Label Image Color=""Color.Green"">
     <Image Source=""img/avatar/christian.jpg"" /> Christian
 </Label>
-<Label Image=""true"" Color=""Color.Brown"">
+<Label Image Color=""Color.Brown"">
     <Image Source=""img/avatar/elliot.jpg"" /> Elliot
 </Label>
 ```
@@ -260,25 +258,25 @@ services.AddBlamanticUI(); //添加服务
                     </Tab>
                 </Column>
                 <Column>
-                    <Header2 Divider="true">消息</Header2>
+                    <Header2 Divider>Message</Header2>
                     <Tab>
-                        <TabItem Title="运行效果" AdditionalStyles="@tabItemStyle">
-                            <Message State="State.Warning" Icon="true">
+                        <TabItem Title="Run" AdditionalStyles="@tabItemStyle">
+                            <Message State="State.Warning" Icon>
                                 <Icon IconClass="attention" />
                                 <Content>
-                                    <Header>注意！</Header>
-                                    前方有路障，请注意绕行！
+                                    <Header>Attention!</Header>
+                                    Please run another way!
                                 </Content>
                             </Message>
                         </TabItem>
-                        <TabItem Title="示例代码" AdditionalStyles="@tabItemStyle">
+                        <TabItem Title="Code" AdditionalStyles="@tabItemStyle">
                         @Code.GetCode(@"
 ```html
-<Message State=""State.Warning"" Icon=""true"">
+<Message State=""State.Warning"" Icon>
     <Icon IconClass=""attention""/>
     <Content>
-        <Header>注意！</Header>
-        前方有路障，请注意绕行！
+        <Header>Attention!</Header>
+        Please run another way!
     </Content>
 </Message>
 ```
@@ -289,41 +287,41 @@ services.AddBlamanticUI(); //添加服务
             </Row>
             <Row>
                 <Column>
-                    <Header2 Divider="true">模态框</Header2>
+                    <Header2 Divider>Modal</Header2>
                     <Tab>
-                        <TabItem Title="运行效果">
-                            <Button Color="Color.Blue" @onclick="@(e=>DialogService.ShowAlert("今天天气真好"))">提示框</Button>
-                            <Button Color="Color.Yellow" @onclick="@(e=>DialogService.ShowConfirm("确定要删除吗"))">确认框</Button>
-                            <Button Color="Color.Purple" @onclick="@(e=>DialogService.ShowPropmt("你输入了什么"))">弹出框</Button>
+                        <TabItem Title="Run">
+                            <Button Color="Color.Blue" @onclick="@(e=>DialogService.ShowAlert("A sunny day"))">Alert</Button>
+                            <Button Color="Color.Yellow" @onclick="@(e=>DialogService.ShowConfirm("Are you sure?"))">Confirm</Button>
+                            <Button Color="Color.Purple" @onclick="@(e=>DialogService.ShowPropmt("What is your input"))">Prompt</Button>
                         </TabItem>
-                        <TabItem Title="示例代码">
+                        <TabItem Title="Code">
                             @Code.GetCode(@"
 ```html
-<Button Color=""Color.Blue"" @onclick=""@(e=>DialogService.ShowAlert(""今天天气真好""))"">提示框</Button>
-<Button Color=""Color.Yellow"" @onclick=""@(e=>DialogService.ShowAlert(""确定要删除吗""))"">确认框</Button>
-<Button Color=""Color.Purple"" @onclick=""@(e=>DialogService.ShowAlert(""你输入了什么""))"">弹出框</Button>
+<Button Color=""Color.Blue"" @onclick=""@(e=>DialogService.ShowAlert(""A sunny day""))"">Alert</Button>
+<Button Color=""Color.Yellow"" @onclick=""@(e=>DialogService.ShowAlert(""Are you sure?""))"">Confirm</Button>
+<Button Color=""Color.Purple"" @onclick=""@(e=>DialogService.ShowAlert(""What is your input""))"">Prompt</Button>
 ```
 ")
                         </TabItem>
                     </Tab>
                 </Column>
                 <Column>
-                    <Header2 Divider="true">提示消息</Header2>
+                    <Header2 Divider>Toaster</Header2>
                     <Tab>
-                        <TabItem Title="运行效果">
-                            <Button Color="Color.Green" @onclick="@(e=>ToastService.ShowSuccess("提交成功"))">成功</Button>
-                            <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowError("表单出现了错误"))">错误</Button>
-                            <Button Color="Color.Yellow" @onclick="@(e=>ToastService.ShowWarning("你的数据已经上传到云端"))">注意</Button>
-                            <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("提示一下"))">提示</Button>
+                        <TabItem Title="Run">
+                            <Button Color="Color.Green" @onclick="@(e=>ToastService.ShowSuccess("Submit successfully"))">Success</Button>
+                            <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowError("Form has errors"))">Error</Button>
+                            <Button Color="Color.Yellow" @onclick="@(e=>ToastService.ShowWarning("Do not input your password"))">Warning</Button>
+                            <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("Here is an information"))">Information</Button>
                             <ToastContainer />
                         </TabItem>
-                        <TabItem Title="示例代码">
+                        <TabItem Title="Code">
                             @Code.GetCode(@"
 ```html
-<Button Color=""Color.Green"" @onclick=""@(e=>ToastService.ShowSuccess(""提交成功""))"">成功</Button>
-<Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowError(""表单出现了错误""))"">错误</Button>
-<Button Color=""Color.Yellow"" @onclick=""@(e=>ToastService.ShowWarning(""你的数据已经上传到云端""))"">注意</Button>
-<Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""提示一下""))"">提示</Button>
+<Button Color=""Color.Green"" @onclick=""@(e=>ToastService.ShowSuccess(""Submit successfully""))"">Success</Button>
+<Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowError(""Form has errors""))"">Error</Button>
+<Button Color=""Color.Yellow"" @onclick=""@(e=>ToastService.ShowWarning(""Do not input your password""))"">Warning</Button>
+<Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""Here is an information""))"">Information</Button>
 ```
 ")
                         </TabItem>
@@ -335,9 +333,9 @@ services.AddBlamanticUI(); //添加服务
 </div>
 @using System.ComponentModel.DataAnnotations
 @code{
-    [Required(ErrorMessage = "字段是必填项")]
+    [Required]
     public string UserName { get; set; }
-    [Required(ErrorMessage = "字段是必填项")]
+    [Required]
     public string Password { get; set; }
 
     string tabItemStyle = "height:100px;overflow-y:auto";

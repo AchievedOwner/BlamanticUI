@@ -16,8 +16,8 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
-    public class Toaster : BlamanticChildContentComponentBase, IHasUIComponent, IHasColor, IHasState,IHasDarkness
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
+    public class Toaster : BlamanticChildContentComponentBase, IHasUIComponent, IHasColor, IHasState,IHasInverted
     {
         /// <summary>
         /// Gets or sets the identifier.
@@ -41,12 +41,12 @@ namespace BlamanticUI
         /// </summary>
         [Parameter][CssClass] public Color? Color { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter][CssClass]public bool Darkness { get; set; }
+        [Parameter][CssClass]public bool Inverted { get; set; }
 
         /// <summary>
         /// Gets or sets the icon class.

@@ -24,7 +24,7 @@
                     </Header>
                     <Content>
                         以下是您需要进行审批的内容：
-                        <List Ordered="true">
+                        <List Ordered>
                             <Item>
                                 条件1：xxxxxxxxxxxxxx
                             </Item>
@@ -52,7 +52,7 @@
     </Header>
     <Content>
         以下是您需要进行审批的内容：
-        <List Ordered=""true"">
+        <List Ordered>
             <Item>
                 条件1：xxxxxxxxxxxxxx
             </Item>
@@ -76,10 +76,10 @@
         </PresentationPart>
         <PresentationPart Title="简约模式">
             <Description>
-                设置 <code>Basic="true"</code> 将模态框的本身的白色背景消除。
+                设置 <code>Basic</code> 将模态框的本身的白色背景消除。
             </Description>
             <RunTemplate>
-                <Modal @ref="refModal2" Basic="true">
+                <Modal @ref="refModal2" Basic>
                     <Header>
                         简约模态框
                     </Header>
@@ -92,7 +92,7 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal @ref=""refModal1"" Basic=""true"">
+<Modal @ref=""refModal1"" Basic>
     <Header>
         简约模态框
     </Header>
@@ -107,15 +107,15 @@
         </PresentationPart>
         <PresentationPart Title="带图片的内容">
     <Description>
-        设置 <code>ImageContent="true"</code> 可以在 <code>Content</code> 模版用 <code>Image</code> 组件和 <code>Description</code> 组件进行左右排版。
+        设置 <code>ImageContent</code> 可以在 <code>Content</code> 模版用 <code>Image</code> 组件和 <code>Description</code> 组件进行左右排版。
     </Description>
     <RunTemplate>
-        <Modal @ref="refModal3" ImageContent="true">
+        <Modal @ref="refModal3" ImageContent>
             <Header>
                 图片模态框
             </Header>
             <Content>
-                <Image Source="/img/image.png" Fluid="true" UI="true" Size="Size.Small" />
+                <Image Source="/img/image.png" Fluid UI Size="Size.Small" />
                 <Description>
                     这里填写图片的描述
                 </Description>
@@ -126,12 +126,12 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal @ref=""refModal3"" ImageContent=""true"">
+<Modal @ref=""refModal3"" ImageContent>
     <Header>
         图片模态框
     </Header>
     <Content>
-        <Image Source=""/img/image.png"" Fluid=""true"" UI=""true"" Size=""Size.Small"" />
+        <Image Source=""/img/image.png"" Fluid UI Size=""Size.Small"" />
         <Description>
             这里填写图片的描述
         </Description>
@@ -143,10 +143,10 @@
 </PresentationPart>
         <PresentationPart Title="100% 宽度">
     <Description>
-        设置 <code>FullWidth="true"</code> 会将宽度撑满整个浏览器。
+        设置 <code>FullWidth</code> 会将宽度撑满整个浏览器。
     </Description>
     <RunTemplate>
-        <Modal @ref="refModal4" FullWidth="true">
+        <Modal @ref="refModal4" FullWidth>
             <Content>
                 无论多少我都会撑满整个宽度
             </Content>
@@ -156,7 +156,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal @ref=""refModal4"" FullWidth=""true"">
+<Modal @ref=""refModal4"" FullWidth>
     <Content>
         无论多少我都会撑满整个宽度
     </Content>
@@ -167,10 +167,10 @@
 </PresentationPart>
         <PresentationPart Title="全屏">
     <Description>
-        设置 <code>FullScreen="true"</code> 可以让模态框全屏显示。
+        设置 <code>FullScreen</code> 可以让模态框全屏显示。
     </Description>
     <RunTemplate>
-        <Modal @ref="refModal5" FullScreen="true">
+        <Modal @ref="refModal5" FullScreen>
             <Header>
                 全屏显示
             </Header>
@@ -178,7 +178,7 @@
                 欢迎来到全屏模式，在这里尽情体验全屏带来的酸爽感觉吧！！！
             </Content>
             <Footer>
-                <Button Color="Color.Orange" @onclick="()=>refModal5.Active(false)" Basic="true">关闭</Button>
+                <Button Color="Color.Orange" @onclick="()=>refModal5.Active(false)" Basic>关闭</Button>
             </Footer>
         </Modal>
         <Button @onclick="()=>refModal5.Active()">弹出对话框</Button>
@@ -186,7 +186,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal @ref=""refModal5"" FullScreen=""true"">
+<Modal @ref=""refModal5"" FullScreen>
     <Header>
         全屏显示
     </Header>
@@ -194,7 +194,7 @@
         欢迎来到全屏模式，在这里尽情体验全屏带来的酸爽感觉吧！！！
     </Content>
     <Footer>
-        <Button Color=""Color.Orange"" @onclick=""()=>refModal5.Active(false)"" Basic=""true"">关闭</Button>
+        <Button Color=""Color.Orange"" @onclick=""()=>refModal5.Active(false)"" Basic>关闭</Button>
     </Footer>
 </Modal>
 ```
@@ -292,10 +292,10 @@
 </PresentationPart>
         <PresentationPart Title="互换背景">
             <Description>
-                设置 <code>Darkness="true"</code> 互换遮罩层与模态框的背景深浅样式。
+                设置 <code>Inverted</code> 互换遮罩层与模态框的背景深浅样式。
             </Description>
     <RunTemplate>
-        <Modal Darkness="true" @ref="refModal11">
+        <Modal Inverted @ref="refModal11">
             <Header>
                 互换背景的深浅
             </Header>
@@ -312,7 +312,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal Darkness=""true"" @ref=""refModal11"">
+<Modal Inverted @ref=""refModal11"">
     <Header>
         深色背景
     </Header>
@@ -432,10 +432,10 @@
 </PresentationPart>
         <PresentationPart Title="内容滚动条">
     <Description>
-        设置 <code>Scrollable="true"</code> 可以让超长的内容页出现滚动条。
+        设置 <code>Scrollable</code> 可以让超长的内容页出现滚动条。
     </Description>
     <RunTemplate>
-        <Modal @ref="refModal14" Scrollable="true">
+        <Modal @ref="refModal14" Scrollable>
             <Header>
                 超级长的内容
             </Header>
@@ -468,7 +468,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Modal @ref=""refModal13"" Scrollable=""true"">
+<Modal @ref=""refModal13"" Scrollable>
 ...
 </Modal>
 ```
@@ -520,7 +520,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>互换遮罩层与模态框的背景深浅样式</td>
                     <td>boo</td>
                     <td></td>

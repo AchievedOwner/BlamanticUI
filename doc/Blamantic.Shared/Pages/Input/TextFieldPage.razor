@@ -5,7 +5,7 @@
                          "文本框","密码框","多行文本框","数字框","显示标签的文本","触发方式","图标","图标模式","标签模式","行为模式","透明边框","尺寸"
                      })">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             输入控件
             <SubHeader>
                 输入是用于从用户那里引出响应的字段
@@ -37,8 +37,8 @@ class User
 ```
 ")
         </Message>
-        <Message State="State.Warning" Icon="true">
-            <Icon IconClass="warning" Circular="true"/>
+        <Message State="State.Warning" Icon>
+            <Icon IconClass="warning" Circular/>
             <Content>
                 使用 <code>Form</code> 代替 <code>EditForm</code> 并使用 <code>Field</code> 包装字段。
             </Content>
@@ -197,7 +197,7 @@ class User
 ")
             </CodeTemplate>
         </PresentationPart>
-        <Header2 Divider="true">装饰</Header2>
+        <Header2 Divider>装饰</Header2>
         <PresentationPart Title="图标">
             <Description>
                 设置 <code>Icon</code> 图标的类名称，会在文本框的左边显示图标。
@@ -223,19 +223,19 @@ class User
         </PresentationPart>
         <PresentationPart Title="图标模式">
             <Description>
-                设置 <code>IconModel="true"</code> 后可以在 <code>Left</code> 或 <code>Right</code> 设置 UI 片段呈现图标。
+                设置 <code>IconModel</code> 后可以在 <code>Left</code> 或 <code>Right</code> 设置 UI 片段呈现图标。
             </Description>
             <RunTemplate>
                 <Form Model="user">
                     <Field>
-                        <TextField @bind-Value="user.UserName" IconMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.UserName" IconMode DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
-                                <Icon IconClass="search" Circular="true" Darkness="true" Color="Color.Pink" Linked="true" />
+                                <Icon IconClass="search" Circular Inverted Color="Color.Pink" Linked />
                             </Right>
                         </TextField>
-                        <TextField @bind-Value="user.Password" IconMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.Password" IconMode DisplayNameType="DisplayNameType.Placeholder">
                             <Left>
-                                <Icon IconClass="lock" Circular="true" Darkness="true" Color="Color.Red" />
+                                <Icon IconClass="lock" Circular Inverted Color="Color.Red" />
                             </Left>
                         </TextField>
                     </Field>
@@ -246,14 +246,14 @@ class User
 ```html
 <Form Model=""user"">
     <Field>
-        <TextField @bind-Value=""user.UserName"" IconMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+        <TextField @bind-Value=""user.UserName"" IconMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Right>
-                <Icon IconClass=""user"" Circular=""true"" Darkness=""true"" Color=""Color.Pink"" />
+                <Icon IconClass=""user"" Circular Inverted Color=""Color.Pink"" />
             </Right>
         </TextField>
-        <TextField @bind-Value=""user.Password"" IconMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+        <TextField @bind-Value=""user.Password"" IconMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Left>
-                <Icon IconClass=""lock"" Circular=""true"" Darkness=""true"" Color=""Color.Red"" />
+                <Icon IconClass=""lock"" Circular Inverted Color=""Color.Red"" />
             </Left>
         </TextField>
     </Field>
@@ -269,23 +269,23 @@ class User
             <RunTemplate>
                 <Form Model="user">
                     <Field>
-                        <TextField @bind-Value="user.UserName" LabelMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.UserName" LabelMode DisplayNameType="DisplayNameType.Placeholder">
                             <Left>
-                                <Label Basic="true">用户名：</Label>
+                                <Label Basic>用户名：</Label>
                             </Left>
                         </TextField>
                     </Field>
                     <Field>
-                        <TextField @bind-Value="user.Age" LabelMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.Age" LabelMode DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
                                 <Label>岁</Label>
                             </Right>
                         </TextField>
                     </Field>
                     <Field>
-                        <TextField @bind-Value="user.Age" Icon="tag" LabelMode="true" Placeholder="图标和标签可以混合搭配" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.Age" Icon="tag" LabelMode Placeholder="图标和标签可以混合搭配" DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
-                                <Label Tag="true" Color="Color.Orange">新标签</Label>
+                                <Label Tag Color="Color.Orange">新标签</Label>
                             </Right>
                         </TextField>
                     </Field>
@@ -299,7 +299,7 @@ class User
             <RunTemplate>
                 <Form Model="user">
                     <Field>
-                        <TextField @bind-Value="user.UserName" ActionMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.UserName" ActionMode DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
                                 <Button Color="Color.Blue">
                                     搜索
@@ -308,25 +308,25 @@ class User
                         </TextField>
                     </Field>
                     <Field>
-                        <TextField @bind-Value="user.UserName" LabelMode="true" ActionMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.UserName" LabelMode ActionMode DisplayNameType="DisplayNameType.Placeholder">
                             <Left>
                                 <Label>关键字</Label>
                             </Left>
                             <Right>
-                                <Button Basic="true" Color="Color.Black">
+                                <Button Basic Color="Color.Black">
                                     <Icon IconClass="search" />
                                 </Button>
                             </Right>
                         </TextField>
                     </Field>
                     <Field>
-                        <TextField @bind-Value="user.UserName" Icon="search" ActionMode="true" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.UserName" Icon="search" ActionMode DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
-                                <Button Animated="true" Color="Color.Green">
-                                    <Content Visibile="true" >
+                                <Button Animated Color="Color.Green">
+                                    <Content Visibile >
                                         <Icon IconClass="cart" />
                                     </Content>
-                                    <Content Hidden="true">
+                                    <Content Hidden>
                                         购物车
                                     </Content>
                                 </Button>
@@ -340,7 +340,7 @@ class User
 ```html
 <Form Model=""user"">
     <Field>
-        <TextField @bind-Value=""user.UserName"" ActionMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+        <TextField @bind-Value=""user.UserName"" ActionMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Right>
                 <Button Color=""Color.Blue"">
                     搜索
@@ -349,25 +349,25 @@ class User
         </TextField>
     </Field>
     <Field>
-        <TextField @bind-Value=""user.UserName"" LabelMode=""true"" ActionMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+        <TextField @bind-Value=""user.UserName"" LabelMode ActionMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Left>
                 <Label>关键字</Label>
             </Left>
             <Right>
-                <Button Basic=""true"" Color=""Color.Black"">
+                <Button Basic Color=""Color.Black"">
                     <Icon IconClass=""search"" />
                 </Button>
             </Right>
         </TextField>
     </Field>
     <Field>
-        <TextField @bind-Value=""user.UserName"" Icon=""search"" ActionMode=""true"" DisplayNameType=""DisplayNameType.Placeholder"">
+        <TextField @bind-Value=""user.UserName"" Icon=""search"" ActionMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Right>
-                <Button Animated=""true"" Color=""Color.Green"">
-                    <Content Visibile=""true"" >
+                <Button Animated Color=""Color.Green"">
+                    <Content Visibile >
                         <Icon IconClass=""cart"" />
                     </Content>
-                    <Content Hidden=""true"">
+                    <Content Hidden>
                         购物车
                     </Content>
                 </Button>
@@ -381,20 +381,20 @@ class User
         </PresentationPart>
         <PresentationPart Title="透明边框">
             <Description>
-                设置 <code>Transparent="true"</code> 隐藏边框。
+                设置 <code>Transparent</code> 隐藏边框。
             </Description>
             <RunTemplate>
                 <Form Model="user">
                         <Field>
-                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent="true" />
+                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent />
                         </Field>
                         <Field>
-                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent="true" Icon="calendar" />
+                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent Icon="calendar" />
                         </Field>
                         <Field>
-                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent="true" IconMode="true">
+                            <TextField @bind-Value="user.Search" DisplayNameType="DisplayNameType.Placeholder" Transparent IconMode>
                                 <Right>
-                                    <Icon IconClass="time" Circular="true" />
+                                    <Icon IconClass="time" Circular />
                                 </Right>
                             </TextField>
                         </Field>
@@ -405,15 +405,15 @@ class User
 ```html
 <Form Model=""user"">
         <Field>
-            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent=""true"" />
+            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent />
         </Field>
         <Field>
-            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent=""true"" Icon=""calendar"" />
+            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent Icon=""calendar"" />
         </Field>
         <Field>
-            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent=""true"" IconMode=""true"">
+            <TextField @bind-Value=""user.Search"" DisplayNameType=""DisplayNameType.Placeholder"" Transparent IconMode>
                 <Right>
-                    <Icon IconClass=""time"" Circular=""true"" />
+                    <Icon IconClass=""time"" Circular />
                 </Right>
             </TextField>
         </Field>

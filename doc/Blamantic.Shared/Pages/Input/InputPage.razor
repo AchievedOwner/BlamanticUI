@@ -31,17 +31,17 @@
         </PresentationPart>
         <PresentationPart Title="焦点状态">
     <Description>
-        设置 <code>Focus="true"</code> 使控件呈现焦点状态。
+        设置 <code>Focus</code> 使控件呈现焦点状态。
     </Description>
     <RunTemplate>
-        <InputBox Focus="true">
+        <InputBox Focus>
             <input placeholder="文本框" />
         </InputBox>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<InputBox Focus=""true"">
+<InputBox Focus>
     <input placeholder=""文本框"" />
 </InputBox>
 ```
@@ -64,7 +64,7 @@
         </InputBox>
         <br />
         <InputBox Icon="HorizontalPosition.Left">
-            <Icon IconClass="search" Circular="true" Darkness="true"/>
+            <Icon IconClass="search" Circular Inverted/>
             <input placeholder="关键字" />
         </InputBox>
     </RunTemplate>
@@ -82,7 +82,7 @@
 </InputBox>
 <br />
 <InputBox Icon=""HorizontalPosition.Left"">
-    <Icon IconClass=""search"" Circular=""true"" Darkness=""true""/>
+    <Icon IconClass=""search"" Circular Inverted/>
     <input placeholder=""关键字"" />
 </InputBox>
 ```
@@ -102,7 +102,7 @@
         <br />
         <InputBox Labeled="HorizontalPosition.Right">
             <input />
-            <Label Dropdown="true">
+            <Label Dropdown>
                 <Text>.com</Text>
                 <Icon IconClass="dropdown" />
                 <Menu>
@@ -116,26 +116,26 @@
         <br />
         <InputBox Labeled="HorizontalPosition.Right">
             <input 身高 />
-            <Label Basic="true">CM</Label>
+            <Label Basic>CM</Label>
         </InputBox>
         <br />
         <br />
 
-        <Message State="State.Info" Compact="true">
+        <Message State="State.Info" Compact>
             如果前后都有 <code>Label</code> 则设置 <code>Labeled="HorizontalPosition.Right"</code>。
         </Message>
         <br />
         <InputBox Labeled="HorizontalPosition.Right">
             <Label>￥</Label>
             <input placeholder="价格" />
-            <Label Basic="true">.00</Label>
+            <Label Basic>.00</Label>
         </InputBox>
         <br />
         <br />
         <InputBox Labeled="HorizontalPosition.Right" Icon="HorizontalPosition.Right">
             <Icon IconClass="tags" />
             <input placeholder="价格" />
-            <Label Tag="true" Color="Color.Brown">新标签</Label>
+            <Label Tag Color="Color.Brown">新标签</Label>
         </InputBox>
 
     </RunTemplate>
@@ -150,7 +150,7 @@
 <br />
 <InputBox Labeled=""HorizontalPosition.Right"">
     <input />
-    <Label Dropdown=""true"">
+    <Label Dropdown>
         <Text>.com</Text>
         <Icon IconClass=""dropdown"" />
         <Menu>
@@ -164,26 +164,26 @@
 <br />
 <InputBox Labeled=""HorizontalPosition.Right"">
     <input 身高 />
-    <Label Basic=""true"">CM</Label>
+    <Label Basic>CM</Label>
 </InputBox>
 <br />
 <br />
 
-<Message State=""State.Info"" Compact=""true"">
+<Message State=""State.Info"" Compact>
     如果前后都有 <code>Label</code> 则设置 <code>Labeled=""HorizontalPosition.Right""</code>。
 </Message>
 <br />
 <InputBox Labeled=""HorizontalPosition.Right"">
     <Label>￥</Label>
     <input placeholder=""价格"" />
-    <Label Basic=""true"">.00</Label>
+    <Label Basic>.00</Label>
 </InputBox>
 <br />
 <br />
 <InputBox Labeled=""HorizontalPosition.Right"" Icon=""HorizontalPosition.Right"">
     <Icon IconClass=""tags"" />
     <input placeholder=""价格"" />
-    <Label Tag=""true"" Color=""Color.Brown"">新标签</Label>
+    <Label Tag Color=""Color.Brown"">新标签</Label>
 </InputBox>
 ```
 ")
@@ -258,7 +258,7 @@
 <br />
 <br />
 <InputBox Action=""HorizontalPosition.Left"">
-    <Button Color=""Color.Blue"" Labeled=""true"" Icon=""true"">
+    <Button Color=""Color.Blue"" Labeled Icon>
         <Icon IconClass=""cart"" />
         加入购物车
     </Button>
@@ -270,21 +270,21 @@
 </PresentationPart>
         <PresentationPart Title="透明">
     <Description>
-        设置 <code>Transparent="true"</code> 让组件内的边框透明。
+        设置 <code>Transparent</code> 让组件内的边框透明。
     </Description>
     <RunTemplate>
-        <InputBox Transparent="true">
+        <InputBox Transparent>
             <input placeholder="关键字" />
         </InputBox>
         <br />
         <br />
-        <InputBox Transparent="true" Icon="HorizontalPosition.Left">
+        <InputBox Transparent Icon="HorizontalPosition.Left">
             <input placeholder="关键字" />
             <Icon IconClass="search" />
         </InputBox>
         <br />
         <br />
-        <InputBox Transparent="true" Icon="HorizontalPosition.Right">
+        <InputBox Transparent Icon="HorizontalPosition.Right">
             <input placeholder="关键字" />
             <Icon IconClass="search" />
         </InputBox>
@@ -292,18 +292,18 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<InputBox Transparent=""true"">
+<InputBox Transparent>
     <input placeholder=""关键字"" />
 </InputBox>
 <br />
 <br />
-<InputBox Transparent=""true"" Icon=""HorizontalPosition.Left"">
+<InputBox Transparent Icon=""HorizontalPosition.Left"">
     <input placeholder=""关键字"" />
     <Icon IconClass=""search"" />
 </InputBox>
 <br />
 <br />
-<InputBox Transparent=""true"" Icon=""HorizontalPosition.Right"">
+<InputBox Transparent Icon=""HorizontalPosition.Right"">
     <input placeholder=""关键字"" />
     <Icon IconClass=""search"" />
 </InputBox>
@@ -313,22 +313,22 @@
 </PresentationPart>
         <PresentationPart Title="反色背景">
     <Description>
-        设置 <code>Darkness="true"</code> 可以显示在反色背景中。
+        设置 <code>Inverted</code> 可以显示在反色背景中。
     </Description>
     <RunTemplate>
-        <Segment Darkness="true">
-            <InputBox Darkness="true">
+        <Segment Inverted>
+            <InputBox Inverted>
                 <input placeholder="关键字" />
             </InputBox>
             <br />
             <br />
-            <InputBox Darkness="true" Icon="HorizontalPosition.Left">
+            <InputBox Inverted Icon="HorizontalPosition.Left">
                 <input placeholder="关键字" />
                 <Icon IconClass="search" />
             </InputBox>
             <br />
             <br />
-            <InputBox Darkness="true" Icon="HorizontalPosition.Right" Transparent="true">
+            <InputBox Inverted Icon="HorizontalPosition.Right" Transparent>
                 <input placeholder="关键字" />
                 <Icon IconClass="search" />
             </InputBox>
@@ -337,19 +337,19 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <InputBox Darkness=""true"">
+<Segment Inverted>
+    <InputBox Inverted>
         <input placeholder=""关键字"" />
     </InputBox>
     <br />
     <br />
-    <InputBox Darkness=""true"" Icon=""true"">
+    <InputBox Inverted Icon>
         <input placeholder=""关键字"" />
         <Icon IconClass=""search"" />
     </InputBox>
     <br />
     <br />
-    <InputBox Darkness=""true"" Icon=""false"" Transparent=""true"">
+    <InputBox Inverted Icon=""false"" Transparent>
         <input placeholder=""关键字"" />
         <Icon IconClass=""search"" />
     </InputBox>
@@ -360,17 +360,17 @@
 </PresentationPart>
         <PresentationPart Title="撑满">
     <Description>
-        设置 <code>Fluid="true"</code> 撑满整个父容器。
+        设置 <code>Fluid</code> 撑满整个父容器。
     </Description>
     <RunTemplate>
-        <InputBox Fluid="true">
+        <InputBox Fluid>
             <input placeholder="关键字"/>
         </InputBox>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<InputBox Fluid=""true"">
+<InputBox Fluid>
     <input placeholder=""关键字""/>
 </InputBox>
 ```
@@ -537,7 +537,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>反色背景</td>
                     <td>bool</td>
                     <td></td>

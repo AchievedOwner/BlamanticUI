@@ -19,6 +19,6 @@ namespace BlamanticUI.Abstractions
         /// Gets or sets component can be UI component.
         /// </summary>
         /// <value><c>true</c> to be UI component,otherwise <c>false</c>.</value>
-        [CssClass("ui", Order = -9999)] bool? UI { get; set; }
+        [CssClass("ui", Order = -9999)] bool UI { get; set; }
     }
 }

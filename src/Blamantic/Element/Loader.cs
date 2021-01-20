@@ -15,7 +15,7 @@ namespace BlamanticUI
     /// Represents a state loader that renders a rotatable loop as a div element with a state under load.
     /// </summary>
     [HtmlTag]
-    public class Loader : BlamanticChildContentComponentBase, IHasUIComponent, IHasDisabled, IHasActive, IHasColor, IHasDarkness, IHasInline, IHasSize, IHasTexted, IHasCentered
+    public class Loader : BlamanticChildContentComponentBase, IHasUIComponent, IHasDisabled, IHasActive, IHasColor, IHasInverted, IHasInline, IHasSize, IHasTexted, IHasCentered
     {
         /// <summary>
         /// Gets or sets a value indicating whether this is disabled.
@@ -36,12 +36,12 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter] public bool Darkness { get; set; }
+        [Parameter] public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether is inline paragraph.
         /// </summary>

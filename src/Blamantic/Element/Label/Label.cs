@@ -15,13 +15,13 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasBasic" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
     [HtmlTag]
-    public class Label : BlamanticChildContentComponentBase,IHasUIComponent, IHasBasic, IHasColor, IHasDarkness, IHasAttatched, IHasCircular, IHasSize, IHasHorizontal
+    public class Label : BlamanticChildContentComponentBase,IHasUIComponent, IHasBasic, IHasColor, IHasInverted, IHasAttatched, IHasCircular, IHasSize, IHasHorizontal
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Label"/> class.
@@ -41,16 +41,16 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter] public bool Darkness { get; set; }
+        [Parameter] public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets the tag style.
         /// </summary>
-        [Parameter] [CssClass("tag", Order = 18)] public bool? Tag { get; set; }
+        [Parameter] [CssClass("tag", Order = 18)] public bool Tag { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether including <see cref="BlamanticUI.Image"/> component.
         /// </summary>
@@ -68,11 +68,16 @@ namespace BlamanticUI
         /// <value>
         ///   <c>true</c> if attached; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Attached { get; set; }
+        [Parameter][CssClass("attached", Order = 31)] public bool Attached { get; set; }
         /// <summary>
         /// Gets or sets the attach position in vertical.
         /// </summary>
-        [Parameter] public VerticalPosition? AttachedVertical { get; set; }
+        [Parameter] [CssClass(Order = 29)] public VerticalPosition? AttachedVertical { get; set; }
+
+        /// <summary>
+        /// Gets or sets the attach position in horizontal.
+        /// </summary>
+        [Parameter][CssClass(Order = 30)] public HorizontalPosition? AttachedHorizontal { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is circular.
         /// </summary>

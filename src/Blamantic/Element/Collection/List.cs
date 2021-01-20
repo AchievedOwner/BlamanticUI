@@ -50,15 +50,15 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets items has bullete style.
         /// </summary>
-        [Parameter] [CssClass("bulleted")] public bool? Bulleted { get; set; }
+        [Parameter] [CssClass("bulleted")] public bool Bulleted { get; set; }
         /// <summary>
         /// Gets or sets items has order number.
         /// </summary>
-        [Parameter] [CssClass("ordered")] public bool? Ordered { get; set; }
+        [Parameter] [CssClass("ordered")] public bool Ordered { get; set; }
         /// <summary>
         /// Gets or sets items has '.' after order number.
         /// </summary>
-        [Parameter] [CssClass("suffixed")] public bool? Suffixed { get; set; }
+        [Parameter] [CssClass("suffixed")] public bool Suffixed { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is linked style.
         /// </summary>

@@ -31,7 +31,7 @@ namespace BlamanticUI
         /// <value>
         ///   <c>true</c> to be UI component,otherwise <c>false</c>.
         /// </value>
-        [Parameter]public bool? UI { get; set; }
+        [Parameter]public bool UI { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.

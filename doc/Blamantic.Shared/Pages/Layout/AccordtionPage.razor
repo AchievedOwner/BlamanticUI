@@ -52,10 +52,10 @@
         </PresentationPart>
         <PresentationPart Title="琴键风格">
             <Description>
-                设置 <code>Styled="true"</code> 显示琴键风格
+                设置 <code>Styled</code> 显示琴键风格
             </Description>
             <RunTemplate>
-                <Accordion Styled="true">
+                <Accordion Styled>
                     <AccordionItem>
                         <Title>狗的介绍</Title>
                         <Content>
@@ -79,7 +79,7 @@
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Accordion Styled=""true"">
+<Accordion Styled>
     <AccordionItem>
         <Title>...</Title>
         <Content>...</Content>
@@ -101,7 +101,7 @@
                 </Message>
             </Description>
             <RunTemplate>
-                <Accordion Styled="true" InitIndex="1">
+                <Accordion Styled InitIndex="1">
                     <AccordionItem>
                         <Title>狗的介绍</Title>
                         <Content>
@@ -125,7 +125,7 @@
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Accordion Styled=""true""  InitIndex=""1"">
+<Accordion Styled  InitIndex=""1"">
     <AccordionItem>
         <Title>...</Title>
         <Content>...</Content>
@@ -142,10 +142,10 @@
 
         <PresentationPart Title="流式布局">
             <Description>
-                设置 <code>Fluid="true"</code> 将撑满整个父元素的所有宽度。
+                设置 <code>Fluid</code> 将撑满整个父元素的所有宽度。
             </Description>
             <RunTemplate>
-                <Accordion Fluid="true" Styled="true">
+                <Accordion Fluid Styled>
                     <AccordionItem>
                         <Title>狗的介绍</Title>
                         <Content>
@@ -169,7 +169,7 @@
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Accordion Fluid=""true"">
+<Accordion Fluid>
     <AccordionItem>
         <Title>...</Title>
         <Content>...</Content>
@@ -185,11 +185,11 @@
         </PresentationPart>
         <PresentationPart Title="反色模式">
             <Description>
-                设置 <code>Darkness="true"</code> 可以兼容反色模式。
+                设置 <code>Inverted</code> 可以兼容反色模式。
             </Description>
             <RunTemplate>
-                <Segment Darkness=" true">
-                    <Accordion Darkness="true">
+                <Segment Inverted=" true">
+                    <Accordion Inverted>
                         <AccordionItem>
                             <Title>狗的介绍</Title>
                             <Content>
@@ -214,7 +214,7 @@
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Accordion Darkness=""true"">
+<Accordion Inverted>
     <AccordionItem>
         <Title>...</Title>
         <Content>...</Content>

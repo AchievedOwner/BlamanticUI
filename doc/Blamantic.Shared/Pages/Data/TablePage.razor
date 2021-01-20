@@ -28,7 +28,7 @@
         </Message>
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>
@@ -87,7 +87,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>
@@ -152,10 +152,10 @@
         可以对表进行格式化，以强调定义行内容的第一列
     </SubTitle>
     <Description>
-        设置 <code>Definition="true"</code> 可让第一列有一种强调的风格。
+        设置 <code>Definition</code> 可让第一列有一种强调的风格。
     </Description>
     <RunTemplate>
-        <Table Celled="true" Definition="true">
+        <Table Celled Definition>
             <Header>
                 <Tr>
                     <Th></Th>
@@ -186,7 +186,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"" Definition=""true"">
+<Table Celled Definition>
     <Header>
         <Tr>
             <Th></Th>
@@ -220,10 +220,10 @@
 
 <PresentationPart Title="合并行">
     <Description>
-        如果你设置了 <code>RowSpan</code> 参数跨行合并，为了更好的 UI 体验，需要将被跨行的 <code>Td</code> 设置参数 <code>RowSpanned="true"</code>。
+        如果你设置了 <code>RowSpan</code> 参数跨行合并，为了更好的 UI 体验，需要将被跨行的 <code>Td</code> 设置参数 <code>RowSpanned</code>。
     </Description>
     <RunTemplate>
-        <Table Definition="true">
+        <Table Definition>
             <Tr>
                 <Td RowSpan="4">
                     四大银行
@@ -233,21 +233,21 @@
                 </Td>
             </Tr>
             <Tr>
-                <Td RowSpanned="true">
+                <Td RowSpanned>
                 </Td>
                 <Td>
                     工商银行
                 </Td>
             </Tr>
             <Tr>
-                <Td RowSpanned="true">
+                <Td RowSpanned>
                 </Td>
                 <Td>
                     建设银行
                 </Td>
             </Tr>
             <Tr>
-                <Td RowSpanned="true">
+                <Td RowSpanned>
                 </Td>
                 <Td>
                     招商银行
@@ -258,7 +258,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Definition=""true"">
+<Table Definition>
     <Tr>
         <Td RowSpan=""4"">
             四大银行
@@ -268,21 +268,21 @@
         </Td>
     </Tr>
     <Tr>
-        <Td RowSpanned=""true"">
+        <Td RowSpanned>
         </Td>
         <Td>
             工商银行
         </Td>
     </Tr>
     <Tr>
-        <Td RowSpanned=""true"">
+        <Td RowSpanned>
         </Td>
         <Td>
             建设银行
         </Td>
     </Tr>
     <Tr>
-        <Td RowSpanned=""true"">
+        <Td RowSpanned>
         </Td>
         <Td>
             招商银行
@@ -299,7 +299,7 @@
         可以格式化表以显示复杂的结构化数据
     </SubTitle>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th RowSpan="2">
@@ -394,7 +394,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th RowSpan=""2"">
@@ -491,14 +491,14 @@
 </PresentationPart>
 <Message State="State.Warning">
     有时候对于使用 <code>RowSpan</code> 或 <code>ColSpan</code> 的复杂布局以及不同列数的行，这可能会导致一些单元格边框丢失。<br />
-    这时需要设置参数 <code>Structured="true"</code> 以保证正确地显示所有合法的单元格。
+    这时需要设置参数 <code>Structured</code> 以保证正确地显示所有合法的单元格。
 </Message>
 <PresentationPart>
     <Description>
 
     </Description>
     <RunTemplate>
-        <Table Structured="true" Celled="true">
+        <Table Structured Celled>
             <Header>
                 <Tr>
                     <Th RowSpan="2">
@@ -593,7 +593,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Structured=""true"" Celled=""true"">
+<Table Structured Celled>
     <Header>
         <Tr>
             <Th RowSpan=""2"">
@@ -694,7 +694,7 @@
         设置 <code>State</code> 参数配置整行或某一个单元格的高亮醒目的颜色。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -739,7 +739,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -787,10 +787,10 @@
 
 <PresentationPart Title="被选中">
     <Description>
-        设置 <code>Actived="true"</code> 可以让整行或某个单元格处于被选中的状态。
+        设置 <code>Actived</code> 可以让整行或某个单元格处于被选中的状态。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -804,7 +804,7 @@
                     <Td>审批完成</Td>
                     <Td></Td>
                 </Tr>
-                <Tr Actived="true">
+                <Tr Actived>
                     <Td>李四</Td>
                     <Td>选中</Td>
                     <Td></Td>
@@ -815,7 +815,7 @@
                     <Td></Td>
                 </Tr>
                 <Tr>
-                    <Td Actived="true">赵六</Td>
+                    <Td Actived>赵六</Td>
                     <Td>审批完成</Td>
                     <Td></Td>
                 </Tr>
@@ -825,7 +825,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -839,7 +839,7 @@
             <Td>审批完成</Td>
             <Td></Td>
         </Tr>
-        <Tr Actived=""true"">
+        <Tr Actived>
             <Td>李四</Td>
             <Td>选中</Td>
             <Td></Td>
@@ -850,7 +850,7 @@
             <Td></Td>
         </Tr>
         <Tr>
-            <Td Actived=""true"">赵六</Td>
+            <Td Actived>赵六</Td>
             <Td>审批完成</Td>
             <Td></Td>
         </Tr>
@@ -863,10 +863,10 @@
 
 <PresentationPart Title="禁用">
     <Description>
-        设置 <code>Disabled="true"</code> 可以让整行或某个单元格处于禁用状态。
+        设置 <code>Disabled</code> 可以让整行或某个单元格处于禁用状态。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -880,7 +880,7 @@
                     <Td>审批完成</Td>
                     <Td></Td>
                 </Tr>
-                <Tr Disabled="true">
+                <Tr Disabled>
                     <Td>李四</Td>
                     <Td>取消</Td>
                     <Td></Td>
@@ -891,7 +891,7 @@
                     <Td></Td>
                 </Tr>
                 <Tr>
-                    <Td Disabled="true">赵六</Td>
+                    <Td Disabled>赵六</Td>
                     <Td>审批完成</Td>
                     <Td></Td>
                 </Tr>
@@ -901,7 +901,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -915,7 +915,7 @@
             <Td>审批完成</Td>
             <Td></Td>
         </Tr>
-        <Tr Disabled=""true"">
+        <Tr Disabled>
             <Td>李四</Td>
             <Td>取消</Td>
             <Td></Td>
@@ -926,7 +926,7 @@
             <Td></Td>
         </Tr>
         <Tr>
-            <Td Disabled=""true"">赵六</Td>
+            <Td Disabled>赵六</Td>
             <Td>审批完成</Td>
             <Td></Td>
         </Tr>
@@ -942,7 +942,7 @@
         为整行或某一个单元格设置 <code>Marked</code> 参数可以应用为书签的边框，但需要设置 <code>Color</code> 参数设置书签的颜色。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -977,7 +977,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -1018,10 +1018,10 @@
         表格可以指定其单元格内容保持在一行上，而不换行。
     </SubTitle>
     <Description>
-        设置 <code>SingliLine="true"</code> 可以使单元格强制不换行。
+        设置 <code>SingliLine</code> 可以使单元格强制不换行。
     </Description>
     <RunTemplate>
-        <Table AdditionalStyle="width:300px" SingleLine="true">
+        <Table AdditionalStyle="width:300px" SingleLine>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1055,7 +1055,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table AdditionalStyle=""width:300px"" SingleLine=""true"">
+<Table AdditionalStyle=""width:300px"" SingleLine>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1092,10 +1092,10 @@
 
 <PresentationPart Title="固定单元格宽度">
     <Description>
-        设置 <code>Fixed="true"</code> 可以固定每一个单元格的宽度，超出的内容会自动换行。
+        设置 <code>Fixed</code> 可以固定每一个单元格的宽度，超出的内容会自动换行。
     </Description>
     <RunTemplate>
-        <Table Fixed="true" Celled="true">
+        <Table Fixed Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -1129,7 +1129,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Fixed=""true"" Celled=""true"">
+<Table Fixed Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -1169,7 +1169,7 @@
         同时设置 <code>Fixed</code> 和 <code>SingleLine</code> 则会让超出单元格宽度的内容自动追加 <code>...</code> 以保持内容始终单行显示。
     </Description>
     <RunTemplate>
-        <Table Fixed="true" Celled="true" SingleLine="true">
+        <Table Fixed Celled SingleLine>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -1203,7 +1203,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Fixed=""true"" Celled=""true"" SingleLine=""true"">
+<Table Fixed Celled SingleLine>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -1240,10 +1240,10 @@
 
 <PresentationPart Title="可选择的行">
     <Description>
-        设置 <code>Selectable="true"</code> 可以有悬浮行高亮背景的效果。
+        设置 <code>Selectable</code> 可以有悬浮行高亮背景的效果。
     </Description>
     <RunTemplate>
-        <Table Celled="true" Selectable="true">
+        <Table Celled Selectable>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -1278,7 +1278,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"" Selectable=""true"">
+<Table Celled Selectable>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -1316,13 +1316,13 @@
 
 <PresentationPart Title="可选择的单元格">
     <Description>
-        悬浮高亮的可选择效果也可以对设置了 <code>Selectable="true"</code> 的单元格有效。
+        悬浮高亮的可选择效果也可以对设置了 <code>Selectable</code> 的单元格有效。
         <Message State="State.Warning">
             <Icon IconClass="attention" /> 如果单元格中拥有 <code>a</code> 或 <code>Anchor</code> 的超链接组件，那么会自动将链接效果撑满整个单元格。
         </Message>
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -1333,23 +1333,23 @@
             <Body>
                 <Tr>
                     <Td>张三</Td>
-                    <Td Selectable="true">审批完成</Td>
+                    <Td Selectable>审批完成</Td>
                     <Td><Anchor Link="#">编辑</Anchor></Td>
                 </Tr>
                 <Tr Color="Color.Blue">
                     <Td>李四</Td>
                     <Td>进行中</Td>
-                    <Td Selectable="true"><Anchor Link="#">编辑</Anchor></Td>
+                    <Td Selectable><Anchor Link="#">编辑</Anchor></Td>
                 </Tr>
                 <Tr>
-                    <Td Selectable="true">王五</Td>
+                    <Td Selectable>王五</Td>
                     <Td>审批完成</Td>
                     <Td><Anchor Link="#">编辑</Anchor></Td>
                 </Tr>
                 <Tr>
                     <Td>赵六</Td>
                     <Td>审批完成</Td>
-                    <Td State="State.Error" Selectable="true"><Anchor Link="#">编辑</Anchor></Td>
+                    <Td State="State.Error" Selectable><Anchor Link="#">编辑</Anchor></Td>
                 </Tr>
             </Body>
         </Table>
@@ -1357,7 +1357,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -1368,23 +1368,23 @@
     <Body>
         <Tr>
             <Td>张三</Td>
-            <Td Seletable=""true"">审批完成</Td>
+            <Td Seletable>审批完成</Td>
             <Td><Anchor Link=""#"">编辑</Anchor></Td>
         </Tr>
         <Tr Color=""Color.Blue"">
             <Td>李四</Td>
             <Td>进行中</Td>
-            <Td Seletable=""true""><Anchor Link=""#"">编辑</Anchor></Td>
+            <Td Seletable><Anchor Link=""#"">编辑</Anchor></Td>
         </Tr>
         <Tr>
-            <Td Seletable=""true"">王五</Td>
+            <Td Seletable>王五</Td>
             <Td>审批完成</Td>
             <Td><Anchor Link=""#"">编辑</Anchor></Td>
         </Tr>
         <Tr>
             <Td>赵六</Td>
             <Td>审批完成</Td>
-            <Td State=""State.Error"" Seletable=""true""><Anchor Link=""#"">编辑</Anchor></Td>
+            <Td State=""State.Error"" Seletable><Anchor Link=""#"">编辑</Anchor></Td>
         </Tr>
     </Body>
 </Table>
@@ -1395,10 +1395,10 @@
 
 <PresentationPart Title="条纹">
     <Description>
-        设置 <code>Striped="true"</code> 让表格的行呈现斑马条纹的效果。
+        设置 <code>Striped</code> 让表格的行呈现斑马条纹的效果。
     </Description>
     <RunTemplate>
-        <Table Celled="true" Striped="true">
+        <Table Celled Striped>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1444,7 +1444,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"" Striped=""true"">
+<Table Celled Striped>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1497,7 +1497,7 @@
         默认文本垂直居中并且左对齐。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1537,7 +1537,7 @@
                 </Tr>
                 <Tr>
                     <Td HorizontalAlignment="HorizontalAlignment.Right">Steve Nash</Td>
-                    <Td  VerticalAlignment="VerticalAlignment.Bottom" Right="true">1972年3月12日</Td>
+                    <Td  VerticalAlignment="VerticalAlignment.Bottom" Right>1972年3月12日</Td>
                     <Td>nash-canada-steve1972@@outlook.com</Td>
                     <Td  VerticalAlignment="VerticalAlignment.Bottom">Yes</Td>
                 </Tr>
@@ -1547,7 +1547,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1576,7 +1576,7 @@
         </Tr>
         <Tr>
             <Td>Michael Jordan</Td>
-            <Td Aligned=""true"" Top=""true"">1968年2月28日</Td>
+            <Td Aligned Top>1968年2月28日</Td>
             <Td VerticalAlignment=""VerticalAlignment.Bottom"">jordan_mic_happy_ending@@facebook.com</Td>
             <Td HorizontalAlignment=""HorizontalAlignment.Center"">
                 No<br />
@@ -1600,10 +1600,10 @@
 
 <PresentationPart Title="简单表格">
     <Description>
-        设置 <code>Basic="true"</code> 可以降低其复杂性以提高可读性。
+        设置 <code>Basic</code> 可以降低其复杂性以提高可读性。
     </Description>
     <RunTemplate>
-        <Table Basic="true">
+        <Table Basic>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1649,7 +1649,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Basic=""true"">
+<Table Basic>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1698,10 +1698,10 @@
 
 <PresentationPart>
     <Description>
-        再设置 <code>Very="true"</code> 可以去掉简单表格四周的边框。
+        再设置 <code>Very</code> 可以去掉简单表格四周的边框。
     </Description>
     <RunTemplate>
-        <Table Basic="true" Very="true">
+        <Table Basic Very>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1747,7 +1747,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Basic=""true"" Very=""true"">
+<Table Basic Very>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1796,10 +1796,10 @@
 
 <PresentationPart Title="折叠单元格">
     <Description>
-        在指定的单元格设置 <code>Collasping="true"</code> 只使用所需的空间。
+        在指定的单元格设置 <code>Collasping</code> 只使用所需的空间。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1810,7 +1810,7 @@
             </Header>
             <Body>
                 <Tr>
-                    <Td Collapsing="true">Lebron James</Td>
+                    <Td Collapsing>Lebron James</Td>
                     <Td>1981年1月23日</Td>
                     <Td>Lebron_James007@@gmail.com</Td>
                     <Td>No</Td>
@@ -1824,12 +1824,12 @@
                 <Tr>
                     <Td>Michael Jordan</Td>
                     <Td>1968年2月28日</Td>
-                    <Td Collapsing="true">jordan_mic_happy_ending@@facebook.com</Td>
+                    <Td Collapsing>jordan_mic_happy_ending@@facebook.com</Td>
                     <Td>No</Td>
                 </Tr>
                 <Tr>
                     <Td>Steve Nash</Td>
-                    <Td Collapsing="true">1972年3月12日</Td>
+                    <Td Collapsing>1972年3月12日</Td>
                     <Td>nash-canada-steve1972@@outlook.com</Td>
                     <Td>Yes</Td>
                 </Tr>
@@ -1845,7 +1845,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1856,7 +1856,7 @@
     </Header>
     <Body>
         <Tr>
-            <Td Collasping=""true"">Lebron James</Td>
+            <Td Collasping>Lebron James</Td>
             <Td>1981年1月23日</Td>
             <Td>Lebron_James007@@gmail.com</Td>
             <Td>No</Td>
@@ -1870,12 +1870,12 @@
         <Tr>
             <Td>Michael Jordan</Td>
             <Td>1968年2月28日</Td>
-            <Td Collasping=""true"">jordan_mic_happy_ending@@facebook.com</Td>
+            <Td Collasping>jordan_mic_happy_ending@@facebook.com</Td>
             <Td>No</Td>
         </Tr>
         <Tr>
             <Td>Steve Nash</Td>
-            <Td Collasping=""true"">1972年3月12日</Td>
+            <Td Collasping>1972年3月12日</Td>
             <Td>nash-canada-steve1972@@outlook.com</Td>
             <Td>Yes</Td>
         </Tr>
@@ -1894,10 +1894,10 @@
 
 <PresentationPart Title="折叠表格">
     <Description>
-        在 <code>Table</code> 设置 <code>Collasping="true"</code> 可以将所有单元格压缩空间显示。
+        在 <code>Table</code> 设置 <code>Collasping</code> 可以将所有单元格压缩空间显示。
     </Description>
     <RunTemplate>
-        <Table Collapsing="true" Celled="true">
+        <Table Collapsing Celled>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -1943,7 +1943,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Collapsing=""true"" Celled=""true"">
+<Table Collapsing Celled>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -1996,7 +1996,7 @@
         设置 <code>Color</code> 参数为整行或某一个单元格配置颜色。
     </Description>
     <RunTemplate>
-        <Table Celled="true">
+        <Table Celled>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -2031,7 +2031,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Celled=""true"">
+<Table Celled>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -2275,10 +2275,10 @@
 
 <PresentationPart>
     <Description>
-        再设置 <code>Darkness="true"</code> 可以将整个表格填充上颜色。
+        再设置 <code>Inverted</code> 可以将整个表格填充上颜色。
     </Description>
     <RunTemplate>
-        <Table Color="Color.Red" Darkness="true">
+        <Table Color="Color.Red" Inverted>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2302,7 +2302,7 @@
                 </Tr>
             </Body>
         </Table>
-        <Table Color="Color.Blue" Darkness="true">
+        <Table Color="Color.Blue" Inverted>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2326,7 +2326,7 @@
                 </Tr>
             </Body>
         </Table>
-        <Table Color="Color.Green" Darkness="true">
+        <Table Color="Color.Green" Inverted>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2350,7 +2350,7 @@
                 </Tr>
             </Body>
         </Table>
-        <Table Color="Color.Pink" Darkness="true">
+        <Table Color="Color.Pink" Inverted>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2378,7 +2378,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Color=""Color.Red"" Darkness=""true"">
+<Table Color=""Color.Red"" Inverted>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2402,7 +2402,7 @@
         </Tr>
     </Body>
 </Table>
-<Table Color=""Color.Blue"" Darkness=""true"">
+<Table Color=""Color.Blue"" Inverted>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2426,7 +2426,7 @@
         </Tr>
     </Body>
 </Table>
-<Table Color=""Color.Green"" Darkness=""true"">
+<Table Color=""Color.Green"" Inverted>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2450,7 +2450,7 @@
         </Tr>
     </Body>
 </Table>
-<Table Color=""Color.Purple"" Darkness=""true"">
+<Table Color=""Color.Purple"" Inverted>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2481,10 +2481,10 @@
 
 <PresentationPart Title="紧凑空间">
     <Description>
-        在 <code>Table</code> 设置 <code>Compact="true"</code> 可以将所有单元格压缩空间，但不会改变总宽度。
+        在 <code>Table</code> 设置 <code>Compact</code> 可以将所有单元格压缩空间，但不会改变总宽度。
     </Description>
     <RunTemplate>
-        <Table Compact="true">
+        <Table Compact>
             <Header>
                 <Tr>
                     <Th>名字</Th>
@@ -2530,7 +2530,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Compact=""true"">
+<Table Compact>
     <Header>
         <Tr>
             <Th>名字</Th>
@@ -2579,10 +2579,10 @@
 
 <PresentationPart Title="增强填充空间">
     <Description>
-        设置 <code>Padded="true"</code> 可以增强填充空间以增强可读性。
+        设置 <code>Padded</code> 可以增强填充空间以增强可读性。
     </Description>
     <RunTemplate>
-        <Table Padded="true">
+        <Table Padded>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -2608,7 +2608,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Padded=""true"">
+<Table Padded>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -2637,10 +2637,10 @@
 
 <PresentationPart>
     <Description>
-        设置 <code>Very="true"</code> 可以让设置过 <code>Padded</code> 参数的空间加大。
+        设置 <code>Very</code> 可以让设置过 <code>Padded</code> 参数的空间加大。
     </Description>
     <RunTemplate>
-        <Table Padded="true" Very="true">
+        <Table Padded Very>
             <Header>
                 <Tr>
                     <Th>名称</Th>
@@ -2666,7 +2666,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Table Padded=""true"" Very=""true"">
+<Table Padded Very>
     <Header>
         <Tr>
             <Th>名称</Th>
@@ -2695,7 +2695,7 @@
 
 <PresentationPart Title="尺寸">
     <Description>
-        设置 <code>Size="true"</code> 可以定义整体表格文本的大小。
+        设置 <code>Size</code> 可以定义整体表格文本的大小。
     </Description>
     <RunTemplate>
         <Table Size="Size.Tiny">
@@ -2952,12 +2952,12 @@
                 </tr>
                 <tr>
                     <td>Color</td>
-                    <td>表格的上边框颜色。若设置了 <code>Darkness</code> 可变为背景颜色。</td>
+                    <td>表格的上边框颜色。若设置了 <code>Inverted</code> 可变为背景颜色。</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>反转颜色，配合 <code>Color</code> 成为背景颜色</td>
                     <td>bool</td>
                     <td></td>

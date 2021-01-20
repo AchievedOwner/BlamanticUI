@@ -1,19 +1,21 @@
 ﻿@page "/component/common/text"
 
-<Header2 Divider="true">
-    文本
+<Pager DataSource="@(new List<string> { "Standard","Size" })">
+    <Body>
+<Header2 Divider>
+    Text
     <SubHeader>
-        文本用于用简单的颜色样式化一些内联文本
+        A text is used to style some inline text with a simple color
     </SubHeader>
 </Header2>
 
-<PresentationPart>
+<PresentationPart Title="Standard">
     <RunTemplate>
         <Segment>
-            这是 <Text Color="Color.Red">红色</Text> 的文本，而这是 <Text Color="Color.Blue">蓝色</Text> 的文本。
+            Here is <Text Color="Color.Red">red</Text> text, and this is <Text Color="Color.Blue">blue</Text> text.
         </Segment>
-        <Segment Darkness="true">
-            这是 <Text Color="Color.Red" Darkness="true">红色</Text> 的文本，而这是 <Text Color="Color.Blue" Darkness="true">蓝色</Text> 的文本。
+        <Segment Inverted>
+            Here is <Text Color="Color.Red" Inverted>red</Text> text, and this is <Text Color="Color.Blue" Inverted>blue</Text> text.
         </Segment>
     </RunTemplate>
     <CodeTemplate>
@@ -22,42 +24,43 @@
 <Segment>
     这是 <Text Color=""Color.Red"">红色</Text> 的文本，而这是 <Text Color=""Color.Blue"">蓝色</Text> 的文本。
 </Segment>
-<Segment Darkness=""true"">
-    这是 <Text Color=""Color.Red"" Darkness=""true"">红色</Text> 的文本，而这是 <Text Color=""Color.Blue"" Darkness=""true"">蓝色</Text> 的文本。
+<Segment Inverted>
+    这是 <Text Color=""Color.Red"" Inverted>红色</Text> 的文本，而这是 <Text Color=""Color.Blue"" Inverted>蓝色</Text> 的文本。
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="尺寸">
-    <Description>文本可以呈现不同的尺寸</Description>
+<PresentationPart Title="Size">
     <RunTemplate>
         <Segment>
-            <p>一开始使用 <Text Color="Color.Red" Size="Size.Mini">Mini</Text> 文本</p>
-            <p>接着使用 <Text Color="Color.Red" Size="Size.Tiny">Tiny</Text> 文本</p>
-            <p>然后使用 <Text Color="Color.Red" Size="Size.Small">Small</Text> 文本</p>
-            <p>默认使用 <Text Color="Color.Red" Size="Size.Medium">Medium</Text> 文本</p>
-            <p>可能也是 <Text Color="Color.Red" Size="Size.Large">Large</Text> 文本</p>
-            <p>接下来变成 <Text Color="Color.Red" Size="Size.Big">Big</Text> 文本</p>
-            <p>也可以改为 <Text Color="Color.Red" Size="Size.Huge">Huge</Text> 文本</p>
-            <p>最后用 <Text Color="Color.Red" Size="Size.Massive">Massive</Text> 文本</p>
+            <p>Starting with <Text Color="Color.Red" Size="Size.Mini">Mini</Text> text</p>
+            <p>And then <Text Color="Color.Red" Size="Size.Tiny">Tiny</Text> text</p>
+            <p>Otherwise <Text Color="Color.Red" Size="Size.Small">Small</Text> text</p>
+            <p>Default is <Text Color="Color.Red" Size="Size.Medium">Medium</Text> text</p>
+            <p>Maybe <Text Color="Color.Red" Size="Size.Large">Large</Text> text</p>
+            <p>The next should be <Text Color="Color.Red" Size="Size.Big">Big</Text> text</p>
+            <p>Could change to <Text Color="Color.Red" Size="Size.Huge">Huge</Text> text</p>
+            <p>The last is <Text Color="Color.Red" Size="Size.Massive">Massive</Text> text</p>
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Segment>
-    <p>一开始使用 <Text Color=""Color.Red"" Size=""Size.Mini"">Mini</Text> 文本</p>
-    <p>接着使用 <Text Color=""Color.Red"" Size=""Size.Tiny"">Tiny</Text> 文本</p>
-    <p>然后使用 <Text Color=""Color.Red"" Size=""Size.Small"">Small</Text> 文本</p>
-    <p>默认使用 <Text Color=""Color.Red"" Size=""Size.Medium"">Medium</Text> 文本</p>
-    <p>可能也是 <Text Color=""Color.Red"" Size=""Size.Large"">Large</Text> 文本</p>
-    <p>接下来变成 <Text Color=""Color.Red"" Size=""Size.Big"">Big</Text> 文本</p>
-    <p>也可以改为 <Text Color=""Color.Red"" Size=""Size.Huge"">Huge</Text> 文本</p>
-    <p>最后用 <Text Color=""Color.Red"" Size=""Size.Massive"">Massive</Text> 文本</p>
+    <p>Starting with <Text Color=""Color.Red"" Size=""Size.Mini"">Mini</Text> text</p>
+    <p>And then <Text Color=""Color.Red"" Size=""Size.Tiny"">Tiny</Text> text</p>
+    <p>Otherwise <Text Color=""Color.Red"" Size=""Size.Small"">Small</Text> text</p>
+    <p>Default is <Text Color=""Color.Red"" Size=""Size.Medium"">Medium</Text> text</p>
+    <p>Maybe <Text Color=""Color.Red"" Size=""Size.Large"">Large</Text> text</p>
+    <p>The next should be <Text Color=""Color.Red"" Size=""Size.Big"">Big</Text> text</p>
+    <p>Could change to <Text Color=""Color.Red"" Size=""Size.Huge"">Huge</Text> text</p>
+    <p>The last is <Text Color=""Color.Red"" Size=""Size.Massive"">Massive</Text> text</p>
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
+    </Body>
+</Pager>

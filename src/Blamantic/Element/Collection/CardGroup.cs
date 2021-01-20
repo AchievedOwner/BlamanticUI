@@ -14,11 +14,11 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasDoubling" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasStackable" />
-    public class CardGroup : BlamanticChildContentComponentBase, IHasUIComponent, IHasHorizontal, IHasDarkness, IHasSpan, IHasDoubling, IHasStackable
+    public class CardGroup : BlamanticChildContentComponentBase, IHasUIComponent, IHasHorizontal, IHasInverted, IHasSpan, IHasDoubling, IHasStackable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CardGroup"/> class.
@@ -43,12 +43,12 @@ namespace BlamanticUI
         /// </value>
         [Parameter]public bool Horizontal { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets the span of each card.
         /// </summary>

@@ -2,18 +2,18 @@
 
 <Pager DataSource="Menu">
     <Body>
-<Header1 Divider="true">
-    图标
-    <SubHeader>
-        图标是用来表示其他东西的符号
-    </SubHeader>
-</Header1>
+        <Header1 Divider>
+            Icon
+            <SubHeader>
+                An icon is a glyph used to represent something else
+            </SubHeader>
+        </Header1>
 
-<Segment>
-    使用 <code>&lt;Icon></code> 组件来表示图标，然后需要设置 <code>IconClass</code> 属性，关于图标的样式名称，可参考 <Anchor Link="https://fomantic-ui.com/elements/icon.html" Target="LinkTarget.Blank" Color="Color.Blue">https://fomantic-ui.com/elements/icon.html</Anchor>
-</Segment>
+        <Message>
+            All icons come from a complete port of Font Awesome 5.13.0 designed by the FontAwesome team for its standard icon set.
+        </Message>
 
-<PresentationPart Title="示例">
+<PresentationPart Title="Demo">
     <RunTemplate>
         <Icon IconClass="users"/>
     </RunTemplate>
@@ -26,143 +26,143 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="动态旋转">
-    <Description>设置 <code>Spined="true"</code> 可以让图标旋转起来，以此来表示加载中的概念。</Description>
+<PresentationPart Title="Spin">
+    <Description>An icon can be used as a simple loader.</Description>
     <RunTemplate>
-        <Icon IconClass="spinner" Spined="true" />
-        <Icon IconClass="user" Spined="true" />
-        <Icon IconClass="notched circle" Spined="true" />
+        <Icon IconClass="spinner" Spined />
+        <Icon IconClass="user" Spined />
+        <Icon IconClass="notched circle" Spined />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Icon IconClass=""spinner"" Spined=""true"" />
-<Icon IconClass=""user"" Spined=""true"" />
-<Icon IconClass=""notched circle"" Spined=""true"" />
+<Icon IconClass=""spinner"" Spined />
+<Icon IconClass=""user"" Spined />
+<Icon IconClass=""notched circle"" Spined />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="瘦身">
-    <Description>
-        设置 <code>Fitted="true"</code> 可以移除图标左右的空间。
-    </Description>
+        <PresentationPart Title="Fitted">
+            <Description>
+                An icon can be fitted, without any space to the left or right of it.
+            </Description>
+            <RunTemplate>
+                Tight spacing <Icon IconClass="users" Fitted />  Tight spacing
+            </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+ Tight spacing <Icon IconClass=""users"" Fitted/> 人口密度很大
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="Link">
+            <Description>
+                An icon can be formatted as a link
+            </Description>
     <RunTemplate>
-         好像有一个好点子 <Icon IconClass="users" Fitted="true"/> 人口密度很大
+        <Icon IconClass="home" Linked/>
+        <Icon IconClass="bus" Linked />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-好像有一个好点子 <Icon IconClass=""users"" Fitted=""true""/> 人口密度很大
+<Icon IconClass=""home"" Linked/>
+<Icon IconClass=""bus"" Linked />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="超链接样式">
-    <Description>
-        设置 <code>Linked="true"</code> 可以让图标也有超链接的样式。
-    </Description>
-    <RunTemplate>
-        <Icon IconClass="home" Linked="true"/>
-        <Icon IconClass="bus" Linked="true" />
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<Icon IconClass=""home"" Linked=""true""/>
-<Icon IconClass=""bus"" Linked=""true"" />
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="翻转">
-    <Description>
-        设置 <code>Flipped="true"</code> 可以使图标左右翻转。
-    </Description>
+        <PresentationPart Title="Flipped">
+            <Description>
+                An icon can be flipped
+            </Description>
     <RunTemplate>
         <Icon IconClass="cloud" Size="Size.Large"/>
-        <Icon IconClass="cloud" Flipped="true" Size="Size.Large" />
+        <Icon IconClass="cloud" Flipped Size="Size.Large" />
         <Icon IconClass="home" Size="Size.Large" />
-        <Icon IconClass="home" Flipped="true" Size="Size.Large" />
+        <Icon IconClass="home" Flipped Size="Size.Large" />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Icon IconClass=""cloud"" Size=""Size.Large""/>
-<Icon IconClass=""cloud"" Flipped=""true"" Size=""Size.Large"" />
+<Icon IconClass=""cloud"" Flipped Size=""Size.Large"" />
 <Icon IconClass=""home"" Size=""Size.Large"" />
-<Icon IconClass=""home"" Flipped=""true"" Size=""Size.Large"" />
+<Icon IconClass=""home"" Flipped Size=""Size.Large"" />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="旋转">
-    <Description>
-        设置 <code>Rotated="true"</code> 使图标90度旋转。
-    </Description>
+        <PresentationPart Title="Rotated">
+            <Description>
+                An icon can be rotated
+            </Description>
     <RunTemplate>
         <Icon IconClass="home" Size="Size.Large" />
-        <Icon IconClass="home" Rotated="true" Size="Size.Large" />
-        <Icon IconClass="home" Size="Size.Large" Flipped="true" />
-        <Icon IconClass="home" Rotated="true" Size="Size.Large" Flipped="true" />
+        <Icon IconClass="home" Rotated Size="Size.Large" />
+        <Icon IconClass="home" Size="Size.Large" Flipped />
+        <Icon IconClass="home" Rotated Size="Size.Large" Flipped />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Icon IconClass=""home"" Size=""Size.Large"" />
-<Icon IconClass=""home"" Rotated=""true"" Size=""Size.Large"" />
-<Icon IconClass=""home"" Size=""Size.Large"" Flipped=""true"" />
-<Icon IconClass=""home"" Rotated=""true"" Size=""Size.Large"" Flipped=""true"" />
+<Icon IconClass=""home"" Rotated Size=""Size.Large"" />
+<Icon IconClass=""home"" Size=""Size.Large"" Flipped />
+<Icon IconClass=""home"" Rotated Size=""Size.Large"" Flipped />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="圆形边框">
-    <Description>
-        设置 <code>Circular="true"</code> 使图标呈现圆形边框。
-    </Description>
+        <PresentationPart Title="Circular">
+            <Description>
+                An icon can be formatted to appear circular
+            </Description>
     <RunTemplate>
-        <Icon IconClass="user" Circular="true" Size="Size.Large" />
-        <Icon IconClass="settings" Circular="true" Size="Size.Large" Color="Color.Red" />
-        <Icon IconClass="user" Circular="true" Size="Size.Large" Darkness="true" />
-        <Icon IconClass="settings" Circular="true" Size="Size.Large" Color="Color.Red"  Darkness="true"/>
+        <Icon IconClass="user" Circular Size="Size.Large" />
+        <Icon IconClass="settings" Circular Size="Size.Large" Color="Color.Red" />
+        <Icon IconClass="user" Circular Size="Size.Large" Inverted />
+        <Icon IconClass="settings" Circular Size="Size.Large" Color="Color.Red"  Inverted/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Icon IconClass=""user"" Circular=""true"" Size=""Size.Large"" />
-<Icon IconClass=""settings"" Circular=""true"" Size=""Size.Large"" Color=""Color.Red"" />
-<Icon IconClass=""user"" Circular=""true"" Size=""Size.Large"" Darkness=""true"" />
-<Icon IconClass=""settings"" Circular=""true"" Size=""Size.Large"" Color=""Color.Red""  Darkness=""true""/>
+<Icon IconClass=""user"" Circular Size=""Size.Large"" />
+<Icon IconClass=""settings"" Circular Size=""Size.Large"" Color=""Color.Red"" />
+<Icon IconClass=""user"" Circular Size=""Size.Large"" Inverted />
+<Icon IconClass=""settings"" Circular Size=""Size.Large"" Color=""Color.Red""  Inverted/>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="方形边框">
-    <Description>
-        设置 <code>Bordered="true"</code> 使图标有正方形的边框。
-    </Description>
+        <PresentationPart Title="Bordered">
+            <Description>
+                An icon can be formatted to appear bordered
+            </Description>
     <RunTemplate>
-        <Icon IconClass="user" Bordered="true" Size="Size.Large" />
-        <Icon IconClass="settings" Bordered="true" Size="Size.Large" Color="Color.Red" />
-        <Icon IconClass="user" Bordered="true" Size="Size.Large" Darkness="true" />
-        <Icon IconClass="settings" Bordered="true" Size="Size.Large" Color="Color.Red" Darkness="true" />
+        <Icon IconClass="user" Bordered Size="Size.Large" />
+        <Icon IconClass="settings" Bordered Size="Size.Large" Color="Color.Red" />
+        <Icon IconClass="user" Bordered Size="Size.Large" Inverted />
+        <Icon IconClass="settings" Bordered Size="Size.Large" Color="Color.Red" Inverted />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Icon IconClass=""user"" Bordered=""true"" Size=""Size.Large"" />
-<Icon IconClass=""settings"" Bordered=""true"" Size=""Size.Large"" Color=""Color.Red"" />
-<Icon IconClass=""user"" Bordered=""true"" Size=""Size.Large"" Darkness=""true"" />
-<Icon IconClass=""settings"" Bordered=""true"" Size=""Size.Large"" Color=""Color.Red"" Darkness=""true"" />
+<Icon IconClass=""user"" Bordered Size=""Size.Large"" />
+<Icon IconClass=""settings"" Bordered Size=""Size.Large"" Color=""Color.Red"" />
+<Icon IconClass=""user"" Bordered Size=""Size.Large"" Inverted />
+<Icon IconClass=""settings"" Bordered Size=""Size.Large"" Color=""Color.Red"" Inverted />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="颜色">
-    <Description>
-        设置 <code>Color</code> 使图标拥有不同的颜色。
-    </Description>
+        <PresentationPart Title="Colored">
+            <Description>
+                An icon can be formatted with different colors
+            </Description>
     <RunTemplate>
         <Icon IconClass="users" Color="Color.Red" />
         <Icon IconClass="users" Color="Color.Orange" />
@@ -194,10 +194,49 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="尺寸">
-    <Description>
-        设置 <code>Size</code> 呈现不同尺寸的图标。<strong>但不支持 <code>Size.Medium</code> 项。</strong>
-    </Description>
+               <PresentationPart Title="Inverted">
+                   <Description>
+                       An icon can have its colors inverted for contrast
+                   </Description>
+    <RunTemplate>
+        <Segment Inverted>
+            <Icon IconClass="users" Color="Color.Red" Inverted />
+            <Icon IconClass="users" Color="Color.Orange" Inverted />
+            <Icon IconClass="users" Color="Color.Yellow" Inverted />
+            <Icon IconClass="users" Color="Color.Green" Inverted />
+            <Icon IconClass="users" Color="Color.Blue" Inverted />
+            <Icon IconClass="users" Color="Color.Olive" Inverted />
+            <Icon IconClass="users" Color="Color.Purple" Inverted />
+            <Icon IconClass="users" Color="Color.Brown" Inverted />
+            <Icon IconClass="users" Color="Color.Grey" Inverted />
+            <Icon IconClass="users" Color="Color.Pink" Inverted />
+            <Icon IconClass="users" Color="Color.Black" Inverted />
+        </Segment>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Segment Inverted>
+    <Icon IconClass=""users"" Color=""Color.Red"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Orange"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Yellow"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Green"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Blue"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Olive"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Purple"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Brown"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Grey"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Pink"" Inverted />
+    <Icon IconClass=""users"" Color=""Color.Black"" Inverted />
+</Segment>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="Size">
+            <Description>
+                An icon can vary in size
+            </Description>
     <RunTemplate>
         <Icon IconClass="home" Size="Size.Mini" />
         <Icon IconClass="home" Size="Size.Tiny" />
@@ -223,16 +262,13 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="图标组合">
-    <SubTitle>
-        零散的图标可以通过组合的形式呈现一个全新的图标
-    </SubTitle>
+<PresentationPart Title="Icons">
     <Description>
-        使用 <code>&lt;IconGroup></code> 组件来包裹多个 <code>&lt;Icon></code> 组件。
+        Several icons can be used together as a group
     </Description>
     <RunTemplate>
-        <Grid Padded="true">
-            <Row ColSpan="ColSpan.Two2">
+        <Grid Padded>
+            <Row Span="ColSpan.Two2">
                 <Column>
                     <IconGroup Size="Size.Huge">
                         <Icon IconClass="user" />
@@ -265,10 +301,9 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="角标">
-    <SubTitle>一组图标可以显示一个较小的角图标</SubTitle>
+<PresentationPart Title="Corner Icon">
     <Description>
-        在 <code>&lt;IconGroup></code> 图标组中，设置其中一个 <code>&lt;Icon></code> 组件的 <code>Cornered</code> 并选择一个方位。        
+        A group of icons can display a smaller corner icon
     </Description>
     <RunTemplate>
         <IconGroup Size="Size.Huge">
@@ -311,81 +346,12 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <ParameterTable Title="参数">
-            <Content>
-                <tr>
-                    <td>IconClass</td>
-                    <td>图标的样式名称，可查询 <Anchor Link="https://fomantic-ui.com/elements/icon.html" Target="LinkTarget.Blank">https://fomantic-ui.com/elements/icon.html</Anchor> </td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Spined</td>
-                    <td>是否使图标旋转起来</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Fitted</td>
-                    <td>是否移除左右的空间</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Linked</td>
-                    <td>显示超链接样式</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Flipped</td>
-                    <td>左右翻转</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Rotated</td>
-                    <td>左右90度旋转</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Circular</td>
-                    <td>圆形边框</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Bordered</td>
-                    <td>方形边框</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td>颜色主题</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Size</td>
-                    <td>尺寸大小</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Cornered</td>
-                    <td>角标的位置，只能用于图标组合</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-            </Content>
-        </ParameterTable>
+        
 </Body>
 </Pager>
 @code{
     List<string> Menu = new List<string>(new[]{
-        "示例","动态旋转","瘦身","超链接样式","翻转","旋转","圆形边框","方形边框","颜色","尺寸","图标组合","角标","参数"
+        "Demo","Spin","Fitted","Link","Flipped","Rotated","Circular","Bordered","Colored","Inverted","Size","Icons","Corner Icon"
     });
 
 }

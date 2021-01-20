@@ -121,7 +121,7 @@ namespace BlamanticUI
         /// <value>
         ///   <c>true</c> to be UI component,otherwise <c>false</c>.
         /// </value>
-        [Parameter] public bool? UI { get; set; }
+        [Parameter] public bool UI { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether layout always stackable.
         /// </summary>

@@ -36,7 +36,7 @@ namespace BlamanticUI
         /// <value>
         ///   <c>true</c> to be UI component,otherwise <c>false</c>.
         /// </value>
-        public bool? UI { get; set; }
+        public bool UI { get; set; }
 
         /// <summary>
         /// Gets or sets the parent.

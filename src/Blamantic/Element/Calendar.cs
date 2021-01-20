@@ -14,8 +14,8 @@
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
-    public class Calendar : BlamanticComponentBase, IHasUIComponent, IHasDarkness
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
+    public class Calendar : BlamanticComponentBase, IHasUIComponent, IHasInverted
     {
         /// <summary>
         /// Days in weeks.
@@ -117,12 +117,12 @@
         protected IDictionary<CalendarMonth, string> MonthMapper { get;private set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
 
         /// <summary>
         /// Method invoked when the component has received parameters from its parent in
@@ -161,7 +161,7 @@
                     .Create
                     .Add("ui")
                     .Add("celled center aligned fixed")
-                    .Add(Darkness,"inverted")
+                    .Add(Inverted,"inverted")
                     .Add("table")
                     );
                 calendar.AddContent(5, thead =>
@@ -217,13 +217,13 @@
             switch (ViewMode)
             {
                 case CalendarViewMode.Year:
-                    tr.AddAttribute(1, nameof(Th.ColSpan), 5);
+                    tr.AddAttribute(1, "colspan", 5);
                     break;
                 case CalendarViewMode.Month:
-                    tr.AddAttribute(1, nameof(Th.ColSpan), 3);
+                    tr.AddAttribute(1, "colspan", 3);
                     break;
                 case CalendarViewMode.Date:
-                    tr.AddAttribute(1, nameof(Th.ColSpan), DAYS_IN_WEEK);
+                    tr.AddAttribute(1, "colspan", DAYS_IN_WEEK);
                     break;
                 case CalendarViewMode.Time:
                     break;

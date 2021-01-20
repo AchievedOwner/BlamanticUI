@@ -1,7 +1,7 @@
 ﻿@page "/component/layout/grid"
 <Pager DataSource="Menu">
     <Body>
-<Header2 Divider="true">
+<Header2 Divider>
     栅格
     <SubHeader>
         网格是用来协调布局中的负空间的
@@ -184,14 +184,14 @@
 
 <PresentationPart Title="等宽" Id="equal-width">
     <Description>
-        设置 <code>EqualWidth="true"</code> 可以使子组件自动根据数量进行等宽设置。
+        设置 <code>EqualWidth</code> 可以使子组件自动根据数量进行等宽设置。
     </Description>
     <RunTemplate>
-        <Grid EqualWidth="true">
+        <Grid EqualWidth>
             <Column Color="Color.Grey">...</Column>
             <Column Color="Color.Olive">...</Column>
             <Column Color="Color.Grey">...</Column>
-            <Row EqualWidth="true">
+            <Row EqualWidth>
                 <Column Color="Color.Olive">...</Column>
                 <Column Color="Color.Grey">...</Column>
             </Row>
@@ -200,11 +200,11 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid EqualWidth=""true"">
+<Grid EqualWidth>
     <Column Color=""Color.Grey"">...</Column>
     <Column Color=""Color.Olive"">...</Column>
     <Column Color=""Color.Grey"">...</Column>
-    <Row EqualWidth=""true"">
+    <Row EqualWidth>
         <Column Color=""Color.Olive"">...</Column>
         <Column Color=""Color.Grey"">...</Column>
     </Row>
@@ -216,16 +216,16 @@
 
 <PresentationPart  Title="居中延展" Id="centered">
     <Description>
-        通常列是从左到右排列，设置 <code>Centered="true"</code> 可使列居中开始往两边延展排列。
+        通常列是从左到右排列，设置 <code>Centered</code> 可使列居中开始往两边延展排列。
     </Description>
     <RunTemplate>
-        <Grid Centered="true" Span="ColSpan.Two2">
+        <Grid Centered Span="ColSpan.Two2">
             <Column Color="Color.Grey">...</Column>
-            <Row Centered="true" Span="ColSpan.Four4">
+            <Row Centered Span="ColSpan.Four4">
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
             </Row>
-            <Row Centered="true" Span="ColSpan.Five5">
+            <Row Centered Span="ColSpan.Five5">
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
                 <Column Color="Color.Grey">...</Column>
@@ -235,13 +235,13 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid Centered=""true"" Span=""ColSpan.Two2"">
+<Grid Centered Span=""ColSpan.Two2"">
     <Column Color=""Color.Grey"">...</Column>
-    <Row Centered=""true"" Span=""ColSpan.Four4"">
+    <Row Centered Span=""ColSpan.Four4"">
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
     </Row>
-    <Row Centered=""true"" Span=""ColSpan.Five5"">
+    <Row Centered Span=""ColSpan.Five5"">
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
         <Column Color=""Color.Grey"">...</Column>
@@ -268,7 +268,7 @@
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
             </Row>
-            <Row Span="ColSpan.Eight8" Centered="true">
+            <Row Span="ColSpan.Eight8" Centered>
                 <Column Color="Color.Grey">...</Column>
                 <Column Color="Color.Olive">...</Column>
                 <Column Color="Color.Grey">...</Column>
@@ -289,7 +289,7 @@
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
     </Row>
-    <Row Span=""ColSpan.Eight8"" Centered=""true"">
+    <Row Span=""ColSpan.Eight8"" Centered>
         <Column Color=""Color.Grey"">...</Column>
         <Column Color=""Color.Olive"">...</Column>
         <Column Color=""Color.Grey"">...</Column>
@@ -302,16 +302,16 @@
 
 <PresentationPart Title="具有分割线的列" Id="celled">
     <Description>
-        设置 <code>Celled="true"</code> 让行列具有分割线。
+        设置 <code>Celled</code> 让行列具有分割线。
     </Description>
     <RunTemplate>
-        <Grid Celled="true" Centered="true">
+        <Grid Celled Centered>
             <Row>
                 <Column Span="ColSpan.Two2" >
                     <Image Source="img/image.png" />
                 </Column>
                 <Column Span="ColSpan.Ten10" >
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
                 </Column>
                 <Column Span="ColSpan.Two2" >
                     <Image Source="img/image.png" />
@@ -322,7 +322,7 @@
                     <Image Source="img/image.png" />
                 </Column>
                 <Column Span="ColSpan.Ten10" >
-                    <ParagraphDemo  FullWidth="true"/>
+                    <ParagraphDemo  FullWidth/>
                 </Column>
                 <Column Span="ColSpan.Two2" >
                     <Image Source="img/image.png" />
@@ -333,7 +333,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid Celled=""true"" Centered=""true"">
+<Grid Celled Centered>
     <Row>
         <Column Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />

@@ -14,7 +14,7 @@
             使用 <code>&lt;ItemList></code> 组件表示项目组，使用 <code>&lt;Item></code> 作为每一项的子元素。
         </Segment>
 
-        <Message State="State.Success" Icon="true">
+        <Message State="State.Success" Icon>
             <Icon IconClass="mobile" />
             <Content>
                 <Header4>
@@ -32,7 +32,7 @@
                     <Item>
                         <Image Source="img/image.png" />
                         <Content>
-                            <Anchor Header="true">
+                            <Anchor Header>
                                 标题
                             </Anchor>
                             <Introduction>简单描述</Introduction>
@@ -47,7 +47,7 @@
                     <Item>
                         <Image Source="img/image.png" />
                         <Content>
-                            <Anchor Header="true">
+                            <Anchor Header>
                                 标题
                             </Anchor>
                             <Introduction>简单描述</Introduction>
@@ -62,7 +62,7 @@
                     <Item>
                         <Image Source="img/image.png" />
                         <Content>
-                            <Anchor Header="true">
+                            <Anchor Header>
                                 标题
                             </Anchor>
                             <Introduction>简单描述</Introduction>
@@ -83,7 +83,7 @@
     <Item>
         <Image Source=""img/image.png"" />
         <Content>
-            <Anchor Header=""true"">
+            <Anchor Header>
                 标题
             </Anchor>
             <Introduction>简单描述</Introduction>
@@ -98,7 +98,7 @@
     <Item>
         <Image Source=""img/image.png"" />
         <Content>
-            <Anchor Header=""true"">
+            <Anchor Header>
                 标题
             </Anchor>
             <Introduction>简单描述</Introduction>
@@ -113,7 +113,7 @@
     <Item>
         <Image Source=""img/image.png"" />
         <Content>
-            <Anchor Header=""true"">
+            <Anchor Header>
                 标题
             </Anchor>
             <Introduction>简单描述</Introduction>
@@ -132,10 +132,10 @@
         </PresentationPart>
         <PresentationPart Title="分割线">
             <Description>
-                设置 <code>Divider="true"</code> 使每一个项之间具有分割线。
+                设置 <code>Divider</code> 使每一个项之间具有分割线。
             </Description>
             <RunTemplate>
-                <ItemList Divider="true">
+                <ItemList Divider>
                     <Item>
                         <Image Source="img/image.png" />
                     </Item>
@@ -150,7 +150,7 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<ItemList Divider=""true"">
+<ItemList Divider>
     <Item>
         <Image Source=""img/image.png"" />
     </Item>
@@ -172,15 +172,15 @@
     <RunTemplate>
         <ItemList>
             <Item>
-                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Image UI Size="Size.Tiny" Source="img/image.png" />
                 <Content VerticalAlignment="VerticalAlignment.Top">顶部对齐</Content>
             </Item>
             <Item>
-                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Image UI Size="Size.Tiny" Source="img/image.png" />
                 <Content VerticalAlignment="VerticalAlignment.Middle">中部对齐</Content>
             </Item>
             <Item>
-                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Image UI Size="Size.Tiny" Source="img/image.png" />
                 <Content VerticalAlignment="VerticalAlignment.Bottom">底部对齐</Content>
             </Item>
         </ItemList>
@@ -190,15 +190,15 @@
 ```html
 <ItemList>
     <Item>
-        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Image UI Size=""Size.Tiny"" Source=""img/image.png"" />
         <Content VerticalAlignment=""VerticalAlignment.Top"">顶部对齐</Content>
     </Item>
     <Item>
-        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Image UI Size=""Size.Tiny"" Source=""img/image.png"" />
         <Content VerticalAlignment=""VerticalAlignment.Middle"">中部对齐</Content>
     </Item>
     <Item>
-        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Image UI Size=""Size.Tiny"" Source=""img/image.png"" />
         <Content VerticalAlignment=""VerticalAlignment.Bottom"">底部对齐</Content>
     </Item>
 </ItemList>
@@ -208,20 +208,20 @@
 </PresentationPart>
         <PresentationPart Title="不支持响应式">
     <Description>
-        设置 <code>Unstackable="true"</code> 则不会支持响应式布局。
+        设置 <code>Unstackable</code> 则不会支持响应式布局。
     </Description>
     <RunTemplate>
-        <ItemList Unstackable="true">
+        <ItemList Unstackable>
             <Item>
-                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Image UI Size="Size.Tiny" Source="img/image.png" />
                 <Content VerticalAlignment="VerticalAlignment.Top">顶部对齐</Content>
             </Item>
             <Item>
-                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Image UI Size="Size.Tiny" Source="img/image.png" />
                 <Content VerticalAlignment="VerticalAlignment.Middle">中部对齐</Content>
             </Item>
             <Item>
-                <Image UI="true" Size="Size.Tiny" Source="img/image.png" />
+                <Image UI Size="Size.Tiny" Source="img/image.png" />
                 <Content VerticalAlignment="VerticalAlignment.Bottom">底部对齐</Content>
             </Item>
         </ItemList>
@@ -229,17 +229,17 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<ItemList Unstackable=""true"">
+<ItemList Unstackable>
     <Item>
-        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Image UI Size=""Size.Tiny"" Source=""img/image.png"" />
         <Content VerticalAlignment=""VerticalAlignment.Top"">顶部对齐</Content>
     </Item>
     <Item>
-        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Image UI Size=""Size.Tiny"" Source=""img/image.png"" />
         <Content VerticalAlignment=""VerticalAlignment.Middle"">中部对齐</Content>
     </Item>
     <Item>
-        <Image UI=""true"" Size=""Size.Tiny"" Source=""img/image.png"" />
+        <Image UI Size=""Size.Tiny"" Source=""img/image.png"" />
         <Content VerticalAlignment=""VerticalAlignment.Bottom"">底部对齐</Content>
     </Item>
 </ItemList>
@@ -258,7 +258,7 @@
                 <Content>
                     <Header2>水晶鞋</Header2>
                     <Introduction>
-                        <List Horizontal="true">
+                        <List Horizontal>
                             <Item>
                                 ￥399.00
                             </Item>
@@ -275,7 +275,7 @@
                 <Content>
                     <Header2>同款成龙大鼻子面具</Header2>
                     <Introduction>
-                        <List Horizontal="true">
+                        <List Horizontal>
                             <Item>
                                 ￥59.00
                             </Item>
@@ -292,7 +292,7 @@
                 <Content>
                     <Header2>标题党起的标题的名字都很标题哟！</Header2>
                     <Introduction>
-                        <List Horizontal="true">
+                        <List Horizontal>
                             <Item>
                                 ￥12.99
                             </Item>
@@ -315,7 +315,7 @@
         <Content>
             <Header2>水晶鞋</Header2>
             <Introduction>
-                <List Horizontal=""true"">
+                <List Horizontal>
                     <Item>
                         ￥399.00
                     </Item>
@@ -332,7 +332,7 @@
         <Content>
             <Header2>同款成龙大鼻子面具</Header2>
             <Introduction>
-                <List Horizontal=""true"">
+                <List Horizontal>
                     <Item>
                         ￥59.00
                     </Item>
@@ -349,7 +349,7 @@
         <Content>
             <Header2>标题党起的标题的名字都很标题哟！</Header2>
             <Introduction>
-                <List Horizontal=""true"">
+                <List Horizontal>
                     <Item>
                         ￥12.99
                     </Item>
@@ -450,10 +450,10 @@
 </PresentationPart>
         <PresentationPart Title="超链接样式">
     <Description>
-        设置 <code>Linked="true"</code> 拥有超链接样式。
+        设置 <code>Linked</code> 拥有超链接样式。
     </Description>
     <RunTemplate>
-        <ItemList Linked="true">
+        <ItemList Linked>
             <Item>
                 <Image Source="img/image.png" />
                 <Content>
@@ -480,7 +480,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<ItemList Linked=""true"">
+<ItemList Linked>
     <Item>
         <Image Source=""img/image.png"" />
         <Content>
@@ -516,7 +516,7 @@
                     <Header2>可爱的狗</Header2>
                     <ParagraphDemo />
                     <Extra>                        
-                        <Button Linked="true" Floated="HorizontalPosition.Right">
+                        <Button Linked Floated="HorizontalPosition.Right">
                             点击阅读更多 >>
                         </Button>
                     </Extra>
@@ -528,7 +528,7 @@
                     <Header2>超级猫粮</Header2>
                     <ParagraphDemo />
                     <Extra>
-                        <Button Linked="true" Floated="HorizontalPosition.Right">
+                        <Button Linked Floated="HorizontalPosition.Right">
                             点击阅读更多 >>
                         </Button>
                     </Extra>
@@ -540,7 +540,7 @@
                     <Header2>棕熊传说</Header2>
                     <ParagraphDemo />
                     <Extra>
-                        <Button Linked="true" Floated="HorizontalPosition.Right">
+                        <Button Linked Floated="HorizontalPosition.Right">
                             点击阅读更多 >>
                         </Button>
                     </Extra>
@@ -558,7 +558,7 @@
             <Header2>可爱的狗</Header2>
             <ParagraphDemo />
             <Extra>                        
-                <Button Linked=""true"" Floated=""HorizontalPosition.Right"">
+                <Button Linked Floated=""HorizontalPosition.Right"">
                     点击阅读更多 >>
                 </Button>
             </Extra>
@@ -570,7 +570,7 @@
             <Header2>超级猫粮</Header2>
             <ParagraphDemo />
             <Extra>
-                <Button Linked=""true"" Floated=""HorizontalPosition.Right"">
+                <Button Linked Floated=""HorizontalPosition.Right"">
                     点击阅读更多 >>
                 </Button>
             </Extra>
@@ -582,7 +582,7 @@
             <Header2>棕熊传说</Header2>
             <ParagraphDemo />
             <Extra>
-                <Button Linked=""true"" Floated=""HorizontalPosition.Right"">
+                <Button Linked Floated=""HorizontalPosition.Right"">
                     点击阅读更多 >>
                 </Button>
             </Extra>
@@ -595,11 +595,11 @@
 </PresentationPart>
         <PresentationPart Title="反转背景">
     <Description>
-        设置 <code>Darkness="true"</code> 使组件识别反转的背景颜色。
+        设置 <code>Inverted</code> 使组件识别反转的背景颜色。
     </Description>
     <RunTemplate>
-        <Segment Darkness="true">
-            <ItemList Darkness="true">
+        <Segment Inverted>
+            <ItemList Inverted>
                 <Item>
                     <Image Source="img/image.png" />
                     <Content>
@@ -626,8 +626,8 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <ItemList Darkness=""true"">
+<Segment Inverted>
+    <ItemList Inverted>
         <Item>
             <Image Source=""img/image.png"" />
             <Content>
@@ -681,8 +681,8 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Darkness</td>
-                            <td>适应父组件的 <code>Darkness</code></td>
+                            <td>Inverted</td>
+                            <td>适应父组件的 <code>Inverted</code></td>
                             <td>bool</td>
                             <td></td>
                         </tr>

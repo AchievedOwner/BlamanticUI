@@ -2,17 +2,14 @@
 
 <Pager DataSource="Menu">
     <Body>
-<Header1 Divider="true">
-    片段
-    <SubHeader>
-        片段用于创建相关内容的分组
-    </SubHeader>
-</Header1>
-<Message>
-    使用 <code>Segment</code> 呈现片段组件。
-</Message>
+        <Header1 Divider>
+            Segment
+            <SubHeader>
+                A segment is used to create a grouping of related content
+            </SubHeader>
+        </Header1>
 
-<PresentationPart Title="示例" Id="demo">
+<PresentationPart Title="Demo" Id="demo">
     <RunTemplate>
         <Segment><ParagraphDemo /></Segment>
     </RunTemplate>
@@ -25,76 +22,76 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="阴影边框" Id="raised">
+<PresentationPart Title="Raised" Id="raised">
     <Description>
-        设置 <code>Raised="true"</code> 显示阴影边框，看起来很突出。
+        A segment may be formatted to raise above the page.
     </Description>
     <RunTemplate>
-        <Segment Raised="true"><ParagraphDemo /></Segment>
+        <Segment Raised><ParagraphDemo /></Segment>
     </RunTemplate>
     <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Segment Raised=""true"">...</Segment>
+<Segment Raised>...</Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="禁用">
+<PresentationPart Title="Disabled">
     <Description>
-        设置 <code>Disabled="true"</code> 呈现禁用状态。
+        A segment may show its content is disabled
     </Description>
     <RunTemplate>
-        <Segment Disabled="true"><ParagraphDemo /></Segment>
+        <Segment Disabled><ParagraphDemo /></Segment>
     </RunTemplate>
     <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Segment Disabled=""true"">...</Segment>
+<Segment Disabled>...</Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="加载中" Id="loading">
+<PresentationPart Title="Loading" Id="loading">
     <Description>
-        设置 <code>Loading="true"</code> 呈现禁用状态。
+        A segment may show its content is being loaded
     </Description>
     <RunTemplate>
-        <Segment Loading="true"><ParagraphDemo /></Segment>
+        <Segment Loading><ParagraphDemo /></Segment>
     </RunTemplate>
     <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Segment Loading=""true"">...</Segment>
+<Segment Loading>...</Segment>
 ```
         ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="占位片段" Id="placeholder">
+<PresentationPart Title="Placeholder" Id="placeholder">
     <Description>
-        设置 <code>Placeholder="true"</code> 可用于为有条件显示的内容保留空间。
+        A segment can be used to reserve space for conditionally displayed content.
     </Description>
     <RunTemplate>
-        <Segment Placeholder="true">
-            <Header3 Icon="true">
+        <Segment Placeholder>
+            <Header3 Icon>
                 <Icon IconClass="pdf file outline" />
-                当前用户没有任何文件
+                No documents are listed for this customer.
             </Header3>
-            <Button Emphasis="Emphasis.Primary">添加文件</Button>
+            <Button Emphasis="Emphasis.Primary">Add File</Button>
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Placeholder=""true"">
-    <Header3 Icon=""true"">
+<Segment Placeholder>
+    <Header3 Icon>
         <Icon IconClass=""pdf file outline""/>
-        当前用户没有任何文件
+        No documents are listed for this customer.
     </Header3>
-    <Button Emphasis=""Emphasis.Primary"">添加文件</Button>
+    <Button Emphasis=""Emphasis.Primary"">Add File</Button>
 </Segment>
 ```
 ")
@@ -103,84 +100,70 @@
 
 <PresentationPart>
     <Description>
-        若要在占位符中使用内联块内容，请将内容以 <code>class="inline"</code> 方式包装起来。
+        To use inline-block content inside a placeholder, wrap the content in inline.
     </Description>
     <RunTemplate>
-        <Segment Placeholder="true">
-            <Header3 Icon="true">
+        <Segment Placeholder>
+            <Header3 Icon>
                 <Icon IconClass="pdf file outline" />
-                当前用户没有任何文件
+                We don't have any documents matching your query
             </Header3>
-            <div class="inline">
-                <Button Emphasis="Emphasis.Primary">添加文件</Button>
-                <Button>清空文件夹</Button>
-            </div>
+            <Content Inline>
+                <Button Emphasis="Emphasis.Primary">Add File</Button>
+                <Button>Clear Directory</Button>
+            </Content>
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Placeholder=""true"">
-    <Header3 Icon=""true"">
+<Segment Placeholder>
+    <Header3 Icon>
         <Icon IconClass=""pdf file outline"" />
-        当前用户没有任何文件
+        We don't have any documents matching your query
     </Header3>
-    <div class=""inline"">
-        <Button Emphasis=""Emphasis.Primary"">添加文件</Button>
-        <Button>清空文件夹</Button>
-    </div>
+    <Content Inline>
+        <Button Emphasis=""Emphasis.Primary"">Add File</Button>
+        <Button>Clear Directory</Button>
+    </Content>
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="多页效果" Id="stacked">
+<PresentationPart Title="Stacked" Id="stacked">
     <Description>
-        设置 <code>Stacked="true"</code> 可以使片段呈现多页效果的样式。
+        A segment can be formatted to show it contains multiple pages
     </Description>
     <RunTemplate>
-        <Segment Stacked="true">
+        <Segment Stacked>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Stacked Tall>
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Stacked=""true"">...</Segment>
+<Segment Stacked>...</Segment>
+<Segment Stacked Tall>...</Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="强化多页效果" Id="stack-tall">
+<PresentationPart Title="Piled" Id="piled">
     <Description>
-        在 <code>Stacked="true"</code> 的基础上，再设置 <code>Tall="true"</code> 可以再强化多页效果。
-    </Description>
-    <RunTemplate>
-        <Segment Stacked="true" Tall="true">
-            <ParagraphDemo />
-        </Segment>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<Segment Stacked=""true"" Tall=""true"">...</Segment>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-
-<PresentationPart Title="堆积效果" Id="piled">
-    <Description>
-        设置 <code>Piled="true"</code> 以呈现堆叠页面效果。
+        A segment can be formatted to look like a pile of pages
         <Message State="State.Warning">
-            为了正确地显示堆叠效果的 Segment 组件，要求父容器必须显示地设置 z-index 和 position:relative。
+            Piled segments use <b>negative z-index</b> to format the additional pages below the segment. In order for them to appear correctly, your segment's offset container must have a z-index declared.
         </Message>
     </Description>
     <RunTemplate>
         <div style="z-index:1;position:relative">
-            <Segment Piled="true">
+            <Segment Piled>
                 <ParagraphDemo />
             </Segment>
         </div>
@@ -189,38 +172,38 @@
         @Code.GetCode(@"
 ```html
 <div style=""positioin:relative;z-index:1"">
-    <Segment Piled=""true"">...</Segment>
+    <Segment Piled>...</Segment>
 </div>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="垂直片段" Id="vertical">
+<PresentationPart Title="Vertical" Id="vertical">
     <Description>
-        设置 <code>Vertical="true"</code> 将内容格式化为垂直组的一部分。
+        A vertical segment formats content to be aligned as part of a vertical group
     </Description>
     <RunTemplate>
-        <Segment Vertical="true">
+        <Segment Vertical>
             <ParagraphDemo />
         </Segment>
-        <Segment Vertical="true">
+        <Segment Vertical>
             <ParagraphDemo />
         </Segment>
-        <Segment Vertical="true">
+        <Segment Vertical>
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Vertical=""true"">
+<Segment Vertical>
     <ParagraphDemo />
 </Segment>
-<Segment Vertical=""true"">
+<Segment Vertical>
     <ParagraphDemo />
 </Segment>
-<Segment Vertical=""true"">
+<Segment Vertical>
     <ParagraphDemo />
 </Segment>
 ```
@@ -229,30 +212,27 @@
 </PresentationPart>
 
 
-<PresentationPart Title="反选背景" Id="inverted">
+<PresentationPart Title="Inverted" Id="inverted">
     <Description>
-        设置 <code>Darkness="true"</code> 可以反选背景。
+        A segment can have its colors inverted for contrast
     </Description>
     <RunTemplate>
-        <Segment Darkness="true">
-            背景反选了，所以颜色是黑的，但文字是白色的。
+        <Segment Inverted>
+            I'm here to tell you something, and you will probably read me first.
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    背景反选了，所以颜色是黑的，但文字是白色的。
+<Segment Inverted>
+    I'm here to tell you something, and you will probably read me first.
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="颜色" Id="color">
-    <Description>
-        设置 <code>Color</code> 可以使片段上边框设置颜色。
-    </Description>
+<PresentationPart Title="Color" Id="color">
     <RunTemplate>
         <Segment Color="Color.Red">
             <ParagraphDemo />
@@ -267,6 +247,22 @@
             <ParagraphDemo />
         </Segment>
         <Segment Color="Color.Pink">
+            <ParagraphDemo />
+        </Segment>
+
+        <Segment Color="Color.Red" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Color="Color.Blue" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Color="Color.Green" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Color="Color.Orange" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Color="Color.Pink" Inverted>
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
@@ -288,48 +284,21 @@
 <Segment Color=""Color.Pink"">
     <ParagraphDemo />
 </Segment>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
 
-<PresentationPart Title="背景颜色" Id="bg-color">
-    <Description>
-        设置 <code>Color</code> 和 <code>Darkness</code> 可以让片段有背景颜色。
-    </Description>
-    <RunTemplate>
-        <Segment Color="Color.Red" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Color="Color.Blue" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Color="Color.Green" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Color="Color.Orange" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Color="Color.Pink" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<Segment Color=""Color.Red"" Darkness=""true"">
+
+<Segment Color=""Color.Red"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Blue"" Darkness=""true"">
+<Segment Color=""Color.Blue"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Green"" Darkness=""true"">
+<Segment Color=""Color.Green"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Orange"" Darkness=""true"">
+<Segment Color=""Color.Orange"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Color=""Color.Pink"" Darkness=""true"">
+<Segment Color=""Color.Pink"" Inverted>
     <ParagraphDemo />
 </Segment>
 ```
@@ -337,9 +306,9 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="背景颜色的深浅" Id="emphasis">
+<PresentationPart Title="Emphasis" Id="emphasis">
     <Description>
-        设置 <code>Emphasis</code> 可以让背景颜色拥有不同的深浅，<code>true</code> 为二等强度，<code>false</code> 为三等强度。
+        A segment can be formatted to appear more or less noticeable
     </Description>
     <RunTemplate>
         <Segment>
@@ -352,43 +321,43 @@
             <ParagraphDemo />
         </Segment>
         <br />
-        <Segment Color="Color.Red" Darkness="true">
+        <Segment Color="Color.Red" Inverted>
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="true" Color="Color.Red" Darkness="true">
+        <Segment Emphasis="true" Color="Color.Red" Inverted>
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="false" Color="Color.Red" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <br />
-        <Segment Color="Color.Green" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Emphasis="true" Color="Color.Green" Darkness="true">
-            <ParagraphDemo />
-        </Segment>
-        <Segment Emphasis="false" Color="Color.Green" Darkness="true">
+        <Segment Emphasis="false" Color="Color.Red" Inverted>
             <ParagraphDemo />
         </Segment>
         <br />
-        <Segment Color="Color.Black" Darkness="true">
+        <Segment Color="Color.Green" Inverted>
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="true" Color="Color.Black" Darkness="true">
+        <Segment Emphasis="true" Color="Color.Green" Inverted>
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="false" Color="Color.Black" Darkness="true">
+        <Segment Emphasis="false" Color="Color.Green" Inverted>
             <ParagraphDemo />
         </Segment>
         <br />
-        <Segment Color="Color.Pink" Darkness="true">
+        <Segment Color="Color.Black" Inverted>
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="true" Color="Color.Pink" Darkness="true">
+        <Segment Emphasis="true" Color="Color.Black" Inverted>
             <ParagraphDemo />
         </Segment>
-        <Segment Emphasis="false" Color="Color.Pink" Darkness="true">
+        <Segment Emphasis="false" Color="Color.Black" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <br />
+        <Segment Color="Color.Pink" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Emphasis="true" Color="Color.Pink" Inverted>
+            <ParagraphDemo />
+        </Segment>
+        <Segment Emphasis="false" Color="Color.Pink" Inverted>
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
@@ -399,49 +368,49 @@
     <ParagraphDemo />
 </Segment>
 <Segment Emphasis=""true"">
-    <ParagraphDemo />
+    < ParagraphDemo />
 </Segment>
 <Segment Emphasis=""false"">
     <ParagraphDemo />
 </Segment>
 <br />
-<Segment Color=""Color.Red"" Darkness=""true"">
+<Segment Color=""Color.Red"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""true"" Color=""Color.Red"" Darkness=""true"">
+<Segment Emphasis=""true"" Color=""Color.Red"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""false"" Color=""Color.Red"" Darkness=""true"">
-    <ParagraphDemo />
-</Segment>
-<br />
-<Segment Color=""Color.Green"" Darkness=""true"">
-    <ParagraphDemo />
-</Segment>
-<Segment Emphasis=""true"" Color=""Color.Green"" Darkness=""true"">
-    <ParagraphDemo />
-</Segment>
-<Segment Emphasis=""false"" Color=""Color.Green"" Darkness=""true"">
+<Segment Emphasis=""false"" Color=""Color.Red"" Inverted>
     <ParagraphDemo />
 </Segment>
 <br />
-<Segment Color=""Color.Black"" Darkness=""true"">
+<Segment Color=""Color.Green"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""true"" Color=""Color.Black"" Darkness=""true"">
+<Segment Emphasis=""true"" Color=""Color.Green"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""false"" Color=""Color.Black"" Darkness=""true"">
+<Segment Emphasis=""false"" Color=""Color.Green"" Inverted>
     <ParagraphDemo />
 </Segment>
 <br />
-<Segment Color=""Color.Pink"" Darkness=""true"">
+<Segment Color=""Color.Black"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""true"" Color=""Color.Pink"" Darkness=""true"">
+<Segment Emphasis=""true"" Color=""Color.Black"" Inverted>
     <ParagraphDemo />
 </Segment>
-<Segment Emphasis=""false"" Color=""Color.Pink"" Darkness=""true"">
+<Segment Emphasis=""false"" Color=""Color.Black"" Inverted>
+    <ParagraphDemo />
+</Segment>
+<br />
+<Segment Color=""Color.Pink"" Inverted>
+    <ParagraphDemo />
+</Segment>
+<Segment Emphasis=""true"" Color=""Color.Pink"" Inverted>
+    <ParagraphDemo />
+</Segment>
+<Segment Emphasis=""false"" Color=""Color.Pink"" Inverted>
     <ParagraphDemo />
 </Segment>
 ```
@@ -449,75 +418,77 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="吸附" Id="attach">
+<PresentationPart Title="Attached" Id="attach">
     <Description>
-        使用 <code>Attached="true"</code> 可以让任何组件紧跟其他组件。
+        A segment can be attached to other content on a page
     </Description>
     <RunTemplate>
-        <Header4 Attached="true" AttachedVertical="VerticalPosition.Top">
-            小狗
+        <Header4 Attached AttachedVertical="VerticalPosition.Top">
+            Dogs
         </Header4>
-        <Segment Attached="true">
-            小狗是一种动物。
+        <Segment Attached>
+            Dogs are one type of animal.
         </Segment>
-        <Header4 Attached="true">
-            小猫
+        <Header4 Attached>
+            Cats
         </Header4>
-        <Segment Attached="true">
-            小猫也是一种动物，但是动作非常的灵敏，而且晚上可以很清楚的看见任何东西。
+        <Segment Attached>
+            Cats are thought of as being related to dogs, but only humans think this.
         </Segment>
-        <Header4 Attached="true">
-            狮子
+        <Header4 Attached>
+            Lions
         </Header4>
-        <Segment Attached="true">
-            狮子是一种很凶猛的东西，千万不要被抓到。
+        <Segment Attached>
+            Humans don't think of lions as being like cats, but they are.
         </Segment>
-        <Message State="State.Warning" Attached="true" AttachedVertical="VerticalPosition.Bottom">
-            这里是吸附的底部
+        <Message State="State.Warning" Attached AttachedVertical="VerticalPosition.Bottom">
+            <Icon IconClass="attention"/>
+            You've reached the end of this content segment
         </Message>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Header4 Attached=""true"" AttachedVertical=""VerticalPosition.Top"">
-    小狗
+<Header4 Attached AttachedVertical=""VerticalPosition.Top"">
+    Dogs
 </Header4>
-<Segment Attached=""true"">
-    小狗是一种动物。
+<Segment Attached>
+    Dogs are one type of animal.
 </Segment>
-<Header4 Attached=""true"">
-    小猫
+<Header4 Attached>
+    Cats
 </Header4>
-<Segment Attached=""true"">
-    小猫也是一种动物，但是动作非常的灵敏，而且晚上可以很清楚的看见任何东西。
+<Segment Attached>
+    Cats are thought of as being related to dogs, but only humans think this.
 </Segment>
-<Header4 Attached=""true"">
-    狮子
+<Header4 Attached>
+    Lions
 </Header4>
-<Segment Attached=""true"">
-    狮子是一种很凶猛的东西，千万不要被抓到。
+<Segment Attached>
+    Humans don't think of lions as being like cats, but they are.
 </Segment>
-<Message State=""State.Warning"" Attached=""true"" AttachedVertical=""VerticalPosition.Bottom"">
-    这里是吸附的底部
+<Message State=""State.Warning"" Attached AttachedVertical=""VerticalPosition.Bottom"">
+    <Icon IconClass=""attention""/>
+    You've reached the end of this content segment
 </Message>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="增强内边距" Id="padded">
+<PresentationPart Title="Padded" Id="padded">
     <Description>
-        设置 <code>Padded="true"</code> 可以增强内边距。
+        A segment can increase its padding
     </Description>
     <RunTemplate>
-        <Segment Padded="true">
+        <Segment Padded>
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Padded=""true"">
+<Segment Padded>
     <ParagraphDemo/>
 </Segment>
 ```
@@ -525,65 +496,65 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="减弱内边距" Id="fitted">
+<PresentationPart Title="Fitted" Id="fitted">
     <Description>
-        设置 <code>Fitted="true"</code> 可以减弱内边距。
+        A segment can remove its padding, vertically or horizontally
     </Description>
     <RunTemplate>
-        <Segment Fitted="true">
+        <Segment Fitted>
             <ParagraphDemo />
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Fitted=""true"">
+<Segment Fitted>
     <ParagraphDemo/>
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="压缩空间" Id="compact">
+<PresentationPart Title="Compact" Id="compact">
     <Description>
-        设置 <code>Compact="true"</code> 可以让宽度可以刚刚好和文字的数量一样。
+        A segment may take up only as much space as is necessary
     </Description>
     <RunTemplate>
-        <Segment Compact="true">
-            你好呀
+        <Segment Compact>
+            Pellentesque habitant morbi
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Compact=""true"">
-    你好呀
+<Segment Compact>
+    Pellentesque habitant morbi
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="圆形" Id="circular">
+<PresentationPart Title="Circular" Id="circular">
     <Description>
-        设置 <code>Circular="true"</code> 呈现圆形片段。
+        A segment can be circular
         <Message State="State.Info">
-            一个圆形的片段很可能需要手动调整其内容的宽度和高度，否则它将与你的内容的大小一致。
+            A circular segment will most likely have to have its content manually sized to be equal width and height, otherwise it will flow to the size of your content
         </Message>
     </Description>
     <RunTemplate>
-        <Segment Circular="true">
+        <Segment Circular>
             <Header2>
-                立即购买
+                Buy Now
                 <SubHeader>
-                    ￥99.99
+                    $99.99
                 </SubHeader>
             </Header2>
         </Segment>
-        <Segment Circular="true" Darkness="true">
-            <Header2 Darkness="true">
-                立即购买
+        <Segment Circular Inverted>
+            <Header2 Inverted>
+                Buy Now
                 <SubHeader>
-                    ￥29.98
+                    $29.98
                 </SubHeader>
             </Header2>
         </Segment>
@@ -591,19 +562,19 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Circular=""true"">
+<Segment Circular>
     <Header2>
-        立即购买
+        Buy Now
         <SubHeader>
-            ￥99.99
+            $99.99
         </SubHeader>
     </Header2>
 </Segment>
-<Segment Circular=""true"" Darkness=""true"">
-    <Header2 Darkness=""true"">
-        立即购买
+<Segment Circular Inverted>
+    <Header2 Inverted>
+        Buy Now
         <SubHeader>
-            ￥99.99
+            $29.98
         </SubHeader>
     </Header2>
 </Segment>
@@ -612,61 +583,100 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="左右浮动" Id="floated">
+<PresentationPart Title="Floated" Id="floated">
     <Description>
-        设置 <code>Floated</code> 可以让内容有浮动样式。
+        A segment can appear to the left or right of other content
     </Description>
     <RunTemplate>
         <Segment Floated="HorizontalPosition.Left">
-            左浮动片段
+            This segment will appear to the left
         </Segment>
         <Segment Floated="HorizontalPosition.Right">
-            右浮动片段
+            This segment will appear to the right
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Segment Floated=""HorizontalPosition.Left"">
-    左浮动片段
+    This segment will appear to the left
 </Segment>
 <Segment Floated=""HorizontalPosition.Right"">
-    右浮动片段
+    This segment will appear to the right
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="对齐方式" Id="horizontal-align">
+        <PresentationPart Title="Clear">
+            <Description>
+                A segment can clear floated content
+            </Description>
+            <RunTemplate>
+                <Segment Clear>
+                    <Button Floated="HorizontalPosition.Right">Floated</Button>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment Clear>
+    <Button Floated=""HorizontalPosition.Right"">Floated</Button>
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+<PresentationPart Title="Text Alignment" Id="horizontal-align">
     <Description>
-        设置 <code>HorizontalAlignment</code> 让文本有对齐方式。
+        A segment can have its text aligned to a side
     </Description>
     <RunTemplate>
-        <Segment HorizontalAlignment="HorizontalAlignment.Right">右对齐</Segment>
-        <Segment HorizontalAlignment="HorizontalAlignment.Left">左对齐</Segment>
-        <Segment HorizontalAlignment="HorizontalAlignment.Center">中间对齐</Segment>
+        <Segment HorizontalAlignment="HorizontalAlignment.Right">Right</Segment>
+        <Segment HorizontalAlignment="HorizontalAlignment.Left">Left</Segment>
+        <Segment HorizontalAlignment="HorizontalAlignment.Center">Center</Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment HorizontalAlignment=""HorizontalAlignment.Right"">右对齐</Segment>
-<Segment HorizontalAlignment=""HorizontalAlignment.Left"">左对齐</Segment>
-<Segment HorizontalAlignment=""HorizontalAlignment.Center"">中间对齐</Segment>
+<Segment HorizontalAlignment=""HorizontalAlignment.Right"">Right</Segment>
+<Segment HorizontalAlignment=""HorizontalAlignment.Left"">Left</Segment>
+<Segment HorizontalAlignment=""HorizontalAlignment.Center"">Center</Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
+        <PresentationPart Title="Basic">
+            <Description>
+                A basic segment has no special formatting
+            </Description>
+            <RunTemplate>
+                <Segment Basic>
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment Basic>
+    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
 
-<Header2 Divider="true">
-    片段组
+
+<Header2 Divider>
+    Groups
 </Header2>
 
-<Message>
-    使用 <code>Segments</code> 可以对一组段进行格式化，以便一起显示。
-</Message>
 
-<PresentationPart Title="组示例" Id="segments">
+<PresentationPart Title="Segments" Id="segments">
+    <Description>
+        A group of segments can be formatted to appear together
+    </Description>
     <RunTemplate>
         <Segments>
             <Segment>
@@ -699,12 +709,9 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="简单组" Id="basic">
-    <Description>
-        设置 <code>Basic="true"</code> 可以使每一个片段使用分割线的方式显示。
-    </Description>
+<PresentationPart Title="Basic Segments" Id="basic">
     <RunTemplate>
-        <Segments Basic="true">
+        <Segments Basic>
             <Segment>
                 <ParagraphDemo />
             </Segment>
@@ -719,7 +726,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segments Basic=""true"">
+<Segments Basic>
     <Segment>
         ...
     </Segment>
@@ -735,7 +742,7 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="嵌套片段" Id="nesting">
+<PresentationPart Title="Nested Segments" Id="nesting">
     <RunTemplate>
         <Segments>
             <Segment><ParagraphDemo /></Segment>
@@ -744,16 +751,16 @@
                     <ParagraphDemo />
                 </Segment>
                 <Segment>
-                    这是一个嵌套
+                    Nested
                 </Segment>
             </Segments>
             <Segment>
-                嵌套外的内容
+                Nested Content
             </Segment>
-            <Segments Horizontal="true">
-                <Segment>开始</Segment>
-                <Segment>中间</Segment>
-                <Segment>结束</Segment>
+            <Segments Horizontal>
+                <Segment>Top</Segment>
+                <Segment>Middel</Segment>
+                <Segment>Bottom</Segment>
             </Segments>
             <Segment>
                 <ParagraphDemo />
@@ -770,16 +777,16 @@
             <ParagraphDemo />
         </Segment>
         <Segment>
-            这是一个嵌套
+            Nested
         </Segment>
     </Segments>
     <Segment>
-        嵌套外的内容
+        Nested Content
     </Segment>
-    <Segments Horizontal=""true"">
-        <Segment>开始</Segment>
-        <Segment>中间</Segment>
-        <Segment>结束</Segment>
+    <Segments Horizontal>
+        <Segment>Top</Segment>
+        <Segment>Middel</Segment>
+        <Segment>Bottom</Segment>
     </Segments>
     <Segment>
         <ParagraphDemo/>
@@ -790,12 +797,12 @@
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="水平排列" Id="horizontal">
+<PresentationPart Title="Horizontal Segments" Id="horizontal">
     <Description>
-        设置 <code>Horizontal="true"</code> 可以水平排列。
+        A segment group can appear horizontally
     </Description>
     <RunTemplate>
-        <Segments Horizontal="true">
+        <Segments Horizontal>
             <Segment>
                 <ParagraphDemo />
             </Segment>
@@ -808,7 +815,7 @@
         </Segments>
 
         <br />
-        <Segments Horizontal="true" Basic="true">
+        <Segments Horizontal Basic>
             <Segment>
                 <ParagraphDemo />
             </Segment>
@@ -823,7 +830,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segments Horizontal=""true"">
+<Segments Horizontal>
     <Segment>
         <ParagraphDemo />
     </Segment>
@@ -836,7 +843,7 @@
 </Segments>
 
 <br />
-<Segments Horizontal=""true"" Basic=""true"">
+<Segments Horizontal Basic>
     <Segment>
         <ParagraphDemo />
     </Segment>
@@ -851,12 +858,12 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="边框突出" Id="segments-raised">
+<PresentationPart Title="Raised Segments" Id="segments-raised">
     <Description>
-        设置 <code>Raised="true"</code> 让边框突出显示。
+        A group of segments can be raised
     </Description>
     <RunTemplate>
-        <Segments Raised="true">
+        <Segments Raised>
             <Segment>
                 <ParagraphDemo />
             </Segment>
@@ -871,7 +878,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segments Raised=""true"">
+<Segments Raised>
     <Segment>
         <ParagraphDemo />
     </Segment>
@@ -886,12 +893,12 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="组多页" Id="segments-stacked">
+<PresentationPart Title="Stacked Segments" Id="segments-stacked">
     <Description>
-        设置 <code>Stacked="true"</code> 边框有多页效果。
+        A group of segments can be stacked
     </Description>
     <RunTemplate>
-        <Segments Stacked="true">
+        <Segments Stacked>
             <Segment>
                 <ParagraphDemo />
             </Segment>
@@ -906,7 +913,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segments Stacked=""true"">
+<Segments Stacked>
     <Segment>
         <ParagraphDemo />
     </Segment>
@@ -921,13 +928,13 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="组堆积" Id="segments-piled">
+<PresentationPart Title="Piled Segments" Id="segments-piled">
     <Description>
-        设置 <code>Piled="true"</code> 边框有堆积效果。
+        A group of segments can be piled
     </Description>
     <RunTemplate>
         <div style="z-index:1;position:relative">
-            <Segments Piled="true">
+            <Segments Piled>
                 <Segment>
                     <ParagraphDemo />
                 </Segment>
@@ -944,7 +951,7 @@
         @Code.GetCode(@"
 ```html
 <Div style=""z-index:1;position:relative"">
-    <Segments Piled=""true"">
+    <Segments Piled>
         <Segment>
             <ParagraphDemo />
         </Segment>
@@ -960,139 +967,14 @@
 ")
     </CodeTemplate>
 </PresentationPart>        
-        <ParameterTable>
-            <Content>
-                <tr>
-                    <td>Basic</td>
-                    <td>去掉边框</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Placeholder</td>
-                    <td>有占位样式的效果</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Stacked</td>
-                    <td>片段呈现多页效果的样式</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Attached</td>
-                    <td>是否需要吸附于相对位置的其他组件</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>AttachedVertical</td>
-                    <td>垂直方向上的吸附位置</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Vertical</td>
-                    <td>使用纵向的方式排列</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Darkness</td>
-                    <td>反转背景，配合 <code>Color</code> 成为背景颜色</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Disabled</td>
-                    <td>是否禁用</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Loading</td>
-                    <td>是否处于加载中状态</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Tall</td>
-                    <td>强化 <code>Stacked</code> 效果</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Piled</td>
-                    <td>呈现堆叠效果。要求显示地设置父容器的 <code>z-index</code> 和 <code>position:relative</code></td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td>顶部边框的颜色。设置 <code>Darkness</code> 成为背景颜色</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Padded</td>
-                    <td>增强内边距的空间</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Fitted</td>
-                    <td>清除内边距的空间</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Compact</td>
-                    <td>对内边距的空间进行一定的压缩</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Circular</td>
-                    <td>呈现圆形样式</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Clearing</td>
-                    <td>内容清除浮动</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Emphasis</td>
-                    <td>片段的背景颜色的深浅度。<code>true</code> 为第二强度，<code>false</code> 为第三强度。</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>HorizontalAlignment</td>
-                    <td>文本水平方向的对齐方式</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-            </Content>
-        </ParameterTable>                <MethodTable>
-            <Content>
-                <tr>
-                    <td>Disable(bool disabled = true)</td>
-                    <td>使组件被禁止使用</td>
-                </tr>
-            </Content>
-        </MethodTable>
     </Body>
 </Pager>
 @code{
     List<string> Menu = new List<string>(new[]
     {
-        "示例","阴影边框","禁用","加载中","占位片段","多页效果","强化多页效果","堆积效果",
-        "垂直片段","反选背景","颜色","背景颜色","背景颜色的深浅","吸附","增强内边距","减弱内边距",
-        "压缩空间","圆形","左右浮动","对齐方式","组示例","简单组","嵌套片段","水平排列","边框突出","组多页",
-        "组堆积","参数","方法"
+        "Demo","Raised","Disabled","Loading","Placeholder","Stacked","Piled",
+        "Vertical","Inverted","Color","Emphasis","Attached","Padded","Fitted",
+        "Compact","Circular","Floated","Clear","Text Alignment","Basic","Segments","Basic Segments","Nested Segments","Horizontal Segments","Raised Segments","Stacked Segments",
+        "Piled Segments"
     });
 }

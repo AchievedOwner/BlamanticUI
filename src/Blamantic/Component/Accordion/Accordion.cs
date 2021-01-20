@@ -9,8 +9,8 @@
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
-    public class Accordion : BlamanticParentComponentBase<Accordion, AccordionItem>, IHasUIComponent, IHasFluid, IHasDarkness
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
+    public class Accordion : BlamanticParentComponentBase<Accordion, AccordionItem>, IHasUIComponent, IHasFluid, IHasInverted
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Accordion"/> class.
@@ -25,12 +25,12 @@
         /// </summary>
         [Parameter][CssClass("styled")] public bool Styled { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is fluid.
         /// </summary>

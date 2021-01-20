@@ -2,149 +2,230 @@
 
 <Pager DataSource="Menu">
     <Body>
-<Header1 Divider="true">
-    图像
-    <SubHeader>图像是某物的图形表示</SubHeader>
-</Header1>
-
-<Segment>
-    使用 <code>&lt;Image></code> 作为图像组件。
-    <br />
-    通常情况，<code>Image</code> 组件会被包含在其他组件使用，例如 <code>Anchor</code> 或 <code>Item</code>。
-    当图像没有被其他组件所封装使用时，要设置 <code>UI="true"</code> 参数。
-</Segment>
-
-<PresentationPart Title="示例">
+        <Header1 Divider>
+            Image
+            <SubHeader>An image is a graphic representation of something</SubHeader>
+        </Header1>
+<PresentationPart Title="Standard">
     <Description>
-        设置 <code>Source</code> 作为图像的来源地址。
-        <Message>
-            除非指定了大小，否则图像将使用图像的原始尺寸，直到其容器的大小。
-        </Message>
+        Unless a size is specified, images will use the original dimensions of the image up to the size of its container.
     </Description>
     <RunTemplate>
-        <Image Source="/img/image.png" Size="Size.Small" UI="true"/>
+        <Image Src="/img/image.png" Size="Size.Small"/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Source=""/img/image.png"" Size=""Size.Small"" UI=""true""/>
+<Image Src=""/img/image.png"" Size=""Size.Small""/>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-
-<Message State="State.Warning">
-   <Icon IconClass="attention"/>通常情况，图像都会嵌入能设置 <code>Image="true"</code> 参数的组件作为子组件出现。若要将 <code>Image</code> 组件单独使用时，需要设置 <code>UI="true"</code> 参数。
-</Message>
-
-<PresentationPart Title="图片链接">
+<PresentationPart Title="Image Link">
     <Description>
-        在 <code>Image</code> 外面嵌套 <code>ImageAnchor</code> 组件可使图像拥有超链接的功能。
+        An image can be formatted to link to other content
     </Description>
     <RunTemplate>
-        <ImageAnchor Link="http://www.baidu.com" Target="LinkTarget.Blank" Size="Size.Small" Title="去百度">
-            <Image Source="/img/image.png" />
+        <ImageAnchor Link="http://www.bing.com" Target="LinkTarget.Blank" Size="Size.Small" Title="To Bing">
+            <Image Src="/img/image.png" />
         </ImageAnchor>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<ImageAnchor Link=""http://www.baidu.com"" Target=""LinkTarget.Blank"" Size=""Size.Small"" Title=""去百度"">
-    <Image Source=""/img/image.png"" />
+<ImageAnchor Link=""http://www.bing.com"" Target=""LinkTarget.Blank"" Size=""Size.Small"" Title=""To Bing"">
+    <Image Src=""/img/image.png"" />
 </ImageAnchor>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="头像">
-    <SubTitle>
-        可以将图像格式化为与文本一起显示为头像
-    </SubTitle>
+<PresentationPart Title="Avatar">
     <Description>
-        设置 <code>Avatar="true"</code> 和 <code>UI="true"</code> 参数，或使用 <code>Avatar</code> 组件呈现头像。
+        An image may be formatted to appear inline with text as an avatar. <Text Color="Color.Blue">Recommand to use <code>Avatar</code> component instead.</Text>
     </Description>
     <RunTemplate>
-        <Image Avatar="true" UI="true" Source="/img/image.png"/> 张三
-        <Avatar Source="/img/image.png"/> 李四
+        <Image Avatar Src="/img/image.png"/> Admin
+        <Avatar Src="/img/image.png"/> User
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Avatar=""true"" UI=""true"" Source=""/img/image.png""/> 张三
-<Avatar Source=""/img/image.png"" /> 李四
+<Image Avatar Src=""/img/image.png""/> Admin
+<Avatar Src=""/img/image.png"" /> User
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="边框">
-    <SubTitle>
-        图像可以包括用于强调白色或透明内容的边缘的边框
-    </SubTitle>
+<PresentationPart Title="Bordered">
     <Description>
-        设置 <code>Bordered="true"</code> 使图像呈现边框效果。
+        An image may include a border to emphasize the edges of white or transparent content
     </Description>
     <RunTemplate>
-        <Image Source="/img/image.png" Bordered="true" Size="Size.Small" UI="true"/>
+        <Image Src="/img/image.png" Bordered Size="Size.Small" />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Source=""/img/image.png"" Bordered=""true""  UI=""true""/>
+<Image Src=""/img/image.png"" Bordered />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="撑满">
+<PresentationPart Title="Fluid">
     <Description>
-        设置 <code>Fluid="true"</code> 可以让图像撑满整个容器。
+        An image can take up the width of its container
     </Description>
     <RunTemplate>
-        <Image Source="/img/image.png" Fluid="true"  UI="true"/>
+        <Image Src="/img/image.png" Fluid/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Source=""/img/image.png"" Fluid=""true"" UI=""true""/>
+<Image Src=""/img/image.png"" Fluid/>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="圆角">
+<PresentationPart Title="Rounded">
     <Description>
-        设置 <code>Rounded="true"</code> 使图像变成圆角。
+        An image may appear rounded
     </Description>
     <RunTemplate>
-        <Image Source="/img/image.png" Rounded="true" Size="Size.Small" UI="true"/>
+        <Image Src="/img/image.png" Rounded Size="Size.Small"/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Source=""/img/image.png"" Rounded=""true"" Size=""Size.Small"" UI=""true""/>
+<Image Src=""/img/image.png"" Rounded Size=""Size.Small""/>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-<PresentationPart Title="圆形">
+<PresentationPart Title="Circular">
     <Description>
-        设置 <code>Circular="true"</code> 使图像变成圆。
+        An image may appear circular
     </Description>
     <RunTemplate>
-        <Image Source="/img/image.png" Circular="true" Size="Size.Small" UI="true"/>
+        <Image Src="/img/image.png" Circular Size="Size.Small"/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Source=""/img/image.png"" Circular=""true"" Size=""Size.Small"" UI=""true""/>
+<Image Src=""/img/image.png"" Circular Size=""Size.Small""/>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
+        <PresentationPart Title="Vertically Aligned">
+            <Description>
+                An image can specify its vertical alignment
+            </Description>
+            <RunTemplate>
+                <Image Src="/img/image.png" Size="Size.Tiny" VerticalAlignment="VerticalAlignment.Top" />
+                <span>Top Aligned</span>
+                <Divider />
+                <Image Src="/img/image.png" Size="Size.Tiny" VerticalAlignment="VerticalAlignment.Middle" />
+                <span>Middle Aligned</span>
+                <Divider />
+                <Image Src="/img/image.png" Size="Size.Tiny" VerticalAlignment="VerticalAlignment.Bottom" />
+                <span>Bottom Aligned</span>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Image Src=""/img/image.png"" Size=""Size.Tiny"" VerticalAlignment=""VerticalAlignment.Top"" />
+<span>Top Aligned</span>
+<Divider />
+<Image Src=""/img/image.png"" Size=""Size.Tiny"" VerticalAlignment=""VerticalAlignment.Middle"" />
+<span>Middle Aligned</span>
+<Divider />
+<Image Src=""/img/image.png"" Size=""Size.Tiny"" VerticalAlignment=""VerticalAlignment.Bottom"" />
+<span>Bottom Aligned</span>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Centered">
+            <Description>
+                An image can appear centered in a content block
+            </Description>
+            <RunTemplate>
+                <Segment>
+                    <Image Src="/img/image.png" Size="Size.Medium" Centered />
+                    <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+                    <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo vide phaedrum, vim vivendum maiestatis in.</p>
 
-<PresentationPart Title="尺寸">
+                    <Image Src="/img/image.png" Size="Size.Tiny" Centered />
+                    <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri quo, usu odio brute at. Qui te porro electram, ea dico facete utroque quo. Populo quodsi te eam, wisi everti eos ex, eum elitr altera utamur at. Quodsi convenire mnesarchum eu per, quas minimum postulant per id.</p>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment>
+    <Image Src=""/img/image.png"" Size=""Size.Medium"" Centered />
+    <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+    <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo vide phaedrum, vim vivendum maiestatis in.</p>
+
+    <Image Src=""/img/image.png"" Size=""Size.Tiny"" Centered />
+    <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri quo, usu odio brute at. Qui te porro electram, ea dico facete utroque quo. Populo quodsi te eam, wisi everti eos ex, eum elitr altera utamur at. Quodsi convenire mnesarchum eu per, quas minimum postulant per id.</p>
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Spaced">
+            <Description>
+                An image can specify that it needs an additional spacing to separate it from nearby content
+            </Description>
+            <RunTemplate>
+                <Segment>
+                    <p>Te eum doming eirmod, nominati pertinacia <Image Src="/img/image.png" Size="Size.Mini" Spaced/> argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment>
+    <p>Te eum doming eirmod, nominati pertinacia <Image Src=""/img/image.png"" Size=""Size.Mini"" Spaced/> argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Floated">
+            <Description>An image can sit to the left or right of other content</Description>
+            <RunTemplate>
+                <Segment>
+                    <Image Src="/img/image.png" Size="Size.Tiny" Floated="HorizontalPosition.Left" />
+                    <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+
+                    <Image Src="/img/image.png" Size="Size.Tiny" Floated="HorizontalPosition.Right" />
+                    <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo vide phaedrum, vim vivendum maiestatis in.</p>
+                    <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri quo, usu odio brute at. Qui te porro electram, ea dico facete utroque quo. Populo quodsi te eam, wisi everti eos ex, eum elitr altera utamur at. Quodsi convenire mnesarchum eu per, quas minimum postulant per id.</p>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment>
+    <Image Src=""/img/image.png"" Size=""Size.Tiny"" Floated=""HorizontalPosition.Left"" />
+    <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
+
+    <Image Src=""/img/image.png"" Size=""Size.Tiny"" Floated=""HorizontalPosition.Right"" />
+    <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo vide phaedrum, vim vivendum maiestatis in.</p>
+    <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri quo, usu odio brute at. Qui te porro electram, ea dico facete utroque quo. Populo quodsi te eam, wisi everti eos ex, eum elitr altera utamur at. Quodsi convenire mnesarchum eu per, quas minimum postulant per id.</p>
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+<PresentationPart Title="Size">
     <Description>
-        设置 <code>Size</code> 定义图像的尺寸。
+        An image may appear at different sizes
     </Description>
     <RunTemplate>
 
@@ -153,42 +234,42 @@
                 <tr>
                     <td width="30px">Mini</td>
                     <td width="50px">35px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Mini"  UI="true"/></td>
+                    <td><Image Src="/img/image.png" Size="Size.Mini" /></td>
                 </tr>
                 <tr>
                     <td>Tiny</td>
                     <td>80px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Tiny"  UI="true"/></td>
+                    <td><Image Src="/img/image.png" Size="Size.Tiny" /></td>
                 </tr>
                 <tr>
                     <td>Small</td>
                     <td>150px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Small" UI="true" /></td>
+                    <td><Image Src="/img/image.png" Size="Size.Small" /></td>
                 </tr>
                 <tr>
                     <td>Medium</td>
                     <td>300px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Medium" UI="true" /></td>
+                    <td><Image Src="/img/image.png" Size="Size.Medium" /></td>
                 </tr>
                 <tr>
                     <td>Large</td>
                     <td>450px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Large" UI="true" /></td>
+                    <td><Image Src="/img/image.png" Size="Size.Large" /></td>
                 </tr>
                 <tr>
                     <td>Big</td>
                     <td>600px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Big" UI="true" /></td>
+                    <td><Image Src="/img/image.png" Size="Size.Big" /></td>
                 </tr>
                 <tr>
                     <td>Huge</td>
                     <td>800px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Huge" UI="true" /></td>
+                    <td><Image Src="/img/image.png" Size="Size.Huge" /></td>
                 </tr>
                 <tr>
                     <td>Massive</td>
                     <td>960px</td>
-                    <td><Image Source="/img/image.png" Size="Size.Massive" UI="true" /></td>
+                    <td><Image Src="/img/image.png" Size="Size.Massive" /></td>
                 </tr>
             </tbody>
         </table>
@@ -196,118 +277,63 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Image Source=""/img/image.png"" Size=""Size.Mini"" UI=""true""/>
-<Image Source=""/img/image.png"" Size=""Size.Tiny"" UI=""true""/>
-<Image Source=""/img/image.png"" Size=""Size.Small"" UI=""true""/>
-<Image Source=""/img/image.png"" Size=""Size.Medium"" UI=""true"" />
-<Image Source=""/img/image.png"" Size=""Size.Large"" UI=""true"" />
-<Image Source=""/img/image.png"" Size=""Size.Big"" UI=""true"" />
-<Image Source=""/img/image.png"" Size=""Size.Huge"" UI=""true"" />
-<Image Source=""/img/image.png"" Size=""Size.Massive"" UI=""true"" />
+<Image Src=""/img/image.png"" Size=""Size.Mini""/>
+<Image Src=""/img/image.png"" Size=""Size.Tiny""/>
+<Image Src=""/img/image.png"" Size=""Size.Small""/>
+<Image Src=""/img/image.png"" Size=""Size.Medium"" />
+<Image Src=""/img/image.png"" Size=""Size.Large"" />
+<Image Src=""/img/image.png"" Size=""Size.Big"" />
+<Image Src=""/img/image.png"" Size=""Size.Huge"" />
+<Image Src=""/img/image.png"" Size=""Size.Massive"" />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
 
-<PresentationPart Title="图片组">
-    <SubTitle>
-        一组图像可以格式化为具有相同的大小。
-    </SubTitle>
+<PresentationPart Title="Groups">
     <Description>
-        <code>&lt;ImageGroup></code> 作为图片组的容器组件，可以嵌套无数个 <code>&lt;Image></code> 组件。        
+        A group of images can be formatted to have the same size.
     </Description>
     <RunTemplate>
         <ImageGroup Size="Size.Tiny">
-            <Image Source="/img/image.png" />
-            <Image Source="/img/image.png" />
-            <Image Source="/img/image.png" />
-            <Image Source="/img/image.png" />
+            <Image Src="/img/image.png" />
+            <Image Src="/img/image.png" />
+            <Image Src="/img/image.png" />
+            <Image Src="/img/image.png" />
         </ImageGroup>
 
         <ImageGroup Size="Size.Small">
-            <Image Source="/img/image.png" />
-            <Image Source="/img/image.png" />
-            <Image Source="/img/image.png" />
-            <Image Source="/img/image.png" />
+            <Image Src="/img/image.png" />
+            <Image Src="/img/image.png" />
+            <Image Src="/img/image.png" />
+            <Image Src="/img/image.png" />
         </ImageGroup>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <ImageGroup Size=""Size.Tiny"">
-    <Image Source=""/img/image.png"" />
-    <Image Source=""/img/image.png"" />
-    <Image Source=""/img/image.png"" />
-    <Image Source=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
 </ImageGroup>
 <ImageGroup Size=""Size.Small"">
-    <Image Source=""/img/image.png"" />
-    <Image Source=""/img/image.png"" />
-    <Image Source=""/img/image.png"" />
-    <Image Source=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
+    <Image Src=""/img/image.png"" />
 </ImageGroup>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>        
-        <ParameterTable>
-            <Content>
-                <tr>
-                    <td>Source</td>
-                    <td>图片来源地址</td>
-                    <td>string</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Rounded</td>
-                    <td>呈现圆角</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Avatar</td>
-                    <td>呈现头像的样式，推荐使用 <code>Avatar</code> 组件</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Size</td>
-                    <td>图像的大小比例</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Fluid</td>
-                    <td>成流式布局并把宽度设置为 100% 以此撑满整个父元素</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Circular</td>
-                    <td>呈现圆形样式</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Bordered</td>
-                    <td>显示边框</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>UI</td>
-                    <td>能单独使用的组件</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-            </Content>
-        </ParameterTable>
     </Body>
 </Pager>
 
 @code{ 
     List<string> Menu = new List<string>(new[]
     {
-        "示例","图片链接","头像","边框","撑满","圆角","圆形","尺寸","图片组","参数"
+        "Standard","Image Link","Avatar","Bordered","Fluid","Rounded","Circular","Vertically Aligned","Centered","Spaced","Floated","Size","Groups"
     });
 }

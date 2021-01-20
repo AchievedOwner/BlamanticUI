@@ -14,12 +14,12 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontal" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFitted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHidden" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
     [HtmlTag]
-    public class Divider : BlamanticChildContentComponentBase, IHasUIComponent, IHasVertical, IHasHorizontal,IHasDarkness,IHasFitted,IHasHidden,IHasHorizontalAlignment
+    public class Divider : BlamanticChildContentComponentBase, IHasUIComponent, IHasVertical, IHasHorizontal,IHasInverted,IHasFitted,IHasHidden,IHasHorizontalAlignment
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Divider"/> class.
@@ -42,12 +42,12 @@ namespace BlamanticUI
         /// </value>
         [Parameter]public bool Horizontal { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether the text remove paddings.
         /// </summary>
@@ -66,12 +66,12 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the divider between paragraph and increasing space.
         /// </summary>
-        [Parameter][CssClass("section")] public bool? Section { get; set; }
+        [Parameter][CssClass("section")] public bool Section { get; set; }
 
         /// <summary>
         /// Gets or sets clear the float.
         /// </summary>
-        [Parameter] [CssClass("clearing")] public bool? Clearing { get; set; }
+        [Parameter] [CssClass("clearing")] public bool Clearing { get; set; }
         /// <summary>
         /// Gets or sets the horizontal alignment of text.
         /// </summary>

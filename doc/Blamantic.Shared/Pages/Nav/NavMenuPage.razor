@@ -4,7 +4,7 @@
                          "示例","支持分组","垂直显示","仅显示图标","图文兼容","自定义菜单导航的前后内容","尺寸","子菜单","参数"
                      }))">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             动态导航
             <SubHeader>
                 通过事先配置动态加载导航菜单栏
@@ -12,7 +12,7 @@
         </Header1>
         <Segment>
             <code>NavMenu</code> 由 <code>Menu</code> 和 <code>LinkItem</code> 组合构成，并支持无线递归的子菜单，要求事先在依赖注入服务时自行配置导航菜单的层级结构，如代码所示：
-            <List Ordered="true" Suffixed="true">
+            <List Ordered Suffixed>
                 <Item>
                     @Code.GetCode(@"
 ```csharp
@@ -155,49 +155,49 @@ services.AddNavigation(""Sports"", nav =>
 </PresentationPart>
         <PresentationPart Title="垂直显示">
     <Description>
-        设置 <code>Vertical="true"</code> 使其垂直显示
+        设置 <code>Vertical</code> 使其垂直显示
     </Description>
     <RunTemplate>
-        <NavMenu Vertical="true"/>
+        <NavMenu Vertical/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<NavMenu Vertical=""true""/>
+<NavMenu Vertical/>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
         <PresentationPart Title="仅显示图标">
             <Description>
-                设置 <code>IconOnly="true"</code> 仅显示设置的 <code>IconClass</code> 的图标，鼠标悬浮可显示名称。
+                设置 <code>IconOnly</code> 仅显示设置的 <code>IconClass</code> 的图标，鼠标悬浮可显示名称。
             </Description>
             <RunTemplate>
-                <NavMenu IconOnly="true" />
-                <NavMenu IconOnly="true" Vertical="true" />
+                <NavMenu IconOnly />
+                <NavMenu IconOnly Vertical />
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<NavMenu IconOnly=""true"" />
-<NavMenu IconOnly=""true"" Vertical=""true"" />
+<NavMenu IconOnly />
+<NavMenu IconOnly Vertical />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="图文兼容">
     <Description>
-        设置 <code>LabeledIcon="true"</code> 使图标和文本独占一行。
+        设置 <code>LabeledIcon</code> 使图标和文本独占一行。
     </Description>
     <RunTemplate>
-        <NavMenu LabeledIcon="true" />
-        <NavMenu LabeledIcon="true" Vertical="true" />
+        <NavMenu LabeledIcon />
+        <NavMenu LabeledIcon Vertical />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<NavMenu LabeledIcon=""true"" />
-<NavMenu LabeledIcon=""true"" Vertical=""true"" />
+<NavMenu LabeledIcon />
+<NavMenu LabeledIcon Vertical />
 ```
 ")
     </CodeTemplate>
@@ -209,16 +209,16 @@ services.AddNavigation(""Sports"", nav =>
     <RunTemplate>
         <NavMenu Size="Size.Mini" />
         <NavMenu Size="Size.Huge" />
-        <NavMenu Size="Size.Mini" Vertical="true" />
-        <NavMenu Size="Size.Huge"  Vertical="true"/>
+        <NavMenu Size="Size.Mini" Vertical />
+        <NavMenu Size="Size.Huge"  Vertical/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <NavMenu Size=""Size.Mini"" />
 <NavMenu Size=""Size.Huge"" />
-<NavMenu Size=""Size.Mini"" Vertical=""true"" />
-<NavMenu Size=""Size.Huge""  Vertical=""true""/>
+<NavMenu Size=""Size.Mini"" Vertical />
+<NavMenu Size=""Size.Huge""  Vertical/>
 ```
 ")
     </CodeTemplate>
@@ -237,7 +237,7 @@ services.AddNavigation(""Sports"", nav =>
                 </Item>
             </StartChildContent>
             <EndChildContent>
-                    <Menu UI="false" HorizontalPosition="HorizontalPosition.Right" Borderless="true" Linked="true">
+                    <Menu UI="false" HorizontalPosition="HorizontalPosition.Right" Borderless Linked>
                         <Item>登录</Item>
                         <Item>注册</Item>
                     </Menu>
@@ -254,7 +254,7 @@ services.AddNavigation(""Sports"", nav =>
         </Item>
     </StartChildContent>
     <EndChildContent>
-            <Menu UI=""false"" HorizontalPosition=""HorizontalPosition.Right"" Borderless=""true"" Linked=""true"">
+            <Menu UI=""false"" HorizontalPosition=""HorizontalPosition.Right"" Borderless Linked>
                 <Item>登录</Item>
                 <Item>注册</Item>
             </Menu>
@@ -276,7 +276,7 @@ services.AddNavigation(""Sports"", nav =>
                 <NavMenu Key="Game" />
             </DropDownItem>
         </Menu>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <DropDownItem>
                 子菜单
                 <Icon IconClass="dropdown" />
@@ -294,7 +294,7 @@ services.AddNavigation(""Sports"", nav =>
         <NavMenu Key=""Game"" />
     </DropDownItem>
 </Menu>
-<Menu Vertical=""true"">
+<Menu Vertical>
     <DropDownItem>
         子菜单
         <Icon IconClass=""dropdown"" />

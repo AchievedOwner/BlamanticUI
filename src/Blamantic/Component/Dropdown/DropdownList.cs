@@ -27,7 +27,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasActive" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasInline" />
     public class DropDownList<T> : FormInputBase<string>,IDisposable,
@@ -38,7 +38,7 @@ namespace BlamanticUI
         IHasActive,
         IHasSize,
         IHasCompact,
-        IHasDarkness,
+        IHasInverted,
         IHasSpan,
         IHasInline
     {
@@ -514,6 +514,7 @@ namespace BlamanticUI
             Filtered = false;
             FilterdInputValue = null;
             FilterdDataSource = DataSource;
+            await ValueChanged.InvokeAsync(CurrentValue);
             await OnItemSelected.InvokeAsync(selectedItem);
 
             EditContext?.NotifyValidationStateChanged();

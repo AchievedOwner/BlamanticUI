@@ -20,11 +20,11 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHeader" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasDivider" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
-    public abstract class HeaderComponentBase : BlamanticChildContentComponentBase, IHasUIComponent, IHasIcon, IHasAttatched, IHasHeader, IHasDivider, IHasDarkness, IHasFloated, IHasHorizontalAlignment, IHasColor
+    public abstract class HeaderComponentBase : BlamanticChildContentComponentBase, IHasUIComponent, IHasIcon, IHasAttatched, IHasHeader, IHasDivider, IHasInverted, IHasFloated, IHasHorizontalAlignment, IHasColor
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderComponentBase"/> class.
@@ -113,12 +113,12 @@ namespace BlamanticUI
         /// </value>
         bool IHasHeader.Header { get; set; } = true;
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets the float position.
         /// </summary>

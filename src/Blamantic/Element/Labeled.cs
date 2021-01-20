@@ -31,7 +31,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the layout of <see cref="Label"/> component at left.
         /// </summary>
-        [Parameter] [CssClass("left")] public bool? Left { get; set; }
+        [Parameter] [CssClass("left")] public bool Left { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.

@@ -17,7 +17,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasLoading" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasEqualWidth" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasDoubling" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasState" />
@@ -26,7 +26,7 @@ namespace BlamanticUI
         IHasLoading,
         IHasSize,
         IHasEqualWidth,
-        IHasDarkness,
+        IHasInverted,
         IHasColor,
         IHasDoubling,
         IHasState
@@ -82,12 +82,12 @@ namespace BlamanticUI
         /// </summary>
         [Parameter]public bool EqualWidth { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets the color of <see cref="Loading"/>.
         /// </summary>
@@ -137,13 +137,12 @@ namespace BlamanticUI
         /// </exception>
         protected override void OnParametersSet()
         {
-            if ((EditContext == null) == (Model == null))
+            if (_hasSetEditContextExplicitly && Model != null)
             {
                 throw new InvalidOperationException($"{nameof(Form)} required a {nameof(Model)} " +
                     $"paremeter, or a {nameof(EditContext)} parameter, but not both.");
             }
-
-            if (!_hasSetEditContextExplicitly && Model == null)
+            else if (!_hasSetEditContextExplicitly && Model == null)
             {
                 throw new InvalidOperationException($"{nameof(Form)} requires either a {nameof(Model)} parameter, or an {nameof(EditContext)} parameter, please provide one of these.");
             }
@@ -153,11 +152,11 @@ namespace BlamanticUI
                 throw new InvalidOperationException($"when supplying a {nameof(OnSubmit)} parameter to {nameof(Form)}, do not also supply {nameof(OnValidSubmit)} or {nameof(OnInvalidSubmit)}.");
             }
 
-            // Update _fixedEditContext if we don't have one yet, or if they are supplying a
+            // Update _editContext if we don't have one yet, or if they are supplying a
             // potentially new EditContext, or if they are supplying a different Model
-            if (_fixedEditContext == null || EditContext != null || Model != _fixedEditContext.Model)
+            if (Model != null && Model != _fixedEditContext?.Model)
             {
-                _fixedEditContext = EditContext ?? new EditContext(Model);
+                _fixedEditContext = new EditContext(Model!);
             }
         }
 

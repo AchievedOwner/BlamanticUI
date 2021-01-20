@@ -20,8 +20,8 @@ namespace BlamanticUI
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="System.IDisposable" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
-    public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable,IHasDarkness
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
+    public abstract class FormInputBase<TValue> : BlamanticComponentBase,IDisposable,IHasInverted
     {
         #region Private
         private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
@@ -172,12 +172,12 @@ namespace BlamanticUI
             }
         }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         #endregion
 
         /// <summary>

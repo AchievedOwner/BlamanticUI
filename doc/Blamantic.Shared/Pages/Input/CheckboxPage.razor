@@ -54,90 +54,90 @@
         </PresentationPart>
         <PresentationPart Title="只读">
             <Description>
-                设置 <code>ReadOnly="true"</code> 为只读模式。
+                设置 <code>ReadOnly</code> 为只读模式。
             </Description>
             <RunTemplate>
-                <CheckBox ReadOnly="true" DisplayName="普通复选框" @bind-Value="Agree" />
+                <CheckBox ReadOnly DisplayName="普通复选框" @bind-Value="Agree" />
                 <br />
                 <br />
-                <CheckBox ReadOnly="true" DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
+                <CheckBox ReadOnly DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
                 <br />
                 <br />
-                <CheckBox ReadOnly="true" DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
+                <CheckBox ReadOnly DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<CheckBox ReadOnly=""true"" DisplayName=""普通复选框"" @bind-Value=""Agree""/>
-<CheckBox ReadOnly=""true"" DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
-<CheckBox ReadOnly=""true"" DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
+<CheckBox ReadOnly DisplayName=""普通复选框"" @bind-Value=""Agree""/>
+<CheckBox ReadOnly DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
+<CheckBox ReadOnly DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="禁用">
             <Description>
-                设置 <code>Disabled="true"</code> 为禁用状态。
+                设置 <code>Disabled</code> 为禁用状态。
             </Description>
             <RunTemplate>
-                <CheckBox Disabled="true" DisplayName="普通复选框" @bind-Value="Agree" />
+                <CheckBox Disabled DisplayName="普通复选框" @bind-Value="Agree" />
                 <br />
                 <br />
-                <CheckBox Disabled="true" DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
+                <CheckBox Disabled DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
                 <br />
                 <br />
-                <CheckBox Disabled="true" DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
+                <CheckBox Disabled DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<CheckBox Disabled=""true"" DisplayName=""普通复选框"" @bind-Value=""Agree""/>
-<CheckBox Disabled=""true"" DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
-<CheckBox Disabled=""true"" DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
+<CheckBox Disabled DisplayName=""普通复选框"" @bind-Value=""Agree""/>
+<CheckBox Disabled DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
+<CheckBox Disabled DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="适应">
             <Description>
-                设置 <code>Fitted="true"</code> 可以很好的适应没有任何文本的情况。
+                设置 <code>Fitted</code> 可以很好的适应没有任何文本的情况。
             </Description>
             <RunTemplate>
-                    <CheckBox Fitted="true" @bind-Value="Agree" />
-                    <CheckBox Fitted="true" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
-                    <CheckBox Fitted="true" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
+                    <CheckBox Fitted @bind-Value="Agree" />
+                    <CheckBox Fitted @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
+                    <CheckBox Fitted @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<CheckBox Fitted=""true"" @bind-Value=""Agree""/>
-<CheckBox Fitted=""true"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
-<CheckBox Fitted=""true"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
+<CheckBox Fitted @bind-Value=""Agree""/>
+<CheckBox Fitted @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
+<CheckBox Fitted @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="反色背景">
             <Description>
-                设置 <code>Darkness="true"</code> 可以很好的兼容反色背景效果。
+                设置 <code>Inverted</code> 可以很好的兼容反色背景效果。
             </Description>
             <RunTemplate>
-                <Segment Darkness="true">
-                    <CheckBox Darkness="true" DisplayName="普通复选框" @bind-Value="Agree" />
+                <Segment Inverted>
+                    <CheckBox Inverted DisplayName="普通复选框" @bind-Value="Agree" />
                     <br />
                     <br />
-                    <CheckBox Darkness="true" DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
+                    <CheckBox Inverted DisplayName="Switch" @bind-Value="Toggle" DisplayStyle="CheckBox.Style.Switch" />
                     <br />
                     <br />
-                    <CheckBox Darkness="true" DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
+                    <CheckBox Inverted DisplayName="Slider" @bind-Value="Slider" DisplayStyle="CheckBox.Style.Slider" />
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<CheckBox Darkness=""true"" DisplayName=""普通复选框"" @bind-Value=""Agree""/>
-<CheckBox Darkness=""true"" DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
-<CheckBox Darkness=""true"" DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
+<CheckBox Inverted DisplayName=""普通复选框"" @bind-Value=""Agree""/>
+<CheckBox Inverted DisplayName=""Switch"" @bind-Value=""Toggle"" DisplayStyle=""CheckBox.Style.Switch"" />
+<CheckBox Inverted DisplayName=""Slider"" @bind-Value=""Slider"" DisplayStyle=""CheckBox.Style.Slider"" />
 ```
 ")
             </CodeTemplate>

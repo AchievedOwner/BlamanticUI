@@ -16,7 +16,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasVerticalAlignment" />
     [HtmlTag]
-    public class Content : BlamanticChildContentComponentBase, IHasVisibility, IHasHidden, IHasFloated, IHasVerticalAlignment
+    public class Content : BlamanticChildContentComponentBase, IHasVisibility, IHasHidden, IHasFloated, IHasVerticalAlignment,IHasInline
     {
         /// <summary>
         /// Gets or sets a value indicating whether is visibile.
@@ -40,6 +40,10 @@ namespace BlamanticUI
         /// Gets or sets the vertical alignment of text.
         /// </summary>
         [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether is inline paragraph.
+        /// </summary>
+        [Parameter]public bool Inline { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.

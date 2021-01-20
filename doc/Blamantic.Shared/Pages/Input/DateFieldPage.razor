@@ -5,7 +5,7 @@
                          "示例","日历视图","自定义格式","禁用状态","深色背景"
                      })">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             日期字段(DateField)
             <SubHeader>
                 结合了 Input 和 Calendar 组件形成的日期选择框。
@@ -90,18 +90,18 @@ DateTime? Today { get; set; }
         </PresentationPart>
         <PresentationPart Title="禁用状态">
             <Description>
-                设置 <code>Disabled="true"</code> 禁用控件。
+                设置 <code>Disabled</code> 禁用控件。
             </Description>
             <RunTemplate>
                 <Form Model="this">
-                    <DateField @bind-Value="Today" Disabled="true" />
+                    <DateField @bind-Value="Today" Disabled />
                 </Form>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Form Model=""this"">
-    <DateField @bind-Value=""Today"" Disabled=""true"" />
+    <DateField @bind-Value=""Today"" Disabled />
 </Form>
 ```
 ")
@@ -109,18 +109,18 @@ DateTime? Today { get; set; }
         </PresentationPart>
         <PresentationPart Title="深色背景">
             <RunTemplate>
-                <Segment Darkness="true">
+                <Segment Inverted>
                     <Form Model="this">
-                        <DateField @bind-Value="Today" Darkness="true" />
+                        <DateField @bind-Value="Today" Inverted />
                     </Form>
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
+<Segment Inverted>
     <Form Model=""this"">
-        <DateField @bind-Value=""Today"" Darkness=""true""/>
+        <DateField @bind-Value=""Today"" Inverted/>
     </Form>
 </Segment>
 ```

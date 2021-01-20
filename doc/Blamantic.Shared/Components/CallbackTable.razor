@@ -10,9 +10,9 @@
 <Table>
     <Header>
         <Tr>
-            <Th>名称</Th>
-            <Th>说明</Th>
-            <Th>回调参数</Th>
+            <Th>Name</Th>
+            <Th>Description</Th>
+            <Th>Callback</Th>
         </Tr>
     </Header>
     <Body>
@@ -21,7 +21,7 @@
 </Table>
 
 @code{
-    [Parameter] public string Title { get; set; } = "事件";
+    [Parameter] public string Title { get; set; } = "Events";
     [Parameter] public RenderFragment Description { get; set; }
     [Parameter] public RenderFragment Content { get; set; }
 }

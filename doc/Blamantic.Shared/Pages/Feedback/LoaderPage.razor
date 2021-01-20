@@ -5,7 +5,7 @@
                              "反选背景","动画类型","参数","方法"
                          }))">
         <Body>
-            <Header1 Divider="true">
+            <Header1 Divider>
                 加载器
                 <SubHeader>
                     加载器提醒用户等待活动完成
@@ -17,16 +17,16 @@
             <PresentationPart Title="示例">
                 <Description>
                     <Message State="State.Info">
-                        默认情况下，<code>Loader</code> 组件是隐藏状态，通过设置 <code>Active="true"</code> 或当 <code>Dimmer</code> 组件被启用时才会显示。
+                        默认情况下，<code>Loader</code> 组件是隐藏状态，通过设置 <code>Active</code> 或当 <code>Dimmer</code> 组件被启用时才会显示。
                     </Message>
                 </Description>
                 <RunTemplate>
-                    <Loader Actived="true"/>                    
+                    <Loader Actived/>                    
                 </RunTemplate>
                 <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Loader Actived=""true""/>
+<Loader Actived/>
 ```
 ")
                 </CodeTemplate>
@@ -34,7 +34,7 @@
             <PresentationPart Title="配合 Dimmer 组件">
     <RunTemplate>
         <Segment>
-            <Dimmer Actived="true">
+            <Dimmer Actived>
                 <Loader/>
             </Dimmer>
             <ParagraphDemo/>
@@ -44,7 +44,7 @@
         @Code.GetCode(@"
 ```html
 <Segment>
-    <Dimmer Actived=""true"">
+    <Dimmer Actived>
         <Loader/>
     </Dimmer>
     <ParagraphDemo/>
@@ -59,7 +59,7 @@
         </Description>
     <RunTemplate>
         <Segment>
-            <Dimmer Actived="true">
+            <Dimmer Actived>
                 <Loader>处理中，请稍后...</Loader>
             </Dimmer>
             <ParagraphDemo/>
@@ -69,7 +69,7 @@
         @Code.GetCode(@"
 ```html
 <Segment>
-    <Dimmer Actived=""true"">
+    <Dimmer Actived>
         <Loader>处理中，请稍后...</Loader>
     </Dimmer>
     <ParagraphDemo/>
@@ -83,12 +83,12 @@
                     一般用于显示它不确定任务将花费多长时间
                 </SubTitle>
         <Description>
-            设置 <code>Indeterminated="true"</code> 改变加载动画的方式。
+            设置 <code>Indeterminated</code> 改变加载动画的方式。
         </Description>
     <RunTemplate>
         <Segment>
-            <Dimmer Actived="true">
-                <Loader Texted="true" Indeterminated="true">正在准备启动...</Loader>
+            <Dimmer Actived>
+                <Loader Texted Indeterminated>正在准备启动...</Loader>
             </Dimmer>
             <ParagraphDemo/>
         </Segment>
@@ -97,8 +97,8 @@
         @Code.GetCode(@"
 ```html
 <Segment>
-    <Dimmer Actived=""true"">
-        <Loader Texted=""true"" Indeterminated=""true"">正在准备启动...</Loader>
+    <Dimmer Actived>
+        <Loader Texted Indeterminated>正在准备启动...</Loader>
     </Dimmer>
     <ParagraphDemo/>
 </Segment>
@@ -108,18 +108,18 @@
 </PresentationPart>
             <PresentationPart Title="行内样式">
     <Description>
-        设置 <code>Inline="true"</code> 可以让加载器在内容之间显示。
+        设置 <code>Inline</code> 可以让加载器在内容之间显示。
     </Description>
     <RunTemplate>
         <Segment>
-            如果没有他的出现 <Loader Inline="true" Actived="true"/> 就没有现在生活的我们
+            如果没有他的出现 <Loader Inline Actived/> 就没有现在生活的我们
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Segment>
-    如果没有他的出现 <Loader Inline=""true""/> 就没有现在生活的我们
+    如果没有他的出现 <Loader Inline/> 就没有现在生活的我们
 </Segment>
 ```
 ")
@@ -127,18 +127,18 @@
 </PresentationPart>
                         <PresentationPart Title="居中行内样式">
     <Description>
-        设置 <code>Inline="true"</code> 和 <code>Centered="true"</code> 可以让加载器在内容之间显示并显示在正中间。
+        设置 <code>Inline</code> 和 <code>Centered</code> 可以让加载器在内容之间显示并显示在正中间。
     </Description>
     <RunTemplate>
         <Segment>
-            如果<Loader Inline="true" Actived="true" Centered="true" />没有他的出现  就没有现在生活的我们
+            如果<Loader Inline Actived Centered />没有他的出现  就没有现在生活的我们
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Segment>
-    如果 <Loader Inline=""true"" Centered=""true""/>没有他的出现 就没有现在生活的我们
+    如果 <Loader Inline Centered/>没有他的出现 就没有现在生活的我们
 </Segment>
 ```
 ")
@@ -149,16 +149,16 @@
         设置 <code>Speed</code> 改变旋转速度。
     </Description>
     <RunTemplate>
-        <Loader Inline="true" Actived="true" Speed="Speed.Fast" />
-        <Loader Inline="true" Actived="true" />
-        <Loader Inline="true" Actived="true" Speed="Speed.Slow" />
+        <Loader Inline Actived Speed="Speed.Fast" />
+        <Loader Inline Actived />
+        <Loader Inline Actived Speed="Speed.Slow" />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Loader Inline=""true"" Actived=""true"" Speed=""Speed.Fast"" />
-<Loader Inline=""true"" Actived=""true"" />
-<Loader Inline=""true"" Actived=""true"" Speed=""Speed.Slow"" />
+<Loader Inline Actived Speed=""Speed.Fast"" />
+<Loader Inline Actived />
+<Loader Inline Actived Speed=""Speed.Slow"" />
 ```
 ")
     </CodeTemplate>
@@ -168,34 +168,34 @@
         设置 <code>Color</code> 可以改变颜色。
     </Description>
     <RunTemplate>
-        <Loader Inline="true" Actived="true" Color="Color.Red" />
-        <Loader Inline="true" Actived="true" Color="Color.Orange" />
-        <Loader Inline="true" Actived="true" Color="Color.Yellow" />
-        <Loader Inline="true" Actived="true" Color="Color.Green" />
-        <Loader Inline="true" Actived="true" Color="Color.Violet" />
-        <Loader Inline="true" Actived="true" Color="Color.Blue" />
-        <Loader Inline="true" Actived="true" Color="Color.Purple" />
-        <Loader Inline="true" Actived="true" Color="Color.Grey" />
-        <Loader Inline="true" Actived="true" Color="Color.Black" />
-        <Loader Inline="true" Actived="true" Color="Color.Pink" />
-        <Loader Inline="true" Actived="true" Color="Color.Olive" />
-        <Loader Inline="true" Actived="true" Color="Color.Brown" />
+        <Loader Inline Actived Color="Color.Red" />
+        <Loader Inline Actived Color="Color.Orange" />
+        <Loader Inline Actived Color="Color.Yellow" />
+        <Loader Inline Actived Color="Color.Green" />
+        <Loader Inline Actived Color="Color.Violet" />
+        <Loader Inline Actived Color="Color.Blue" />
+        <Loader Inline Actived Color="Color.Purple" />
+        <Loader Inline Actived Color="Color.Grey" />
+        <Loader Inline Actived Color="Color.Black" />
+        <Loader Inline Actived Color="Color.Pink" />
+        <Loader Inline Actived Color="Color.Olive" />
+        <Loader Inline Actived Color="Color.Brown" />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Red"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Orange"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Yellow"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Green"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Violet"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Blue"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Purple"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Grey"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Black"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Pink"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Olive"" />
-<Loader Inline=""true"" Actived=""true"" Color=""Color.Brown"" />
+<Loader Inline Actived Color=""Color.Red"" />
+<Loader Inline Actived Color=""Color.Orange"" />
+<Loader Inline Actived Color=""Color.Yellow"" />
+<Loader Inline Actived Color=""Color.Green"" />
+<Loader Inline Actived Color=""Color.Violet"" />
+<Loader Inline Actived Color=""Color.Blue"" />
+<Loader Inline Actived Color=""Color.Purple"" />
+<Loader Inline Actived Color=""Color.Grey"" />
+<Loader Inline Actived Color=""Color.Black"" />
+<Loader Inline Actived Color=""Color.Pink"" />
+<Loader Inline Actived Color=""Color.Olive"" />
+<Loader Inline Actived Color=""Color.Brown"" />
 ```
 ")
     </CodeTemplate>
@@ -205,45 +205,45 @@
         设置 <code>Size</code> 可以改变组件的尺寸。
     </Description>
     <RunTemplate>
-        <Loader Inline="true" Actived="true" Size="Size.Mini" />
-        <Loader Inline="true" Actived="true" Size="Size.Tiny" />
-        <Loader Inline="true" Actived="true" Size="Size.Small" />
-        <Loader Inline="true" Actived="true" Size="Size.Medium" />
-        <Loader Inline="true" Actived="true" Size="Size.Large" />
-        <Loader Inline="true" Actived="true" Size="Size.Big" />
-        <Loader Inline="true" Actived="true" Size="Size.Huge" />
-        <Loader Inline="true" Actived="true" Size="Size.Massive" />
+        <Loader Inline Actived Size="Size.Mini" />
+        <Loader Inline Actived Size="Size.Tiny" />
+        <Loader Inline Actived Size="Size.Small" />
+        <Loader Inline Actived Size="Size.Medium" />
+        <Loader Inline Actived Size="Size.Large" />
+        <Loader Inline Actived Size="Size.Big" />
+        <Loader Inline Actived Size="Size.Huge" />
+        <Loader Inline Actived Size="Size.Massive" />
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Mini"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Tiny"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Small"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Medium"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Large"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Big"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Huge"" />
-<Loader Inline=""true"" Actived=""true"" Size=""Size.Massive"" />
+<Loader Inline Actived Size=""Size.Mini"" />
+<Loader Inline Actived Size=""Size.Tiny"" />
+<Loader Inline Actived Size=""Size.Small"" />
+<Loader Inline Actived Size=""Size.Medium"" />
+<Loader Inline Actived Size=""Size.Large"" />
+<Loader Inline Actived Size=""Size.Big"" />
+<Loader Inline Actived Size=""Size.Huge"" />
+<Loader Inline Actived Size=""Size.Massive"" />
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
             <PresentationPart Title="反选背景">
     <Description>
-        在反选背景下，要加入 <code>Darkness="true"</code> 才能看到。
+        在反选背景下，要加入 <code>Inverted</code> 才能看到。
         <Message>
-            在 <code>Dimmer</code> 组件中，只需要设置 <code>Dimmer</code> 组件的 <code>Darkness="true"</code> 即可。
+            在 <code>Dimmer</code> 组件中，只需要设置 <code>Dimmer</code> 组件的 <code>Inverted</code> 即可。
         </Message>
     </Description>
     <RunTemplate>
-        <Segment Darkness="true">
-            <Loader Darkness="true" Actived="true" />
+        <Segment Inverted>
+            <Loader Inverted Actived />
             <ParagraphDemo />
             <ParagraphDemo />
         </Segment>
         <Segment>
-            <Dimmer Actived="true" Darkness="true">
+            <Dimmer Actived Inverted>
                 <Loader />
             </Dimmer>
             <ParagraphDemo />
@@ -253,11 +253,11 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <Loader Darkness=""true"" Actived=""true""/>
+<Segment Inverted>
+    <Loader Inverted Actived/>
 </Segment>
 <Segment>
-    <Dimmer Actived=""true"" Darkness=""true"">
+    <Dimmer Actived Inverted>
         <Loader/>
     </Dimmer>
 </Segment>
@@ -271,21 +271,21 @@
     </Description>
     <RunTemplate>
         <Segment>
-            <Loader Actived="true" Animation="Loader.AnimationStyle.Double" Color="Color.Blue" />
+            <Loader Actived Animation="Loader.AnimationStyle.Double" Color="Color.Blue" />
             <ParagraphDemo />
             <ParagraphDemo />
         </Segment>
         <Segment>
             <ParagraphDemo />
             <ParagraphDemo />
-            <Loader Actived="true" Animation="Loader.AnimationStyle.Elastic" Color="Color.Purple" Size="Size.Big" />
+            <Loader Actived Animation="Loader.AnimationStyle.Elastic" Color="Color.Purple" Size="Size.Big" />
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Loader Actived=""true"" Animation=""Loader.AnimationStyle.Double"" Color=""Color.Blue"" />
-<Loader Actived=""true"" Animation=""Loader.AnimationStyle.Elastic"" Color=""Color.Purple""  Size=""Size.Big""/>
+<Loader Actived Animation=""Loader.AnimationStyle.Double"" Color=""Color.Blue"" />
+<Loader Actived Animation=""Loader.AnimationStyle.Elastic"" Color=""Color.Purple""  Size=""Size.Big""/>
 ```
 ")
     </CodeTemplate>
@@ -311,7 +311,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>反选颜色</td>
                     <td>bool</td>
                     <td></td>

@@ -16,7 +16,7 @@
         </Header1>
         <Segment>
             <Header4>配置说明：</Header4>
-            <List Ordered="true">
+            <List Ordered>
                 <Item>在页面中放入 <code>ToastContainer</code> 组件</Item>
                 <Item>使用注入的 <code>IToastService</code> 服务并调用方法</Item>
             </List>
@@ -124,17 +124,17 @@
                 设置 <code>Key</code> 可以兼容多种不同的 Toaster 消息。在调用 <code>ToastService</code> 时要指定 <code>Key</code>
             </Description>
             <RunTemplate>
-                <ToastContainer Key="TopRight" Position="DockUpasPosition.TopRight" />
+                <ToastContainer Key="TopRight" Position="DockPosition.TopRight" />
                 <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowSuccess("我显示在右上角",key:"TopRight"))">右上显示</Button>
-                <ToastContainer Key="BottmRight" Position="DockUpasPosition.BottomRight" />
+                <ToastContainer Key="BottmRight" Position="DockPosition.BottomRight" />
                 <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("你好，你拨打的电话暂时无法接通",key:"BottmRight"))">右下显示</Button>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<ToastContainer Key=""TopRight"" Position=""DockUpasPosition.TopRight"" />
+<ToastContainer Key=""TopRight"" Position=""DockPosition.TopRight"" />
 <Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowSuccess(""我显示在右上角"",key:""TopRight""))"">右上显示</Button>
-<ToastContainer Key=""BottmRight"" Position=""DockUpasPosition.BottomRight"" />
+<ToastContainer Key=""BottmRight"" Position=""DockPosition.BottomRight"" />
 <Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""你好，你拨打的电话暂时无法接通"",key:""BottmRight""))"">右下显示</Button>
 ```
 ")

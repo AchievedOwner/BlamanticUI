@@ -12,11 +12,11 @@
     /// <seealso cref="BlamanticUI.Abstractions.IHasVertical" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     [HtmlTag]
     [CssClass("steps", Order = 999)]
-    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasDarkness,IHasFluid
+    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasInverted,IHasFluid
     {
         /// <summary>
         /// Gets or sets a value indicating whether this layout is vertical.
@@ -42,12 +42,12 @@
         /// </summary>
         [Parameter]public Size? Size { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether click to active.
         /// </summary>

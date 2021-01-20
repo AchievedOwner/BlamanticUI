@@ -9,7 +9,7 @@
     </SubHeader>
 </Header1>
 
-<Header2 Divider="true">
+<Header2 Divider>
     介绍
 </Header2>
 <Header4>
@@ -64,7 +64,7 @@
     详情可参考 <Anchor Link="https://fomantic-ui.com/elements/container.html" Target="LinkTarget.Blank">https://fomantic-ui.com/elements/container.html</Anchor>
 </Message>
 
-<Header2 Divider="true">
+<Header2 Divider>
     使用手册
 </Header2>
 <Segment>
@@ -89,17 +89,17 @@
 
 <PresentationPart Title="文本容器">
     <Description>
-        设置 <code>Texted="true"</code> 可以固定 <code>Container</code> 组件的最大宽度为 700px。
+        设置 <code>Texted</code> 可以固定 <code>Container</code> 组件的最大宽度为 700px。
     </Description>
     <RunTemplate>
-        <Container Texted="true">
+        <Container Texted>
             一段测试用的填充内容，没有任何意义。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也加粗的不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。一段测试用的填充内容，没有任何意义链接。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。
         </Container>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Container Texted=""true"">...</Container>
+<Container Texted>...</Container>
 ```
 ")
     </CodeTemplate>
@@ -107,17 +107,17 @@
 
 <PresentationPart Title="流式布局">
     <Description>
-        设置 <code>Fluid="true"</code> 使容器呈现流式布局的形式。与父容器的宽度一致。
+        设置 <code>Fluid</code> 使容器呈现流式布局的形式。与父容器的宽度一致。
     </Description>
     <RunTemplate>
-        <Container Fluid="true">
+        <Container Fluid>
             一段测试用的填充内容，没有任何意义。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也加粗的不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。一段测试用的填充内容，没有任何意义链接。请更多的关注样式而不是这些文字。这段话为啥会被拿来填充内容我也不知道，不过它肯定会被无视的，所以就随便写点什么好了，就是给你们看个样子的。这些一点意义都没有的内容不是给你们看的，不要看我，看样式，可以不？这些内容都是扯淡的，文字也都是随便写的，并没有什么用——看看就好。写这么多废话也是很费劲的事情，对吧。不管怎么说我写这么多东西都是没有用的。
         </Container>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Container Fluid=""true"">...</Container>
+<Container Fluid>...</Container>
 ```
 ")
     </CodeTemplate>

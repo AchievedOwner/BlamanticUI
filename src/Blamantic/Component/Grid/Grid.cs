@@ -55,7 +55,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the reserve the order of columns.
         /// </summary>
-        [Parameter][CssClass("reserved")] public bool? Reserved { get; set; }
+        [Parameter][CssClass("reserved")] public bool Reserved { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether double column of layout in responsive adapter.
         /// </summary>

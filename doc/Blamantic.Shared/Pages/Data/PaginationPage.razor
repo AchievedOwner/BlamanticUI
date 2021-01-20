@@ -4,7 +4,7 @@
                          "示例","尺寸","隐藏统计数据","隐藏跳转到","双向绑定支持","参数","事件","方法"
                      }))">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             分页组件
         </Header1>
         <Segment>
@@ -94,7 +94,7 @@
     </Description>
     <RunTemplate>
         <Form Model="this">
-            <Field Inline="true">
+            <Field Inline>
                 <label>当前页</label>
                 <InputNumber @bind-Value="CurrentPage" />
                 <label>每页</label>
@@ -110,7 +110,7 @@
         @Code.GetCode(@"
 ```html
 <Form Model=""this"">
-    <Field Inline=""true"">
+    <Field Inline>
         <label>当前页</label>
         <InputNumber @bind-Value=""CurrentPage"" />
         <label>每页</label>

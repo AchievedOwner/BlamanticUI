@@ -79,7 +79,7 @@ namespace BlamanticUI
             builder.OpenRegion(100);
             builder.OpenComponent<InputBox>(0);
             builder.AddAttribute(1, nameof(InputBox.Icon), HorizontalPosition.Left);
-            builder.AddAttribute(2, nameof(InputBox.Darkness), Darkness);
+            builder.AddAttribute(2, nameof(InputBox.Inverted), Inverted);
             builder.AddAttribute(3, nameof(InputBox.Disabled), Disabled);
             if (!Disabled)
             {
@@ -123,7 +123,7 @@ namespace BlamanticUI
                 .Add("top:40px")
                 .Add("min-width:400px")
                 );
-            builder.AddAttribute(22, nameof(Calendar.Darkness), Darkness);
+            builder.AddAttribute(22, nameof(Calendar.Inverted), Inverted);
             builder.AddAttribute(23, nameof(Calendar.ViewMode), ViewMode);
             builder.AddAttribute(28, nameof(Calendar.Value), Value);
             builder.AddAttribute(29, nameof(Calendar.ValueChanged), EventCallback.Factory.Create<DateTimeOffset?>(this, async _value =>

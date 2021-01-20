@@ -1,24 +1,18 @@
 ﻿@page "/component/common/flag"
-<Pager DataSource="@(new List<string>(new[] {" 示例","遍历" }))">
+<Pager DataSource="@(new List<string>(new[] {" Flag","Enumerable" }))">
     <Body>
-<Header1 Divider="true">
-    旗帜
+<Header1 Divider>
+    Flag
     <SubHeader>
-        旗帜被用来代表一个政治国家。
+        A flag is used to represent a political state.
     </SubHeader>
 </Header1>
-<Segment>
-    使用 <code>Flag</code> 组件并设置 <code>FlagType</code> 选择旗帜。
-</Segment>
 
-<PresentationPart Title="示例">
-    <Description>
-        <code>FlagType</code> 是一个枚举类型，基本涵盖了全世界的国家和地区。
-    </Description>
+<PresentationPart Title="Flag">
     <RunTemplate>
-        <Flag FlagType="Flag.Type.China" title="中国"/>
-        <Flag FlagType="Flag.Type.UnitedStates" title="美国"/>
-        <Flag FlagType="Flag.Type.Brazil" title="巴西"/>
+        <Flag FlagType="Flag.Type.China" title="China"/>
+        <Flag FlagType="Flag.Type.UnitedStates" title="USA"/>
+        <Flag FlagType="Flag.Type.Brazil" title="Brazil"/>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
@@ -30,9 +24,9 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="遍历">
+        <PresentationPart Title="Enumerable">
     <Description>
-        通过代码的方式输出所有的旗帜图案。
+        Here is a demo to get all <code>Flag.Type</code> enum members.
     </Description>
     <RunTemplate>
             @Flags

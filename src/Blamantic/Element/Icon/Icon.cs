@@ -12,7 +12,7 @@ namespace BlamanticUI
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasColor" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
@@ -20,7 +20,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasBorder" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCornered" />
     [HtmlTag("i")]
-    public class Icon : BlamanticComponentBase, IHasColor, IHasDarkness, IHasSize, IHasCircular, IHasLinked, IHasFitted, IHasBorder, IHasCornered
+    public class Icon : BlamanticComponentBase, IHasColor, IHasInverted, IHasSize, IHasCircular, IHasLinked, IHasFitted, IHasBorder, IHasCornered
     {
         /// <summary>
         /// Gets or sets the icon class, please refer https://fomantic-ui.com/elements/icon.html .
@@ -39,12 +39,12 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public Color? Color { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter] public bool Darkness { get; set; }
+        [Parameter] public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is circular.
         /// </summary>

@@ -1,7 +1,7 @@
 ﻿@page "/component/layout/divider"
 <Pager DataSource="Menu">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             分割线
             <SubHeader>
                 分隔器可视地将内容分成组
@@ -30,7 +30,7 @@
 
         <PresentationPart Title="垂直分隔">
             <Description>
-                设置 <code>Vertical="true"</code> 将分割线垂直显示。
+                设置 <code>Vertical</code> 将分割线垂直显示。
 
                 <Message>
                     垂直分割线要求父容器元素的样式设置为 <code>position: relative</code>。
@@ -43,17 +43,17 @@
                 <Segment>
                     <Grid ColSpan="ColSpan.Two2">
                         <Column>
-                            <ParagraphDemo FullWidth="true" />
+                            <ParagraphDemo FullWidth />
                             <br />
-                            <ParagraphDemo FullWidth="true" />
+                            <ParagraphDemo FullWidth />
                         </Column>
                         <Column>
-                            <ParagraphDemo FullWidth="true" />
+                            <ParagraphDemo FullWidth />
                             <br />
-                            <ParagraphDemo FullWidth="true" />
+                            <ParagraphDemo FullWidth />
                         </Column>
                     </Grid>
-                    <Divider Vertical="true">
+                    <Divider Vertical>
                         AND
                     </Divider>
                 </Segment>
@@ -74,7 +74,7 @@
             <ParagraphDemo />
         </Column>
     </Grid>
-    <Divider Vertical=""true"">
+    <Divider Vertical>
         AND
     </Divider>
 </Segment>
@@ -84,38 +84,38 @@
         </PresentationPart>
 
         <Message State="State.Info">
-            当 <code>Grid</code> 设置了 <code>Stackable="true"</code>时，一个垂直分隔线将在移动端时自动变为到一个水平分隔线。
+            当 <code>Grid</code> 设置了 <code>Stackable</code>时，一个垂直分隔线将在移动端时自动变为到一个水平分隔线。
         </Message>
 
         <PresentationPart Title="水平分割">
             <Description>
-                设置 <code>Horizontal="true"</code> 作为水平分割线。
+                设置 <code>Horizontal</code> 作为水平分割线。
                 <Message State="State.Info">
                     分隔线将自动改变其划分规则的大小，以匹配文本的长度
                 </Message>
             </Description>
             <RunTemplate>
-                <Segment HorizontalAlignment="HorizontalAlignment.Center" Basic="true">
+                <Segment HorizontalAlignment="HorizontalAlignment.Center" Basic>
                     <Button Color="Color.Orange">
                         <Icon IconClass="home" /> 回到主页
                     </Button>
-                    <Divider Horizontal="true">
+                    <Divider Horizontal>
                         或者
                     </Divider>
-                    <Label Tag="true" Color="Color.Blue">加入到书签栏</Label>
+                    <Label Tag Color="Color.Blue">加入到书签栏</Label>
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Segment HorizontalAlignment=""HorizontalAlignment.Center"" Basic=""true"">
+<Segment HorizontalAlignment=""HorizontalAlignment.Center"" Basic>
     <Button Color=""Color.Orange"">
         <Icon IconClass=""home"" /> 回到主页
     </Button>
-    <Divider Horizontal=""true"">
+    <Divider Horizontal>
         或者
     </Divider>
-    <Label Tag=""true"" Color=""Color.Blue"">加入到书签栏</Label>
+    <Label Tag Color=""Color.Blue"">加入到书签栏</Label>
 </Segment>
 ```
 ")
@@ -124,18 +124,18 @@
 
         <PresentationPart Title="带有图标的分割线">
             <RunTemplate>
-                <Divider Horizontal="true">
+                <Divider Horizontal>
                     <Header2>
                         <Icon IconClass="tag" /> 商品描述
                     </Header2>
                 </Divider>
                 <p>小飞象大衣是目前为止最具有保暖效果的羽绒服</p>
-                <Divider Horizontal="true">
+                <Divider Horizontal>
                     <Header2>
                         <Icon IconClass="bar chart" /> 规格参数
                     </Header2>
                 </Divider>
-                <Table Definition="true">
+                <Table Definition>
                     <Body>
                         <Tr>
                             <Td>尺寸</Td>
@@ -155,18 +155,18 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Divider Horizontal=""true"">
+<Divider Horizontal>
     <Header2>
         <Icon IconClass=""tag"" /> 商品描述
     </Header2>
 </Divider>
 <p>小飞象大衣是目前为止最具有保暖效果的羽绒服</p>
-<Divider Horizontal=""true"">
+<Divider Horizontal>
     <Header2>
         <Icon IconClass=""bar chart"" /> 规格参数
     </Header2>
 </Divider>
-<Table Definition=""true"">
+<Table Definition>
     <Body>
         <Tr>
             <Td>尺寸</Td>
@@ -192,17 +192,17 @@
                 设置 <code>HorizontalAlignment</code> 指定分割线内文字的对齐方式。
             </Description>
             <RunTemplate>
-                <Divider Horizontal="true" HorizontalAlignment="HorizontalAlignment.Left">
+                <Divider Horizontal HorizontalAlignment="HorizontalAlignment.Left">
                     <Header3>
                         <Icon IconClass="left align" /> 左对齐
                     </Header3>
                 </Divider>
-                <Divider Horizontal="true" HorizontalAlignment="HorizontalAlignment.Center">
+                <Divider Horizontal HorizontalAlignment="HorizontalAlignment.Center">
                     <Header3>
                         <Icon IconClass="center align" /> 居中对齐
                     </Header3>
                 </Divider>
-                <Divider Horizontal="true" HorizontalAlignment="HorizontalAlignment.Right">
+                <Divider Horizontal HorizontalAlignment="HorizontalAlignment.Right">
                     <Header3>
                         <Icon IconClass="right align" /> 右对齐
                     </Header3>
@@ -211,17 +211,17 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Left"">
+<Divider Horizontal HorizontalAlignment=""HorizontalAlignment.Left"">
     <Header3>
         <Icon IconClass=""left align"" /> 左对齐
     </Header3>
 </Divider>
-<Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Center"">
+<Divider Horizontal HorizontalAlignment=""HorizontalAlignment.Center"">
     <Header3>
         <Icon IconClass=""center align"" /> 居中对齐
     </Header3>
 </Divider>
-<Divider Horizontal=""true"" HorizontalAlignment=""HorizontalAlignment.Right"">
+<Divider Horizontal HorizontalAlignment=""HorizontalAlignment.Right"">
     <Header3>
         <Icon IconClass=""right align"" /> 右对齐
     </Header3>
@@ -232,11 +232,11 @@
         </PresentationPart>
 
         <PresentationPart Title="反选背景">
-            <Description>设置 <code>Darkness="true"</code> 使颜色反选显示。</Description>
+            <Description>设置 <code>Inverted</code> 使颜色反选显示。</Description>
             <RunTemplate>
-                <Segment Darkness="true">
+                <Segment Inverted>
                     <ParagraphDemo />
-                    <Divider Horizontal="true" Darkness="true">
+                    <Divider Horizontal Inverted>
                         水平显示
                     </Divider>
                     <ParagraphDemo />
@@ -245,9 +245,9 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
+<Segment Inverted>
     <ParagraphDemo/>
-    <Divider Horizontal=""true"" Darkness=""true"">
+    <Divider Horizontal Inverted>
         水平显示
     </Divider>
     <ParagraphDemo/>
@@ -259,12 +259,12 @@
 
         <PresentationPart Title="瘦身">
             <Description>
-                设置 <code>Fitted="true"</code> 可以将分割线的空间全部去掉。
+                设置 <code>Fitted</code> 可以将分割线的空间全部去掉。
             </Description>
             <RunTemplate>
                 <Segment HorizontalAlignment="HorizontalAlignment.Center">
                     无敌是多么，多么的寂寞，无敌是多么，多么的空虚。
-                    <Divider Fitted="true" />
+                    <Divider Fitted />
                     独自在屏风中，冷风能不能吹过，我的寂寞，无情的寂寞！
                 </Segment>
             </RunTemplate>
@@ -273,7 +273,7 @@
 ```html
 <Segment HorizontalAlignment=""HorizontalAlignment.Center"">
     无敌是多么，多么的寂寞，无敌是多么，多么的空虚。
-    <Divider Fitted=""true"" />
+    <Divider Fitted />
     独自在屏风中，冷风能不能吹过，我的寂寞，无情的寂寞！
 </Segment>
 ```
@@ -283,12 +283,12 @@
 
         <PresentationPart Title="隐藏">
             <Description>
-                设置 <code>Hidden="true"</code> 可以将分割线隐藏起来，但相关的空间依然被占据。
+                设置 <code>Hidden</code> 可以将分割线隐藏起来，但相关的空间依然被占据。
             </Description>
             <RunTemplate>
                 <Header3>第一部分</Header3>
                 <ParagraphDemo />
-                <Divider Hidden="true" />
+                <Divider Hidden />
                 <Header3>第二部分</Header3>
                 <ParagraphDemo />
             </RunTemplate>
@@ -297,7 +297,7 @@
 ```html
 <Header3>第一部分</Header3>
 <ParagraphDemo />
-<Divider Hidden=""true"" />
+<Divider Hidden />
 <Header3>第二部分</Header3>
 <ParagraphDemo />
 ```
@@ -307,12 +307,12 @@
 
         <PresentationPart Title="部分">
             <Description>
-                设置 <code>Section="true"</code> 可以提供更大的边距来划分内容部分。
+                设置 <code>Section</code> 可以提供更大的边距来划分内容部分。
             </Description>
             <RunTemplate>
                 <Header3>第一部分</Header3>
                 <ParagraphDemo />
-                <Divider Section="true" />
+                <Divider Section />
                 <Header3>第二部分</Header3>
                 <ParagraphDemo />
             </RunTemplate>
@@ -321,7 +321,7 @@
 ```html
 <Header3>第一部分</Header3>
 <ParagraphDemo />
-<Divider Section=""true"" />
+<Divider Section />
 <Header3>第二部分</Header3>
 <ParagraphDemo />
 ```
@@ -331,12 +331,12 @@
 
         <PresentationPart Title="清除浮动">
             <Description>
-                设置 <code>Clearing="true"</code> 可以清除之前组件带来的浮动效果，以保证分割线在下一行。
+                设置 <code>Clearing</code> 可以清除之前组件带来的浮动效果，以保证分割线在下一行。
             </Description>
             <RunTemplate>
                 <Segment>
                     <Header2 Floated="HorizontalPosition.Right">右浮动标题</Header2>
-                    <Divider Clearing="true" />
+                    <Divider Clearing />
                     <ParagraphDemo />
                 </Segment>
             </RunTemplate>
@@ -345,7 +345,7 @@
 ```html
 <Segment>
     <Header2 Floated=""HorizontalPosition.Right"">右浮动标题</Header2>
-    <Divider Clearing=""true""/>
+    <Divider Clearing/>
     <ParagraphDemo/>
 </Segment>
 ```
@@ -373,7 +373,7 @@
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>反转背景</td>
                     <td>bool</td>
                     <td></td>

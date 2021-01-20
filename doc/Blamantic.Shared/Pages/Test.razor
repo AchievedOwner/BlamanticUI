@@ -1,44 +1,9 @@
 ﻿@page "/test"
 
 
-@*@code{
-    [System.ComponentModel.DataAnnotations.Required]
-    [System.ComponentModel.DataAnnotations.Display(Name = "姓名")]
-    public string Name { get; set; }
-
-
-    [System.ComponentModel.DataAnnotations.Display(Name = "年龄")]
-    [System.ComponentModel.DataAnnotations.Required]
-    [System.ComponentModel.DataAnnotations.Range(18, 60)]
-    public int Age { get; set; }
-
-    [System.ComponentModel.DataAnnotations.Required]
-    public bool Checked { get; set; }
-}
-
-<Form Model="this">
-    <DataAnnotationsValidator/>
-    <Field For="()=>Name" ErrorPointerPosition="RelativePosition.Right">
-        <InputText @bind-Value="Name"/>
-    </Field>
-    <Field For="()=>Age">
-        <InputNumber @bind-Value="Age"/>
-    </Field>
-    <Field For="()=>Checked">
-        <InputCheckbox @bind-Value="Checked"/>
-        你可以这样看待
-    </Field>
-    <Button>提交</Button>
-</Form>*@
 <Pager>
     <Body>
         <Calendar/>
-        @*<Button data-tooltip="这是一个提交按钮" data-position="bottom right">提交</Button>
-        <Button data-tooltip="这是一个提交按钮" data-position="left right" data-inverted data-variation="big">提交</Button>
-
-        <Button>提交</Button>
-        <Popup AdditionalStyles="@("display:block;position:raletive;top:0px;left:10px")">
-            这是一个弹出
-        </Popup>*@
+       
     </Body>
 </Pager>

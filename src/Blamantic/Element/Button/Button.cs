@@ -23,7 +23,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasAttatched" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasAnimated" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
     [HtmlTag("button")]
@@ -41,7 +41,7 @@ namespace BlamanticUI
         IHasCircular,
         IHasAttatched,
         IHasAnimated,
-        IHasDarkness,
+        IHasInverted,
         IHasFloated,
         IHasLinked
     {
@@ -76,7 +76,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets dark style.
         /// </summary>
-        [Parameter] public bool Darkness { get; set; }
+        [Parameter] public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets the size.
         /// </summary>

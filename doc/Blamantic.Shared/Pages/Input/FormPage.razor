@@ -69,7 +69,7 @@
 
         <PresentationPart Title="示例">
             <RunTemplate>
-                <Grid EqualWidth="true">                    
+                <Grid EqualWidth>                    
                     <Column>
                         <Form Model="this">
                             <Field>
@@ -87,7 +87,7 @@
                             <Field>
                                 <CheckBox @bind-Value="Checked" DisplayName="同意协议" />
                             </Field>
-                            <Fields Inline="true">
+                            <Fields Inline>
                                 <RadioGroup @bind-Value="School" DisplayName="选择一个水果：">
                                     <RadioBox Value="@("苹果")" Text="苹果" />
                                     <RadioBox Value="@("香蕉")" Text="香蕉" />
@@ -115,21 +115,21 @@
 ```html
 <Form Model=""this"">
 <Field>
-    <TextField @bind-Value=""Name"" DisplayName=""用户名"" DisplayAsPlaceholder=""true"" />
+    <TextField @bind-Value=""Name"" DisplayName=""用户名"" DisplayAsPlaceholder />
 </Field>
 <Field>
-    <TextField @bind-Value=""Password"" DisplayName=""密码"" Type=""TextFieldType.Password"" DisplayAsPlaceholder=""true"" />
+    <TextField @bind-Value=""Password"" DisplayName=""密码"" Type=""TextFieldType.Password"" DisplayAsPlaceholder />
 </Field>
 <Field>
-    <TextField @bind-Value=""Age"" DisplayName=""年龄"" Type=""TextFieldType.Number"" DisplayAsPlaceholder=""true"" />
+    <TextField @bind-Value=""Age"" DisplayName=""年龄"" Type=""TextFieldType.Number"" DisplayAsPlaceholder />
 </Field>
 <Field>
-    <TextField @bind-Value=""Description"" DisplayName=""描述"" DisplayAsPlaceholder=""true"" Type=""TextFieldType.MultiLine"" />
+    <TextField @bind-Value=""Description"" DisplayName=""描述"" DisplayAsPlaceholder Type=""TextFieldType.MultiLine"" />
 </Field>
 <Field>
     <CheckBox @bind-Value=""Checked"" Label=""同意协议"" />
 </Field>
-<Fields Inline=""true"">
+<Fields Inline>
     <RadioGroup @bind-Value=""School"" DisplayName=""选择一个水果："">
         < RadioBox Value=""@(""苹果"")"" Text=""苹果"" />
         <RadioBox Value=""@(""香蕉"")"" Text=""香蕉"" />
@@ -242,11 +242,11 @@
 </PresentationPart>
         <PresentationPart Title="单行">
     <Description>
-        设置 <code>Inline="true"</code> 可以在一行显示。
+        设置 <code>Inline</code> 可以在一行显示。
     </Description>
     <RunTemplate>
         <Form Model="this">
-            <Fields Inline="true">
+            <Fields Inline>
                 <Field Span="ColSpan.Eight8">
                     <label>姓名</label>
                     <input placeholder="姓" />
@@ -264,7 +264,7 @@
         @Code.GetCode(@"
 ```html
 <Form>
-    <Fields Inline=""true"">
+    <Fields Inline>
         <Field Span=""ColSpan.Eight8"">
             <label>姓名</label>
             <input placeholder=""姓"" />
@@ -283,10 +283,10 @@
 </PresentationPart>
         <PresentationPart Title="加载中状态">
     <Description>
-        设置 <code>Form</code> 组件的 <code>Loading="true"</code> 让表单整个显示成加载中的状态，设置 <code>Color</code> 可以改变 Loading 的颜色。
+        设置 <code>Form</code> 组件的 <code>Loading</code> 让表单整个显示成加载中的状态，设置 <code>Color</code> 可以改变 Loading 的颜色。
     </Description>
     <RunTemplate>
-        <Form Model="this" Loading="true">
+        <Form Model="this" Loading>
             <Field>
                 Email
                 <input />
@@ -295,7 +295,7 @@
                 <Button>Submit</Button>
             </Field>
         </Form>
-        <Form Model="this" Loading="true" Color="Color.Red">
+        <Form Model="this" Loading Color="Color.Red">
             <Field>
                 Email
                 <input />
@@ -308,7 +308,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Form Model=""this"" Loading=""true"">
+<Form Model=""this"" Loading>
     <Field>
         Email
         <input />
@@ -317,7 +317,7 @@
         <Button>Submit</Button>
     </Field>
 </Form>
-<Form Model=""this"" Loading=""true"" Color=""Color.Red"">
+<Form Model=""this"" Loading Color=""Color.Red"">
     <Field>
         Email
         <input />
@@ -544,10 +544,10 @@ void ChangeTextState(ChangeEventArgs e)
 </PresentationPart>
         <PresentationPart Title="均等宽度">
     <Description>
-        设置 <code>EqualWidth="true"</code> 可以让 <code>Fields</code> 内的输入控件根据数量均等划分宽度。
+        设置 <code>EqualWidth</code> 可以让 <code>Fields</code> 内的输入控件根据数量均等划分宽度。
     </Description>
     <RunTemplate>
-        <Form Model="this" EqualWidth="true">
+        <Form Model="this" EqualWidth>
             <Fields>
                 <Field>
                     <input placeholder="姓氏" />
@@ -577,7 +577,7 @@ void ChangeTextState(ChangeEventArgs e)
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Form Model=""this"" EqualWidth=""true"">
+<Form Model=""this"" EqualWidth>
     <Fields>
         <Field>
             <input placeholder=""姓氏"" />
@@ -609,11 +609,11 @@ void ChangeTextState(ChangeEventArgs e)
 </PresentationPart>
         <PresentationPart Title="必填字段">
     <Description>
-        设置 <code>Required="true"</code> 可以让 <code>label</code> 标签后面出现红色的“*”星号。
+        设置 <code>Required</code> 可以让 <code>label</code> 标签后面出现红色的“*”星号。
     </Description>
     <RunTemplate>
         <Form Model="this">
-            <Field Required="true">
+            <Field Required>
                 <label>姓名</label>
                 <input/>
             </Field>
@@ -623,7 +623,7 @@ void ChangeTextState(ChangeEventArgs e)
         @Code.GetCode(@"
 ```html
 <Form Model=""this"">
-    <Field Required=""true"">
+    <Field Required>
         <label>姓名</label>
         <input/>
     </Field>
@@ -703,7 +703,7 @@ void ChangeTextState(ChangeEventArgs e)
     </Description>
     <RunTemplate>
         <Form Model="this">
-            <Fields EqualWidth="true">
+            <Fields EqualWidth>
                 <Field>
                     <label>姓名</label>
                     <input />
@@ -721,7 +721,7 @@ void ChangeTextState(ChangeEventArgs e)
                     <input />
                 </Field>
             </Fields>
-            <Fields EqualWidth="true">
+            <Fields EqualWidth>
                 <Field>
                     <label>身高</label>
                     <input />
@@ -741,7 +741,7 @@ void ChangeTextState(ChangeEventArgs e)
         @Code.GetCode(@"
 ```html
 <Form Model=""this"">
-    <Fields EqualWidth=""true"">
+    <Fields EqualWidth>
         <Field>
             <label>姓名</label>
             <input />
@@ -759,7 +759,7 @@ void ChangeTextState(ChangeEventArgs e)
             <input />
         </Field>
     </Fields>
-    <Fields EqualWidth=""true"">
+    <Fields EqualWidth>
         <Field>
             <label>身高</label>
             <input />
@@ -788,24 +788,24 @@ void ChangeTextState(ChangeEventArgs e)
                 设置 <code>Field</code> 的 <code>For</code> 参数可以自动识别字段对于 <code>System.ComponentModel.DataAnnotations</code> 的注解识别，并能显示错误信息。<br />
 
                 <Message State="State.Info">
-                    <List Ordered="true">
+                    <List Ordered>
                         <Item>自动将 <code>Display</code> 特性的 <code>Name</code> 值作为标题</Item>
                         <Item>若字段标记了 <code>Required</code> 特性，则自动加上 <code>*</code> 符号。</Item>
-                        <Item>当字段被修改且验证失败时，整体会呈现红色；修改正确后会呈现绿色，设置 <code>RecoverOnValid="true"</code> 则呈现默认样式</Item>
+                        <Item>当字段被修改且验证失败时，整体会呈现红色；修改正确后会呈现绿色，设置 <code>RecoverOnValid</code> 则呈现默认样式</Item>
                     </List>
                 </Message>
             </Description>
     <RunTemplate>        
         <Form Model="model" OnValidSubmit="Submit" DelayBeforeValidSubmit="1000">
             <DataAnnotationsValidator />
-            <Fields EqualWidth="true">
+            <Fields EqualWidth>
                 <Field For="()=>model.Name">
                     <TextField @bind-Value="model.Name" />
                 </Field>
                 <Field For="()=>model.Password">
                     <TextField @bind-Value="model.Password" Type="TextFieldType.Password" />
                 </Field>
-                <Field For="()=>model.Age" RecoverOnValid="true">
+                <Field For="()=>model.Age" RecoverOnValid>
                     <TextField @bind-Value="model.Age" Type="TextFieldType.Number" />
                 </Field>
                 <Field For="()=>model.Gender">
@@ -814,7 +814,7 @@ void ChangeTextState(ChangeEventArgs e)
                     </DropDownList>
                 </Field>
             </Fields>
-            <Fields Inline="true">
+            <Fields Inline>
                 <Field For="()=>model.Agree">
                     <CheckBox @bind-Value="model.Agree" />
                 </Field>
@@ -851,14 +851,14 @@ public string Gender { get; set; }
 ```html
 <Form Model=""model"" OnValidSubmit=""Submit"" DelayBeforeValidSubmit=""1000"">
 <DataAnnotationsValidator />
-<Fields EqualWidth=""true"">
+<Fields EqualWidth>
     <Field For=""()=>Name"">
         <InputText @bind-Value=""Name"" />
     </Field>
     <Field For=""()=>Password"">
         <InputText @bind-Value=""Password"" type=""password""/>
     </Field>
-    <Field For=""()=>Age"" RecoverOnValid=""true"">
+    <Field For=""()=>Age"" RecoverOnValid>
         <InputText @bind-Value=""Age"" />
     </Field>
     <Field For=""()=>model.Gender"">
@@ -867,7 +867,7 @@ public string Gender { get; set; }
     </DropDownList>
 </Field>
 </Fields>
-<Fields Inline=""true"">
+<Fields Inline>
     <Field For=""()=>model.Agree"">
         <CheckBox @bind-Value=""model.Agree"" />
     </Field>
@@ -922,7 +922,7 @@ public string Gender { get; set; }
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
+                    <td>Inverted</td>
                     <td>加载中状态的反转颜色</td>
                     <td>bool</td>
                     <td>false</td>

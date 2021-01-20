@@ -6,7 +6,7 @@
                          "子菜单","下拉子菜单","带标题的超链接项","带图标","仅图标","图标文字混搭","带超链接样式的菜单","取消边框","尺寸","导航栏示例", "参数"
                      }))">
     <Body>
-<Header1 Divider="true">
+<Header1 Divider>
     菜单
     <SubHeader>
         菜单显示分组导航操作
@@ -14,7 +14,7 @@
 </Header1>
         <Segment>
             <code>Menu</code> 作为菜单容器，可使用以下子组建作为菜单的项：
-            <List Ordered="true" Suffixed="true">
+            <List Ordered Suffixed>
                 <Item>
                     <code>&lt;Item></code> 作为普通文本的项
                 </Item>
@@ -38,27 +38,27 @@
             <Item>菜单3</Item>
         </Menu>
         <Menu Style="MenuStyle.Pill">
-            <LinkItem Link="./" Actived="true">菜单1</LinkItem>
+            <LinkItem Link="./" Actived>菜单1</LinkItem>
             <LinkItem Link="./">菜单2</LinkItem>
             <LinkItem Link="./">菜单3</LinkItem>
         </Menu>
         <Menu Style="MenuStyle.Underline">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
         <Menu Style="MenuStyle.Pointer">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
         <Menu Style="MenuStyle.Texted">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
         <Menu Style="MenuStyle.Tab">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
@@ -75,27 +75,27 @@
     <Item>菜单3</Item>
 </Menu>
 <Menu Style=""MenuStyle.Pill"">
-    <LinkItem Link=""./"" Actived=""true"">菜单1</LinkItem>
+    <LinkItem Link=""./"" Actived>菜单1</LinkItem>
     <LinkItem Link=""./"">菜单2</LinkItem>
     <LinkItem Link=""./"">菜单3</LinkItem>
 </Menu>
 <Menu Style=""MenuStyle.Underline"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
 <Menu Style=""MenuStyle.Pointer"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
 <Menu Style=""MenuStyle.Texted"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
 <Menu Style=""MenuStyle.Tab"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
@@ -106,36 +106,36 @@
 
 <PresentationPart Title="垂直显示">
     <Description>
-        设置 <code>Vertical="true"</code> 可以垂直显示菜单。
+        设置 <code>Vertical</code> 可以垂直显示菜单。
     </Description>
     <RunTemplate>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <Item>菜单1</Item>
             <Item>菜单2</Item>
             <Item>菜单3</Item>
         </Menu>
-        <Menu Style="MenuStyle.Pill" Vertical="true">
-            <LinkItem Link="./" Actived="true">菜单1</LinkItem>
+        <Menu Style="MenuStyle.Pill" Vertical>
+            <LinkItem Link="./" Actived>菜单1</LinkItem>
             <LinkItem Link="./">菜单2</LinkItem>
             <LinkItem Link="./">菜单3</LinkItem>
         </Menu>
-        <Menu Style="MenuStyle.Underline" Vertical="true">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+        <Menu Style="MenuStyle.Underline" Vertical>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
-        <Menu Style="MenuStyle.Pointer" Vertical="true">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+        <Menu Style="MenuStyle.Pointer" Vertical>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
-        <Menu Style="MenuStyle.Texted" Vertical="true">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+        <Menu Style="MenuStyle.Texted" Vertical>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
-        <Menu Style="MenuStyle.Tab" Vertical="true">
-            <LinkItem Link="" Actived="true">菜单1</LinkItem>
+        <Menu Style="MenuStyle.Tab" Vertical>
+            <LinkItem Link="" Actived>菜单1</LinkItem>
             <LinkItem Link="">菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
@@ -143,33 +143,33 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Vertical=""true"">
+<Menu Vertical>
     <Item>菜单1</Item>
     <Item>菜单2</Item>
     <Item>菜单3</Item>
 </Menu>
-<Menu Style=""MenuStyle.Pill"" Vertical=""true"">
-    <LinkItem Link=""./"" Actived=""true"">菜单1</LinkItem>
+<Menu Style=""MenuStyle.Pill"" Vertical>
+    <LinkItem Link=""./"" Actived>菜单1</LinkItem>
     <LinkItem Link=""./"">菜单2</LinkItem>
     <LinkItem Link=""./"">菜单3</LinkItem>
 </Menu>
-<Menu Style=""MenuStyle.Underline"" Vertical=""true"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+<Menu Style=""MenuStyle.Underline"" Vertical>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
-<Menu Style=""MenuStyle.Pointer"" Vertical=""true"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+<Menu Style=""MenuStyle.Pointer"" Vertical>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
-<Menu Style=""MenuStyle.Texted"" Vertical=""true"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+<Menu Style=""MenuStyle.Texted"" Vertical>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
-<Menu Style=""MenuStyle.Tab"" Vertical=""true"">
-    <LinkItem Link="""" Actived=""true"">菜单1</LinkItem>
+<Menu Style=""MenuStyle.Tab"" Vertical>
+    <LinkItem Link="""" Actived>菜单1</LinkItem>
     <LinkItem Link="""">菜单2</LinkItem>
     <LinkItem Link="""">菜单3</LinkItem>
 </Menu>
@@ -189,7 +189,7 @@
     <RunTemplate>
         <Menu>
             <LinkItem Link="">菜单1</LinkItem>
-            <LinkItem Link="" Actived="true">菜单2</LinkItem>
+            <LinkItem Link="" Actived>菜单2</LinkItem>
             <LinkItem Link="">菜单3</LinkItem>
         </Menu>
     </RunTemplate>
@@ -198,7 +198,7 @@
 ```html
 <Menu>
     <LinkItem Link=""#"">菜单1</LinkItem>
-    <LinkItem Link=""#"" Actived=""true"">菜单2</LinkItem>
+    <LinkItem Link=""#"" Actived>菜单2</LinkItem>
     <LinkItem Link=""#"">菜单3</LinkItem>
 </Menu>
 ```
@@ -208,42 +208,42 @@
 
         <PresentationPart Title="选中项的颜色">
     <Description>
-        设置 <code>ActivedColor</code> 表示当菜单的项的 <code>Actived="true"</code> 时的文本颜色。
+        设置 <code>ActivedColor</code> 表示当菜单的项的 <code>Actived</code> 时的文本颜色。
     </Description>
     <RunTemplate>
         <Menu ActivedColor="Color.Red">
-            <Item Actived="true">首页</Item>
+            <Item Actived>首页</Item>
             <Item>新闻</Item>
             <Item>关于我们</Item>
         </Menu>
         <Menu ActivedColor="Color.Purple" Style="MenuStyle.Pointer">
             <Item>首页</Item>
-            <Item Actived="true">新闻</Item>
+            <Item Actived>新闻</Item>
             <Item>关于我们</Item>
         </Menu>
         <Menu ActivedColor="Color.Yellow" Style="MenuStyle.Underline">
             <Item>首页</Item>
             <Item>新闻</Item>
-            <Item Actived="true">关于我们</Item>
+            <Item Actived>关于我们</Item>
         </Menu>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Menu ActivedColor=""Color.Red"">
-    <Item Actived=""true"">首页</Item>
+    <Item Actived>首页</Item>
     <Item>新闻</Item>
     <Item>关于我们</Item>
 </Menu>
 <Menu ActivedColor=""Color.Purple"" Style=""MenuStyle.Pointer"">
     <Item>首页</Item>
-    <Item Actived=""true"">新闻</Item>
+    <Item Actived>新闻</Item>
     <Item>关于我们</Item>
 </Menu>
 <Menu ActivedColor=""Color.Yellow"" Style=""MenuStyle.Underline"">
     <Item>首页</Item>
     <Item>新闻</Item>
-    <Item Actived=""true"">关于我们</Item>
+    <Item Actived>关于我们</Item>
 </Menu>
 ```
 ")
@@ -255,38 +255,38 @@
     </Description>
     <RunTemplate>
         <Menu BackgroundColor="Color.Red">
-            <Item Actived="true">首页</Item>
+            <Item Actived>首页</Item>
             <Item>新闻</Item>
             <Item>关于我们</Item>
         </Menu>
         <Menu BackgroundColor="Color.Purple" Style="MenuStyle.Pointer">
             <Item>首页</Item>
-            <Item Actived="true">新闻</Item>
+            <Item Actived>新闻</Item>
             <Item>关于我们</Item>
         </Menu>
         <Menu BackgroundColor="Color.Yellow" ActivedColor="Color.Green" Style="MenuStyle.Underline">
             <Item>首页</Item>
             <Item>新闻</Item>
-            <Item Actived="true">关于我们</Item>
+            <Item Actived>关于我们</Item>
         </Menu>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Menu BackgroundColor=""Color.Red"">
-    <Item Actived=""true"">首页</Item>
+    <Item Actived>首页</Item>
     <Item>新闻</Item>
     <Item>关于我们</Item>
 </Menu>
 <Menu BackgroundColor=""Color.Purple"">
     <Item>首页</Item>
-    <Item Actived=""true"">新闻</Item>
+    <Item Actived>新闻</Item>
     <Item>关于我们</Item>
 </Menu>
 <Menu BackgroundColor=""Color.Yellow"" ActivedColor=""Color.Green"">
     <Item>首页</Item>
     <Item>新闻</Item>
-    <Item Actived=""true"">关于我们</Item>
+    <Item Actived>关于我们</Item>
 </Menu>
 ```
 ")
@@ -294,11 +294,11 @@
 </PresentationPart>
         <PresentationPart Title="分页">
             <Description>
-                设置 <code>Pagination="true"</code> 可以呈现出分页的样式。推荐使用 <Anchor Link="/component/pagination"><code>Pagination</code> 组件</Anchor> 实现交互。
+                设置 <code>Pagination</code> 可以呈现出分页的样式。推荐使用 <Anchor Link="/component/pagination"><code>Pagination</code> 组件</Anchor> 实现交互。
             </Description>
     <RunTemplate>
-        <Menu Pagination="true">
-            <LinkItem Actived="true">1</LinkItem>
+        <Menu Pagination>
+            <LinkItem Actived>1</LinkItem>
             <LinkItem>2</LinkItem>
             <Item>...</Item>
             <LinkItem>9</LinkItem>            
@@ -308,8 +308,8 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Pagination=""true"">
-    <LinkItem Actived=""true"">1</LinkItem>
+<Menu Pagination>
+    <LinkItem Actived>1</LinkItem>
     <LinkItem>2</LinkItem>
     <Item>...</Item>
     <LinkItem>9</LinkItem>            
@@ -333,7 +333,7 @@
             <LinkItem>组件</LinkItem>
             <LinkItem>源代码</LinkItem>
         </Menu>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <ItemHeader>
                 Blazor
             </ItemHeader>
@@ -353,7 +353,7 @@
     <LinkItem>组件</LinkItem>
     <LinkItem>源代码</LinkItem>
 </Menu>
-<Menu Vertical=""true"">
+<Menu Vertical>
     <ItemHeader>
         Blazor
     </ItemHeader>
@@ -371,7 +371,7 @@
         在 <code>Item</code> 中可以使用 <code>Header</code> 组件作为标题显示。
     </Description>
     <RunTemplate>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <Item>
                 <Header>客户管理</Header>
                 <Item>列表</Item>
@@ -387,7 +387,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Vertical=""true"">
+<Menu Vertical>
     <Item>
         <Header>客户管理</Header>
         <Item>列表</Item>
@@ -406,7 +406,7 @@
 
 <PresentationPart Title="不同大小的标题项">
     <RunTemplate>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <Item>
                 <Header2>客户管理</Header2>
                 <Item>列表</Item>
@@ -422,7 +422,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Vertical=""true"">
+<Menu Vertical>
     <Item>
         <Header2>客户管理</Header>
         <Item>列表</Item>
@@ -444,7 +444,7 @@
         使用 <code>SubMenu</code> 组件作为子菜单，可以放到任何 <code>Item</code> 项中。
     </Description>
     <RunTemplate>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <Item>
                 <Header>产品</Header>
                 <SubMenu>
@@ -473,7 +473,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Vertical=""true"">
+<Menu Vertical>
     <Item>
         <Header>产品</Header>
         <SubMenu>
@@ -510,7 +510,7 @@
     </Description>
     <RunTemplate>
         <Menu>
-            <LinkItem Actived="true">
+            <LinkItem Actived>
                 首页
             </LinkItem>
             <DropDownItem>
@@ -526,8 +526,8 @@
                 关于
             </LinkItem>
         </Menu>
-        <Menu Vertical="true">
-            <LinkItem Actived="true">
+        <Menu Vertical>
+            <LinkItem Actived>
                 个人信息
             </LinkItem>
             <LinkItem>
@@ -539,7 +539,7 @@
                 <SubMenu>
                     <Header>字体</Header>
                     <Item>大</Item>
-                    <Item Actived="true">中</Item>
+                    <Item Actived>中</Item>
                     <Item>小</Item>
                 </SubMenu>
             </DropDownItem>
@@ -549,7 +549,7 @@
         @Code.GetCode(@"
 ```html
 <Menu>
-    <LinkItem Actived=""true"">
+    <LinkItem Actived>
         首页
     </LinkItem>
     <DropDownItem>
@@ -565,8 +565,8 @@
         关于
     </LinkItem>
 </Menu>
-<Menu Vertical=""true"">
-    <LinkItem Actived=""true"">
+<Menu Vertical>
+    <LinkItem Actived>
         个人信息
     </LinkItem>
     <LinkItem>
@@ -578,7 +578,7 @@
         <SubMenu>
             <Header>字体</Header>
             <Item>大</Item>
-            <Item Actived=""true"">中</Item>
+            <Item Actived>中</Item>
             <Item>小</Item>
         </SubMenu>
     </DropDownItem>
@@ -590,7 +590,7 @@
 
 <PresentationPart Title="带标题的超链接项">
     <RunTemplate>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <LinkItem>
                 <Header3>联系方式</Header3>
                 <p>关注微信公众号获取最新动态</p>
@@ -608,7 +608,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Vertical=""true"">
+<Menu Vertical>
     <LinkItem>
         <Header3>联系方式</Header3>
         <p>关注微信公众号获取最新动态</p>
@@ -637,7 +637,7 @@
             <Item><Icon IconClass="camera" /> 频道</Item>
             <Item><Icon IconClass="vidoe play" /> 媒体</Item>
         </Menu>
-        <Menu Vertical="true">
+        <Menu Vertical>
             <Item><Icon IconClass="gamepad" /> 游戏</Item>
             <Item><Icon IconClass="camera" /> 频道</Item>
             <Item><Icon IconClass="video" /> 媒体</Item>
@@ -651,7 +651,7 @@
     <Item><Icon IconClass=""camera"" /> 频道</Item>
     <Item><Icon IconClass=""vidoe play"" /> 媒体</Item>
 </Menu>
-<Menu Vertical=""true"">
+<Menu Vertical>
     <Item><Icon IconClass=""gamepad"" /> 游戏</Item>
     <Item><Icon IconClass=""camera"" /> 频道</Item>
     <Item><Icon IconClass=""video"" /> 媒体</Item>
@@ -662,15 +662,15 @@
 </PresentationPart>
 <PresentationPart Title="仅图标">
     <Description>
-        设置 <code>IconOnly="true"</code> 只显示 <code>Icon</code> 图标。
+        设置 <code>IconOnly</code> 只显示 <code>Icon</code> 图标。
     </Description>
     <RunTemplate>
-        <Menu IconOnly="true">
+        <Menu IconOnly>
             <Item><Icon IconClass="gamepad" /></Item>
             <Item><Icon IconClass="camera" /></Item>
             <Item><Icon IconClass="vidoe play" /></Item>
         </Menu>
-        <Menu IconOnly="true" Vertical="true">
+        <Menu IconOnly Vertical>
             <Item><Icon IconClass="gamepad" /></Item>
             <Item><Icon IconClass="camera" /></Item>
             <Item><Icon IconClass="video" /></Item>
@@ -679,12 +679,12 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu IconOnly=""true"">
+<Menu IconOnly>
     <Item><Icon IconClass=""gamepad"" /></Item>
     <Item><Icon IconClass=""camera"" /></Item>
     <Item><Icon IconClass=""vidoe play"" /></Item>
 </Menu>
-<Menu IconOnly=""true"" Vertical=""true"">
+<Menu IconOnly Vertical>
     <Item><Icon IconClass=""gamepad"" /></Item>
     <Item><Icon IconClass=""camera"" /></Item>
     <Item><Icon IconClass=""video"" /></Item>
@@ -695,15 +695,15 @@
 </PresentationPart>
 <PresentationPart Title="图标文字混搭">
     <Description>
-        设置 <code>LabeledIcon="true"</code> 可以更好地呈现 <code>Icon</code> 与文字的排版。
+        设置 <code>LabeledIcon</code> 可以更好地呈现 <code>Icon</code> 与文字的排版。
     </Description>
     <RunTemplate>
-        <Menu LabeledIcon="true">
+        <Menu LabeledIcon>
             <Item><Icon IconClass="gamepad" /> 游戏</Item>
             <Item><Icon IconClass="camera" /> 频道</Item>
             <Item><Icon IconClass="vidoe play" /> 媒体</Item>
         </Menu>
-        <Menu LabeledIcon="true" Vertical="true">
+        <Menu LabeledIcon Vertical>
             <Item><Icon IconClass="gamepad" /> 游戏</Item>
             <Item><Icon IconClass="camera" /> 频道</Item>
             <Item><Icon IconClass="video" /> 媒体</Item>
@@ -712,12 +712,12 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu LabeledIcon=""true"">
+<Menu LabeledIcon>
     <Item><Icon IconClass=""gamepad"" /> 游戏</Item>
     <Item><Icon IconClass=""camera"" /> 频道</Item>
     <Item><Icon IconClass=""vidoe play"" /> 媒体</Item>
 </Menu>
-<Menu LabeledIcon=""true"" Vertical=""true"">
+<Menu LabeledIcon Vertical>
     <Item><Icon IconClass=""gamepad"" /> 游戏</Item>
     <Item><Icon IconClass=""camera"" /> 频道</Item>
     <Item><Icon IconClass=""video"" /> 媒体</Item>
@@ -729,10 +729,10 @@
 
 <PresentationPart Title="带超链接样式的菜单">
     <Description>
-        设置 <code>Linked="true"</code> 可以让菜单有悬浮变色和手指的效果，与 <code>LinkItem</code> 项的效果一致。
+        设置 <code>Linked</code> 可以让菜单有悬浮变色和手指的效果，与 <code>LinkItem</code> 项的效果一致。
     </Description>
     <RunTemplate>
-        <Menu Linked="true">
+        <Menu Linked>
             <ItemHeader>一线城市</ItemHeader>
             <Item>北京</Item>
             <Item>上海</Item>
@@ -743,7 +743,7 @@
     <CodeTemplate>
     @Code.GetCode(@"
 ```html
-<Menu Linked=""true"">
+<Menu Linked>
     <ItemHeader>一线城市</ItemHeader>
     <Item>北京</Item>
     <Item>上海</Item>
@@ -755,10 +755,10 @@
 </PresentationPart>
         <PresentationPart Title="取消边框">
     <Description>
-        设置 <code>Borderless="true"</code> 使菜单项没有边框。
+        设置 <code>Borderless</code> 使菜单项没有边框。
     </Description>
     <RunTemplate>
-        <Menu Borderless="true">
+        <Menu Borderless>
             <Item>国内</Item>
             <Item>国际</Item>
             <Item>娱乐</Item>
@@ -768,7 +768,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Borderless=""true"">
+<Menu Borderless>
     <Item>国内</Item>
     <Item>国际</Item>
     <Item>娱乐</Item>
@@ -784,35 +784,35 @@
     </Description>
     <RunTemplate>
         <Menu Size="Size.Mini">
-            <Item Actived="true">Mini</Item>
+            <Item Actived>Mini</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Tiny">
-            <Item Actived="true">Tiny</Item>
+            <Item Actived>Tiny</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Small">
-            <Item Actived="true">Small</Item>
+            <Item Actived>Small</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Medium">
-            <Item Actived="true">Medium</Item>
+            <Item Actived>Medium</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Large">
-            <Item Actived="true">Large</Item>
+            <Item Actived>Large</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Big">
-            <Item Actived="true">Big</Item>
+            <Item Actived>Big</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Huge">
-            <Item Actived="true">Huge</Item>
+            <Item Actived>Huge</Item>
             <Item>Home</Item>
         </Menu>
         <Menu Size="Size.Massive">
-            <Item Actived="true">Massive</Item>
+            <Item Actived>Massive</Item>
             <Item>Home</Item>
         </Menu>
     </RunTemplate>
@@ -820,35 +820,35 @@
         @Code.GetCode(@"
 ```html
 <Menu Size=""Size.Mini"">
-    <Item Actived=""true"">Mini</Item>
+    <Item Actived>Mini</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Tiny"">
-    <Item Actived=""true"">Tiny</Item>
+    <Item Actived>Tiny</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Small"">
-    <Item Actived=""true"">Small</Item>
+    <Item Actived>Small</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Medium"">
-    <Item Actived=""true"">Medium</Item>
+    <Item Actived>Medium</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Large"">
-    <Item Actived=""true"">Large</Item>
+    <Item Actived>Large</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Big"">
-    <Item Actived=""true"">Big</Item>
+    <Item Actived>Big</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Huge"">
-    <Item Actived=""true"">Huge</Item>
+    <Item Actived>Huge</Item>
     <Item>Home</Item>
 </Menu>
 <Menu Size=""Size.Massive"">
-    <Item Actived=""true"">Massive</Item>
+    <Item Actived>Massive</Item>
     <Item>Home</Item>
 </Menu>
 ```
@@ -857,8 +857,8 @@
 </PresentationPart>
         <PresentationPart Title="导航栏示例">
     <RunTemplate>
-        <Menu Borderless="true" BackgroundColor="Color.Blue">
-            <Item Actived="true">首页</Item>
+        <Menu Borderless BackgroundColor="Color.Blue">
+            <Item Actived>首页</Item>
             <DropDownItem>
                 新闻 <Icon IconClass="dropdown"/>
                 <SubMenu>
@@ -869,7 +869,7 @@
                 </SubMenu>
             </DropDownItem>
             <Item>
-                <InputBox Transparent="true" Icon="HorizontalPosition.Left" Darkness="true">
+                <InputBox Transparent Icon="HorizontalPosition.Left" Inverted>
                     <Icon IconClass="search"/>
                     <input placeholder="关键字"/>
                 </InputBox>
@@ -883,8 +883,8 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Menu Borderless=""true"" Color=""Color.Blue"" Darkness=""true"">
-    <Item Actived=""true"">首页</Item>
+<Menu Borderless Color=""Color.Blue"" Inverted>
+    <Item Actived>首页</Item>
     <DropDownItem>
         新闻 <Icon IconClass=""dropdown""/>
         <SubMenu>
@@ -895,7 +895,7 @@
         </SubMenu>
     </DropDownItem>
     <Item>
-        <InputBox Transparent=""true"" Icon=""HorizontalPosition.Left"" Darkness=""true"">
+        <InputBox Transparent Icon=""HorizontalPosition.Left"" Inverted>
             <Icon IconClass=""search""/>
             <input placeholder=""关键字""/>
         </InputBox>

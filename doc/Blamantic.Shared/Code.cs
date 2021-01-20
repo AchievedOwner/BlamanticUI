@@ -36,40 +36,40 @@ namespace BlamanticUI.Shared
 
         public static IServiceCollection AddDemo(this IServiceCollection services)
         {
-            BlamanticServiceCollectionExtensions.AddBlamanticUI(services);
+            services.AddBlamanticUI();
             services.AddNavigation(nav =>
             {
                 nav.Add(new Navigation
                 {
-                    Name = "首页",
+                    Name = "Index",
                     Link = "/",
                     IconClass = "home"
                 });
 
                 nav.Add(new Navigation
                 {
-                    Name = "新闻",
+                    Name = "News",
                     Navigations = new List<Navigation> {
                         new Navigation
                         {
-                             Name="国内"
+                             Name="National"
                         },
                         new Navigation
                         {
-                            Name="国际"
+                            Name="International"
                         },
                         new Navigation
                         {
-                            Name="娱乐",
+                            Name="Entertainment",
                             Navigations=new List<Navigation>
                             {
                                 new Navigation
                                 {
-                                     Name="内地"
+                                     Name="China"
                                 },
                                 new Navigation
                                 {
-                                    Name="港台"
+                                    Name="USA"
                                 },
                             }
                         }
@@ -81,22 +81,22 @@ namespace BlamanticUI.Shared
             {
                 nav.Add(new Navigation
                 {
-                    Name = "游戏",
+                    Name = "Game",
                     IconClass = "game",
                     Navigations = new List<Navigation> {
                         new Navigation
                         {
-                             Name="网游"
+                             Name="Web"
                         },
                         new Navigation
                         {
-                            Name="手游"
+                            Name="Mobile"
                         },
                      }
                 });
                 nav.Add(new Navigation
                 {
-                    Name = "合作伙伴",
+                    Name = "Conduct",
                     IconClass = "users"
                 });
             });
@@ -134,39 +134,39 @@ namespace BlamanticUI.Shared
             string prefix = "common";
             nav.Add(new Navigation
             {
-                Name = "按钮(Button)",
+                Name = "Button",
                 Link = $"/component/{prefix}/button"
             });
 
             nav.Add(new Navigation
             {
-                Name = "图标(Icon)",
+                Name = "Icon",
                 Link = $"/component/{prefix}/icon"
             });
 
             nav.Add(new Navigation
             {
-                Name = "图像(Image)",
+                Name = "Image",
                 Link = $"/component/{prefix}/image"
             });
             nav.Add(new Navigation
             {
-                Name = "旗帜(Flag)",
+                Name = "Flag",
                 Link = $"/component/{prefix}/flag"
             });
             nav.Add(new Navigation
             {
-                Name = "标签(Label)",
+                Name = "Label",
                 Link = $"/component/{prefix}/label"
             });
             nav.Add(new Navigation
             {
-                Name = "文本(Text)",
+                Name = "Text",
                 Link = $"/component/{prefix}/text"
             });
             nav.Add(new Navigation
             {
-                Name = "片段(Segment)",
+                Name = "Segment",
                 Link = $"/component/{prefix}/segment"
             });
         }
@@ -176,32 +176,32 @@ namespace BlamanticUI.Shared
             string prefix = "input";
             nav.Add(new Navigation
             {
-                Name = "表单(Form)",
+                Name = "Form",
                 Link = $"/component/{prefix}/form"
             });
             nav.Add(new Navigation
             {
-                Name = "文本域(TextField)",
+                Name = "TextField",
                 Link = $"/component/{prefix}/textfield"
             });
             nav.Add(new Navigation
             {
-                Name = "单/复选(CheckBox)",
+                Name = "CheckBox",
                 Link = $"/component/{prefix}/checkbox"
             });
             nav.Add(new Navigation
             {
-                Name = "下拉列表(DropdownList)",
+                Name = "DropdownList",
                 Link = $"/component/{prefix}/dropdown"
             });
             nav.Add(new Navigation
             {
-                Name = "日期输入框(DateField)",
+                Name = "DateField",
                 Link = $"/component/{prefix}/datefield"
             });
             nav.Add(new Navigation
             {
-                Name = "日历(Calendar)",
+                Name = "Calendar",
                 Link = $"/component/{prefix}/calendar"
             });
         }
@@ -211,49 +211,49 @@ namespace BlamanticUI.Shared
             string prefix = "layout";
             nav.Add(new Navigation
             {
-                Name = "栅格(Grid)",
+                Name = "Grid",
                 Link = $"/component/{prefix}/grid"
             });
 
             nav.Add(new Navigation
             {
-                Name = "容器(Container)",
+                Name = "Container",
                 Link = $"/component/{prefix}/container"
             });
 
             nav.Add(new Navigation
             {
-                Name = "卡片(Card)",
+                Name = "Card",
                 Link = $"/component/{prefix}/card"
             });
             nav.Add(new Navigation
             {
-                Name = "分割线(Divider)",
+                Name = "Divider",
                 Link = $"/component/{prefix}/divider"
             });
             nav.Add(new Navigation
             {
-                Name = "标题(Header)",
+                Name = "Header",
                 Link = $"/component/{prefix}/header"
             });
             nav.Add(new Navigation
             {
-                Name = "项目列表(ItemList)",
+                Name = "ItemList",
                 Link = $"/component/{prefix}/itemlist"
             });
             nav.Add(new Navigation
             {
-                Name = "列表(List)",
+                Name = "List",
                 Link = $"/component/{prefix}/list"
             });
             nav.Add(new Navigation
             {
-                Name = "选项卡(Tab)",
+                Name = "Tab",
                 Link = $"/component/{prefix}/tab"
             });
             nav.Add(new Navigation
             {
-                Name = "菜单(Menu)",
+                Name = "Menu",
                 Link = $"/component/{prefix}/menu"
             });
         }
@@ -263,17 +263,17 @@ namespace BlamanticUI.Shared
             string prefix = "data";
             nav.Add(new Navigation
             {
-                Name = "表格(Table)",
+                Name = "Table",
                 Link = $"/component/{prefix}/table"
             });
             nav.Add(new Navigation
             {
-                Name = "分页(Pagination)",
+                Name = "Pagination",
                 Link = $"/component/{prefix}/pagination"
             });
             nav.Add(new Navigation
             {
-                Name = "手风琴(Accordion)",
+                Name = "Accordion",
                 Link = $"/component/{prefix}/accordion"
             });
         }
@@ -283,37 +283,37 @@ namespace BlamanticUI.Shared
             string prefix = "feedback";
             nav.Add(new Navigation
             {
-                Name = "模态框(Modal)",
+                Name = "Modal",
                 Link = $"/component/{prefix}/modal"
             });
             nav.Add(new Navigation
             {
-                Name = "进度条(ProgressBar)",
+                Name = "ProgressBar",
                 Link = $"/component/{prefix}/progress"
             });
             nav.Add(new Navigation
             {
-                Name = "消息(Message)",
+                Name = "Message",
                 Link = $"/component/{prefix}/message"
             });
             nav.Add(new Navigation
             {
-                Name = "对话框(Dialog)",
+                Name = "Dialog",
                 Link = $"/component/{prefix}/dialog"
             });
             nav.Add(new Navigation
             {
-                Name = "消息通知(Toast)",
+                Name = "Toast",
                 Link = $"/component/{prefix}/toast"
             });
             nav.Add(new Navigation
             {
-                Name = "遮罩层(Dimmer)",
+                Name = "Dimmer",
                 Link = $"/component/{prefix}/dimmer"
             });
             nav.Add(new Navigation
             {
-                Name = "加载器(Loader)",
+                Name = "Loader",
                 Link = $"/component/{prefix}/loader"
             });
         }
@@ -323,12 +323,12 @@ namespace BlamanticUI.Shared
             string prefix = "nav";
             nav.Add(new Navigation
             {
-                Name = "导航菜单(NavMenu)",
+                Name = "NavMenu",
                 Link = $"/component/{prefix}/navmenu"
             });
             nav.Add(new Navigation
             {
-                Name = "步骤引导(Steps)",
+                Name = "Step",
                 Link = $"/component/{prefix}/steps"
             });
         }

@@ -25,7 +25,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasFitted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCompact" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCircular" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
     [HtmlTag]
     public class Segment : BlamanticChildContentComponentBase, 
@@ -40,8 +40,9 @@ namespace BlamanticUI
         IHasFitted,
         IHasCompact,
         IHasCircular,
-        IHasDarkness,
-        IHasHorizontalAlignment
+        IHasInverted,
+        IHasHorizontalAlignment,
+        IHasFloated
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Segment"/> class.
@@ -58,12 +59,12 @@ namespace BlamanticUI
             css.Add("segment");
         }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether attach to another.
         /// </summary>
@@ -88,7 +89,7 @@ namespace BlamanticUI
         /// <value>
         /// The raised.
         /// </value>
-        [Parameter][CssClass("raised",Order =11)]public bool? Raised { get; set; }
+        [Parameter][CssClass("raised",Order =11)]public bool Raised { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is disabled.
         /// </summary>
@@ -178,7 +179,7 @@ namespace BlamanticUI
         /// <value>
         ///   <c>true</c> if clear float; otherwise, <c>false</c>.
         /// </value>
-        [Parameter][CssClass("clearing")] public bool Clearing { get; set; }
+        [Parameter][CssClass("clearing")] public bool Clear { get; set; }
 
         /// <summary>
         /// Gets or sets the emphasis.
@@ -193,6 +194,10 @@ namespace BlamanticUI
         /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
+        /// <summary>
+        /// Gets or sets the float position.
+        /// </summary>
+        [Parameter]public HorizontalPosition? Floated { get; set; }
     }
 
     /// <summary>

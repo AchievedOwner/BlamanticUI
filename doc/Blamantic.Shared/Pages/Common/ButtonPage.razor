@@ -3,36 +3,36 @@
 <Pager DataSource="Menu">
     <Body>
 
-        <Header1 Divider="true">
-            按钮
+        <Header1 Divider>
+            Button
             <SubHeader>
-                按钮提示可用的用户操作
+                A button indicates a possible user action
             </SubHeader>
         </Header1>
 
-        <PresentationPart Title="基本按钮" Id="button">
+        <PresentationPart Title="Button" Id="button">
             <Description>
-                使用 <code>Button</code> 元素作为按钮组件。
+                A standard button.
             </Description>
             <RunTemplate>
-                <Button>按钮</Button>
+                <Button>Button</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button>按钮</Button>
+<Button>Button</Button>
 ```
 ")
 
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="强调" Id="emphasis">
+        <PresentationPart Title="Emphasis" Id="emphasis">
             <Description>
-                设置 <code>Emphasis</code> 用来强调不同程度的按钮
+                A button can be formatted to show different levels of emphasis.
             </Description>
             <RunTemplate>
-                <Button>普通</Button>
+                <Button>Default</Button>
                 <Button Emphasis="Emphasis.Primary">Primary</Button>
                 <Button Emphasis="Emphasis.Secondary">Secondary</Button>
                 <Button Emphasis="Emphasis.Positive">Positive</Button>
@@ -41,7 +41,7 @@
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button>普通</Button>
+<Button>Default</Button>
 <Button Emphasis=""Emphasis.Primary"">Primary</Button>
 <Button Emphasis=""Emphasis.Secondary"">Secondary</Button>
 <Button Emphasis=""Emphasis.Positive"">Positive</Button>
@@ -51,49 +51,49 @@
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="动画" Id="animated">
+        <PresentationPart Title="Animated" Id="animated">
             <Description>
-                设置 <code>Animated</code> 可以将 <code>Content</code> 组件作为按钮动画的切换方式
+                A button can animate to show hidden content
                 <Message>
-                    按钮的尺寸将根据可见内容的尺寸自动调整。请确保有足够的空间来显示隐藏内容
+                    The button will be automatically sized according to the visible content size. Make sure there is enough room for the hidden content to show.
                 </Message>
             </Description>
             <RunTemplate>
-                <Button Animated="true">
-                    <Content Visibile="true">下一个</Content>
-                    <Content Hidden="true">
+                <Button Animated>
+                    <Content Visibile>Next</Content>
+                    <Content Hidden>
                         <Icon IconClass="right arrow" />
                     </Content>
                 </Button>
-                <Button Animated="true" Vertical="true" Emphasis="Emphasis.Primary">
-                    <Content Hidden="true">购物车</Content>
-                    <Content Visibile="true">
+                <Button Animated Vertical Emphasis="Emphasis.Primary">
+                    <Content Hidden>Cart</Content>
+                    <Content Visibile>
                         <Icon IconClass="shop" />
                     </Content>
                 </Button>
-                <Button Animated="true" Fade="true" Emphasis="Emphasis.Positive">
-                    <Content Visibile="true">成为 VIP</Content>
-                    <Content Hidden="true">只需 ￥99.98</Content>
+                <Button Animated Fade Emphasis="Emphasis.Positive">
+                    <Content Visibile>Become a VIP</Content>
+                    <Content Hidden>Only ￥99.98</Content>
                 </Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Animated=""true"">
-    <Content Visibile=""true"">下一个</Content>
-    <Content Hidden=""true"">
+<Button Animated>
+    <Content Visibile>Next</Content>
+    <Content Hidden>
         <Icon IconClass=""right arrow""/>
     </Content>
 </Button>
-<Button Animated=""true"" Vertical=""true"" Emphasis=""Emphasis.Primary"">
-    <Content Hidden=""true"">购物车</Content>
-    <Content Visibile=""true"">
+<Button Animated Vertical Emphasis=""Emphasis.Primary"">
+    <Content Hidden>Cart</Content>
+    <Content Visibile>
         <Icon IconClass=""shop"" />
     </Content>
 </Button>
-<Button Animated=""true"" Fade=""true"" Emphasis=""Emphasis.Positive"">
-    <Content Visibile=""true"">成为 VIP</Content>
-    <Content Hidden=""true"">只需 ￥99.98</Content>
+<Button Animated Fade Emphasis=""Emphasis.Positive"">
+    <Content Visibile>Become a VIP</Content>
+    <Content Hidden>Only ￥99.98</Content>
 </Button>
 ```
 ")
@@ -101,69 +101,69 @@
         </PresentationPart>
 
 
-        <PresentationPart Title="标签样式" Id="labeled">
+        <PresentationPart Title="Labeled" Id="labeled">
             <Description>
-                使用 <code>Labeled</code> 组件并设置其 <code>Button="true"</code> 可以使按钮与其他元素呈现紧贴的标签效果。
+                A button can appear alongside a label.
             </Description>
             <RunTemplate>
-                <Labeled Button="true">
-                    <Button><Icon IconClass="heart" /> 赞</Button>
-                    <Label Basic="true">1024</Label>
+                <Labeled Button>
+                    <Button><Icon IconClass="heart" /> Like</Button>
+                    <Label Basic>1024</Label>
                 </Labeled>
 
-                <Labeled Button="true" Left="true">
-                    <Label Basic="true" Pointer="RelativePosition.Right">236</Label>
-                    <Button><Icon IconClass="heart" /> 喜欢</Button>
+                <Labeled Button Left>
+                    <Label Basic Pointer="RelativePosition.Right">236</Label>
+                    <Button><Icon IconClass="heart" /> Like</Button>
                 </Labeled>
 
-                <Labeled Button="true">
-                    <Button Color="Color.Red"><Icon IconClass="heart" /> 喜欢</Button>
-                    <Label Basic="true" Pointer="RelativePosition.Left" Color="Color.Red">236</Label>
+                <Labeled Button>
+                    <Button Color="Color.Red"><Icon IconClass="heart" /> Like</Button>
+                    <Label Basic Pointer="RelativePosition.Left" Color="Color.Red">236</Label>
                 </Labeled>
-                <Labeled Button="true">
+                <Labeled Button>
                     <Button Color="Color.Blue"><Icon IconClass="fork" /></Button>
-                    <Label Basic="true" Pointer="RelativePosition.Left" Color="Color.Blue">236</Label>
+                    <Label Basic Pointer="RelativePosition.Left" Color="Color.Blue">236</Label>
                 </Labeled>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Labeled Button=""true"">
-    <Button><Icon IconClass=""heart"" /> 赞</Button>
-    <Label Basic=""true"">1024</Label>
+<Labeled Button>
+    <Button><Icon IconClass=""heart"" /> Like</Button>
+    <Label Basic>1024</Label>
 </Labeled>
 
-<Labeled Button=""true"" Left=""true"">
-    <Label Basic=""true"" Pointer=""RelativePosition.Right"">236</Label>
-    <Button><Icon IconClass=""heart"" /> 喜欢</Button>
+<Labeled Button Left>
+    <Label Basic Pointer=""RelativePosition.Right"">236</Label>
+    <Button><Icon IconClass=""heart"" /> Like</Button>
 </Labeled>
 
-<Labeled Button=""true"">
-    <Button Color=""Color.Red""><Icon IconClass=""heart"" /> 喜欢</Button>
-    <Label Basic=""true"" Pointer=""RelativePosition.Left"" Color=""Color.Red"">236</Label>
+<Labeled Button>
+    <Button Color=""Color.Red""><Icon IconClass=""heart"" /> Like</Button>
+    <Label Basic Pointer=""RelativePosition.Left"" Color=""Color.Red"">236</Label>
 </Labeled>
-<Labeled Button=""true"">
+<Labeled Button>
     <Button Color=""Color.Blue""><Icon IconClass=""fork"" /></Button>
-    <Label Basic=""true"" Pointer=""RelativePosition.Left"" Color=""Color.Blue"">236</Label>
+    <Label Basic Pointer=""RelativePosition.Left"" Color=""Color.Blue"">236</Label>
 </Labeled>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="仅图标">
+        <PresentationPart Title="Icon">
             <Description>
-                如果按钮中仅显示 <code>&lt;Icon></code> 组，则需要设置 <code>IconOnly="true"</code> 参数。
+                A button can have only an icon.
             </Description>
             <RunTemplate>
-                <Button IconOnly="true">
+                <Button IconOnly>
                     <Icon IconClass="cloud" />
                 </Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button IconOnly=""true"">
+<Button IconOnly>
     <Icon IconClass=""cloud""/>
 </Button>
 ```
@@ -171,230 +171,227 @@
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="标签图标">
+        <PresentationPart Title="Labeled Icon">
             <Description>
-                设置 <code>IconLabeled</code> 使 <code>Icon</code> 在按钮中具有标签样式的兼容，以及元素的排列顺序。
+                A button can use an icon as a label.
             </Description>
             <RunTemplate>
                 <Button IconLabeled="HorizontalPosition.Left">
-                    <Icon IconClass="pause" /> 暂停
+                    <Icon IconClass="pause" /> Pause
                 </Button>
                 <Button IconLabeled="HorizontalPosition.Right">
-                    <Icon IconClass="play" /> 播放
+                    <Icon IconClass="play" /> Play
                 </Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Button IconLabeled=""HorizontalPosition.Left"">
-    <Icon IconClass=""pause""/> 暂停
+    <Icon IconClass=""pause""/> Pause
 </Button>
 <Button IconLabeled=""HorizontalPosition.Right"">
-    <Icon IconClass=""play"" /> 播放
+    <Icon IconClass=""play"" /> Play
 </Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="边框样式" Id="basic">
+        <PresentationPart Title="Basic" Id="basic">
             <Description>
-                设置 <code>Basic="true"</code> 可使按钮呈现边框样式。
+                A basic button is less pronounced.
             </Description>
             <RunTemplate>
-                <Button Basic="true">普通</Button>
-                <Button Basic="true" Emphasis="Emphasis.Primary">Primary</Button>
-                <Button Basic="true" Emphasis="Emphasis.Secondary">Secondary</Button>
-                <Button Basic="true" Emphasis="Emphasis.Positive">Positive</Button>
-                <Button Basic="true" Emphasis="Emphasis.Negative">Negative</Button>
+                <Button Basic>Default</Button>
+                <Button Basic Emphasis="Emphasis.Primary">Primary</Button>
+                <Button Basic Emphasis="Emphasis.Secondary">Secondary</Button>
+                <Button Basic Emphasis="Emphasis.Positive">Positive</Button>
+                <Button Basic Emphasis="Emphasis.Negative">Negative</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Basic=""true"">普通</Button>
-<Button Basic=""true"" Emphasis=""Emphasis.Primary"">Primary</Button>
-<Button Basic=""true"" Emphasis=""Emphasis.Secondary"">Secondary</Button>
-<Button Basic=""true"" Emphasis=""Emphasis.Positive"">Positive</Button>
-<Button Basic=""true"" Emphasis=""Emphasis.Negative"">Negative</Button>
+<Button Basic>Default</Button>
+<Button Basic Emphasis=""Emphasis.Primary"">Primary</Button>
+<Button Basic Emphasis=""Emphasis.Secondary"">Secondary</Button>
+<Button Basic Emphasis=""Emphasis.Positive"">Positive</Button>
+<Button Basic Emphasis=""Emphasis.Negative"">Negative</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="各种配色" Id="color">
-            <Description>
-                设置 <code>Color</code> 参数可以选择配色。
-            </Description>
+        <PresentationPart Title="Color" Id="color">
             <RunTemplate>
-                <Button Color="Color.Red">红色</Button>
-                <Button Color="Color.Orange">橘红色</Button>
-                <Button Color="Color.Yellow">黄色</Button>
-                <Button Color="Color.Olive">橄榄绿</Button>
-                <Button Color="Color.Green">绿色</Button>
-                <Button Color="Color.Teal">深蓝绿</Button>
-                <Button Color="Color.Violet">紫罗兰色</Button>
-                <Button Color="Color.Purple">紫色</Button>
-                <Button Color="Color.Pink">粉色</Button>
-                <Button Color="Color.Brown">褐色</Button>
-                <Button Color="Color.Grey">灰色</Button>
-                <Button Color="Color.Black">黑色</Button>
+                <Button Color="Color.Red">Red</Button>
+                <Button Color="Color.Orange">Orange</Button>
+                <Button Color="Color.Yellow">Yellow</Button>
+                <Button Color="Color.Olive">Olive</Button>
+                <Button Color="Color.Green">Green</Button>
+                <Button Color="Color.Teal">Teal</Button>
+                <Button Color="Color.Violet">Violet</Button>
+                <Button Color="Color.Purple">Purple</Button>
+                <Button Color="Color.Pink">Pink</Button>
+                <Button Color="Color.Brown">Brown</Button>
+                <Button Color="Color.Grey">Grey</Button>
+                <Button Color="Color.Black">Black</Button>
                 <br /><br />
-                <Button Basic="true" Color="Color.Red">红色</Button>
-                <Button Basic="true" Color="Color.Orange">橘红色</Button>
-                <Button Basic="true" Color="Color.Yellow">黄色</Button>
-                <Button Basic="true" Color="Color.Olive">橄榄绿</Button>
-                <Button Basic="true" Color="Color.Green">绿色</Button>
-                <Button Basic="true" Color="Color.Teal">深蓝绿</Button>
-                <Button Basic="true" Color="Color.Violet">紫罗兰色</Button>
-                <Button Basic="true" Color="Color.Purple">紫色</Button>
-                <Button Basic="true" Color="Color.Pink">粉色</Button>
-                <Button Basic="true" Color="Color.Brown">褐色</Button>
-                <Button Basic="true" Color="Color.Grey">灰色</Button>
-                <Button Basic="true" Color="Color.Black">黑色</Button>
+                <Button Basic Color="Color.Red">Red</Button>
+                <Button Basic Color="Color.Orange">Orange</Button>
+                <Button Basic Color="Color.Yellow">Yellow</Button>
+                <Button Basic Color="Color.Olive">Olive</Button>
+                <Button Basic Color="Color.Green">Green</Button>
+                <Button Basic Color="Color.Teal">Teal</Button>
+                <Button Basic Color="Color.Violet">Violet</Button>
+                <Button Basic Color="Color.Purple">Purple</Button>
+                <Button Basic Color="Color.Pink">Pink</Button>
+                <Button Basic Color="Color.Brown">Brown</Button>
+                <Button Basic Color="Color.Grey">Grey</Button>
+                <Button Basic Color="Color.Black">Black</Button>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Button Color=""Color.Red"">红色</Button>
-<Button Color=""Color.Orange"">橘红色</Button>
-<Button Color=""Color.Yellow"">黄色</Button>
-<Button Color=""Color.Olive"">橄榄绿</Button>
-<Button Color=""Color.Green"">绿色</Button>
-<Button Color=""Color.Teal"">深蓝绿</Button>
-<Button Color=""Color.Violet"">紫罗兰色</Button>
-<Button Color=""Color.Purple"">紫色</Button>
-<Button Color=""Color.Pink"">粉色</Button>
-<Button Color=""Color.Brown"">褐色</Button>
-<Button Color=""Color.Grey"">灰色</Button>
-<Button Color=""Color.Black"">黑色</Button>
-<br />
-<Button Basic=""true"" Color=""Color.Red"">红色</Button>
-<Button Basic=""true"" Color=""Color.Orange"">橘红色</Button>
-<Button Basic=""true"" Color=""Color.Yellow"">黄色</Button>
-<Button Basic=""true"" Color=""Color.Olive"">橄榄绿</Button>
-<Button Basic=""true"" Color=""Color.Green"">绿色</Button>
-<Button Basic=""true"" Color=""Color.Teal"">深蓝绿</Button>
-<Button Basic=""true"" Color=""Color.Violet"">紫罗兰色</Button>
-<Button Basic=""true"" Color=""Color.Purple"">紫色</Button>
-<Button Basic=""true"" Color=""Color.Pink"">粉色</Button>
-<Button Basic=""true"" Color=""Color.Brown"">褐色</Button>
-<Button Basic=""true"" Color=""Color.Grey"">灰色</Button>
-<Button Basic=""true"" Color=""Color.Black"">黑色</Button>
+<Button Color=""Color.Red"">Red</Button>
+<Button Color=""Color.Orange"">Orange</Button>
+<Button Color=""Color.Yellow"">Yellow</Button>
+<Button Color=""Color.Olive"">Olive</Button>
+<Button Color=""Color.Green"">Green</Button>
+<Button Color=""Color.Teal"">Teal</Button>
+<Button Color=""Color.Violet"">Violet</Button>
+<Button Color=""Color.Purple"">Purple</Button>
+<Button Color=""Color.Pink"">Pink</Button>
+<Button Color=""Color.Brown"">Brown</Button>
+<Button Color=""Color.Grey"">Grey</Button>
+<Button Color=""Color.Black"">Black</Button>
+<br /><br />
+<Button Basic Color=""Color.Red"">Red</Button>
+<Button Basic Color=""Color.Orange"">Orange</Button>
+<Button Basic Color=""Color.Yellow"">Yellow</Button>
+<Button Basic Color=""Color.Olive"">Olive</Button>
+<Button Basic Color=""Color.Green"">Green</Button>
+<Button Basic Color=""Color.Teal"">Teal</Button>
+<Button Basic Color=""Color.Violet"">Violet</Button>
+<Button Basic Color=""Color.Purple"">Purple</Button>
+<Button Basic Color=""Color.Pink"">Pink</Button>
+<Button Basic Color=""Color.Brown"">Brown</Button>
+<Button Basic Color=""Color.Grey"">Grey</Button>
+<Button Basic Color=""Color.Black"">Black</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="超链接按钮">
-    <Description>
-        设置 <code>Linked="true"</code> 使按钮呈现超链接样式。
-    </Description>
-    <RunTemplate>
-        <Button Linked="true">默认</Button>
-        <Button Linked="true" Emphasis="Emphasis.Primary">Primary</Button>
-        <Button Linked="true" Emphasis="Emphasis.Secondary">Secondary</Button>
-        <Button Linked="true" Color="Color.Red">红色</Button>
-        <Button Linked="true" Color="Color.Orange">橘红色</Button>
-        <Button Linked="true" Color="Color.Yellow">黄色</Button>
-        <Button Linked="true" Color="Color.Olive">橄榄绿</Button>
-        <Button Linked="true" Color="Color.Green">绿色</Button>
-        <Button Linked="true" Color="Color.Teal">深蓝绿</Button>
-        <Button Linked="true" Color="Color.Violet">紫罗兰色</Button>
-        <Button Linked="true" Color="Color.Purple">紫色</Button>
-        <Button Linked="true" Color="Color.Pink">粉色</Button>
-        <Button Linked="true" Color="Color.Brown">褐色</Button>
-        <Button Linked="true" Color="Color.Grey">灰色</Button>
-        <Button Linked="true" Color="Color.Black">黑色</Button>
-    </RunTemplate>
+        <PresentationPart Title="Linked button">
+            <Description>
+                An none bordered less important button.
+            </Description>
+            <RunTemplate>
+                <Button Linked>Default</Button>
+                <Button Linked Emphasis="Emphasis.Primary">Primary</Button>
+                <Button Linked Emphasis="Emphasis.Secondary">Secondary</Button>
+                <Button Linked Color="Color.Red">Red</Button>
+                <Button Linked Color="Color.Orange">Orange</Button>
+                <Button Linked Color="Color.Yellow">Yellow</Button>
+                <Button Linked Color="Color.Olive">Olive</Button>
+                <Button Linked Color="Color.Green">Green</Button>
+                <Button Linked Color="Color.Teal">Teal</Button>
+                <Button Linked Color="Color.Violet">Violet</Button>
+                <Button Linked Color="Color.Purple">Purple</Button>
+                <Button Linked Color="Color.Pink">Pink</Button>
+                <Button Linked Color="Color.Brown">Brown</Button>
+                <Button Linked Color="Color.Grey">Grey</Button>
+                <Button Linked Color="Color.Black">Black</Button>
+            </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Linked=""true"">默认</Button>
-<Button Linked=""true"" Emphasis=""Emphasis.Primary"">Primary</Button>
-<Button Linked=""true"" Emphasis=""Emphasis.Secondary"">Secondary</Button>
-<Button Linked=""true"" Color=""Color.Red"">红色</Button>
-<Button Linked=""true"" Color=""Color.Orange"">橘红色</Button>
-<Button Linked=""true"" Color=""Color.Yellow"">黄色</Button>
-<Button Linked=""true"" Color=""Color.Olive"">橄榄绿</Button>
-<Button Linked=""true"" Color=""Color.Green"">绿色</Button>
-<Button Linked=""true"" Color=""Color.Teal"">深蓝绿</Button>
-<Button Linked=""true"" Color=""Color.Violet"">紫罗兰色</Button>
-<Button Linked=""true"" Color=""Color.Purple"">紫色</Button>
-<Button Linked=""true"" Color=""Color.Pink"">粉色</Button>
-<Button Linked=""true"" Color=""Color.Brown"">褐色</Button>
-<Button Linked=""true"" Color=""Color.Grey"">灰色</Button>
-<Button Linked=""true"" Color=""Color.Black"">黑色</Button>
+<Button Linked>Default</Button>
+<Button Linked Emphasis=""Emphasis.Primary"">Primary</Button>
+<Button Linked Emphasis=""Emphasis.Secondary"">Secondary</Button>
+<Button Linked Color=""Color.Red"">Red</Button>
+<Button Linked Color=""Color.Orange"">Orange</Button>
+<Button Linked Color=""Color.Yellow"">Yellow</Button>
+<Button Linked Color=""Color.Olive"">Olive</Button>
+<Button Linked Color=""Color.Green"">Green</Button>
+<Button Linked Color=""Color.Teal"">Teal</Button>
+<Button Linked Color=""Color.Violet"">Violet</Button>
+<Button Linked Color=""Color.Purple"">Purple</Button>
+<Button Linked Color=""Color.Pink"">Pink</Button>
+<Button Linked Color=""Color.Brown"">Brown</Button>
+<Button Linked Color=""Color.Grey"">Grey</Button>
+<Button Linked Color=""Color.Black"">Black</Button>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="反转颜色" Id="inverted">
+        <PresentationPart Title="Inverted" Id="inverted">
             <Description>
-                设置 <code>Darkness="true"</code> 兼容深色样式。
+                A button can be formatted to appear on dark backgrounds.
             </Description>
             <RunTemplate>
 
-                <Segment Darkness="true">
-                    <Button Darkness="true" Color="Color.Red">红色</Button>
-                    <Button Darkness="true" Color="Color.Orange">橘红色</Button>
-                    <Button Darkness="true" Color="Color.Yellow">黄色</Button>
-                    <Button Darkness="true" Color="Color.Olive">橄榄绿</Button>
-                    <Button Darkness="true" Color="Color.Green">绿色</Button>
-                    <Button Darkness="true" Color="Color.Teal">深蓝绿</Button>
-                    <Button Darkness="true" Color="Color.Violet">紫罗兰色</Button>
-                    <Button Darkness="true" Color="Color.Purple">紫色</Button>
-                    <Button Darkness="true" Color="Color.Pink">粉色</Button>
-                    <Button Darkness="true" Color="Color.Brown">褐色</Button>
-                    <Button Darkness="true" Color="Color.Grey">灰色</Button>
-                    <Button Darkness="true" Color="Color.Black">黑色</Button>
+                <Segment Inverted>
+                    <Button Inverted Color="Color.Red">Red</Button>
+                    <Button Inverted Color="Color.Orange">Orange</Button>
+                    <Button Inverted Color="Color.Yellow">Yellow</Button>
+                    <Button Inverted Color="Color.Olive">Olive</Button>
+                    <Button Inverted Color="Color.Green">Green</Button>
+                    <Button Inverted Color="Color.Teal">Teal</Button>
+                    <Button Inverted Color="Color.Violet">Violet</Button>
+                    <Button Inverted Color="Color.Purple">Purple</Button>
+                    <Button Inverted Color="Color.Pink">Pink</Button>
+                    <Button Inverted Color="Color.Brown">Brown</Button>
+                    <Button Inverted Color="Color.Grey">Grey</Button>
+                    <Button Inverted Color="Color.Black">Black</Button>
                 </Segment>
 
-                <Segment Darkness="true">
-                    <Button Darkness="true" Basic="true" Color="Color.Red">红色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Orange">橘红色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Yellow">黄色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Olive">橄榄绿</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Green">绿色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Teal">深蓝绿</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Violet">紫罗兰色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Purple">紫色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Pink">粉色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Brown">褐色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Grey">灰色</Button>
-                    <Button Darkness="true" Basic="true" Color="Color.Black">黑色</Button>
+                <Segment Inverted>
+                    <Button Inverted Basic Color="Color.Red">Red</Button>
+                    <Button Inverted Basic Color="Color.Orange">Orange</Button>
+                    <Button Inverted Basic Color="Color.Yellow">Yellow</Button>
+                    <Button Inverted Basic Color="Color.Olive">Olive</Button>
+                    <Button Inverted Basic Color="Color.Green">Green</Button>
+                    <Button Inverted Basic Color="Color.Teal">Teal</Button>
+                    <Button Inverted Basic Color="Color.Violet">Violet</Button>
+                    <Button Inverted Basic Color="Color.Purple">Purple</Button>
+                    <Button Inverted Basic Color="Color.Pink">Pink</Button>
+                    <Button Inverted Basic Color="Color.Brown">Brown</Button>
+                    <Button Inverted Basic Color="Color.Grey">Grey</Button>
+                    <Button Inverted Basic Color="Color.Black">Black</Button>
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
 
 @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <Button Darkness=""true"" Color=""Color.Red"">红色</Button>
-    <Button Darkness=""true"" Color=""Color.Orange"">橘红色</Button>
-    <Button Darkness=""true"" Color=""Color.Yellow"">黄色</Button>
-    <Button Darkness=""true"" Color=""Color.Olive"">橄榄绿</Button>
-    <Button Darkness=""true"" Color=""Color.Green"">绿色</Button>
-    <Button Darkness=""true"" Color=""Color.Teal"">深蓝绿</Button>
-    <Button Darkness=""true"" Color=""Color.Violet"">紫罗兰色</Button>
-    <Button Darkness=""true"" Color=""Color.Purple"">紫色</Button>
-    <Button Darkness=""true"" Color=""Color.Pink"">粉色</Button>
-    <Button Darkness=""true"" Color=""Color.Brown"">褐色</Button>
-    <Button Darkness=""true"" Color=""Color.Grey"">灰色</Button>
-    <Button Darkness=""true"" Color=""Color.Black"">黑色</Button>
+<Segment Inverted>
+    <Button Inverted Color=""Color.Red"">Red</Button>
+    <Button Inverted Color=""Color.Orange"">Orange</Button>
+    <Button Inverted Color=""Color.Yellow"">Yellow</Button>
+    <Button Inverted Color=""Color.Olive"">Olive</Button>
+    <Button Inverted Color=""Color.Green"">Green</Button>
+    <Button Inverted Color=""Color.Teal"">Teal</Button>
+    <Button Inverted Color=""Color.Violet"">Violet</Button>
+    <Button Inverted Color=""Color.Purple"">Purple</Button>
+    <Button Inverted Color=""Color.Pink"">Pink</Button>
+    <Button Inverted Color=""Color.Brown"">Brown</Button>
+    <Button Inverted Color=""Color.Grey"">Grey</Button>
+    <Button Inverted Color=""Color.Black"">Black</Button>
 </Segment>
 
-<Segment Darkness=""true"">
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Red"">红色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Orange"">橘红色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Yellow"">黄色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Olive"">橄榄绿</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Green"">绿色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Teal"">深蓝绿</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Violet"">紫罗兰色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Purple"">紫色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Pink"">粉色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Brown"">褐色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Grey"">灰色</Button>
-    <Button Darkness=""true"" Basic=""true"" Color=""Color.Black"">黑色</Button>
+<Segment Inverted>
+    <Button Inverted Basic Color=""Color.Red"">Red</Button>
+    <Button Inverted Basic Color=""Color.Orange"">Orange</Button>
+    <Button Inverted Basic Color=""Color.Yellow"">Yellow</Button>
+    <Button Inverted Basic Color=""Color.Olive"">Olive</Button>
+    <Button Inverted Basic Color=""Color.Green"">Green</Button>
+    <Button Inverted Basic Color=""Color.Teal"">Teal</Button>
+    <Button Inverted Basic Color=""Color.Violet"">Violet</Button>
+    <Button Inverted Basic Color=""Color.Purple"">Purple</Button>
+    <Button Inverted Basic Color=""Color.Pink"">Pink</Button>
+    <Button Inverted Basic Color=""Color.Brown"">Brown</Button>
+    <Button Inverted Basic Color=""Color.Grey"">Grey</Button>
+    <Button Inverted Basic Color=""Color.Black"">Black</Button>
 </Segment>
 ```
 ")
@@ -403,24 +400,24 @@
         </PresentationPart>
 
 
-        <PresentationPart Title="Or 组件" Id="or">
+        <PresentationPart Title="Conditionals" Id="or">
             <Description>
-                使用 <code>Or</code> 组件可以让按钮组的按钮有一个分割标签的效果。
+                Button groups can contain conditionals.
             </Description>
             <RunTemplate>
-                <ButtonGroup Icon="true">
-                    <Button><Icon IconClass="arrow left" /> 左</Button>
+                <ButtonGroup IconOnly>
+                    <Button><Icon IconClass="arrow left" /> Left</Button>
                     <Or />
-                    <Button>右 <Icon IconClass="arrow right" /> </Button>
+                    <Button>Right <Icon IconClass="arrow right" /> </Button>
                 </ButtonGroup>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<ButtonGroup Icon=""true"">
-    <Button><Icon IconClass=""arrow left""/> 左</Button>
+<ButtonGroup Icon>
+    <Button><Icon IconClass=""arrow left""/> Left</Button>
     <Or/>
-    <Button>右 <Icon IconClass=""arrow right""/> </Button>
+    <Button>Right <Icon IconClass=""arrow right""/> </Button>
 </ButtonGroup>
 ```
 ")
@@ -429,171 +426,171 @@
 
         <PresentationPart>
             <Description>
-                可以 <code>Or</code> 组件的 <code>Text</code> 参数可以自定义文字
+                Use <code>Text</code> to set custom text.
             </Description>
             <RunTemplate>
                 <ButtonGroup>
-                    <Button Emphasis="Emphasis.Positive">正方</Button>
+                    <Button Emphasis="Emphasis.Positive">Positive</Button>
                     <Or Text="vs" />
-                    <Button Emphasis="Emphasis.Negative">反方</Button>
+                    <Button Emphasis="Emphasis.Negative">Negative</Button>
                 </ButtonGroup>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <ButtonGroup>
-    <Button Emphasis=""Emphasis.Positive"">正方</Button>
+    <Button Emphasis=""Emphasis.Positive"">Positive</Button>
     <Or Text=""vs"" />
-    <Button Emphasis=""Emphasis.Negative"">反方</Button>
+    <Button Emphasis=""Emphasis.Negative"">Negative</Button>
 </ButtonGroup>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="点击状态" Id="active">
+        <PresentationPart Title="Actived" Id="active">
             <Description>
-                设置 <code>Actived="true"</code> 让按钮呈现为被点击的状态。
+                A button can show it is currently the active user selection.
             </Description>
             <RunTemplate>
-                <Button Actived="true">已关注</Button>
+                <Button Actived>Followed</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Actived=""true"">已关注</Button>
+<Button Actived>Followed</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="禁用状态" Id="disabled">
+        <PresentationPart Title="Disabled" Id="disabled">
             <Description>
-                设置 <code>Disabled="true"</code> 可禁用按钮。
+                A button can show it is currently unable to be interacted with.
             </Description>
             <RunTemplate>
-                <Button Disabled="true">待确认</Button>
+                <Button Disabled>Pending</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Disabled=""true"">待确认</Button>
+<Button Disabled>Pending</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="加载状态" Id="loading">
-            <Description>设置 <code>Loading="true"</code> 可让按钮有加载中的动画效果。</Description>
+        <PresentationPart Title="Loading" Id="loading">
+            <Description>A button can show a loading indicator.</Description>
             <RunTemplate>
-                <Button Loading="true">加载中</Button>
-                <Button Loading="true" Basic="true">加载中</Button>
-                <Button Loading="true" Emphasis="Emphasis.Positive">加载中</Button>
-                <Button Loading="true" Color="Color.Purple">加载中</Button>
+                <Button Loading></Button>
+                <Button Loading Basic></Button>
+                <Button Loading Emphasis="Emphasis.Positive"></Button>
+                <Button Loading Color="Color.Purple"></Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Loading=""true"">加载中</Button>
-<Button Loading=""true"" Basic=""true"">加载中</Button>
-<Button Loading=""true"" Emphasis=""Emphasis.Positive"" >加载中</Button>
-<Button Loading=""true"" Color=""Color.Purple"">加载中</Button>
+<Button Loading></Button>
+<Button Loading Basic></Button>
+<Button Loading Emphasis=""Emphasis.Positive"" ></Button>
+<Button Loading Color=""Color.Purple""></Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="尺寸" Id="size">
-            <Description>设置 <code>Size</code> 可以规定按钮的尺寸。</Description>
+        <PresentationPart Title="Size" Id="size">
+            <Description>A button can have different sizes.</Description>
             <RunTemplate>
-                <Button Size="Size.Mini">迷你</Button>
-                <Button Size="Size.Tiny">微型</Button>
-                <Button Size="Size.Small">小型</Button>
-                <Button Size="Size.Medium">中等</Button>
-                <Button Size="Size.Large">稍大</Button>
-                <Button Size="Size.Big">比较大</Button>
-                <Button Size="Size.Huge">巨大</Button>
-                <Button Size="Size.Massive">超大</Button>
+                <Button Size="Size.Mini">Mini</Button>
+                <Button Size="Size.Tiny">Tiny</Button>
+                <Button Size="Size.Small">Small</Button>
+                <Button Size="Size.Medium">Medium</Button>
+                <Button Size="Size.Large">Large</Button>
+                <Button Size="Size.Big">Big</Button>
+                <Button Size="Size.Huge">Huge</Button>
+                <Button Size="Size.Massive">Massive</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Size=""Size.Mini"">迷你</Button>
-<Button Size=""Size.Tiny"">微型</Button>
-<Button Size=""Size.Small"">小型</Button>
-<Button Size=""Size.Medium"">中等</Button>
-<Button Size=""Size.Large"">稍大</Button>
-<Button Size=""Size.Big"">比较大</Button>
-<Button Size=""Size.Huge"">巨大</Button>
-<Button Size=""Size.Massive"">超大</Button>
+<Button Size=""Size.Mini"">Mini</Button>
+<Button Size=""Size.Tiny"">Tiny</Button>
+<Button Size=""Size.Small"">Small</Button>
+<Button Size=""Size.Medium"">Medium</Button>
+<Button Size=""Size.Large"">Large</Button>
+<Button Size=""Size.Big"">Big</Button>
+<Button Size=""Size.Huge"">Huge</Button>
+<Button Size=""Size.Massive"">Massive</Button>
 ```
 ")
 
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="撑满容器" Id="fluid">
-            <Description>设置 <code>Fluid="true"</code> 让按钮撑满当前的容器。</Description>
+        <PresentationPart Title="Fluid" Id="fluid">
+            <Description>A button can take the width of its container.</Description>
             <RunTemplate>
-                <Button Fluid="true">撑满容器的按钮</Button>
+                <Button Fluid>Fluid Button</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Fluid=""true"">撑满容器的按钮</Button>
+<Button Fluid>Fluid Button</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="圆形按钮" Id="circular">
-            <Description>设置 <code>Circular="true"</code> 呈现圆形样式，但只兼容 <code>IconOnly="true"</code> 时的样式。</Description>
+        <PresentationPart Title="Circular" Id="circular">
+            <Description>A button can be circular.</Description>
             <RunTemplate>
-                <Button Circular="true" IconOnly="true"><Icon IconClass="cogs" /></Button>
-                <Button Circular="true" IconOnly="true" Color="Color.Red"><Icon IconClass="google" /></Button>
-                <Button Circular="true" IconOnly="true" Color="Color.Violet"><Icon IconClass="linkedin" /></Button>
+                <Button Circular IconOnly><Icon IconClass="cogs" /></Button>
+                <Button Circular IconOnly Color="Color.Red"><Icon IconClass="google" /></Button>
+                <Button Circular IconOnly Color="Color.Violet"><Icon IconClass="linkedin" /></Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Circular=""true"" IconOnly=""true""><Icon IconClass=""cogs""/></Button>
-<Button Circular=""true"" IconOnly=""true"" Color=""Color.Red""><Icon IconClass=""google"" /></Button>
-<Button Circular=""true"" IconOnly=""true"" Color=""Color.Violet""><Icon IconClass=""linkedin"" /></Button>
+<Button Circular IconOnly><Icon IconClass=""cogs""/></Button>
+<Button Circular IconOnly Color=""Color.Red""><Icon IconClass=""google"" /></Button>
+<Button Circular IconOnly Color=""Color.Violet""><Icon IconClass=""linkedin"" /></Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="吸附效果" Id="attached">
-            <Description>通过 <code>Attached="true"</code> 可以让组件吸附于其他组件。</Description>
+        <PresentationPart Title="Vertical Attached" Id="attached">
+            <Description>A button can be attached to the top or bottom of other content.</Description>
             <RunTemplate>
-                <ButtonGroup ColSpan="ColSpan.Two2" Attached="true" AttachedVertical="VerticalPosition.Top">
-                    <Button>按钮</Button>
-                    <Button>按钮</Button>
+                <ButtonGroup Span="ColSpan.Two2" Attached AttachedVertical="VerticalPosition.Top">
+                    <Button>Button</Button>
+                    <Button>Button</Button>
                 </ButtonGroup>
-                <Segment Attached="true">
+                <Segment Attached>
                     <ParagraphDemo/>
                 </Segment>
-                <ButtonGroup ColSpan="ColSpan.Two2" AttachedVertical="VerticalPosition.Bottom" Attached="true">
-                    <Button>按钮</Button>
-                    <Button>按钮</Button>
+                <ButtonGroup Span="ColSpan.Two2" AttachedVertical="VerticalPosition.Bottom" Attached>
+                    <Button>Button</Button>
+                    <Button>Button</Button>
                 </ButtonGroup>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<ButtonGroup Widen=""Widen.Two2"" AttachedVertical=""VerticalPosition.Top"" Attached=""true"">
-    <Button>按钮</Button>
-    <Button>按钮</Button>
+<ButtonGroup Span=""ColSpan.Two2"" AttachedVertical=""VerticalPosition.Top"" Attached>
+    <Button>Button</Button>
+    <Button>Button</Button>
 </ButtonGroup>
-<Segment Attached=""true"">
+<Segment Attached>
     <p style=""height:100px"">
 
     </p>
 </Segment>
-<ButtonGroup Widen=""Widen.Two2"" AttachedVertical=""VerticalPosition.Bottom"" Attached=""true"">
-    <Button>按钮</Button>
-    <Button>按钮</Button>
+<ButtonGroup Span=""ColSpan.Two2"" AttachedVertical=""VerticalPosition.Bottom"" Attached>
+    <Button>Button</Button>
+    <Button>Button</Button>
 </ButtonGroup>
 ```
 ")
@@ -602,63 +599,63 @@
 
         <PresentationPart>
             <Description>
-                也可以左右吸附
+                A button can be attached to the left or right of other content.
             </Description>
             <RunTemplate>
-                <Button Attached="true" AttachedHorizontal="HorizontalPosition.Left">左</Button>
-                <Button Attached="true" AttachedHorizontal="HorizontalPosition.Right">右</Button>
+                <Button Attached AttachedHorizontal="HorizontalPosition.Left">Left</Button>
+                <Button Attached AttachedHorizontal="HorizontalPosition.Right">Right</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Button Attached=""true"" AttachedHorizontal=""HorizontalPosition.Left"">左</Button>
-<Button Attached=""true"" AttachedHorizontal=""HorizontalPosition.Left"">右</Button>
+<Button Attached AttachedHorizontal=""HorizontalPosition.Left"">Left</Button>
+<Button Attached AttachedHorizontal=""HorizontalPosition.Left"">Right</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
 
-        <PresentationPart Title="按钮组" Id="buttons">
+        <PresentationPart Title="Button Group" Id="buttons">
             <Description>
-                使用组件 <code>ButtonGroup</code> 将按钮包裹起来即形成按钮组，设置 <code>Vertical="true"</code> 则可以垂直显示分组。
+                Buttons can exist together as a group.
             </Description>
             <RunTemplate>
                 <ButtonGroup>
-                    <Button>新增</Button>
-                    <Button>修改</Button>
-                    <Button>删除</Button>
+                    <Button>Create</Button>
+                    <Button>Update</Button>
+                    <Button>Delete</Button>
                 </ButtonGroup>
-                <ButtonGroup Vertical="true">
-                    <Button>新增</Button>
-                    <Button>修改</Button>
-                    <Button>删除</Button>
+                <ButtonGroup Vertical>
+                    <Button>Create</Button>
+                    <Button>Update</Button>
+                    <Button>Delete</Button>
                 </ButtonGroup>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <ButtonGroup>
-    <Button>新增</Button>
-    <Button>修改</Button>
-    <Button>删除</Button>
+    <Button>Create</Button>
+    <Button>Update</Button>
+    <Button>Delete</Button>
 </ButtonGroup>
-<ButtonGroup Vertical=""true"">
-    <Button>新增</Button>
-    <Button>修改</Button>
-    <Button>删除</Button>
+<ButtonGroup Vertical>
+    <Button>Create</Button>
+    <Button>Update</Button>
+    <Button>Delete</Button>
 </ButtonGroup>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="图标式按钮组">
+        <PresentationPart Title="Icon Buttons">
             <Description>
-                设置 <code>ButtonGroup</code> 的 <code>IconOnly="true"</code> 使内部的所有按钮都仅显示 <code>Icon</code> 组件。
+                Button groups can show groups of icons.
             </Description>
             <RunTemplate>
-                <ButtonGroup IconOnly="true">
+                <ButtonGroup IconOnly>
                     <Button><Icon IconClass="plus" /></Button>
                     <Button><Icon IconClass="pencil" /></Button>
                     <Button><Icon IconClass="trash" /></Button>
@@ -667,7 +664,7 @@
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<ButtonGroup IconOnly=""true"">
+<ButtonGroup IconOnly>
     <Button><Icon IconClass=""plus""/></Button>
     <Button><Icon IconClass=""pencil"" /></Button>
     <Button><Icon IconClass=""trash"" /></Button>
@@ -676,115 +673,115 @@
 ")
             </CodeTemplate>
         </PresentationPart>
-        <ParameterTable Title="参数">
+        <ParameterTable>
             <Content>
                 <tr>
                     <td>Emphasis</td>
-                    <td>按钮的强调类型</td>
+                    <td>Emphasis style.</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Animated</td>
-                    <td>是否拥有动画效果</td>
+                    <td>Has animation.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Fade</td>
-                    <td>是否使用渐变的动画效果</td>
+                    <td>Fade in/out animation style.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Color</td>
-                    <td>颜色</td>
+                    <td>Color of button.</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Darkness</td>
-                    <td>反转颜色</td>
+                    <td>Inverted</td>
+                    <td>Adapt background color for parent component.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Size</td>
-                    <td>尺寸大小</td>
+                    <td>Size of button.</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Basic</td>
-                    <td>显示为边框样式</td>
+                    <td>Outline style.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Linked</td>
-                    <td>超链接按钮</td>
+                    <td>Linked style.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>IconOnly</td>
-                    <td>仅显示 <code>Icon</code> 组件</td>
+                    <td>Only display <code>Icon</code> component.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>IconLabeled</td>
-                    <td><code>Icon</code> 在按钮中具有标签样式的兼容，以及元素的排列顺序</td>
+                    <td>Display icon as label style.</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Actived</td>
-                    <td>是否处于启用状态</td>
+                    <td>Actived style.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Disabled</td>
-                    <td>是否处于禁用状态</td>
+                    <td>Disabled style.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Loading</td>
-                    <td>是否处于加载中状态</td>
+                    <td>Loading indecator.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>Fluid</td>
-                    <td>成流式布局并把宽度设置为 100% 以此撑满整个父元素</td>
+                    <td>Full width with parent container.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
 
                 <tr>
                     <td>Circular</td>
-                    <td>呈现圆形样式</td>
+                    <td>Circle icon.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
 
                 <tr>
                     <td>Attached</td>
-                    <td>是否需要吸附于相对位置的其他组件</td>
+                    <td>Attach to another component.</td>
                     <td>bool</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>AttachedHorizontal</td>
-                    <td>水平方向上的吸附位置</td>
+                    <td>Attach horizontal position</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>AttachedVertical</td>
-                    <td>垂直方向上的吸附位置</td>
+                    <td>Attach vertical position.</td>
                     <td>enum</td>
                     <td></td>
                 </tr>
@@ -795,11 +792,11 @@
                             <Content>
                                 <tr>
                                     <td>Disable(bool diabled = true)</td>
-                                    <td>禁用按钮</td>
+                                    <td>Performs a disabled action.</td>
                                 </tr>
                                 <tr>
                                     <td>Active(bool active = true)</td>
-                                    <td>激活按钮</td>
+                                    <td>Performs am active action.</td>
                                 </tr>   
                             </Content>
         </MethodTable>
@@ -809,28 +806,27 @@
 @code{
     List<string> Menu = new List<string>(new[]
     {
-         "基本按钮",
-        "强调",
-         "动画",
-        "标签样式",
-         "仅图标",
-        "标签图标",
-        "边框",
-        "超链接按钮",
-        "颜色",
-        "反选",
-        "Or 组件",
-       "点击状态",
-        "禁用状态",
-        "加载状态",
-        "尺寸",
-        "撑满容器",
-        "圆形按钮",
-        "吸附效果",
-        "按钮组",
-        "图标式按钮组",
-        "参数",
-        "事件",
-        "方法"
+         "Button",
+        "Emphasis",
+         "Animated",
+        "Labeled",
+         "Icon",
+        "Labeled Icon",
+        "Basic",
+        "Linked button",
+        "Color",
+        "Inverted",
+        "Conditionals",
+       "Actived",
+        "Disabled",
+        "Loading",
+        "Size",
+        "Fluid",
+        "Circular",
+        "Vertical Attached",
+        "Button Group",
+        "Icon Buttons",
+        "Parameters",
+        "Methods"
     });
 }

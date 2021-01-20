@@ -15,9 +15,9 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasDivider" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasRelaxed" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasLinked" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     [HtmlTag]
-    public class ItemList : BlamanticChildContentComponentBase, IHasUIComponent,IHasDivider,IHasRelaxed,IHasLinked,IHasDarkness
+    public class ItemList : BlamanticChildContentComponentBase, IHasUIComponent,IHasDivider,IHasRelaxed,IHasLinked,IHasInverted
     {
         /// <summary>
         /// Gets or sets a value indicating whether a divider between components.
@@ -49,12 +49,12 @@ namespace BlamanticUI
         /// </value>
         [Parameter]public bool Linked { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Override to create the CSS class that component need.
         /// </summary>

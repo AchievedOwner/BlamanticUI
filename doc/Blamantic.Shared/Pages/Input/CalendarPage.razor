@@ -174,18 +174,18 @@
         </PresentationPart>
         <PresentationPart Title="反色背景">
             <Description>
-                设置 <code>Darkness="true"</code> 兼容父容器的反色效果。
+                设置 <code>Inverted</code> 兼容父容器的反色效果。
             </Description>
             <RunTemplate>
-                <Segment Darkness="true">
-                    <Calendar Darkness="true" />
+                <Segment Inverted>
+                    <Calendar Inverted />
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <Calendar Darkness=""true"" />
+<Segment Inverted>
+    <Calendar Inverted />
 </Segment>
 ```
 ")

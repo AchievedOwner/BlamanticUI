@@ -14,11 +14,11 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasLoading" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasDarkness" />
+    /// <seealso cref="BlamanticUI.Abstractions.IHasInverted" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     [HtmlTag]
-    public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasDarkness,IHasFluid,IHasSize
+    public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasInverted,IHasFluid,IHasSize
     {
         /// <summary>
         /// Gets or sets icon position of input.
@@ -27,7 +27,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the focus style.
         /// </summary>
-        [Parameter][CssClass("focus")] public bool? Focus { get; set; }
+        [Parameter][CssClass("focus")] public bool Focus { get; set; }
         /// <summary>
         /// Gets or sets the action position of input.
         /// </summary>
@@ -52,19 +52,19 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the transparent style.
         /// </summary>
-        [Parameter] [CssClass("transparent")] public bool? Transparent { get; set; }
+        [Parameter] [CssClass("transparent")] public bool Transparent { get; set; }
 
         /// <summary>
         /// Gets or sets the corner postion of label.
         /// </summary>
         [Parameter] [CssClass(" corner labeled", Order = 120, Suffix =true)] public HorizontalPosition? CorneredLabel { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether this is dark style.
+        /// Gets or sets a value indicating whether adapted inverted background by parent component.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if dark; otherwise, <c>false</c>.
+        ///   <c>true</c> if adapted; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Darkness { get; set; }
+        [Parameter]public bool Inverted { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is fluid.
         /// </summary>

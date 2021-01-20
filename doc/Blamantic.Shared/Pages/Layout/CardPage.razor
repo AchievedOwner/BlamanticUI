@@ -23,7 +23,7 @@
                 <Image Source="img/avatar/elyse.png" />
             </ImageContent>
             <Content>
-                <Anchor Header="true">Elyse</Anchor>
+                <Anchor Header>Elyse</Anchor>
                 <Introduction>
                     2018 年加入
                 </Introduction>
@@ -44,7 +44,7 @@
         <Image Source=""img/avatar/elyse.png"" />
     </ImageContent>
     <Content>
-        <Anchor Header=""true"">Elyse</Anchor>
+        <Anchor Header>Elyse</Anchor>
         <Introduction>
             2018 年加入
         </Introduction>
@@ -83,7 +83,7 @@
                 <Icon IconClass="comment"/> 4 条评论
             </Content>
             <ExtraContent>
-                <InputBox Transparent="true" Size="Size.Large" Icon="HorizontalPosition.Left">
+                <InputBox Transparent Size="Size.Large" Icon="HorizontalPosition.Left">
                     <Icon IconClass="heart outline"/>
                     <input placeholder="添加评论"/>
                 </InputBox>
@@ -111,7 +111,7 @@
         <Icon IconClass=""comment""/> 4 条评论
     </Content>
     <ExtraContent>
-        <InputBox Transparent=""true"" Size=""Size.Large"" Icon=""HorizontalPosition.Left"">
+        <InputBox Transparent Size=""Size.Large"" Icon=""HorizontalPosition.Left"">
             <Icon IconClass=""heart outline""/>
             <input placeholder=""添加评论""/>
         </InputBox>
@@ -124,10 +124,10 @@
         
         <PresentationPart Title="居中">
     <Description>
-        设置 <code>Centered="true"</code> 居中显示
+        设置 <code>Centered</code> 居中显示
     </Description>
     <RunTemplate>
-        <Card Centered="true">
+        <Card Centered>
             <ImageContent>
                 <Image Source="img/avatar/molly.png" />
             </ImageContent>
@@ -139,7 +139,7 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Card Centered=""true"">
+<Card Centered>
     <ImageContent>
         <Image Source=""img/avatar/molly.png"" />
     </ImageContent>
@@ -153,26 +153,26 @@
 </PresentationPart>
         <PresentationPart Title="超链接">
     <Description>
-        设置 <code>Linked="true"</code> 使卡片具有超链接样式，或设置 <code>Link</code> 超链接地址参数。
+        设置 <code>Linked</code> 使卡片具有超链接样式，或设置 <code>Link</code> 超链接地址参数。
     </Description>
     <RunTemplate>
-        <Card Linked="true">
+        <Card Linked>
             <Content>
                 <Header>标题</Header>
-                <ParagraphDemo FullWidth="true" />
+                <ParagraphDemo FullWidth />
             </Content>
         </Card>
         <Card Link="http://www.baidu.com" Target="LinkTarget.Blank">
             <Content>
                 <Header>百度一下</Header>
-                <ParagraphDemo FullWidth="true" />
+                <ParagraphDemo FullWidth />
             </Content>
         </Card>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Card Linked=""true"">
+<Card Linked>
     <Content>
         <Header>标题</Header>
         <ParagraphDemo/>
@@ -184,23 +184,23 @@
 </PresentationPart>
         <PresentationPart Title="阴影效果">
     <Description>
-        设置 <code>Raised="true"</code> 使卡片背后显示阴影。
+        设置 <code>Raised</code> 使卡片背后显示阴影。
     </Description>
     <RunTemplate>
-        <Card Raised="true">
+        <Card Raised>
             <Content>
                 <Header>标题</Header>
-                <ParagraphDemo FullWidth="true" />
+                <ParagraphDemo FullWidth />
             </Content>
         </Card>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Card Raised=""true"">
+<Card Raised>
     <Content>
         <Header>标题</Header>
-        <ParagraphDemo FullWidth=""true"" />
+        <ParagraphDemo FullWidth />
     </Content>
 </Card>
 ```
@@ -218,7 +218,7 @@
                     <Header>标题1</Header>
                 </Content>
                 <Content>
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
                 </Content>
             </Card>
             <Card>
@@ -226,8 +226,8 @@
                     <Header>标题2</Header>
                 </Content>
                 <Content>
-                    <ParagraphDemo FullWidth="true" />
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
+                    <ParagraphDemo FullWidth />
                 </Content>
             </Card>
             <Card>
@@ -235,7 +235,7 @@
                     <Header>标题3</Header>
                 </Content>
                 <Content>
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
                 </Content>
             </Card>
             <Card>
@@ -243,7 +243,7 @@
                     <Header>标题4</Header>
                 </Content>
                 <Content>
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
                 </Content>
             </Card>
         </CardGroup>
@@ -274,7 +274,7 @@
                 <Content>
                     来自于北京，目前单身。
                 </Content>
-                <Button Attached="true" AttachedVertical="VerticalPosition.Top">
+                <Button Attached AttachedVertical="VerticalPosition.Top">
                     <Icon IconClass="add" />
                     加为好友
                 </Button>
@@ -289,7 +289,7 @@
                 <Content>
                     喜欢弹吉他，唱歌，是一名学校的音乐老师。
                 </Content>
-                <Button Attached="true" AttachedVertical="VerticalPosition.Top">
+                <Button Attached AttachedVertical="VerticalPosition.Top">
                     <Icon IconClass="add" />
                     加为好友
                 </Button>
@@ -304,7 +304,7 @@
                 <Content>
                     喜欢交流文学作品，已经自己写了好几部小说，而且十分畅销。
                 </Content>
-                <Button Attached="true" AttachedVertical="VerticalPosition.Top">
+                <Button Attached AttachedVertical="VerticalPosition.Top">
                     <Icon IconClass="add" />
                     加为好友
                 </Button>
@@ -325,7 +325,7 @@
         <Content>
             来自于北京，目前单身。
         </Content>
-        <Button Attached=""true"" AttachedVertical=""VerticalPosition.Top"">
+        <Button Attached AttachedVertical=""VerticalPosition.Top"">
             <Icon IconClass=""add"" />
             加为好友
         </Button>
@@ -340,7 +340,7 @@
         <Content>
             喜欢弹吉他，唱歌，是一名学校的音乐老师。
         </Content>
-        <Button Attached=""true"" AttachedVertical=""VerticalPosition.Top"">
+        <Button Attached AttachedVertical=""VerticalPosition.Top"">
             <Icon IconClass=""add"" />
             加为好友
         </Button>
@@ -355,7 +355,7 @@
         <Content>
             喜欢交流文学作品，已经自己写了好几部小说，而且十分畅销。
         </Content>
-        <Button Attached=""true"" AttachedVertical=""VerticalPosition.Top"">
+        <Button Attached AttachedVertical=""VerticalPosition.Top"">
             <Icon IconClass=""add"" />
             加为好友
         </Button>
@@ -367,12 +367,12 @@
 </PresentationPart>
         <PresentationPart Title="占满父容器">
     <Description>
-        设置 <code>Fluid="true"</code> 将宽度占满父容器。
+        设置 <code>Fluid</code> 将宽度占满父容器。
     </Description>
     <RunTemplate>
         <Grid ColSpan="ColSpan.Three3">
             <Column>
-                <Card Fluid="true">
+                <Card Fluid>
                     <ImageContent>
                         <Image Source="img/avatar/elyse.png" />
                     </ImageContent>
@@ -382,7 +382,7 @@
                 </Card>
             </Column>
             <Column>
-                <Card Fluid="true">
+                <Card Fluid>
                     <ImageContent>
                         <Image Source="img/avatar/kristy.png" />
                     </ImageContent>
@@ -392,7 +392,7 @@
                 </Card>
             </Column>
             <Column>
-                <Card Fluid="true">
+                <Card Fluid>
                     <ImageContent>
                         <Image Source="img/avatar/matthew.png" />
                     </ImageContent>
@@ -408,7 +408,7 @@
 ```html
 <Grid ColSpan=""ColSpan.Three3"">
     <Column>
-        <Card Fluid=""true"">
+        <Card Fluid>
             <ImageContent>
                 <Image Source=""img/avatar/elyse.png"" />
             </ImageContent>
@@ -418,7 +418,7 @@
         </Card>
     </Column>
     <Column>
-        <Card Fluid=""true"">
+        <Card Fluid>
             <ImageContent>
                 <Image Source=""img/avatar/kristy.png"" />
             </ImageContent>
@@ -428,7 +428,7 @@
         </Card>
     </Column>
     <Column>
-        <Card Fluid=""true"">
+        <Card Fluid>
             <ImageContent>
                 <Image Source=""img/avatar/matthew.png"" />
             </ImageContent>
@@ -444,23 +444,23 @@
 </PresentationPart>
         <PresentationPart Title="水平排列">
     <Description>
-        设置 <code>Horizontal="true"</code> 可让纵向排列的部分进行水平排列。
+        设置 <code>Horizontal</code> 可让纵向排列的部分进行水平排列。
     </Description>
     <RunTemplate>
-        <Card Horizontal="true">
+        <Card Horizontal>
             <ImageContent>
                 <Image Source="img/avatar/molly.png" />
             </ImageContent>
             <Content>
                 <Header>Molly</Header>
-                <ParagraphDemo FullWidth="true"/>
+                <ParagraphDemo FullWidth/>
             </Content>
         </Card>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Card Horizontal=""true"">
+<Card Horizontal>
     <ImageContent>
         <Image Source=""img/avatar/molly.png"" />
     </ImageContent>
@@ -478,14 +478,14 @@
         设置 <code>CardGroup</code> 的 <code>Horizontal</code> 使所有的卡片内部水平排列。
     </Description>
     <RunTemplate>
-        <CardGroup Horizontal="true">
+        <CardGroup Horizontal>
             <Card>
                 <ImageContent>
                     <Image Source="img/avatar/molly.png" />
                 </ImageContent>
                 <Content>
                     <Header>Molly</Header>
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
                 </Content>
             </Card>
             <Card>
@@ -494,7 +494,7 @@
                 </ImageContent>
                 <Content>
                     <Header>Kristy</Header>
-                    <ParagraphDemo FullWidth="true" />
+                    <ParagraphDemo FullWidth />
                 </Content>
             </Card>
         </CardGroup>
@@ -509,7 +509,7 @@
         </ImageContent>
         <Content>
             <Header>Molly</Header>
-            <ParagraphDemo FullWidth=""true"" />
+            <ParagraphDemo FullWidth />
         </Content>
     </Card>
     <Card>
@@ -518,7 +518,7 @@
         </ImageContent>
         <Content>
             <Header>Kristy</Header>
-            <ParagraphDemo FullWidth=""true"" />
+            <ParagraphDemo FullWidth />
         </Content>
     </Card>
 </CardGroup>
@@ -528,18 +528,18 @@
 </PresentationPart>
                 <PresentationPart Title="反转颜色">
     <Description>
-        设置 <code>Darkness="true"</code> 可以在父组件的 <code>Darkness="true"</code> 时进行反色背景显示。
+        设置 <code>Inverted</code> 可以在父组件的 <code>Inverted</code> 时进行反色背景显示。
     </Description>
     <RunTemplate>
-        <Segment Darkness="true">
-            <CardGroup Darkness="true">
+        <Segment Inverted>
+            <CardGroup Inverted>
                 <Card>
                     <ImageContent>
                         <Image Source="img/avatar/molly.png" />
                     </ImageContent>
                     <Content>
                         <Header>Molly</Header>
-                        <ParagraphDemo FullWidth="true" />
+                        <ParagraphDemo FullWidth />
                     </Content>
                 </Card>
                 <Card>
@@ -548,7 +548,7 @@
                     </ImageContent>
                     <Content>
                         <Header>Kristy</Header>
-                        <ParagraphDemo FullWidth="true" />
+                        <ParagraphDemo FullWidth />
                     </Content>
                 </Card>
             </CardGroup>
@@ -557,15 +557,15 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Segment Darkness=""true"">
-    <CardGroup Darkness=""true"">
+<Segment Inverted>
+    <CardGroup Inverted>
         <Card>
             <ImageContent>
                 <Image Source=""img/avatar/molly.png"" />
             </ImageContent>
             <Content>
                 <Header>Molly</Header>
-                <ParagraphDemo FullWidth=""true"" />
+                <ParagraphDemo FullWidth />
             </Content>
         </Card>
         <Card>
@@ -574,7 +574,7 @@
             </ImageContent>
             <Content>
                 <Header>Kristy</Header>
-                <ParagraphDemo FullWidth=""true"" />
+                <ParagraphDemo FullWidth />
             </Content>
         </Card>
     </CardGroup>
@@ -782,7 +782,7 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td>Darkness</td>
+                            <td>Inverted</td>
                             <td>反转背景</td>
                             <td>bool</td>
                             <td></td>

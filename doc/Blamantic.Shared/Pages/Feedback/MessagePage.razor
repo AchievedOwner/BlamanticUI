@@ -4,7 +4,7 @@
                          "示例","列表消息","带图标的消息","可见","隐藏","压缩空间","状态色彩","颜色","尺寸","参数"
                      }))">
     <Body>
-        <Header1 Divider="true">
+        <Header1 Divider>
             消息
             <SubHeader>
                 消息显示解释附近内容的信息
@@ -38,7 +38,7 @@
             <RunTemplate>
                 <Message>
                     <Header>版本更新</Header>
-                    <List Bulleted="true">
+                    <List Bulleted>
                         <Item>你可以上传封面图</Item>
                         <Item>修复了不能进行在线生成签名的问题</Item>
                     </List>
@@ -49,7 +49,7 @@
 ```html
 <Message>
     <Header>版本更新</Header>
-    <List Bulleted=""true"">
+    <List Bulleted>
         <Item>你可以上传封面图</Item>
         <Item>修复了不能进行在线生成签名的问题</Item>
     </List>
@@ -60,10 +60,10 @@
         </PresentationPart>
         <PresentationPart Title="带图标的消息">
             <Description>
-                设置 <code>Icon="true"</code> 后可以使用 <code>Icon</code> 组件使消息中呈现图标。
+                设置 <code>Icon</code> 后可以使用 <code>Icon</code> 组件使消息中呈现图标。
             </Description>
             <RunTemplate>
-                <Message Icon="true">
+                <Message Icon>
                     <Icon IconClass="inbox" />
                     <Content>
                         <Header>听说过消息盒子吗？</Header>
@@ -74,7 +74,7 @@
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Message Icon=""true"">
+<Message Icon>
     <Icon IconClass=""inbox""/>
     <Content>
         <Header>听说过消息盒子吗？</Header>
@@ -87,17 +87,17 @@
         </PresentationPart>
         <PresentationPart Title="可见">
             <Description>
-                设置 <code>Visible="true"</code> 强制显示组件。
+                设置 <code>Visible</code> 强制显示组件。
             </Description>
             <RunTemplate>
-                <Message Visibile="true">
+                <Message Visibile>
                     你总是可以看到我
                 </Message>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Message Visibile=""true"">
+<Message Visibile>
     你总是可以看到我
 </Message>
 ```
@@ -106,17 +106,17 @@
         </PresentationPart>
                 <PresentationPart Title="隐藏">
             <Description>
-                设置 <code>Hidden="true"</code> 强制隐藏。
+                设置 <code>Hidden</code> 强制隐藏。
             </Description>
             <RunTemplate>
-                <Message Hidden="true">
+                <Message Hidden>
                     你看不见我！！
                 </Message>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Message Hidden=""true"">
+<Message Hidden>
     你看不见我!!
 </Message>
 ```
@@ -125,17 +125,17 @@
         </PresentationPart>
         <PresentationPart Title="压缩空间">
     <Description>
-        设置 <code>Compact="true"</code> 使组件的宽度和文字长度一致。
+        设置 <code>Compact</code> 使组件的宽度和文字长度一致。
     </Description>
     <RunTemplate>
-        <Message Compact="true">
+        <Message Compact>
             我的宽度就这么长，所以不会占一行。
         </Message>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Message Compact=""true"">
+<Message Compact>
     我的宽度就这么长，所以不会占一行。
 </Message>
 ```
