@@ -1,18 +1,18 @@
 ﻿@page "/component/data/pagination"
 
 <Pager DataSource="@(new List<string>(new[] { 
-                         "示例","尺寸","隐藏统计数据","隐藏跳转到","双向绑定支持","参数","事件","方法"
+                         "Demo","Size","Hide Total Count","Hide Navigate To","Two-way Binding","Parameters","Events","Methods"
                      }))">
     <Body>
         <Header1 Divider>
-            分页组件
+            Pagination
         </Header1>
         <Segment>
-            使用 <code>Pagination</code> 组件作为分页组件，并提供分页相关的事件和参数。
+            Pagination is part of <code>Menu</code> component.
         </Segment>
-        <PresentationPart Title="示例">
+        <PresentationPart Title="Demo">
             <Description>
-                <code>CurrentPage</code> 和 <code>TotalCount</code> 是必要参数。<code>PageSize</code> 必须大于0
+                <code>CurrentPage</code> and <code>TotalCount</code> is required, <code>PageSize</code> must larger than 0.
             </Description>
     <RunTemplate>
         <Pagination CurrentPage="1" TotalCount="50"/>
@@ -25,9 +25,9 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="尺寸">
+        <PresentationPart Title="Size">
     <Description>
-        设置 <code>Size</code> 可以拥有不同尺寸的分页组件。
+        Pagination has different size.
     </Description>
     <RunTemplate>
         <Pagination CurrentPage="1" TotalCount="100" Size="Size.Mini" />
@@ -58,10 +58,7 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="隐藏统计数据">
-    <Description>
-        设置 <code>ShowTotalCount="false"</code> 隐藏总数据了的统计。
-    </Description>
+        <PresentationPart Title="Hide Total Count">
     <RunTemplate>
         <Pagination CurrentPage="1" TotalCount="100"  ShowTotalCount="false"/>
     </RunTemplate>
@@ -73,10 +70,7 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="隐藏跳转到">
-    <Description>
-        设置 <code>ShowNavigateTo="false"</code> 隐藏跳转到功能。
-    </Description>
+        <PresentationPart Title="Hide Navigate To">
     <RunTemplate>
         <Pagination CurrentPage="1" TotalCount="100"  ShowNavigateTo="false"/>
     </RunTemplate>
@@ -88,18 +82,18 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="双向绑定支持">
+        <PresentationPart Title="Two-way Binding">
     <Description>
-        参数 <code>CurrentPage</code>、<code>TotalCount</code> 和 <code>PageSize</code> 支持双向绑定功能。
+        Only <code>CurrentPage</code>, <code>TotalCount</code> and <code>PageSize</code> supports two-way binding.
     </Description>
     <RunTemplate>
         <Form Model="this">
             <Field Inline>
-                <label>当前页</label>
+                <label>Current</label>
                 <InputNumber @bind-Value="CurrentPage" />
-                <label>每页</label>
+                <label>Size</label>
                 <InputNumber @bind-Value="PageSize" />
-                <label>总共</label>
+                <label>Total</label>
                 <InputNumber @bind-Value="TotalCount" />
             </Field>
         </Form>
@@ -111,11 +105,11 @@
 ```html
 <Form Model=""this"">
     <Field Inline>
-        <label>当前页</label>
+        <label>Current</label>
         <InputNumber @bind-Value=""CurrentPage"" />
-        <label>每页</label>
+        <label>Size</label>
         <InputNumber @bind-Value=""PageSize"" />
-        <label>总共</label>
+        <label>Total</label>
         <InputNumber @bind-Value=""TotalCount"" />
     </Field>
 </Form>
@@ -124,23 +118,21 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-                <ParameterTable Title="参数">
+                <ParameterTable>
                     <Content>
                         <tr>
                             <td>
                                 CurrentPage
-                                <Label Color="Color.Red">必填</Label>
                             </td>
-                            <td>当前页码
-                            <Label Color="Color.Green">双向绑定</Label></td>
+                            <td>Support two-way bindings</td>
                             <td>int</td>
                             <td>1</td>
                         </tr>
                         <tr>
                             <td>
-                                PageSizeStakeholders<Label Color="Color.Red">必填</Label>
+                                PageSizeStakeholders
                             </td>
-                            <td>每页数据量的下拉候选项，至少有一个元素</td>
+                            <td>The stakeholders of page size option, at lease one element.</td>
                             <td>IEnumerable&lt;int></td>
                             <td>10, 20, 30, 50, 100</td>
                         </tr>
@@ -148,18 +140,15 @@
                             <td>
                                 PageSize
                             </td>
-                            <td>每一页呈现的数据量，不建议使用
-                            <Label Color="Color.Green">双向绑定</Label></td>
+                            <td>Support two-way bindings</td>
                             <td>int</td>
-                            <td>使用 PageSizeStakeholders 的第一个元素</td>
+                            <td>Using the first element of PageSizeStakeholders</td>
                         </tr>
                         <tr>
                             <td>
                                 TotalCount
-                                <Label Color="Color.Red">必填</Label>
                             </td>
-                            <td>数据的总记录数
-                            <Label Color="Color.Green">双向绑定</Label></td>
+                            <td>Support two-way bindings</td>
                             <td>int</td>
                             <td></td>
                         </tr>
@@ -167,7 +156,7 @@
                             <td>
                                 PageNumberCount
                             </td>
-                            <td>显示页码的个数，范围是5-21的奇数</td>
+                            <td>The count of the page number, the even number of range from 5 to 21</td>
                             <td>int</td>
                             <td>7</td>
                         </tr>
@@ -175,7 +164,7 @@
                             <td>
                                 ShowTotalCount
                             </td>
-                            <td>是否显示总记录数统计</td>
+                            <td>Display total count</td>
                             <td>bool</td>
                             <td>true</td>
                         </tr>
@@ -183,7 +172,7 @@
                             <td>
                                 ShowNavigateTo
                             </td>
-                            <td>是否显示“跳转到”</td>
+                            <td>Display the "Navigate To"</td>
                             <td>bool</td>
                             <td>true</td>
                         </tr>
@@ -191,17 +180,17 @@
                             <td>
                                 Size
                             </td>
-                            <td>尺寸</td>
-                            <td>enum</td>
-                            <td></td>
+                            <td>Size of link</td>
+                            <td>Size</td>
+                            <td>null</td>
                         </tr>
                         <tr>
                             <td>
                                 Alignment
                             </td>
-                            <td>对齐方式</td>
-                            <td>enum</td>
-                            <td></td>
+                            <td>Alignment of horizontal</td>
+                            <td>JustifyContent</td>
+                            <td>JustifyContent.Around</td>
                         </tr>
                     </Content>
         </ParameterTable>
@@ -209,22 +198,7 @@
             <Content>
                 <tr>
                     <td>OnCurrentPageChanged</td>
-                    <td>当 <code>CurrentPage</code> 发生改变后的回调方法</td>
-                    <td>EventCallback&lt;int></td>
-                </tr>
-                <tr>
-                    <td>CurrentPageChanged<Label Color="Color.Red">自动调用</Label></td>
-                    <td>使用 <code>bind-CurrentPage</code> 双向绑定指令的回调方法。</td>
-                    <td>EventCallback&lt;int></td>
-                </tr>
-                <tr>
-                    <td>PageSizeChanged<Label Color="Color.Red">自动调用</Label></td>
-                    <td>使用 <code>bind-PageSize</code> 双向绑定指令的回调方法。</td>
-                    <td>EventCallback&lt;int></td>
-                </tr>
-                <tr>
-                    <td>TotalCountChanged<Label Color="Color.Red">自动调用</Label></td>
-                    <td>使用 <code>bind-TotalCount</code> 双向绑定指令的回调方法。</td>
+                    <td>A callback method invoked when <code>CurrentPage</code> is changed</td>
                     <td>EventCallback&lt;int></td>
                 </tr>
             </Content>
@@ -233,27 +207,23 @@
                     <Content>
                         <tr>
                             <td>NavigateToFirst()</td>
-                            <td>导航到首页</td>
+                            <td>Navigate to first page</td>
                         </tr>
                         <tr>
                             <td>NavigateToPrevious()</td>
-                            <td>导航到上一页</td>
+                            <td>Navigate to previous page</td>
                         </tr>
                         <tr>
                             <td>NavigateToNext()</td>
-                            <td>导航到下一页</td>
+                            <td>Navigate to next page</td>
                         </tr>
                         <tr>
-                            <td>NavigateToFirst()</td>
-                            <td>导航到首页</td>
-                        </tr>
-                        <tr>
-                            <td>NavigateToLast()</td>
-                            <td>导航到末页</td>
+                            <td>NavigateToLarst()</td>
+                            <td>Navigate to Last page</td>
                         </tr>
                         <tr>
                             <td>NavigateToPage(int page)</td>
-                            <td>导航到自定义页</td>
+                            <td>Navigate to specify page</td>
                         </tr>
 
                     </Content>

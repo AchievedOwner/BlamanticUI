@@ -22,7 +22,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     [HtmlTag("td")]
-    public class Td : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasSpan
+    public class Td : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasSpan,IHasColor,IHasVerticalAlignment
     {
         /// <summary>
         /// Gets or sets the highlight color when row spanned.
@@ -78,5 +78,13 @@ namespace BlamanticUI
         /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
+        /// <summary>
+        /// Gets or sets the color of cell.
+        /// </summary>
+        [Parameter]public Color? Color { get; set; }
+        /// <summary>
+        /// Gets or sets the vertical alignment of text.
+        /// </summary>
+        [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
     }
 }

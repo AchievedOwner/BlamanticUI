@@ -69,6 +69,10 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] [CssClass("structured")] public bool Structured { get; set; }
         /// <summary>
+        /// Gets or sets the width of table is fixed.
+        /// </summary>
+        [Parameter] [CssClass("fixed")] public bool Fixed { get; set; }
+        /// <summary>
         /// Gets or sets the text always in single line in cell.
         /// </summary>
         [Parameter] [CssClass("single line")] public bool SingleLine { get; set; }
@@ -106,16 +110,13 @@ namespace BlamanticUI
         /// </value>
         [Parameter]public bool Compact { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether text increasing padding space.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if padded; otherwise, <c>false</c>.
-        /// </value>
-        [Parameter]public bool Padded { get; set; }
-        /// <summary>
         /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
+        /// <summary>
+        /// Gets or sets a layout that can be automatically recognized
+        /// </summary>
+        [Parameter] public bool Very { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this style is basic.
         /// </summary>
@@ -124,13 +125,12 @@ namespace BlamanticUI
         /// </value>
         [Parameter]public bool Basic { get; set; }
         /// <summary>
-        /// Gets or sets a layout that can be automatically recognized
+        /// Gets or sets a value indicating whether text increasing padding space.
         /// </summary>
-        [Parameter]public bool Very { get; set; }
-        /// <summary>
-        /// Gets or sets the width of table is fixed.
-        /// </summary>
-        [Parameter] [CssClass] public bool Fixed { get; set; }
+        /// <value>
+        ///   <c>true</c> if padded; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter] public bool Padded { get; set; }
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
