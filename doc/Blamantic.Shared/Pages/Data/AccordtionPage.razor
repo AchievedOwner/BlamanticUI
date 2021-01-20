@@ -1,0 +1,232 @@
+﻿@page "/component/data/accordion"
+
+<Pager DataSource="@(new List<string>
+                     {
+                         "Demo","Styled","InitIndex","Fluid","Inverted"
+                     })">
+    <Body>
+        <Header1>
+            Accordion
+            <SubHeader>An accordion allows users to toggle the display of sections of content</SubHeader>
+        </Header1>
+
+        <PresentationPart Title="Demo">
+            <RunTemplate>
+                <Accordion>
+                    <AccordionItem>
+                        <Title>What is a dog?</Title>
+                        <Content>
+                            A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>What kinds of dogs are there?</Title>
+                        <Content>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>How do you acquire a dog?</Title>
+                        <Content>
+                            Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                            <br />
+                            A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Styled">
+            <Description>
+                A styled accordion adds basic formatting
+            </Description>
+            <RunTemplate>
+                <Accordion Styled>
+                    <AccordionItem>
+                        <Title>What is a dog?</Title>
+                        <Content>
+                            A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>What kinds of dogs are there?</Title>
+                        <Content>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>How do you acquire a dog?</Title>
+                        <Content>
+                            Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                            <br />
+                            A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Styled>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="InitIndex">
+            <Description>
+                <code>InitIndex</code> display the index after render.
+                <Message State="State.Warning">
+                    Index start from 0 !
+                </Message>
+            </Description>
+            <RunTemplate>
+                <Accordion Styled InitIndex="1">
+                    <AccordionItem>
+                        <Title>What is a dog?</Title>
+                        <Content>
+                            A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>What kinds of dogs are there?</Title>
+                        <Content>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>How do you acquire a dog?</Title>
+                        <Content>
+                            Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                            <br />
+                            A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Styled  InitIndex=""1"">
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        <PresentationPart Title="Fluid">
+            <Description>
+                An accordion can take up the width of its container
+            </Description>
+            <RunTemplate>
+                <Accordion Fluid Styled>
+                    <AccordionItem>
+                        <Title>What is a dog?</Title>
+                        <Content>
+                            A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
+                        </Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>What kinds of dogs are there?</Title>
+                        <Content>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</Content>
+                    </AccordionItem>
+                    <AccordionItem>
+                        <Title>How do you acquire a dog?</Title>
+                        <Content>
+                            Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                            <br />
+                            A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                        </Content>
+                    </AccordionItem>
+                </Accordion>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Fluid>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Inverted">
+            <Description>
+                An accordion can be formatted to appear on dark backgrounds
+            </Description>
+            <RunTemplate>
+                <Segment Inverted>
+                    <Accordion Inverted>
+                        <AccordionItem>
+                            <Title>What is a dog?</Title>
+                            <Content>
+                                A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a welcome guest in many households across the world.
+                            </Content>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <Title>What kinds of dogs are there?</Title>
+                            <Content>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</Content>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <Title>How do you acquire a dog?</Title>
+                            <Content>
+                                Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.
+                                <br />
+                                A pet shop may be the most convenient way to buy a dog. Buying a dog from a private owner allows you to assess the pedigree and upbringing of your dog before choosing to take it home. Lastly, finding your dog from a shelter, helps give a good home to a dog who may not find one so readily.
+                            </Content>
+                        </AccordionItem>
+                    </Accordion>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Accordion Inverted>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+    <AccordionItem>
+        <Title>...</Title>
+        <Content>...</Content>
+    </AccordtionItem>
+</Accordion>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager> 
