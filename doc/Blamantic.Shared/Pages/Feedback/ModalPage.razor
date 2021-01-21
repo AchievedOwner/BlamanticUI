@@ -1,139 +1,136 @@
 ﻿@page "/component/feedback/modal"
 <Pager DataSource="@(new List<string>(new[] { 
-                         "示例","简约模式","带图片的内容","100% 宽度","全屏","尺寸","互换背景","遮罩层的反选背景",
-                         "右上角的“X”","对齐方式","内容滚动条","参数","事件","方法"
+                         "Demo","Basic","Image Modal","Full Width","Full Screen","Size","Inverted",
+                         "Closable","Alignment","Scrollable"
                      }))">
     <Body>
         <Header1>
-            模态框
+            Modal
             <SubHeader>
-                模态显示临时阻止与站点主视图交互的内容
+                A modal displays content that temporarily blocks interactions with the main view of a site
             </SubHeader>
         </Header1>
         <Segment>
-            使用 <code>Modal</code> 模态框组件预先配置显示的参数，通过代码的方式显示/隐藏组件。
-            <br/>
-            <br />
-            <Anchor Link="/service/dialog">对话框服务(DialogService)</Anchor> 支持使用依赖注入服务的形式快速使用提示框、确认框以及弹出框。
+            You have to invoke <code>Active(bool active)</code> method via reference of instance by <code>@@ref</code>.
         </Segment>
-        <PresentationPart Title="示例">
+        <PresentationPart Title="Demo">
             <RunTemplate>
                 <Modal @ref="refModal1">
                     <Header>
-                        审批流程
+                        The Workflow
                     </Header>
                     <Content>
-                        以下是您需要进行审批的内容：
+                        Please read the content as below:
                         <List Ordered>
                             <Item>
-                                条件1：xxxxxxxxxxxxxx
+                                Condition 1: xxxxxxxxxxxxxx
                             </Item>
                             <Item>
-                                条件2：xxxxxxxxxxxxxx
+                                Condition 2：xxxxxxxxxxxxxx
                             </Item>
                             <Item>
-                                条件3：xxxxxxxxxxxxxx
+                                Condition 3：xxxxxxxxxxxxxx
                             </Item>
                         </List>
                     </Content>
                     <Footer>
-                        <Button Emphasis="Emphasis.Negative" @onclick="()=>refModal1.Active(false)">驳回</Button>
-                        <Button Emphasis="Emphasis.Positive" @onclick="()=>refModal1.Active(false)">通过</Button>
+                        <Button Emphasis="Emphasis.Negative" @onclick="()=>refModal1.Active(false)">Nagative</Button>
+                        <Button Emphasis="Emphasis.Positive" @onclick="()=>refModal1.Active(false)">Positive</Button>
                     </Footer>
                 </Modal>
-                <Button @onclick="()=>refModal1.Active()">弹出对话框</Button>
+                <Button @onclick="()=>refModal1.Active()">Show</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal @ref=""refModal1"">
     <Header>
-        审批流程
+        The Workflow
     </Header>
     <Content>
-        以下是您需要进行审批的内容：
+        Please read the content as below:
         <List Ordered>
             <Item>
-                条件1：xxxxxxxxxxxxxx
+                Condition 1: xxxxxxxxxxxxxx
             </Item>
             <Item>
-                条件2：xxxxxxxxxxxxxx
+                Condition 2：xxxxxxxxxxxxxx
             </Item>
             <Item>
-                条件3：xxxxxxxxxxxxxx
+                Condition 3：xxxxxxxxxxxxxx
             </Item>
         </List>
     </Content>
     <Footer>
-        <Button Emphasis=""Emphasis.Negative"" @onclick=""()=>refModal1.Active(false)"">驳回</Button>
-        <Button Emphasis=""Emphasis.Positive"" @onclick=""()=>refModal1.Active(false)"">通过</Button>
+        <Button Emphasis=""Emphasis.Negative"" @onclick=""()=>refModal1.Active(false)"">Nagative</Button>
+        <Button Emphasis=""Emphasis.Positive"" @onclick=""()=>refModal1.Active(false)"">Positive</Button>
     </Footer>
 </Modal>
-<Button @onclick=""()=>refModal1.Active()"">弹出对话框</Button>
+<Button @onclick=""()=>refModal1.Active()"">Show</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="简约模式">
+        <PresentationPart Title="Basic">
             <Description>
-                设置 <code>Basic</code> 将模态框的本身的白色背景消除。
+                A modal can reduce its complexity
             </Description>
             <RunTemplate>
                 <Modal @ref="refModal2" Basic>
                     <Header>
-                        简约模态框
+                        A basic modal
                     </Header>
                     <Content>
-                        我的内容就相对比较简单许多
+                        A modal can reduce its complexity
                     </Content>
                 </Modal>
-                <Button @onclick="()=>refModal2.Active()" Emphasis="Emphasis.Primary">弹出对话框</Button>
+                <Button @onclick="()=>refModal2.Active()" Emphasis="Emphasis.Primary">Show</Button>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal @ref=""refModal1"" Basic>
     <Header>
-        简约模态框
+        A basic modal
     </Header>
     <Content>
-        我的内容就相对比较简单许多
+        A modal can reduce its complexity
     </Content>
 </Modal>
-<Button @onclick=""()=>refModal1.Active()"">弹出对话框</Button>
+<Button @onclick=""()=>refModal1.Active()"">Show</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="带图片的内容">
-    <Description>
-        设置 <code>ImageContent</code> 可以在 <code>Content</code> 模版用 <code>Image</code> 组件和 <code>Description</code> 组件进行左右排版。
-    </Description>
+        <PresentationPart Title="Image Modal">
+            <Description>
+                A modal can contain image content
+            </Description>
     <RunTemplate>
         <Modal @ref="refModal3" ImageContent>
             <Header>
-                图片模态框
+                Image Modal
             </Header>
             <Content>
-                <Image Source="/img/image.png" Fluid UI Size="Size.Small" />
+                <Image Src="/img/image.png" Fluid Size="Size.Small" />
                 <Description>
-                    这里填写图片的描述
+                    Here are some description of image
                 </Description>
             </Content>
         </Modal>
-        <Button @onclick="()=>refModal3.Active()" Emphasis="Emphasis.Secondary">弹出对话框</Button>
+        <Button @onclick="()=>refModal3.Active()" Emphasis="Emphasis.Secondary">Show</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal @ref=""refModal3"" ImageContent>
     <Header>
-        图片模态框
+        Image Modal
     </Header>
     <Content>
-        <Image Source=""/img/image.png"" Fluid UI Size=""Size.Small"" />
+        <Image Source=""/img/image.png"" Fluid Size=""Size.Small"" />
         <Description>
-            这里填写图片的描述
+            Here are some description of image
         </Description>
     </Content>
 </Modal>
@@ -141,140 +138,140 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="100% 宽度">
-    <Description>
-        设置 <code>FullWidth</code> 会将宽度撑满整个浏览器。
-    </Description>
+        <PresentationPart Title="Full Width">
+            <Description>
+                A modal can use the entire size of the screen
+            </Description>
     <RunTemplate>
         <Modal @ref="refModal4" FullWidth>
             <Content>
-                无论多少我都会撑满整个宽度
+                Give us your feedback
             </Content>
         </Modal>
-        <Button @onclick="()=>refModal4.Active()">弹出对话框</Button>
+        <Button @onclick="()=>refModal4.Active()">Show</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal @ref=""refModal4"" FullWidth>
     <Content>
-        无论多少我都会撑满整个宽度
+        Give us your feedback
     </Content>
 </Modal>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="全屏">
-    <Description>
-        设置 <code>FullScreen</code> 可以让模态框全屏显示。
-    </Description>
+        <PresentationPart Title="Full Screen">
+            <Description>
+                A modal can overlay the entire screen
+            </Description>
     <RunTemplate>
         <Modal @ref="refModal5" FullScreen>
             <Header>
-                全屏显示
+                Full Screen
             </Header>
             <Content>
-                欢迎来到全屏模式，在这里尽情体验全屏带来的酸爽感觉吧！！！
+                Welcome to the full screen mode, here to enjoy the full screen brought sour feeling!!
             </Content>
             <Footer>
-                <Button Color="Color.Orange" @onclick="()=>refModal5.Active(false)" Basic>关闭</Button>
+                <Button Color="Color.Orange" @onclick="()=>refModal5.Active(false)" Basic>Close</Button>
             </Footer>
         </Modal>
-        <Button @onclick="()=>refModal5.Active()">弹出对话框</Button>
+        <Button @onclick="()=>refModal5.Active()">Show</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal @ref=""refModal5"" FullScreen>
     <Header>
-        全屏显示
+         Full Screen
     </Header>
     <Content>
-        欢迎来到全屏模式，在这里尽情体验全屏带来的酸爽感觉吧！！！
+        Welcome to the full screen mode, here to enjoy the full screen brought sour feeling!!
     </Content>
     <Footer>
-        <Button Color=""Color.Orange"" @onclick=""()=>refModal5.Active(false)"" Basic>关闭</Button>
+        <Button Color=""Color.Orange"" @onclick=""()=>refModal5.Active(false)"" Basic>Close</Button>
     </Footer>
 </Modal>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="尺寸">
-    <Description>
-        设置 <code>Size</code> 可以定义模态框的尺寸。<code>FullScreen</code> 时无效。
-    </Description>
+        <PresentationPart Title="Size">
+            <Description>
+                A modal can vary in size
+            </Description>
     <RunTemplate>
         <Modal Size="Size.Mini" @ref="refModal6">
             <Header>
-                Mini 尺寸
+                Mini
             </Header>
             <Content>
-                你确定要删除这条数据吗？
+                Are you sure to delete this data?
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal6.Active(false)">否</Button>
-                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal6.Active(false)">是</Button>
+                <Button @onclick="()=>refModal6.Active(false)">No</Button>
+                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal6.Active(false)">Yes</Button>
             </Footer>
         </Modal>
         <Button @onclick="()=>refModal6.Active()">Mini</Button>
 
         <Modal Size="Size.Tiny" @ref="refModal7">
             <Header>
-                Tiny 尺寸
+                Tiny
             </Header>
             <Content>
-                你确定要删除这条数据吗？
+                Are you sure to delete this data?
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal7.Active(false)">否</Button>
-                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal7.Active(false)">是</Button>
+                <Button @onclick="()=>refModal6.Active(false)">No</Button>
+                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal6.Active(false)">Yes</Button>
             </Footer>
         </Modal>
         <Button @onclick="()=>refModal7.Active()">Tiny</Button>
 
         <Modal Size="Size.Small" @ref="refModal8">
             <Header>
-                Small 尺寸
+                Small
             </Header>
             <Content>
-                你确定要删除这条数据吗？
+                Are you sure to delete this data?
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal8.Active(false)">否</Button>
-                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal8.Active(false)">是</Button>
+                <Button @onclick="()=>refModal6.Active(false)">No</Button>
+                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal6.Active(false)">Yes</Button>
             </Footer>
         </Modal>
         <Button @onclick="()=>refModal8.Active()">Small</Button>
 
         <Modal Size="Size.Large" @ref="refModal9">
             <Header>
-                Large 尺寸
+                Large
             </Header>
             <Content>
-                你确定要删除这条数据吗？
+                Are you sure to delete this data?
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal9.Active(false)">否</Button>
-                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal9.Active(false)">是</Button>
+                <Button @onclick="()=>refModal6.Active(false)">No</Button>
+                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal6.Active(false)">Yes</Button>
             </Footer>
         </Modal>
         <Button @onclick="()=>refModal9.Active()">Large</Button>
 
         <Segment>
-            不要使用 <code>Big、Huge、Massive</code> 尺寸，因为会超出屏幕范围。
+            DO NOT USE <code>Big、Huge、Massive</code> that can cause width out of screen.
         </Segment>
         <Modal Size="Size.Massive" @ref="refModal10">
             <Header>
-                Massive 尺寸
+                Massive
             </Header>
             <Content>
-                你确定要删除这条数据吗？
+                Are you sure to delete this data?
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal10.Active(false)">否</Button>
-                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal10.Active(false)">是</Button>
+                <Button @onclick="()=>refModal6.Active(false)">No</Button>
+                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal6.Active(false)">Yes</Button>
             </Footer>
         </Modal>
         <Button @onclick="()=>refModal10.Active()">Massive</Button>
@@ -290,154 +287,128 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="互换背景">
+        <PresentationPart Title="Inverted">
             <Description>
-                设置 <code>Inverted</code> 互换遮罩层与模态框的背景深浅样式。
+                A modal can be shown inverted on white dimmer...
             </Description>
     <RunTemplate>
         <Modal Inverted @ref="refModal11">
             <Header>
-                互换背景的深浅
+                Delete your cound?
             </Header>
             <Content>
-                你确定要删除这条数据吗？
+                Are you sure to do that?
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal11.Active(false)">否</Button>
-                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal11.Active(false)">是</Button>
+                <Button @onclick="()=>refModal11.Active(false)">No</Button>
+                <Button Emphasis="Emphasis.Primary" @onclick="()=>refModal11.Active(false)">Yes</Button>
             </Footer>
         </Modal>
-        <Button @onclick="()=>refModal11.Active()">弹出对话框</Button>
+        <Button @onclick="()=>refModal11.Active()">Show</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal Inverted @ref=""refModal11"">
     <Header>
-        深色背景
+        Delete your cound?
     </Header>
     <Content>
-        你确定要删除这条数据吗？
+        Are you sure to do that?
     </Content>
     <Footer>
-        <Button @onclick=""()=>refModal11.Active(false)"">否</Button>
-        <Button Emphasis=""Emphasis.Primary"" @onclick=""()=>refModal11.Active(false)"">是</Button>
+        <Button @onclick=""()=>refModal11.Active(false)"">No</Button>
+        <Button Emphasis=""Emphasis.Primary"" @onclick=""()=>refModal11.Active(false)"">Yes</Button>
     </Footer>
 </Modal>
-<Button @onclick=""()=>refModal11.Active()"">弹出对话框</Button>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="右上角的“X”">
+        <PresentationPart Title="Closable">
     <Description>
-        设置 <code>Closable="false"</code> 不现实右上角的“X”来关闭模态框。
+        To hide the "X" at top right.
     </Description>
     <RunTemplate>
         <Modal Closable="false" @ref="refModal13">
             <Content>
-                验证出现了错误！
+                Validation occured!
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal13.Active(false)">关闭</Button>
+                <Button @onclick="()=>refModal13.Active(false)">Close</Button>
             </Footer>
         </Modal>
-        <Button @onclick="()=>refModal13.Active()">弹出对话框</Button>
+        <Button @onclick="()=>refModal13.Active()">Show</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal Closable=""false"" @ref=""refModal13"">            
     <Content>
-        验证出现了错误！
+        Validation occured!
     </Content>
     <Footer>
-        <Button @onclick=""()=>refModal13.Active(false)"">关闭</Button>
+        <Button @onclick=""()=>refModal13.Active(false)"">Hide</Button>
     </Footer>
 </Modal>
-<Button @onclick=""()=>refModal13.Active()"">弹出对话框</Button>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="对齐方式">
-    <Description>
-        设置 <code>Alignment</code> 让对话框居顶对齐还是居底对齐，默认是居中对齐。
-    </Description>
+        <PresentationPart Title="Alignment">
     <RunTemplate>
         <Modal @ref="refModal12" Alignment="VerticalPosition.Top">
-            <Header>顶部</Header>
+            <Header>Top</Header>
             <Content>
-                我显示在了顶部。
+                At the top position
             </Content>
             <Footer>
-                <Button Color="Color.Orange" @onclick="e=>refModal12.Active(false)">确定</Button>
+                <Button Color="Color.Orange" @onclick="e=>refModal12.Active(false)">OK</Button>
             </Footer>
         </Modal>
         <Modal @ref="refModal15">
-            <Header>默认</Header>
+            <Header>Default</Header>
             <Content>
-                默认在中间显示。
+                Default is middle
             </Content>
             <Footer>
-                <Button Color="Color.Orange" @onclick="e=>refModal15.Active(false)">确定</Button>
+                <Button Color="Color.Orange" @onclick="e=>refModal15.Active(false)">OK</Button>
             </Footer>
         </Modal>
         <Modal @ref="refModal16" Alignment="VerticalPosition.Bottom">
-            <Header>底部</Header>
+            <Header>Bottom</Header>
             <Content>
-                我显示在了底部。
+                At the bottom position
             </Content>
             <Footer>
-                <Button Color="Color.Orange" @onclick="e=>refModal16.Active(false)">确定</Button>
+                <Button Color="Color.Orange" @onclick="e=>refModal16.Active(false)">OK</Button>
             </Footer>
         </Modal>
-        <Button Emphasis="Emphasis.Primary" @onclick="e=>refModal12.Active()">顶部</Button>
-        <Button @onclick="e=>refModal15.Active()">默认</Button>
-        <Button Emphasis="Emphasis.Secondary" @onclick="e=>refModal16.Active()">底部</Button>
+        <Button Emphasis="Emphasis.Primary" @onclick="e=>refModal12.Active()">Top</Button>
+        <Button @onclick="e=>refModal15.Active()">Default</Button>
+        <Button Emphasis="Emphasis.Secondary" @onclick="e=>refModal16.Active()">Bottom</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Modal @ref=""refModal12"" Alignment=""VerticalPosition.Top"">
-    <Header>顶部</Header>
-    <Content>
-        我显示在了顶部。
-    </Content>
-    <Footer>
-        <Button Color=""Color.Orange"" @onclick=""e=>refModal12.Active(false)"">确定</Button>
-    </Footer>
 </Modal>
 <Modal @ref=""refModal15"">
-    <Header>默认</Header>
-    <Content>
-        默认在中间显示。
-    </Content>
-    <Footer>
-        <Button Color=""Color.Orange"" @onclick=""e=>refModal15.Active(false)"">确定</Button>
-    </Footer>
 </Modal>
 <Modal @ref=""refModal16"" Alignment=""VerticalPosition.Bottom"">
-    <Header>底部</Header>
-    <Content>
-        我显示在了底部。
-    </Content>
-    <Footer>
-        <Button Color=""Color.Orange"" @onclick=""e=>refModal16.Active(false)"">确定</Button>
-    </Footer>
 </Modal>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="内容滚动条">
-    <Description>
-        设置 <code>Scrollable</code> 可以让超长的内容页出现滚动条。
-    </Description>
+        <PresentationPart Title="Scrollable">
+            <Description>
+                A modal can use the entire size of the screen
+            </Description>
     <RunTemplate>
         <Modal @ref="refModal14" Scrollable>
             <Header>
-                超级长的内容
+                A long long paragraph
             </Header>
             <Content>
                 <ParagraphDemo />
@@ -460,10 +431,10 @@
                 <Divider />
             </Content>
             <Footer>
-                <Button @onclick="()=>refModal14.Active(false)">关闭</Button>
+                <Button @onclick="()=>refModal14.Active(false)">Close</Button>
             </Footer>
         </Modal>
-        <Button @onclick="()=>refModal14.Active()">弹出对话框</Button>
+        <Button @onclick="()=>refModal14.Active()">Show</Button>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
@@ -475,109 +446,6 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <ParameterTable Title="参数">
-            <Content>
-                <tr>
-                    <td>Header</td>
-                    <td>呈现标题内容的 UI 片段</td>
-                    <td>RenderFragment</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Content</td>
-                    <td>呈现正文内容的 UI 片段</td>
-                    <td>RenderFragment</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Footer</td>
-                    <td>呈现操作的行为的 UI 片段</td>
-                    <td>RenderFragment</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Size</td>
-                    <td>模态框的尺寸大小</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>FullWidth</td>
-                    <td>模态框是否要撑满整个宽度</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>FullScreen</td>
-                    <td>是否全屏显示</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Basic</td>
-                    <td>无边框样式</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Inverted</td>
-                    <td>互换遮罩层与模态框的背景深浅样式</td>
-                    <td>boo</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Scrollable</td>
-                    <td>内容是否允许在超出范围的时候使用滚动条</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>ImageContent</td>
-                    <td>是否包含图像的内容</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Closable</td>
-                    <td>右上角是否出现一个可关闭的“X”图标，并点击后关闭模态框</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>DimmerInverted</td>
-                    <td>遮罩层是否使用反选背景</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Active</td>
-                    <td>是否处于显示状态</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-            </Content>
-        </ParameterTable>
-                <CallbackTable>
-                    <Content>
-                        <tr>
-                            <td>OnActive</td>
-                            <td>当模态框处于显示/隐藏状态时的回调方法</td>
-                            <td>EventCallback&lt;bool></td>
-                        </tr>
-                    </Content>
-        </CallbackTable>
-                        <MethodTable>
-                            <Content>
-                                <tr>
-                                    <td>Active(bool active = true)</td>
-                                    <td>显示/隐藏模态框</td>
-                                </tr>
-                <tr>
-                    <td>Toggle()</td>
-                    <td>对隐藏或显示状态进行切换</td>
-                </tr>
-                            </Content>
-        </MethodTable>
     </Body>
 </Pager>
 @code{

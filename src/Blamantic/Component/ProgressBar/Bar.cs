@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using System.Linq;
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
@@ -12,22 +12,38 @@ namespace BlamanticUI
     /// <summary>
     /// Represents a progress bar in <see cref="Progress"/> component.
     /// </summary>
-    /// <seealso cref="YoiBlazor.ChildBlazorComponentBase{BlamanticUI.Progress}" />
-    public class Bar : ChildBlazorComponentBase<Progress>
+    public class Bar : BlamanticChildContentComponentBase<double>,IHasColor
     {
+        /// <summary>
+        /// Gets or sets the value of percent.
+        /// </summary>
+        [Parameter] public double Percent { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether to show percentage text.
         /// </summary>
         [Parameter] public bool ShowPercent { get; set; }
-
-        /// <summary>
-        /// Gets or sets the text of content.
-        /// </summary>
-        [Parameter] public RenderFragment<double> Text { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether to align the text be centered.
         /// </summary>
         [Parameter]public bool Centered { get; set; }
+        /// <summary>
+        /// Gets or sets the color.
+        /// </summary>
+        [Parameter][CssClass]public Color? Color { get; set; }
+
+        [CascadingParameter] Progress Parent { get; set; }
+
+        internal int Index { get; set; }
+
+        protected override void OnInitialized()
+        {
+            if(Parent!=null && Parent.Bars != null)
+            {
+                Index = Parent.BarList.Count;
+                Parent.AddBar(this);
+            }
+        }
 
         /// <summary>
         /// Method invoked when the component has received parameters from its parent in
@@ -37,7 +53,7 @@ namespace BlamanticUI
         {
             if (ShowPercent)
             {
-                Text = (percent) => new RenderFragment(builder => builder.AddContent(0, $"{percent}%"));
+                ChildContent = (percent) => new RenderFragment(builder => builder.AddContent(0, $"{percent}%"));
                 
             }
         }
@@ -50,13 +66,13 @@ namespace BlamanticUI
         {
             builder.OpenElement(0, "div");
             AddCommonAttributes(builder);
-            if (Text != null)
+            if (ChildContent != null)
             {
                 builder.AddContent(1, child=>
                 {
                     child.OpenElement(0, "div");
-                    child.AddAttribute(1, "class", BuildTextCss());
-                    child.AddContent(10, Text(Parent.Percent));
+                    child.AddAttribute(1, "class", Css.Create.Add(Centered,"centered").Add("progress").ToString());
+                    child.AddContent(10, ChildContent(Percent));
                     child.CloseElement();
                 });
             }
@@ -80,22 +96,31 @@ namespace BlamanticUI
         {
             style.Add("transition-duration:300ms")
                 .Add("display:block")
-                .Add($"width:{Parent.Percent}%");
-        }
+                .Add($"width:{Percent}%")
+                
+                ;
 
-        /// <summary>
-        /// Builds the text CSS.
-        /// </summary>
-        /// <returns></returns>
-        string BuildTextCss()
-        {
-            var list = new List<string>();
-            if (Centered)
+            if (Parent!=null && Parent.Bars!=null)
             {
-                list.Add("centered");
+                var barList = Parent.BarList;
+
+                if (Index == 0)
+                {
+                    style.Add("border-top-right-radius", "0px")
+                        .Add("border-bottom-right-radius", "0px");
+                    
+                    
+                }
+                else if (Index == barList.Count - 1)
+                {
+                    style.Add("border-top-left-radius", "0px")
+                        .Add("border-bottom-left-radius", "0px");
+                }
+                else
+                {
+                    style.Add("border-radius","0px;");
+                }
             }
-            list.Add("progress");
-            return string.Join(" ", list);
         }
     }
 }
