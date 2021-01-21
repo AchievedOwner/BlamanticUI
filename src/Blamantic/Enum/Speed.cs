@@ -10,11 +10,6 @@ namespace BlamanticUI
     public enum Speed
     {
         /// <summary>
-        /// The default speed.
-        /// </summary>
-        [CssClass]
-        Default = 0,
-        /// <summary>
         /// Slower than default.
         /// </summary>
         [CssClass("slow")]

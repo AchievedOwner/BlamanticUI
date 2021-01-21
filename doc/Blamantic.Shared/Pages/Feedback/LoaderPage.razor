@@ -1,26 +1,23 @@
 ﻿@page "/component/feedback/loader"
 
     <Pager DataSource="@(new List<string>(new[] { 
-                             "示例","配合 Dimmer 组件","显示文本","不确定样式","行内样式","居中行内样式","速度","颜色","尺寸",
-                             "反选背景","动画类型","参数","方法"
+                             "Demo","With Dimmer","Text Loader","Indeterminated","Inline","Inline Center","Speed","Color","Size",
+                             "Inverted","Animiation"
                          }))">
         <Body>
             <Header1 Divider>
-                加载器
+                Loader
                 <SubHeader>
-                    加载器提醒用户等待活动完成
+                    A loader alerts a user to wait for an activity to complete
                 </SubHeader>
             </Header1>
-            <Segment>
-                使用 <code>Loader</code> 作为加载器，可以配合 <code>Dimmer</code> 组件使加载状态的背景有一个遮罩层。
-            </Segment>
-            <PresentationPart Title="示例">
+            <PresentationPart Title="Demo">
                 <Description>
                     <Message State="State.Info">
-                        默认情况下，<code>Loader</code> 组件是隐藏状态，通过设置 <code>Active</code> 或当 <code>Dimmer</code> 组件被启用时才会显示。
+                        Loaders are hidden unless active or inside an active dimmer.
                     </Message>
                 </Description>
-                <RunTemplate>
+                <RunTemplate>                    
                     <Loader Actived/>                    
                 </RunTemplate>
                 <CodeTemplate>
@@ -31,7 +28,7 @@
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="配合 Dimmer 组件">
+            <PresentationPart Title="With Dimmer">
     <RunTemplate>
         <Segment>
             <Dimmer Actived>
@@ -53,14 +50,14 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-    <PresentationPart Title="设置文本">
+    <PresentationPart Title="Text Loader">
         <Description>
-            可以在组件中间编写文本并显示。
+            A loader can contain text
         </Description>
     <RunTemplate>
         <Segment>
             <Dimmer Actived>
-                <Loader>处理中，请稍后...</Loader>
+                <Loader>In Progress...</Loader>
             </Dimmer>
             <ParagraphDemo/>
         </Segment>
@@ -70,7 +67,7 @@
 ```html
 <Segment>
     <Dimmer Actived>
-        <Loader>处理中，请稍后...</Loader>
+        <Loader>In Progress...</Loader>
     </Dimmer>
     <ParagraphDemo/>
 </Segment>
@@ -78,17 +75,14 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="不确定样式">
-                <SubTitle>
-                    一般用于显示它不确定任务将花费多长时间
-                </SubTitle>
-        <Description>
-            设置 <code>Indeterminated</code> 改变加载动画的方式。
-        </Description>
+            <PresentationPart Title="Indeterminated">
+                <Description>
+                    A loader can show it's unsure of how long a task will take
+                </Description>
     <RunTemplate>
         <Segment>
             <Dimmer Actived>
-                <Loader Texted Indeterminated>正在准备启动...</Loader>
+                <Loader Indeterminated>Preparing Files...</Loader>
             </Dimmer>
             <ParagraphDemo/>
         </Segment>
@@ -98,7 +92,7 @@
 ```html
 <Segment>
     <Dimmer Actived>
-        <Loader Texted Indeterminated>正在准备启动...</Loader>
+        <Loader Indeterminated>Preparing Files...</Loader>
     </Dimmer>
     <ParagraphDemo/>
 </Segment>
@@ -106,48 +100,48 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="行内样式">
-    <Description>
-        设置 <code>Inline</code> 可以让加载器在内容之间显示。
-    </Description>
+            <PresentationPart Title="Inline">
+                <Description>
+                    Loaders can appear inline with content
+                </Description>
     <RunTemplate>
         <Segment>
-            如果没有他的出现 <Loader Inline Actived/> 就没有现在生活的我们
+            I have a loading <Loader Inline Actived/> message of here to show
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Segment>
-    如果没有他的出现 <Loader Inline/> 就没有现在生活的我们
+    I have a loading <Loader Inline Actived/> message of here to show
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-                        <PresentationPart Title="居中行内样式">
-    <Description>
-        设置 <code>Inline</code> 和 <code>Centered</code> 可以让加载器在内容之间显示并显示在正中间。
-    </Description>
+                        <PresentationPart Title="Inline Center">
+                            <Description>
+                                Loaders can appear inline centered with content
+                            </Description>
     <RunTemplate>
         <Segment>
-            如果<Loader Inline Actived Centered />没有他的出现  就没有现在生活的我们
+            I have a loading <Loader Actived Inline Centered/> message of here to show
         </Segment>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Segment>
-    如果 <Loader Inline Centered/>没有他的出现 就没有现在生活的我们
+    I have a loading <Loader Actived Inline Centered/> message of here to show
 </Segment>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="速度">
-    <Description>
-        设置 <code>Speed</code> 改变旋转速度。
-    </Description>
+            <PresentationPart Title="Speed">
+                <Description>
+                    Loaders can appear slow, normal or fast
+                </Description>
     <RunTemplate>
         <Loader Inline Actived Speed="Speed.Fast" />
         <Loader Inline Actived />
@@ -163,10 +157,10 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="颜色">
-    <Description>
-        设置 <code>Color</code> 可以改变颜色。
-    </Description>
+            <PresentationPart Title="Color">
+                <Description>
+                    Loaders can be different colors
+                </Description>
     <RunTemplate>
         <Loader Inline Actived Color="Color.Red" />
         <Loader Inline Actived Color="Color.Orange" />
@@ -200,10 +194,10 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="尺寸">
-    <Description>
-        设置 <code>Size</code> 可以改变组件的尺寸。
-    </Description>
+            <PresentationPart Title="Size">
+                <Description>
+                    Loaders can have different sizes
+                </Description>
     <RunTemplate>
         <Loader Inline Actived Size="Size.Mini" />
         <Loader Inline Actived Size="Size.Tiny" />
@@ -229,13 +223,13 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="反选背景">
-    <Description>
-        在反选背景下，要加入 <code>Inverted</code> 才能看到。
-        <Message>
-            在 <code>Dimmer</code> 组件中，只需要设置 <code>Dimmer</code> 组件的 <code>Inverted</code> 即可。
-        </Message>
-    </Description>
+            <PresentationPart Title="Inverted">
+                <Description>
+                    Loaders can have their colors inverted.
+                    <Message>
+                        Loaders will automatically be inverted inside inverted dimmer
+                    </Message>
+                </Description>
     <RunTemplate>
         <Segment Inverted>
             <Loader Inverted Actived />
@@ -265,10 +259,10 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="动画类型">
-    <Description>
-        设置 <code>Animiation</code> 选择不同的动画效果。
-    </Description>
+            <PresentationPart Title="Animiation">
+                <Description>
+                    Loaders can also appear in double or elastic animation style. Can be combined with any color or speed.
+                </Description>
     <RunTemplate>
         <Segment>
             <Loader Actived Animation="Loader.AnimationStyle.Double" Color="Color.Blue" />
@@ -290,81 +284,5 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-                    <ParameterTable>
-            <Content>
-                <tr>
-                    <td>Actived</td>
-                    <td>是否显示</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Disabled</td>
-                    <td>是否禁用</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td>颜色</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Inverted</td>
-                    <td>反选颜色</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Inline</td>
-                    <td>允许显示在文本之间</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Centered</td>
-                    <td>在行中的文本居中显示，<code>Inline</code> 为 <code>true</code> 时有效</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Size</td>
-                    <td>尺寸大小</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Animation</td>
-                    <td>动画效果</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Indeterminated</td>
-                    <td>加载方式成为不确定样式</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Speed</td>
-                    <td>旋转的速度</td>
-                    <td>enum</td>
-                    <td>Speed.Default</td>
-                </tr>
-            </Content>
-        </ParameterTable>
-                            <MethodTable>
-            <Content>
-                <tr>
-                    <td>Active(bool active = true)</td>
-                    <td>显示/隐藏操作</td>
-                </tr>
-                <tr>
-                    <td>Disabled(bool diabled = true)</td>
-                    <td>禁用/启用操作</td>
-                </tr>
-            </Content>
-        </MethodTable>
         </Body>
     </Pager>

@@ -1,24 +1,24 @@
 ﻿@page "/component/feedback/dimmer"
 
     <Pager DataSource="@(new List<string>(new[]{
-                             "示例","自定义内容","全屏显示","启用状态","禁用状态","文本位置","浅色背景","不透明度","部分遮罩","参数","方法"
+                             "Demo","Content Dimmer","Full Screen","Active","Disabled","Vertical Alignment","Inverted","Opacity","Partially Dimmer"
                          }))">
         <Body>
             <Header1 Divider>
-                遮罩层
+                Dimmer
                 <SubHeader>
-                    遮罩层可以隐藏分散注意力的东西，使注意力集中在特定的内容上
+                    A dimmer hides distractions to focus attention on particular content
                 </SubHeader>
             </Header1>
 
             <Segment>
-                遮罩层使用 <code>Dimmer</code> 组件，但通常需要通过代码的方式唤醒。即通过 <code>@@ref</code> 将实例绑定到组件上。
+                You have to invoke <code>Active(bool active)</code> method via reference of instance by <code>@@ref</code>.
 
             </Segment>
 
-            <PresentationPart Title="示例">
+            <PresentationPart Title="Demo">
                 <Description>
-                    通过调用 <code>Active</code> 进行显示遮罩层，调用 <code>Active(false)</code> 关闭遮罩层。
+                    A simple dimmer displays no content
                 </Description>
                 <RunTemplate>
                     <Segment>
@@ -29,8 +29,8 @@
                     </Segment>
                     <br />
                     <Labeled Button>
-                        <Button @onclick="()=>refSample1.Active()">显示遮罩层</Button>
-                        <Button @onclick="()=>refSample1.Active(false)">关闭遮罩层</Button>
+                        <Button @onclick="()=>refSample1.Active()">Show</Button>
+                        <Button @onclick="()=>refSample1.Active(false)">Hide</Button>
                     </Labeled>
                 </RunTemplate>
                 <CodeTemplate>
@@ -44,23 +44,23 @@
 </Segment>
 <br />
 <Labeled Button>
-    <Button @onclick=""()=>refSample1.Active()"">显示遮罩层</Button>
-    <Button @onclick=""()=>refSample1.Active(false)"">关闭遮罩层</Button>
+    <Button @onclick=""()=>refSample1.Active()"">Show</Button>
+    <Button @onclick=""()=>refSample1.Active(false)"">Hide</Button>
 </Labeled>
 ```
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="自定义内容">
+            <PresentationPart Title="Content Dimmer">
                 <Description>
-                    在遮罩层组件内部使用 <code>Content</code> 组件可以定义遮罩层显示的文字。
+                    A dimmer can display content
                 </Description>
                 <RunTemplate>
                     <Segment>
                         <Dimmer @ref="refSample2">
                             <Content>
                                 <Header2 Inverted Icon>
-                                    <Icon IconClass="heart" /> 你喜欢我吗？
+                                    <Icon IconClass="heart" /> Do you like me?
                                 </Header2>
                             </Content>
                         </Dimmer>
@@ -70,8 +70,8 @@
                     </Segment>
                     <br />
                     <Labeled Button>
-                        <Button @onclick="()=>refSample2.Active()">显示遮罩层</Button>
-                        <Button @onclick="()=>refSample2.Active(false)">关闭遮罩层</Button>
+                        <Button @onclick="()=>refSample2.Active()">Show</Button>
+                        <Button @onclick="()=>refSample2.Active(false)">Hide</Button>
                     </Labeled>
                 </RunTemplate>
                 <CodeTemplate>
@@ -81,7 +81,7 @@
     <Dimmer @ref=""refSample2"">
         <Content>
             <Header2 Inverted Icon>
-                <Icon IconClass=""heart"" /> 你喜欢我吗？
+                <Icon IconClass=""heart"" /> Do you like me?
             </Header2>
         </Content>
     </Dimmer>
@@ -91,31 +91,31 @@
 </Segment>
 <br />
 <Labeled Button>
-    <Button @onclick=""()=>refSample2.Active()"">显示遮罩层</Button>
-    <Button @onclick=""()=>refSample2.Active(false)"">关闭遮罩层</Button>
+    <Button @onclick=""()=>refSample2.Active()"">Show</Button>
+    <Button @onclick=""()=>refSample2.Active(false)"">Hide</Button>
 </Labeled>
 ```
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="全屏显示">
+            <PresentationPart Title="Full Screen">
                 <Description>
-                    设置 <code>FullScreen</code> 全屏遮罩。
+                    A dimmer can be formatted to be fixed to the page
                 </Description>
                 <RunTemplate>
                     <Dimmer FullScreen @ref="refSample3">
                         <Content>
                             <Header2 Inverted Icon>
                                 <Icon IconClass="attention" />
-                                使用组件的同学注意啦！
+                                Dimmer Message!
                                 <SubHeader>
-                                    请您在使用组件的过程中积极提问
+                                    Dimmer sub-header
                                 </SubHeader>
-                                <Button Emphasis="Emphasis.Positive" @onclick="()=>refSample3.Active(false)">点这里关闭</Button>
+                                <Button Emphasis="Emphasis.Positive" @onclick="()=>refSample3.Active(false)">Close</Button>
                             </Header2>
                         </Content>
                     </Dimmer>
-                    <Button Emphasis="Emphasis.Primary" @onclick="()=>refSample3.Active()">显示</Button>
+                    <Button Emphasis="Emphasis.Primary" @onclick="()=>refSample3.Active()">Show</Button>
                 </RunTemplate>
                 <CodeTemplate>
 @Code.GetCode(@"
@@ -124,22 +124,22 @@
     <Content>
         <Header2 Inverted Icon>
             <Icon IconClass=""attention"" />
-            使用组件的同学注意啦！
+            Dimmer Message!
             <SubHeader>
-                请您在使用组件的过程中积极提问
+                Dimmer sub-header
             </SubHeader>
-            <Button Emphasis=""Emphasis.Positive"" @onclick=""()=>refSample3.Active(false)"">点这里关闭</Button>
+            <Button Emphasis=""Emphasis.Positive"" @onclick=""()=>refSample3.Active(false)"">Close</Button>
         </Header2>
     </Content>
 </Dimmer>
-<Button Emphasis=""Emphasis.Primary"" @onclick=""()=>refSample3.Active()"">显示</Button>
+<Button Emphasis=""Emphasis.Primary"" @onclick=""()=>refSample3.Active()"">Show</Button>
 ```
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="启用状态">
+            <PresentationPart Title="Active">
                 <Description>
-                    设置 <code>Actived</code> 启用遮罩层。
+                    An active dimmer will dim its parent container
                 </Description>
                 <RunTemplate>
                     <Segment>
@@ -158,9 +158,9 @@
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="禁用状态">
+            <PresentationPart Title="Disabled">
                 <Description>
-                    设置 <code>Disabled</code> 禁用遮罩层。
+                    A disabled dimmer cannot be activated
                 </Description>
                 <RunTemplate>
                     <Segment>
@@ -179,16 +179,16 @@
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="文本位置">
+            <PresentationPart Title="Vertical Alignment">
                 <Description>
-                    设置 <code>VerticalPosition</code> 可以改变遮罩层中文本显示的位置
+                    A dimmer can have its content top or bottom aligned.
                 </Description>
                 <RunTemplate>
                     <Segment>
                         <Dimmer @ref="refSample4" VerticalAlignment="VerticalAlignment.Top">
                             <Content>
                                 <Header2 Inverted Icon>
-                                    <Icon IconClass="heart" /> 我在最顶部
+                                    <Icon IconClass="heart" /> On the top
                                 </Header2>
                             </Content>
                         </Dimmer>
@@ -198,14 +198,14 @@
                         <ParagraphDemo />
                     </Segment>
                     <Labeled Button>
-                        <Button @onclick="()=>refSample4.Active()">显示</Button>
-                        <Button @onclick="()=>refSample4.Active(false)">关闭</Button>
+                        <Button @onclick="()=>refSample4.Active()">Show</Button>
+                        <Button @onclick="()=>refSample4.Active(false)">Hide</Button>
                     </Labeled>
                     <Segment>
                         <Dimmer @ref="refSample5" VerticalAlignment="VerticalAlignment.Middle">
                             <Content>
                                 <Header2 Inverted Icon>
-                                    <Icon IconClass="heart" /> 我在中间哟
+                                    <Icon IconClass="heart" /> In the middle
                                 </Header2>
                             </Content>
                         </Dimmer>
@@ -215,14 +215,14 @@
                         <ParagraphDemo />
                     </Segment>
                     <Labeled Button>
-                        <Button @onclick="()=>refSample5.Active()">显示</Button>
-                        <Button @onclick="()=>refSample5.Active(false)">关闭</Button>
+                        <Button @onclick="()=>refSample5.Active()">Show</Button>
+                        <Button @onclick="()=>refSample5.Active(false)">Hide</Button>
                     </Labeled>
                     <Segment>
                         <Dimmer @ref="refSample6" VerticalAlignment="VerticalAlignment.Bottom">
                             <Content>
                                 <Header2 Inverted Icon>
-                                    <Icon IconClass="heart" /> 我喜欢下面
+                                    <Icon IconClass="heart" /> At the bottom
                                 </Header2>
                             </Content>
                         </Dimmer>
@@ -232,8 +232,8 @@
                         <ParagraphDemo />
                     </Segment>
                     <Labeled Button>
-                        <Button @onclick="()=>refSample6.Active()">显示</Button>
-                        <Button @onclick="()=>refSample6.Active(false)">关闭</Button>
+                        <Button @onclick="()=>refSample6.Active()">Show</Button>
+                        <Button @onclick="()=>refSample6.Active(false)">Hide</Button>
                     </Labeled>
                 </RunTemplate>
                 <CodeTemplate>
@@ -243,7 +243,7 @@
     <Dimmer @ref=""refSample4"" VerticalAlignment=""VerticalAlignment.Top"">
         <Content>
             <Header2 Inverted Icon>
-                <Icon IconClass=""heart"" /> 我在最顶部
+                <Icon IconClass=""heart"" /> On the top
             </Header2>
         </Content>
     </Dimmer>
@@ -253,14 +253,14 @@
     <ParagraphDemo />
 </Segment>
 <Labeled Button>
-    <Button @onclick=""()=>refSample4.Active()"">显示</Button>
-    <Button @onclick=""()=>refSample4.Active(false)"">关闭</Button>
+    <Button @onclick=""()=>refSample4.Active()"">Show</Button>
+    <Button @onclick=""()=>refSample4.Active(false)"">Hide</Button>
 </Labeled>
 <Segment>
     <Dimmer @ref=""refSample5"" VerticalAlignment=""VerticalAlignment.Middle"">
         <Content>
             <Header2 Inverted Icon>
-                <Icon IconClass=""heart"" /> 我在中间哟
+                <Icon IconClass=""heart"" /> In the middle
             </Header2>
         </Content>
     </Dimmer>
@@ -270,14 +270,14 @@
     <ParagraphDemo />
 </Segment>
 <Labeled Button>
-    <Button @onclick=""()=>refSample5.Active()"">显示</Button>
-    <Button @onclick=""()=>refSample5.Active(false)"">关闭</Button>
+    <Button @onclick=""()=>refSample5.Active()"">Show</Button>
+    <Button @onclick=""()=>refSample5.Active(false)"">Hide</Button>
 </Labeled>
 <Segment>
     <Dimmer @ref=""refSample6"" VerticalAlignment=""VerticalAlignment.Bottom"">
         <Content>
             <Header2 Inverted Icon>
-                <Icon IconClass=""heart"" /> 我喜欢下面
+                <Icon IconClass=""heart"" /> At the bottom
             </Header2>
         </Content>
     </Dimmer>
@@ -287,16 +287,16 @@
     <ParagraphDemo />
 </Segment>
 <Labeled Button>
-    <Button @onclick=""()=>refSample6.Active()"">显示</Button>
-    <Button @onclick=""()=>refSample6.Active(false)"">关闭</Button>
+    <Button @onclick=""()=>refSample6.Active()"">Show</Button>
+    <Button @onclick=""()=>refSample6.Active(false)"">Hide</Button>
 </Labeled>
 ```
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="浅色背景">
+            <PresentationPart Title="Inverted">
                 <Description>
-                    设置 <code>Inverted</code> 可以让遮罩层颜色变为淡色。
+                    A dimmer can be formatted to have its colors inverted
                 </Description>
                 <RunTemplate>
                     <Segment>
@@ -329,10 +329,10 @@
 ")
                 </CodeTemplate>
             </PresentationPart>
-            <PresentationPart Title="不透明度">
-    <Description>
-        设置 <code>Opacity</code> 改变背景的不透明度。
-    </Description>
+            <PresentationPart Title="Opacity">
+                <Description>
+                    A dimmer can be formatted to have a different depth of background shading
+                </Description>
     <RunTemplate>
         <Segment>
             <Dimmer Actived Opacity="Dimmer.OpacityLevel.Medium" />
@@ -366,16 +366,16 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <PresentationPart Title="部分遮罩">
-    <Description>
-        设置 <code>Partially</code> 可以将遮罩层定义在某个位置显示。
-    </Description>
+            <PresentationPart Title="Partially Dimmer">
+                <Description>
+                    A dimmer can be displayed only partially and limited to the overall height of its content instead of the whole to be covered area.
+                </Description>
     <RunTemplate>
         <Segment>
             <Dimmer Actived Partially="VerticalAlignment.Top">
                 <Content>
-                    <Header4 Inverted>看！</Header4>
-                    <SubHeader>我只有一部分显示在顶部</SubHeader>
+                    <Header4 Inverted>Look!</Header4>
+                    <SubHeader>Top Dimmer</SubHeader>
                 </Content>
             </Dimmer>
             <ParagraphDemo />
@@ -385,8 +385,8 @@
         <Segment>
             <Dimmer Actived Partially="VerticalAlignment.Middle">
                 <Content>
-                    <Header4 Inverted>看！</Header4>
-                    <SubHeader>我只有一部分显示在中间</SubHeader>
+                    <Header4 Inverted>Look!</Header4>
+                    <SubHeader>Middel Dimmer</SubHeader>
                 </Content>
             </Dimmer>
             <ParagraphDemo />
@@ -396,8 +396,8 @@
         <Segment>
             <Dimmer Actived Partially="VerticalAlignment.Bottom">
                 <Content>
-                    <Header4 Inverted>看！</Header4>
-                    <SubHeader>我只有一部分显示在底部</SubHeader>
+                    <Header4 Inverted>Look!</Header4>
+                    <SubHeader>Bottom Dimmer</SubHeader>
                 </Content>
             </Dimmer>
             <ParagraphDemo />
@@ -409,10 +409,10 @@
         @Code.GetCode(@"
 ```html
 <Segment>
-    <Dimmer Actived Partially=""Dimmer.PartialPosition.Top"">
+    <Dimmer Actived Partially=""VerticalAlignment.Top"">
         <Content>
-            <Header4 Inverted>看！</Header4>
-            <SubHeader>我只有一部分显示在顶部</SubHeader>
+            <Header4 Inverted>Look!</Header4>
+            <SubHeader>Top Dimmer</SubHeader>
         </Content>
     </Dimmer>
     <ParagraphDemo />
@@ -420,10 +420,10 @@
     <ParagraphDemo />
 </Segment>
 <Segment>
-    <Dimmer Actived Partially=""Dimmer.PartialPosition.Center"">
+    <Dimmer Actived Partially=""VerticalAlignment.Middel"">
         <Content>
-            <Header4 Inverted>看！</Header4>
-            <SubHeader>我只有一部分显示在中间</SubHeader>
+            <Header4 Inverted>Look!</Header4>
+            <SubHeader>Middel Dimmer</SubHeader>
         </Content>
     </Dimmer>
     <ParagraphDemo />
@@ -431,10 +431,10 @@
     <ParagraphDemo />
 </Segment>
 <Segment>
-    <Dimmer Actived Partially=""Dimmer.PartialPosition.Bottom"">
+    <Dimmer Actived Partially=""VerticalAlignment.Bottom"">
         <Content>
-            <Header4 Inverted>看！</Header4>
-            <SubHeader>我只有一部分显示在底部</SubHeader>
+            <Header4 Inverted>Look!</Header4>
+            <SubHeader>Bottom Dimmer</SubHeader>
         </Content>
     </Dimmer>
     <ParagraphDemo />
@@ -445,64 +445,6 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-            <ParameterTable Title="参数">
-                <Content>
-                    <tr>
-                        <td>FullScreen</td>
-                        <td>是否全屏</td>
-                        <td>bool</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Actived</td>
-                        <td>是否显示遮罩层</td>
-                        <td>bool</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Disabled</td>
-                        <td>是否禁用</td>
-                        <td>bool</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Inverted</td>
-                        <td>反选遮罩背景</td>
-                        <td>bool</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Partially</td>
-                        <td>部分遮罩层</td>
-                        <td>enum</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Opacity</td>
-                        <td>遮罩层的透明度</td>
-                        <td>enum</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>VerticalAlignment</td>
-                        <td>文本的垂直显示方式</td>
-                        <td>enum</td>
-                        <td></td>
-                    </tr>
-                </Content>
-        </ParameterTable>
-                            <MethodTable>
-            <Content>
-                <tr>
-                    <td>Active(bool active = true)</td>
-                    <td>显示/隐藏遮罩层</td>
-                </tr>
-                <tr>
-                    <td>Disabled(bool disabled = true)</td>
-                    <td>启用/禁用遮罩层</td>
-                </tr>
-            </Content>
-        </MethodTable>
         </Body>
     </Pager>
 @code{

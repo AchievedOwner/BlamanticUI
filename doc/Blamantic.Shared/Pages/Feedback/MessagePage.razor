@@ -1,46 +1,43 @@
 ﻿@page "/component/feedback/message"
 
 <Pager DataSource="@(new List<string>(new[]{
-                         "示例","列表消息","带图标的消息","可见","隐藏","压缩空间","状态色彩","颜色","尺寸","参数"
+                         "Demo","List Message","Icon Message","Visible","Hidden","Compact","Floating","Attached","State","Color","Size"
                      }))">
     <Body>
         <Header1 Divider>
-            消息
+            Message
             <SubHeader>
-                消息显示解释附近内容的信息
+                A message displays information that explains nearby content
             </SubHeader>
         </Header1>
-        <Segment>
-            使用 <code>Message</code> 呈现消息组件。
-        </Segment>
-        <PresentationPart Title="示例">
+        <PresentationPart Title="Demo">
             <RunTemplate>
                 <Message>
-                    <Header>改签服务</Header>
-                    我们很抱歉的通知您，您的改签服务没有成功，请联系当地的客服人员进行详细查询。
+                    <Header>Changes in Service</Header>
+                    We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.
                 </Message>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Message>
-    <Header>改签服务</Header>
-    我们很抱歉的通知您，您的改签服务没有成功，请联系当地的客服人员进行详细查询。
+    <Header>Changes in Service</Header>
+    We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.
 </Message>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="列表消息">
+        <PresentationPart Title="List Message">
             <Description>
-                可以在消息区域内嵌套 <code>List</code> 组件或其他组件。
+                A message with a list
             </Description>
             <RunTemplate>
                 <Message>
-                    <Header>版本更新</Header>
+                    <Header>New Site Features</Header>
                     <List Bulleted>
-                        <Item>你可以上传封面图</Item>
-                        <Item>修复了不能进行在线生成签名的问题</Item>
+                        <Item>You can now have cover images on blog pages</Item>
+                        <Item>Drafts will now auto-save while writing</Item>
                     </List>
                 </Message>
             </RunTemplate>
@@ -48,26 +45,26 @@
                 @Code.GetCode(@"
 ```html
 <Message>
-    <Header>版本更新</Header>
+    <Header>New Site Features</Header>
     <List Bulleted>
-        <Item>你可以上传封面图</Item>
-        <Item>修复了不能进行在线生成签名的问题</Item>
+        <Item>You can now have cover images on blog pages</Item>
+        <Item>Drafts will now auto-save while writing</Item>
     </List>
 </Message>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="带图标的消息">
+        <PresentationPart Title="Icon Message">
             <Description>
-                设置 <code>Icon</code> 后可以使用 <code>Icon</code> 组件使消息中呈现图标。
+                A message can contain an icon.
             </Description>
             <RunTemplate>
                 <Message Icon>
                     <Icon IconClass="inbox" />
                     <Content>
-                        <Header>听说过消息盒子吗？</Header>
-                        开启订阅，轻松收纳最新消息。
+                        <Header>Have you heard about our mailing list?</Header>
+                        Get the best news in your e-mail every day.
                     </Content>
                 </Message>
             </RunTemplate>
@@ -77,112 +74,158 @@
 <Message Icon>
     <Icon IconClass=""inbox""/>
     <Content>
-        <Header>听说过消息盒子吗？</Header>
-        开启订阅，轻松收纳最新消息。
+        <Header>Have you heard about our mailing list?</Header>
+        Get the best news in your e-mail every day.
     </Content>
 </Message>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="可见">
+        <PresentationPart Title="Visible">
             <Description>
-                设置 <code>Visible</code> 强制显示组件。
+                A message can be set to visible to force itself to be shown.
             </Description>
             <RunTemplate>
                 <Message Visibile>
-                    你总是可以看到我
+                    You can always see me
                 </Message>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <Message Visibile>
-    你总是可以看到我
+    You can always see me
 </Message>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-                <PresentationPart Title="隐藏">
-            <Description>
-                设置 <code>Hidden</code> 强制隐藏。
-            </Description>
+                <PresentationPart Title="Hidden">
+                    <Description>
+                        A message can be hidden
+                    </Description>
             <RunTemplate>
                 <Message Hidden>
-                    你看不见我！！
+                    Nothing you can see!!
                 </Message>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <Message Hidden>
-    你看不见我!!
+    Nothing you can see!!
 </Message>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="压缩空间">
-    <Description>
-        设置 <code>Compact</code> 使组件的宽度和文字长度一致。
-    </Description>
+        <PresentationPart Title="Compact">
+            <Description>
+                A message can only take up the width of its content.
+            </Description>
     <RunTemplate>
         <Message Compact>
-            我的宽度就这么长，所以不会占一行。
+            Get all the best inventions in your e-mail every day. Sign up now!
         </Message>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Message Compact>
-    我的宽度就这么长，所以不会占一行。
+    Get all the best inventions in your e-mail every day. Sign up now!
 </Message>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="状态色彩">
+        <PresentationPart Title="Floating">
             <Description>
-                设置 <code>State</code> 使消息框有一些状态的色彩。
+                A message can float above content that it is related to
+            </Description>
+            <RunTemplate>
+                <Message Floating>
+                    Way to go!
+                </Message>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Message Floating>
+    Way to go!
+</Message>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Attached">
+            <Description>
+                A message can be formatted to attach itself to other content
+            </Description>
+            <RunTemplate>
+                <Message Attached>
+                    <Header>Welcome to our site!</Header>
+                    <p>Fill out the form below to sign-up for a new account</p>
+                </Message>
+                <Segment Attached>
+                    You can have a form here
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Message Attached>
+    <Header>Welcome to our site!</Header>
+    <p>Fill out the form below to sign-up for a new account</p>
+</Message>
+<Segment Attached>
+    You can have a form here
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="State">
+            <Description>
+                A message can be formatted to display as state 
             </Description>
             <RunTemplate>
                 <Message State="State.Info">
-                    这是一个提示框，所以是蓝色。
+                    Here is information message
                 </Message>
                 <Message State="State.Warning">
-                    警告！！举起手来！！
+                    Attention please
                 </Message>
                 <Message State="State.Success">
-                    成功的样子是绿色的
+                    Submit successfully
                 </Message>
                 <Message State="State.Error">
-                    对不起，你的表单出错啦！
+                    Error! You have a mistake
                 </Message>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <Message State=""State.Info"">
-    这是一个提示框，所以是蓝色。
+     Here is information message
 </Message>
 <Message State=""State.Warning"">
-    警告！！举起手来！！
+    Attention please
 </Message>
 <Message State=""State.Success"">
-    成功的样子是绿色的
+    Submit successfully
 </Message>
 <Message State=""State.Error"">
-    对不起，你的表单出错啦！
+    Error! You have a mistake
 </Message>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="颜色">
-    <Description>
-        设置 <code>Color</code> 让消息框有不同的颜色。
-    </Description>
+        <PresentationPart Title="Color">
+            <Description>
+                A message can be formatted to be different colors
+            </Description>
     <RunTemplate>
         <Message Color="Color.Red">
             Red
@@ -229,10 +272,10 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="尺寸">
-    <Description>
-        设置 <code>Size</code> 有不同尺寸。
-    </Description>
+        <PresentationPart Title="Size">
+            <Description>
+                A message can have different sizes
+            </Description>
     <RunTemplate>
         <Message Size="Size.Mini">
             Mini
@@ -267,63 +310,5 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <ParameterTable>
-            <Content>
-                <tr>
-                    <td>State</td>
-                    <td>设置文本具有醒目状态的样式</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Attached</td>
-                    <td>是否需要吸附于相对位置的其他组件</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>AttachedVertical</td>
-                    <td>垂直方向上的吸附位置</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Icon</td>
-                    <td>是否包含 <code>Icon</code> 组件</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Visibile</td>
-                    <td>是否可见</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Hidden</td>
-                    <td>是否隐藏</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Compact</td>
-                    <td>是否对内边距的空间进行一定的压缩</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td>颜色</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Size</td>
-                    <td>尺寸大小</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-            </Content>
-        </ParameterTable>
     </Body>
 </Pager>

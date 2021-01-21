@@ -84,6 +84,11 @@ namespace BlamanticUI
         [Parameter]public Size? Size { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether a message can float above content that it is related to.
+        /// </summary>
+        [Parameter][CssClass("floating")] public bool Floating { get; set; }
+
+        /// <summary>
         /// Override to create the CSS class that component need.
         /// </summary>
         /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>

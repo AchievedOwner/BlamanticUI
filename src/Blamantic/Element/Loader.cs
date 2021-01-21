@@ -78,7 +78,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the speed of spin.
         /// </summary>
-        [Parameter] public Speed Speed { get; set; } = Speed.Default;
+        [Parameter][CssClass] public Speed? Speed { get; set; }
         /// <summary>
         /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
