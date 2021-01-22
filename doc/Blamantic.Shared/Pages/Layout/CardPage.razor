@@ -1,38 +1,32 @@
 ﻿@page "/component/layout/card"
 
 <Pager DataSource="@(new List<string>(new[]{
-                         "示例","内容块","居中","超链接","卡片组","结合按钮","占满父容器","水平排列","反转颜色","固定每行数量","Card 参数","CardGroup 参数"
+                         "Demo","Card Group","Multiple Contents","Centered Card","Link Card","Raised Card","Fluid Card","Horizontal Cards","Inverted","Column Count"
                      }))">
     <Body>
         <Header1>
-            卡片
+            Card
             <SubHeader>
-                卡片以类似扑克牌的方式显示站点内容
+                A card displays site content in a manner similar to a playing card
             </SubHeader>
         </Header1>
-        <Segment>
-            使用 <code>Card</code> 作为卡片组件，并通过其他组件配合使用组成不同风格的卡片。
-        </Segment>
-        <PresentationPart Title="示例">
-    <Description>
-        
-    </Description>
+        <PresentationPart Title="Demo">
     <RunTemplate>
         <Card>
             <ImageContent>
-                <Image Source="img/avatar/elyse.png" />
+                <Image Src="img/avatar/elyse.png" />
             </ImageContent>
             <Content>
                 <Anchor Header>Elyse</Anchor>
                 <Introduction>
-                    2018 年加入
+                    Joined in 2013
                 </Introduction>
                 <Description>
-                    Elyse 是一名 UI 设计师，住在北京朝阳区。
+                    Elyse is an art director living in New York.
                 </Description>
             </Content>
             <ExtraContent>
-                <Icon IconClass="users" /> 22 个朋友
+                <Icon IconClass="users" /> 22 Friends
             </ExtraContent>
         </Card>
     </RunTemplate>
@@ -41,51 +35,159 @@
 ```html
 <Card>
     <ImageContent>
-        <Image Source=""img/avatar/elyse.png"" />
+        <Image Src=""img/avatar/elyse.png"" />
     </ImageContent>
     <Content>
         <Anchor Header>Elyse</Anchor>
         <Introduction>
-            2018 年加入
+            Joined in 2013
         </Introduction>
         <Description>
-            Elyse 是一名 UI 设计师，住在北京朝阳区。
+            Elyse is an art director living in New York.
         </Description>
     </Content>
     <ExtraContent>
-        <Icon IconClass=""users"" /> 22 个朋友
+        <Icon IconClass=""users"" /> 22 Friends
     </ExtraContent>
 </Card>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="内容块">
+        
+        <PresentationPart Title="Card Group">
+    <RunTemplate>
+        <CardGroup>
+            <Card>
+                <Content>
+                    <Header>Matthew</Header>
+                </Content>
+                <ImageContent>
+                    <Image Src="img/avatar/elyse.png" />
+                </ImageContent>
+                <Content>
+                    Matthew is an interior designer living in New York.
+                </Content>
+                <Button Attached AttachedVertical="VerticalPosition.Top">
+                    <Icon IconClass="add" />
+                    Add Friend
+                </Button>
+            </Card>
+            <Card>
+                <Content>
+                    <Header>Molly</Header>
+                </Content>
+                <ImageContent>
+                    <Image Src="img/avatar/kristy.png" />
+                </ImageContent>
+                <Content>
+                    Molly is a personal assistant living in Paris.
+                </Content>
+                <Button Attached AttachedVertical="VerticalPosition.Top">
+                    <Icon IconClass="add" />
+                    Add Friend
+                </Button>
+            </Card>
+            <Card>
+                <Content>
+                    <Header>Elyse</Header>
+                </Content>
+                <ImageContent>
+                    <Image Src="img/avatar/matthew.png" />
+                </ImageContent>
+                <Content>
+                    Elyse is a copywriter working in New York.
+                </Content>
+                <Button Attached AttachedVertical="VerticalPosition.Top">
+                    <Icon IconClass="add" />
+                    Add Friend
+                </Button>
+            </Card>
+        </CardGroup>
+    </RunTemplate>
+    <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<CardGroup>
+    <Card>
+        <Content>
+            <Header>Matthew</Header>
+        </Content>
+        <ImageContent>
+            <Image Src=""img/avatar/elyse.png"" />
+        </ImageContent>
+        <Content>
+            Matthew is an interior designer living in New York.
+        </Content>
+        <Button Attached AttachedVertical=""VerticalPosition.Top"">
+            <Icon IconClass=""add"" />
+            Add Friend
+        </Button>
+    </Card>
+    <Card>
+        <Content>
+            <Header>Molly</Header>
+        </Content>
+        <ImageContent>
+            <Image Src=""img/avatar/kristy.png"" />
+        </ImageContent>
+        <Content>
+            Molly is a personal assistant living in Paris.
+        </Content>
+        <Button Attached AttachedVertical=""VerticalPosition.Top"">
+            <Icon IconClass=""add"" />
+            Add Friend
+        </Button>
+    </Card>
+    <Card>
+        <Content>
+            <Header>Elyse</Header>
+        </Content>
+        <ImageContent>
+            <Image Src=""img/avatar/matthew.png"" />
+        </ImageContent>
+        <Content>
+            Elyse is a copywriter working in New York.
+        </Content>
+        <Button Attached AttachedVertical=""VerticalPosition.Top"">
+            <Icon IconClass=""add"" />
+            Add Friend
+        </Button>
+    </Card>
+</CardGroup>
+```
+")
+    </CodeTemplate>
+</PresentationPart>
+        <PresentationPart Title="Multiple Contents">
     <Description>
-        在卡片中，可以多次使用 <code>Content</code> 组件来区分每一块的内容。
+        You can define multiple contents in card.
     </Description>
     <RunTemplate>
         <Card>
             <Content>
-                <Header4 Floated="HorizontalPosition.Right">15小时前</Header4>
-                <Avatar Source="img/avatar/stevie.jpg"/>
+                <Header4 Floated="HorizontalPosition.Right">15 hours ago</Header4>
+                <Avatar Src="img/avatar/stevie.jpg"/>
             </Content>
             <Content>
-                Stevie 的日程表
+                Stevie's Schedule
             </Content>
             <ImageContent>
-                <Image Source="img/image.png"/>
+                <Image Src="img/image.png"/>
             </ImageContent>
-            <Content>
-                <Element Floated="HorizontalPosition.Right">
-                    <Icon IconClass="hear outline like" /> 24 个赞
-                </Element>
-                <Icon IconClass="comment"/> 4 条评论
+            <Content>                
+                <Grid EqualWidth>
+                    <Column Floated="HorizontalPosition.Left">
+                        <Icon IconClass="hear outline like" /> 24 Liks
+                    </Column>
+                    <Column Floated="HorizontalPosition.Right"><Icon IconClass="comment" /> 4 Comments</Column>
+                </Grid>          
+                
             </Content>
             <ExtraContent>
                 <InputBox Transparent Size="Size.Large" Icon="HorizontalPosition.Left">
                     <Icon IconClass="heart outline"/>
-                    <input placeholder="添加评论"/>
+                    <input placeholder="New Comment"/>
                 </InputBox>
             </ExtraContent>
         </Card>
@@ -95,25 +197,28 @@
 ```html
 <Card>
     <Content>
-        <Header4 Floated=""HorizontalPosition.Right"">15小时前</Header4>
-        <Avatar Source=""img/avatar/stevie.jpg""/>
+        <Header4 Floated=""HorizontalPosition.Right"">15 hours ago</Header4>
+        <Avatar Src=""img/avatar/stevie.jpg""/>
     </Content>
     <Content>
-        Stevie 的日程表
+        Stevie's Schedule
     </Content>
     <ImageContent>
-        <Image Source=""img/image.png""/>
+        <Image Src=""img/image.png""/>
     </ImageContent>
-    <Content>
-        <Element Floated=""HorizontalPosition.Right"">
-            <Icon IconClass=""hear outline like"" /> 24 个赞
-        </Element>
-        <Icon IconClass=""comment""/> 4 条评论
+    <Content>                
+        <Grid EqualWidth>
+            <Column Floated=""HorizontalPosition.Left"">
+                <Icon IconClass=""hear outline like"" /> 24 Liks
+            </Column>
+            <Column Floated=""HorizontalPosition.Right""><Icon IconClass=""comment"" /> 4 Comments</Column>
+        </Grid>          
+                
     </Content>
     <ExtraContent>
         <InputBox Transparent Size=""Size.Large"" Icon=""HorizontalPosition.Left"">
             <Icon IconClass=""heart outline""/>
-            <input placeholder=""添加评论""/>
+            <input placeholder=""New Comment""/>
         </InputBox>
     </ExtraContent>
 </Card>
@@ -122,14 +227,14 @@
     </CodeTemplate>
 </PresentationPart>
         
-        <PresentationPart Title="居中">
-    <Description>
-        设置 <code>Centered</code> 居中显示
-    </Description>
+        <PresentationPart Title="Centered Card">
+            <Description>
+                A card can center itself inside its container
+            </Description>
     <RunTemplate>
         <Card Centered>
             <ImageContent>
-                <Image Source="img/avatar/molly.png" />
+                <Image Src="img/avatar/molly.png" />
             </ImageContent>
             <Content>
                 <Header>Molly</Header>
@@ -141,7 +246,7 @@
 ```html
 <Card Centered>
     <ImageContent>
-        <Image Source=""img/avatar/molly.png"" />
+        <Image Src=""img/avatar/molly.png"" />
     </ImageContent>
     <Content>
         <Header>Molly</Header>
@@ -151,20 +256,20 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="超链接">
-    <Description>
-        设置 <code>Linked</code> 使卡片具有超链接样式，或设置 <code>Link</code> 超链接地址参数。
-    </Description>
+        <PresentationPart Title="Link Card">
+            <Description>
+                A card can be formatted so that the entire contents link to another page
+            </Description>
     <RunTemplate>
         <Card Linked>
             <Content>
-                <Header>标题</Header>
+                <Header>Header</Header>
                 <ParagraphDemo FullWidth />
             </Content>
         </Card>
-        <Card Link="http://www.baidu.com" Target="LinkTarget.Blank">
+        <Card Link="http://www.bing.com" Target="LinkTarget.Blank">
             <Content>
-                <Header>百度一下</Header>
+                <Header>Bing</Header>
                 <ParagraphDemo FullWidth />
             </Content>
         </Card>
@@ -174,22 +279,28 @@
 ```html
 <Card Linked>
     <Content>
-        <Header>标题</Header>
+        <Header>Header</Header>
         <ParagraphDemo/>
+    </Content>
+</Card>        
+<Card Link=""http://www.bing.com"" Target=""LinkTarget.Blank"">
+    <Content>
+        <Header>Bing</Header>
+        <ParagraphDemo FullWidth />
     </Content>
 </Card>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="阴影效果">
-    <Description>
-        设置 <code>Raised</code> 使卡片背后显示阴影。
-    </Description>
+        <PresentationPart Title="Raised Card">
+            <Description>
+                A card may be formatted to raise above the page.
+            </Description>
     <RunTemplate>
         <Card Raised>
             <Content>
-                <Header>标题</Header>
+                <Header>Header</Header>
                 <ParagraphDemo FullWidth />
             </Content>
         </Card>
@@ -199,7 +310,7 @@
 ```html
 <Card Raised>
     <Content>
-        <Header>标题</Header>
+        <Header>Header</Header>
         <ParagraphDemo FullWidth />
     </Content>
 </Card>
@@ -207,174 +318,16 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="卡片组">
-    <Description>
-        使用 <code>CardGroup</code> 组件来包含 <code>Card</code> 组件形成卡片组。
-    </Description>
+        <PresentationPart Title="Fluid Card">
+            <Description>
+                A fluid card takes up the width of its container
+            </Description>
     <RunTemplate>
-        <CardGroup>
-            <Card>
-                <Content>
-                    <Header>标题1</Header>
-                </Content>
-                <Content>
-                    <ParagraphDemo FullWidth />
-                </Content>
-            </Card>
-            <Card>
-                <Content>
-                    <Header>标题2</Header>
-                </Content>
-                <Content>
-                    <ParagraphDemo FullWidth />
-                    <ParagraphDemo FullWidth />
-                </Content>
-            </Card>
-            <Card>
-                <Content>
-                    <Header>标题3</Header>
-                </Content>
-                <Content>
-                    <ParagraphDemo FullWidth />
-                </Content>
-            </Card>
-            <Card>
-                <Content>
-                    <Header>标题4</Header>
-                </Content>
-                <Content>
-                    <ParagraphDemo FullWidth />
-                </Content>
-            </Card>
-        </CardGroup>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<CardGroup>
-    <Card>...</Card>
-    <Card>...</Card>
-    <Card>...</Card>
-    <Card>...</Card>
-</CardGroup>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="结合按钮">
-    <RunTemplate>
-        <CardGroup>
-            <Card>
-                <Content>
-                    <Header>Elyse</Header>
-                </Content>
-                <ImageContent>
-                    <Image Source="img/avatar/elyse.png" />
-                </ImageContent>
-                <Content>
-                    来自于北京，目前单身。
-                </Content>
-                <Button Attached AttachedVertical="VerticalPosition.Top">
-                    <Icon IconClass="add" />
-                    加为好友
-                </Button>
-            </Card>
-            <Card>
-                <Content>
-                    <Header>Kristy</Header>
-                </Content>
-                <ImageContent>
-                    <Image Source="img/avatar/kristy.png" />
-                </ImageContent>
-                <Content>
-                    喜欢弹吉他，唱歌，是一名学校的音乐老师。
-                </Content>
-                <Button Attached AttachedVertical="VerticalPosition.Top">
-                    <Icon IconClass="add" />
-                    加为好友
-                </Button>
-            </Card>
-            <Card>
-                <Content>
-                    <Header>Matthew</Header>
-                </Content>
-                <ImageContent>
-                    <Image Source="img/avatar/matthew.png" />
-                </ImageContent>
-                <Content>
-                    喜欢交流文学作品，已经自己写了好几部小说，而且十分畅销。
-                </Content>
-                <Button Attached AttachedVertical="VerticalPosition.Top">
-                    <Icon IconClass="add" />
-                    加为好友
-                </Button>
-            </Card>
-        </CardGroup>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<CardGroup>
-    <Card>
-        <Content>
-            <Header>Elyse</Header>
-        </Content>
-        <ImageContent>
-            <Image Source=""img/avatar/elyse.png"" />
-        </ImageContent>
-        <Content>
-            来自于北京，目前单身。
-        </Content>
-        <Button Attached AttachedVertical=""VerticalPosition.Top"">
-            <Icon IconClass=""add"" />
-            加为好友
-        </Button>
-    </Card>
-    <Card>
-        <Content>
-            <Header>Kristy</Header>
-        </Content>
-        <ImageContent>
-            <Image Source=""img/avatar/kristy.png"" />
-        </ImageContent>
-        <Content>
-            喜欢弹吉他，唱歌，是一名学校的音乐老师。
-        </Content>
-        <Button Attached AttachedVertical=""VerticalPosition.Top"">
-            <Icon IconClass=""add"" />
-            加为好友
-        </Button>
-    </Card>
-    <Card>
-        <Content>
-            <Header>Matthew</Header>
-        </Content>
-        <ImageContent>
-            <Image Source=""img/avatar/matthew.png"" />
-        </ImageContent>
-        <Content>
-            喜欢交流文学作品，已经自己写了好几部小说，而且十分畅销。
-        </Content>
-        <Button Attached AttachedVertical=""VerticalPosition.Top"">
-            <Icon IconClass=""add"" />
-            加为好友
-        </Button>
-    </Card>
-</CardGroup>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="占满父容器">
-    <Description>
-        设置 <code>Fluid</code> 将宽度占满父容器。
-    </Description>
-    <RunTemplate>
-        <Grid ColSpan="ColSpan.Three3">
+        <Grid Span="ColSpan.Three3">
             <Column>
                 <Card Fluid>
                     <ImageContent>
-                        <Image Source="img/avatar/elyse.png" />
+                        <Image Src="img/avatar/elyse.png" />
                     </ImageContent>
                     <Content>
                         <Header>Elyse</Header>
@@ -384,7 +337,7 @@
             <Column>
                 <Card Fluid>
                     <ImageContent>
-                        <Image Source="img/avatar/kristy.png" />
+                        <Image Src="img/avatar/kristy.png" />
                     </ImageContent>
                     <Content>
                         <Header>Kristy</Header>
@@ -394,7 +347,7 @@
             <Column>
                 <Card Fluid>
                     <ImageContent>
-                        <Image Source="img/avatar/matthew.png" />
+                        <Image Src="img/avatar/matthew.png" />
                     </ImageContent>
                     <Content>
                         <Header>Matthew</Header>
@@ -406,11 +359,11 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid ColSpan=""ColSpan.Three3"">
+<Grid Span=""ColSpan.Three3"">
     <Column>
         <Card Fluid>
             <ImageContent>
-                <Image Source=""img/avatar/elyse.png"" />
+                <Image Src=""img/avatar/elyse.png"" />
             </ImageContent>
             <Content>
                 <Header>Elyse</Header>
@@ -420,7 +373,7 @@
     <Column>
         <Card Fluid>
             <ImageContent>
-                <Image Source=""img/avatar/kristy.png"" />
+                <Image Src=""img/avatar/kristy.png"" />
             </ImageContent>
             <Content>
                 <Header>Kristy</Header>
@@ -430,7 +383,7 @@
     <Column>
         <Card Fluid>
             <ImageContent>
-                <Image Source=""img/avatar/matthew.png"" />
+                <Image Src=""img/avatar/matthew.png"" />
             </ImageContent>
             <Content>
                 <Header>Matthew</Header>
@@ -442,46 +395,26 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="水平排列">
-    <Description>
-        设置 <code>Horizontal</code> 可让纵向排列的部分进行水平排列。
-    </Description>
+        <PresentationPart Title="Horizontal Cards">
+            <Description>
+                A card can display horizontally
+            </Description>
     <RunTemplate>
         <Card Horizontal>
             <ImageContent>
-                <Image Source="img/avatar/molly.png" />
+                <Image Src="img/avatar/molly.png" />
             </ImageContent>
             <Content>
                 <Header>Molly</Header>
                 <ParagraphDemo FullWidth/>
             </Content>
         </Card>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<Card Horizontal>
-    <ImageContent>
-        <Image Source=""img/avatar/molly.png"" />
-    </ImageContent>
-    <Content>
-        <Header>Molly</Header>
-        <ParagraphDemo/>
-    </Content>
-</Card>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="">
-    <Description>
-        设置 <code>CardGroup</code> 的 <code>Horizontal</code> 使所有的卡片内部水平排列。
-    </Description>
-    <RunTemplate>
+
+        
         <CardGroup Horizontal>
             <Card>
                 <ImageContent>
-                    <Image Source="img/avatar/molly.png" />
+                    <Image Src="img/avatar/molly.png" />
                 </ImageContent>
                 <Content>
                     <Header>Molly</Header>
@@ -490,7 +423,7 @@
             </Card>
             <Card>
                 <ImageContent>
-                    <Image Source="img/avatar/kristy.png" />
+                    <Image Src="img/avatar/kristy.png" />
                 </ImageContent>
                 <Content>
                     <Header>Kristy</Header>
@@ -502,10 +435,20 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<CardGroup>
+<Card Horizontal>
+    <ImageContent>
+        <Image Src=""img/avatar/molly.png"" />
+    </ImageContent>
+    <Content>
+        <Header>Molly</Header>
+        <ParagraphDemo/>
+    </Content>
+</Card>
+
+<CardGroup Horizontal>
     <Card>
         <ImageContent>
-            <Image Source=""img/avatar/molly.png"" />
+            <Image Src=""img/avatar/molly.png"" />
         </ImageContent>
         <Content>
             <Header>Molly</Header>
@@ -514,7 +457,7 @@
     </Card>
     <Card>
         <ImageContent>
-            <Image Source=""img/avatar/kristy.png"" />
+            <Image Src=""img/avatar/kristy.png"" />
         </ImageContent>
         <Content>
             <Header>Kristy</Header>
@@ -526,16 +469,16 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-                <PresentationPart Title="反转颜色">
-    <Description>
-        设置 <code>Inverted</code> 可以在父组件的 <code>Inverted</code> 时进行反色背景显示。
-    </Description>
+                <PresentationPart Title="Inverted">
+                    <Description>
+                        Card's colors can be inverted
+                    </Description>
     <RunTemplate>
         <Segment Inverted>
             <CardGroup Inverted>
                 <Card>
                     <ImageContent>
-                        <Image Source="img/avatar/molly.png" />
+                        <Image Src="img/avatar/molly.png" />
                     </ImageContent>
                     <Content>
                         <Header>Molly</Header>
@@ -544,7 +487,7 @@
                 </Card>
                 <Card>
                     <ImageContent>
-                        <Image Source="img/avatar/kristy.png" />
+                        <Image Src="img/avatar/kristy.png" />
                     </ImageContent>
                     <Content>
                         <Header>Kristy</Header>
@@ -561,7 +504,7 @@
     <CardGroup Inverted>
         <Card>
             <ImageContent>
-                <Image Source=""img/avatar/molly.png"" />
+                <Image Src=""img/avatar/molly.png"" />
             </ImageContent>
             <Content>
                 <Header>Molly</Header>
@@ -570,7 +513,7 @@
         </Card>
         <Card>
             <ImageContent>
-                <Image Source=""img/avatar/kristy.png"" />
+                <Image Src=""img/avatar/kristy.png"" />
             </ImageContent>
             <Content>
                 <Header>Kristy</Header>
@@ -583,70 +526,70 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="固定每行数量">
-    <Description>
-        设置 <code>ColSpan</code> 固定每行的数量。
-    </Description>
+        <PresentationPart Title="Column Count">
+            <Description>
+                A group of cards can set how many cards should exist in a row
+            </Description>
     <RunTemplate>
-        <CardGroup ColSpan="ColSpan.Five5">
+        <CardGroup Span="ColSpan.Five5">
             <Card Color="Color.Red">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Orange">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Yellow">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Green">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Blue">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Pink">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Olive">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Brown">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Purple">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Teal">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Black">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
             <Card Color="Color.Grey">
                 <ImageContent>
-                    <Image Source="img/image.png" />
+                    <Image Src="img/image.png" />
                 </ImageContent>
             </Card>
         </CardGroup>
@@ -654,65 +597,65 @@
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<CardGroup ColSpan=""ColSpan.Five5"">
+<CardGroup Span=""ColSpan.Five5"">
     <Card Color=""Color.Red"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Orange"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Yellow"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Green"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Blue"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Pink"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Olive"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Brown"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Purple"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Teal"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Black"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
     <Card Color=""Color.Grey"">
         <ImageContent>
-            <Image Source=""img/image.png"" />
+            <Image Src=""img/image.png"" />
         </ImageContent>
     </Card>
 </CardGroup>
@@ -720,93 +663,5 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-                        <ParameterTable Title="Card 参数">
-                    <Content>
-                        <tr>
-                            <td>Fluid</td>
-                            <td>占满父容器</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Centered</td>
-                            <td>居中显示</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Horizontal</td>
-                            <td>内容横向排列</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Raised</td>
-                            <td>阴影效果</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Linked</td>
-                            <td>超链接样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Link</td>
-                            <td>超链接地址</td>
-                            <td>string</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Target</td>
-                            <td>超链接目标</td>
-                            <td>enum</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Color</td>
-                            <td>底部边框颜色</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        
-                    </Content>
-        </ParameterTable>
-                        <ParameterTable Title="CardGroup 参数">
-                    <Content>
-                        <tr>
-                            <td>Horizontal</td>
-                            <td>统一 <code>Card</code> 采用横向排列</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Inverted</td>
-                            <td>反转背景</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>ColSpan</td>
-                            <td>每行固定数量</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Doubling</td>
-                            <td>固定手机屏幕显示每行2个</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Stackable</td>
-                            <td>固定手机屏幕每行显示单个</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        
-                    </Content>
-        </ParameterTable>
     </Body>
 </Pager>

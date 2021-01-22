@@ -87,6 +87,13 @@ namespace BlamanticUI
         /// Gets or sets the color.
         /// </summary>
         [Parameter]public Color? Color { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether this card may be formatted to raise above the page.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if raised; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter] [CssClass("raised")] public bool Raised { get; set; }
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
