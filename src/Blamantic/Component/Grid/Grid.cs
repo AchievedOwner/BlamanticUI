@@ -16,7 +16,6 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasEqualWidth" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCentered" />
-    /// <seealso cref="BlamanticUI.Abstractions.IHasAnyDeviceResponsive" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasStackable" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasDoubling" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasPadded" />
@@ -35,7 +34,11 @@ namespace BlamanticUI
         IHasSpan,
         IHasCelled,
         IHasRelaxed,
-        IHasVery
+        IHasVery,
+        IHasDivider,
+        IHasVertical,
+        IHasHorizontal,
+        IHasCompact
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Grid"/> class.
@@ -84,6 +87,16 @@ namespace BlamanticUI
         /// Gets or sets a value indicating whether the responsive support on only device.
         /// </summary>
         [Parameter] [CssClass("only", Order = 99)] public bool Only { get; set; }
+
+        /// <summary>
+        /// Gets or sets vertical of each row.
+        /// </summary>
+        [Parameter] [CssClass("vertically")] public bool Vertical { get; set; }
+        /// <summary>
+        /// Gets or sets horizontal of each row.
+        /// </summary>
+        [Parameter] [CssClass("horizontally")] public bool Horizontal { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether each child component has equal width.
         /// </summary>
@@ -109,12 +122,17 @@ namespace BlamanticUI
         [Parameter]public bool Padded { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether <see cref="Celled"/> only display inside of columns.
+        /// </summary>
+        [Parameter] [CssClass("internally")] public bool Internal { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether to display border.
         /// </summary>
         /// <value>
         ///   <c>true</c> if has border; otherwise, <c>false</c>.
         /// </value>
-        [Parameter][CssClass("internally celled")] public bool Celled { get; set; }
+        [Parameter][CssClass("celled")] public bool Celled { get; set; }
         /// <summary>
         /// Gets or sets a layout that can be automatically recognized
         /// </summary>
@@ -126,6 +144,25 @@ namespace BlamanticUI
         ///   <c>true</c> if relaxed; otherwise, <c>false</c>.
         /// </value>
         [Parameter]public bool Relaxed { get; set; }
+
+        /// <summary>
+        /// Gets or sets display a divider between each column in horizontal layout.
+        /// </summary>
+        [Parameter]public bool Divider { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether each row stretch its contents to take up the entire column height
+        /// </summary>
+        [Parameter] [CssClass("stretched")] public bool Stretched { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether to compact space of text.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if compact; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter] public bool Compact { get; set; }
+
+
 
         /// <summary>
         /// Override to create the CSS class that component need.

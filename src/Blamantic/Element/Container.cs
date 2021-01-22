@@ -14,7 +14,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasTexted" />
     [HtmlTag]
-    public class Container : BlamanticChildContentComponentBase, IHasUIComponent, IHasChildContent, IHasFluid, IHasTexted
+    public class Container : BlamanticChildContentComponentBase, IHasUIComponent, IHasFluid, IHasTexted,IHasHorizontalAlignment,IHasStackable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Container"/> class.
@@ -34,6 +34,18 @@ namespace BlamanticUI
         ///   <c>true</c> if fluid; otherwise, <c>false</c>.
         /// </value>
         [Parameter]public bool Fluid { get; set; }
+        /// <summary>
+        /// Gets or sets the horizontal alignment of text.
+        /// </summary>
+        [Parameter]public HorizontalAlignment? HorizontalAlignment { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether layout always stackable.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if stackable; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter]public bool Stackable { get; set; }
+
         /// <summary>
         /// Override to create the CSS class that component need.
         /// </summary>

@@ -38,6 +38,10 @@ namespace BlamanticUI
         /// Gets or sets a value indicating whether alignment is centered in row.
         /// </summary>
         [Parameter]public bool Centered { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether a row stretch its contents to take up the entire column height
+        /// </summary>
+        [Parameter][CssClass("stretched")] public bool Stretched { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.

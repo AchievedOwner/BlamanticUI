@@ -57,7 +57,7 @@ namespace BlamanticUI
         [Parameter] public int FadeInterval { get; set; }
 
         private CountdownTimer _countdownTimer;
-        private int _progress = 100;
+        private int _progress = 0;
 
         private Timer _transitionTimer;
 
@@ -71,9 +71,11 @@ namespace BlamanticUI
         {
             if (Timeout.HasValue)
             {
+                _progress = Setting.ProgressBarIncrease == HorizontalPosition.Left ? 0 : 100;
+
                 _countdownTimer = new CountdownTimer(Timeout.Value);
                 _countdownTimer.OnTick += CalculateProgress;
-                _countdownTimer.OnElapsed += () => { Close(); };
+                _countdownTimer.OnElapsed += () =>  Close();
                 _countdownTimer.Start();
             }
             _transitionTimer = new Timer(FadeInterval);
@@ -155,12 +157,7 @@ namespace BlamanticUI
             builder.AddAttribute(53, nameof(Progress.Percent), (double)_progress);
             builder.AddAttribute(54, nameof(Progress.Color), Setting.ProgressBarColor ?? Setting.Color);
             builder.AddAttribute(55, nameof(Progress.Inverted), Setting.Inverted);
-            builder.AddAttribute(56, nameof(Progress.State),Setting.ProgressBarState?? Setting.State);
-            builder.AddAttribute(60, nameof(Progress.ChildContent), (RenderFragment)(progress =>
-            {
-                progress.OpenComponent<Bar>(0);
-                progress.CloseComponent();
-            }));
+            builder.AddAttribute(56, nameof(Progress.State), Setting.ProgressBarState ?? Setting.State);
             builder.CloseComponent();
         }
 
@@ -180,7 +177,7 @@ namespace BlamanticUI
         /// <param name="percentComplete">The percent complete.</param>
         private async void CalculateProgress(int percentComplete)
         {
-            _progress = 100 - percentComplete;
+            _progress = Setting.ProgressBarIncrease == HorizontalPosition.Left ? percentComplete : 100 - percentComplete;
             await InvokeAsync(StateHasChanged);
         }
         /// <summary>

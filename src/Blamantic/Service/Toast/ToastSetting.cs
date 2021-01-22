@@ -46,5 +46,10 @@
         /// Gets or sets the state of the progress bar.
         /// </summary>
         public State? ProgressBarState { get; set; }
+
+        /// <summary>
+        /// Gets or sets the progress bar increase direction. Default is <see cref="HorizontalPosition.Left"/>.
+        /// </summary>
+        public HorizontalPosition ProgressBarIncrease { get; set; } = HorizontalPosition.Left;
     }
 }

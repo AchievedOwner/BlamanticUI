@@ -5,210 +5,196 @@
 
 <Pager DataSource="@(new List<string>(new[]
                      {
-                         "示例","自定义配置","多种类型", "ToastContainer 参数","IToastService 方法"
+                         "Demo","Configuration","Key", "ToastContainer Parameters"
                      }))">
     <Body>
         <Header1>
-            事件通知(Toast)
+            Toast
             <SubHeader>
-                允许用户收到事件的通知
+                A toast allows users to be notified of an event
             </SubHeader>
         </Header1>
-        <Segment>
-            <Header4>配置说明：</Header4>
+
+        <Message State="State.Warning">
             <List Ordered>
-                <Item>在页面中放入 <code>ToastContainer</code> 组件</Item>
-                <Item>使用注入的 <code>IToastService</code> 服务并调用方法</Item>
+                <Item>
+                    Make use you have a component of <code>BlamanticUIContainer </code> in your page. See configuration at <a href="/">step 5</a>.
+                </Item>
+                <Item>
+                    Inject service <code>IToastService</code>
+                </Item>
             </List>
-        </Segment>
-        <PresentationPart Title="示例">
-            <Description>
-                默认在上方正中间弹出。
-            </Description>
+        </Message>
+        <PresentationPart Title="Demo">
             <RunTemplate>
-                <Button @onclick="@(()=>ToastService.Show("默认弹出消息"))">默认</Button>
-                <Button Color="Color.Red" @onclick="@(()=>ToastService.ShowError("这是一段错误"))">错误</Button>
-                <Button Color="Color.Yellow" @onclick="@(()=>ToastService.ShowWarning("警告内容已经输出"))">警告</Button>
-                <Button Color="Color.Blue" @onclick="@(()=>ToastService.ShowInfo("普通信息的提示"))">提示</Button>
-                <Button Color="Color.Green" @onclick="@(()=>ToastService.ShowSuccess("提交成功啦！"))">成功</Button>
+                <Button @onclick="@(()=>ToastService.Show("Default message"))">Default</Button>
+                <Button Color="Color.Red" @onclick="@(()=>ToastService.ShowError("Some errors"))">Error</Button>
+                <Button Color="Color.Yellow" @onclick="@(()=>ToastService.ShowWarning("Attention please"))">Warning</Button>
+                <Button Color="Color.Blue" @onclick="@(()=>ToastService.ShowInfo("Please go a way"))">Info</Button>
+                <Button Color="Color.Green" @onclick="@(()=>ToastService.ShowSuccess("Submit successfully"))">Success</Button>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <ToastContainer />
 
-<Button @onclick=""@(() => ToastService.Show(""默认弹出消息""))"">默认</Button>
-<Button Color=""Color.Red"" @onclick=""@(()=>ToastService.ShowError(""这是一段错误""))"">错误</Button>
-<Button Color=""Color.Yellow"" @onclick=""@(()=>ToastService.ShowWarning(""警告内容已经输出""))"">警告</Button>
-<Button Color=""Color.Blue"" @onclick=""@(()=>ToastService.ShowInfo(""普通信息的提示""))"">提示</Button>
-<Button Color=""Color.Green"" @onclick=""@(()=>ToastService.ShowSuccess(""提交成功啦！""))"">成功</Button>
+<Button @onclick=""@(() => ToastService.Show(""Default message""))"">Default</Button>
+<Button Color=""Color.Red"" @onclick=""@(()=>ToastService.ShowError(""Some errors""))"">Error</Button>
+<Button Color=""Color.Yellow"" @onclick=""@(()=>ToastService.ShowWarning(""Attention please""))"">Warning</Button>
+<Button Color=""Color.Blue"" @onclick=""@(()=>ToastService.ShowInfo(""Please go a way""))"">Info</Button>
+<Button Color=""Color.Green"" @onclick=""@(()=>ToastService.ShowSuccess(""Submit successfully！""))"">Success</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="自定义配置">
-    <Description>
-        
-    </Description>
-    <RunTemplate>
-        <Button Color="Color.Pink" @onclick="@(()=>ToastService.Show(options=> {
-                                                  options.Message = "粉红的回忆";
+        <PresentationPart Title="Configuration">
+            <Description>
+                You can costomize toast by configuration
+            </Description>
+            <RunTemplate>
+                <Button Color="Color.Pink" @onclick="@(()=>ToastService.Show(options=> {
+                                                  options.Message = "Pink message";
                                                   options.Color = Color.Pink;
                                               }))">
-            粉红色
-        </Button>
-        <Button Color="Color.Olive" @onclick="@(()=>ToastService.Show(options=> {
-                                                   options.Title = "伍佰";
-                                                   options.Message = "挪威的森林";
+                    Pink
+                </Button>
+                <Button Color="Color.Olive" @onclick="@(()=>ToastService.Show(options=> {
+                                                   options.Title = "Title";
+                                                   options.Message = "Sing a sone";
                                                    options.Color = Color.Olive;
                                                }))">
-            橄榄绿
-        </Button>
-        <ButtonGroup>
-            <Button Color="Color.Black" @onclick="@(()=>ToastService.Show(options=> {
-                                                       options.Color = Color.Blue;
-                                                       options.Message = "进度条在上面！";
-                                                       options.ProgressBar = VerticalPosition.Top;
-                                                      options.ProgressBarColor = Color.Red;
-                                                   }))">
-                进度条在上面
-            </Button>
-            <Button Color="Color.Grey" @onclick="@(()=>ToastService.Show(options=> {
-                                                      options.Color = Color.Yellow;
-                                                      options.Message = "进度条在下面！";
-                                                      options.ProgressBar = VerticalPosition.Bottom;
-                                                      options.ProgressBarColor = Color.Blue;
-                                                  }))">
-                进度条在下面
-            </Button>
-        </ButtonGroup>
-    </RunTemplate>
-    <CodeTemplate>
+                    Olive
+                </Button>
+                <ButtonGroup>
+                    <Button Color="Color.Black" @onclick="@(()=>ToastService.Show(options=> {
+                                                                options.Color = Color.Blue;
+                                                                options.Message = "Progress at the top";
+                                                                options.ProgressBar = VerticalPosition.Top;
+                                                                options.ProgressBarColor = Color.Red;
+                                                            }))">
+                        Top Progress
+                    </Button>
+                    <Button Color="Color.Grey" @onclick="@(()=>ToastService.Show(options=> {
+                                                               options.Color = Color.Yellow;
+                                                               options.Message = "Progress at the bottom！";
+                                                               options.ProgressBar = VerticalPosition.Bottom;
+                                                               options.ProgressBarColor = Color.Blue;
+                                                           }))">
+                        Bottom Progress
+                    </Button>
+                    <Button Color="Color.Blue" @onclick="@(()=>ToastService.Show(options=> {
+                                                               options.Color = Color.Green;
+                                                               options.Message = "Progress at the top from right to left";
+                                                               options.ProgressBar = VerticalPosition.Top;
+                                                               options.ProgressBarColor = Color.Yellow;
+                                                               options.ProgressBarIncrease = HorizontalPosition.Right;
+                                                            }))">
+                        Progress From Right
+                    </Button>
+                </ButtonGroup>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Button Color=""Color.Pink"" @onclick=""@(()=>ToastService.Show(options=> {
-                                            options.Title = ""伍佰"";
-                                            options.Message = ""粉红的回忆"";
-                                            options.Color = Color.Pink;
-                                        }))"">
-    粉红色
+                                    options.Message = ""Pink message"";
+                                    options.Color = Color.Pink;
+                                }))"">
+    Pink
 </Button>
 <Button Color=""Color.Olive"" @onclick=""@(()=>ToastService.Show(options=> {
-                                            options.Message = ""橄榄绿的森林"";
-                                            options.Color = Color.Olive;
-                                        }))"">
-    橄榄绿
+                                    options.Title = ""Title"";
+                                    options.Message = ""Sing a sone"";
+                                    options.Color = Color.Olive;
+                                }))"">
+    Olive
 </Button>
-<Button Color=""Color.Black"" @onclick=""@(()=>ToastService.Show(options=> {
-                                            options.Color = Color.Blue;
-                                            options.Message = ""进度条在上面！"";
-                                            options.ProgressBar = VerticalPosition.Top;
-                                            options.ProgressBarColor = Color.Red;
-                                        }))"">
-    进度条在上面
-</Button>
-<Button Color=""Color.Grey"" @onclick=""@(()=>ToastService.Show(options=> {
-                                            options.Color = Color.Yellow;
-                                            options.Message = ""进度条在下面！"";
-                                            options.ProgressBar = VerticalPosition.Bottom;
-                                            options.ProgressBarColor = Color.Blue;
-                                        }))"">
-    进度条在下面
-</Button>
+<ButtonGroup>
+    <Button Color=""Color.Black"" @onclick=""@(()=>ToastService.Show(options=> {
+                                        options.Color = Color.Blue;
+                                        options.Message = ""Progress at the top"";
+                                        options.ProgressBar = VerticalPosition.Top;
+                                        options.ProgressBarColor = Color.Red;
+                                    }))"">
+        Top Progress
+    </Button>
+    <Button Color=""Color.Grey"" @onclick=""@(()=>ToastService.Show(options=> {
+                                        options.Color = Color.Yellow;
+                                        options.Message = ""Progress at the bottom！"";
+                                        options.ProgressBar = VerticalPosition.Bottom;
+                                        options.ProgressBarColor = Color.Blue;
+                                    }))"">
+        Bottom Progress
+    </Button>
+    <Button Color=""Color.Blue"" @onclick=""@(()=>ToastService.Show(options=> {
+                                                options.Color = Color.Green;
+                                                options.Message = ""Progress at the top from right to left"";
+                                                options.ProgressBar = VerticalPosition.Top;
+                                                options.ProgressBarColor = Color.Yellow;
+                                                options.ProgressBarIncrease = HorizontalPosition.Right;
+                                            }))"">
+        Progress From Right
+    </Button>
+</ButtonGroup>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="多种类型">
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Key">
             <Description>
-                设置 <code>Key</code> 可以兼容多种不同的 Toaster 消息。在调用 <code>ToastService</code> 时要指定 <code>Key</code>
+                You can have different style of toast by setting <code>Key</code>
             </Description>
             <RunTemplate>
                 <ToastContainer Key="TopRight" Position="DockPosition.TopRight" />
-                <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowSuccess("我显示在右上角",key:"TopRight"))">右上显示</Button>
+                <Button Color="Color.Red" @onclick="@(e=>ToastService.ShowSuccess("I'm at the top right position",key:"TopRight"))">Top Right</Button>
                 <ToastContainer Key="BottmRight" Position="DockPosition.BottomRight" />
-                <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("你好，你拨打的电话暂时无法接通",key:"BottmRight"))">右下显示</Button>
+                <Button Color="Color.Blue" @onclick="@(e=>ToastService.ShowInfo("Hello world",key:"BottmRight"))">Bottom Right</Button>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <ToastContainer Key=""TopRight"" Position=""DockPosition.TopRight"" />
-<Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowSuccess(""我显示在右上角"",key:""TopRight""))"">右上显示</Button>
+<Button Color=""Color.Red"" @onclick=""@(e=>ToastService.ShowSuccess(""I'm at the top right position"", key : ""TopRight""))"">Top Right</Button>
+
 <ToastContainer Key=""BottmRight"" Position=""DockPosition.BottomRight"" />
-<Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""你好，你拨打的电话暂时无法接通"",key:""BottmRight""))"">右下显示</Button>
+<Button Color=""Color.Blue"" @onclick=""@(e=>ToastService.ShowInfo(""Hello world"", key : ""BottmRight""))"">Bottom Right</Button>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <ParameterTable Title="ToastContainer 参数">
+        <ParameterTable Title="ToastContainer Parameters">
             <Content>
                 <tr>
                     <td>Key</td>
-                    <td>区别不同显示容器的唯一标识。</td>
+                    <td>The unique id of toast style</td>
                     <td>string</td>
                     <td>Default</td>
                 </tr>
                 <tr>
-                    <td>VerticalPosition</td>
-                    <td>垂直方向显示的位置</td>
+                    <td>DockPosition</td>
+                    <td>The position to display</td>
                     <td>VerticalPosition</td>
                     <td>VerticalPosition.Top</td>
                 </tr>
                 <tr>
-                    <td>HorizontalAlignment</td>
-                    <td>水平方向的对齐方式</td>
-                    <td>HorizontalAlignment</td>
-                    <td>HorizontalAlignment.Center</td>
-                </tr>
-                <tr>
-                    <td>ClearWhenLocationChanged</td>
-                    <td>当页面切换路由时清除当前的所有弹窗提示</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </tr>
-                <tr>
                     <td>Timeout</td>
-                    <td>弹窗消息的持续时间，单位秒。null 则不自动关闭</td>
+                    <td>The interval for toast message to show, unit is second. set <code>null</code> that do not hide the message. </td>
                     <td>int?</td>
                     <td>5</td>
                 </tr>
                 <tr>
                     <td>FadeInterval</td>
-                    <td>淡入淡出动画效果的帧间隔(毫秒)</td>
+                    <td>The fade animation of toast to show(ms)</td>
                     <td>int</td>
                     <td>30</td>
                 </tr>
                 <tr>
                     <td>ProgressBar</td>
-                    <td>显示进度条</td>
+                    <td>progress bar position in toast message</td>
                     <td>VerticalPosition?</td>
                     <td>null</td>
                 </tr>
             </Content>
         </ParameterTable>
-        <MethodTable Title="IToastService 方法">
-            <Content>
-                <tr>
-                    <td>ShowSuccess</td>
-                    <td>弹出带有绿色背景并拥有 <Icon IconClass="check circle" /> 图标的提示</td>
-                </tr>
-                <tr>
-                    <td>ShowInfo</td>
-                    <td>弹出带有蓝色背景并拥有 <Icon IconClass="info circle" /> 图标的提示</td>
-                </tr>
-                <tr>
-                    <td>ShowError</td>
-                    <td>弹出带有红色背景并拥有 <Icon IconClass="times circle" /> 图标的提示</td>
-                </tr>
-                <tr>
-                    <td>ShowWarning</td>
-                    <td>弹出带有黄色背景并拥有 <Icon IconClass="attention circle" /> 图标的提示</td>
-                </tr>
-                <tr>
-                    <td>Show</td>
-                    <td>自定义配置显示内容</td>
-                </tr>
-            </Content>
-        </MethodTable>
     </Body>
 </Pager>

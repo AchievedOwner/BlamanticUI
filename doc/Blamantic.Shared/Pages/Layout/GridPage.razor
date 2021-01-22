@@ -1,38 +1,38 @@
 ﻿@page "/component/layout/grid"
 <Pager DataSource="Menu">
     <Body>
-<Header2 Divider>
-    栅格
-    <SubHeader>
-        网格是用来协调布局中的负空间的
-    </SubHeader>
-</Header2>
+        <Header2 Divider>
+            Grid
+            <SubHeader>
+                A grid is used to harmonize negative space in a layout
+            </SubHeader>
+        </Header2>
 
-<PresentationPart Title="基本栅格" Id="grid">
-    <Description>
-        使用 <code>Grid</code> 表示栅格容器，使用 <code>Column</code> 表示每一个列
-    </Description>
-    <RunTemplate>
-        <Grid>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+        <PresentationPart Title="Demo" Id="grid">
+            <Description>
+                All grid systems choose an arbitrary 16 columns count to allow per row.
+            </Description>
+            <RunTemplate>
+                <Grid>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
@@ -44,30 +44,27 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<Message>
-    Grid 将列分隔为 16 个平均宽度的比例。
-</Message>
 
-<PresentationPart Title="指定列的宽度占比" Id="width-count">
-    <Description>
-        设置列的 <code>ColSpan</code> 定义列的占比，但同时要设置 <code></code> 参数。如果空间不足，则会自动换行。
-    </Description>
-    <RunTemplate>
-        <Grid>
-            <Column Color="Color.Grey" Span="ColSpan.Four4" >Four4</Column>
-            <Column Color="Color.Olive" Span="ColSpan.Four4" >Four4</Column>
-            <Column Color="Color.Grey" Span="ColSpan.Four4" >Four4</Column>
-            <Column Color="Color.Olive" Span="ColSpan.Four4" >Four4</Column>
-            <Column Color="Color.Grey" Span="ColSpan.Seven7" >Seven7</Column>
-            <Column Color="Color.Olive" Span="ColSpan.Three3" >Three3</Column>
-            <Column Color="Color.Grey" Span="ColSpan.Four4" >Four4</Column>
-            <Column Color="Color.Olive" Span="ColSpan.Six6" >Six6</Column>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+        <PresentationPart Title="Column Span" Id="width-count">
+            <Description>
+                Column widths can be specified using <code>ColSpan</code> . If a column cannot fit in a row it will automatically flow to the next row
+            </Description>
+            <RunTemplate>
+                <Grid>
+                    <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
+                    <Column Color="Color.Olive" Span="ColSpan.Four4">Four4</Column>
+                    <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
+                    <Column Color="Color.Olive" Span="ColSpan.Four4">Four4</Column>
+                    <Column Color="Color.Grey" Span="ColSpan.Seven7">Seven7</Column>
+                    <Column Color="Color.Olive" Span="ColSpan.Three3">Three3</Column>
+                    <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
+                    <Column Color="Color.Olive" Span="ColSpan.Six6">Six6</Column>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
@@ -82,29 +79,29 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<PresentationPart Title="行" Id="row">
-    <Description>通过 <code>Row</code> 来定义栅格的行。</Description>
-    <RunTemplate>
-        <Grid>
-            <Row>
-                <Column Color="Color.Grey" Span="ColSpan.Four4" >Four4</Column>
-                <Column Color="Color.Olive" Span="ColSpan.Four4" >Four4</Column>
-                <Column Color="Color.Grey" Span="ColSpan.Four4" >Four4</Column>
-            </Row>
-            <Row>
-                <Column Color="Color.Grey" Span="ColSpan.Seven7" >Seven7</Column>
-                <Column Color="Color.Olive" Span="ColSpan.Three3" >Three3</Column>
-                <Column Color="Color.Grey" Span="ColSpan.Four4" >Four4</Column>
-            </Row>
-            <Row>
-                <Column Color="Color.Olive" Span="ColSpan.Six6" >Six6</Column>
-            </Row>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+        <PresentationPart Title="Row" Id="row">
+            <Description>Row wrappers allow you to apply variations to a group of columns.</Description>
+            <RunTemplate>
+                <Grid>
+                    <Row>
+                        <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
+                        <Column Color="Color.Olive" Span="ColSpan.Four4">Four4</Column>
+                        <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
+                    </Row>
+                    <Row>
+                        <Column Color="Color.Grey" Span="ColSpan.Seven7">Seven7</Column>
+                        <Column Color="Color.Olive" Span="ColSpan.Three3">Three3</Column>
+                        <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
+                    </Row>
+                    <Row>
+                        <Column Color="Color.Olive" Span="ColSpan.Six6">Six6</Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
@@ -124,38 +121,34 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<PresentationPart Title="固定一行的列宽" Id="row-width-count">
-    <Description>
-        如果在 <code>Row</code> 组件设置了 <code>ColSpan</code> 参数，就意味着对该行的列进行总数宽度固定。
-        例如 <code>Span="ColSpan.Three3"</code> 则表示该行最多使用 3 个 <code>Column</code> 组件，多余的将换行显示。
-    </Description>
-    <RunTemplate>
-        <Grid>
-            <Row  Span="ColSpan.Three3" >
-                <Column Color="Color.Grey">Three3</Column>
-                <Column Color="Color.Olive">Three3</Column>
-                <Column Color="Color.Grey">Three3</Column>
-            </Row>
-            <Row  Span="ColSpan.Six6" >
-                <Column Color="Color.Grey">Six6</Column>
-                <Column Color="Color.Olive">Six6</Column>
-                <Column Color="Color.Grey">Six6</Column>
-                <Column Color="Color.Olive">Six6</Column>
-                <Column Color="Color.Grey">Six6</Column>
-                <Column Color="Color.Olive">Six6</Column>
-                <Column Color="Color.Olive">Six6</Column>
-            </Row>
-            <Row  Span="ColSpan.Four4" >
-                <Column Color="Color.Grey">Four4</Column>
-                <Column Color="Color.Olive">Four4</Column>
-            </Row>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
+        <PresentationPart Title="Span In Row" Id="row-width-count">
+            <RunTemplate>
+                <Grid>
+                    <Row Span="ColSpan.Three3">
+                        <Column Color="Color.Grey">Three3</Column>
+                        <Column Color="Color.Olive">Three3</Column>
+                        <Column Color="Color.Grey">Three3</Column>
+                    </Row>
+                    <Row Span="ColSpan.Six6">
+                        <Column Color="Color.Grey">Six6</Column>
+                        <Column Color="Color.Olive">Six6</Column>
+                        <Column Color="Color.Grey">Six6</Column>
+                        <Column Color="Color.Olive">Six6</Column>
+                        <Column Color="Color.Grey">Six6</Column>
+                        <Column Color="Color.Olive">Six6</Column>
+                        <Column Color="Color.Olive">Six6</Column>
+                    </Row>
+                    <Row Span="ColSpan.Four4">
+                        <Column Color="Color.Grey">Four4</Column>
+                        <Column Color="Color.Olive">Four4</Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
 ```html
 <Grid>
     <Row Span=""ColSpan.Three3"">
@@ -179,25 +172,65 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<PresentationPart Title="等宽" Id="equal-width">
-    <Description>
-        设置 <code>EqualWidth</code> 可以使子组件自动根据数量进行等宽设置。
-    </Description>
-    <RunTemplate>
-        <Grid EqualWidth>
-            <Column Color="Color.Grey">...</Column>
-            <Column Color="Color.Olive">...</Column>
-            <Column Color="Color.Grey">...</Column>
-            <Row EqualWidth>
-                <Column Color="Color.Olive">...</Column>
-                <Column Color="Color.Grey">...</Column>
-            </Row>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+
+        <PresentationPart Title="Span In Grid">
+            <RunTemplate>
+                <Grid Span="ColSpan.Four4">
+                    <Column Color="Color.Grey">Three3</Column>
+                    <Column Color="Color.Olive">Three3</Column>
+                    <Column Color="Color.Grey">Three3</Column>
+                    <Column Color="Color.Grey">Six6</Column>
+                    <Column Color="Color.Olive">Six6</Column>
+                    <Column Color="Color.Grey">Six6</Column>
+                    <Column Color="Color.Olive">Six6</Column>
+                    <Column Color="Color.Grey">Six6</Column>
+                    <Column Color="Color.Olive">Six6</Column>
+                    <Column Color="Color.Olive">Six6</Column>
+                    <Column Color="Color.Grey">Four4</Column>
+                    <Column Color="Color.Olive">Four4</Column>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<Grid Span=""ColSpan.Four4"">
+    <Column Color=""Color.Grey"">Three3</Column>
+    <Column Color=""Color.Olive"">Three3</Column>
+    <Column Color=""Color.Grey"">Three3</Column>
+    <Column Color=""Color.Grey"">Six6</Column>
+    <Column Color=""Color.Olive"">Six6</Column>
+    <Column Color=""Color.Grey"">Six6</Column>
+    <Column Color=""Color.Olive"">Six6</Column>
+    <Column Color=""Color.Grey"">Six6</Column>
+    <Column Color=""Color.Olive"">Six6</Column>
+    <Column Color=""Color.Olive"">Six6</Column>
+    <Column Color=""Color.Grey"">Four4</Column>
+    <Column Color=""Color.Olive"">Four4</Column>
+</Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        <PresentationPart Title="Equal Width" Id="equal-width">
+            <Description>
+                The row will automatically divide column width evenly. This is useful with dynamic content where you do not know the column count in advance.
+            </Description>
+            <RunTemplate>
+                <Grid EqualWidth>
+                    <Column Color="Color.Grey">...</Column>
+                    <Column Color="Color.Olive">...</Column>
+                    <Column Color="Color.Grey">...</Column>
+                    <Row EqualWidth>
+                        <Column Color="Color.Olive">...</Column>
+                        <Column Color="Color.Grey">...</Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid EqualWidth>
@@ -205,41 +238,37 @@
     <Column Color=""Color.Olive"">...</Column>
     <Column Color=""Color.Grey"">...</Column>
     <Row EqualWidth>
-        <Column Color=""Color.Olive"">...</Column>
-        <Column Color=""Color.Grey"">...</Column>
-    </Row>
+        <Column Color=""Color.Olive"">...</Row>
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<PresentationPart  Title="居中延展" Id="centered">
-    <Description>
-        通常列是从左到右排列，设置 <code>Centered</code> 可使列居中开始往两边延展排列。
-    </Description>
-    <RunTemplate>
-        <Grid Centered Span="ColSpan.Two2">
-            <Column Color="Color.Grey">...</Column>
-            <Row Centered Span="ColSpan.Four4">
-                <Column Color="Color.Grey">...</Column>
-                <Column Color="Color.Olive">...</Column>
-            </Row>
-            <Row Centered Span="ColSpan.Five5">
-                <Column Color="Color.Grey">...</Column>
-                <Column Color="Color.Olive">...</Column>
-                <Column Color="Color.Grey">...</Column>
-            </Row>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+        <PresentationPart Title="Centering Content" Id="centered">
+            <Description>
+                If a row does not take up all sixteen grid columns, you can use a centered variation to center the column contents inside the grid.
+            </Description>
+            <RunTemplate>
+                <Grid Centered Span="ColSpan.Two2">
+                    <Column Color="Color.Grey">...</Column>
+                    <Row Centered Span="ColSpan.Four4">
+                        <Column Color="Color.Grey">...</Column>
+                        <Column Color="Color.Olive">...</Column>
+                    </Row>
+                    <Row Centered Span="ColSpan.Five5">
+                        <Column Color="Color.Grey">...</Column>
+                        <Column Color="Color.Olive">...</Column>
+                        <Column Color="Color.Grey">...</Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid Centered Span=""ColSpan.Two2"">
     <Column Color=""Color.Grey"">...</Column>
-    <Row Centered Span=""ColSpan.Four4"">
-        <Column Color=""Color.Grey"">...</Column>
-        <Column Color=""Color.Olive"">...</Column>
+    <Column Color=""Color.Olive"">...</Column>
     </Row>
     <Row Centered Span=""ColSpan.Five5"">
         <Column Color=""Color.Grey"">...</Column>
@@ -249,33 +278,33 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<PresentationPart Title="浮动列" Id="floated">
-    <Description>
-        设置 <code>Floated</code> 可以让列脱离 Grid 的布局，成为自由浮动的列。
-    </Description>
-    <RunTemplate>
-        <Grid>
-            <Row Span="ColSpan.Four4">
-                <Column Floated="HorizontalPosition.Left" Color="Color.Grey">左浮动</Column>
-                <Column Floated="HorizontalPosition.Right" Color="Color.Grey">左浮动</Column>
-            </Row>
-            <Row Span="ColSpan.Four4">
-                <Column Color="Color.Grey">...</Column>
-                <Column Color="Color.Olive">...</Column>
-                <Column Color="Color.Grey">...</Column>
-                <Column Color="Color.Olive">...</Column>
-            </Row>
-            <Row Span="ColSpan.Eight8" Centered>
-                <Column Color="Color.Grey">...</Column>
-                <Column Color="Color.Olive">...</Column>
-                <Column Color="Color.Grey">...</Column>
-            </Row>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+        <PresentationPart Title="Floated" Id="floated">
+            <Description>
+                A column can sit flush against the left or right edge of a row
+            </Description>
+            <RunTemplate>
+                <Grid>
+                    <Row Span="ColSpan.Four4">
+                        <Column Floated="HorizontalPosition.Left" Color="Color.Grey">Left</Column>
+                        <Column Floated="HorizontalPosition.Right" Color="Color.Grey">Right</Column>
+                    </Row>
+                    <Row Span="ColSpan.Four4">
+                        <Column Color="Color.Grey">...</Column>
+                        <Column Color="Color.Olive">...</Column>
+                        <Column Color="Color.Grey">...</Column>
+                        <Column Color="Color.Olive">...</Column>
+                    </Row>
+                    <Row Span="ColSpan.Eight8" Centered>
+                        <Column Color="Color.Grey">...</Column>
+                        <Column Color="Color.Olive">...</Column>
+                        <Column Color="Color.Grey">...</Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
@@ -297,52 +326,119 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
 
-<PresentationPart Title="具有分割线的列" Id="celled">
-    <Description>
-        设置 <code>Celled</code> 让行列具有分割线。
-    </Description>
-    <RunTemplate>
-        <Grid Celled Centered>
-            <Row>
-                <Column Span="ColSpan.Two2" >
-                    <Image Source="img/image.png" />
-                </Column>
-                <Column Span="ColSpan.Ten10" >
-                    <ParagraphDemo FullWidth />
-                </Column>
-                <Column Span="ColSpan.Two2" >
-                    <Image Source="img/image.png" />
-                </Column>
-            </Row>
-            <Row>
-                <Column Span="ColSpan.Two2" >
-                    <Image Source="img/image.png" />
-                </Column>
-                <Column Span="ColSpan.Ten10" >
-                    <ParagraphDemo  FullWidth/>
-                </Column>
-                <Column Span="ColSpan.Two2" >
-                    <Image Source="img/image.png" />
-                </Column>
-            </Row>
-        </Grid>
-    </RunTemplate>
-    <CodeTemplate>
+        <PresentationPart Title="Divider">
+            <Description>
+                A grid can have dividers between its columns. It needs <code>Row</code> component.
+            </Description>
+            <RunTemplate>
+                <Grid Divider EqualWidth>
+                    <Row>
+                        <Column><Image Src="/img/media-paragraph.png" /></Column>
+                        <Column><Image Src="/img/media-paragraph.png" /></Column>
+                        <Column><Image Src="/img/media-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/media-paragraph.png" /></Column>
+                        <Column><Image Src="/img/media-paragraph.png" /></Column>
+                        <Column><Image Src="/img/media-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Grid Divider>
+    <Row>
+        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
+        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
+        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
+    </Row>
+    <Row>
+        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
+        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
+        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
+    </Row>
+</Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Vertical Divider">
+            <Description>
+                A grid can have dividers between rows
+            </Description>
+            <RunTemplate>
+                <Grid Vertical Divider EqualWidth>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Grid Vertical Divider>
+    <Row>
+        <Column><Image Src=""/img/image.png"" /></Column>
+        <Column><Image Src=""/img/image.png"" /></Column>
+    </Row>
+    <Row>
+        <Column><Image Src=""/img/image.png"" /></Column>
+        <Column><Image Src=""/img/image.png"" /></Column>
+        <Column><Image Src=""/img/image.png"" /></Column>
+    </Row>
+</Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        <PresentationPart Title="Celled" Id="celled">
+            <Description>
+                A grid can have rows divided into cells
+            </Description>
+            <RunTemplate>
+                <Grid Celled EqualWidth>
+                    <Row>
+                        <Column Span="ColSpan.Two2">
+                            <Image Src="img/image.png" />
+                        </Column>
+                        <Column>
+                            <ParagraphDemo FullWidth />
+                        </Column>
+                    </Row>
+                    <Row>
+                        <Column Span="ColSpan.Two2">
+                            <Image Src="img/image.png" />
+                        </Column>
+                        <Column Span="ColSpan.Ten10">
+                            <ParagraphDemo FullWidth />
+                        </Column>
+                        <Column Span="ColSpan.Two2">
+                            <Image Src="img/image.png" />
+                        </Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
         @Code.GetCode(@"
 ```html
-<Grid Celled Centered>
+<Grid Celled>
     <Row>
         <Column Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
         </Column>
-        <Column Span=""ColSpan.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
+        <Column>
             <ParagraphDemo />
-        </Column>
-        <Column Span=""ColSpan.Two2"">
-            <Image Source=""img/image.png"" />
         </Column>
     </Row>
     <Row>
@@ -359,174 +455,313 @@
 </Grid>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
-                <ParameterTable Title="Grid 参数">
-                    <Content>
-                        <tr>
-                            <td>Stackable</td>
-                            <td>允许在移动设备上自动将行压缩成单个列</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Reserved</td>
-                            <td>在设备上允许行或列进行反向排序</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Doubling</td>
-                            <td>在每个设备切换时加倍列宽</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Mobile</td>
-                            <td>具有手机适配的样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Tablet</td>
-                            <td>具有平板电脑适配的样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Computer</td>
-                            <td>具有台式电脑适配的样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>LargeScreen</td>
-                            <td>具有超大屏适配的样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Only</td>
-                            <td>仅对某些设备进行适配</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>EqualWidth</td>
-                            <td>内部的 <code>Column</code> 组件根据数量进行等宽适配</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Centered</td>
-                            <td>栅格整体居中显示</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>ColSpan</td>
-                            <td>每行固定的 <code>Column</code> 数量</td>
-                            <td>enum</td>
-                            <td></td>
-                        </tr>
+            </CodeTemplate>
+        </PresentationPart>
 
-                        <tr>
-                            <td>Padded</td>
-                            <td>增强每个 <code>Column</code> 内边距的空间</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
+        <PresentationPart Title="Internally Celled" Id="celled">
+            <Description>
+                A grid can have rows divisions only between internal rows
+            </Description>
+            <RunTemplate>
+                <Grid Internal Celled EqualWidth>
+                    <Row>
+                        <Column Span="ColSpan.Two2">
+                            <Image Src="img/image.png" />
+                        </Column>
+                        <Column>
+                            <ParagraphDemo FullWidth />
+                        </Column>
+                    </Row>
+                    <Row>
+                        <Column Span="ColSpan.Two2">
+                            <Image Src="img/image.png" />
+                        </Column>
+                        <Column Span="ColSpan.Ten10">
+                            <ParagraphDemo FullWidth />
+                        </Column>
+                        <Column Span="ColSpan.Two2">
+                            <Image Src="img/image.png" />
+                        </Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+        @Code.GetCode(@"
+```html
+<Grid Internal Celled>
+    <Row>
+        <Column Span=""ColSpan.Two2"">
+            <Image Source=""img/image.png"" />
+        </Column>
+        <Column>
+            <ParagraphDemo />
+        </Column>
+    </Row>
+    <Row>
+        <Column Span=""ColSpan.Two2"">
+            <Image Source=""img/image.png"" />
+        </Column>
+        <Column Span=""ColSpan.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
+            <ParagraphDemo />
+        </Column>
+        <Column Span=""ColSpan.Two2"">
+            <Image Source=""img/image.png"" />
+        </Column>
+    </Row>
+</Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
 
-                        <tr>
-                            <td>Celled</td>
-                            <td>栅格的列具有单元格的分隔效果并在分隔的部分呈现分割线</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
+        <PresentationPart Title="Stretched">
+            <Description>A row can stretch its contents to take up the entire column height</Description>
+            <RunTemplate>
+                <Grid EqualWidth>
+                    <Row Stretched>
+                        <Column>
+                            <Segment>1</Segment>
+                        </Column>
+                        <Column>
+                            <Segment>1</Segment>
+                            <Segment>2</Segment>
+                        </Column>
 
+                        <Column>
+                            <Segment>1</Segment>
+                            <Segment>2</Segment>
+                            <Segment>3</Segment>
+                        </Column>
+                    </Row>
+                </Grid>
+                <Message State="State.Info">
+                    Stretched can work in grid.
+                </Message>
+                <Grid Stretched EqualWidth>
+                    <Row>
+                        <Column>
+                            <Segment>1</Segment>
+                        </Column>
+                        <Column>
+                            <Segment>1</Segment>
+                            <Segment>2</Segment>
+                        </Column>
 
-                        <tr>
-                            <td>Very</td>
-                            <td>恰如其分的样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
+                        <Column>
+                            <Segment>1</Segment>
+                            <Segment>2</Segment>
+                            <Segment>3</Segment>
+                        </Column>
+                    </Row>
+                    <Row>
+                        <Column>
+                            <Segment>1</Segment>
+                            <Segment>2</Segment>
+                            <Segment>3</Segment>
+                        </Column>
+                        <Column>
+                            <Segment>1</Segment>
+                        </Column>
+                        <Column>
+                            <Segment>1</Segment>
+                            <Segment>2</Segment>
+                        </Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Grid EqualWidth>
+    <Row Stretched>
+        <Column>
+            <Segment>1</Segment>
+        </Column>
+        <Column>
+            <Segment>1</Segment>
+            <Segment>2</Segment>
+        </Column>
 
+        <Column>
+            <Segment>1</Segment>
+            <Segment>2</Segment>
+            <Segment>3</Segment>
+        </Column>
+    </Row>
+</Grid>
+<Message State=""State.Info"">
+    Stretched can work in grid.
+</Message>
+<Grid Stretched EqualWidth>
+    <Row>
+        <Column>
+            <Segment>1</Segment>
+        </Column>
+        <Column>
+            <Segment>1</Segment>
+            <Segment>2</Segment>
+        </Column>
 
-                        <tr>
-                            <td>Relaxed</td>
-                            <td>每个 <code>Column</code> 呈现松散的样式</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                    </Content>
-        </ParameterTable>
-                <ParameterTable Title="Row 参数">
-            <Content>
-                <tr>
-                    <td>EqualWidth</td>
-                    <td>根据 <code>Column</code> 数量进行等宽适配</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>ColSpan</td>
-                    <td>每个 <code>Column</code> 固定的宽度占比数</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Centered</td>
-                    <td>所有的 <code>Column</code> 整体居中显示</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>                
-            </Content>
-        </ParameterTable>
-                <ParameterTable Title="Column 参数">
-            <Content>
-                <tr>
-                    <td>Wide</td>
-                    <td>使用固定宽度</td>
-                    <td>bool</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>ColSpan</td>
-                    <td>固定宽度占比</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td>背景颜色</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Floated</td>
-                    <td>浮动方式</td>
-                    <td>enum</td>
-                    <td></td>
-                </tr>                
-            </Content>
-        </ParameterTable>
+        <Column>
+            <Segment>1</Segment>
+            <Segment>2</Segment>
+            <Segment>3</Segment>
+        </Column>
+    </Row>
+    <Row>
+        <Column>
+            <Segment>1</Segment>
+            <Segment>2</Segment>
+            <Segment>3</Segment>
+        </Column>
+        <Column>
+            <Segment>1</Segment>
+        </Column>
+        <Column>
+            <Segment>1</Segment>
+            <Segment>2</Segment>
+        </Column>
+    </Row>
+</Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        <PresentationPart Title="Padded">
+            <Description>A grid can preserve its vertical and horizontal gutters on first and last columns</Description>
+            <RunTemplate>
+                <Segment>
+                    The following grid has vertical and horizontal gutters
+                </Segment>
+                <Grid EqualWidth Padded>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+                <Segment>
+                    The following grid has vertical gutters.
+                </Segment>
+                <Grid EqualWidth Vertical Padded>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+                <Segment>
+                    The following grid has horizontal gutters.
+                </Segment>
+                <Grid EqualWidth Horizontal Padded>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Grid EqualWidth Padded>...</Grid>
+<Grid EqualWidth Vertical Padded>...</Grid>
+<Grid EqualWidth Horizontal Padded>...</Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Compact">
+            <Description>A grid can appear compact with no or very little padding</Description>
+            <RunTemplate>
+                <Segment>
+                    The following grid is compact.
+                </Segment>
+                <Grid Span="ColSpan.Two2" Compact Internal Celled>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+                <Segment>
+                    The following grid is very compact.
+                </Segment>
+                <Grid Span="ColSpan.Two2" Very Compact Internal Celled>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                    <Row>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                        <Column><Image Src="/img/short-paragraph.png" /></Column>
+                    </Row>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Grid Compact></Grid>
+<Grid Very Compact></Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Relaxed">
+            <Description>A grid can increase its gutters to allow for more negative space</Description>
+            <RunTemplate>
+                <Grid Relaxed Span="(4)">
+                    <Column><Image Src="/img/image.png" /></Column>
+                    <Column><Image Src="/img/image.png" /></Column>
+                    <Column><Image Src="/img/image.png" /></Column>
+                    <Column><Image Src="/img/image.png" /></Column>
+                </Grid>
+                <Grid Very Relaxed Span="(4)">
+                    <Column><Image Src="/img/image.png" /></Column>
+                    <Column><Image Src="/img/image.png" /></Column>
+                    <Column><Image Src="/img/image.png" /></Column>
+                    <Column><Image Src="/img/image.png" /></Column>
+                </Grid>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Grid Relaxed></Grid>
+<Grid Very Relaxed></Grid>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
     </Body>
 </Pager>
 
 @code{
     List<string> Menu = new List<string>(new[] {
 
-         "基本栅格",
-         "指定列的宽度占比",
-        "行",
-        "固定一行的列宽",
-        "等宽",
-        "居中延展",
-        "浮动列",
-        "具有分割线的列",
-        "Grid 参数",
-        "Row 参数",
-        "Column 参数"
+         "Demo",
+         "Column Span",
+        "Row",
+        "Span In Row",
+        "Span In Grid",
+        "Equal Width",
+        "Centering Content",
+        "Floated",
+        "Divider",
+        "Vertical Divider",
+        "Celled",
+        "Internally Celled","Stretched","Padded","Compact","Relaxed"
     });
 }
