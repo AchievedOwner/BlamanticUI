@@ -20,7 +20,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasBorder" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCornered" />
     [HtmlTag("i")]
-    public class Icon : BlamanticComponentBase, IHasColor, IHasInverted, IHasSize, IHasCircular, IHasLinked, IHasFitted, IHasBorder, IHasCornered
+    public class Icon : BlamanticComponentBase, IHasColor, IHasInverted, IHasSize, IHasCircular, IHasLinked, IHasFitted, IHasBorder, IHasCornered,IHasVerticalAlignment
     {
         /// <summary>
         /// Gets or sets the icon class, please refer https://fomantic-ui.com/elements/icon.html .
@@ -91,6 +91,10 @@ namespace BlamanticUI
         ///   <c>true</c> if bordered; otherwise, <c>false</c>.
         /// </value>
         [Parameter]public bool Bordered { get; set; }
+        /// <summary>
+        /// Gets or sets the vertical alignment of icon in flex box.
+        /// </summary>
+        [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.

@@ -23,7 +23,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasCelled" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasVerticalAlignment" />
     [HtmlTag]
-    public class List : BlamanticChildContentComponentBase, IHasUIComponent, IHasHorizontal, IHasRelaxed, IHasDivider, IHasLinked, IHasSelectable, IHasAnimated, IHasSize, IHasCelled, IHasVerticalAlignment
+    public class List : BlamanticChildContentComponentBase, IHasUIComponent, IHasHorizontal, IHasRelaxed, IHasDivider, IHasLinked, IHasSelectable, IHasAnimated, IHasSize, IHasCelled, IHasVerticalAlignment,IHasFloated
     {
         /// <summary>
         /// Gets or sets a value indicating whether this is horizontal layout.
@@ -95,6 +95,10 @@ namespace BlamanticUI
         /// Gets or sets the vertical alignment of text.
         /// </summary>
         [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
+        /// <summary>
+        /// Gets or sets the float position.
+        /// </summary>
+        [Parameter]public HorizontalPosition? Floated { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.

@@ -15,7 +15,7 @@
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
     [HtmlTag]
-    public class Column : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated
+    public class Column : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated,IHasVerticalAlignment,IHasHorizontalAlignment
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Column"/> class.
@@ -35,6 +35,14 @@
         /// Gets or sets the float position.
         /// </summary>
         [Parameter]public HorizontalPosition? Floated { get; set; }
+        /// <summary>
+        /// Gets or sets the horizontal alignment of text.
+        /// </summary>
+        [Parameter]public HorizontalAlignment? HorizontalAlignment { get; set; }
+        /// <summary>
+        /// Gets or sets the vertical alignment of text.
+        /// </summary>
+        [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
 
         /// <summary>
         /// Override to create the CSS class that component need.
