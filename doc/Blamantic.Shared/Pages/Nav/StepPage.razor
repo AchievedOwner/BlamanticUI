@@ -2,203 +2,321 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "示例","垂直显示","点击切换","流式布局","尺寸","反色兼容","Steps 组件参数","Step 组件参数"
+                         "Demo","Ordered","Vertical","ClickToActive","Fluid","Description","Icon","Active","Completed","Disabled","Size","Inverted"
                      })">
     <Body>
         <Header1>
-            步骤引导
+            Step
             <SubHeader>
-                步骤显示一系列活动中某个活动的完成状态
+                A step shows the completion status of an activity in a series of activities
             </SubHeader>
         </Header1>
 
-        <PresentationPart Title="示例">
+        <PresentationPart Title="Demo">
             <Description>
-                使用 <code>Steps</code> 组件作为步骤容器，使用 <code>Step</code> 组件作为每一个步骤。
+                A set of steps
             </Description>
             <RunTemplate>
                 <Steps>
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Actived IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Disabled IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Steps>
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Actived IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Disabled IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="垂直显示">
+        <PresentationPart Title="Ordered">
             <Description>
-                设置 <code>Vertical</code> 可以垂直显示，默认左侧显示，设置 <code>VerticalRight</code> 切换到右侧显示。
+                A step can show a ordered sequence of steps                
+            </Description>
+            <RunTemplate>
+                <Steps Ordered>
+                    <Step Completed  Title="Register" Description="Register a new account" />
+                    <Step Completed Title="Verification" Description="Verify your email" />
+                    <Step Actived Title="Success" Description="Register complete!" />
+                </Steps>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Steps Ordered>
+    <Step Completed Title=""Register"" Description=""Register a new account"" />
+    <Step Completed Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived Title=""Success"" Description=""Register complete!"" />
+</Steps>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Vertical">
+            <Description>
+                A step can be displayed stacked vertically
             </Description>
             <RunTemplate>
                 <Steps Vertical>
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <Steps Vertical VerticalRight>
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Steps Vertical>
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 
 <Steps Vertical VerticalRight>
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="点击切换">
+        <PresentationPart Title="ClickToActive">
             <Description>
-                设置 <code>ClickToActive</code> 开启点击激活步骤背景。
+                A step can be actived by clicked.
             </Description>
             <RunTemplate>
                 <Steps ClickToActive>
-                    <Step Title="选择题" />
-                    <Step Title="多选题" />
-                    <Step Title="问答题" />
-                    <Step Title="理解问答" />
-                    <Step Title="写作" />
+                    <Step Title="Multiple Choice" />
+                    <Step Title="Single Choice" />
+                    <Step Title="Essay Question" />
+                    <Step Title="Comprehension" />
+                    <Step Title="Writing" />
                 </Steps>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Steps ClickToActive>
-    <Step Title=""选择题"" />
-    <Step Title=""多选题"" />
-    <Step Title=""问答题"" />
-    <Step Title=""理解问答"" />
-    <Step Title=""写作"" />
+    <Step Title=""Multiple Choice"" />
+    <Step Title=""Single Choice"" />
+    <Step Title=""Essay Question"" />
+    <Step Title=""Comprehension"" />
+    <Step Title=""Writing"" />
 </Steps>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="流式布局">
+        <PresentationPart Title="Fluid">
             <Description>
-                设置 <code>Fluid</code> 可以撑满整个父元素的宽度。
+                A fluid step takes up the width of its container
             </Description>
             <RunTemplate>
                 <Steps Fluid>
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Steps Fluid>
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="尺寸">
+        <PresentationPart Title="Description">
             <Description>
-                设置 <code>Size</code> 呈现不同尺寸。
+                A step can contain a description
+            </Description>
+            <RunTemplate>
+                <Steps>
+                    <Step Description="Only has a discription" />
+                </Steps>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Steps>
+    <Step Description=""Only has a discription""/>
+</Steps>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Icon">
+            <Description>
+                A step can contain an icon
+            </Description>
+            <RunTemplate>
+                <Steps>
+                    <Step Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
+                </Steps>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Steps>
+    <Step Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
+</Steps>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Active">
+            <Description>
+                A step can be highlighted as active
+            </Description>
+            <RunTemplate>
+                <Steps>
+                    <Step Actived Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
+                </Steps>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Steps>
+    <Step Actived Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
+</Steps>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Completed">
+            <Description>
+                A step can show that a user has completed it
+            </Description>
+            <RunTemplate>
+                <Steps>
+                    <Step Completed Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
+                </Steps>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Steps>
+    <Step Completed Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
+</Steps>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Disabled">
+            <Description>
+                A step can show that it cannot be selected
+            </Description>
+            <RunTemplate>
+                <Steps>
+                    <Step Disabled Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
+                </Steps>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Steps>
+    <Step Disabled Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
+</Steps>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Size">
+            <Description>
+                Steps can have different sizes
             </Description>
             <RunTemplate>
                 <Steps Size="Size.Mini">
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
                 <Steps Size="Size.Tiny">
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
                 <Steps Size="Size.Small">
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
                 <Steps Size="Size.Huge">
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
                 <Steps Size="Size.Massive">
-                    <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                    <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                    <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                    <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                    <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                    <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                 </Steps>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Steps Size=""Size.Mini"">
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 <Steps Size=""Size.Tiny"">
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 <Steps Size=""Size.Small"">
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 <Steps Size=""Size.Huge"">
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 <Steps Size=""Size.Massive"">
-    <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-    <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-    <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+    <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+    <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+    <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
 </Steps>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="反色兼容">
+        <PresentationPart Title="Inverted">
             <Description>
-                设置 <code>Inverted</code> 兼容反色背景
+                A step's color can be inverted
             </Description>
             <RunTemplate>
                 <Segment Inverted>
                     <Steps Inverted>
-                        <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                        <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                        <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                        <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                        <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                        <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                     </Steps>
                     <br />
                     <Steps Inverted Vertical>
-                        <Step Completed IconClass="registered" Title="注册" Description="注册一个新账号" />
-                        <Step Actived IconClass="envelope" Title="验证" Description="验证你的邮箱" />
-                        <Step Disabled IconClass="check" Title="成功" Description="注册完成！" />
+                        <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
+                        <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
+                        <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
                     </Steps>
                 </Segment>
             </RunTemplate>
@@ -207,117 +325,19 @@
 ```html
 <Segment Inverted>
     <Steps Inverted>
-        <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-        <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-        <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+        <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+        <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+        <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
     </Steps>
     <Steps Inverted Vertical>
-        <Step Completed IconClass=""registered"" Title=""注册"" Description=""注册一个新账号"" />
-        <Step Actived IconClass=""envelope"" Title=""验证"" Description=""验证你的邮箱"" />
-        <Step Disabled IconClass=""check"" Title=""成功"" Description=""注册完成！"" />
+        <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
+        <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
+        <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
     </Steps>
 </Segment>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <ParameterTable Title="Steps 组件参数">
-            <Content>
-                <Tr>
-                    <td>Vertical</td>
-                    <td>垂直显示</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>VerticalRight</td>
-                    <td>垂直兼容右侧布局</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>Attached</td>
-                    <td>吸附功能</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>AttachedVertical</td>
-                    <td>垂直吸附方向</td>
-                    <td>VerticalPosition</td>
-                    <td></td>
-                </Tr>
-                <Tr>
-                    <td>Size</td>
-                    <td>尺寸</td>
-                    <td>Size</td>
-                    <td></td>
-                </Tr>
-                <Tr>
-                    <td>Inverted</td>
-                    <td>反色兼容</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>ClickToActive</td>
-                    <td>点击激活</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>ActiveIndex</td>
-                    <td>设置活动步骤的初始索引</td>
-                    <td>index?</td>
-                    <td>null</td>
-                </Tr>
-            </Content>
-        </ParameterTable>
-        <ParameterTable Title="Step 组件参数">
-            <Content>
-                <Tr>
-                    <td>Title</td>
-                    <td>步骤的标题</td>
-                    <td>string</td>
-                    <td></td>
-                </Tr>
-                <Tr>
-                    <td>Description</td>
-                    <td>步骤的描述</td>
-                    <td>string</td>
-                    <td></td>
-                </Tr>
-                <Tr>
-                    <td>IconClass</td>
-                    <td>步骤的图标</td>
-                    <td>string</td>
-                    <td></td>
-                </Tr>
-                <Tr>
-                    <td>IconColor</td>
-                    <td>步骤的图标的颜色</td>
-                    <td>Color?</td>
-                    <td></td>
-                </Tr>
-                <Tr>
-                    <td>Completed</td>
-                    <td>完成状态，图标会变为 <Icon IconClass="check" Color="Color.Green" /> 显示</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>Active</td>
-                    <td>激活状态</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-                <Tr>
-                    <td>Disabled</td>
-                    <td>禁用状态</td>
-                    <td>bool</td>
-                    <td>false</td>
-                </Tr>
-            </Content>
-        </ParameterTable>
     </Body>
 </Pager>

@@ -16,7 +16,7 @@
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     [HtmlTag]
     [CssClass("steps", Order = 999)]
-    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasInverted,IHasFluid
+    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasInverted,IHasFluid,IHasStackable
     {
         /// <summary>
         /// Gets or sets a value indicating whether this layout is vertical.
@@ -26,6 +26,11 @@
         /// Gets or sets a value indicating whether vertical at right.
         /// </summary>
         [Parameter][CssClass("right")] public bool VerticalRight { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether step can show a ordered sequence of steps.
+        /// </summary>
+        [Parameter][CssClass("ordered")] public bool Ordered { get; set; }
+
         /// <summary>
         /// Gets or sets a value indicating whether attach to another.
         /// </summary>
@@ -63,6 +68,13 @@
         ///   <c>true</c> if fluid; otherwise, <c>false</c>.
         /// </value>
         [Parameter]public bool Fluid { get; set; }
+        /// <summary>
+        /// Gets or sets a value indicating whether layout always stackable.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if stackable; otherwise, <c>false</c>.
+        /// </value>
+        [Parameter]public bool Stackable { get; set; }
 
         /// <summary>
         /// Disables the specified index of <see cref="Step"/>.

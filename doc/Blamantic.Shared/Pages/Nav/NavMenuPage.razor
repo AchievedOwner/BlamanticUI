@@ -5,13 +5,13 @@
                      }))">
     <Body>
         <Header1 Divider>
-            动态导航
+            Dynamic Nav
             <SubHeader>
-                通过事先配置动态加载导航菜单栏
+                Configure from the service for nav content
             </SubHeader>
         </Header1>
         <Segment>
-            <code>NavMenu</code> 由 <code>Menu</code> 和 <code>LinkItem</code> 组合构成，并支持无线递归的子菜单，要求事先在依赖注入服务时自行配置导航菜单的层级结构，如代码所示：
+            <Header2>Configure from <code>IServiceCollection</code></Header2>
             <List Ordered Suffixed>
                 <Item>
                     @Code.GetCode(@"
@@ -34,11 +34,11 @@ services.AddNavigation(nav=>{
 ")
                 </Item>
                 <Item>
-                    使用 <code>NavMenu</code> 组件
+                    Use <code>NavMenu</code> component to render the navigator
                 </Item>
             </List>
         </Segment>
-        <PresentationPart Title="示例">
+        <PresentationPart Title="Demo">
             <RunTemplate>
                 <NavMenu />
                 <NavMenu BackgroundColor="Color.Blue" />
@@ -56,35 +56,35 @@ services.AddNavigation(nav =>
 {
     nav.Add(new Navigation
     {
-        Name = ""首页"",
+        Name = ""Home"",
         Link = ""/"",
         IconClass = ""home""
     });
 
     nav.Add(new Navigation
     {
-        Name = ""新闻"",
+        Name = ""News"",
         Navigations = new List<Navigation> {
             new Navigation
             {
-                    Name=""国内""
+                    Name=""Internal""
             },
             new Navigation
             {
-                Name=""国际""
+                Name=""International""
             },
             new Navigation
             {
-                Name=""娱乐"",
+                Name=""Entertainment"",
                 Navigations=new List<Navigation>
                 {
                     new Navigation
                     {
-                            Name=""内地""
+                            Name=""Local""
                     },
                     new Navigation
                     {
-                        Name=""港台""
+                        Name=""HK""
                     },
                 }
             }
@@ -95,9 +95,9 @@ services.AddNavigation(nav =>
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="支持分组">
+        <PresentationPart Title="Key">
     <Description>
-        导航菜单支持添加时进行指定键的分组，并在 <code>&lt;NavMenu Key="xxx"/></code> 指定键即可匹配相应的数据。
+        Specify key to render different navigator by configuration
     </Description>
     <RunTemplate>
         <NavMenu BackgroundColor="Color.Pink" Key="Sports" />
@@ -114,22 +114,22 @@ services.AddNavigation(""Game"", nav =>
     {
         nav.Add(new Navigation
         {
-            Name = ""游戏"",
+            Name = ""Games"",
             IconClass = ""game"",
             Navigations = new List<Navigation> {
             new Navigation
             {
-                    Name=""网游""
+                    Name=""Internet""
             },
             new Navigation
             {
-                Name=""手游""
+                Name=""Mobile""
             },
             }
         });
         nav.Add(new Navigation
         {
-            Name = ""合作伙伴"",
+            Name = ""Cooperator"",
             IconClass = ""users""
         });
     });
@@ -142,7 +142,7 @@ services.AddNavigation(""Sports"", nav =>
     });
     nav.Add(new Navigation
     {
-        Name = ""CBA""
+        Name = ""WNBA""
     });
     nav.Add(new Navigation
     {
@@ -153,10 +153,7 @@ services.AddNavigation(""Sports"", nav =>
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="垂直显示">
-    <Description>
-        设置 <code>Vertical</code> 使其垂直显示
-    </Description>
+        <PresentationPart Title="Vertical">
     <RunTemplate>
         <NavMenu Vertical/>
     </RunTemplate>
@@ -168,10 +165,7 @@ services.AddNavigation(""Sports"", nav =>
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="仅显示图标">
-            <Description>
-                设置 <code>IconOnly</code> 仅显示设置的 <code>IconClass</code> 的图标，鼠标悬浮可显示名称。
-            </Description>
+        <PresentationPart Title="IconOnly">
             <RunTemplate>
                 <NavMenu IconOnly />
                 <NavMenu IconOnly Vertical />
@@ -185,10 +179,7 @@ services.AddNavigation(""Sports"", nav =>
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="图文兼容">
-    <Description>
-        设置 <code>LabeledIcon</code> 使图标和文本独占一行。
-    </Description>
+        <PresentationPart Title="LabeledIcon">
     <RunTemplate>
         <NavMenu LabeledIcon />
         <NavMenu LabeledIcon Vertical />
@@ -202,10 +193,7 @@ services.AddNavigation(""Sports"", nav =>
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="尺寸">
-    <Description>
-        设置 <code>Size</code> 改变导航的尺寸。
-    </Description>
+        <PresentationPart Title="Size">
     <RunTemplate>
         <NavMenu Size="Size.Mini" />
         <NavMenu Size="Size.Huge" />
@@ -223,62 +211,59 @@ services.AddNavigation(""Sports"", nav =>
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="自定义菜单导航的前后内容">
+        <PresentationPart Title="Start/End custom content">
     <Description>
-        设置 <code>StartChildContent</code> 定义菜单前的 UI 内容。
+        Set <code>StartContent</code> before nav item rendered
         <br />
-        设置 <code>EndChildContent</code> 定义菜单后的 UI 内容。
+        Set <code>EndContent</code> after nav item rendered
     </Description>
     <RunTemplate>
         <NavMenu BackgroundColor="Color.Green">
-            <StartChildContent>
+            <StartContent>
                 <Item>
                     <Icon IconClass="google" /> Logo
                 </Item>
-            </StartChildContent>
-            <EndChildContent>
+            </StartContent>
+            <EndContent>
                     <Menu UI="false" HorizontalPosition="HorizontalPosition.Right" Borderless Linked>
-                        <Item>登录</Item>
-                        <Item>注册</Item>
+                        <Item>Login</Item>
+                        <Item>Register</Item>
                     </Menu>
-            </EndChildContent>
+            </EndContent>
         </NavMenu>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <NavMenu BackgroundColor=""Color.Green"">
-    <StartChildContent>
+    <StartContent>
         <Item>
             <Icon IconClass=""google"" /> Logo
         </Item>
-    </StartChildContent>
-    <EndChildContent>
+    </StartContent>
+    <EndContent>
             <Menu UI=""false"" HorizontalPosition=""HorizontalPosition.Right"" Borderless Linked>
-                <Item>登录</Item>
-                <Item>注册</Item>
+                <Item>Login</Item>
+                <Item>Register</Item>
             </Menu>
-    </EndChildContent>
+    </EndContent>
 </NavMenu>
 ```
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="子菜单">
-    <Description>
-        可以将动态导航放在 <code>DropDownItem</code> 呈现下拉菜单。
-    </Description>
+        <PresentationPart Title="Sub Menu">
     <RunTemplate>
         <Menu>
             <DropDownItem>
-                子菜单
+                Sub Menu
                 <Icon IconClass="dropdown" />
                 <NavMenu Key="Game" />
             </DropDownItem>
         </Menu>
         <Menu Vertical>
             <DropDownItem>
-                子菜单
+                Sub Menu
                 <Icon IconClass="dropdown" />
                 <NavMenu Key="Game"  />
             </DropDownItem>
@@ -289,14 +274,14 @@ services.AddNavigation(""Sports"", nav =>
 ```html
 <Menu>
     <DropDownItem>
-        子菜单
+        Sub Menu
         <Icon IconClass=""dropdown"" />
         <NavMenu Key=""Game"" />
     </DropDownItem>
 </Menu>
 <Menu Vertical>
     <DropDownItem>
-        子菜单
+        Sub Menu
         <Icon IconClass=""dropdown"" />
         <NavMenu Key=""Game""  />
     </DropDownItem>
@@ -305,69 +290,5 @@ services.AddNavigation(""Sports"", nav =>
 ")
     </CodeTemplate>
 </PresentationPart>
-                        <ParameterTable>
-                    <Content>
-                        <tr>
-                            <td>Key</td>
-                            <td>分组的键</td>
-                            <td>string</td>
-                            <td>Default</td>
-                        </tr>
-                        <tr>
-                            <td>Vertical</td>
-                            <td>是否垂直显示</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>BackgroundColor</td>
-                            <td>背景颜色</td>
-                            <td>enum</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>ActivedColor</td>
-                            <td>选中项的颜色</td>
-                            <td>enum</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Size</td>
-                            <td>尺寸大小</td>
-                            <td>enum</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>IconOnly</td>
-                            <td>仅显示图标</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>LabeledIcon</td>
-                            <td>图文混搭兼容</td>
-                            <td>bool</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Style</td>
-                            <td>风格样式</td>
-                            <td>enum</td>
-                            <td>MenuStyle.Default</td>
-                        </tr>     
-                        <tr>
-                            <td>StartChildContent</td>
-                            <td>呈现在导航菜单前的 UI 内容</td>
-                            <td>RenderFragment</td>
-                            <td></td>
-                        </tr>        
-                        <tr>
-                            <td>EndChildContent</td>
-                            <td>呈现在导航菜单后的 UI 内容</td>
-                            <td>RenderFragment</td>
-                            <td></td>
-                        </tr>                 
-                    </Content>
-        </ParameterTable>
     </Body>
 </Pager>
