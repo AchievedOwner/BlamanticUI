@@ -36,7 +36,6 @@ namespace BlamanticUI.Shared
 
         public static IServiceCollection AddDemo(this IServiceCollection services)
         {
-            services.AddBlamanticUI();
             services.AddNavigation(nav =>
             {
                 nav.Add(new Navigation
@@ -140,6 +139,11 @@ namespace BlamanticUI.Shared
 
             nav.Add(new Navigation
             {
+                Name = "Flag",
+                Link = $"/component/{prefix}/flag"
+            });
+            nav.Add(new Navigation
+            {
                 Name = "Icon",
                 Link = $"/component/{prefix}/icon"
             });
@@ -151,29 +155,45 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
-                Name = "Flag",
-                Link = $"/component/{prefix}/flag"
-            });
-            nav.Add(new Navigation
-            {
                 Name = "Label",
                 Link = $"/component/{prefix}/label"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "Text",
-                Link = $"/component/{prefix}/text"
             });
             nav.Add(new Navigation
             {
                 Name = "Segment",
                 Link = $"/component/{prefix}/segment"
             });
+            nav.Add(new Navigation
+            {
+                Name = "Text",
+                Link = $"/component/{prefix}/text"
+            });
         }
 
         static void AddInput(ICollection<Navigation> nav)
         {
             string prefix = "input";
+
+            nav.Add(new Navigation
+            {
+                Name = "Calendar",
+                Link = $"/component/{prefix}/calendar"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "CheckBox",
+                Link = $"/component/{prefix}/checkbox"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "DateField",
+                Link = $"/component/{prefix}/datefield"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "DropdownList",
+                Link = $"/component/{prefix}/dropdown"
+            });
             nav.Add(new Navigation
             {
                 Name = "Form",
@@ -189,36 +209,11 @@ namespace BlamanticUI.Shared
                 Name = "TextField",
                 Link = $"/component/{prefix}/textfield"
             });
-            nav.Add(new Navigation
-            {
-                Name = "CheckBox",
-                Link = $"/component/{prefix}/checkbox"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "DropdownList",
-                Link = $"/component/{prefix}/dropdown"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "DateField",
-                Link = $"/component/{prefix}/datefield"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "Calendar",
-                Link = $"/component/{prefix}/calendar"
-            });
         }
 
         static void AddLayout(ICollection<Navigation> nav)
         {
             string prefix = "layout";
-            nav.Add(new Navigation
-            {
-                Name = "Grid",
-                Link = $"/component/{prefix}/grid"
-            });
 
             nav.Add(new Navigation
             {
@@ -238,6 +233,11 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
+                Name = "Grid",
+                Link = $"/component/{prefix}/grid"
+            });
+            nav.Add(new Navigation
+            {
                 Name = "Header",
                 Link = $"/component/{prefix}/header"
             });
@@ -253,19 +253,29 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
-                Name = "Tab",
-                Link = $"/component/{prefix}/tab"
+                Name = "Menu",
+                Link = $"/component/{prefix}/menu"
             });
             nav.Add(new Navigation
             {
-                Name = "Menu",
-                Link = $"/component/{prefix}/menu"
+                Name = "Space",
+                Link = $"/component/{prefix}/space"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "Tab",
+                Link = $"/component/{prefix}/tab"
             });
         }
 
         static void AddData(ICollection<Navigation> nav)
         {
             string prefix = "data";
+            nav.Add(new Navigation
+            {
+                Name = "Accordion",
+                Link = $"/component/{prefix}/accordion"
+            });
             nav.Add(new Navigation
             {
                 Name = "Table",
@@ -276,16 +286,31 @@ namespace BlamanticUI.Shared
                 Name = "Pagination",
                 Link = $"/component/{prefix}/pagination"
             });
-            nav.Add(new Navigation
-            {
-                Name = "Accordion",
-                Link = $"/component/{prefix}/accordion"
-            });
         }
 
         static void AddFeedback(ICollection<Navigation> nav)
         {
             string prefix = "feedback";
+            nav.Add(new Navigation
+            {
+                Name = "Dialog",
+                Link = $"/component/{prefix}/dialog"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "Dimmer",
+                Link = $"/component/{prefix}/dimmer"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "Loader",
+                Link = $"/component/{prefix}/loader"
+            });
+            nav.Add(new Navigation
+            {
+                Name = "Message",
+                Link = $"/component/{prefix}/message"
+            });
             nav.Add(new Navigation
             {
                 Name = "Modal",
@@ -298,28 +323,8 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
-                Name = "Message",
-                Link = $"/component/{prefix}/message"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "Dialog",
-                Link = $"/component/{prefix}/dialog"
-            });
-            nav.Add(new Navigation
-            {
                 Name = "Toast",
                 Link = $"/component/{prefix}/toast"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "Dimmer",
-                Link = $"/component/{prefix}/dimmer"
-            });
-            nav.Add(new Navigation
-            {
-                Name = "Loader",
-                Link = $"/component/{prefix}/loader"
             });
         }
 

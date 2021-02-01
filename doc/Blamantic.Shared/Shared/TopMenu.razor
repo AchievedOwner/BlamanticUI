@@ -1,9 +1,10 @@
-﻿<Menu BackgroundColor="Color.Purple">
+﻿<Menu BackgroundColor="Color.Purple" Borderless>
     <Item>
-        <Image Source="img/logo-white.png" />
+        <Image Src="img/logo-white.png" UI="false" />
     </Item>
     <Item>
         <Header1 Inverted>@Code.TITLE</Header1>
+        <Label Floating="CornerPosition.TopRight" AdditionalStyles="@("top:5px;right:-10px")">@Code.GetVersion()</Label>
     </Item>
     <Menu UI="false" HorizontalPosition="HorizontalPosition.Right">
         <LinkItem Link="/">Home</LinkItem>

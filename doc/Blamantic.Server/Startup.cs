@@ -28,6 +28,7 @@ namespace BlamanticUI.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddBlamanticUI();
             services.AddDemo();
         }
 

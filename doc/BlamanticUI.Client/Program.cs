@@ -17,6 +17,7 @@ namespace BlamanticUI.Client
         {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
+            builder.Services.AddBlamanticUI();
             builder.Services.AddDemo();
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 

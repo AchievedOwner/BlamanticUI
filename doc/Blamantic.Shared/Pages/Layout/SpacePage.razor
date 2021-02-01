@@ -1,0 +1,56 @@
+﻿@page "/component/layout/space" 
+
+<Pager DataSource="@(new List<string> { "Demo","Section" })">
+    <Body>
+        <Header1>
+            Space
+            <SubHeader>
+                To create a space between paragraphs.
+            </SubHeader>
+        </Header1>
+
+        <PresentationPart Title="Demo">
+            <RunTemplate>
+                <ParagraphDemo />
+                <Space />
+                <ParagraphDemo />
+                <Space />
+                <ParagraphDemo />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<ParagraphDemo/>
+<Space/>
+<ParagraphDemo/>
+<Space/>
+<ParagraphDemo/>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Section">
+            <Description>
+                A space can provide greater margins to divide sections of content
+            </Description>
+            <RunTemplate>
+                <ParagraphDemo />
+                <Space Section />
+                <ParagraphDemo />
+                <Space Section />
+                <ParagraphDemo />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<ParagraphDemo/>
+<Space Section/>
+<ParagraphDemo/>
+<Space Section/>
+<ParagraphDemo/>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager>

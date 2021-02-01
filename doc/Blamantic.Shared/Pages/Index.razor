@@ -2,21 +2,16 @@
 @layout Shared.EmptyLayout
 <div style="padding-left:5px">
 
-    <Segment Raised Stacked Tall>
         <Header1 Divider>
-            <Image Source="img/logo.png" />
+            <Image Src="img/logo.png" />
             <Content>
                 @Code.TITLE
                 <SubHeader>The Semantic-UI for Blazor.</SubHeader>
             </Content>
         </Header1>
-
-        <Header2 Divider>
-            Quick Start
-        </Header2>
         
  
-        <Table Celled Definition Compact>
+        <Table Definition>
             <Tr>
                 <Th HorizontalAlignment="HorizontalAlignment.Center">
                     <h2>Steps</h2>
@@ -30,11 +25,9 @@
             </Tr>
             <Tr>
                 <Td>
-                    <Icon IconClass="dice one" Size="Size.Huge" />
+                        <Icon IconClass="dice one" Size="Size.Huge" />
                 </Td>
                 <Td colspan="2">
-                    Install as below:
-                    <br />
                     <Tab>
                         <TabItem Title="Package Manage Console">
                             <Segment Color="Color.Grey" Inverted>
@@ -86,8 +79,9 @@ Import css in `_Host.cshtml`
 ```cs
 //In Program.cs
 
+var builder = WebAssemblyHostBuilder.CreateDefault(args);
 //...
-Builder.Services.AddBlamanticUI();
+builder.Services.AddBlamanticUI();
 //...
 ```
 ")
@@ -99,9 +93,9 @@ Builder.Services.AddBlamanticUI();
 
 public void ConfigureServices(IServiceCollection services)
 {
-//...
-services.AddBlamanticUI();
-//...
+    //...
+    services.AddBlamanticUI();
+    //...
 }
 ```
 ")
@@ -112,7 +106,9 @@ services.AddBlamanticUI();
                     <Icon IconClass="dice four" Size="Size.Huge" />
                 </Td>
                 <Td colspan="2">
-                    In <code>_Import.razor</code> using <code>BlamanticUI</code>
+                    @Code.GetCode(@"
+`using BlamanticUI` in `_Import.razor`
+")
                 </Td>
             </Tr>
             <Tr>
@@ -121,7 +117,7 @@ services.AddBlamanticUI();
                 </td>
                 <td colspan="2">
                     @Code.GetCode(@"
-Modify `App.razor` to add `BlamanticUIContainer` for loading dynamic component like 'Modal','Toaster' etc.
+Modify `App.razor` to add `BlamanticUIContainer` to load dynamic components like 'Modal','Toaster' etc.
 ```html
 <Router AppAssembly=""@typeof(Program).Assembly"">
     <Found Context=""routeData"">
@@ -142,7 +138,6 @@ Modify `App.razor` to add `BlamanticUIContainer` for loading dynamic component l
         </Table>
 
 
-    </Segment>
 
     <Container Fluid>
         <Grid EqualWidth>
@@ -231,26 +226,26 @@ Modify `App.razor` to add `BlamanticUIContainer` for loading dynamic component l
                     <Tab>
                         <TabItem Title="Run" AdditionalStyles="@tabItemStyle">
                             <Label Image Color="Color.Red">
-                                <Image Source="img/avatar/ade.jpg" /> Ade
+                                <Image Src="img/avatar/ade.jpg" /> Ade
                             </Label>
                             <Label Image Color="Color.Green">
-                                <Image Source="img/avatar/christian.jpg" /> Christian
+                                <Image Src="img/avatar/christian.jpg" /> Christian
                             </Label>
                             <Label Image Color="Color.Brown">
-                                <Image Source="img/avatar/elliot.jpg" /> Elliot
+                                <Image Src="img/avatar/elliot.jpg" /> Elliot
                             </Label>
                         </TabItem>
                         <TabItem Title="Code" AdditionalStyles="@tabItemStyle">
                             @Code.GetCode(@"
 ```html
 <Label Image Color=""Color.Red"">
-    <Image Source=""img/avatar/ade.jpg"" /> Ade
+    <Image Src=""img/avatar/ade.jpg"" /> Ade
 </Label>
 <Label Image Color=""Color.Green"">
-    <Image Source=""img/avatar/christian.jpg"" /> Christian
+    <Image Src=""img/avatar/christian.jpg"" /> Christian
 </Label>
 <Label Image Color=""Color.Brown"">
-    <Image Source=""img/avatar/elliot.jpg"" /> Elliot
+    <Image Src=""img/avatar/elliot.jpg"" /> Elliot
 </Label>
 ```
 ")

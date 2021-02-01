@@ -2,7 +2,7 @@
 
 <Menu Vertical Style="MenuStyle.Pill" Compact  ActivedColor="Color.Purple">
     <Item>
-        <DropDownList AdditionalStyles="@("width:90%!important")" MaxFilterItems="5" Removable Size="Size.Mini" Compact Fluid Filterable T="Navigation" DataSource="SearchMenus" OnItemSelected="SelectItem" FilterField="@nameof(Navigation.Name)" @bind-Value="SelectedLink">
+        <DropDownList AdditionalStyles="@("width:90%!important")" MaxFilterItems="5" Removable  Fluid Filterable T="Navigation" DataSource="SearchMenus" OnItemSelected="SelectItem" FilterField="@nameof(Navigation.Name)" @bind-Value="SelectedLink">
             <DefaultItem>Keywords</DefaultItem>
             <ItemFormat>
                 @context.Name
