@@ -197,13 +197,13 @@ namespace BlamanticUI
         /// </summary>
         MultiLine = 1,
         /// <summary>
-        /// A password of text.
+        /// A secret chars in text box.
         /// </summary>
         Password = 2,
         /// <summary>
-        ///A numberic type of text.
+        ///A numberic text box.
         /// </summary>
-        Number = 3,
+        Numberic = 3,
         /// <summary>
         /// A custom type supported by HTML5.
         /// </summary>

@@ -203,18 +203,20 @@ namespace BlamanticUI
             //        $"an {nameof(Form)}.");
             //}
 
-            if (ValueExpression == null)
-            {
-                throw new InvalidOperationException($"{GetType()} requires a value for the 'ValueExpression' " +
-                    $"parameter. Normally this is provided automatically when using 'bind-Value'.");
-            }
+            //if (ValueExpression == null)
+            //{
+            //    throw new InvalidOperationException($"{GetType()} requires a value for the 'ValueExpression' " +
+            //        $"parameter. Normally this is provided automatically when using 'bind-Value'.");
+            //}
 
             if (EditContext is null)
             {
                 EditContext = CascadedEditContext;
             }
-            
-            FieldIdentifier = FieldIdentifier.Create(ValueExpression);
+            if (ValueExpression != null)
+            {
+                FieldIdentifier = FieldIdentifier.Create(ValueExpression);
+            }
             _nullableUnderlyingType = Nullable.GetUnderlyingType(typeof(TValue));
 
             if (EditContext is not null)

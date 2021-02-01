@@ -2,20 +2,14 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "示例","视图模型","自定义“周”文本","自定义“月”文本","更改今日高亮","双向绑定","反色背景"
+                         "Demo","ViewMode","Custom Week Text","Custom Month text","TodayColor","Two-way Binding","Inverted"
                      })">
     <Body>
         <Header1>
-            日历(Calendar)
-            <SubHeader>日历可以允许用户选择日期和时间</SubHeader>
+            Calendar
+            <SubHeader>A calendar allows users to select any date or time</SubHeader>
         </Header1>
-        <Message State="State.Warning">
-            仅支持 <code>DateTimeOffset?</code> 数据类型。
-        </Message>
-        <PresentationPart Title="示例">
-            <Description>
-                默认显示的是日期。
-            </Description>
+        <PresentationPart Title="Demo">
             <RunTemplate>
                 <Calendar />
             </RunTemplate>
@@ -27,41 +21,36 @@
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="视图模式">
+        <PresentationPart Title="ViewMode">
             <Description>
-                设置 <code>ViewMode</code> 展现不同的视图。
+                Display different view mode of calendar.
             </Description>
             <RunTemplate>
-                <Header3>月视图</Header3>
+                <Header3>Month View Mode</Header3>
                 <Calendar ViewMode="CalendarViewMode.Month" />
-                <Header3>年视图</Header3>
+                <Header3>Year View Mode</Header3>
                 <Calendar ViewMode="CalendarViewMode.Year" />
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Header3>月视图</Header3>
 <Calendar ViewMode=""CalendarViewMode.Month"" />
-<Header3>年视图</Header3>
 <Calendar ViewMode=""CalendarViewMode.Year"" />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="自定义“周”文本">
-            <Description>
-                设置 <code>WeekMapExpression</code> 自由改写周的文本。
-            </Description>
+        <PresentationPart Title="Custom Week Text">
             <RunTemplate>
                 <Calendar WeekMapExpression="@(week=>
                                                {
-                                                   week[DayOfWeek.Monday] = "金曜日";
-                                                   week[DayOfWeek.Tuesday] = "木曜日";
-                                                   week[DayOfWeek.Wednesday] = "水曜日 ";
-                                                   week[DayOfWeek.Thursday] = "火曜日";
-                                                   week[DayOfWeek.Friday] = "土曜日";
-                                                   week[DayOfWeek.Saturday] = "月曜日";
-                                                   week[DayOfWeek.Sunday] = "日曜日";
+                                                   week[DayOfWeek.Monday] = "M";
+                                                   week[DayOfWeek.Tuesday] = "T";
+                                                   week[DayOfWeek.Wednesday] = "W ";
+                                                   week[DayOfWeek.Thursday] = "T";
+                                                   week[DayOfWeek.Friday] = "F";
+                                                   week[DayOfWeek.Saturday] = "S";
+                                                   week[DayOfWeek.Sunday] = "S";
                                                })"/>
             </RunTemplate>
             <CodeTemplate>
@@ -69,22 +58,19 @@
 ```html
 <Calendar WeekMapExpression=""@(week=>
                                 {
-                                    week[DayOfWeek.Monday] = ""金曜日"";
-                                    week[DayOfWeek.Tuesday] = ""木曜日"";
-                                    week[DayOfWeek.Wednesday] = ""水曜日 "";
-                                    week[DayOfWeek.Thursday] = ""火曜日"";
-                                    week[DayOfWeek.Friday] = ""土曜日"";
-                                    week[DayOfWeek.Saturday] = ""月曜日"";
-                                    week[DayOfWeek.Sunday] = ""日曜日"";
+                                    week[DayOfWeek.Monday] = ""M"";
+                                    week[DayOfWeek.Tuesday] = ""T"";
+                                    week[DayOfWeek.Wednesday] = ""W "";
+                                    week[DayOfWeek.Thursday] = ""T"";
+                                    week[DayOfWeek.Friday] = ""F"";
+                                    week[DayOfWeek.Saturday] = ""S"";
+                                    week[DayOfWeek.Sunday] = ""S"";
                                 })""/>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="自定义“月”文本">
-            <Description>
-                设置 <code>MonthMapExpression</code> 自定义月的显示文本。
-            </Description>
+        <PresentationPart Title="Custom Month text">
             <RunTemplate>
                 <Calendar ViewMode="CalendarViewMode.Month" MonthMapExpression="@(month=>month.Clear())" />
                 <Calendar ViewMode="CalendarViewMode.Month" Year="2012" MonthMapExpression="@(month=>
@@ -126,26 +112,25 @@
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="更改今日高亮">
-            <Description>
-                设置 <code>TodayColor</code> 可以更改【今日】的高亮颜色。设置 <code>HighlightToday="false"</code> 则取消今日高亮。
-            </Description>
+        <PresentationPart Title="TodayColor">
             <RunTemplate>
                 <Calendar TodayColor="Color.Red"/>
-                <Calendar HightlightToday="false"/>
+                <Calendar TodayColor="null"/>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Calendar TodayColor=""Color.Red""/>
-<Calendar HightlightToday=""false""/>
+<Calendar HightlightToday=""null""/>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="双向绑定">
+        <PresentationPart Title="Two-way Binding">
             <Description>
-                支持双向绑定 <code>@@bind-Value</code> 的参数。
+                <Message State="State.Info">
+                    Only support <code>DateTimeOffset?</code> for Two-Way Binding.
+                </Message>
             </Description>
             <RunTemplate>
                 <Calendar @bind-Value="date" />
@@ -172,10 +157,7 @@
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="反色背景">
-            <Description>
-                设置 <code>Inverted</code> 兼容父容器的反色效果。
-            </Description>
+        <PresentationPart Title="Inverted">
             <RunTemplate>
                 <Segment Inverted>
                     <Calendar Inverted />

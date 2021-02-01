@@ -44,29 +44,29 @@
 
             WeekMapper = new Dictionary<DayOfWeek, string>
             {
-                [DayOfWeek.Sunday] = "S",
-                [DayOfWeek.Monday] = "M",
-                [DayOfWeek.Tuesday] = "T",
-                [DayOfWeek.Wednesday] = "W",
-                [DayOfWeek.Thursday] = "T",
-                [DayOfWeek.Friday] = "F",
-                [DayOfWeek.Saturday] = "S"
+                [DayOfWeek.Sunday] = DayOfWeek.Sunday.ToString(),
+                [DayOfWeek.Monday] = DayOfWeek.Monday.ToString(),
+                [DayOfWeek.Tuesday] = DayOfWeek.Tuesday.ToString(),
+                [DayOfWeek.Wednesday] = DayOfWeek.Wednesday.ToString(),
+                [DayOfWeek.Thursday] = DayOfWeek.Thursday.ToString(),
+                [DayOfWeek.Friday] = DayOfWeek.Friday.ToString(),
+                [DayOfWeek.Saturday] = DayOfWeek.Saturday.ToString()
             };
 
             MonthMapper = new Dictionary<CalendarMonth, string>(MAX_MONTH)
             {
-                [CalendarMonth.Janurary] = "Jan.",
-                [CalendarMonth.February] = "Feb.",
-                [CalendarMonth.March] = "Mar.",
-                [CalendarMonth.April] = "Apr.",
-                [CalendarMonth.May] = "May.",
-                [CalendarMonth.June] = "Jun.",
-                [CalendarMonth.July] = "Jul.",
-                [CalendarMonth.Augest] = "Aug.",
-                [CalendarMonth.September] = "Sep.",
-                [CalendarMonth.October] = "Oct.",
-                [CalendarMonth.November] = "Nov.",
-                [CalendarMonth.December] = "Dec.",
+                [CalendarMonth.Janurary] = CalendarMonth.Janurary.ToString(),
+                [CalendarMonth.February] = CalendarMonth.February.ToString(),
+                [CalendarMonth.March] = CalendarMonth.March.ToString(),
+                [CalendarMonth.April] = CalendarMonth.April.ToString(),
+                [CalendarMonth.May] = CalendarMonth.May.ToString(),
+                [CalendarMonth.June] = CalendarMonth.June.ToString(),
+                [CalendarMonth.July] = CalendarMonth.July.ToString(),
+                [CalendarMonth.Augest] = CalendarMonth.Augest.ToString(),
+                [CalendarMonth.September] = CalendarMonth.September.ToString(),
+                [CalendarMonth.October] = CalendarMonth.October.ToString(),
+                [CalendarMonth.November] = CalendarMonth.November.ToString(),
+                [CalendarMonth.December] = CalendarMonth.December.ToString(),
             };
         }
 

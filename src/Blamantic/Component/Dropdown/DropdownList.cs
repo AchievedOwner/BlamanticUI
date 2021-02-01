@@ -42,7 +42,6 @@ namespace BlamanticUI
         IHasSpan,
         IHasInline
     {
-        private readonly EventHandler<ValidationStateChangedEventArgs> _validationStateChangedHandler;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="DropDownList{T}"/> class.
@@ -51,7 +50,7 @@ namespace BlamanticUI
         {
             Selectable = true;
             FilterExpression = CompareSearchValue;
-            _validationStateChangedHandler = (s, e) => StateHasChanged();
+            FilterEmptyContent = builder => builder.AddContent(0, "No results found.");
         }
 
         #region Parameters        
@@ -89,7 +88,6 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the field of data source to be filtered.
         /// </summary>
-        /// <value>
         [Parameter] public string FilterField { get; set; }
 
         /// <summary>
@@ -143,6 +141,11 @@ namespace BlamanticUI
         /// Gets or sets the format of item to display in list.
         /// </summary>
         [Parameter] public RenderFragment<T> ItemFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the UI content while empty filtered items from data source.
+        /// </summary>
+        [Parameter] public RenderFragment FilterEmptyContent { get; set; }
 
         /// <summary>
         /// Gets or sets an expression for filter that can do customization data filtered.
@@ -211,6 +214,7 @@ namespace BlamanticUI
             {
                 ItemFormat = value => new RenderFragment(builder => builder.AddContent(0, value?.ToString()));
             }
+
         }
 
         /// <summary>
@@ -240,7 +244,7 @@ namespace BlamanticUI
         /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
-            css.Add(Actived, "visible").Add(Removable, "clearable").Add("dropdown");
+            css.Add("dropdown").Add(Actived, "visible").Add(Removable, "clearable");
         }
 
         /// <summary>
@@ -253,7 +257,7 @@ namespace BlamanticUI
             AddCommonAttributes(builder);
             if (!Disabled)
             {
-                builder.AddAttribute(1, "tabindex", 1);
+                builder.AddAttribute(1, "tabindex", new Random().Next());
                 builder.AddAttribute(2, "onclick", EventCallback.Factory.Create<MouseEventArgs>(this, () => Toggle()));
                 builder.AddAttribute(3, "onblur", EventCallback.Factory.Create<FocusEventArgs>(this, () => this.Active(false)));
             }
@@ -398,9 +402,7 @@ namespace BlamanticUI
                       if (!FilterdDataSource.Any())
                       {
                           menu.OpenComponent<Message>(1000);
-                          menu.AddAttribute(1005, nameof(Message.ChildContent), (RenderFragment)(message => {
-                              message.AddContent(0, "没有找到任何内容");
-                          }));
+                          menu.AddAttribute(1005, nameof(Message.ChildContent), FilterEmptyContent);
                           menu.CloseComponent();
                       }
                   }

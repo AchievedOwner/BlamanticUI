@@ -2,54 +2,131 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "文本框","密码框","多行文本框","数字框","显示标签的文本","触发方式","图标","图标模式","标签模式","行为模式","透明边框","尺寸"
+                         "TextField","DisplayNameType","Trigger","Icon","IconMode","LabelMode","ActionMode","Transparent","Size"
                      })">
     <Body>
         <Header1 Divider>
-            输入控件
+            TextField
             <SubHeader>
-                输入是用于从用户那里引出响应的字段
+                A text field used to elicit a response from a user
             </SubHeader>
         </Header1>
-        <Message State="State.Info">
-            示例的实体：
+        <Segment>
+            The Model in demo:
             @Code.GetCode(@"
 ```cs
 class User
 {
-    [Display(Name = ""用户名"")]
-    [Required(ErrorMessage = ""{0}不能为空"")]
+    [Display(Name = ""Account"")]
+    [Required]
     public string UserName { get; set; }
 
-    [Display(Name = ""密码"")]
-    [Required(ErrorMessage = ""{0}不能为空"")]
-    [StringLength(16, MinimumLength = 6)]
+    [Required]
     public string Password { get; set; }
 
-    [Display(Name = ""个人资料"")]
+    [Display(Name = ""Profile"")]
     [StringLength(100)]
     public string Description { get; set; }
 
-    [Display(Name = ""年龄"")]
     [Required(ErrorMessage = ""{0}不能为空"")]
     public int Age { get; set; }
 }
 ```
 ")
+        </Segment>
+        <Message State="State.Warning">
+            <code>Form</code> or <code>EditForm</code> is not required for <code>TextField</code>, but the validation from <code>EditContext</code> is out of work.
         </Message>
-        <Message State="State.Warning" Icon>
-            <Icon IconClass="warning" Circular/>
-            <Content>
-                使用 <code>Form</code> 代替 <code>EditForm</code> 并使用 <code>Field</code> 包装字段。
-            </Content>
-        </Message>
-        <PresentationPart Title="文本框">
+        <PresentationPart Title="TextField">
+            <RunTemplate>
+                <TextField @bind-Value="user.UserName" />
+                <br />
+                <TextField @bind-Value="user.Password" Type="TextFieldType.Password" />
+                <br />
+                <TextField @bind-Value="user.Description" Type="TextFieldType.MultiLine" Rows="6" />
+                <br />
+                <TextField @bind-Value="user.Age" Type="TextFieldType.Numberic" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<TextField @bind-Value=""user.UserName"" />
+<TextField @bind-Value=""user.Password"" Type=""TextFieldType.Password"" />
+<TextField @bind-Value=""user.Description"" Type=""TextFieldType.MultiLine"" Rows=""6"" />
+<TextField @bind-Value=""user.Age"" Type=""TextFieldType.Numberic"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart>
+            <Description>
+                Use <code>Form</code> to render the layout, for details please see <Anchor Link="/components/input/form" Target="LinkTarget.Blank">Form</Anchor>.
+            </Description>
+            <RunTemplate>
+                <Form Model="this">
+                    <Fields>
+                        <Field>
+                            <TextField @bind-Value="user.UserName" />
+                        </Field>
+                        <Field>
+                            <TextField @bind-Value="user.Password" Type="TextFieldType.Password" />
+                        </Field>
+                        <Field>
+                            <TextField @bind-Value="user.Age" Type="TextFieldType.Numberic" />
+                        </Field>
+                    </Fields>
+                    <Field>
+                        <TextField @bind-Value="user.Description" Type="TextFieldType.MultiLine" Rows="6" />
+                    </Field>
+                </Form>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""this"">
+    <Fields>
+        <Field>
+            <TextField @bind-Value=""user.UserName"" />
+        </Field>
+        <Field>
+            <TextField @bind-Value=""user.Password"" Type=""TextFieldType.Password"" />
+        </Field>
+        <Field>
+            <TextField @bind-Value=""user.Age"" Type=""TextFieldType.Numberic"" />
+        </Field>
+    </Fields>
+    <Field>
+        <TextField @bind-Value=""user.Description"" Type=""TextFieldType.MultiLine"" Rows=""6"" />
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="DisplayNameType">
+            <Description>
+                Identify <code>System.ComponentModel.DataAnnotations.DisplayAttribute.Name</code> to display the label text or <code>DisplayName</code> is higher prority.
+            </Description>
             <RunTemplate>
                 <Form Model="user">
                     <Field>
+                        <Header3>Standard</Header3>
                         <TextField @bind-Value="user.UserName" />
                         <br />
-                        @user.UserName
+                        <Header3>Default is standard</Header3>
+                        <TextField @bind-Value="user.UserName"  DisplayNameType="DisplayNameType.Label"/>
+                        <br />
+                        <Header3>DisplayName</Header3>
+                        <TextField @bind-Value="user.UserName" DisplayName="Custom DisplayName" />
+                        <br />
+                        <Header3>DisplayNameType.Placeholder</Header3>
+                        <TextField @bind-Value="user.UserName" DisplayNameType="DisplayNameType.Placeholder" />
+                        <br />
+                        <Header3>Placeholder</Header3>
+                        <TextField @bind-Value="user.UserName" Placeholder="Limit in 10 characters" />
+                        <br />
+                        <Header3>DisplyaNameType.Placeholder and Placeholder</Header3>
+                        <TextField @bind-Value="user.UserName" DisplayNameType="DisplayNameType.Placeholder" Placeholder="required" />
                     </Field>
                 </Form>
             </RunTemplate>
@@ -59,129 +136,30 @@ class User
 <Form Model=""user"">
     <Field>
         <TextField @bind-Value=""user.UserName"" />
+        <TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Label"" />
+        <TextField @bind-Value=""user.UserName"" DisplayName=""Custom DisplayName"" />
+        <TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Placeholder"" />
+        <TextField @bind-Value=""user.UserName"" Placeholder=""Limit in 10 characters"" />
+        <TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Placeholder"" Placeholder=""required"" />
     </Field>
 </Form>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="密码框">
-            <RunTemplate>
-                <Form Model="user">
-                    <Field>
-                        <TextField @bind-Value="user.Password" Type="TextFieldType.Password" />
-                        <br />
-                        @user.Password
-                    </Field>
-                </Form>
-            </RunTemplate>
-            <CodeTemplate>
-                @Code.GetCode(@"
-```html
-<Form Model=""user"">
-    <Field>
-        <TextField @bind-Value=""user.Password"" Type=""TextFieldType.Password"" />
-    </Field>
-</Form>
-```
-")
-            </CodeTemplate>
-        </PresentationPart>
-        <PresentationPart Title="多行文本框">
-            <RunTemplate>
-                <Form Model="user">
-                    <Field>
-                        <TextField @bind-Value="user.Description" Type="TextFieldType.MultiLine" Rows="6" />
-                        <br />
-                        @user.Description
-                    </Field>
-                </Form>
-            </RunTemplate>
-            <CodeTemplate>
-                @Code.GetCode(@"
-```html
-<Form Model=""user"">
-    <Field>
-        <TextField @bind-Value=""user.Description"" Type=""TextFieldType.MultiLine"" Rows=""6"" />
-    </Field>
-</Form>
-```
-")
-            </CodeTemplate>
-        </PresentationPart>
-        <PresentationPart Title="数字文本框">
-            <RunTemplate>
-                <Form Model="user">
-                    <Field>
-                        <TextField @bind-Value="user.Age" Type="TextFieldType.Number" />
-                        <br />
-                        @user.Age
-                    </Field>
-                </Form>
-            </RunTemplate>
-            <CodeTemplate>
-                @Code.GetCode(@"
-```html
-<Form Model=""user"">
-    <Field>
-        <TextField @bind-Value=""user.Age"" Type=""TextFieldType.Number"" />
-    </Field>
-</Form>
-```
-")
-            </CodeTemplate>
-        </PresentationPart>
-        <PresentationPart Title="显示标签的文本">
+        <PresentationPart Title="Trigger">
             <Description>
-                自动识别 <code>System.ComponentModel.DataAnnotations.DisplayAttribute</code> 的 <code>Name</code> 值，作为标签显示，或设置 <code>DisplayName</code> 重写显示的文本。
-                <br />
-                设置 <code>DisplayNameType.Placeholder</code> 可以将显示的文本改为在 <code>placeholder</code> 中显示，可以设置 <code>Placeholder</code> 覆盖。
+                Change a different trigger type after binding
             </Description>
             <RunTemplate>
                 <Form Model="user">
                     <Field>
-                        <Header5>原始：</Header5>
-                        <TextField @bind-Value="user.UserName" />
-                        <br />
-                        <Header5>设置 DisplayName</Header5>
-                        <TextField @bind-Value="user.UserName" DisplayName="自定义显示标签" />
-                        <br />
-                        <Header5>设置 DisplayNameType.Placeholder</Header5>
-                        <TextField @bind-Value="user.UserName" DisplayNameType="DisplayNameType.Placeholder" />
-                        <br />
-                        <Header5>设置 Placeholder</Header5>
-                        <TextField @bind-Value="user.UserName" Placeholder="用户名不能超过10个字符" />
-                        <br />
-                        <Header5>设置 DisplyaNameType.Placeholder 和 Placeholder</Header5>
-                        <TextField @bind-Value="user.UserName" DisplayNameType="DisplayNameType.Placeholder" Placeholder="必填项" />
-                        </Field>
-</Form>
-            </RunTemplate>
-            <CodeTemplate>
-                @Code.GetCode(@"
-```html
-<TextField @bind-Value=""user.UserName"" />
-<TextField @bind-Value=""user.UserName"" DisplayName=""自定义显示标签"" />
-<TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Placeholder"" />
-<TextField @bind-Value=""user.UserName"" Placeholder=""用户名不能超过10个字符"" />
-<TextField @bind-Value=""user.UserName"" DisplayNameType=""DisplayNameType.Placeholder""  Placeholder=""必填项""/>
-```
-")
-            </CodeTemplate>
-        </PresentationPart>
-        <PresentationPart Title="触发方式">
-            <Description>
-                设置 <code>Trigger</code> 改变双向绑定的触发方式。
-            </Description>
-            <RunTemplate>
-                <Form Model="user">
-                    <Field>
-                        <Header5>默认：oninput</Header5>
+                        <Header5>default is <code>oninput</code> event</Header5>
                         <TextField @bind-Value="user.UserName" />
                         <br />
                         @user.UserName
                         <br />
-                        <Header5>改变为 onchange</Header5>
+                        <Header5>change to <code>onchange</code></Header5>
                         <TextField @bind-Value="user.Description" Trigger="TextFieldTrigger.OnChange" />
                         <br />
                         @user.Description
@@ -197,10 +175,9 @@ class User
 ")
             </CodeTemplate>
         </PresentationPart>
-        <Header2 Divider>装饰</Header2>
-        <PresentationPart Title="图标">
+        <PresentationPart Title="Icon">
             <Description>
-                设置 <code>Icon</code> 图标的类名称，会在文本框的左边显示图标。
+                Set <code>Icon</code> using icon class as <code>Icon</code> component.
             </Description>
             <RunTemplate>
                 <Form Model="user">
@@ -221,10 +198,7 @@ class User
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="图标模式">
-            <Description>
-                设置 <code>IconModel</code> 后可以在 <code>Left</code> 或 <code>Right</code> 设置 UI 片段呈现图标。
-            </Description>
+        <PresentationPart Title="IconModel">
             <RunTemplate>
                 <Form Model="user">
                     <Field>
@@ -262,47 +236,70 @@ class User
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="标签模式">
-            <Description>
-                设置 <code>LabelMode</code> 可以在 <code>Left</code> 和 <code>Right</code> 使用 <code>Label</code> 组件呈现内容。
-            </Description>
+        <PresentationPart Title="LabelMode">
             <RunTemplate>
                 <Form Model="user">
                     <Field>
                         <TextField @bind-Value="user.UserName" LabelMode DisplayNameType="DisplayNameType.Placeholder">
                             <Left>
-                                <Label Basic>用户名：</Label>
+                                <Label Basic>UserName</Label>
                             </Left>
                         </TextField>
                     </Field>
                     <Field>
                         <TextField @bind-Value="user.Age" LabelMode DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
-                                <Label>岁</Label>
+                                <Label>Year-Old</Label>
                             </Right>
                         </TextField>
                     </Field>
                     <Field>
-                        <TextField @bind-Value="user.Age" Icon="tag" LabelMode Placeholder="图标和标签可以混合搭配" DisplayNameType="DisplayNameType.Placeholder">
+                        <TextField @bind-Value="user.Age" Icon="tag" LabelMode Placeholder="Mix with Icon & Label" DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
-                                <Label Tag Color="Color.Orange">新标签</Label>
+                                <Label Tag Color="Color.Orange">New Label</Label>
                             </Right>
                         </TextField>
                     </Field>
                 </Form>
             </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Form Model=""user"">
+    <Field>
+        <TextField @bind-Value=""user.UserName"" LabelMode DisplayNameType=""DisplayNameType.Placeholder"">
+            <Left>
+                <Label Basic>UserName</Label>
+            </Left>
+        </TextField>
+    </Field>
+    <Field>
+        <TextField @bind-Value=""user.Age"" LabelMode DisplayNameType=""DisplayNameType.Placeholder"">
+            <Right>
+                <Label>Year-Old</Label>
+            </Right>
+        </TextField>
+    </Field>
+    <Field>
+        <TextField @bind-Value=""user.Age"" Icon=""tag"" LabelMode Placeholder=""Mix with Icon & Label"" DisplayNameType=""DisplayNameType.Placeholder"">
+            <Right>
+                <Label Tag Color=""Color.Orange"">New Label</Label>
+            </Right>
+        </TextField>
+    </Field>
+</Form>
+```
+")
+            </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="行为模式">
-            <Description>
-                设置 <code>ActionMode</code> 可以呈现具有行为的组件，例如 <code>Button</code>。
-            </Description>
+        <PresentationPart Title="ActionMode">
             <RunTemplate>
                 <Form Model="user">
                     <Field>
                         <TextField @bind-Value="user.UserName" ActionMode DisplayNameType="DisplayNameType.Placeholder">
                             <Right>
                                 <Button Color="Color.Blue">
-                                    搜索
+                                    Search
                                 </Button>
                             </Right>
                         </TextField>
@@ -310,7 +307,7 @@ class User
                     <Field>
                         <TextField @bind-Value="user.UserName" LabelMode ActionMode DisplayNameType="DisplayNameType.Placeholder">
                             <Left>
-                                <Label>关键字</Label>
+                                <Label>Keyword</Label>
                             </Left>
                             <Right>
                                 <Button Basic Color="Color.Black">
@@ -327,7 +324,7 @@ class User
                                         <Icon IconClass="cart" />
                                     </Content>
                                     <Content Hidden>
-                                        购物车
+                                        Add Cart
                                     </Content>
                                 </Button>
                             </Right>
@@ -343,7 +340,7 @@ class User
         <TextField @bind-Value=""user.UserName"" ActionMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Right>
                 <Button Color=""Color.Blue"">
-                    搜索
+                    Search
                 </Button>
             </Right>
         </TextField>
@@ -351,7 +348,7 @@ class User
     <Field>
         <TextField @bind-Value=""user.UserName"" LabelMode ActionMode DisplayNameType=""DisplayNameType.Placeholder"">
             <Left>
-                <Label>关键字</Label>
+                <Label>Keyword</Label>
             </Left>
             <Right>
                 <Button Basic Color=""Color.Black"">
@@ -368,7 +365,7 @@ class User
                         <Icon IconClass=""cart"" />
                     </Content>
                     <Content Hidden>
-                        购物车
+                        Add Cart
                     </Content>
                 </Button>
             </Right>
@@ -379,10 +376,7 @@ class User
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="透明边框">
-            <Description>
-                设置 <code>Transparent</code> 隐藏边框。
-            </Description>
+        <PresentationPart Title="Transparent">
             <RunTemplate>
                 <Form Model="user">
                         <Field>
@@ -422,10 +416,7 @@ class User
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="尺寸">
-            <Description>
-                设置 <code>Size</code> 可以显示不同的尺寸。
-            </Description>
+        <PresentationPart Title="Size">
             <RunTemplate>
                 <Form Model="user">
                     <TextField @bind-Value="user.Search" Size="Size.Mini" Placeholder="Mini" />
@@ -461,21 +452,21 @@ class User
 @code{
     class User
     {
-        [Display(Name = "用户名")]
-        [Required(ErrorMessage = "{0}不能为空")]
+        [Display(Name ="Account")]
+        [Required]
         public string UserName { get; set; }
 
-        [Display(Name = "密码")]
-        [Required(ErrorMessage = "{0}不能为空")]
+        [Display]
+        [Required]
         [StringLength(16, MinimumLength = 6)]
         public string Password { get; set; }
 
-        [Display(Name = "个人资料")]
+        [Display(Name ="Profile")]
         [StringLength(100)]
         public string Description { get; set; }
 
-        [Display(Name = "年龄")]
-        [Required(ErrorMessage = "{0}不能为空")]
+        [Display]
+        [Required]
         public int Age { get; set; }
 
         public string Search { get; set; }

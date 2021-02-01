@@ -181,6 +181,11 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
+                Name = "InputBox",
+                Link = $"/component/{prefix}/inputbox"
+            });
+            nav.Add(new Navigation
+            {
                 Name = "TextField",
                 Link = $"/component/{prefix}/textfield"
             });

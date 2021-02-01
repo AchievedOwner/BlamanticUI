@@ -18,7 +18,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSize" />
     [HtmlTag]
-    public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasInverted,IHasFluid,IHasSize
+    public class InputBox : BlamanticChildContentComponentBase, IHasUIComponent,  IHasDisabled, IHasLoading,IHasInverted,IHasFluid,IHasSize,IHasState
     {
         /// <summary>
         /// Gets or sets icon position of input.
@@ -76,10 +76,17 @@ namespace BlamanticUI
         /// Gets or sets the size.
         /// </summary>
         [Parameter]public Size? Size { get; set; }
+
+        
         /// <summary>
         /// Gets or sets a callback method to invoke after <see cref="Disabled" /> changed.
         /// </summary>
         [Parameter]public EventCallback<bool> OnDisabled { get; set; }
+        /// <summary>
+        /// Gets or sets the state.
+        /// </summary>
+        [Parameter]public State? State { get; set; }
+
         /// <summary>
         /// Override to create the CSS class that component need.
         /// </summary>

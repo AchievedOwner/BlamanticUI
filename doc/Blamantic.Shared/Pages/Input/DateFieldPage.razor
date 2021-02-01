@@ -2,19 +2,19 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "示例","日历视图","自定义格式","禁用状态","深色背景"
+                         "Demo","ViewMode","Format","Disabled","Inverted"
                      })">
     <Body>
         <Header1 Divider>
-            日期字段(DateField)
+            DateField
             <SubHeader>
-                结合了 Input 和 Calendar 组件形成的日期选择框。
+                Combine Input and Calendar to be a new component in form.
             </SubHeader>
         </Header1>
         <Message State="State.Warning">
-            仅支持 <code>DateTimeOffset?</code> 数据类型。
+            Only support <code>DateTimeOffset?</code> type.
         </Message>
-        <PresentationPart Title="示例">
+        <PresentationPart Title="Demo">
             <RunTemplate>
                 <Form Model="this">
                     <DateField @bind-Value="Today" />
@@ -34,21 +34,18 @@ DateTime? Today { get; set; }
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="日历视图">
-            <Description>
-                设置 <code>ViewMode</code> 显示不同的日历视图。
-            </Description>
+        <PresentationPart Title="ViewMode">
             <RunTemplate>
                 <Form Model="this">
                     <Fields Span="@(3)">
                         <Field>
-                            <DateField @bind-Value="Year" ViewMode="CalendarViewMode.Year" placeholder="年" />
+                            <DateField @bind-Value="Year" ViewMode="CalendarViewMode.Year" placeholder="Year" />
                         </Field>
                         <Field>
-                            <DateField @bind-Value="Month" ViewMode="CalendarViewMode.Month" placeholder="月" />
+                            <DateField @bind-Value="Month" ViewMode="CalendarViewMode.Month" placeholder="Month" />
                         </Field>
                         <Field>
-                            <DateField @bind-Value="Today" ViewMode="CalendarViewMode.Date" placeholder="日" />
+                            <DateField @bind-Value="Today" ViewMode="CalendarViewMode.Date" placeholder="Date" />
                         </Field>
                     </Fields>
                 </Form>
@@ -59,13 +56,13 @@ DateTime? Today { get; set; }
 <Form Model=""this"">
     <Fields Span=""@(3)"">
         <Field>
-            <DateField @bind-Value=""Year"" ViewMode=""CalendarViewMode.Year"" placeholder=""年"" />
+            <DateField @bind-Value=""Year"" ViewMode=""CalendarViewMode.Year"" placeholder=""Year"" />
         </Field>
         <Field>
-            <DateField @bind-Value=""Month"" ViewMode=""CalendarViewMode.Month"" placeholder=""月"" />
+            <DateField @bind-Value=""Month"" ViewMode=""CalendarViewMode.Month"" placeholder=""Month"" />
         </Field>
         <Field>
-            <DateField @bind-Value=""Today"" ViewMode=""CalendarViewMode.Date"" placeholder=""日"" />
+            <DateField @bind-Value=""Today"" ViewMode=""CalendarViewMode.Date"" placeholder=""Date"" />
         </Field>
     </Fields>
 </Form>
@@ -73,10 +70,7 @@ DateTime? Today { get; set; }
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="自定义格式">
-            <Description>
-                设置 <code>Format</code> 自定义显示的格式。<b>仅对 <code>DateTimeOffset</code> 要求的格式受支持。</b>
-            </Description>
+        <PresentationPart Title="Format">
             <RunTemplate>
                 <DateField @bind-Value="Today" Format="MMM,dd,yyyy" />
             </RunTemplate>
@@ -88,10 +82,7 @@ DateTime? Today { get; set; }
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="禁用状态">
-            <Description>
-                设置 <code>Disabled</code> 禁用控件。
-            </Description>
+        <PresentationPart Title="Disabled">
             <RunTemplate>
                 <Form Model="this">
                     <DateField @bind-Value="Today" Disabled />
@@ -107,7 +98,7 @@ DateTime? Today { get; set; }
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="深色背景">
+        <PresentationPart Title="Inverted">
             <RunTemplate>
                 <Segment Inverted>
                     <Form Model="this">
