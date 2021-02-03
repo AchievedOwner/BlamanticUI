@@ -7,13 +7,18 @@
 		<Authors>William Chow</Authors>
 		<Product>BlamanticUI</Product>
 		<PackageId>BlamanticUI</PackageId>
-		<Description>The css framework from Semantic-UI for blazor.</Description>
+		<Description>The css framework from Semantic-UI for blazor without jQuery.</Description>
 		<AssemblyName>BlamanticUI</AssemblyName>
 		<RootNamespace>BlamanticUI</RootNamespace>
 		<PackageId>BlamanticUI</PackageId>
 		<PackageVersion>0.2</PackageVersion>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Version>0.2</Version>
+		<Copyright>Copyright © William Chow 2021</Copyright>
+		<PackageProjectUrl>https://github.com/AchievedOwner/BlamanticUI</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AchievedOwner/BlamanticUI</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>component blazor semantic UI</PackageTags>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
