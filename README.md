@@ -15,7 +15,8 @@ Check **demo** Directory, **Client** base on WebAssembly, **Server** base on Ser
 # DEMO
 
 ## Button
-![](snapshot/buttons.jpg)
+![](snapshot/buttons1.jpg)
+![](snapshot/buttons2.jpg)
 
 ## Calendar
 ![](snapshot/calendar.jpg)
@@ -36,11 +37,18 @@ Check **demo** Directory, **Client** base on WebAssembly, **Server** base on Ser
 ![](snapshot/steps.jpg)
 
 ## Table
-![](snapshot/table.jpg)
+![](snapshot/tables1.jpg)
+![](snapshot/table2.jpg)
 
-## Toast Message
+## Toaster
 ![](snapshot/toast.jpg)
 
+## Accordion
+![](snapshot/accordion.jpg)
+## Label
+![](snapshot/label.jpg)
+## Item List
+![](snapshot/itemlist.jpg)
 
 
 
