@@ -1,11 +1,8 @@
-﻿<Menu BackgroundColor="Color.Purple" Borderless>
-    <Item>
-        <Image Src="img/logo-white.png" UI="false" />
-    </Item>
-    <Item>
-        <Header1 Inverted>@Code.TITLE</Header1>
-        <Label Floating="CornerPosition.TopRight" AdditionalStyles="@("top:5px;right:-10px")">@Code.GetVersion()</Label>
-    </Item>
+﻿<Menu BackgroundColor="Color.Purple" Borderless AdditionalStyles="@("border-radius:0px")">
+    <LinkItem Link="/">
+        <Header AdditionalStyles="@("font-size:20px;font-weight:bold")">@Code.TITLE</Header>
+        <Label Floating="CornerPosition.TopRight" Color="Color.Black" AdditionalStyles="@("top:5px;right:-10px")">v@(Code.GetVersion())</Label>
+    </LinkItem>
     <Menu UI="false" HorizontalPosition="HorizontalPosition.Right">
         <LinkItem Link="/">Home</LinkItem>
         <LinkItem Link="/component" Match="NavLinkMatch.Prefix">Components</LinkItem>

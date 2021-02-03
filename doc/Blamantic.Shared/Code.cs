@@ -214,6 +214,11 @@ namespace BlamanticUI.Shared
         static void AddLayout(ICollection<Navigation> nav)
         {
             string prefix = "layout";
+            nav.Add(new Navigation
+            {
+                Name = "Breadcrumb",
+                Link = $"/component/{prefix}/breadcrumb"
+            });
 
             nav.Add(new Navigation
             {

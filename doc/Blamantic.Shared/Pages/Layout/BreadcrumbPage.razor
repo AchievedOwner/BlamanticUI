@@ -1,0 +1,332 @@
+﻿@page "/component/layout/breadcrumb" 
+
+<Pager DataSource="@(new List<string>
+                     {
+                         "Demo","Divider","Section","Link","Active","Inverted","Size"
+                     })">
+    <Body>
+        <Header1>
+            Breadcrumb
+            <SubHeader>A breadcrumb is used to show hierarchy between content</SubHeader>
+        </Header1>
+
+        <PresentationPart Title="Demo">
+            <Description>A standard breadcrumb</Description>
+            <RunTemplate>
+                <Breadcrumb>
+                    <BreadcrumbSection>Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection>News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Breadcrumb>
+    <BreadcrumbSection>Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection>News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Divider">
+            <Description>A breadcrumb can contain a divider to show the relationship between sections, this can be formatted as an icon or text.</Description>
+            <RunTemplate>
+                <Breadcrumb>
+                    <BreadcrumbSection>Home</BreadcrumbSection>
+                    <BreadcrumbDivider Divider=">>" />
+                    <BreadcrumbSection>News</BreadcrumbSection>
+                    <BreadcrumbDivider Divider=">>" />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb>
+                    <BreadcrumbSection>Home</BreadcrumbSection>
+                    <BreadcrumbDivider IconClass="right chevron" />
+                    <BreadcrumbSection>News</BreadcrumbSection>
+                    <BreadcrumbDivider IconClass="right arrow" />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Breadcrumb>
+    <BreadcrumbSection>Home</BreadcrumbSection>
+    <BreadcrumbDivider Divider="">>"" />
+    <BreadcrumbSection>News</BreadcrumbSection>
+    <BreadcrumbDivider Divider="">>"" />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+
+<Breadcrumb>
+    <BreadcrumbSection>Home</BreadcrumbSection>
+    <BreadcrumbDivider IconClass=""right chevron"" />
+    <BreadcrumbSection>News</BreadcrumbSection>
+    <BreadcrumbDivider IconClass=""right arrow"" />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Section">
+            <Description>A breadcrumb can contain sections that can either be formatted as a link or text</Description>
+            <RunTemplate>
+                <Breadcrumb>
+                    <BreadcrumbSection>Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="/news">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Breadcrumb>
+    <BreadcrumbSection>Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""/news"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Link">
+            <Description>
+                A section may be linkable or contain a link
+            </Description>
+            <RunTemplate>
+                <Breadcrumb>
+                    <BreadcrumbSection Link="/">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>Search for: <Anchor Link="/">paper towels</Anchor></BreadcrumbSection>
+                </Breadcrumb>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Breadcrumb>
+    <BreadcrumbSection Link=""/"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>Search for: <Anchor Link=""/"">paper towels</Anchor></BreadcrumbSection>
+</Breadcrumb>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Active">
+            <Description>A section can be active</Description>
+            <RunTemplate>
+                <Breadcrumb>
+                    <BreadcrumbSection Link="#">Products</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived Link="#">Paper Towels</BreadcrumbSection>
+                </Breadcrumb>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Breadcrumb>
+    <BreadcrumbSection Link=""#"">Products</BreadcrumbSection>
+    <BreadcrumbDivider/>
+    <BreadcrumbSection Actived Link=""#"">Paper Towels</BreadcrumbSection>
+</Breadcrumb>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Inverted">
+            <Description>A breadcrumb can be inverted</Description>
+            <RunTemplate>
+                <Segment Inverted>
+                    <Breadcrumb Inverted>
+                        <BreadcrumbSection>Home</BreadcrumbSection>
+                        <BreadcrumbDivider />
+                        <BreadcrumbSection>News</BreadcrumbSection>
+                        <BreadcrumbDivider />
+                        <BreadcrumbSection Actived>International</BreadcrumbSection>
+                    </Breadcrumb>
+                    <br />
+                    <Breadcrumb Inverted>
+                        <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                        <BreadcrumbDivider />
+                        <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                        <BreadcrumbDivider />
+                        <BreadcrumbSection Actived>International</BreadcrumbSection>
+                    </Breadcrumb>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Segment Inverted>
+    <Breadcrumb Inverted>
+        <BreadcrumbSection>Home</BreadcrumbSection>
+        <BreadcrumbDivider />
+        <BreadcrumbSection>News</BreadcrumbSection>
+        <BreadcrumbDivider />
+        <BreadcrumbSection Actived>International</BreadcrumbSection>
+    </Breadcrumb>
+    <br />
+    <Breadcrumb Inverted>
+        <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+        <BreadcrumbDivider />
+        <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+        <BreadcrumbDivider />
+        <BreadcrumbSection Actived>International</BreadcrumbSection>
+    </Breadcrumb>
+</Segment>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Size">
+            <Description>A breadcrumb can vary in size</Description>
+            <RunTemplate>
+                <Breadcrumb Size="Size.Mini">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Tiny">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Small">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Medium">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Large">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Big">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Huge">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+                <Breadcrumb Size="Size.Massive">
+                    <BreadcrumbSection Link="#">Home</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Link="#">News</BreadcrumbSection>
+                    <BreadcrumbDivider />
+                    <BreadcrumbSection Actived>International</BreadcrumbSection>
+                </Breadcrumb>
+                <br />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Breadcrumb Size=""Size.Mini"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Tiny"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Small"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Medium"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Large"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Big"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Huge"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+<br />
+<Breadcrumb Size=""Size.Massive"">
+    <BreadcrumbSection Link=""#"">Home</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Link=""#"">News</BreadcrumbSection>
+    <BreadcrumbDivider />
+    <BreadcrumbSection Actived>International</BreadcrumbSection>
+</Breadcrumb>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager>
