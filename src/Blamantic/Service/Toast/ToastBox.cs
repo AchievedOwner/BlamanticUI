@@ -185,6 +185,8 @@ namespace BlamanticUI
         /// </summary>
         private void Close()
         {
+            _transitionTimer?.Dispose();
+            
             _transitionTimer = new Timer(FadeInterval);
             _transitionTimer.Start();
             _transitionTimer.Elapsed += async (sender, e) =>

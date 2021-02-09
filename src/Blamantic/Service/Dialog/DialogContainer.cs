@@ -43,8 +43,20 @@ namespace BlamanticUI
         protected override void OnInitialized()
         {
             base.OnInitialized();
-            DialogService.OnDialogUpdated += () => InvokeAsync(StateHasChanged);
+            DialogService.OnDialogUpdated += DialogService_OnDialogUpdated;
         }
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            DialogService.OnDialogUpdated -= DialogService_OnDialogUpdated;
+            ConfirmedValue = null;
+        }
+
+        private void DialogService_OnDialogUpdated()
+            => InvokeAsync(StateHasChanged);
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
@@ -120,15 +132,6 @@ namespace BlamanticUI
 
                 builder.CloseComponent();
             }
-        }
-
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose()
-        {
-            DialogService.OnDialogUpdated -= () => InvokeAsync(StateHasChanged);
-            ConfirmedValue = null;
         }
 
         /// <summary>

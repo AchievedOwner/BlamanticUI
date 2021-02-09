@@ -79,7 +79,8 @@ namespace BlamanticUI
                 return _displayName;
             }
             set => _displayName = value;
-        }
+        }        
+
         #endregion
 
 
