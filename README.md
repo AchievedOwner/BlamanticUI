@@ -15,7 +15,7 @@ Check **demo** Directory, **Client** base on WebAssembly, **Server** base on Ser
 
 # Changes
 
-![](Changelog.md)
+See [Changelog.md](Changelog.md)
 
 # DEMO
 
