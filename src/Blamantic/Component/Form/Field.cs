@@ -22,7 +22,7 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasInline" />
     [HtmlTag]
-    public class Field : BlamanticChildContentComponentBase, IHasSpan, IHasState, IHasDisabled, IHasInline
+    public class Field : BlamanticChildContentComponentBase, IHasSpan, IHasState, IHasDisabled, IHasInline, IDisposable
     {
         /// <summary>
         /// Gets or sets the span of column.
@@ -70,17 +70,42 @@ namespace BlamanticUI
 
         State? _fieldState = default;
 
+        EditContext _boundCascadingEditContext;
+
         /// <summary>
         /// Method invoked when the component has received parameters from its parent in
         /// the render tree, and the incoming values have been assigned to properties.
         /// </summary>
         protected override void OnParametersSet()
         {
-            if (CascadedEditContext != null)
+            base.OnParametersSet();
+            if (_boundCascadingEditContext != CascadedEditContext)
             {
-                CascadedEditContext.OnValidationStateChanged += (sender, e) => StateHasChanged();
+                if (_boundCascadingEditContext != null) 
+                {
+                    _boundCascadingEditContext.OnValidationStateChanged -= CascadingEditContext_ValidationStateChanged;
+                }
+                _boundCascadingEditContext = CascadedEditContext;
+                if (_boundCascadingEditContext != null)
+                {
+                    _boundCascadingEditContext.OnValidationStateChanged += CascadingEditContext_ValidationStateChanged;
+                }
             }
         }
+
+        /// <summary>
+        /// Cleanup of component
+        /// </summary>
+        public void Dispose()
+        {
+            if (_boundCascadingEditContext != null) 
+            {
+                _boundCascadingEditContext.OnValidationStateChanged -= CascadingEditContext_ValidationStateChanged;
+            }
+        }
+
+        private void CascadingEditContext_ValidationStateChanged(object sender, EventArgs e)
+            => StateHasChanged();
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.

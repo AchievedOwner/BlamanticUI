@@ -12,7 +12,7 @@ namespace BlamanticUI
     /// <typeparam name="TValue">The type of the value.</typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
-    public class RadioBox<TValue> : BlamanticComponentBase,IHasUIComponent
+    public class RadioBox<TValue> : BlamanticComponentBase,IHasUIComponent,IDisposable
     {
         /// <summary>
         /// Gets or sets the cascaded radio group.
@@ -39,6 +39,8 @@ namespace BlamanticUI
         /// </exception>
         protected override void OnParametersSet()
         {
+            base.OnParametersSet();
+
             if (CascadedRadioGroup == null)
             {
                 throw new InvalidOperationException($"{GetType().Name} 必须放在 {typeof(RadioGroup<>).Name} 组件中");
@@ -47,6 +49,19 @@ namespace BlamanticUI
             if (Value.GetType() != typeof(TValue))
             {
                 throw new InvalidOperationException($"{nameof(this.Value)} 的类型必须与 {typeof(RadioBox<>).Name} 的 TValue 类型一致");
+            }
+
+            CascadedRadioGroup.RerenderRadioBoxes += StateHasChanged;
+        }
+
+        /// <summary>
+        /// Cleanup component.
+        /// </summary>
+        public void Dispose()
+        {
+            if (CascadedRadioGroup != null)
+            {
+                CascadedRadioGroup.RerenderRadioBoxes += StateHasChanged;
             }
         }
 
@@ -75,8 +90,8 @@ namespace BlamanticUI
                         label.AddAttribute(4, "name", CascadedRadioGroup.Name);
                         //label.AddAttribute(3, "class", "hidden");
                         //label.AddAttribute(4, "tabindex", "-1");
-                        builder.AddAttribute(4, "checked", Checked);
-                        builder.AddAttribute(5, "onchange", CascadedRadioGroup.ChangeEventCallback);
+                        label.AddAttribute(5, "checked", Checked);
+                        label.AddAttribute(6, "onchange", CascadedRadioGroup.ChangeEventCallback);
                         label.CloseElement();
                         label.AddContent(10, Text);
                     });
@@ -93,7 +108,8 @@ namespace BlamanticUI
         /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
         protected override void CreateComponentCssClass(Css css)
         {
-            css.Add(Checked.HasValue && Checked.Value, "checked")
+            var currentChecked = Checked;
+            css.Add(currentChecked.HasValue && currentChecked.Value, "checked")
                 .Add("radio").Add("checkbox");
         }
 

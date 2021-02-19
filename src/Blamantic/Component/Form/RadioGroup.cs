@@ -45,19 +45,33 @@ namespace BlamanticUI
         /// </summary>
         internal TValue SelectedValue => CurrentValue;
 
+        internal event Action RerenderRadioBoxes;
+        string _oldValue = "";
+
         /// <summary>
         /// Method invoked when the component has received parameters from its parent in
         /// the render tree, and the incoming values have been assigned to properties.
         /// </summary>
         protected override void OnParametersSet()
         {
+            base.OnParametersSet();
+
+            var newValue = CurrentValueAsString;
             ChangeEventCallback = EventCallback.Factory.CreateBinder<string?>(this, __value =>
             {
                 CurrentValueAsString = __value;
                 _ = OnValueSelected.InvokeAsync(__value);
             }
-            , CurrentValueAsString);
+            , CurrentValueAsString);         
             
+            if (_oldValue != newValue)
+            {
+                _oldValue = newValue;
+                if (RerenderRadioBoxes != null)
+                {
+                    RerenderRadioBoxes();
+                }
+            }
         }
 
         /// <summary>

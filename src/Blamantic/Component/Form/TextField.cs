@@ -156,28 +156,33 @@ namespace BlamanticUI
         /// <param name="builder">The builder.</param>
         /// <param name="sequence">The sequence.</param>
         /// <returns></returns>
-        protected virtual void BuildInput(RenderTreeBuilder builder,int sequence=10)
+        protected virtual void BuildInput(RenderTreeBuilder builder, int sequence = 10)
         {
             if (Type == TextFieldType.MultiLine)
             {
-                builder.OpenElement(sequence+3, "textarea");
+                builder.OpenElement(sequence + 3, "textarea");
                 builder.AddAttribute(sequence + 4, "rows", Rows);
             }
             else
             {
                 builder.OpenElement(sequence + 3, "input");
                 builder.AddAttribute(sequence + 4, "type", Type == TextFieldType.Custom ? CustomType : Type.ToString().ToLower());
+                builder.AddAttribute(sequence + 5, "value", CurrentValueAsString);
             }
 
-            builder.AddAttribute(sequence + 5, "name", FieldIdentifier.FieldName);
+            builder.AddAttribute(sequence + 6, "name", FieldIdentifier.FieldName);
 
             if (DisplayNameType == DisplayNameType.Placeholder || Placeholder is not null)
             {
-                builder.AddAttribute(sequence + 6, "placeholder", Placeholder ?? DisplayName);
+                builder.AddAttribute(sequence + 7, "placeholder", Placeholder ?? DisplayName);
             }
 
             builder.AddAttribute(sequence + 10, Trigger.ToString().ToLower(), EventCallback.Factory.CreateBinder(this, __value => CurrentValue = __value, CurrentValue));
             AddCommonAttributes(builder);
+            if (Type == TextFieldType.MultiLine)
+            {
+                builder.AddContent(sequence + 11, CurrentValueAsString);
+            }
             builder.CloseElement();
         }
 

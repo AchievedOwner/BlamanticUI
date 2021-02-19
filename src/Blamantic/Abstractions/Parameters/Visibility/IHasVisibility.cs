@@ -9,11 +9,11 @@ namespace BlamanticUI.Abstractions
     public interface IHasVisibility
     {
         /// <summary>
-        /// Gets or sets a value indicating whether is visibile.
+        /// Gets or sets a value indicating whether is visible.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if visibile; otherwise, <c>false</c>.
+        ///   <c>true</c> if visible; otherwise, <c>false</c>.
         /// </value>
-        [CssClass("visible")] public bool Visibile { get; set; }
+        [CssClass("visible")] public bool Visible { get; set; }
     }
 }

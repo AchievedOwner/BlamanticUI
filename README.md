@@ -1,7 +1,9 @@
 # Blamantic UI
+
 The Semantic-UI for Blazor without jQuery.
 
 # Quick Start
+
 * `Install-Package BlamanticUI`
 * Import css `_content/BlamanticUI/blamantic.min.css`
 * Using namespace `using BlamanticUI`
@@ -11,6 +13,9 @@ The Semantic-UI for Blazor without jQuery.
 
 Check **demo** Directory, **Client** base on WebAssembly, **Server** base on ServerSide, Run in VS.
 
+# Changes
+
+See [Changelog.md](Changelog.md)
 
 # DEMO
 

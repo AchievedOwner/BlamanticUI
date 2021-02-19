@@ -39,7 +39,7 @@ namespace BlamanticUI
         [Parameter] [CssClass("rounded")] public bool Rounded { get; set; }
 
         /// <summary>
-        /// Gets or sets display image as avatar. Recommand to use <see cref="BlamanticUI.Avatar"/> component instead.
+        /// Gets or sets display image as avatar. Consider using <see cref="BlamanticUI.Avatar"/> component instead.
         /// </summary>
         [Parameter] [CssClass("avatar")] public bool Avatar { get; set; }
         /// <summary>

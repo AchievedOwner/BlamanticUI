@@ -57,12 +57,12 @@ namespace BlamanticUI
         /// </value>
         [Parameter]public bool Icon { get; set; }
         /// <summary>
-        /// Gets or sets a value indicating whether is visibile.
+        /// Gets or sets a value indicating whether is visible.
         /// </summary>
         /// <value>
-        ///   <c>true</c> if visibile; otherwise, <c>false</c>.
+        ///   <c>true</c> if visible; otherwise, <c>false</c>.
         /// </value>
-        [Parameter]public bool Visibile { get; set; }
+        [Parameter]public bool Visible { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether is hidden.
         /// </summary>

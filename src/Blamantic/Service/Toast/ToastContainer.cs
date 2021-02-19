@@ -14,16 +14,16 @@ namespace BlamanticUI
     /// <summary>
     /// Represents a container to display toast message.
     /// </summary>
-    public class ToastContainer : BlamanticComponentBase, IHasUIComponent
+    public class ToastContainer : BlamanticComponentBase, IHasUIComponent, IDisposable
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ToastContainer"/> class.
         /// </summary>
         public ToastContainer()
         {
-            Position = DockPosition.TopCenter;
-            
+            Position = DockPosition.TopCenter;            
         }
+
         /// <summary>
         /// Gets or sets the toast service.
         /// </summary>
@@ -118,11 +118,23 @@ namespace BlamanticUI
 
             if (ClearWhenLocationChanged)
             {
-                NavigationManager.LocationChanged += (sender, eventArgs) => Clear();
+                NavigationManager.LocationChanged += Navigationmanager_LocationChanged;
             }
 
             base.OnInitialized();
         }
+
+        /// <summary>
+        /// Cleanup references to this control
+        /// </summary>
+        public void Dispose()
+        {
+            ToastService.OnShow -= Show;
+            NavigationManager.LocationChanged -= Navigationmanager_LocationChanged;
+        }
+
+        private void Navigationmanager_LocationChanged(object sender, EventArgs e)
+            => Clear();
 
         /// <summary>
         /// Removes the specified toast identifier.
