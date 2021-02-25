@@ -43,12 +43,12 @@ namespace BlamanticUI
 
             if (CascadedRadioGroup == null)
             {
-                throw new InvalidOperationException($"{GetType().Name} 必须放在 {typeof(RadioGroup<>).Name} 组件中");
+                throw new InvalidOperationException($"The '{GetType().Name}' must inside of '{typeof(RadioGroup<>).Name}'");
             }
 
             if (Value.GetType() != typeof(TValue))
             {
-                throw new InvalidOperationException($"{nameof(this.Value)} 的类型必须与 {typeof(RadioBox<>).Name} 的 TValue 类型一致");
+                throw new InvalidOperationException($"The type of {nameof(this.Value)} should be the same type of {typeof(RadioBox<>).FullName}");
             }
 
             CascadedRadioGroup.RerenderRadioBoxes += StateHasChanged;
@@ -61,7 +61,7 @@ namespace BlamanticUI
         {
             if (CascadedRadioGroup != null)
             {
-                CascadedRadioGroup.RerenderRadioBoxes += StateHasChanged;
+                CascadedRadioGroup.RerenderRadioBoxes -= StateHasChanged;
             }
         }
 

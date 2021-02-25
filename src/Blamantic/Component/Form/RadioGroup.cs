@@ -67,10 +67,7 @@ namespace BlamanticUI
             if (_oldValue != newValue)
             {
                 _oldValue = newValue;
-                if (RerenderRadioBoxes != null)
-                {
-                    RerenderRadioBoxes();
-                }
+                RerenderRadioBoxes?.Invoke();
             }
         }
 
