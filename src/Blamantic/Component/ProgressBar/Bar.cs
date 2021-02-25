@@ -32,10 +32,17 @@ namespace BlamanticUI
         /// </summary>
         [Parameter][CssClass]public Color? Color { get; set; }
 
-        [CascadingParameter] Progress Parent { get; set; }
+        [CascadingParameter] Progress? Parent { get; set; }
 
+        /// <summary>
+        /// Gets or sets the index of bar in container.
+        /// </summary>
         internal int Index { get; set; }
 
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its
+        /// initial parameters from its parent in the render tree.
+        /// </summary>
         protected override void OnInitialized()
         {
             if(Parent!=null && Parent.Bars != null)

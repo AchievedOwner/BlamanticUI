@@ -20,12 +20,12 @@ namespace BlamanticUI
         /// <value>
         /// The cascaded radio group.
         /// </value>
-        [CascadingParameter]RadioGroup<TValue> CascadedRadioGroup { get; set; }
+        [CascadingParameter]RadioGroup<TValue>? CascadedRadioGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the text displayed behind input tag.
         /// </summary>
-        [Parameter] public string Text { get; set; }
+        [Parameter] public string? Text { get; set; }
         /// <summary>
         /// Gets or sets the value.
         /// </summary>
@@ -46,7 +46,7 @@ namespace BlamanticUI
                 throw new InvalidOperationException($"The '{GetType().Name}' must inside of '{typeof(RadioGroup<>).Name}'");
             }
 
-            if (Value.GetType() != typeof(TValue))
+            if (Value?.GetType() != typeof(TValue))
             {
                 throw new InvalidOperationException($"The type of {nameof(this.Value)} should be the same type of {typeof(RadioBox<>).FullName}");
             }
@@ -87,11 +87,11 @@ namespace BlamanticUI
                         label.OpenElement(1, "input");
                         label.AddAttribute(2, "type", "radio");
                         label.AddAttribute(3, "value", BindConverter.FormatValue(Value)?.ToString());
-                        label.AddAttribute(4, "name", CascadedRadioGroup.Name);
+                        label.AddAttribute(4, "name", CascadedRadioGroup?.Name);
                         //label.AddAttribute(3, "class", "hidden");
                         //label.AddAttribute(4, "tabindex", "-1");
                         label.AddAttribute(5, "checked", Checked);
-                        label.AddAttribute(6, "onchange", CascadedRadioGroup.ChangeEventCallback);
+                        label.AddAttribute(6, "onchange", CascadedRadioGroup?.ChangeEventCallback);
                         label.CloseElement();
                         label.AddContent(10, Text);
                     });
@@ -119,7 +119,7 @@ namespace BlamanticUI
         /// <value>
         /// The checked.
         /// </value>
-        bool? Checked => CascadedRadioGroup.SelectedValue?.Equals(Value);
+        bool? Checked => CascadedRadioGroup?.SelectedValue?.Equals(Value);
 
     }
 }

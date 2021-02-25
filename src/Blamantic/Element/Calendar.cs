@@ -312,7 +312,7 @@
             foreach (var name in weekNames)
             {
                 var week = Enum.Parse<DayOfWeek>(name);
-                if(!WeekMapper.TryGetValue(week,out string value))
+                if(!WeekMapper.TryGetValue(week,out string? value))
                 {
                     value = name;
                 }
@@ -422,7 +422,7 @@
             foreach (var name in monthNames)
             {
                 var month = Enum.Parse<CalendarMonth>(name);
-                if(!MonthMapper.TryGetValue(month,out string value))
+                if(!MonthMapper.TryGetValue(month,out string? value))
                 {
                     value = name;
                 }

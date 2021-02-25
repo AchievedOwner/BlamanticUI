@@ -15,10 +15,7 @@ namespace BlamanticUI
         /// <summary>
         /// Initializes a new instance of the <see cref="RadioGroup{TValue}"/> class.
         /// </summary>
-        public RadioGroup()
-        {
-            Name = Guid.NewGuid().ToString("N");
-        }
+        public RadioGroup() => Name = Guid.NewGuid().ToString("N");
 
         /// <summary>
         /// Gets or sets the name of group.
@@ -43,7 +40,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets the selected value.
         /// </summary>
-        internal TValue SelectedValue => CurrentValue;
+        internal TValue? SelectedValue => CurrentValue;
 
         internal event Action RerenderRadioBoxes;
         string _oldValue = "";

@@ -36,7 +36,6 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the position to show.
         /// </summary>
-        /// <value>
         [Parameter][CssClass]public DockPosition? Position { get; set; }
 
         /// <summary>
