@@ -4,7 +4,7 @@
 		<TargetFramework>netcoreapp5.0</TargetFramework>
 		<RazorLangVersion>3.0</RazorLangVersion>
 		<LangVersion>9.0</LangVersion>
-		<Nullable>enable</Nullable>
+		<Nullable>annotations</Nullable>
 		<Authors>William Chow</Authors>
 		<Product>BlamanticUI</Product>
 		<PackageId>BlamanticUI</PackageId>
