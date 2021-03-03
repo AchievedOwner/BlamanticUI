@@ -17,3 +17,14 @@
   height: 17px;
   text-align: center;
   transition: border .1s ease,opacity .1s ease,transform .1s ease,box-shadow .1s ease,-webkit-transform .1s ease,-webkit-box-shadow .1s ease; }
+
+.ui.gridview .gridview-header > table {
+  border-bottom-width: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px; }
+  .ui.gridview .gridview-header > table > tr > td {
+    border-bottom-width: 0px; }
+
+.ui.gridview .gridview-body > table {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px; }

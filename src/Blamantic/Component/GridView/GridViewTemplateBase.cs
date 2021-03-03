@@ -13,12 +13,12 @@ namespace BlamanticUI
     /// Represents a base class of data grid template.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
-    public abstract class DataGridTemplateBase : BlamanticChildContentComponentBase
+    public abstract class GridViewTemplateBase : BlamanticChildContentComponentBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataGridTemplateBase"/> class.
+        /// Initializes a new instance of the <see cref="GridViewTemplateBase"/> class.
         /// </summary>
-        protected DataGridTemplateBase()
+        protected GridViewTemplateBase()
         {
 
         }
@@ -26,7 +26,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the cascading value of data grid.
         /// </summary>
-        [CascadingParameter] protected DataGrid CascadingDataGrid { get; set; }
+        [CascadingParameter] protected GridView CascadingDataGrid { get; set; }
 
         /// <summary>
         /// Method invoked when the component is ready to start, having received its
@@ -37,7 +37,7 @@ namespace BlamanticUI
         {
             if (CascadingDataGrid == null)
             {
-                throw new InvalidOperationException($"The '{GetType().Name}' must render inside of '{typeof(DataGrid).Name}'");
+                throw new InvalidOperationException($"The '{GetType().Name}' must render inside of '{typeof(GridView).Name}'");
             }
         }
     }

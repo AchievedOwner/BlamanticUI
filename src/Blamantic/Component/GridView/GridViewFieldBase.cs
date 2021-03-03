@@ -9,25 +9,20 @@ namespace BlamanticUI
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
-    public abstract class DataGridBindingTemplate : DataGridTemplateBase
+    public abstract class GridViewFieldBase : GridViewTemplateBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DataGridBindingTemplate"/> class.
+        /// Initializes a new instance of the <see cref="GridViewFieldBase"/> class.
         /// </summary>
-        protected DataGridBindingTemplate()
+        protected GridViewFieldBase()
         {
 
         }
 
         /// <summary>
-        /// Gets or sets the field name in data source to bind.
+        /// Gets or sets the width of field.
         /// </summary>
-        [Parameter] public string FieldName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a support format string for bind field.
-        /// </summary>
-        [Parameter] public string Format { get; set; }
+        [Parameter] public string? Width { get; set; }
 
         /// <summary>
         /// Gets or sets the header text in each cell.
@@ -43,20 +38,6 @@ namespace BlamanticUI
             base.OnInitialized();
 
             CascadingDataGrid!.AddColumn(this);
-        }
-
-        ///
-        protected override void OnParametersSet()
-        {
-            if (string.IsNullOrEmpty(FieldName))
-            {
-                throw new StringNullOrEmptyException(nameof(FieldName));
-            }
-        }
-
-        public string GetHeader()
-        {
-            return HeaderText;
         }
     }
 }
