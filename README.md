@@ -1,6 +1,6 @@
 # Blamantic UI
 
-The Semantic-UI for Blazor without jQuery.
+The css framework from Semantic-UI for blazor without jQuery.
 
 # Quick Start
 
@@ -11,11 +11,19 @@ The Semantic-UI for Blazor without jQuery.
 
 > Required .NET Core 5.0
 
-Check **demo** Directory, **Client** base on WebAssembly, **Server** base on ServerSide, Run in VS.
+* Check **demo** Directory
+* **Client** base on WebAssembly, **Server** base on ServerSide
+* Run in **Visual Studio 2019 v16.8+**.
 
-# Changes
+# Notes
 
-See [Changelog.md](Changelog.md)
+All changes please see [Changelog.md](Changelog.md)
+
+For contributors please see [Contributing](CONTRIBUTING.md)
+
+We are using [MIT licence](Licence.md)
+
+The main css comes from [Fomantic-UI](), we override some code for compatibility in `Blamantic.css` and compiled from `Blamantic.scss`
 
 # DEMO
 
@@ -54,9 +62,6 @@ See [Changelog.md](Changelog.md)
 ![](snapshot/label.jpg)
 ## Item List
 ![](snapshot/itemlist.jpg)
-
-
-
 
 
 
