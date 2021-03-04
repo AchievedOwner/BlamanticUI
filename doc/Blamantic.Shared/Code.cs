@@ -283,6 +283,11 @@ namespace BlamanticUI.Shared
             });
             nav.Add(new Navigation
             {
+                Name = "GridView",
+                Link = $"/component/{prefix}/gridview"
+            });
+            nav.Add(new Navigation
+            {
                 Name = "Table",
                 Link = $"/component/{prefix}/table"
             });

@@ -76,7 +76,10 @@ namespace BlamanticUI.Abstractions
         /// <param name="component">The component.</param>
         public override void Add(IComponent component)
         {
-            var child = component as TChildComponent;
+            if (component is not TChildComponent child)
+            {
+                throw new InvalidCastException($"The type of {component.GetType().FullName} cannot cast to the type {typeof(TChildComponent).Name}");
+            }
             child.Index = ChildComponents.Count;
             base.Add(child);
         }

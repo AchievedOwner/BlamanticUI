@@ -43,7 +43,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the cascaded edit context.
         /// </summary>
-        [CascadingParameter] EditContext CascadedEditContext { get; set; } = default;
+        [CascadingParameter] EditContext? CascadedEditContext { get; set; } = default;
 
         #region Parameters                
         /// <summary>
@@ -62,13 +62,13 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the edit context.
         /// </summary>
-        [Parameter] public EditContext EditContext { get; set; }
+        [Parameter] public EditContext? EditContext { get; set; }
 
-        private string _displayName;
+        private string? _displayName;
         /// <summary>
         /// Gets or sets the display name. if <c>null</c>, get the value of <see cref="DisplayAttribute.Name"/>.
         /// </summary>
-        [Parameter] public string DisplayName
+        [Parameter] public string? DisplayName
         {
             get
             {
@@ -92,13 +92,13 @@ namespace BlamanticUI
         /// <summary>
         /// Gets the field id.
         /// </summary>
-        protected string FieldId
+        protected string? FieldId
         {
             get
             {
                 if (AdditionalAttributes.TryGetValue("id", out var id))
                 {
-                    return id.ToString();
+                    return id?.ToString();
                 }
                 return FieldIdentifier.FieldName;
             }
@@ -127,7 +127,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the current value of the input, represented as a string.
         /// </summary>
-        protected string CurrentValueAsString
+        protected string? CurrentValueAsString
         {
             get => FormatValueAsString(CurrentValue);
             set

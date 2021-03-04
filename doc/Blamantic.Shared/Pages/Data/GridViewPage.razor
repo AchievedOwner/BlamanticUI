@@ -1,0 +1,407 @@
+﻿@page "/component/data/gridview"
+
+<Pager DataSource="@(new List<string>
+                     {
+                         "Demo","Annotation","Bound Field","Template Field","Width","Empty Template","Compact","Celled","Basic","Padded","Colored","Size"
+                     })">
+    <Body>
+        <Header1 Divider="true">
+            GridView
+            <SubHeader>A data binding to render a functional table</SubHeader>
+        </Header1>
+        <PresentationPart Title="Demo">
+            <Description>
+                Auto generate columns
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Annotation">
+            <Description>
+                Support <code>System.ComponentModel.DataAnnotations</code> for auto generate columns
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="Users1" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+class User
+{
+    [Display(Name=""Id Number"")]
+    public int Id { get; set; }
+
+    public string Name { get; set; }
+
+    [DisplayFormat(DataFormatString =""{0:MM/dd/yy}"")]
+    public DateTime Birthday { get; set; }
+}
+
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        <Header4 Divider="true">
+            Columns
+        </Header4>
+        <PresentationPart Title="Bound Field">
+            <Description>
+                Binding field to display in grid by following order.
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="Users" AutoGenerateColumns="false">
+                    <Columns>
+                        <GridViewBoundField DataField="@nameof(User.Name)" HeaderText="User Name" />
+                        <GridViewBoundField DataField="@(nameof(User.Birthday))" FieldFormat="{0:dd/MM/yyyy}" />
+                    </Columns>
+                </GridView>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<GridView DataSource=""Users"" AutoGenerateColumns=""false"">
+    <Columns>
+        <GridViewBoundField DataField=""@nameof(User.Name)"" HeaderText=""User Name""/>
+        <GridViewBoundField DataField=""@(nameof(User.Birthday))"" FieldFormat=""{0:dd/MM/yyyy}""/>
+    </Columns>
+</GridView>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Template Field">
+            <Description>
+                Customize UI content of this cell
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="Users" AutoGenerateColumns="false">
+                    <Columns>
+                        <GridViewBoundField DataField="@nameof(User.Name)" HeaderText="User Name" />
+                        <GridViewBoundField DataField="@(nameof(User.Birthday))" FieldFormat="{0:dd/MM/yyyy}" />
+                        <GridViewTemplateField HeaderText="Operation">
+                            <ItemTemplate>
+                                <Anchor Link="@(GridView.GetFieldValue<string>(context,nameof(User.Id)))">
+                                    <Icon IconClass="edit" />
+                                </Anchor>
+                                <Anchor Link="@(GridView.GetFieldValue<string>(context,nameof(User.Id)))">
+                                    <Icon IconClass="delete" />
+                                </Anchor>
+                            </ItemTemplate>
+                        </GridViewTemplateField>
+                    </Columns>
+                </GridView>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<GridView DataSource=""Users"" AutoGenerateColumns=""false"">
+    <Columns>
+        <GridViewBoundField DataField=""@nameof(User.Name)"" HeaderText=""User Name""/>
+        <GridViewBoundField DataField=""@(nameof(User.Birthday))"" FieldFormat=""{0:dd/MM/yyyy}"" />
+        <GridViewTemplateField HeaderText=""Operation"">
+            <ItemTemplate>
+                <Anchor Link=""@(GridView.GetFieldValue<string>(context,nameof(User.Id)))"">
+                    <Icon IconClass=""edit"" />
+                </Anchor>
+                <Anchor Link=""@(GridView.GetFieldValue<string>(context,nameof(User.Id)))"">
+                    <Icon IconClass=""delete"" />
+                </Anchor>
+            </ItemTemplate>
+        </GridViewTemplateField>
+    </Columns>
+</GridView>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Width">
+            <Description>
+                Customize field width
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="Users" AutoGenerateColumns="false">
+                    <Columns>
+                        <GridViewBoundField DataField="@nameof(User.Name)" HeaderText="User Name" Width="10%" />
+                        <GridViewBoundField DataField="@(nameof(User.Birthday))" FieldFormat="{0:dd/MM/yyyy}" />
+                        <GridViewTemplateField HeaderText="Operation" Width="100px">
+                            <ItemTemplate>
+                                <Anchor Link="@(GridView.GetFieldValue<string>(context,nameof(User.Id)))">
+                                    <Icon IconClass="edit" />
+                                </Anchor>
+                                <Anchor Link="@(GridView.GetFieldValue<string>(context,nameof(User.Id)))">
+                                    <Icon IconClass="delete" />
+                                </Anchor>
+                            </ItemTemplate>
+                        </GridViewTemplateField>
+                    </Columns>
+                </GridView>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<GridView DataSource=""Users"" AutoGenerateColumns=""false"">
+    <Columns>
+        <GridViewBoundField DataField=""@nameof(User.Name)"" HeaderText=""User Name"" Width=""10%""/>
+        <GridViewBoundField DataField=""@(nameof(User.Birthday))"" FieldFormat=""{0:dd/MM/yyyy}"" />
+        <GridViewTemplateField HeaderText=""Operation"" Width=""100px"">
+            <ItemTemplate>
+                <Anchor Link=""@(GridView.GetFieldValue<string>(context,nameof(User.Id)))"">
+                    <Icon IconClass=""edit"" />
+                </Anchor>
+                <Anchor Link=""@(GridView.GetFieldValue<string>(context,nameof(User.Id)))"">
+                    <Icon IconClass=""delete"" />
+                </Anchor>
+            </ItemTemplate>
+        </GridViewTemplateField>
+    </Columns>
+</GridView>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Empty Template">
+            <Description>
+                Customize the content when data is empty
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="new List<User>()" />
+                <Space />
+                <GridView DataSource="new List<User>()">
+                    <EmptyTemplate>
+                        <Message State="State.Info">
+                            <Header>Nothing</Header>
+                            I can't find anything you want
+                        </Message>
+                    </EmptyTemplate>
+                </GridView>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<GridView DataSource=""new List<User>()"" />
+
+<GridView DataSource=""new List<User>()"">
+    <EmptyTemplate>
+        <Message State=""State.Info"">
+            <Header>Nothing</Header>
+            I can't find anything you want
+        </Message>
+    </EmptyTemplate>
+</GridView>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Compact">
+            <RunTemplate>
+                <GridView Compact DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView Compact DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Celled">
+            <RunTemplate>
+                <GridView Celled DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView Celled DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Basic">
+            <RunTemplate>
+                <GridView Basic DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView Basic DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Padded">
+            <RunTemplate>
+                <GridView Padded DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView Padded DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Colored">
+            <Description>Same color definition as <code>Table</code> component.</Description>
+            <RunTemplate>
+                <GridView Color="Color.Red" DataSource="Users" />
+                <Space />
+                <GridView Color="Color.Green" Inverted DataSource="Users" />
+                <Space />
+                <GridView Color="Color.Blue" Inverted InvertedHeaderOnly DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView Color=""Color.Red"" DataSource=""Users"" />
+<GridView Color=""Color.Green"" Inverted DataSource=""Users"" />
+<GridView Color=""Color.Blue"" Inverted InvertedHeaderOnly DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+
+        <PresentationPart Title="Size">
+            <Description>Same definition as <code>Table</code> component.</Description>
+            <RunTemplate>
+                <GridView Size="Size.Tiny" DataSource="Users" />
+                <Space />
+                <GridView Size="Size.Large" DataSource="Users" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```cs
+IEnumerable<User> Users => new List<User>
+{
+    new User { Id = 1, Name = ""James"", Birthday = new DateTime(1977, 5, 6) },
+    new User { Id = 2, Name = ""Lita"", Birthday = new DateTime(1993, 2, 1) },
+    new User { Id = 3, Name = ""Sally"", Birthday = new DateTime(1968, 6, 15) },
+    new User { Id = 4, Name = ""Williams"", Birthday = new DateTime(1996, 12, 27) },
+    new User { Id = 5, Name = ""Judy"", Birthday = new DateTime(1988, 10, 22) },
+};
+```
+```html
+<GridView Size=""Size.Tiny"" DataSource=""Users"" />
+<GridView Size=""Size.Large"" DataSource=""Users"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+    </Body>
+</Pager>
+
+@code{ 
+    class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime Birthday { get; set; }
+    }
+
+    IEnumerable<User> Users => new List<User>
+    {
+        new User { Id = 1, Name = "James", Birthday = new DateTime(1977, 5, 6) },
+        new User { Id = 2, Name = "Lita", Birthday = new DateTime(1993, 2, 1) },
+        new User { Id = 3, Name = "Sally", Birthday = new DateTime(1968, 6, 15) },
+        new User { Id = 4, Name = "Williams", Birthday = new DateTime(1996, 12, 27) },
+        new User { Id = 5, Name = "Judy", Birthday = new DateTime(1988, 10, 22) },
+    };
+
+    class User1
+    {
+        [Display(Name="Id Number")]
+        public int Id { get; set; }
+        public string Name { get; set; }
+        [DisplayFormat(DataFormatString ="{0:MM/dd/yy}")]
+        public DateTime Birthday { get; set; }
+    }
+
+    IEnumerable<User1> Users1 => new List<User1>
+    {
+        new User1 { Id = 1, Name = "James", Birthday = new DateTime(1977, 5, 6) },
+        new User1 { Id = 2, Name = "Lita", Birthday = new DateTime(1993, 2, 1) },
+        new User1 { Id = 3, Name = "Sally", Birthday = new DateTime(1968, 6, 15) },
+        new User1 { Id = 4, Name = "Williams", Birthday = new DateTime(1996, 12, 27) },
+        new User1 { Id = 5, Name = "Judy", Birthday = new DateTime(1988, 10, 22) },
+    };
+}

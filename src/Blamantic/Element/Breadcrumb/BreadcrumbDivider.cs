@@ -14,12 +14,16 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the icon class of divider.
         /// </summary>
-        [Parameter] public string IconClass { get; set; }
+        [Parameter] public string? IconClass { get; set; }
         /// <summary>
         /// Gets or sets the divider string. Default is '/'.
         /// </summary>
         [Parameter] public string Divider { get; set; } = "/";
 
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
             if (!string.IsNullOrEmpty(IconClass))
