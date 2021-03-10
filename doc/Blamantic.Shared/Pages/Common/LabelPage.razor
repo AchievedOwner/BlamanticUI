@@ -157,44 +157,44 @@
             </Description>
             <RunTemplate>
                 <Grid Span="ColSpan.Two2">
-                    <Column>
+                    <GridColumn>
                         <ImageContent>
                             <Label Color="Color.Red" Cornered="HorizontalPosition.Left">
                                 <Icon IconClass="heart" />
                             </Label>
                             <Image UI Src="img/image.png" />
                         </ImageContent>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <ImageContent>
                             <Label Color="Color.Yellow" Cornered="HorizontalPosition.Right">
                                 <Icon IconClass="lock" />
                             </Label>
                             <Image UI Src="img/image.png" />
                         </ImageContent>
-                    </Column>
+                    </GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid Span=""ColSpan.Two2"">
-    <Column>
+    <GridColumn>
         <ImageContent>
             <Label Color=""Color.Red"" Cornered=""HorizontalPosition.Left"">
                 <Icon IconClass=""heart"" />
             </Label>
             <Image UI Src=""img/image.png"" />
         </ImageContent>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <ImageContent>
             <Label Color=""Color.Yellow"" Cornered=""HorizontalPosition.Right"">
                 <Icon IconClass=""lock"" />
             </Label>
             <Image UI Src=""img/image.png"" />
         </ImageContent>
-    </Column>
+    </GridColumn>
 </Grid>
 ```
 ")
@@ -239,44 +239,44 @@
             </Description>
             <RunTemplate>
                 <Grid Span="ColSpan.Two2">
-                    <Column>
+                    <GridColumn>
                         <Segment Raised>
                             <Label Ribbon="HorizontalPosition.Left" Color="Color.Red">Overview</Label>
                             <ParagraphDemo FullWidth />
                             <Label Ribbon="HorizontalPosition.Left" Color="Color.Blue">Connection</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <Segment>
                             <Label Ribbon="HorizontalPosition.Right" Color="Color.Orange">Specification</Label>
                             <ParagraphDemo FullWidth />
                             <Label Ribbon="HorizontalPosition.Right" Color="Color.Black">Contact</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
+                    </GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid ColSpan=""ColSpan.Two2"">
-    <Column>
+    <GridColumn>
         <Segment Raised>
             <Label Ribbon=""HorizontalPosition.Left"" Color=""Color.Red"">Overview</Label>
             <ParagraphDemo />
             <Label Ribbon=""HorizontalPosition.Left"" Color=""Color.Blue"">Connection</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Segment>
             <Label Ribbon=""HorizontalPosition.Right"" Color=""Color.Orange"">Specification</Label>
             <ParagraphDemo />
             <Label Ribbon=""HorizontalPosition.Right"" Color=""Color.Black"">Contact</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
+    </GridColumn>
 </Grid>
 ```
 ")
@@ -286,36 +286,36 @@
         <PresentationPart>
             <RunTemplate>
                 <Grid Span="ColSpan.Two2">
-                    <Column>
+                    <GridColumn>
                         <ImageContent Fluid>
                             <Label Ribbon="HorizontalPosition.Left" Color="Color.Red">Global</Label>
                             <Image Src="img/image.png" UI="false" />
                         </ImageContent>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <ImageContent Fluid>
                             <Label Ribbon="HorizontalPosition.Right" Color="Color.Yellow">Award</Label>
                             <Image Src="img/image.png" UI="false" />
                         </ImageContent>
-                    </Column>
+                    </GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid ColSpan=""ColSpan.Two2"">
-    <Column>
+    <GridColumn>
         <ImageContent Fluid>
             <Label Ribbon=""HorizontalPosition.Left"" Color=""Color.Red"">Global</Label>
             <Image Src=""img/image.png"" />
         </ImageContent>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <ImageContent Fluid>
             <Label Ribbon=""HorizontalPosition.Right"" Color=""Color.Yellow"">Award</Label>
             <Image Src=""img/image.png"" />
         </ImageContent>
-    </Column>
+    </GridColumn>
 </Grid>
 ```
 ")
@@ -328,84 +328,84 @@
             </Description>
             <RunTemplate>
                 <Grid Span="ColSpan.Three3">
-                    <Column>
+                    <GridColumn>
                         <Segment>
                             <Label Attached AttachedVertical="VerticalPosition.Top">HTML</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <Segment>
                             <Label Attached AttachedVertical="VerticalPosition.Bottom">CSS</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <Segment>
                             <Label Attached AttachedHorizontal="HorizontalPosition.Right" AttachedVertical="VerticalPosition.Top">CODE</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <Segment>
                             <Label Attached AttachedVertical="VerticalPosition.Top" AttachedHorizontal="HorizontalPosition.Left">Review</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <Segment>
                             <Label Attached AttachedHorizontal="HorizontalPosition.Left" AttachedVertical="VerticalPosition.Bottom">Feedback</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         <Segment>
                             <Label Attached AttachedHorizontal="HorizontalPosition.Right" AttachedVertical="VerticalPosition.Bottom">Script</Label>
                             <ParagraphDemo FullWidth />
                         </Segment>
-                    </Column>
+                    </GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Grid ColSpan=""ColSpan.Three3"">
-    <Column>
+    <GridColumn>
         <Segment>
             <Label Attached AttachedVertical=""VerticalPosition.Top"">HTML</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Segment>
             <Label Attached AttachedVertical=""VerticalPosition.Bottom"">CSS</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Segment>
             <Label Attached AttachedHorizontal=""HorizontalPosition.Right"" AttachedVertical=""VerticalPosition.Top"">CODE</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Segment>
             <Label Attached AttachedVertical=""VerticalPosition.Top"" AttachedHorizontal=""HorizontalPosition.Left"">Review</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Segment>
             <Label Attached AttachedHorizontal=""HorizontalPosition.Left"" AttachedVertical=""VerticalPosition.Bottom"">Feedback</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Segment>
             <Label Attached AttachedHorizontal=""HorizontalPosition.Right"" AttachedVertical=""VerticalPosition.Bottom"">Script</Label>
             <ParagraphDemo />
         </Segment>
-    </Column>
+    </GridColumn>
 </Grid>
 ```
 ")

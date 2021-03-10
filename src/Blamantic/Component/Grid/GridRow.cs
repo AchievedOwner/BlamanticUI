@@ -16,17 +16,22 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasCentered" />
     [HtmlTag]
-    public class Row : BlamanticChildContentComponentBase, IHasEqualWidth,IHasSpan,IHasCentered
+    public class GridRow : BlamanticChildContentComponentBase, IHasEqualWidth,IHasSpan,IHasCentered
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Row"/> class.
+        /// Initializes a new instance of the <see cref="GridRow"/> class.
         /// </summary>
-        public Row()
+        public GridRow()
         {
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether each <see cref="Column"/> component has equal width.
+        /// Gets or sets the casecading value of <see cref="Grid"/>.
+        /// </summary>
+        [CascadingParameter] Grid CascadingGrid { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether each <see cref="GridColumn"/> component has equal width.
         /// </summary>
         [Parameter] public bool EqualWidth { get; set; }
         /// <summary>
@@ -50,6 +55,20 @@ namespace BlamanticUI
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("row");
+        }
+
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its
+        /// initial parameters from its parent in the render tree.
+        /// </summary>
+        /// <exception cref="BlamanticUI.CascadingComponentException"></exception>
+        protected override void OnInitialized()
+        {
+            if (CascadingGrid == null)
+            {
+                throw new CascadingComponentException(CascadingGrid, this);
+            }
+            base.OnInitialized();
         }
     }
 }

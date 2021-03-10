@@ -14,33 +14,33 @@
             </Description>
             <RunTemplate>
                 <Grid>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Column>...</Column>
-    <Column>...</Column>
-    <Column>...</Column>
-    <Column>...</Column>
-    <Column>...</Column>
+    <GridColumn>...</GridColumn>
+    <GridColumn>...</GridColumn>
+    <GridColumn>...</GridColumn>
+    <GridColumn>...</GridColumn>
+    <GridColumn>...</GridColumn>
 </Grid>
 ```
 ")
@@ -48,127 +48,127 @@
         </PresentationPart>
 
 
-        <PresentationPart Title="Column Span" Id="width-count">
+        <PresentationPart Title="GridColumn Span" Id="width-count">
             <Description>
-                Column widths can be specified using <code>ColSpan</code> . If a column cannot fit in a row it will automatically flow to the next row
+                GridColumn widths can be specified using <code>ColSpan</code> . If a column cannot fit in a row it will automatically flow to the next row
             </Description>
             <RunTemplate>
                 <Grid>
-                    <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
-                    <Column Color="Color.Olive" Span="ColSpan.Four4">Four4</Column>
-                    <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
-                    <Column Color="Color.Olive" Span="ColSpan.Four4">Four4</Column>
-                    <Column Color="Color.Grey" Span="ColSpan.Seven7">Seven7</Column>
-                    <Column Color="Color.Olive" Span="ColSpan.Three3">Three3</Column>
-                    <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
-                    <Column Color="Color.Olive" Span="ColSpan.Six6">Six6</Column>
+                    <GridColumn Color="Color.Grey" Span="ColSpan.Four4">Four4</GridColumn>
+                    <GridColumn Color="Color.Olive" Span="ColSpan.Four4">Four4</GridColumn>
+                    <GridColumn Color="Color.Grey" Span="ColSpan.Four4">Four4</GridColumn>
+                    <GridColumn Color="Color.Olive" Span="ColSpan.Four4">Four4</GridColumn>
+                    <GridColumn Color="Color.Grey" Span="ColSpan.Seven7">Seven7</GridColumn>
+                    <GridColumn Color="Color.Olive" Span="ColSpan.Three3">Three3</GridColumn>
+                    <GridColumn Color="Color.Grey" Span="ColSpan.Four4">Four4</GridColumn>
+                    <GridColumn Color="Color.Olive" Span="ColSpan.Six6">Six6</GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Column Span=""ColSpan.Four4"">Four4</Column>
-    <Column Span=""ColSpan.Four4"">Four4</Column>
-    <Column Span=""ColSpan.Four4"">Four4</Column>
-    <Column Span=""ColSpan.Four4"">Four4</Column>
-    <Column Span=""ColSpan.Seven7"">Seven7</Column>
-    <Column Span=""ColSpan.Three3"">Three3</Column>
-    <Column Span=""ColSpan.Four4"">Four4</Column>
-    <Column Span=""ColSpan.Six6"">Six6</Column>
+    <GridColumn Span=""ColSpan.Four4"">Four4</GridColumn>
+    <GridColumn Span=""ColSpan.Four4"">Four4</GridColumn>
+    <GridColumn Span=""ColSpan.Four4"">Four4</GridColumn>
+    <GridColumn Span=""ColSpan.Four4"">Four4</GridColumn>
+    <GridColumn Span=""ColSpan.Seven7"">Seven7</GridColumn>
+    <GridColumn Span=""ColSpan.Three3"">Three3</GridColumn>
+    <GridColumn Span=""ColSpan.Four4"">Four4</GridColumn>
+    <GridColumn Span=""ColSpan.Six6"">Six6</GridColumn>
 </Grid>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="Row" Id="row">
-            <Description>Row wrappers allow you to apply variations to a group of columns.</Description>
+        <PresentationPart Title="GridRow" Id="row">
+            <Description>GridRow wrappers allow you to apply variations to a group of columns.</Description>
             <RunTemplate>
                 <Grid>
-                    <Row>
-                        <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
-                        <Column Color="Color.Olive" Span="ColSpan.Four4">Four4</Column>
-                        <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
-                    </Row>
-                    <Row>
-                        <Column Color="Color.Grey" Span="ColSpan.Seven7">Seven7</Column>
-                        <Column Color="Color.Olive" Span="ColSpan.Three3">Three3</Column>
-                        <Column Color="Color.Grey" Span="ColSpan.Four4">Four4</Column>
-                    </Row>
-                    <Row>
-                        <Column Color="Color.Olive" Span="ColSpan.Six6">Six6</Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn Color="Color.Grey" Span="ColSpan.Four4">Four4</GridColumn>
+                        <GridColumn Color="Color.Olive" Span="ColSpan.Four4">Four4</GridColumn>
+                        <GridColumn Color="Color.Grey" Span="ColSpan.Four4">Four4</GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn Color="Color.Grey" Span="ColSpan.Seven7">Seven7</GridColumn>
+                        <GridColumn Color="Color.Olive" Span="ColSpan.Three3">Three3</GridColumn>
+                        <GridColumn Color="Color.Grey" Span="ColSpan.Four4">Four4</GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn Color="Color.Olive" Span="ColSpan.Six6">Six6</GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Row>
-        <Column Color=""Color.Grey"" Span=""ColSpan.Four4"">Four4</Column>
-        <Column Color=""Color.Olive"" Span=""ColSpan.Four4"">Four4</Column>
-        <Column Color=""Color.Grey"" Span=""ColSpan.Four4"">Four4</Column>
-    </Row>
-    <Row>
-        <Column Color=""Color.Grey"" Span=""ColSpan.Seven7"">Seven7</Column>
-        <Column Color=""Color.Olive"" Span=""ColSpan.Three3"">Three3</Column>
-        <Column Color=""Color.Grey"" Span=""ColSpan.Four4"">Four4</Column>
-    </Row>
-    <Row>
-        <Column Color=""Color.Olive"" Span=""ColSpan.Six6"">Six6</Column>
-    </Row>
+    <GridRow>
+        <GridColumn Color=""Color.Grey"" Span=""ColSpan.Four4"">Four4</GridColumn>
+        <GridColumn Color=""Color.Olive"" Span=""ColSpan.Four4"">Four4</GridColumn>
+        <GridColumn Color=""Color.Grey"" Span=""ColSpan.Four4"">Four4</GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn Color=""Color.Grey"" Span=""ColSpan.Seven7"">Seven7</GridColumn>
+        <GridColumn Color=""Color.Olive"" Span=""ColSpan.Three3"">Three3</GridColumn>
+        <GridColumn Color=""Color.Grey"" Span=""ColSpan.Four4"">Four4</GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn Color=""Color.Olive"" Span=""ColSpan.Six6"">Six6</GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
 
-        <PresentationPart Title="Span In Row" Id="row-width-count">
+        <PresentationPart Title="Span In GridRow" Id="row-width-count">
             <RunTemplate>
                 <Grid>
-                    <Row Span="ColSpan.Three3">
-                        <Column Color="Color.Grey">Three3</Column>
-                        <Column Color="Color.Olive">Three3</Column>
-                        <Column Color="Color.Grey">Three3</Column>
-                    </Row>
-                    <Row Span="ColSpan.Six6">
-                        <Column Color="Color.Grey">Six6</Column>
-                        <Column Color="Color.Olive">Six6</Column>
-                        <Column Color="Color.Grey">Six6</Column>
-                        <Column Color="Color.Olive">Six6</Column>
-                        <Column Color="Color.Grey">Six6</Column>
-                        <Column Color="Color.Olive">Six6</Column>
-                        <Column Color="Color.Olive">Six6</Column>
-                    </Row>
-                    <Row Span="ColSpan.Four4">
-                        <Column Color="Color.Grey">Four4</Column>
-                        <Column Color="Color.Olive">Four4</Column>
-                    </Row>
+                    <GridRow Span="ColSpan.Three3">
+                        <GridColumn Color="Color.Grey">Three3</GridColumn>
+                        <GridColumn Color="Color.Olive">Three3</GridColumn>
+                        <GridColumn Color="Color.Grey">Three3</GridColumn>
+                    </GridRow>
+                    <GridRow Span="ColSpan.Six6">
+                        <GridColumn Color="Color.Grey">Six6</GridColumn>
+                        <GridColumn Color="Color.Olive">Six6</GridColumn>
+                        <GridColumn Color="Color.Grey">Six6</GridColumn>
+                        <GridColumn Color="Color.Olive">Six6</GridColumn>
+                        <GridColumn Color="Color.Grey">Six6</GridColumn>
+                        <GridColumn Color="Color.Olive">Six6</GridColumn>
+                        <GridColumn Color="Color.Olive">Six6</GridColumn>
+                    </GridRow>
+                    <GridRow Span="ColSpan.Four4">
+                        <GridColumn Color="Color.Grey">Four4</GridColumn>
+                        <GridColumn Color="Color.Olive">Four4</GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Grid>
-    <Row Span=""ColSpan.Three3"">
-        <Column Color=""Color.Grey"">Three3</Column>
-        <Column Color=""Color.Olive"">Three3</Column>
-        <Column Color=""Color.Grey"">Three3</Column>
-    </Row>
-    <Row Span=""ColSpan.Six6"">
-        <Column Color=""Color.Grey"">Six6</Column>
-        <Column Color=""Color.Olive"">Six6</Column>
-        <Column Color=""Color.Grey"">Six6</Column>
-        <Column Color=""Color.Olive"">Six6</Column>
-        <Column Color=""Color.Grey"">Six6</Column>
-        <Column Color=""Color.Olive"">Six6</Column>
-        <Column Color=""Color.Olive"">Six6</Column>
-    </Row>
-    <Row Span=""ColSpan.Four4"">
-        <Column Color=""Color.Grey"">Four4</Column>
-        <Column Color=""Color.Olive"">Four4</Column>
-    </Row>
+    <GridRow Span=""ColSpan.Three3"">
+        <GridColumn Color=""Color.Grey"">Three3</GridColumn>
+        <GridColumn Color=""Color.Olive"">Three3</GridColumn>
+        <GridColumn Color=""Color.Grey"">Three3</GridColumn>
+    </GridRow>
+    <GridRow Span=""ColSpan.Six6"">
+        <GridColumn Color=""Color.Grey"">Six6</GridColumn>
+        <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+        <GridColumn Color=""Color.Grey"">Six6</GridColumn>
+        <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+        <GridColumn Color=""Color.Grey"">Six6</GridColumn>
+        <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+        <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+    </GridRow>
+    <GridRow Span=""ColSpan.Four4"">
+        <GridColumn Color=""Color.Grey"">Four4</GridColumn>
+        <GridColumn Color=""Color.Olive"">Four4</GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -179,36 +179,36 @@
         <PresentationPart Title="Span In Grid">
             <RunTemplate>
                 <Grid Span="ColSpan.Four4">
-                    <Column Color="Color.Grey">Three3</Column>
-                    <Column Color="Color.Olive">Three3</Column>
-                    <Column Color="Color.Grey">Three3</Column>
-                    <Column Color="Color.Grey">Six6</Column>
-                    <Column Color="Color.Olive">Six6</Column>
-                    <Column Color="Color.Grey">Six6</Column>
-                    <Column Color="Color.Olive">Six6</Column>
-                    <Column Color="Color.Grey">Six6</Column>
-                    <Column Color="Color.Olive">Six6</Column>
-                    <Column Color="Color.Olive">Six6</Column>
-                    <Column Color="Color.Grey">Four4</Column>
-                    <Column Color="Color.Olive">Four4</Column>
+                    <GridColumn Color="Color.Grey">Three3</GridColumn>
+                    <GridColumn Color="Color.Olive">Three3</GridColumn>
+                    <GridColumn Color="Color.Grey">Three3</GridColumn>
+                    <GridColumn Color="Color.Grey">Six6</GridColumn>
+                    <GridColumn Color="Color.Olive">Six6</GridColumn>
+                    <GridColumn Color="Color.Grey">Six6</GridColumn>
+                    <GridColumn Color="Color.Olive">Six6</GridColumn>
+                    <GridColumn Color="Color.Grey">Six6</GridColumn>
+                    <GridColumn Color="Color.Olive">Six6</GridColumn>
+                    <GridColumn Color="Color.Olive">Six6</GridColumn>
+                    <GridColumn Color="Color.Grey">Four4</GridColumn>
+                    <GridColumn Color="Color.Olive">Four4</GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <Grid Span=""ColSpan.Four4"">
-    <Column Color=""Color.Grey"">Three3</Column>
-    <Column Color=""Color.Olive"">Three3</Column>
-    <Column Color=""Color.Grey"">Three3</Column>
-    <Column Color=""Color.Grey"">Six6</Column>
-    <Column Color=""Color.Olive"">Six6</Column>
-    <Column Color=""Color.Grey"">Six6</Column>
-    <Column Color=""Color.Olive"">Six6</Column>
-    <Column Color=""Color.Grey"">Six6</Column>
-    <Column Color=""Color.Olive"">Six6</Column>
-    <Column Color=""Color.Olive"">Six6</Column>
-    <Column Color=""Color.Grey"">Four4</Column>
-    <Column Color=""Color.Olive"">Four4</Column>
+    <GridColumn Color=""Color.Grey"">Three3</GridColumn>
+    <GridColumn Color=""Color.Olive"">Three3</GridColumn>
+    <GridColumn Color=""Color.Grey"">Three3</GridColumn>
+    <GridColumn Color=""Color.Grey"">Six6</GridColumn>
+    <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+    <GridColumn Color=""Color.Grey"">Six6</GridColumn>
+    <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+    <GridColumn Color=""Color.Grey"">Six6</GridColumn>
+    <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+    <GridColumn Color=""Color.Olive"">Six6</GridColumn>
+    <GridColumn Color=""Color.Grey"">Four4</GridColumn>
+    <GridColumn Color=""Color.Olive"">Four4</GridColumn>
 </Grid>
 ```
 ")
@@ -221,24 +221,24 @@
             </Description>
             <RunTemplate>
                 <Grid EqualWidth>
-                    <Column Color="Color.Grey">...</Column>
-                    <Column Color="Color.Olive">...</Column>
-                    <Column Color="Color.Grey">...</Column>
-                    <Row EqualWidth>
-                        <Column Color="Color.Olive">...</Column>
-                        <Column Color="Color.Grey">...</Column>
-                    </Row>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridColumn Color="Color.Olive">...</GridColumn>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridRow EqualWidth>
+                        <GridColumn Color="Color.Olive">...</GridColumn>
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid EqualWidth>
-    <Column Color=""Color.Grey"">...</Column>
-    <Column Color=""Color.Olive"">...</Column>
-    <Column Color=""Color.Grey"">...</Column>
-    <Row EqualWidth>
-        <Column Color=""Color.Olive"">...</Row>
+    <GridColumn Color=""Color.Grey"">...</GridColumn>
+    <GridColumn Color=""Color.Olive"">...</GridColumn>
+    <GridColumn Color=""Color.Grey"">...</GridColumn>
+    <GridRow EqualWidth>
+        <GridColumn Color=""Color.Olive"">...</GridRow>
 </Grid>
 ```
 ")
@@ -251,30 +251,30 @@
             </Description>
             <RunTemplate>
                 <Grid Centered Span="ColSpan.Two2">
-                    <Column Color="Color.Grey">...</Column>
-                    <Row Centered Span="ColSpan.Four4">
-                        <Column Color="Color.Grey">...</Column>
-                        <Column Color="Color.Olive">...</Column>
-                    </Row>
-                    <Row Centered Span="ColSpan.Five5">
-                        <Column Color="Color.Grey">...</Column>
-                        <Column Color="Color.Olive">...</Column>
-                        <Column Color="Color.Grey">...</Column>
-                    </Row>
+                    <GridColumn Color="Color.Grey">...</GridColumn>
+                    <GridRow Centered Span="ColSpan.Four4">
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                        <GridColumn Color="Color.Olive">...</GridColumn>
+                    </GridRow>
+                    <GridRow Centered Span="ColSpan.Five5">
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                        <GridColumn Color="Color.Olive">...</GridColumn>
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid Centered Span=""ColSpan.Two2"">
-    <Column Color=""Color.Grey"">...</Column>
-    <Column Color=""Color.Olive"">...</Column>
-    </Row>
-    <Row Centered Span=""ColSpan.Five5"">
-        <Column Color=""Color.Grey"">...</Column>
-        <Column Color=""Color.Olive"">...</Column>
-        <Column Color=""Color.Grey"">...</Column>
-    </Row>
+    <GridColumn Color=""Color.Grey"">...</GridColumn>
+    <GridColumn Color=""Color.Olive"">...</GridColumn>
+    </GridRow>
+    <GridRow Centered Span=""ColSpan.Five5"">
+        <GridColumn Color=""Color.Grey"">...</GridColumn>
+        <GridColumn Color=""Color.Olive"">...</GridColumn>
+        <GridColumn Color=""Color.Grey"">...</GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -287,42 +287,42 @@
             </Description>
             <RunTemplate>
                 <Grid>
-                    <Row Span="ColSpan.Four4">
-                        <Column Floated="HorizontalPosition.Left" Color="Color.Grey">Left</Column>
-                        <Column Floated="HorizontalPosition.Right" Color="Color.Grey">Right</Column>
-                    </Row>
-                    <Row Span="ColSpan.Four4">
-                        <Column Color="Color.Grey">...</Column>
-                        <Column Color="Color.Olive">...</Column>
-                        <Column Color="Color.Grey">...</Column>
-                        <Column Color="Color.Olive">...</Column>
-                    </Row>
-                    <Row Span="ColSpan.Eight8" Centered>
-                        <Column Color="Color.Grey">...</Column>
-                        <Column Color="Color.Olive">...</Column>
-                        <Column Color="Color.Grey">...</Column>
-                    </Row>
+                    <GridRow Span="ColSpan.Four4">
+                        <GridColumn Floated="HorizontalPosition.Left" Color="Color.Grey">Left</GridColumn>
+                        <GridColumn Floated="HorizontalPosition.Right" Color="Color.Grey">Right</GridColumn>
+                    </GridRow>
+                    <GridRow Span="ColSpan.Four4">
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                        <GridColumn Color="Color.Olive">...</GridColumn>
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                        <GridColumn Color="Color.Olive">...</GridColumn>
+                    </GridRow>
+                    <GridRow Span="ColSpan.Eight8" Centered>
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                        <GridColumn Color="Color.Olive">...</GridColumn>
+                        <GridColumn Color="Color.Grey">...</GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid>
-    <Row Span=""ColSpan.Four4"">
-        <Column Floated=""HorizontalPosition.Left"" Color=""Color.Grey"">左浮动</Column>
-        <Column Floated=""HorizontalPosition.Right"" Color=""Color.Grey"">左浮动</Column>
-    </Row>
-    <Row Span=""ColSpan.Four4"">
-        <Column Color=""Color.Grey"">...</Column>
-        <Column Color=""Color.Olive"">...</Column>
-        <Column Color=""Color.Grey"">...</Column>
-        <Column Color=""Color.Olive"">...</Column>
-    </Row>
-    <Row Span=""ColSpan.Eight8"" Centered>
-        <Column Color=""Color.Grey"">...</Column>
-        <Column Color=""Color.Olive"">...</Column>
-        <Column Color=""Color.Grey"">...</Column>
-    </Row>
+    <GridRow Span=""ColSpan.Four4"">
+        <GridColumn Floated=""HorizontalPosition.Left"" Color=""Color.Grey"">左浮动</GridColumn>
+        <GridColumn Floated=""HorizontalPosition.Right"" Color=""Color.Grey"">左浮动</GridColumn>
+    </GridRow>
+    <GridRow Span=""ColSpan.Four4"">
+        <GridColumn Color=""Color.Grey"">...</GridColumn>
+        <GridColumn Color=""Color.Olive"">...</GridColumn>
+        <GridColumn Color=""Color.Grey"">...</GridColumn>
+        <GridColumn Color=""Color.Olive"">...</GridColumn>
+    </GridRow>
+    <GridRow Span=""ColSpan.Eight8"" Centered>
+        <GridColumn Color=""Color.Grey"">...</GridColumn>
+        <GridColumn Color=""Color.Olive"">...</GridColumn>
+        <GridColumn Color=""Color.Grey"">...</GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -331,36 +331,36 @@
 
         <PresentationPart Title="Divider">
             <Description>
-                A grid can have dividers between its columns. It needs <code>Row</code> component.
+                A grid can have dividers between its columns. It needs <code>GridRow</code> component.
             </Description>
             <RunTemplate>
                 <Grid Divider EqualWidth>
-                    <Row>
-                        <Column><Image Src="/img/media-paragraph.png" /></Column>
-                        <Column><Image Src="/img/media-paragraph.png" /></Column>
-                        <Column><Image Src="/img/media-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/media-paragraph.png" /></Column>
-                        <Column><Image Src="/img/media-paragraph.png" /></Column>
-                        <Column><Image Src="/img/media-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/media-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/media-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/media-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/media-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/media-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/media-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Grid Divider>
-    <Row>
-        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
-        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
-        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
-    </Row>
-    <Row>
-        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
-        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
-        <Column><Image Src=""/img/media-paragraph.png"" /></Column>
-    </Row>
+    <GridRow>
+        <GridColumn><Image Src=""/img/media-paragraph.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/media-paragraph.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/media-paragraph.png"" /></GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn><Image Src=""/img/media-paragraph.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/media-paragraph.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/media-paragraph.png"" /></GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -372,30 +372,30 @@
             </Description>
             <RunTemplate>
                 <Grid Vertical Divider EqualWidth>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Grid Vertical Divider>
-    <Row>
-        <Column><Image Src=""/img/image.png"" /></Column>
-        <Column><Image Src=""/img/image.png"" /></Column>
-    </Row>
-    <Row>
-        <Column><Image Src=""/img/image.png"" /></Column>
-        <Column><Image Src=""/img/image.png"" /></Column>
-        <Column><Image Src=""/img/image.png"" /></Column>
-    </Row>
+    <GridRow>
+        <GridColumn><Image Src=""/img/image.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/image.png"" /></GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn><Image Src=""/img/image.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/image.png"" /></GridColumn>
+        <GridColumn><Image Src=""/img/image.png"" /></GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -408,50 +408,50 @@
             </Description>
             <RunTemplate>
                 <Grid Celled EqualWidth>
-                    <Row>
-                        <Column Span="ColSpan.Two2">
+                    <GridRow>
+                        <GridColumn Span="ColSpan.Two2">
                             <Image Src="img/image.png" />
-                        </Column>
-                        <Column>
+                        </GridColumn>
+                        <GridColumn>
                             <ParagraphDemo FullWidth />
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column Span="ColSpan.Two2">
+                        </GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn Span="ColSpan.Two2">
                             <Image Src="img/image.png" />
-                        </Column>
-                        <Column Span="ColSpan.Ten10">
+                        </GridColumn>
+                        <GridColumn Span="ColSpan.Ten10">
                             <ParagraphDemo FullWidth />
-                        </Column>
-                        <Column Span="ColSpan.Two2">
+                        </GridColumn>
+                        <GridColumn Span="ColSpan.Two2">
                             <Image Src="img/image.png" />
-                        </Column>
-                    </Row>
+                        </GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid Celled>
-    <Row>
-        <Column Span=""ColSpan.Two2"">
+    <GridRow>
+        <GridColumn Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
-        </Column>
-        <Column>
+        </GridColumn>
+        <GridColumn>
             <ParagraphDemo />
-        </Column>
-    </Row>
-    <Row>
-        <Column Span=""ColSpan.Two2"">
+        </GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
-        </Column>
-        <Column Span=""ColSpan.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
+        </GridColumn>
+        <GridColumn Span=""ColSpan.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
             <ParagraphDemo />
-        </Column>
-        <Column Span=""ColSpan.Two2"">
+        </GridColumn>
+        <GridColumn Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
-        </Column>
-    </Row>
+        </GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -464,50 +464,50 @@
             </Description>
             <RunTemplate>
                 <Grid Internal Celled EqualWidth>
-                    <Row>
-                        <Column Span="ColSpan.Two2">
+                    <GridRow>
+                        <GridColumn Span="ColSpan.Two2">
                             <Image Src="img/image.png" />
-                        </Column>
-                        <Column>
+                        </GridColumn>
+                        <GridColumn>
                             <ParagraphDemo FullWidth />
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column Span="ColSpan.Two2">
+                        </GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn Span="ColSpan.Two2">
                             <Image Src="img/image.png" />
-                        </Column>
-                        <Column Span="ColSpan.Ten10">
+                        </GridColumn>
+                        <GridColumn Span="ColSpan.Ten10">
                             <ParagraphDemo FullWidth />
-                        </Column>
-                        <Column Span="ColSpan.Two2">
+                        </GridColumn>
+                        <GridColumn Span="ColSpan.Two2">
                             <Image Src="img/image.png" />
-                        </Column>
-                    </Row>
+                        </GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid Internal Celled>
-    <Row>
-        <Column Span=""ColSpan.Two2"">
+    <GridRow>
+        <GridColumn Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
-        </Column>
-        <Column>
+        </GridColumn>
+        <GridColumn>
             <ParagraphDemo />
-        </Column>
-    </Row>
-    <Row>
-        <Column Span=""ColSpan.Two2"">
+        </GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
-        </Column>
-        <Column Span=""ColSpan.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
+        </GridColumn>
+        <GridColumn Span=""ColSpan.Ten10"" HorizontalAlignment=""HorizontalAlignment.Center"">
             <ParagraphDemo />
-        </Column>
-        <Column Span=""ColSpan.Two2"">
+        </GridColumn>
+        <GridColumn Span=""ColSpan.Two2"">
             <Image Source=""img/image.png"" />
-        </Column>
-    </Row>
+        </GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -518,110 +518,110 @@
             <Description>A row can stretch its contents to take up the entire column height</Description>
             <RunTemplate>
                 <Grid EqualWidth>
-                    <Row Stretched>
-                        <Column>
+                    <GridRow Stretched>
+                        <GridColumn>
                             <Segment>1</Segment>
-                        </Column>
-                        <Column>
+                        </GridColumn>
+                        <GridColumn>
                             <Segment>1</Segment>
                             <Segment>2</Segment>
-                        </Column>
+                        </GridColumn>
 
-                        <Column>
+                        <GridColumn>
                             <Segment>1</Segment>
                             <Segment>2</Segment>
                             <Segment>3</Segment>
-                        </Column>
-                    </Row>
+                        </GridColumn>
+                    </GridRow>
                 </Grid>
                 <Message State="State.Info">
                     Stretched can work in grid.
                 </Message>
                 <Grid Stretched EqualWidth>
-                    <Row>
-                        <Column>
+                    <GridRow>
+                        <GridColumn>
                             <Segment>1</Segment>
-                        </Column>
-                        <Column>
+                        </GridColumn>
+                        <GridColumn>
                             <Segment>1</Segment>
                             <Segment>2</Segment>
-                        </Column>
+                        </GridColumn>
 
-                        <Column>
+                        <GridColumn>
                             <Segment>1</Segment>
                             <Segment>2</Segment>
                             <Segment>3</Segment>
-                        </Column>
-                    </Row>
-                    <Row>
-                        <Column>
+                        </GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn>
                             <Segment>1</Segment>
                             <Segment>2</Segment>
                             <Segment>3</Segment>
-                        </Column>
-                        <Column>
+                        </GridColumn>
+                        <GridColumn>
                             <Segment>1</Segment>
-                        </Column>
-                        <Column>
+                        </GridColumn>
+                        <GridColumn>
                             <Segment>1</Segment>
                             <Segment>2</Segment>
-                        </Column>
-                    </Row>
+                        </GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Grid EqualWidth>
-    <Row Stretched>
-        <Column>
+    <GridRow Stretched>
+        <GridColumn>
             <Segment>1</Segment>
-        </Column>
-        <Column>
+        </GridColumn>
+        <GridColumn>
             <Segment>1</Segment>
             <Segment>2</Segment>
-        </Column>
+        </GridColumn>
 
-        <Column>
+        <GridColumn>
             <Segment>1</Segment>
             <Segment>2</Segment>
             <Segment>3</Segment>
-        </Column>
-    </Row>
+        </GridColumn>
+    </GridRow>
 </Grid>
 <Message State=""State.Info"">
     Stretched can work in grid.
 </Message>
 <Grid Stretched EqualWidth>
-    <Row>
-        <Column>
+    <GridRow>
+        <GridColumn>
             <Segment>1</Segment>
-        </Column>
-        <Column>
+        </GridColumn>
+        <GridColumn>
             <Segment>1</Segment>
             <Segment>2</Segment>
-        </Column>
+        </GridColumn>
 
-        <Column>
+        <GridColumn>
             <Segment>1</Segment>
             <Segment>2</Segment>
             <Segment>3</Segment>
-        </Column>
-    </Row>
-    <Row>
-        <Column>
+        </GridColumn>
+    </GridRow>
+    <GridRow>
+        <GridColumn>
             <Segment>1</Segment>
             <Segment>2</Segment>
             <Segment>3</Segment>
-        </Column>
-        <Column>
+        </GridColumn>
+        <GridColumn>
             <Segment>1</Segment>
-        </Column>
-        <Column>
+        </GridColumn>
+        <GridColumn>
             <Segment>1</Segment>
             <Segment>2</Segment>
-        </Column>
-    </Row>
+        </GridColumn>
+    </GridRow>
 </Grid>
 ```
 ")
@@ -635,40 +635,40 @@
                     The following grid has vertical and horizontal gutters
                 </Segment>
                 <Grid EqualWidth Padded>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
                 <Segment>
                     The following grid has vertical gutters.
                 </Segment>
                 <Grid EqualWidth Vertical Padded>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
                 <Segment>
                     The following grid has horizontal gutters.
                 </Segment>
                 <Grid EqualWidth Horizontal Padded>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
@@ -688,27 +688,27 @@
                     The following grid is compact.
                 </Segment>
                 <Grid Span="ColSpan.Two2" Compact Internal Celled>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
                 <Segment>
                     The following grid is very compact.
                 </Segment>
                 <Grid Span="ColSpan.Two2" Very Compact Internal Celled>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
-                    <Row>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                        <Column><Image Src="/img/short-paragraph.png" /></Column>
-                    </Row>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
+                    <GridRow>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                        <GridColumn><Image Src="/img/short-paragraph.png" /></GridColumn>
+                    </GridRow>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
@@ -724,16 +724,16 @@
             <Description>A grid can increase its gutters to allow for more negative space</Description>
             <RunTemplate>
                 <Grid Relaxed Span="(4)">
-                    <Column><Image Src="/img/image.png" /></Column>
-                    <Column><Image Src="/img/image.png" /></Column>
-                    <Column><Image Src="/img/image.png" /></Column>
-                    <Column><Image Src="/img/image.png" /></Column>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
                 </Grid>
                 <Grid Very Relaxed Span="(4)">
-                    <Column><Image Src="/img/image.png" /></Column>
-                    <Column><Image Src="/img/image.png" /></Column>
-                    <Column><Image Src="/img/image.png" /></Column>
-                    <Column><Image Src="/img/image.png" /></Column>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
+                    <GridColumn><Image Src="/img/image.png" /></GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>
@@ -752,9 +752,9 @@
     List<string> Menu = new List<string>(new[] {
 
          "Demo",
-         "Column Span",
-        "Row",
-        "Span In Row",
+         "GridColumn Span",
+        "GridRow",
+        "Span In GridRow",
         "Span In Grid",
         "Equal Width",
         "Centering Content",
