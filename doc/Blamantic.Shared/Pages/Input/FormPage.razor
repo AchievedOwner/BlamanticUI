@@ -66,7 +66,7 @@
         <PresentationPart Title="Demo">
             <RunTemplate>
                 <Grid EqualWidth>                    
-                    <Column>
+                    <GridColumn>
                         <Form Model="this">
                             <Field>
                                 <TextField @bind-Value="Name" DisplayName="User Name" />
@@ -92,8 +92,8 @@
                             </Fields>
                             <Button Emphasis="Emphasis.Primary">Submit</Button>
                         </Form>
-                    </Column>
-                    <Column>
+                    </GridColumn>
+                    <GridColumn>
                         Name：@Name
                         <br />
                         Password：@Password
@@ -103,7 +103,7 @@
                         Agreement：@Checked
                         <br />
                         Fruit：@Fruit
-                    </Column>
+                    </GridColumn>
                 </Grid>
             </RunTemplate>
             <CodeTemplate>

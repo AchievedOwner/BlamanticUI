@@ -8,9 +8,10 @@ namespace BlamanticUI
     using Abstractions;
 
     using Microsoft.AspNetCore.Components;
+    using Microsoft.AspNetCore.Components.Rendering;
 
     /// <summary>
-    /// Represents a container of grid that can include <see cref="Row"/> and <see cref="Column"/> component.
+    /// Represents a container of grid that can include <see cref="GridRow"/> and <see cref="GridColumn"/> component.
     /// </summary>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticChildContentComponentBase" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasUIComponent" />
@@ -162,8 +163,6 @@ namespace BlamanticUI
         /// </value>
         [Parameter] public bool Compact { get; set; }
 
-
-
         /// <summary>
         /// Override to create the CSS class that component need.
         /// </summary>
@@ -171,6 +170,18 @@ namespace BlamanticUI
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("grid");
+        }
+
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenElement(0, "div");
+            AddCommonAttributes(builder);
+            builder.BuildCascadingValueComponent<Grid>(this, ChildContent);
+            builder.CloseElement();
         }
     }
 }

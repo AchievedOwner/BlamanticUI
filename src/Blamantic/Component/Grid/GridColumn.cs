@@ -15,14 +15,18 @@
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasFloated" />
     [HtmlTag]
-    public class Column : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated,IHasVerticalAlignment,IHasHorizontalAlignment
+    public class GridColumn : BlamanticChildContentComponentBase, IHasColor, IHasSpan,IHasFloated,IHasVerticalAlignment,IHasHorizontalAlignment
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Column"/> class.
+        /// Initializes a new instance of the <see cref="GridColumn"/> class.
         /// </summary>
-        public Column()
+        public GridColumn()
         {
         }
+        /// <summary>
+        /// Gets or sets the casecading value of <see cref="Grid"/>.
+        /// </summary>
+        [CascadingParameter] Grid CascadingGrid { get; set; }
         /// <summary>
         /// Gets or sets the span of column.
         /// </summary>
@@ -51,6 +55,19 @@
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("column");
+        }
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its
+        /// initial parameters from its parent in the render tree.
+        /// </summary>
+        /// <exception cref="BlamanticUI.CascadingComponentException"></exception>
+        protected override void OnInitialized()
+        {
+            if (CascadingGrid == null)
+            {
+                throw new CascadingComponentException(CascadingGrid, this);
+            }
+            base.OnInitialized();
         }
     }
 }

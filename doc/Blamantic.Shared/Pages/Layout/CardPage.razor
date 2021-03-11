@@ -1,7 +1,7 @@
 ﻿@page "/component/layout/card"
 
 <Pager DataSource="@(new List<string>(new[]{
-                         "Demo","Card Group","Multiple Contents","Centered Card","Link Card","Raised Card","Fluid Card","Horizontal Cards","Inverted","Column Count"
+                         "Demo","Card Group","Multiple Contents","Centered Card","Link Card","Raised Card","Fluid Card","Horizontal Cards","Inverted","GridColumn Count"
                      }))">
     <Body>
         <Header1>
@@ -177,10 +177,10 @@
             </ImageContent>
             <Content>                
                 <Grid EqualWidth>
-                    <Column Floated="HorizontalPosition.Left">
+                    <GridColumn Floated="HorizontalPosition.Left">
                         <Icon IconClass="hear outline like" /> 24 Liks
-                    </Column>
-                    <Column Floated="HorizontalPosition.Right"><Icon IconClass="comment" /> 4 Comments</Column>
+                    </GridColumn>
+                    <GridColumn Floated="HorizontalPosition.Right"><Icon IconClass="comment" /> 4 Comments</GridColumn>
                 </Grid>          
                 
             </Content>
@@ -208,10 +208,10 @@
     </ImageContent>
     <Content>                
         <Grid EqualWidth>
-            <Column Floated=""HorizontalPosition.Left"">
+            <GridColumn Floated=""HorizontalPosition.Left"">
                 <Icon IconClass=""hear outline like"" /> 24 Liks
-            </Column>
-            <Column Floated=""HorizontalPosition.Right""><Icon IconClass=""comment"" /> 4 Comments</Column>
+            </GridColumn>
+            <GridColumn Floated=""HorizontalPosition.Right""><Icon IconClass=""comment"" /> 4 Comments</GridColumn>
         </Grid>          
                 
     </Content>
@@ -324,7 +324,7 @@
             </Description>
     <RunTemplate>
         <Grid Span="ColSpan.Three3">
-            <Column>
+            <GridColumn>
                 <Card Fluid>
                     <ImageContent>
                         <Image Src="img/avatar/elyse.png" />
@@ -333,8 +333,8 @@
                         <Header>Elyse</Header>
                     </Content>
                 </Card>
-            </Column>
-            <Column>
+            </GridColumn>
+            <GridColumn>
                 <Card Fluid>
                     <ImageContent>
                         <Image Src="img/avatar/kristy.png" />
@@ -343,8 +343,8 @@
                         <Header>Kristy</Header>
                     </Content>
                 </Card>
-            </Column>
-            <Column>
+            </GridColumn>
+            <GridColumn>
                 <Card Fluid>
                     <ImageContent>
                         <Image Src="img/avatar/matthew.png" />
@@ -353,14 +353,14 @@
                         <Header>Matthew</Header>
                     </Content>
                 </Card>
-            </Column>
+            </GridColumn>
         </Grid>
     </RunTemplate>
     <CodeTemplate>
         @Code.GetCode(@"
 ```html
 <Grid Span=""ColSpan.Three3"">
-    <Column>
+    <GridColumn>
         <Card Fluid>
             <ImageContent>
                 <Image Src=""img/avatar/elyse.png"" />
@@ -369,8 +369,8 @@
                 <Header>Elyse</Header>
             </Content>
         </Card>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Card Fluid>
             <ImageContent>
                 <Image Src=""img/avatar/kristy.png"" />
@@ -379,8 +379,8 @@
                 <Header>Kristy</Header>
             </Content>
         </Card>
-    </Column>
-    <Column>
+    </GridColumn>
+    <GridColumn>
         <Card Fluid>
             <ImageContent>
                 <Image Src=""img/avatar/matthew.png"" />
@@ -389,7 +389,7 @@
                 <Header>Matthew</Header>
             </Content>
         </Card>
-    </Column>
+    </GridColumn>
 </Grid>
 ```
 ")
@@ -526,7 +526,7 @@
 ")
     </CodeTemplate>
 </PresentationPart>
-        <PresentationPart Title="Column Count">
+        <PresentationPart Title="GridColumn Count">
             <Description>
                 A group of cards can set how many cards should exist in a row
             </Description>

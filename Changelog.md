@@ -1,3 +1,7 @@
+# 0.4.0
+## :trophy: New Features
+* Rename component `Row -> GridRow` and `Column -> GridColumn`
+## :pill: Bugs Fixed
 
 # 0.3.0
 
