@@ -16,7 +16,7 @@
     /// <seealso cref="BlamanticUI.Abstractions.IHasFluid" />
     [HtmlTag]
     [CssClass("steps", Order = 999)]
-    public class Steps : BlamanticParentComponentBase<Steps,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasInverted,IHasFluid,IHasStackable
+    public class StepGroup : BlamanticParentComponentBase<StepGroup,Step>, IHasUIComponent, IHasVertical, IHasAttatched, IHasSize, IHasInverted,IHasFluid,IHasStackable
     {
         /// <summary>
         /// Gets or sets a value indicating whether this layout is vertical.

@@ -41,7 +41,7 @@ namespace BlamanticUI
         /// <summary>
         /// Gets or sets the parent.
         /// </summary>
-        [CascadingParameter]CardGroup Parent { get; set; }
+        [CascadingParameter]CardGroup CascadingCardGroup { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether this is fluid.
         /// </summary>
@@ -125,10 +125,9 @@ namespace BlamanticUI
         /// </summary>
         protected override void OnInitialized()
         {
-            if (Parent != null)
+            if (CascadingCardGroup != null)
             {
                 UI = false;
-                Parent.AddComponent(this);
             }
         }
 

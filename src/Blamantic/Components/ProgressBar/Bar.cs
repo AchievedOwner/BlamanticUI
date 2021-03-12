@@ -32,7 +32,7 @@ namespace BlamanticUI
         /// </summary>
         [Parameter][CssClass]public Color? Color { get; set; }
 
-        [CascadingParameter] Progress? Parent { get; set; }
+        [CascadingParameter] Progress Parent { get; set; }
 
         /// <summary>
         /// Gets or sets the index of bar in container.

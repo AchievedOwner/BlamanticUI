@@ -1,5 +1,6 @@
 ﻿using BlamanticUI.Abstractions;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
 using YoiBlazor;
 
 namespace BlamanticUI
@@ -28,6 +29,18 @@ namespace BlamanticUI
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("breadcrumb");
+        }
+
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenElement(0, "div");
+            AddCommonAttributes(builder);
+            builder.BuildCascadingValueComponent<Breadcrumb>(this, ChildContent);
+            builder.CloseElement();
         }
     }
 }

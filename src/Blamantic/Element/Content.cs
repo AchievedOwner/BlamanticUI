@@ -46,6 +46,11 @@ namespace BlamanticUI
         [Parameter]public bool Inline { get; set; }
 
         /// <summary>
+        /// Gets or sets a value that display as extra content style.
+        /// </summary>
+        [Parameter] public bool Extra { get; set; }
+
+        /// <summary>
         /// Override to create the CSS class that component need.
         /// </summary>
         /// <param name="css">The instance of <see cref="T:YoiBlazor.Css" /> class.</param>
