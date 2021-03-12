@@ -187,8 +187,8 @@
         /// <param name="builder">The builder.</param>
         void BuildHead(RenderTreeBuilder builder)
         {
-            builder.OpenComponent<Tr>(0);
-            builder.AddAttribute(10, nameof(Tr.ChildContent), (RenderFragment)(tr =>
+            builder.OpenComponent<TableRow>(0);
+            builder.AddAttribute(10, nameof(TableRow.ChildContent), (RenderFragment)(tr =>
             {
                 BuildTitle(tr);
             }));
@@ -196,8 +196,8 @@
 
             if (new[] { CalendarViewMode.Date, CalendarViewMode.DateTime }.Contains(ViewMode))
             {
-                builder.OpenComponent<Tr>(11);
-                builder.AddAttribute(20, nameof(Tr.ChildContent), (RenderFragment)(tr =>
+                builder.OpenComponent<TableRow>(11);
+                builder.AddAttribute(20, nameof(TableRow.ChildContent), (RenderFragment)(tr =>
                 {
                     BuildWeekTitle(tr);
                 }));
@@ -212,8 +212,8 @@
         /// <param name="tr">The tr.</param>
         private void BuildTitle(RenderTreeBuilder tr)
         {
-            tr.OpenComponent<Th>(0);
-
+            tr.OpenComponent<TableCell>(0);
+            
             switch (ViewMode)
             {
                 case CalendarViewMode.Year:
@@ -232,7 +232,8 @@
                 default:
                     break;
             }
-            tr.AddAttribute(10, nameof(Th.ChildContent), (RenderFragment)(th =>
+            tr.AddAttribute(9, "Header", true);
+            tr.AddAttribute(10, nameof(TableCell.ChildContent), (RenderFragment)(th =>
             {
                 th.OpenElement(0, "span");
                 th.AddAttribute(1, "class", "link");
@@ -318,8 +319,9 @@
                 }
 
 
-                builder.OpenComponent<Th>(0);
-                builder.AddAttribute(10, nameof(Th.ChildContent), (RenderFragment)(th =>
+                builder.OpenComponent<TableCell>(0);
+                builder.AddAttribute(9, nameof(TableCell.Header), true);
+                builder.AddAttribute(10, nameof(TableCell.ChildContent), (RenderFragment)(th =>
                 {
                     th.AddContent(0, value);
                 }));

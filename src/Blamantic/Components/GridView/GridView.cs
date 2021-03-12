@@ -262,9 +262,9 @@
         {
             BuildTable(builder, nameof(Table.Header), new RenderFragment(row =>
               {
-                  row.OpenComponent<Tr>(0);
+                  row.OpenComponent<TableRow>(0);
 
-                  row.AddAttribute(1, nameof(Tr.ChildContent), (RenderFragment)(th =>
+                  row.AddAttribute(1, nameof(TableRow.ChildContent), (RenderFragment)(th =>
                  {
 
                      if (AutoGenerateColumns)
@@ -277,7 +277,7 @@
                              {
                                  headerText = dataField.Name;
                              }
-                             AddCellValue<Th>(th, child => child.AddContent(0, headerText));
+                             AddCellValue<TableCell>(th, child => child.AddContent(0, headerText));
                          }
                      }
                      else
@@ -291,7 +291,7 @@
                              {
                                  headerText = boundField.DataField;
                              }
-                             AddCellValue<Th>(th, child => child.AddContent(0, headerText), th => AddCellWidthAttribute(th, column, 5));
+                             AddCellValue<TableCell>(th, child => child.AddContent(0, headerText), th => AddCellWidthAttribute(th, column, 5));
                          }
                      }
                  }));
@@ -308,18 +308,18 @@
 
                 if (!DataList.Any())
                 {
-                    body.OpenComponent<Tr>(0);
-                    body.AddAttribute(10, nameof(Tr.ChildContent), (RenderFragment)(tr =>
+                    body.OpenComponent<TableRow>(0);
+                    body.AddAttribute(10, nameof(TableRow.ChildContent), (RenderFragment)(tr =>
                     {
                         if (EmptyTemplate is null)
                         {
                             EmptyTemplate = builder => builder.AddContent(0, "There is no data!!");
                         }
 
-                        tr.OpenComponent<Td>(0);
+                        tr.OpenComponent<TableCell>(0);
                         tr.AddAttribute(1, "colspan", DataList.GetType().GetGenericTypeDefinition().GetProperties().Length);
-                        tr.AddAttribute(2, nameof(Td.HorizontalAlignment), HorizontalAlignment.Center);
-                        tr.AddAttribute(10, nameof(Td.ChildContent), EmptyTemplate);
+                        tr.AddAttribute(2, nameof(TableCell.HorizontalAlignment), HorizontalAlignment.Center);
+                        tr.AddAttribute(10, nameof(TableCell.ChildContent), EmptyTemplate);
                         tr.CloseComponent();
                     }));
 
@@ -329,9 +329,9 @@
                 foreach (var row in GetEnumerableDataSource())
                 {
                     var index = i;
-                    body.OpenComponent<Tr>(0);
+                    body.OpenComponent<TableRow>(0);
                     body.SetKey(index);
-                    body.AddAttribute(10, nameof(Tr.ChildContent), (RenderFragment)(td =>
+                    body.AddAttribute(10, nameof(TableRow.ChildContent), (RenderFragment)(td =>
                       {
                           if (AutoGenerateColumns)
                           {
@@ -345,7 +345,7 @@
                                       value = string.Format(format, value);
                                   }
 
-                                  AddCellValue<Td>(td, child => child.AddContent(0, value));
+                                  AddCellValue<TableCell>(td, child => child.AddContent(0, value), header: true);
                               }
                           }
                           else
@@ -359,11 +359,11 @@
                                       {
                                           value = string.Format(boundField.FieldFormat, value);
                                       }
-                                      AddCellValue<Td>(td, child => child.AddContent(0, value),td=> AddCellWidthAttribute(td,column,5));
+                                      AddCellValue<TableCell>(td, child => child.AddContent(0, value),td=> AddCellWidthAttribute(td,column,5));
                                   }
                                   else if (column is GridViewTemplateField templateField)
                                   {
-                                      AddCellValue<Td>(td, templateField.ItemTemplate(row), td => AddCellWidthAttribute(td, column, 5));
+                                      AddCellValue<TableCell>(td, templateField.ItemTemplate(row), td => AddCellWidthAttribute(td, column, 5), header: true);
                                   }
                               }
                           }
@@ -380,16 +380,17 @@
         {
             if (!string.IsNullOrEmpty(column.Width))
             {
-                builder.AddAttribute(sequence, nameof(Td.AdditionalStyles), (StyleCollection)Style.Create.Add("width", column.Width));
+                builder.AddAttribute(sequence, nameof(TableCell.AdditionalStyles), (StyleCollection)Style.Create.Add("width", column.Width));
             }
         }
 
-        static void AddCellValue<T>(RenderTreeBuilder builder, RenderFragment value, Action<RenderTreeBuilder> addAttributesAction = default)
+        static void AddCellValue<T>(RenderTreeBuilder builder, RenderFragment value, Action<RenderTreeBuilder> addAttributesAction = default, bool header = default)
             where T:IComponent
         {
             builder.OpenComponent<T>(0);
             addAttributesAction?.Invoke(builder);
-            builder.AddAttribute(10, nameof(Td.ChildContent), value);
+            builder.AddAttribute(9, "Header", header);
+            builder.AddAttribute(10, nameof(TableCell.ChildContent), value);
             builder.CloseComponent();
         }
 
@@ -419,7 +420,7 @@
         /// <typeparam name="T">The type of property.</typeparam>
         /// <param name="item">The item object.</param>
         /// <param name="name">The property name of this item.</param>
-        /// <returns>The value of property or default value of <type.</returns>
+        /// <returns>The value of property or default value of <typeparamref name="T"/>.</returns>
         public static T? GetFieldValue<T>(object item,string name)
         {
             var value = GetFieldValue(item, name);

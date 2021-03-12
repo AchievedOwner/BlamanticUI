@@ -140,28 +140,33 @@ namespace BlamanticUI
         {
             builder.OpenElement(0, "table");
             AddCommonAttributes(builder);
-            if (Header != null)
+
+            builder.BuildCascadingValueComponent<Table>(this, table =>
             {
-                builder.OpenElement(1, "thead");
-                builder.AddContent(2, Header);
-                builder.CloseElement();
-            }
-            if (Body != null)
-            {
-                builder.OpenElement(3, "tbody");
-                builder.AddContent(4, Body);
-                builder.CloseElement();
-            }
-            if (Footer != null)
-            {
-                builder.OpenElement(5, "tfoot");
-                builder.AddContent(6, Footer);
-                builder.CloseElement();
-            }
-            if (ChildContent != null)
-            {
-                builder.AddContent(10, ChildContent);
-            }
+                if (Header != null)
+                {
+                    table.OpenElement(1, "thead");
+                    table.AddContent(2, Header);
+                    table.CloseElement();
+                }
+                if (Body != null)
+                {
+                    table.OpenElement(3, "tbody");
+                    table.AddContent(4, Body);
+                    table.CloseElement();
+                }
+                if (Footer != null)
+                {
+                    table.OpenElement(5, "tfoot");
+                    table.AddContent(6, Footer);
+                    table.CloseElement();
+                }
+                if (ChildContent != null)
+                {
+                    table.AddContent(10, ChildContent);
+                }
+            }, isFixed: true);
+            
             builder.CloseElement();
         }
         /// <summary>

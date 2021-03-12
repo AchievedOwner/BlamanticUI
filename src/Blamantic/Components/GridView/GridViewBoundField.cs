@@ -5,7 +5,6 @@
     /// <summary>
     /// Represents the template of item to be rendered for each row from data source withing binding field.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <seealso cref="BlamanticUI.GridViewFieldBase" />
     public class GridViewBoundField : GridViewFieldBase
     {
