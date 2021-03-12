@@ -68,11 +68,26 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public VerticalAlignment? VerticalAlignment { get; set; }
 
+        /// <summary>
+        /// Gets or sets the UI content to display image at left side.
+        /// </summary>
         [Parameter] public RenderFragment<T> ImageTemplate { get; set; }
+        /// <summary>
+        /// Gets or sets the UI content to display title at right top side.
+        /// </summary>
         [Parameter] public RenderFragment<T> HeaderTemplate { get; set; }
+        /// <summary>
+        /// Gets or sets the UI content to display extra information at right bottom side.
+        /// </summary>
         [Parameter] public RenderFragment<T> FooterTemplate { get; set; }
+        /// <summary>
+        /// Gets or sets the UI content to display comments at right top side with spaced by each child element.
+        /// </summary>
         [Parameter] public RenderFragment<T> MetaTemplate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the UI content to display paragraghs at right middle side.
+        /// </summary>
         [Parameter] public RenderFragment<T> DescriptionTemplate { get; set; }
 
         /// <summary>
@@ -84,6 +99,11 @@ namespace BlamanticUI
             css.Add("items");
         }
 
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its
+        /// initial parameters from its parent in the render tree.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">DataSource</exception>
         protected override void OnInitialized()
         {
             if (DataSource == null)
@@ -128,6 +148,14 @@ namespace BlamanticUI
             builder.CloseElement();
         }
 
+        /// <summary>
+        /// Builds the template.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="css">The CSS.</param>
+        /// <param name="fragment">The fragment.</param>
+        /// <returns></returns>
         private static void BuildTemplate(RenderTreeBuilder builder, T value, string css, RenderFragment<T> fragment = default)
         {
             if (fragment is not null)
