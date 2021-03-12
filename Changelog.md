@@ -3,6 +3,10 @@
 * Rename component `Row -> GridRow` and `Column -> GridColumn`
 * Add `Extra` parameter in `Content` component to instead `ExtraContent` component
 * Change `Steps` to `StepGroup`
+* Change `Tr` to `TableRow`
+* Change `Td` to `TableCell`
+* Remove `Th` but add new parameter `Header` for `TableCell`
+* Simplify `ItemList` to support DataSource
 ## :pill: Bugs Fixed
 
 # 0.3.0
