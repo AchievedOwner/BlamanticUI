@@ -1,6 +1,7 @@
 # 0.4.0
 ## :trophy: New Features
 * Rename component `Row -> GridRow` and `Column -> GridColumn`
+* Add `Extra` parameter in `Content` component to instead `ExtraContent` component
 ## :pill: Bugs Fixed
 
 # 0.3.0
