@@ -103,6 +103,10 @@
         /// Gets or sets to automatically generate columns from data source. It support some attributes from System.ComponentModel.DataAnnotations. Default is <c>true</c>.
         /// </summary>
         [Parameter] public bool AutoGenerateColumns { get; set; } = true;
+        /// <summary>
+        /// Gets or sets the row height and fix the header if overflow.
+        /// </summary>
+        [Parameter] public string RowHeight { get; set; }
 
         /// <summary>
         /// Gets or sets the columns to bound.
@@ -112,6 +116,15 @@
         /// Gets or sets the UI content when <see cref="DataSource"/> is empty.
         /// </summary>
         [Parameter] public RenderFragment EmptyTemplate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the UI content at footer of grid.
+        /// </summary>
+        [Parameter] public RenderFragment FooterTemplate { get; set; }
+        /// <summary>
+        /// Gets or sets the UI content at header of grid. It's override the Columns generation by your own.
+        /// </summary>
+        [Parameter] public RenderFragment HeaderTemplate { get; set; }
         #endregion
 
         #region Properties        
@@ -198,6 +211,11 @@
 
         #region Protected
 
+        /// <summary>
+        /// Called when [initialized].
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">nameof(DataSource)</exception>
         protected override void OnInitialized()
         {
             if(DataSource is null)
@@ -225,13 +243,13 @@
             AddCommonAttributes(builder);
             #region Header
 
-            builder.AddContent(10, (RenderFragment)(header =>
+            builder.AddContent(10, header =>
             {
                 header.OpenElement(0, "div");
                 header.AddAttribute(1, "class", "gridview-header");
                 header.AddContent(5, BuildHeaderTable);
                 header.CloseElement();
-            }));
+            });
             #endregion
 
             #region Body
@@ -239,64 +257,83 @@
             {
                 body.OpenElement(0, "div");
                 body.AddAttribute(1, "class", "gridview-body");
+                builder.AddAttribute(2, "style", 
+                    Style.Create
+                    .Add(!string.IsNullOrEmpty(RowHeight), new StyleCollection(new Dictionary<string, string>
+                    {
+                        ["overflow-y"]="auto",
+                        ["height"] = RowHeight
+                    }))
+                    .ToString());
                 body.AddContent(5, BuildBodyTable);
                 body.CloseElement();
             });
             #endregion
 
             #region Footer
+            builder.AddContent(30, footer =>
+            {
+                footer.OpenElement(0, "div");
+                footer.AddAttribute(1, "class", "gridview-footer");
+                footer.AddContent(10, BuildFooterTable);
+                footer.CloseElement();
+            });
             #endregion
 
             builder.CloseElement();
 
             builder.OpenRegion(100);
-            builder.OpenComponent<CascadingValue<GridView>>(0);
-            builder.AddAttribute(1, nameof(CascadingValue<GridView>.IsFixed), true);
-            builder.AddAttribute(2, nameof(CascadingValue<GridView>.Value), this);
-            builder.AddAttribute(2, nameof(CascadingValue<GridView>.ChildContent), Columns);
-            builder.CloseComponent();
+            builder.BuildCascadingValueComponent<GridView>(this, Columns, isFixed: true);
             builder.CloseRegion();
         }
+
 
         private void BuildHeaderTable(RenderTreeBuilder builder)
         {
             BuildTable(builder, nameof(Table.Header), new RenderFragment(row =>
               {
-                  row.OpenComponent<TableRow>(0);
+                  if (HeaderTemplate is null)
+                  {
+                      row.OpenComponent<TableRow>(0);
 
-                  row.AddAttribute(1, nameof(TableRow.ChildContent), (RenderFragment)(th =>
-                 {
-
-                     if (AutoGenerateColumns)
+                      row.AddAttribute(1, nameof(TableRow.ChildContent), (RenderFragment)(th =>
                      {
-                         var properties = DataSource.GetType().GenericTypeArguments[0].GetProperties();
-                         foreach (var dataField in properties)
+
+                         if (AutoGenerateColumns)
                          {
-                             var headerText = dataField.GetCustomAttribute<DisplayAttribute>()?.Name;
-                             if (string.IsNullOrEmpty(headerText))
+                             var properties = DataSource.GetType().GenericTypeArguments[0].GetProperties();
+                             foreach (var dataField in properties)
                              {
-                                 headerText = dataField.Name;
+                                 var headerText = dataField.GetCustomAttribute<DisplayAttribute>()?.Name;
+                                 if (string.IsNullOrEmpty(headerText))
+                                 {
+                                     headerText = dataField.Name;
+                                 }
+                                 AddCellValue<TableCell>(th, child => child.AddContent(0, headerText), header: true);
                              }
-                             AddCellValue<TableCell>(th, child => child.AddContent(0, headerText));
                          }
-                     }
-                     else
-                     {
-                         foreach (var column in Fields)
+                         else
                          {
-                             var headerText = column.HeaderText;
+                             foreach (var column in Fields)
+                             {
+                                 var headerText = column.HeaderText;
 
                              //When HeaderText is null or empty string, use DataField for header text
                              if (column is GridViewBoundField boundField && string.IsNullOrEmpty(column.HeaderText))
-                             {
-                                 headerText = boundField.DataField;
+                                 {
+                                     headerText = boundField.DataField;
+                                 }
+                                 AddCellValue<TableCell>(th, child => child.AddContent(0, headerText), th => AddCellWidthAttribute(th, column, 5), header: true);
                              }
-                             AddCellValue<TableCell>(th, child => child.AddContent(0, headerText), th => AddCellWidthAttribute(th, column, 5));
                          }
-                     }
-                 }));
+                     }));
 
-                  row.CloseComponent();
+                      row.CloseComponent();
+                  }
+                  else
+                  {
+                      row.AddContent(0, HeaderTemplate);
+                  }
               }));
         }
 
@@ -345,7 +382,7 @@
                                       value = string.Format(format, value);
                                   }
 
-                                  AddCellValue<TableCell>(td, child => child.AddContent(0, value), header: true);
+                                  AddCellValue<TableCell>(td, child => child.AddContent(0, value));
                               }
                           }
                           else
@@ -363,7 +400,7 @@
                                   }
                                   else if (column is GridViewTemplateField templateField)
                                   {
-                                      AddCellValue<TableCell>(td, templateField.ItemTemplate(row), td => AddCellWidthAttribute(td, column, 5), header: true);
+                                      AddCellValue<TableCell>(td, templateField.ItemTemplate(row), td => AddCellWidthAttribute(td, column, 5));
                                   }
                               }
                           }
@@ -374,7 +411,13 @@
             });
         }
 
-
+        private void BuildFooterTable(RenderTreeBuilder builder)
+        {
+            BuildTable(builder, nameof(Table.Footer), footer =>
+            {
+                footer.AddContent(0, FooterTemplate);
+            });
+        }
 
         static void AddCellWidthAttribute(RenderTreeBuilder builder, GridViewFieldBase column, int sequence)
         {
@@ -394,6 +437,11 @@
             builder.CloseComponent();
         }
 
+        /// <summary>
+        /// Creates the component CSS class.
+        /// </summary>
+        /// <param name="css">The CSS.</param>
+        /// <returns></returns>
         protected override void CreateComponentCssClass(Css css)
         {
             css.Add("gridview");

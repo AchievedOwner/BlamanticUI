@@ -2,7 +2,7 @@
 
 <Pager DataSource="@(new List<string>
                      {
-                         "Demo","Annotation","Bound Field","Template Field","Width","Empty Template","Compact","Celled","Basic","Padded","Colored","Size"
+                         "Demo","Annotation","Bound Field","Template Field","Column Width","Row Height","Header/Footer Template","Empty Template","Compact","Celled","Basic","Padded","Colored","Size"
                      })">
     <Body>
         <Header1 Divider="true">
@@ -144,9 +144,9 @@ IEnumerable<User> Users => new List<User>
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="Width">
+        <PresentationPart Title="Column Width">
             <Description>
-                Customize field width
+                Customize column width
             </Description>
             <RunTemplate>
                 <GridView DataSource="Users" AutoGenerateColumns="false">
@@ -189,6 +189,78 @@ IEnumerable<User> Users => new List<User>
 ")
             </CodeTemplate>
         </PresentationPart>
+        <PresentationPart Title="Row Height">
+            <Description>
+                Auto scrollable when overflow the <code>RowHeight</code>
+            </Description>
+            <RunTemplate>
+                <GridView DataSource="Users" RowHeight="600px" >
+                    
+                    </GridView>
+                <Space/>
+                <GridView DataSource="Users.Concat(Users).Concat(Users)" RowHeight="200px" />
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<GridView DataSource=""Users"" RowHeight=""600px"" />
+<GridView DataSource=""Users.Concat(Users).Concat(Users)"" RowHeight=""200px"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Header/Footer Template">
+            <RunTemplate>
+                <GridView DataSource="Users">
+                    <HeaderTemplate>
+                        <TableRow>
+                            <TableCell Header HorizontalAlignment="HorizontalAlignment.Center" colspan="3">
+                                Here is our data
+                            </TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell rowspan="2" Header>Id</TableCell>
+                            <TableCell Header>Name</TableCell>
+                            <TableCell Header>Birthday(Age)</TableCell>
+                        </TableRow>
+                    </HeaderTemplate>
+                    <FooterTemplate>
+                        <TableRow>
+                            <TableCell HorizontalAlignment="HorizontalAlignment.Right">
+                                <Label Color="Color.Red">Total: @(Users.Count())</Label>
+                            </TableCell>
+                        </TableRow>
+                    </FooterTemplate>
+                </GridView>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<GridView DataSource=""Users"">
+    <HeaderTemplate>
+        <TableRow>
+            <TableCell Header HorizontalAlignment=""HorizontalAlignment.Center"" colspan=""3"">
+                Here is our data
+            </TableCell>
+        </TableRow>
+        <TableRow>
+            <TableCell rowspan=""2"" Header>Id</TableCell>
+            <TableCell Header>Name</TableCell>
+            <TableCell Header>Birthday(Age)</TableCell>
+        </TableRow>
+    </HeaderTemplate>
+    <FooterTemplate>
+        <TableRow>
+            <TableCell HorizontalAlignment=""HorizontalAlignment.Right"">
+                <Label Color=""Color.Red"">Total: @(Users.Count())</Label>
+            </TableCell>
+        </TableRow>
+    </FooterTemplate>
+</GridView>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
         <PresentationPart Title="Empty Template">
             <Description>
                 Customize the content when data is empty
@@ -198,10 +270,7 @@ IEnumerable<User> Users => new List<User>
                 <Space />
                 <GridView DataSource="new List<User>()">
                     <EmptyTemplate>
-                        <Message State="State.Info">
-                            <Header>Nothing</Header>
-                            I can't find anything you want
-                        </Message>
+                        <Message State="State.Info" Title="Nothing" Text="I can't find anything you want"/>
                     </EmptyTemplate>
                 </GridView>
             </RunTemplate>
@@ -212,10 +281,7 @@ IEnumerable<User> Users => new List<User>
 
 <GridView DataSource=""new List<User>()"">
     <EmptyTemplate>
-        <Message State=""State.Info"">
-            <Header>Nothing</Header>
-            I can't find anything you want
-        </Message>
+        <Message State=""State.Info"" Title=""Nothing"" Text=""I can't find anything you want""/>
     </EmptyTemplate>
 </GridView>
 ```
