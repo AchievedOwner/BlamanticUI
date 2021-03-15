@@ -156,27 +156,29 @@
             AddCommonAttributes(builder);
             builder.AddContent(10, calendar =>
             {
-                calendar.OpenElement(0, "table");
-                calendar.AddAttribute(2, "class", (CssClassCollection)Css
-                    .Create
-                    .Add("ui")
-                    .Add("celled center aligned fixed")
-                    .Add(Inverted,"inverted")
-                    .Add("table")
-                    );
-                calendar.AddContent(5, thead =>
-                {
-                    thead.OpenElement(0, "thead");
-                    thead.AddContent(1, BuildHead);
-                    thead.CloseElement();
-                });
-                calendar.AddContent(10, tbody =>
-                {
-                    tbody.OpenElement(0, "tbody");
-                    tbody.AddContent(1, BuildBody);
-                    tbody.CloseElement();
-                });
-                calendar.CloseElement();
+                
+                calendar.OpenComponent<Table>(0);
+                calendar.AddAttribute(1, nameof(Table.Inverted), Inverted);
+                calendar.AddAttribute(2, nameof(Table.Celled), true);
+                calendar.AddAttribute(3, nameof(Table.Fixed), true);
+
+                calendar.AddAttribute(4, nameof(Table.AdditionalCssClass), (CssClassCollection)"center aligned");
+                //calendar.AddAttribute(2, "class", (CssClassCollection)Css
+                //    .Create
+                //    .Add("ui")
+                //    .Add("celled center aligned fixed")
+                //    .Add(Inverted,"inverted")
+                //    .Add("table")
+                //    );
+                calendar.AddAttribute(5,nameof(Table.Header), (RenderFragment)BuildHead);
+                calendar.AddAttribute(6, nameof(Table.Body), (RenderFragment)BuildBody);
+                //calendar.AddContent(10, tbody =>
+                //{
+                //    tbody.OpenElement(0, "tbody");
+                //    tbody.AddContent(1, BuildBody);
+                //    tbody.CloseElement();
+                //});
+                calendar.CloseComponent();
             });
             builder.CloseElement();
         }
@@ -188,19 +190,13 @@
         void BuildHead(RenderTreeBuilder builder)
         {
             builder.OpenComponent<TableRow>(0);
-            builder.AddAttribute(10, nameof(TableRow.ChildContent), (RenderFragment)(tr =>
-            {
-                BuildTitle(tr);
-            }));
+            builder.BuildChildContentForComponent(10, BuildTitle);
             builder.CloseComponent();
 
             if (new[] { CalendarViewMode.Date, CalendarViewMode.DateTime }.Contains(ViewMode))
             {
                 builder.OpenComponent<TableRow>(11);
-                builder.AddAttribute(20, nameof(TableRow.ChildContent), (RenderFragment)(tr =>
-                {
-                    BuildWeekTitle(tr);
-                }));
+                builder.BuildChildContentForComponent(12, BuildWeekTitle);
                 builder.CloseComponent();
             }
 
@@ -212,7 +208,7 @@
         /// <param name="tr">The tr.</param>
         private void BuildTitle(RenderTreeBuilder tr)
         {
-            tr.OpenComponent<TableCell>(0);
+            tr.OpenComponent<TableHeader>(0);
             
             switch (ViewMode)
             {
@@ -232,8 +228,7 @@
                 default:
                     break;
             }
-            tr.AddAttribute(9, "Header", true);
-            tr.AddAttribute(10, nameof(TableCell.ChildContent), (RenderFragment)(th =>
+            tr.AddAttribute(10, nameof(TableHeader.ChildContent), (RenderFragment)(th =>
             {
                 th.OpenElement(0, "span");
                 th.AddAttribute(1, "class", "link");
@@ -319,12 +314,8 @@
                 }
 
 
-                builder.OpenComponent<TableCell>(0);
-                builder.AddAttribute(9, nameof(TableCell.Header), true);
-                builder.AddAttribute(10, nameof(TableCell.ChildContent), (RenderFragment)(th =>
-                {
-                    th.AddContent(0, value);
-                }));
+                builder.OpenComponent<TableHeader>(0);
+                builder.BuildChildContentForComponent(1, value);
                 builder.CloseComponent();
             }
         }

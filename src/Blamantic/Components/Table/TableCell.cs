@@ -28,10 +28,6 @@ namespace BlamanticUI
         /// </summary>
         [CascadingParameter] TableRow CascadingTableRow { get; set; }
         /// <summary>
-        /// Gets or sets the cell render as th element.
-        /// </summary>
-        [Parameter] public bool Header { get; set; }
-        /// <summary>
         /// Gets or sets the highlight color when row spanned.
         /// </summary>
         [Parameter] [CssClass("rowspanned")] public bool RowSpanned { get; set; }
@@ -111,7 +107,7 @@ namespace BlamanticUI
         /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
         protected override void BuildRenderTree(RenderTreeBuilder builder)
         {
-            builder.OpenElement(0, Header ? "th" : "td");
+            builder.OpenElement(0, "td");
             AddCommonAttributes(builder);
             AddChildContent(builder);
             builder.CloseElement();

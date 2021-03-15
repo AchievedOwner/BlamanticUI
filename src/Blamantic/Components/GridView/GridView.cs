@@ -261,7 +261,7 @@
                     Style.Create
                     .Add(!string.IsNullOrEmpty(RowHeight), new StyleCollection(new Dictionary<string, string>
                     {
-                        ["overflow-y"]="auto",
+                        ["overflow-y"] = "auto",
                         ["height"] = RowHeight
                     }))
                     .ToString());
@@ -309,7 +309,7 @@
                                  {
                                      headerText = dataField.Name;
                                  }
-                                 AddCellValue<TableCell>(th, child => child.AddContent(0, headerText), header: true);
+                                 AddCellValue<TableHeader>(th, child => child.AddContent(0, headerText));
                              }
                          }
                          else
@@ -323,7 +323,7 @@
                                  {
                                      headerText = boundField.DataField;
                                  }
-                                 AddCellValue<TableCell>(th, child => child.AddContent(0, headerText), th => AddCellWidthAttribute(th, column, 5), header: true);
+                                 AddCellValue<TableHeader>(th, child => child.AddContent(0, headerText), th => AddCellWidthAttribute(th, column, 5));
                              }
                          }
                      }));
@@ -427,12 +427,11 @@
             }
         }
 
-        static void AddCellValue<T>(RenderTreeBuilder builder, RenderFragment value, Action<RenderTreeBuilder> addAttributesAction = default, bool header = default)
+        static void AddCellValue<T>(RenderTreeBuilder builder, RenderFragment value, Action<RenderTreeBuilder> addAttributesAction = default)
             where T:IComponent
         {
             builder.OpenComponent<T>(0);
             addAttributesAction?.Invoke(builder);
-            builder.AddAttribute(9, "Header", header);
             builder.AddAttribute(10, nameof(TableCell.ChildContent), value);
             builder.CloseComponent();
         }

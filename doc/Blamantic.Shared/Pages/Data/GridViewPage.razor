@@ -214,14 +214,14 @@ IEnumerable<User> Users => new List<User>
                 <GridView DataSource="Users">
                     <HeaderTemplate>
                         <TableRow>
-                            <TableCell Header HorizontalAlignment="HorizontalAlignment.Center" colspan="3">
+                            <TableHeader HorizontalAlignment="HorizontalAlignment.Center" colspan="3">
                                 Here is our data
-                            </TableCell>
+                            </TableHeader>
                         </TableRow>
                         <TableRow>
-                            <TableCell rowspan="2" Header>Id</TableCell>
-                            <TableCell Header>Name</TableCell>
-                            <TableCell Header>Birthday(Age)</TableCell>
+                            <TableHeader rowspan="2">Id</TableHeader>
+                            <TableHeader>Name</TableHeader>
+                            <TableHeader>Birthday(Age)</TableHeader>
                         </TableRow>
                     </HeaderTemplate>
                     <FooterTemplate>
@@ -239,14 +239,14 @@ IEnumerable<User> Users => new List<User>
 <GridView DataSource=""Users"">
     <HeaderTemplate>
         <TableRow>
-            <TableCell Header HorizontalAlignment=""HorizontalAlignment.Center"" colspan=""3"">
+            <TableHeader HorizontalAlignment=""HorizontalAlignment.Center"" colspan=""3"">
                 Here is our data
-            </TableCell>
+            </TableHeader>
         </TableRow>
         <TableRow>
-            <TableCell rowspan=""2"" Header>Id</TableCell>
-            <TableCell Header>Name</TableCell>
-            <TableCell Header>Birthday(Age)</TableCell>
+            <TableHeader rowspan=""2"">Id</TableHeader>
+            <TableHeader>Name</TableHeader>
+            <TableHeader>Birthday(Age)</TableHeader>
         </TableRow>
     </HeaderTemplate>
     <FooterTemplate>
