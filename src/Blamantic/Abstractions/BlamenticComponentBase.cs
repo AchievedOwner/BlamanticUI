@@ -30,5 +30,6 @@ namespace BlamanticUI.Abstractions
                 throw new CascadingComponentException(parent, this);
             }
         }
+
     }
 }
