@@ -6,11 +6,11 @@
     using YoiBlazor;
 
     /// <summary>
-    /// Represents one step in <see cref="Steps"/> component.
+    /// Represents one step in <see cref="StepGroup"/> component.
     /// </summary>
     [HtmlTag]
     [CssClass("step",Order =999)]
-    public class Step : BlamanticChildComponentBase<Steps,Step>
+    public class Step : BlamanticChildComponentBase<StepGroup,Step>
     {
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Step"/> is disabled.

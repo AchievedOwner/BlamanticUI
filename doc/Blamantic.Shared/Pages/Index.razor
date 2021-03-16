@@ -12,22 +12,22 @@
         
  
         <Table Definition>
-            <Tr>
-                <Th HorizontalAlignment="HorizontalAlignment.Center">
+            <TableRow>
+                <TableCell HorizontalAlignment="HorizontalAlignment.Center">
                     <h2>Steps</h2>
-                </Th>
-                <Th HorizontalAlignment="HorizontalAlignment.Center">
+                </TableCell>
+                <TableCell HorizontalAlignment="HorizontalAlignment.Center">
                     <h2> Blazor WebAssembly</h2>
-                </Th>
-                <Th HorizontalAlignment="HorizontalAlignment.Center">
+                </TableCell>
+                <TableCell HorizontalAlignment="HorizontalAlignment.Center">
                     <h2> Blazor Server</h2>
-                </Th>
-            </Tr>
-            <Tr>
-                <Td>
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>
                         <Icon IconClass="dice one" Size="Size.Huge" />
-                </Td>
-                <Td colspan="2">
+                </TableCell>
+                <TableCell colspan="2">
                     <Tab>
                         <TabItem Title="Package Manage Console">
                             <Segment Color="Color.Grey" Inverted>
@@ -47,30 +47,30 @@
         ")
                         </TabItem>
                     </Tab>
-                </Td>
-            </Tr>
-            <Tr>
-                <Td>
+                </TableCell>
+            </TableRow>
+            <TableRow>
+                <TableCell>
                     <Icon IconClass="dice two" Size="Size.Huge" />
-                </Td>
-                <Td>
+                </TableCell>
+                <TableCell>
                     @Code.GetCode(@"
 Import css in `index.html`
 ```html
 <link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
 ````
 ")
-                </Td>
-                <Td>
+                </TableCell>
+                <TableCell>
                     @Code.GetCode(@"
 Import css in `_Host.cshtml`
 ```html
 <link href=""_content/BlamanticUI/blamantic.min.css"" rel=""stylesheet"" />
 ````
 ")
-                </Td>
-            </Tr>
-            <Tr>
+                </TableCell>
+            </TableRow>
+            <TableRow>
                 <td>
                     <Icon IconClass="dice three" Size="Size.Huge" />
                 </td>
@@ -100,18 +100,18 @@ public void ConfigureServices(IServiceCollection services)
 ```
 ")
                 </td>
-            </Tr>
-            <Tr>
-                <Td>
+            </TableRow>
+            <TableRow>
+                <TableCell>
                     <Icon IconClass="dice four" Size="Size.Huge" />
-                </Td>
-                <Td colspan="2">
+                </TableCell>
+                <TableCell colspan="2">
                     @Code.GetCode(@"
 `using BlamanticUI` in `_Import.razor`
 ")
-                </Td>
-            </Tr>
-            <Tr>
+                </TableCell>
+            </TableRow>
+            <TableRow>
                 <td>
                     <Icon IconClass="dice five" Size="Size.Huge" />
                 </td>
@@ -134,7 +134,7 @@ Modify `App.razor` to add `BlamanticUIContainer` to load dynamic components like
 ```
 ")
                 </td>
-            </Tr>
+            </TableRow>
         </Table>
 
 

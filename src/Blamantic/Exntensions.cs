@@ -2,7 +2,9 @@
 using System.Threading.Tasks;
 
 using BlamanticUI.Abstractions;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.AspNetCore.Components.Rendering;
 
 namespace BlamanticUI
 {
@@ -66,6 +68,29 @@ namespace BlamanticUI
             instance.Disabled = disabled;
             await instance.OnDisabled.InvokeAsync(disabled);
             instance.NotifyStateChanged();
+        }
+
+        /// <summary>
+        /// Builds child content in specified <see cref="RenderTreeBuilder"/> instance for <c>OpenComponent</c>.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="sequence">The sequence.</param>
+        /// <param name="content">The content.</param>
+        public static void BuildChildContentForComponent(this RenderTreeBuilder builder, int sequence, string content)
+        {
+            builder.AddAttribute(sequence, "ChildContent", (RenderFragment)(child => child.AddContent(0, content)));
+        }
+
+
+        /// <summary>
+        /// Builds child content in specified <see cref="RenderTreeBuilder"/> instance for <c>OpenComponent</c>.
+        /// </summary>
+        /// <param name="builder">The builder.</param>
+        /// <param name="sequence">The sequence.</param>
+        /// <param name="content">The content.</param>
+        public static void BuildChildContentForComponent(this RenderTreeBuilder builder, int sequence, RenderFragment content)
+        {
+            builder.AddAttribute(sequence, "ChildContent", (RenderFragment)(child => child.AddContent(0, content)));
         }
     }
 }

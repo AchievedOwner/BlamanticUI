@@ -12,6 +12,10 @@ namespace BlamanticUI
     public class BreadcrumbDivider : BlamanticComponentBase
     {
         /// <summary>
+        /// Gets or sets the parent component.
+        /// </summary>
+        [CascadingParameter]Breadcrumb CascadingBreadcrumber { get; set; }
+        /// <summary>
         /// Gets or sets the icon class of divider.
         /// </summary>
         [Parameter] public string? IconClass { get; set; }
@@ -19,6 +23,17 @@ namespace BlamanticUI
         /// Gets or sets the divider string. Default is '/'.
         /// </summary>
         [Parameter] public string Divider { get; set; } = "/";
+
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its
+        /// initial parameters from its parent in the render tree.
+        /// </summary>
+        /// <exception cref="CascadingComponentException"></exception>
+        protected override void OnInitialized()
+        {
+            ThrowParentIsNull(CascadingBreadcrumber);
+            base.OnInitialized();
+        }
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.

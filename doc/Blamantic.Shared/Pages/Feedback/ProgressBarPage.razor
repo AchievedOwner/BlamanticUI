@@ -30,13 +30,13 @@
                     </Description>
             <RunTemplate>
                 <Progress Percent="percent" Indicating/>
-                <Button Disabled="disable" @onclick="()=>Start()" Emphasis="Emphasis.Primary">开始</Button>
+                <Button Disabled="disable" @onclick="()=>Start()" Emphasis="Emphasis.Primary">Start</Button>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
 <Progress Percent=""percent"" Indicating>
-<Button Disabled=""disable"" @onclick=""()=>Start()"" Emphasis=""Emphasis.Primary"">开始</Button>
+<Button Disabled=""disable"" @onclick=""()=>Start()"" Emphasis=""Emphasis.Primary"">Start</Button>
 ```
 ```csharp
 int percent;

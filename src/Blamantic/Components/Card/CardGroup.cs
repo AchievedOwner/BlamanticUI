@@ -25,15 +25,7 @@ namespace BlamanticUI
         /// </summary>
         public CardGroup()
         {
-            _cardList = new List<Card>();
         }
-
-        private readonly List<Card> _cardList;
-
-        /// <summary>
-        /// Gets the components.
-        /// </summary>
-        public IReadOnlyList<Card> Components => _cardList;
 
         /// <summary>
         /// Gets or sets a value indicating whether all <see cref="Card"/> are horizontal layout.
@@ -67,21 +59,6 @@ namespace BlamanticUI
         ///   <c>true</c> if stackable; otherwise, <c>false</c>.
         /// </value>
         [Parameter]public bool Stackable { get; set; }
-
-        /// <summary>
-        /// Adds the component.
-        /// </summary>
-        /// <param name="component">The component.</param>
-        /// <exception cref="System.ArgumentNullException">component</exception>
-        public void AddComponent(Card component)
-        {
-            if (component is null)
-            {
-                throw new System.ArgumentNullException(nameof(component));
-            }
-
-            _cardList.Add(component);
-        }
 
         /// <summary>
         /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.

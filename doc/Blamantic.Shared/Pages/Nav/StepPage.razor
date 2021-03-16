@@ -17,20 +17,20 @@
                 A set of steps
             </Description>
             <RunTemplate>
-                <Steps>
+                <StepGroup>
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Actived IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Disabled IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps>
+<StepGroup>
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Actived IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Disabled IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -40,20 +40,20 @@
                 A step can show a ordered sequence of steps                
             </Description>
             <RunTemplate>
-                <Steps Ordered>
+                <StepGroup Ordered>
                     <Step Completed  Title="Register" Description="Register a new account" />
                     <Step Completed Title="Verification" Description="Verify your email" />
                     <Step Actived Title="Success" Description="Register complete!" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps Ordered>
+<StepGroup Ordered>
     <Step Completed Title=""Register"" Description=""Register a new account"" />
     <Step Completed Title=""Verification"" Description=""Verify your email"" />
     <Step Actived Title=""Success"" Description=""Register complete!"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -63,32 +63,32 @@
                 A step can be displayed stacked vertically
             </Description>
             <RunTemplate>
-                <Steps Vertical>
+                <StepGroup Vertical>
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
+                </StepGroup>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <Steps Vertical VerticalRight>
+                <StepGroup Vertical VerticalRight>
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps Vertical>
+<StepGroup Vertical>
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
+</StepGroup>
 
-<Steps Vertical VerticalRight>
+<StepGroup Vertical VerticalRight>
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -98,24 +98,24 @@
                 A step can be actived by clicked.
             </Description>
             <RunTemplate>
-                <Steps ClickToActive>
+                <StepGroup ClickToActive>
                     <Step Title="Multiple Choice" />
                     <Step Title="Single Choice" />
                     <Step Title="Essay Question" />
                     <Step Title="Comprehension" />
                     <Step Title="Writing" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps ClickToActive>
+<StepGroup ClickToActive>
     <Step Title=""Multiple Choice"" />
     <Step Title=""Single Choice"" />
     <Step Title=""Essay Question"" />
     <Step Title=""Comprehension"" />
     <Step Title=""Writing"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -125,20 +125,20 @@
                 A fluid step takes up the width of its container
             </Description>
             <RunTemplate>
-                <Steps Fluid>
+                <StepGroup Fluid>
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps Fluid>
+<StepGroup Fluid>
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -148,16 +148,16 @@
                 A step can contain a description
             </Description>
             <RunTemplate>
-                <Steps>
+                <StepGroup>
                     <Step Description="Only has a discription" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps>
+<StepGroup>
     <Step Description=""Only has a discription""/>
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -167,16 +167,16 @@
                 A step can contain an icon
             </Description>
             <RunTemplate>
-                <Steps>
+                <StepGroup>
                     <Step Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps>
+<StepGroup>
     <Step Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -186,16 +186,16 @@
                 A step can be highlighted as active
             </Description>
             <RunTemplate>
-                <Steps>
+                <StepGroup>
                     <Step Actived Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps>
+<StepGroup>
     <Step Actived Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -205,16 +205,16 @@
                 A step can show that a user has completed it
             </Description>
             <RunTemplate>
-                <Steps>
+                <StepGroup>
                     <Step Completed Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps>
+<StepGroup>
     <Step Completed Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -224,79 +224,79 @@
                 A step can show that it cannot be selected
             </Description>
             <RunTemplate>
-                <Steps>
+                <StepGroup>
                     <Step Disabled Title="Shipping" Description="Choose your shipping options" IconClass="truck" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps>
+<StepGroup>
     <Step Disabled Title=""Shipping"" Description=""Choose your shipping options"" IconClass=""truck"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
         <PresentationPart Title="Size">
             <Description>
-                Steps can have different sizes
+                StepGroup can have different sizes
             </Description>
             <RunTemplate>
-                <Steps Size="Size.Mini">
+                <StepGroup Size="Size.Mini">
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
-                <Steps Size="Size.Tiny">
+                </StepGroup>
+                <StepGroup Size="Size.Tiny">
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
-                <Steps Size="Size.Small">
+                </StepGroup>
+                <StepGroup Size="Size.Small">
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
-                <Steps Size="Size.Huge">
+                </StepGroup>
+                <StepGroup Size="Size.Huge">
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
-                <Steps Size="Size.Massive">
+                </StepGroup>
+                <StepGroup Size="Size.Massive">
                     <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                     <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                     <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                </Steps>
+                </StepGroup>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
-<Steps Size=""Size.Mini"">
+<StepGroup Size=""Size.Mini"">
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
-<Steps Size=""Size.Tiny"">
+</StepGroup>
+<StepGroup Size=""Size.Tiny"">
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
-<Steps Size=""Size.Small"">
+</StepGroup>
+<StepGroup Size=""Size.Small"">
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
-<Steps Size=""Size.Huge"">
+</StepGroup>
+<StepGroup Size=""Size.Huge"">
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
-<Steps Size=""Size.Massive"">
+</StepGroup>
+<StepGroup Size=""Size.Massive"">
     <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
     <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
     <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-</Steps>
+</StepGroup>
 ```
 ")
             </CodeTemplate>
@@ -307,33 +307,33 @@
             </Description>
             <RunTemplate>
                 <Segment Inverted>
-                    <Steps Inverted>
+                    <StepGroup Inverted>
                         <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                         <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                         <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                    </Steps>
+                    </StepGroup>
                     <br />
-                    <Steps Inverted Vertical>
+                    <StepGroup Inverted Vertical>
                         <Step Completed IconClass="registered" Title="Register" Description="Register a new account" />
                         <Step Completed IconClass="envelope" Title="Verification" Description="Verify your email" />
                         <Step Actived IconClass="check" Title="Success" Description="Register complete!" />
-                    </Steps>
+                    </StepGroup>
                 </Segment>
             </RunTemplate>
             <CodeTemplate>
                 @Code.GetCode(@"
 ```html
 <Segment Inverted>
-    <Steps Inverted>
+    <StepGroup Inverted>
         <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
         <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
         <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-    </Steps>
-    <Steps Inverted Vertical>
+    </StepGroup>
+    <StepGroup Inverted Vertical>
         <Step Completed IconClass=""registered"" Title=""Register"" Description=""Register a new account"" />
         <Step Completed IconClass=""envelope"" Title=""Verification"" Description=""Verify your email"" />
         <Step Actived IconClass=""check"" Title=""Success"" Description=""Register complete!"" />
-    </Steps>
+    </StepGroup>
 </Segment>
 ```
 ")

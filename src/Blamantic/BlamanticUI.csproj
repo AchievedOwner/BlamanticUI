@@ -62,4 +62,8 @@
 		<PackageReference Include="YoiBlazor" Version="2.2.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Service\" />
+	</ItemGroup>
+
 </Project>

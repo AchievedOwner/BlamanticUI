@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
-
+using Microsoft.AspNetCore.Components.Rendering;
 using YoiBlazor;
 
 namespace BlamanticUI
@@ -21,9 +17,16 @@ namespace BlamanticUI
     /// <seealso cref="BlamanticUI.Abstractions.IHasDisabled" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasHorizontalAlignment" />
     /// <seealso cref="BlamanticUI.Abstractions.IHasSpan" />
-    [HtmlTag("td")]
-    public class Td : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasSpan,IHasColor,IHasVerticalAlignment
+    public class TableCell : BlamanticChildContentComponentBase, IHasSelectable, IHasState, IHasActive, IHasDisabled, IHasHorizontalAlignment, IHasSpan,IHasColor,IHasVerticalAlignment
     {
+        /// <summary>
+        /// Gets or sets the cascading table.
+        /// </summary>
+        [CascadingParameter] Table CascadingTable { get; set; }
+        /// <summary>
+        /// Gets or sets the cascading table.
+        /// </summary>
+        [CascadingParameter] TableRow CascadingTableRow { get; set; }
         /// <summary>
         /// Gets or sets the highlight color when row spanned.
         /// </summary>
@@ -86,5 +89,28 @@ namespace BlamanticUI
         /// Gets or sets the vertical alignment of text.
         /// </summary>
         [Parameter]public VerticalAlignment? VerticalAlignment { get; set; }
+
+        /// <summary>
+        /// Method invoked when the component is ready to start, having received its
+        /// initial parameters from its parent in the render tree.
+        /// </summary>
+        protected override void OnInitialized()
+        {
+            ThrowParentIsNull(CascadingTable);
+            ThrowParentIsNull(CascadingTableRow);
+            base.OnInitialized();
+        }
+
+        /// <summary>
+        /// Renders the component to the supplied <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" />.
+        /// </summary>
+        /// <param name="builder">A <see cref="T:Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder" /> that will receive the render output.</param>
+        protected override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            builder.OpenElement(0, "td");
+            AddCommonAttributes(builder);
+            AddChildContent(builder);
+            builder.CloseElement();
+        }
     }
 }

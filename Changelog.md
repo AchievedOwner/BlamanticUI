@@ -1,7 +1,18 @@
 # 0.4.0
 ## :trophy: New Features
-* Rename component `Row -> GridRow` and `Column -> GridColumn`
+* Change `Row` to `GridRow`
+* Change `Column` to `GridColumn`
+* Change `Steps` to `StepGroup`
+* Change `Tr` to `TableRow`
+* Change `Th` to `TableHeader`
+* Change `Td` to `TableCell`
+* Add `Extra` parameter in `Content` component to instead `ExtraContent` component
+* Add `Header/Footer Template` parameter in `GridView`
+* Add `RowHeight` parameter in GridView
+* Add `ItemList` to support DataSource
+* Simplify `Message` component
 ## :pill: Bugs Fixed
+* Fix the document words
 
 # 0.3.0
 

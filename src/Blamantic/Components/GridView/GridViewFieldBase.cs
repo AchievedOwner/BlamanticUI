@@ -7,7 +7,6 @@ namespace BlamanticUI
     /// <summary>
     /// Represents a template for each row within data banding. This is an abstract class.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <seealso cref="BlamanticUI.Abstractions.BlamanticComponentBase" />
     public abstract class GridViewFieldBase : GridViewTemplateBase
     {

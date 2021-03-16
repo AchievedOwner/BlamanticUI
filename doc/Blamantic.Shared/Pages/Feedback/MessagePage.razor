@@ -1,7 +1,7 @@
 ﻿@page "/component/feedback/message"
 
 <Pager DataSource="@(new List<string>(new[]{
-                         "Demo","List Message","Icon Message","Visible","Hidden","Compact","Floating","Attached","State","Color","Size"
+                         "Demo","Custom Message","Visible","Hidden","Compact","Floating","Attached","State","Color","Size"
                      }))">
     <Body>
         <Header1 Divider>
@@ -12,25 +12,23 @@
         </Header1>
         <PresentationPart Title="Demo">
             <RunTemplate>
-                <Message>
-                    <Header>Changes in Service</Header>
-                    We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.
-                </Message>
+                <Message Text="This is an information" Color="Color.Blue" />
+                <Message Title="Changes in Service" Text="We just updated our privacy policy here to better service our customers. We recommend reviewing the changes." State="State.Warning" />
+                <Message Title="Have you heard about our mailing list?" Text="Get the best news in your e-mail every day." IconClass="inbox" />
             </RunTemplate>
             <CodeTemplate>
-        @Code.GetCode(@"
+                @Code.GetCode(@"
 ```html
-<Message>
-    <Header>Changes in Service</Header>
-    We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.
-</Message>
+<Message Text=""This is an information"" Color=""Color.Blue"" />
+<Message Title=""Changes in Service"" Text=""We just updated our privacy policy here to better service our customers. We recommend reviewing the changes."" />
+<Message Title=""Have you heard about our mailing list?"" Text=""Get the best news in your e-mail every day."" IconClass=""inbox"" />
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="List Message">
+        <PresentationPart Title="Custom Message">
             <Description>
-                A message with a list
+                Create any content in inner content.
             </Description>
             <RunTemplate>
                 <Message>
@@ -40,42 +38,34 @@
                         <Item>Drafts will now auto-save while writing</Item>
                     </List>
                 </Message>
-            </RunTemplate>
-            <CodeTemplate>
-                @Code.GetCode(@"
-```html
-<Message>
-    <Header>New Site Features</Header>
-    <List Bulleted>
-        <Item>You can now have cover images on blog pages</Item>
-        <Item>Drafts will now auto-save while writing</Item>
-    </List>
-</Message>
-```
-")
-            </CodeTemplate>
-        </PresentationPart>
-        <PresentationPart Title="Icon Message">
-            <Description>
-                A message can contain an icon.
-            </Description>
-            <RunTemplate>
-                <Message Icon>
-                    <Icon IconClass="inbox" />
+
+                <Message Icon Color="Color.Pink">
+                    <Icon IconClass="right arrow"/>
                     <Content>
-                        <Header>Have you heard about our mailing list?</Header>
-                        Get the best news in your e-mail every day.
+                        <Header>New Site Features</Header>
+                        <List Ordered>
+                            <Item>You can now have cover images on blog pages</Item>
+                            <Item>Drafts will now auto-save while writing</Item>
+                        </List>
                     </Content>
                 </Message>
             </RunTemplate>
-            <CodeTemplate>
-@Code.GetCode(@"
+            <CodeTemplate>                
+        @Code.GetCode(@"
 ```html
-<Message Icon>
-    <Icon IconClass=""inbox""/>
+<Message>
+    <Header>Changes in Service</Header>
+    We just updated our privacy policy here to better service our customers. We recommend reviewing the changes.
+</Message>
+
+<Message Icon Color=""Color.Pink"">
+    <Icon IconClass=""right arrow""/>
     <Content>
-        <Header>Have you heard about our mailing list?</Header>
-        Get the best news in your e-mail every day.
+        <Header>New Site Features</Header>
+        <List Ordered>
+            <Item>You can now have cover images on blog pages</Item>
+            <Item>Drafts will now auto-save while writing</Item>
+        </List>
     </Content>
 </Message>
 ```
@@ -87,16 +77,12 @@
                 A message can be set to visible to force itself to be shown.
             </Description>
             <RunTemplate>
-                <Message Visible>
-                    You can always see me
-                </Message>
+                <Message Visible Text="You can always see me"/>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Message Visible>
-    You can always see me
-</Message>
+<Message Visible Text=""You can always see me"" />
 ```
 ")
             </CodeTemplate>
@@ -106,16 +92,27 @@
                         A message can be hidden
                     </Description>
             <RunTemplate>
-                <Message Hidden>
-                    Nothing you can see!!
-                </Message>
+                <Message Hidden Text="Nothing you can see!!" />
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<Message Hidden>
-    Nothing you can see!!
-</Message>
+<Message Hidden Text=""Nothing you can see!!"" />
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="Cloable">
+            <Description>
+                A message that the user can choose to hide
+            </Description>
+            <RunTemplate>
+                <Message Closable Title="Welcome back!" Text="This is a special notification which you can dismiss if you're bored with it."/>
+            </RunTemplate>
+            <CodeTemplate>
+                @Code.GetCode(@"
+```html
+<Message Closable Title=""Welcome back!"" Text=""This is a special notification which you can dismiss if you're bored with it.""/>
 ```
 ")
             </CodeTemplate>

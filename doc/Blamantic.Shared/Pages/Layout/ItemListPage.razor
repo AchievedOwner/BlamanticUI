@@ -1,7 +1,7 @@
 ﻿@page "/component/layout/itemlist"
 
 <Pager DataSource="@(new List<string>(new[]{
-                         "Demo","Image","Divider","Vertical Alignment","Unstackable","Introduction","Description","Extra Content","Link","Floated Content","Inverted"
+                         "Demo","ImageTemplate","HeaderTemplate","DescriptionTemplate","MetaTemplate","FooterTemplate","Divider","Unstackable","Relaxed","Linked","Inverted"
                      }))">
     <Body>
         <Header1>
@@ -20,649 +20,569 @@
                 Item views are designed to be responsive with images stacking at mobile resolutions.。
             </Content>
         </Message>
+
+        <Segment>
+            The demo code as below:
+            @Code.GetCode(@"
+```cs
+    class Product
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ImageSrc { get; set; } = ""img / image.png"";
+        public int Price { get; set; }
+        public int Number { get; set; }
+    }
+
+    IReadOnlyList<Product> Products = new List<Product>
+    {
+        new Product { Id = 1, Title = ""Mouse"", Price = 200, Number = 999 },
+        new Product{ Id = 2, Title = ""Cow"", Price = 590, Number = 754 },
+        new Product{ Id = 3, Title = ""Tiger"", Price = 1600, Number = 240 },
+        new Product{ Id = 4, Title = ""Rabbit"", Price = 350, Number = 100 },
+    };
+```
+")
+        </Segment>
         <PresentationPart Title="Demo">
             <RunTemplate>
-                <ItemList>
-                    <Item>
-                        <Image Src="img/image.png"  UI="false"/>
-                        <Content>
-                            <Anchor Header>
-                                Header
-                            </Anchor>
-                            <Introduction>Description</Introduction>
-                            <Description>
-                                <ParagraphDemo />
-                            </Description>
-                            <Extra>
-                                Additional Details
-                            </Extra>
-                        </Content>
-                    </Item>
-                    <Item>
-                        <Image Src="img/image.png"   UI="false"/>
-                        <Content>
-                            <Anchor Header>
-                                Header
-                            </Anchor>
-                            <Introduction>Description</Introduction>
-                            <Description>
-                                <ParagraphDemo />
-                            </Description>
-                            <Extra>
-                                Additional Details
-                            </Extra>
-                        </Content>
-                    </Item>
-                    <Item>
-                        <Image Src="img/image.png"  UI="false"/>
-                        <Content>
-                            <Anchor Header>
-                                Header
-                            </Anchor>
-                            <Introduction>Description</Introduction>
-                            <Description>
-                                <ParagraphDemo />
-                            </Description>
-                            <Extra>
-                                Additional Details
-                            </Extra>
-                        </Content>
-                    </Item>
+                <ItemList DataSource="Products">
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
+                    <HeaderTemplate>
+                        @context.Title
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo />
+                    </DescriptionTemplate>
+                    <MetaTemplate>
+                        <span>$@context.Price</span>
+                        <span>@context.Number remain</span>
+                    </MetaTemplate>
+                    <FooterTemplate>
+                        Additional Details
+                    </FooterTemplate>
                 </ItemList>
             </RunTemplate>
             <CodeTemplate>
 @Code.GetCode(@"
 ```html
-<ItemList>
-    <Item>
-        <Image Src=""img/image.png""  UI=""false""/>
-        <Content>
-            <Anchor Header>
-                Header
-            </Anchor>
-            <Introduction>Description</Introduction>
-            <Description>
-                <ParagraphDemo />
-            </Description>
-            <Extra>
-                Additional Details
-            </Extra>
-        </Content>
-    </Item>
-    <Item>
-        <Image Src=""img/image.png""  UI=""false""/>
-        <Content>
-            <Anchor Header>
-                Header
-            </Anchor>
-            <Introduction>Description</Introduction>
-            <Description>
-                <ParagraphDemo />
-            </Description>
-            <Extra>
-                Additional Details
-            </Extra>
-        </Content>
-    </Item>
-    <Item>
-        <Image Src=""img/image.png""  UI=""false""/>
-        <Content>
-            <Anchor Header>
-                Header
-            </Anchor>
-            <Introduction>Description</Introduction>
-            <Description>
-                <ParagraphDemo />
-            </Description>
-            <Extra>
-                Additional Details
-            </Extra>
-        </Content>
-    </Item>
+<ItemList DataSource=""Products"">
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
 </ItemList>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="Image">
-            <Description>An item can contain an image</Description>
+        
+        <PresentationPart Title="ImageTemplate">
+            <Description>
+                <code>ImageTemplate</code> is an UI to content display at left side of item.
+            </Description>
             <RunTemplate>
-                <Message State="State.Warning">
-                    You have to set <code>UI="false"</code> for <code>Image</code> component without <code>Size</code> parameter.
-                </Message>
-                <ItemList>
-                    <Item>
-                        <Image Src="/img/image.png" UI="false" />
-                    </Item>
-                    <Item>
-                        <Image Src="/img/image.png" UI="false" />
-                    </Item>
-                    <Item>
-                        <Image Src="/img/image.png" UI="false" />
-                    </Item>
-                </ItemList>
-
-                <ItemList>
-                    <Item>
-                        <Image Src="/img/image.png" Size="Size.Tiny" />
-                    </Item>
-                    <Item>
-                        <Image Src="/img/image.png" Size="Size.Tiny" />
-                    </Item>
-                    <Item>
-                        <Image Src="/img/image.png" Size="Size.Tiny" />
-                    </Item>
+                <ItemList DataSource="Products">
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
                 </ItemList>
             </RunTemplate>
             <CodeTemplate>
-                @Code.GetCode(@"
+@Code.GetCode(@"
 ```html
-<ItemList>
-    <Item>
-        <Image Src=""/img/image.png"" UI=""false"" />
-    </Item>
-    <Item>
-        <Image Src=""/img/image.png"" UI=""false"" />
-    </Item>
-    <Item>
-        <Image Src=""/img/image.png"" UI=""false"" />
-    </Item>
-</ItemList>
-
-<ItemList>
-    <Item>
-        <Image Src=""/img/image.png"" Size=""Size.Tiny"" />
-    </Item>
-    <Item>
-        <Image Src=""/img/image.png"" Size=""Size.Tiny"" />
-    </Item>
-    <Item>
-        <Image Src=""/img/image.png"" Size=""Size.Tiny"" />
-    </Item>
+<ItemList DataSource=""Products"">
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
 </ItemList>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
+
+        
+        <PresentationPart Title="HeaderTemplate">
+            <Description>
+                <code>HeaderTemplate</code> is an UI content to display title at right top for each item.
+            </Description>
+            <RunTemplate>
+                <ItemList DataSource="Products">
+                    <HeaderTemplate>
+                        <Header2>
+                            @context.Title
+                        </Header2>
+                    </HeaderTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ItemList DataSource=""Products"">
+    <HeaderTemplate>
+        <Header2>
+            @context.Title
+        </Header2>
+    </HeaderTemplate>
+</ItemList>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        
+        <PresentationPart Title="DescriptionTemplate">
+            <Description>
+                <code>DescriptionTemplate</code> is an UI to content display paragraphs at right middle for each item.
+            </Description>
+            <RunTemplate>
+                <ItemList DataSource="Products">
+                    <HeaderTemplate>
+                        <Header2>
+                            @context.Title
+                        </Header2>
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo/>
+                    </DescriptionTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ItemList DataSource=""Products"">
+    <HeaderTemplate>
+        <Header2>
+            @context.Title
+        </Header2>
+    </HeaderTemplate>
+    <DescriptionTemplate>
+       ......
+    </DescriptionTemplate>
+</ItemList>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
+        
+        <PresentationPart Title="MetaTemplate">
+            <Description>
+                All child elements will automatically be spaced.
+            </Description>
+            <RunTemplate>
+                <ItemList DataSource="Products">
+                    <HeaderTemplate>
+                        <Header2>
+                            @context.Title
+                        </Header2>
+                    </HeaderTemplate>
+                    <MetaTemplate>
+                        <span>
+                           $ @context.Price
+                        </span>
+                        <span>
+                            <Label>@context.Number</Label>
+                        </span>
+                    </MetaTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo/>
+                    </DescriptionTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ItemList DataSource=""Products"">
+    <HeaderTemplate>
+        <Header2>
+            @context.Title
+        </Header2>
+    </HeaderTemplate>
+    <MetaTemplate>
+        <span>
+            $ @context.Price
+        </span>
+        <span>
+            <Label>@context.Number</Label>
+        </span>
+    </MetaTemplate>
+    <DescriptionTemplate>
+       ......
+    </DescriptionTemplate>
+</ItemList>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+        <PresentationPart Title="FooterTemplate">
+            <Description>
+                To be formatted separately from the main content
+            </Description>
+            <RunTemplate>
+                <ItemList DataSource="Products">
+                    <HeaderTemplate>
+                        <Header2>
+                            @context.Title
+                        </Header2>
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo/>
+                    </DescriptionTemplate>
+                    <FooterTemplate>
+                        <Icon IconClass="list" Color="Color.Green"/> @context.Number
+                    </FooterTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ItemList DataSource=""Products"">
+    <HeaderTemplate>
+        <Header2>
+            @context.Title
+        </Header2>
+    </HeaderTemplate>
+    <DescriptionTemplate>
+       ......
+    </DescriptionTemplate>
+    <FooterTemplate>
+        <Icon IconClass=""list"" Color=""Color.Green""/> @context.Number
+    </FooterTemplate>
+</ItemList>
+```
+")
+            </CodeTemplate>
+        </PresentationPart>
+
         <PresentationPart Title="Divider">
             <Description>
-                Items can be divided to better distinguish between grouped content
-            </Description>
+                Display a divider between each item.
+            </Description>            
             <RunTemplate>
-                <ItemList Divider>
-                    <Item>
-                        <Image Src="img/image.png" UI="false"/>
-                    </Item>
-                    <Item>
-                        <Image Src="img/image.png"  UI="false"/>
-                    </Item>
-                    <Item>
-                        <Image Src="img/image.png"  UI="false"/>
-                    </Item>
+                <ItemList DataSource="Products" Divider>
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
+                    <HeaderTemplate>
+                        @context.Title
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo />
+                    </DescriptionTemplate>
+                    <MetaTemplate>
+                        <span>$@context.Price</span>
+                        <span>@context.Number remain</span>
+                    </MetaTemplate>
+                    <FooterTemplate>
+                        Additional Details
+                    </FooterTemplate>
                 </ItemList>
             </RunTemplate>
             <CodeTemplate>
-        @Code.GetCode(@"
+@Code.GetCode(@"
 ```html
-<ItemList Divider>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-    </Item>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-    </Item>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-    </Item>
+<ItemList DataSource=""Products"" Divider>
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
 </ItemList>
 ```
 ")
             </CodeTemplate>
         </PresentationPart>
-        <PresentationPart Title="Vertical Alignment">
-            <Description>
-                Content can specify its vertical alignment
-            </Description>
-    <RunTemplate>
-        <ItemList>
-            <Item>
-                <Image Size="Size.Tiny" Src="img/image.png" />
-                <Content VerticalAlignment="VerticalAlignment.Top">Top Aligned</Content>
-            </Item>
-            <Item>
-                <Image Size="Size.Tiny" Src="img/image.png" />
-                <Content VerticalAlignment="VerticalAlignment.Middle">Middle Aligned</Content>
-            </Item>
-            <Item>
-                <Image Size="Size.Tiny" Src="img/image.png" />
-                <Content VerticalAlignment="VerticalAlignment.Bottom">Bottom Aligned</Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<ItemList>
-    <Item>
-        <Image Size=""Size.Tiny"" Src=""img/image.png"" />
-        <Content VerticalAlignment=""VerticalAlignment.Top"">Top Aligned</Content>
-    </Item>
-    <Item>
-        <Image Size=""Size.Tiny"" Src=""img/image.png"" />
-        <Content VerticalAlignment=""VerticalAlignment.Middle"">Middle Aligned</Content>
-    </Item>
-    <Item>
-        <Image Size=""Size.Tiny"" Src=""img/image.png"" />
-        <Content VerticalAlignment=""VerticalAlignment.Bottom"">Bottom Aligned</Content>
-    </Item>
-</ItemList>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
+
+        
         <PresentationPart Title="Unstackable">
             <Description>
-                A table can specify how it stacks items responsively
-            </Description>
-    <RunTemplate>
-        <ItemList Unstackable>
-            <Item>
-                <Image UI Size="Size.Tiny" Src="img/image.png" />
-                <Content VerticalAlignment="VerticalAlignment.Top">Top Aligned</Content>
-            </Item>
-            <Item>
-                <Image UI Size="Size.Tiny" Src="img/image.png" />
-                <Content VerticalAlignment="VerticalAlignment.Middle">Middle Aligned</Content>
-            </Item>
-            <Item>
-                <Image UI Size="Size.Tiny" Src="img/image.png" />
-                <Content VerticalAlignment="VerticalAlignment.Bottom">Bottom Aligned</Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
+                Cancel the stackable in responsive device.
+            </Description>            
+            <RunTemplate>                
+                <ItemList DataSource="Products" Unstackable>
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
+                    <HeaderTemplate>
+                        @context.Title
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo />
+                    </DescriptionTemplate>
+                    <MetaTemplate>
+                        <span>$@context.Price</span>
+                        <span>@context.Number remain</span>
+                    </MetaTemplate>
+                    <FooterTemplate>
+                        Additional Details
+                    </FooterTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
 ```html
-<ItemList Unstackable>
-    <Item>
-        <Image UI Size=""Size.Tiny"" Src=""img/image.png"" />
-        <Content VerticalAlignment=""VerticalAlignment.Top"">Top Aligned</Content>
-    </Item>
-    <Item>
-        <Image UI Size=""Size.Tiny"" Src=""img/image.png"" />
-        <Content VerticalAlignment=""VerticalAlignment.Middle"">Middle Aligned</Content>
-    </Item>
-    <Item>
-        <Image UI Size=""Size.Tiny"" Src=""img/image.png"" />
-        <Content VerticalAlignment=""VerticalAlignment.Bottom"">Bottom Aligned</Content>
-    </Item>
+<ItemList DataSource=""Products"" Unstackable>
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
 </ItemList>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="Introduction">
-            <Description>
-                An item can contain content metadata
-            </Description>
-    <RunTemplate>
-        <ItemList>
-            <Item>
-                <Image Src="img/image.png"  UI="false"/>
-                <Content>
-                    <Header2>Cute Dog</Header2>
-                    <Introduction>
-                        <List Horizontal>
-                            <Item>
-                                ￥399.00
-                            </Item>
-                            <Item>
-                                <Icon IconClass="heart" />305
-                            </Item>
-                        </List>
-                    </Introduction>
-                    <ParagraphDemo />
-                </Content>
-            </Item>
-            <Item>
-                <Image Src="img/image.png"  UI="false"/>
-                <Content>
-                    <Header2>Soft Cat</Header2>
-                    <Introduction>
-                        <List Horizontal>
-                            <Item>
-                                ￥59.00
-                            </Item>
-                            <Item>
-                                <Icon IconClass="heart" />172
-                            </Item>
-                        </List>
-                    </Introduction>
-                    <ParagraphDemo />
-                </Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<ItemList>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-        <Content>
-            <Header2>Cute Dog</Header2>
-            <Introduction>
-                <List Horizontal>
-                    <Item>
-                        ￥399.00
-                    </Item>
-                    <Item>
-                        <Icon IconClass=""heart"" />305
-                    </Item>
-                </List>
-            </Introduction>
-            <ParagraphDemo />
-        </Content>
-    </Item>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-        <Content>
-            <Header2>Soft Cat</Header2>
-            <Introduction>
-                <List Horizontal>
-                    <Item>
-                        ￥59.00
-                    </Item>
-                    <Item>
-                        <Icon IconClass=""heart"" />172
-                    </Item>
-                </List>
-            </Introduction>
-            <ParagraphDemo />
-        </Content>
-    </Item>
-</ItemList>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="Description">
-            <Description>
-                An item can contain a description with a single or multiple paragraphs
-            </Description>
-    <RunTemplate>
-        <ItemList>
-            <Item>
-                <Image Src="img/image.png" UI="false"/>
-                <Content>
-                    <Header2>Cute Dog</Header2>
-                    <Description>
-                        Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.
+            </CodeTemplate>
+        </PresentationPart>
 
-                        <p>Many people also have their own barometers for what makes a cute dog.</p>
-                    </Description>
-                </Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<ItemList>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-        <Content>
-            <Header2>Cute Dog</Header2>
+        
+        <PresentationPart Title="Relaxed">
             <Description>
-                Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.
-                <p>Many people also have their own barometers for what makes a cute dog.</p>
-            </Description>
-        </Content>
-    </Item>
+                A group of items can relax its padding to provide more negative space
+            </Description>            
+            <RunTemplate>
+                <ItemList DataSource="Products" Relaxed>
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
+                    <HeaderTemplate>
+                        @context.Title
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo />
+                    </DescriptionTemplate>
+                    <MetaTemplate>
+                        <span>$@context.Price</span>
+                        <span>@context.Number remain</span>
+                    </MetaTemplate>
+                    <FooterTemplate>
+                        Additional Details
+                    </FooterTemplate>
+                </ItemList>
+
+
+                <ItemList DataSource="Products" Very Relaxed>
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
+                    <HeaderTemplate>
+                        @context.Title
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo />
+                    </DescriptionTemplate>
+                    <MetaTemplate>
+                        <span>$@context.Price</span>
+                        <span>@context.Number remain</span>
+                    </MetaTemplate>
+                    <FooterTemplate>
+                        Additional Details
+                    </FooterTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
+```html
+<ItemList DataSource=""Products"" Relaxed>
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
+</ItemList>
+
+
+<ItemList DataSource=""Products"" Very Relaxed>
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
 </ItemList>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="Extra Content">
+            </CodeTemplate>
+        </PresentationPart>
+
+        
+        <PresentationPart Title="Linked">
             <Description>
-                An item can contain extra content meant to be formatted separately from the main content
-            </Description>
-    <RunTemplate>
-        <ItemList>
-            <Item>
-                <Content>
-                    <Header2>Cute Dog</Header2>
-                    <Description>
-                        <ParagraphDemo/>
-                    </Description>
-                    <Extra>
-                        <Icon Color="Color.Green" IconClass="check"/> 1351 Votes
-                    </Extra>
-                </Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
+                An item can be formatted so that the entire contents link to another page
+            </Description>            
+            <RunTemplate>
+                <ItemList DataSource="Products" Linked>
+                    <ImageTemplate>
+                        <Image Src="@(context.ImageSrc)" />
+                    </ImageTemplate>
+                    <HeaderTemplate>
+                        @context.Title
+                    </HeaderTemplate>
+                    <DescriptionTemplate>
+                        <ParagraphDemo />
+                    </DescriptionTemplate>
+                    <MetaTemplate>
+                        <span>$@context.Price</span>
+                        <span>@context.Number remain</span>
+                    </MetaTemplate>
+                    <FooterTemplate>
+                        Additional Details
+                    </FooterTemplate>
+                </ItemList>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
 ```html
-<ItemList>
-    <Item>
-        <Content>
-            <Header2>Cute Dog</Header2>
-            <Description>
-                <ParagraphDemo/>
-            </Description>
-            <Extra>
-                <Icon Color=""Color.Green"" IconClass=""check""/> 1351 Votes
-            </Extra>
-        </Content>
-    </Item>
+<ItemList DataSource=""Products"" Linked>
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
 </ItemList>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="Link">
-            <Description>
-                An item can contain links as images, headers, or inside content
-            </Description>
-    <RunTemplate>
-        <ItemList Linked>
-            <Item>
-                <Image Src="img/image.png" UI="false" />
-                <Content>
-                    <Header2>Cute Dog</Header2>
-                    <ParagraphDemo />
-                </Content>
-            </Item>
-            <Item>
-                <Image Src="img/image.png" UI="false" />
-                <Content>
-                    <Header2>Happy Cat</Header2>
-                    <ParagraphDemo />
-                </Content>
-            </Item>
-            <Item>
-                <Image Src="img/image.png" UI="false" />
-                <Content>
-                    <Header2>Brave Bear</Header2>
-                    <ParagraphDemo />
-                </Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-<ItemList Linked>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-        <Content>
-            <Header2>>Cute Dog</Header2>
-            <ParagraphDemo />
-        </Content>
-    </Item>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-        <Content>
-            <Header2>Happy Cat</Header2>
-            <ParagraphDemo />
-        </Content>
-    </Item>
-    <Item>
-        <Image Src=""img/image.png"" UI=""false"" />
-        <Content>
-            <Header2>Brave Bear</Header2>
-            <ParagraphDemo />
-        </Content>
-    </Item>
-</ItemList>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
-        <PresentationPart Title="Floated Content">
-    <RunTemplate>
-          <ItemList>
-            <Item>
-                <Content>
-                    <Header2>Cute Dog</Header2>
-                    <ParagraphDemo />
-                    <Extra>                        
-                        <Button Linked Floated="HorizontalPosition.Right">
-                            Read More >>
-                        </Button>
-                    </Extra>
-                </Content>
-            </Item>
-            <Item>
-                <Content>
-                    <Header2>Super Cat</Header2>
-                    <ParagraphDemo />
-                    <Extra>
-                        <Button Linked Floated="HorizontalPosition.Right">
-                            Read More >>
-                        </Button>
-                    </Extra>
-                </Content>
-            </Item>
-            <Item>
-                <Content>
-                    <Header2>Legend of Bear</Header2>
-                    <ParagraphDemo />
-                    <Extra>
-                        <Button Linked Floated="HorizontalPosition.Right">
-                            Read More >>
-                        </Button>
-                    </Extra>
-                </Content>
-            </Item>
-        </ItemList>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
-```html
-    <ItemList>
-    <Item>
-        <Content>
-            <Header2>Cute Dog</Header2>
-            <ParagraphDemo />
-            <Extra>                        
-                <Button Linked Floated=""HorizontalPosition.Right"">
-                    Read More >>
-                </Button>
-            </Extra>
-        </Content>
-    </Item>
-    <Item>
-        <Content>
-            <Header2>Super Cat</Header2>
-            <ParagraphDemo />
-            <Extra>
-                <Button Linked Floated=""HorizontalPosition.Right"">
-                    Read More >>
-                </Button>
-            </Extra>
-        </Content>
-    </Item>
-    <Item>
-        <Image Src=""img/image.png"" />
-        <Content>
-            <Header2>Legend of Bear</Header2>
-            <ParagraphDemo />
-            <Extra>
-                <Button Linked Floated=""HorizontalPosition.Right"">
-                    Read More >>
-                </Button>
-            </Extra>
-        </Content>
-    </Item>
-</ItemList>
-```
-")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
+
+        
+        
         <PresentationPart Title="Inverted">
             <Description>
                 An item can be inverted to appear on a dark background
-            </Description>
-    <RunTemplate>
-        <Segment Inverted>
-            <ItemList Inverted>
-                <Item>
-                    <Image Src="img/image.png" UI="false" />
-                    <Content>
-                        <Header2>Title 1</Header2>
-                        <Introduction>
-                            ￥2999
-                        </Introduction>
-                        <ParagraphDemo />
-                    </Content>
-                </Item>
-                <Item>
-                    <Image Src="img/image.png" UI="false" />
-                    <Content>
-                        <Header2>Title 2</Header2>
-                        <Introduction>
-                            ￥599
-                        </Introduction>
-                        <ParagraphDemo />
-                    </Content>
-                </Item>
-            </ItemList>
-        </Segment>
-    </RunTemplate>
-    <CodeTemplate>
-        @Code.GetCode(@"
+            </Description>            
+            <RunTemplate>
+                <Segment Inverted>
+                    <ItemList DataSource="Products" Inverted>
+                        <ImageTemplate>
+                            <Image Src="@(context.ImageSrc)" />
+                        </ImageTemplate>
+                        <HeaderTemplate>
+                            @context.Title
+                        </HeaderTemplate>
+                        <DescriptionTemplate>
+                            <ParagraphDemo />
+                        </DescriptionTemplate>
+                        <MetaTemplate>
+                            <span>$@context.Price</span>
+                            <span>@context.Number remain</span>
+                        </MetaTemplate>
+                        <FooterTemplate>
+                            Additional Details
+                        </FooterTemplate>
+                    </ItemList>
+                </Segment>
+            </RunTemplate>
+            <CodeTemplate>
+@Code.GetCode(@"
 ```html
-<Segment Inverted>
-    <ItemList Inverted>
-        <Item>
-            <Image Src=""img/image.png"" UI=""false"" />
-            <Content>
-                <Header2>Title 1</Header2>
-                <Introduction>
-                    ￥2999
-                </Introduction>
-                <ParagraphDemo />
-            </Content>
-        </Item>
-        <Item>
-            <Image Src=""img/image.png"" UI=""false"" />
-            <Content>
-                <Header2>Title 2</Header2>
-                <Introduction>
-                    ￥599
-                </Introduction>
-                <ParagraphDemo />
-            </Content>
-        </Item>
-    </ItemList>
-</Segment>
+<ItemList DataSource=""Products"" Inverted>
+    <ImageTemplate>
+        <Image Src=""@(context.ImageSrc)"" />
+    </ImageTemplate>
+    <HeaderTemplate>
+        @context.Title
+    </HeaderTemplate>
+    <DescriptionTemplate>
+        <ParagraphDemo />
+    </DescriptionTemplate>
+    <MetaTemplate>
+        <span>$@context.Price</span>
+        <span>@context.Number remain</span>
+    </MetaTemplate>
+    <FooterTemplate>
+        Additional Details
+    </FooterTemplate>
+</ItemList>
 ```
 ")
-    </CodeTemplate>
-</PresentationPart>
+            </CodeTemplate>
+        </PresentationPart>
     </Body>
 </Pager>
+
+@code{
+    class Product
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string ImageSrc { get; set; } = "img/image.png";
+        public int Price { get; set; }
+        public int Number { get; set; }
+    }
+
+    IReadOnlyList<Product> Products = new List<Product>
+    {
+        new Product { Id = 1, Title = "Mouse", Price = 200, Number = 999 },
+        new Product{ Id = 2, Title = "Cow", Price = 590, Number = 754 },
+        new Product{ Id = 3, Title = "Tiger", Price = 1600, Number = 240 },
+        new Product{ Id = 4, Title = "Rabbit", Price = 350, Number = 100 },
+    };
+}

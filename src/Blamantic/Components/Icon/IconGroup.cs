@@ -1,6 +1,4 @@
 ﻿
-using System.Collections.Generic;
-
 using BlamanticUI.Abstractions;
 
 using Microsoft.AspNetCore.Components;
