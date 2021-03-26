@@ -34,13 +34,30 @@
         border-bottom-left-radius: 0px;
         border-bottom-right-radius: 0px;
 
-        > tr > td {
+        > tr > td, th {
             border-bottom-width: 0px;
         }
     }
 
-    .gridview-body > table {
+    .gridview-body > table:not(.structured) {
+        border-bottom-width: 0px;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
+    }
+
+    .gridview-footer > table {
+        border-top-width: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+
+
+        > tr > td, th {
+            border-top-width: 0px;
+        }
+    }
+
+    .gridview-pagination {
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 }
