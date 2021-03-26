@@ -22,9 +22,21 @@
   border-bottom-width: 0px;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px; }
-  .ui.gridview .gridview-header > table > tr > td {
+  .ui.gridview .gridview-header > table > tr > td, .ui.gridview .gridview-header > table th {
     border-bottom-width: 0px; }
 
-.ui.gridview .gridview-body > table {
+.ui.gridview .gridview-body > table:not(.structured) {
+  border-bottom-width: 0px;
   border-top-left-radius: 0px;
   border-top-right-radius: 0px; }
+
+.ui.gridview .gridview-footer > table {
+  border-top-width: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px; }
+  .ui.gridview .gridview-footer > table > tr > td, .ui.gridview .gridview-footer > table th {
+    border-top-width: 0px; }
+
+.ui.gridview .gridview-pagination {
+  margin-top: 5px;
+  margin-bottom: 5px; }

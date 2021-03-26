@@ -36,7 +36,7 @@ namespace BlamanticUI
         {
             base.OnInitialized();
 
-            CascadingDataGrid!.AddColumn(this);
+            CascadingGridView!.AddColumn(this);
         }
     }
 }

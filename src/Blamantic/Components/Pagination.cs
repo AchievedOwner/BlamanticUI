@@ -54,9 +54,9 @@ namespace BlamanticUI
         /// </summary>
         [Parameter] public int PageNumberCount { get; set; } = 7;
         /// <summary>
-        /// Gets or sets a value indicating whether to show total count. Default is <c>true</c>.
+        /// Gets or sets a value to show statistic label. Default is <c>true</c>.
         /// </summary>
-        [Parameter] public bool ShowTotalCount { get; set; } = true;
+        [Parameter] public bool ShowStatistic { get; set; } = true;
 
         /// <summary>
         /// Gets or sets a value indicating whether to show 'navigate to'. Default is <c>true</c>.
@@ -94,7 +94,24 @@ namespace BlamanticUI
         /// <summary>
         /// Gets the total pages.
         /// </summary>
-        public int TotalPages => (TotalCount + PageSize - 1) / PageSize;
+        public int TotalPages
+        {
+            get
+            {
+                var total = TotalCount + PageSize - 1;
+                if (total <= 0)
+                {
+                    total = 1;
+                }
+
+                var result = total  / PageSize;
+                if (result < 0)
+                {
+                    result = 1;
+                }
+                return result;
+            }
+        }
 
 
         /// <summary>
@@ -102,23 +119,19 @@ namespace BlamanticUI
         /// initial parameters from its parent in the render tree.
         /// </summary>
         /// <exception cref="ArgumentException">
-        /// Must greater than 1 - CurrentPage
-        /// or
-        /// Must greater than 1 - TotalCount
-        /// or
         /// At lease one element - PageSizeStakeholders
         /// </exception>
         protected override void OnInitialized()
         {
-            if (CurrentPage <= 0)
-            {
-                throw new ArgumentException("Must greater than 1", nameof(CurrentPage));
-            }
+            //if (CurrentPage <= 0)
+            //{
+            //    throw new ArgumentException("Must greater than 1", nameof(CurrentPage));
+            //}
 
-            if (TotalCount <= 0)
-            {
-                throw new ArgumentException("Must greater than 1", nameof(TotalCount));
-            }
+            //if (TotalCount <= 0)
+            //{
+            //    throw new ArgumentException("Must greater than 1", nameof(TotalCount));
+            //}
 
             if (PageSizeStakeholders == null || !PageSizeStakeholders.Any())
             {
@@ -138,19 +151,7 @@ namespace BlamanticUI
             root.AddAttribute(1, "style", $"display:flex;flex-direction:row;justify-content:{Alignment.GetEnumMemberValue<DefaultValueAttribute>()}");
             root.AddContent(2, builder =>
             {
-                if (ShowTotalCount)
-                {
-                    builder.OpenComponent<InputBox>(0);
-                    builder.AddAttribute(1, nameof(InputBox.Size), Size);
-                    builder.AddAttribute(2, nameof(InputBox.ChildContent), (RenderFragment)(input =>
-                    {
-                        input.OpenElement(0, "label");
-                        input.AddAttribute(1, "style", "display:flex;align-items:center;margin-right:5px");
-                        input.AddContent(5, $"{TotalCount} Count");
-                        input.CloseElement();
-                    }));
-                    builder.CloseComponent();
-                }
+                BuildStatistic(builder);
 
                 builder.OpenComponent<Menu>(10);
                 builder.AddAttribute(11, nameof(Menu.Pagination), true);
@@ -159,10 +160,7 @@ namespace BlamanticUI
                 BuildPaginationPart(builder);
                 builder.CloseComponent();
 
-                if (ShowNavigateTo)
-                {
                     BuildPageSizeForm(builder);
-                }
             });
             root.CloseElement();            
 
@@ -300,26 +298,46 @@ namespace BlamanticUI
 
                                  #region Navigate to
 
-                                 field.OpenComponent<InputBox>(10);
-                                 field.AddAttribute(11, nameof(InputBox.Size), Size);                                 
-                                 field.AddAttribute(18, nameof(InputBox.ChildContent), (RenderFragment)(input =>
-                                   {
-                                       input.OpenElement(0, "label");
-                                       input.AddAttribute(1, "style", "display:flex;align-items:center");
-                                       input.AddContent(6, "Navigate To");
-                                       input.CloseElement();
+                                 if (ShowNavigateTo)
+                                 {
+                                     field.OpenComponent<InputBox>(10);
+                                     field.AddAttribute(11, nameof(InputBox.Size), Size);
+                                     field.AddAttribute(18, nameof(InputBox.ChildContent), (RenderFragment)(input =>
+                                       {
+                                           input.OpenElement(0, "label");
+                                           input.AddAttribute(1, "style", "display:flex;align-items:center");
+                                           input.AddContent(6, "Navigate To");
+                                           input.CloseElement();
 
-                                       input.OpenElement(10, "input");
-                                       input.AddAttribute(11, "style", "text-align:center;width:60px");
-                                       input.AddAttribute(14, "onchange", EventCallback.Factory.Create<ChangeEventArgs>(this, RedirectToSpecifyPage));
-                                       input.CloseElement();
-                                   }));
-                                 field.CloseComponent();
+                                           input.OpenElement(10, "input");
+                                           input.AddAttribute(11, "style", "text-align:center;width:60px");
+                                           input.AddAttribute(14, "onchange", EventCallback.Factory.Create<ChangeEventArgs>(this, RedirectToSpecifyPage));
+                                           input.CloseElement();
+                                       }));
+                                     field.CloseComponent();
+                                 }
                                  #endregion
                              }));
                            form.CloseComponent();
                        });
                   }));
+                builder.CloseComponent();
+            }
+        }
+
+        private void BuildStatistic(RenderTreeBuilder builder)
+        {
+            if (ShowStatistic)
+            {
+                builder.OpenComponent<InputBox>(0);
+                builder.AddAttribute(1, nameof(InputBox.Size), Size);
+                builder.AddAttribute(2, nameof(InputBox.ChildContent), (RenderFragment)(input =>
+                {
+                    input.OpenElement(0, "label");
+                    input.AddAttribute(1, "style", "display:flex;align-items:center;margin-right:5px");
+                    input.AddContent(5, $"{PageSize} of {TotalCount} Items");
+                    input.CloseElement();
+                }));
                 builder.CloseComponent();
             }
         }

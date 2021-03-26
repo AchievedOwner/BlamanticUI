@@ -1,0 +1,39 @@
+﻿@inherits Abstractions.BlamanticComponentBase
+@namespace BlamanticUI
+
+@using System.Reflection;
+@using System.ComponentModel.DataAnnotations;
+
+<div class="ui gridview">
+    <Dimmer Inverted="Inverted" Actived="IsLoading">
+        <Loader Animation="LoadingAnimation" Color="Color" Size="Size">@LoadingText</Loader>
+    </Dimmer>
+    <div class="gridview-header">
+        @(GetHeader())
+    </div>
+    <div class="gridview-body" style="@GetBodyStyle()">
+        @(GetBody())
+    </div>
+    <div class="gridview-footer">
+        @(GetFooter())
+    </div>
+    @if (ShowPagination)
+    {
+        <div class="gridview-pagination">
+            <Pagination Size="Size" @bind-CurrentPage="CurrentPage" @bind-PageSize="PageSize" @bind-TotalCount="TotalCount" PageSizeStakeholders="PageSizeStackholders" OnCurrentPageChanged="HandlePageChanged" />
+        </div>
+    }
+</div>
+<CascadingValue Value="this" IsFixed="true">
+    @Columns
+</CascadingValue>
+
+
+@code{
+
+    RenderFragment GetHeader() => BuildHeaderTable;
+
+    RenderFragment GetBody() => BuildBodyTable;
+
+    RenderFragment GetFooter() => BuildFooterTable;
+    }
