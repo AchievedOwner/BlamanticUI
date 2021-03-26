@@ -1,3 +1,9 @@
+# 0.5.0
+## :trophy: New Features
+* Enhance `GridView` support pagination
+## :pill: Bugs Fixed
+* Fixed `GridView` border bolder style.
+
 # 0.4.0
 ## :trophy: New Features
 * Change `Row` to `GridRow`
